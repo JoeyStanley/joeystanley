@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Joey Stanley"
+  site-url: https://new.joeystanley.com
   navbar:
     left:
       - text: "About Me"
