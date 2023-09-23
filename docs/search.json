@@ -194,5 +194,124 @@
     "title": "Curriculum Vitae",
     "section": "Skills and Experience",
     "text": "Skills and Experience\n\nComputer Skills & Tools\nExpert (=I could teach a course on these): R(Studio), tidyverse, ggplot2, Praat, LaTeX, Perl, Word, Excel, DARLA\nProficient (=I’ve used these regularly and could help with some things): COCA (and related corpora), ELAN, FastTrack, FAVE, Jamovi JMP, Markdown, Shiny, WordCruncher, Zotero, and enough CSS, HTML, and web design to make this site.\nFamiliar (=I still need guidance): Access, AntConc, C#, DreamWeaver, HTK, LaBB-CAT, MALLET, PCT, Photoshop, Prosody-Lab Aligner, Python, SAS, SoX, SPPAS, Transcriber, UCINET, VBA, WebMAUS, Wiki markup\n\n\n\nFieldwork Experience\nSociolinguistic fieldwork in Utah and Wasatch Counties, Utah. January, 2018.\nSociolinguistic fieldwork in Cowlitz County, Washington. July, 2016.\nStudy abroad at the Andes and Amazon Field School near Tena, Ecuador, documenting Tena and Pastaza Kichwa phonology. June–July, 2011.\nBrazil (Marília, SP; Campo Grande, MS; Cáceres, Cuiabá, and Várzea Grande, MG). 2008–2010. (Not linguistics related.)\n\n\n\nLanguages\nNative: English\nFluent: Brazilian Portuguese\nConversational: Spanish, Quechua\nAcademic Knoweldge: Guaraní, Mandarin, Tz’utujil, Tshiluba, Korean\n\n  \n\nIcon credits:  \n&lt;img src='/images/icons/audio.svg' height=\"10\"/&gt;\n&lt;img src='/images/icons/document.svg' height=\"10\"/&gt; \n&lt;img src='/images/icons/link.svg' height=\"10\"/&gt;\n&lt;img src='/images/icons/video.svg' height=\"10\"/&gt;\nwere made by &lt;a href=\"https://www.flaticon.com/authors/smashicons\" title=\"Smashicons\"&gt;Smashicons&lt;/a&gt; and\n&lt;img src='/images/icons/flyer.svg' height=\"10\"/&gt;\n&lt;img src='/images/icons/presentation.svg' height=\"10\"/&gt;\nby &lt;a href=\"http://www.freepik.com\" title=\"Freepik\"&gt;Freepik&lt;/a&gt; of &lt;a href=\"https://www.flaticon.com/\" title=\"Flaticon\"&gt;www.flaticon.com&lt;/a&gt; and are licensed by &lt;a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\"&gt;CC 3.0 BY&lt;/a&gt;."
+  },
+  {
+    "objectID": "pages/praat-workshops.html",
+    "href": "pages/praat-workshops.html",
+    "title": "Praat Workshops",
+    "section": "",
+    "text": "Lisa Lipani and I will be hosting a series of four workshops on Praat and Praat scripting during Fall 2019. This page will house the handouts and all materials for those workshops.\nNote: All workshops will be held at 3:35pm at the DigiLab (300 Main Library)\n\n\n\nSeptember 11, 2019—In this workshop, I’ll introduce the software Praat, and will how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data before using Praat. (For former students of mine, this workshop will overlap with this homework assignment.)\n\n\n\n\nSeptember 18, 2019—With some basic understanding of the software, Lisa will lead the workshop on the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script.\n\n\n\n\nOctober 2, 2019—In this workshop, you’ll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with this blog post, only you will get more detail with an in-person guide."
+  },
+  {
+    "objectID": "pages/praat-workshops.html#praat-basics-introduction-to-the-software",
+    "href": "pages/praat-workshops.html#praat-basics-introduction-to-the-software",
+    "title": "Praat Workshops",
+    "section": "",
+    "text": "September 11, 2019—In this workshop, I’ll introduce the software Praat, and will how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data before using Praat. (For former students of mine, this workshop will overlap with this homework assignment.)"
+  },
+  {
+    "objectID": "pages/praat-workshops.html#praat-scripting-basics-loops-io-and-textgrids",
+    "href": "pages/praat-workshops.html#praat-scripting-basics-loops-io-and-textgrids",
+    "title": "Praat Workshops",
+    "section": "",
+    "text": "September 18, 2019—With some basic understanding of the software, Lisa will lead the workshop on the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script."
+  },
+  {
+    "objectID": "pages/praat-workshops.html#automatic-formant-extraction-in-praat-and-supplement",
+    "href": "pages/praat-workshops.html#automatic-formant-extraction-in-praat-and-supplement",
+    "title": "Praat Workshops",
+    "section": "",
+    "text": "October 2, 2019—In this workshop, you’ll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with this blog post, only you will get more detail with an in-person guide."
+  },
+  {
+    "objectID": "pages/r-workshops.html",
+    "href": "pages/r-workshops.html",
+    "title": "R Workshops",
+    "section": "",
+    "text": "In grad school I offered workshops on a variety of topics relating to R between Fall 2017 and Spring 2020. They were held Fridays at 3:30 in the DigiLab at the UGA Main Library. Videos for some of these are available here. Below you will find materials for these workshops. I hope they are thorough enough that you can make use of them as stand-alone documents.\nThe data used in these workshops can be found at my datasets page.\nIf you are planning on attending a workshop in the near future, please see the setup instructions to help you get R and RStudio installed on your computer.\nNote: If you attended these workshops, please consider giving me some feedback with this anonymous survey so I can know how to improve.\n\n\n\nIn this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file.\n\n\n\n\nggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\n\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\n\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\n\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file.\n\n\n\n\n\nThe tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file.\n\n\n\n\nR Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here.\n\n\n\n\nShiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\nNote that the materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
+  },
+  {
+    "objectID": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
+    "href": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
+    "title": "R Workshops",
+    "section": "",
+    "text": "In this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "pages/r-workshops.html#visualizations-with-ggplot2",
+    "href": "pages/r-workshops.html#visualizations-with-ggplot2",
+    "title": "R Workshops",
+    "section": "",
+    "text": "ggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\n\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\n\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\n\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
+    "href": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
+    "title": "R Workshops",
+    "section": "",
+    "text": "The tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "pages/r-workshops.html#an-intro-to-rmarkdown",
+    "href": "pages/r-workshops.html#an-intro-to-rmarkdown",
+    "title": "R Workshops",
+    "section": "",
+    "text": "R Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here."
+  },
+  {
+    "objectID": "pages/r-workshops.html#introduction-to-shiny",
+    "href": "pages/r-workshops.html#introduction-to-shiny",
+    "title": "R Workshops",
+    "section": "",
+    "text": "Shiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\nNote that the materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html",
+    "href": "pages/dataviz-workshops.html",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "In Fall of 2019, I lead a series of five workshops on data visualization. This page houses the handouts and materials for those workshops.\n \n\n\nAugust 21, 2019—In Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\n\n\nAugust 28, 2019—Often you’ll want to customize your plots in some way. So, in this workshop we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots.\n\n\n\n\n\nSeptember 4, 2019–Based on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\n\n\n\n\n\nOctober 16, 2019—In this workshop, I introduce a few key concepts from Edward Tufte’s book, The Visual Display of Quantitative Information such as graphical integrity, proportional ink, data-ink ratio, removing redundant material, and general graphical sophistication. Basically, the workshop could be thought of as, “How not to make awful plots.”\n\n\n\n\nOctober 23, 2019—Meagan Duever, GIS Librarian at UGA will help me lead this workshop. We talk about general principles of color in data visualization, introduce a whole bunch of nice color palettes, and demonstrate how to customize your colors in ArcMap, QGIS, Excel, and R.\n\n\n\n\nYou may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html#part-1-intro-to-ggplot2",
+    "href": "pages/dataviz-workshops.html#part-1-intro-to-ggplot2",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "August 21, 2019—In Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots."
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html#part-2-extending-your-ggplot2-skills",
+    "href": "pages/dataviz-workshops.html#part-2-extending-your-ggplot2-skills",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "August 28, 2019—Often you’ll want to customize your plots in some way. So, in this workshop we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots."
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html#custom-themes",
+    "href": "pages/dataviz-workshops.html#custom-themes",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "September 4, 2019–Based on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!)."
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html#fidelity-integrity-and-sophistication-edward-tuftes-principles-of-data-visualization",
+    "href": "pages/dataviz-workshops.html#fidelity-integrity-and-sophistication-edward-tuftes-principles-of-data-visualization",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "October 16, 2019—In this workshop, I introduce a few key concepts from Edward Tufte’s book, The Visual Display of Quantitative Information such as graphical integrity, proportional ink, data-ink ratio, removing redundant material, and general graphical sophistication. Basically, the workshop could be thought of as, “How not to make awful plots.”"
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html#send-the-right-message-the-dos-and-donts-of-color-in-data-visualization",
+    "href": "pages/dataviz-workshops.html#send-the-right-message-the-dos-and-donts-of-color-in-data-visualization",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "October 23, 2019—Meagan Duever, GIS Librarian at UGA will help me lead this workshop. We talk about general principles of color in data visualization, introduce a whole bunch of nice color palettes, and demonstrate how to customize your colors in ArcMap, QGIS, Excel, and R."
+  },
+  {
+    "objectID": "pages/dataviz-workshops.html#older-versions",
+    "href": "pages/dataviz-workshops.html#older-versions",
+    "title": "Data Visualization Workshops",
+    "section": "",
+    "text": "You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
   }
 ]
