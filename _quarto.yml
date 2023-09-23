@@ -16,8 +16,8 @@ website:
         file: teaching.qmd
       - text: "Resources"
         file: resources.qmd
-      - text: "News"
-        file: news.qmd
+      - text: "Blog"
+        file: blog.qmd
     right:
       - icon: email
       - icon: twitter
