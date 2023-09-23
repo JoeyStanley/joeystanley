@@ -17,7 +17,7 @@ website:
       - text: "Resources"
         file: resources.qmd
       - text: "Blog"
-        file: blog.qmd
+        file: blog/index.qmd
     right:
       - icon: email
       - icon: twitter
