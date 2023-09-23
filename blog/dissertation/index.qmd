@@ -3,7 +3,8 @@ layout: post
 title:  "Dissertation"
 date:   2019-12-04 09:00:00 -0400
 tags: [Dissertation, Pacific Northwest, Research]
-redirect_from: "/dissertation"
+aliases:
+  - /dissertation
 ---
 
 I'm happy to report that I successfully defended my dissertation today! The defense was held in the DigiLab (300 Main Library). The study itself is called "Vowel Dynamics of the Elsewhere Shift: A sociophonetic analysis of English in Cowlitz County, Washington."
