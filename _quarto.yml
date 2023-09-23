@@ -3,14 +3,30 @@ project:
   output-dir: docs
 
 website:
-  title: "joeystanley_new"
+  title: "joeystanley"
   navbar:
+    left:
+      - text: "About Me"
+        file: index.qmd
+      - text: "CV"
+        file: cv.qmd
+      - text: "Research"
+        file: research.qmd
+      - text: "Teaching"
+        file: teaching.qmd
+      - text: "Resources"
+        file: resources.qmd
+      - text: "News"
+        file: news.qmd
     right:
-      - about.qmd
-      - icon: github
-        href: https://github.com/
+      - icon: email
       - icon: twitter
         href: https://twitter.com
+      - icon: github
+        href: https://github.com/
+      - icon: scholar
+      - icon: rss
+      
 format:
   html:
     theme: cosmo

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>joeystanley_new</title>
+<title>joeystanley - About Me</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -60,38 +58,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -104,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">joeystanley_new</span>
+    <span class="navbar-title">joeystanley</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -112,18 +79,40 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">About Me</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cv.qmd" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./research.qmd" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./teaching.qmd" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resources.qmd" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./news.qmd" rel="" target="">
+ <span class="menu-text">News</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -137,8 +126,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">joeystanley_new</h1>
+    <div class="quarto-title column-page">
+      <h1 class="title">About Me</h1>
                       </div>
   </div>
     
@@ -154,102 +143,48 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
+<p>I’m an Assistant Professor in <a href="https://linguistics.byu.edu">Department of Linguistics</a> at <a href="https://www.byu.edu">Brigham Young University</a> specializing in sociophonetics, dialectology, and quantitative methods. In May 2020, I received my Ph.D in linguistics from the <a href="https://linguistics.uga.edu">Department of Linguistics</a> at the <a href="https://www.uga.edu">University of Georgia</a>.</p>
+<p>My primary area of research is on English in the western United States. My <a href="./posts/dissertation.qmd">dissertation</a> focused on English in Cowlitz County, Washington with an emphasis on uncovering variation in vowel formant trajectories. I am currently involved in several research projects on Utah English (on vowels, consonants, and intonation), including a long-term project analyzing a <a href="./posts/kohler-tapes.qmd">collection of 750 interviews</a> with residents of Heber City, Utah born in the early 20th Century.</p>
+<p>As a graduate student, I was involved with <a href="https://linguistics.uga.edu/directory/people/william-kretzschmar">Bill Kretzschmar</a> and <a href="https://linguistics.uga.edu/directory/people/margaret-e-l-renwick">Peggy Renwick</a> and the other student workers at the <a href="https://www.lap.uga.edu">Linguistic Atlas Project</a>. My job was to write and maintain many of the Praat, R, and Perl scripts we used in the lab; one product of this work is the <a href="http://lap3.libs.uga.edu/u/jstanley/vowelcharts/"><em>Gazetteer of Southern Vowels</em></a>. Together with Peggy Renwick and other collaborators, I am still actively involved in analyzing legacy southern speech, particularly in the state of Georgia.</p>
+<p>My research has recently been focused on sociophonetic data analysis methods. Some of this stems from my time as a research assistant in the <a href="https://digi.uga.edu">DigiLab</a> in UGA’s main library where I gave workshops on <a href="pages/r-workshops.qmd">R</a>, <a href="pages/praat-workshops.qmd">Praat scripting</a>, and <a href="pages/dataviz-workshops.qmd">data visualization</a>. Nowadays, I run simulations on real and artificual sociophonetic data, uncovering some overlooked aspects of methods that may in fact be rather important. (See my papers on <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/">Order of Operations</a> and <a href="./blog/nwav50">Pillai Scores</a>.)</p>
+<!--In the past I have done research on language change in real time, morphology in Quechua and Guarani, forms of address among members of the Church of Jesus Christ of Latter-day Saints, language documentation, and agent-based simulations of language change. Before switching to linguistics, I was a music performance major (on trombone believe it or not!) and you might still catch me playing some Shostakovich or Rachmaninoff on piano.  -->
+<p>I publish under the more grown-up-sounding version of my name, Joseph A. Stanley, but anyone who has ever met me knows I go by Joey. <!-- Recent non-linguistics books I've read were on ghost towns, typography, the Strauss–Howe generational theory, and very specific topics under the broad umbrella of "civil engineering."--> I live in Spanish Fork with my wife (Kelly) and kids (Lena and Walter). I enjoy running, breadmaking, succulents, and playing the organ too loudly. A description of my idiolect can be found <a href="./idiolect.qmd">here</a>.</p>
+<!--
+<center style = "font-size: 75%;">
+<img class="rounded" src="/images/photos/joey_bread.jpg" style="width: 50%;"/>
+<br/>
+A hefty ~3.5lb. loaf of white bread I made for Thanksgiving 2018.
+<br/>
+<br/>
+</center>
+-->
+<p><br> <br> <br></p>
+<section id="what-am-i-up-to-right-now" class="level2">
+<h2 class="anchored" data-anchor-id="what-am-i-up-to-right-now">What am I up to right now?</h2>
+<p>As of July 10 and through the end of 2023, I am…</p>
+<!--Teaching-->
+<!--👨🏻‍🏫 Just finished teaching a course on African American English. It was perhaps the most challenging course I've taught but the most rewarding. Very cool. -->
+<!--Research-->
+<!--📖 Excitedly reading through the brand new submissions to a volume I'm co-editing (with Peggy Renwick & Monica Nesbitt).-->
+<!--🗒️ Writing a paper with a student on Idaho English. -->
+<!--🎤 Transcribing and coming up with preliminary results for a project on English in the Intermountain West.-->
+<!--Reading-->
+<!--📖 Reading Twenge (2023) *Generations: The Real Differences Between Gen Z, Millennials, Gen X, Boomers, and Silents―and What They Mean for America's Future*-->
+<!--Personal-->
+<!--🎹 Working on an arrangement of Jurassic Park for the organ.-->
+<p>👶🏻 Doing nothing but taking care of a newborn.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1695362400000" data-listing-file-modified-sort="1695438457308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/image.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/post-with-code/index.html">
-<h3 class="no-anchor listing-title">
-Post With Code
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/post-with-code/index.html">
-<div class="listing-description">
-This is a post with executable code.
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/post-with-code/index.html">
-<div class="listing-date">
-Sep 22, 2023
-</div>
-<div class="listing-author">
-Harlow Malloc
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="news" data-listing-date-sort="1695103200000" data-listing-file-modified-sort="1695438457308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/welcome/index.html">
-<h3 class="no-anchor listing-title">
-Welcome To My Blog
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<a href="./posts/welcome/index.html">
-<div class="listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html">
-<div class="listing-date">
-Sep 19, 2023
-</div>
-<div class="listing-author">
-Tristan O’Malley
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -16,9 +16,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "joeystanley_new",
+    "title": "About Me",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nSep 22, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "I’m an Assistant Professor in Department of Linguistics at Brigham Young University specializing in sociophonetics, dialectology, and quantitative methods. In May 2020, I received my Ph.D in linguistics from the Department of Linguistics at the University of Georgia.\nMy primary area of research is on English in the western United States. My dissertation focused on English in Cowlitz County, Washington with an emphasis on uncovering variation in vowel formant trajectories. I am currently involved in several research projects on Utah English (on vowels, consonants, and intonation), including a long-term project analyzing a collection of 750 interviews with residents of Heber City, Utah born in the early 20th Century.\nAs a graduate student, I was involved with Bill Kretzschmar and Peggy Renwick and the other student workers at the Linguistic Atlas Project. My job was to write and maintain many of the Praat, R, and Perl scripts we used in the lab; one product of this work is the Gazetteer of Southern Vowels. Together with Peggy Renwick and other collaborators, I am still actively involved in analyzing legacy southern speech, particularly in the state of Georgia.\nMy research has recently been focused on sociophonetic data analysis methods. Some of this stems from my time as a research assistant in the DigiLab in UGA’s main library where I gave workshops on R, Praat scripting, and data visualization. Nowadays, I run simulations on real and artificual sociophonetic data, uncovering some overlooked aspects of methods that may in fact be rather important. (See my papers on Order of Operations and Pillai Scores.)\nI publish under the more grown-up-sounding version of my name, Joseph A. Stanley, but anyone who has ever met me knows I go by Joey.  I live in Spanish Fork with my wife (Kelly) and kids (Lena and Walter). I enjoy running, breadmaking, succulents, and playing the organ too loudly. A description of my idiolect can be found here."
   },
   {
     "objectID": "about.html",
@@ -26,5 +26,12 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "index.html#what-am-i-up-to-right-now",
+    "href": "index.html#what-am-i-up-to-right-now",
+    "title": "About Me",
+    "section": "What am I up to right now?",
+    "text": "What am I up to right now?\nAs of July 10 and through the end of 2023, I am…\n\n\n\n\n\n\n\n\n\n\n👶🏻 Doing nothing but taking care of a newborn."
   }
 ]
