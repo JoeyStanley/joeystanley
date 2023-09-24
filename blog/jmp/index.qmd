@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "JMP"
+author: "Joey Stanley"
+date:   2016-10-04 05:31:00 -0400
+date-modified: 2016-10-07
+categories: 
+  - Data Viz
+  - Presentations
+  - Skills
+  - Statistics
+---
+
+As a part of my assistantship this year, I get to work with the DigiLab in the Main Library at UGA. It's a fun little gig where I get to do presentations, workshops, and seminars on digital humanities, in addition to helping researchers one-on-one on their own projects.
+
+I've always been fairly tech savvy in my research. I minored in Linguistic Computing and had a job as an undergrad creating eBooks. I've always been fairly quantitative about things too, and I went over to the stats department last year and took classes on linear regression and multivariate analysis.
+
+This week is my first presentation where I'll show how to extract data from primary sources, introduce people to spreadsheets, and showcase [JMP](https://www.jmp.com/en_us/home.html) If you've never heard of it, JMP (pronounced "jump") is a pretty sophisticated piece of statistical software that can do all sorts of statistical analyses and visualizations. The great part is it's drag-and-drop interface. No coding means it's great for beginners.
+
+I'll be the first to admit that JMPs visualizations (at least as well as I can make them) are not as good as what I can do with ggplot2 in R. But I do like how easy it is to make quick and dirty visualizations in JMP. For this reason, it's usually my go-to when exploring a new dataset. With just a few clicks, it makes it really easy to get to know your data visually as well as what's under the hood.
+
+As far as I know, JMP is not widely used in Linguistics or even in the Humanities, so showcasing it will be a lot of fun to people this week. I still think that everyone should learn R for their research, but since coding can be intimidating, JMP is a great tool for researchers wanting to get more quantitative about their projects.
+
+Update (October 7): I just finished the presentation. I had about a dozen people in attendance, and I was the youngest person in the room. And besides the one other grad student there, I was probably the only one without a Ph.D. But, I feel like it went well. Not to mention, it was the first time I was introduced before a presentation, *and* there was food!
