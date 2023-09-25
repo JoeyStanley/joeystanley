@@ -1,0 +1,67 @@
+---
+layout: post
+title:  "Website Version 3"
+author: "Joey Stanley"
+date:   2023-09-25 00:12:00 -0400
+categories:
+  - Meta
+---
+
+After exactly seven years with my old website, I've decided to change it to what you are seeing now. 
+
+## What was wrong with the old one?
+
+I built my old website in September 2016. I had a research assistantship at the DigiLab at UGA, and Emily McGinn, the supervisor, suggested I find ways to increase my online presence. I learned some [web design and CSS skills](/blog/making-a-website-is-fun) skills and eventually made Version 1 of my website. That version was essentially the same as what I built in the tutorial I followed, so a few months later I rewrote everything from scratch and made Version 2. (Let's be honest though, it's still obviously heavily based on the tutorial.) Other than very minor tweaks to a few things, that's how my website has been since then. 
+
+However, it got a bit unwieldy. The blog was organized just fine, but I also added pages here and there to go along with workshops and other presentations I gave. It got more confusing when I gave the same workshop a second time and had multiple similar pages floating around. Since I didn't forsee some of these additions, its growth was reminiscent of unplanned suburban sprawl. For examples, sometimes images were just dumped into a folder, others were better organized. Non-blog pages were hidden and were sometimes a top-level page and other times within a dedicated subdirectoy. Each individual addition wasn't a big deal, but once I stepped back and looked at it all, it was a mess.
+
+The format of my tutorials wasn't consistent either. I have lots of handouts on my website, tucked away here and there.  If they were associated with a workshop, they were separate R Markdown files that didn't fit in with the rest of the site. Some of my earliest ones are PDFs of Word files!If they weren't associated with a workshop, they're regular blog posts. But because the site wasn't connected to R, I had to do a *lot* of copying and pasting R Markdown code and careful insertion of images to get those tutorials to look right. In some cases, the extra work made it possible to do things like syntax highlighting in Praat and highlighting specific lines of code. But that was all done by manually inserting HTML tags and updating my CSS. 
+
+Also, as careful as I was about my CSS, it wasn't perfect. I think there were some issues if like a list had only one element, and there were things with hyperlinks. Some one-off portions of blogs or tutorials sometimes didn't look right. I had a disclaimer at the top of every page, something like, "This website is built from scratch. Pardon the flaws; I am not a web designer." Which was a humble brag if anything. But as the site grew I didn't want to change the CSS because it might change some blog post from years ago in unexpected ways. 
+
+Ultimately, I didn't mind the mess because it's what made my site unique. But, what made me finally decide to migrate to Quarto was the underlying architechture. It was built using Jekyll, which involves a programming language called Ruby in some way. After seven years I still have no idea what either of those are. I did this because it's what the tutorial I followed used. When the site worked, it was great. But sometimes, the Ruby dependencies (called "gems") would update or break or whatever and I had to google around trying to find a fix. I had no idea what I was doing and it led to a lot of frustrated late nights trying to get my website up and running again.  
+
+Then Quarto comes along, which makes it easy to make a blog entirely within R Studio. I have been very familiar with the R world for a while. In 2017, I was an early adopter of [Shiny](https://www.rstudio.com/products/shiny/) (at least in linguistics, I think), so I was able to integrate all my html, CSS, and R skills into the [Gazetteer of Southern Vowels](http://lap3.libs.uga.edu/u/jstanley/vowelcharts/). In 2020, I also started dabbling with creating my own R Packages and using the amazing [pkgdown](https://pkgdown.r-lib.org) to make dedicated websites for them (see [joeyr](https://joeystanley.github.io/joeyr/), [futurevisions](https://github.com/JoeyStanley/futurevisions), [barktools](https://joeystanley.github.io/barktools/), and [joeysvowels](https://joeystanley.github.io/joeysvowels/)). Finally, I have a side project that involves collecting and analyzing data about what hymns are sung in LDS congregations, and in 2023 I decided to build the [site](hymnstats.joeystanley.com) entirely in Quarto. 
+
+So, I've gradually built up to web development in R over the years and Quarto seems like the logical place to migrate to. Plus, it has some features that I've always wanted, like scrolling table of contents and a search feature. After some encouragement from folks on Twitter, I decided it's time to bite the bullet and go for it. 
+
+## What does it take to migrate?
+
+I'm doing this page by page. Here's the order I took:
+
+* My homepage and any links on it. I didn't clean up the linked pages, but at least there weren't any dead links. 
+* My blogs. 
+
+## Things that are the same
+
+I've tried to keep as much of the original structure of the site the same as I could. However, as I migrate 
+
+## Changes
+
+Here's a list of the changes I've made.
+
+* Each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this[I'm stealing this way of visualizing file structure directly from [TJ Mahr's Migrating-to-Quarto page](https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd).]{.aside}:
+
+    ```
+    ├──📁blog
+    |  ├──📄blog post 1.md
+    |  ├──📄blog post 2.md
+    ├──📁images
+    |  ├──🌅image1.png
+    |  ├──🌅image2.png
+    ```
+    
+    It's now this:
+    
+    ```
+    ├──📁blog
+    |  ├──📁blog post 1
+    |  |  ├──  📄index1.qmd
+    |  |  ├──  🌅image1.png
+    |  ├──📁blog post 2
+    |  |  ├──  📄index.qmd
+    |  |  ├──  🌅image2.png
+    ```
+    
+    It shouldn't affect any urls to existing blog posts because the url `blog/blog post 1` in the old format would go to the `blog post 1.md` file and in the new one it'll go to the `blog post 1` directory, which'll display `index.qmd` by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn't want those urls to break. I think this'll work *and* it'll keep the site better organized. 
+

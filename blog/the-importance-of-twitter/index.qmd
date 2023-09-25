@@ -1,0 +1,98 @@
+---
+layout: post
+title:  The Importance of Twitter
+author: Joey Stanley
+date:   2016-10-31 19:00:00 -0400
+date-modified: 2023-09-25
+categories:
+  - How-to Guides
+  - Methods
+  - Research
+  - Twitter
+---
+
+I'm preparing a workshop right now for the DigiLab here at UGA on how to increase your web presence. I'll give a more detailed explanation of that later on, but I just wanted to point how how cool Twitter has been for me.
+
+I don't remember when or why I got a Twitter account, but I remember early on that I wanted to keep it professional. I don't follow very many friends or family: just other random linguists I find. That means my feed is nothing but linguistics stuff, and mini posts that other linguists find interesting. Granted, a lot of these folks post non-linguistic stuff as well, so I do have to sift through those sometimes. But there have been some really valuable gems I've found because of Twitter.
+
+## Fun Stuff
+
+First, we'll start with the fun stuff.
+
+<blockquote class="twitter-tweet" data-lang="en">
+
+<p lang="en" dir="ltr">
+
+Check out <a href="https://twitter.com/JWGrieve">@JWGrieve</a>'s wordmapper app (before it gets overwhelmed by traffic!) -- plots Twitter usage across U.S.: <a href="https://t.co/9nBh3h9z9v">https://t.co/9nBh3h9z9v</a>
+
+</p>
+
+--- Ben Zimmer (@bgzimmer) <a href="https://twitter.com/bgzimmer/status/693113133632720896">January 29, 2016</a>
+
+</blockquote>
+
+```{=html}
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+This didn't lead to anything in my work, but it was pretty awesome to see what Jack Grieve had done. In case the link doesn't load above, it shows an interactive program where you can type in a word and see its regional distribution across Twitter. It's a lot of fun to play around with.
+
+## Datasets
+
+Twitter has also been good for me to discover new datasets. This tweet for example let me know that the entire contents of Reddit had been extracted and were available for download.
+
+<blockquote class="twitter-tweet" data-lang="en">
+
+<p lang="en" dir="ltr">
+
+1 terabyte corpus of Reddit comments, up to may 2015, from <a href="https://twitter.com/internetarchive">@internetarchive</a>. What a glorious day <a href="http://t.co/cHtmhKZyHW">http://t.co/cHtmhKZyHW</a>
+
+</p>
+
+--- heather froehlich (@heatherfro) <a href="https://twitter.com/heatherfro/status/619123195115868160">July 9, 2015</a>
+
+</blockquote>
+
+```{=html}
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+About a month or so later I was starting a course in Digital Humanties, so this corpus became the main tool for my term paper for that class. I ended up downloading all the Reddit comments from its inception (2007) until October 2015. It was a whopping 50 *billion* words of text sitting on a terabyte of storage. If this were printed on standard book-sized sheets of paper, it would be something like 2½ miles long! And growing at about 4 feet an hour. That's a lot of data. I don't have a terabyte of storage available for something like this, so I wrote a Perl script that cut it down to a hundredth of its original size ("only" 500 million words!).
+
+I ended up having to download it all using lab computers in the student center off and on for a week. In fact, I had four computers going simultaneously, all downloading Reddit files, one month at a time, and running Perl scripts to make them smaller. I wasn't surprised when IT came over and wondered what the heck I was doing. Turns out it was the fact that my login was used on four computers that triggered their systems, not the fact that I was running four computers at full speed for a couple hours. Once they saw what I was doing they shrugged their shoulders and said it was totally fine.
+
+Handling this much data, even though it was a hundredth of the original size, was rough. I made a frequency list of all the words, which ended up being about half a million rows long. I wanted to track language across time so I had information about how often each word was used every month for about 100 months. That's a lot of columns for all those rows. I pushed Excel (and my little laptop) to its limits.
+
+Anyway, this project turned into a fun term paper that I never published. I wanted to look at the language of the most upvoted comments as compared to all other comments and see if there were any differences. I found a few, but with biggish data like this, statistical significance is everywhere so you have to be more careful about things.
+
+Bottom line: Because of Twitter I got to work with an enormous corpus which was a lot of fun.
+
+## New Methodology
+
+On Twitter people also post new things they see at conferences and other places. During NWAV44, I followed the live tweets and saw this gem:
+
+<blockquote class="twitter-tweet" data-lang="en">
+
+<p lang="en" dir="ltr">
+
+@wgi_02445_temp has given us another gift. Bhattacharyya's affinity to measure overlap: <a href="https://t.co/26byi2KpRk">https://t.co/26byi2KpRk</a> <a href="https://twitter.com/hashtag/NWAV44?src=hash">#NWAV44</a>
+
+</p>
+
+--- Paul De Decker (@pmdedecker) <a href="https://twitter.com/pmdedecker/status/658290609153843200">October 25, 2015</a>
+
+</blockquote>
+
+```{=html}
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+Basically, Daniel Johnson talked about another way to measure vowel overlap---something I do a lot in my research. In the Shiny App linked above, Johnson compares Pillai scores and something called Bhattacharyya affinity. I ended up using this in a [poster](/downloads/160714-LabPhon15-poster.pdf) (abstract [here](/downloads/160714-LabPhon15-abstract.pdf)) I did with [Peggy Renwick](http://faculty.franklin.uga.edu/mrenwick/) at [LabPhon](http://labphon.org/labphon15/program), and will continue to use this new measure of overlap, not exclusively, but in addition to the other measures out there.
+
+## Live Tweeting Conferences
+
+I'm a lowly grad student and don't have a ton of funding for conferences, so I can't attend some of the big ones all the time. Luckily, a lot of people live tweet what's going on at most major conferences, so I can follow along and feel like a part of the group.
+
+I myself live tweeted for the first time at a linguistics conference here at UGA. I don't have a ton of followers, and the conference isn't super well-known. But I did try to find people's Twitter handles whenever possible, as well as their department's, and would include them in the tweets. Well as it turns out I got about half a dozen new followers from that conference. Not a huge deal, but it does spread my name just a little bit further, and maybe onto the right person's computer screen.
+
+## Twitter is great
+
+So in the end, having a Twitter account is a lot of fun. I've benefitted personally and professionally, and it's definitely a worthy investment of my time.
