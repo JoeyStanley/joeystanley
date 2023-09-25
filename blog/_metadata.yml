@@ -1,8 +1,17 @@
 # options specified here will apply to all posts in this folder
 
+layout: post
+author: Joey Stanley
+
 # freeze computational output
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+
+# Scrolling table of contents.
+format:
+  html:
+    toc: true
+    

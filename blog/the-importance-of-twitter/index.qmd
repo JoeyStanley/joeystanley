@@ -1,7 +1,5 @@
 ---
-layout: post
 title:  The Importance of Twitter
-author: Joey Stanley
 date:   2016-10-31 19:00:00 -0400
 date-modified: 2023-09-25
 categories:
@@ -34,7 +32,6 @@ Check out <a href="https://twitter.com/JWGrieve">@JWGrieve</a>'s wordmapper app 
 ```{=html}
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
-
 This didn't lead to anything in my work, but it was pretty awesome to see what Jack Grieve had done. In case the link doesn't load above, it shows an interactive program where you can type in a word and see its regional distribution across Twitter. It's a lot of fun to play around with.
 
 ## Datasets
