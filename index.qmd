@@ -1,8 +1,30 @@
 ---
-title: "About Me"
-page-layout: full
-title-block-banner: true
+title: "Joey Stanley"
+subtitle: "Assistant Professor, Linguistics"
+title-block-banner: false
+
+image: images/profile.jpg
+
+about:
+  template: solana
+  links:
+    - icon: envelope
+      text: email
+      href: mailto:joey_stanley@byu.edu
+    - icon: clouds-fill
+      text: Bluesky
+      href: https://bsky.app/profile/joeystan.bsky.social
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com/joey_stan
+    - icon: github
+      text: Github
+      href: https://github.com
+    - icon: mortarboard-fill
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=61pJV_YAAAAJ&hl=en&oi=sra
 ---
+
 
 I’m an Assistant Professor in [Department of Linguistics](https://linguistics.byu.edu) at [Brigham Young University](https://www.byu.edu) specializing in sociophonetics, dialectology, and quantitative methods. In May 2020, I received my Ph.D in linguistics from the [Department of Linguistics](https://linguistics.uga.edu) at the [University of Georgia](https://www.uga.edu). 
 
