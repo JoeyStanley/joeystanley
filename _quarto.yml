@@ -35,3 +35,6 @@ format:
 
 editor: visual
 
+resources:
+  - CNAME
+
