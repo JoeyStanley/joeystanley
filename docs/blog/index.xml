@@ -166,6 +166,101 @@
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Brand Yourself</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/brand-yourself/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go <a href="../../blog/brand-yourself-2">here</a> to see a more recent version of this talk.<br></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../../downloads/170413-brand-yourself.pdf">Download the slides here!</a></p>
+</div>
+</div>
+<p>Today <a href="http://emilymcginn.com">Emily McGinn</a> of the Digital Humanities Lab at UGA and I did a workshop called “Brand Yourself: A professionalization workshop for grad students” [Edit: and again by invitation April 13, 2017]. We gave a presentation on different ways grad students can boost their online presence through building a personal webpage, utilizing social media, and finding your field’s conversation. We then let the attendees a chance to work on their own to create a new online profile, using what they learned.</p>
+<section id="social-media" class="level2">
+<h2 class="anchored" data-anchor-id="social-media">Social Media</h2>
+<p><a href="http://academia.edu">Academia.edu</a> is a social networking site for academics. Users can create profiles, upload their papers, and follow particular research topics. They can also follow others that have done the same. It’s a great resource for finding papers that may be behind a paywall, although it has gotten a lot of criticism for this. Papers you upload can be found by Google Scholar, which is a nice perk. The website will keep track of your analytics, and there’s nothing more thrilling than getting an email saying someone has found your profile!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/brand-yourself/academia_email.png" class="img-fluid figure-img" width="300"></p>
+</figure>
+</div>
+<p>The site got some criticism for offering authors the chance to promote their work for a fee. There’s also a chance at any time the site could get shut down because publishers aren’t happy about it, but with 30 million users, I don’t know if that’s going to happen any time soon.</p>
+<p>I’m less familiar with <a href="https://www.researchgate.net">ResearchGate</a>, but in my cursory look, there’s a lot of overlap with academia.edu as far as its features. A big difference I noticed is that it seems like it’s more focused on creating networks based on people you cite and your co-authors while academia.edu is more focused on following your field and your interests. One thing I don’t like about ResearchGate is that the number of emails it sends you is borderline spam. It invites me to follow other grad students at my university, but, no offense to the sciences, I’m not particularly concerned with what a microbiologist on the other side of campus is doing.</p>
+<p>I would imagine most researchers use <a href="https://scholar.google.com">Google Scholar</a> regularly, but did you know you can create a profile for others to see? You can tell a researcher has done that when you see their name underlined in a search:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/brand-yourself/google_scholar.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>In this screenshot (<a href="https://scholar.google.com/scholar?hl=en&amp;q=American+English%3A+dialects+and+variation&amp;btnG=&amp;as_sdt=1%2C11&amp;as_sdtp=&amp;oq=">live link here</a>), you can see that Walt Wolfram, Natalie Schilling, Sali Tagliamonte have created their profiles, but Shanna Poplack and Penny Eckert have not. I’d like to see what else the last two researchers have written, but I can’t simply click on their names like I can with the first three. When you do click on their links, you can see the full profile including what else they have written and how many times each has been cited.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/brand-yourself/natalie_schilling.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>It does take a bit of work to get a full profile going, because Google’s data can be a bit messy, so you’ll have to add stuff in by hand. But I think the payoff is worth the effort.</p>
+<p>There are a handful of other websites out there that can help you build an online presence. <a href="https://profiles.impactstory.org/about">Impact Story</a> is one that can keep track of how much of an impact you have on people by keeping track of when people cite, mention, read you and your work. For $10 a month, it might not be worth it for a grad student, but for a professor applying for tenure this might be.</p>
+<p><a href="https://www.linkedin.com">LinkedIn</a> is one I should mention, but I don’t find it terribly useful for academics. It might be worth it to set up a low-maintenance page that gives a good view of you in a nutshell, just in case people look.</p>
+</section>
+<section id="building-a-personal-webpage" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-personal-webpage">Building a Personal Webpage</h2>
+<p>Keeping track of all these profiles can be tedious. Do you need to update seven different profiles every time you present at a conference? Is it worth it to invest the time in these sites that don’t communicate with each other? One solution is to keep your top (or only!) three or four papers on the social media sites, but include links to a central page that has your full profile. For this reason, it’s nice to have a personal webpage.</p>
+<p>The problem with personal webpages it that they come with a cost, either in money or skills (and sometimes both). You can set up a webpage through <a href="https://wordpress.com">Word Press</a>, <a href="http://www.wix.com">Wix.com</a>, or <a href="https://www.squarespace.com">Square Space</a>, which take little technical skill to get a professional page set up. These can be free, but you can get some extra features for $10 a month or more. To me, that’s a pretty penny to pay for a relatively simple webpage.</p>
+<p>Another option, which is what I did for the previous version of this website, is to host the page on <a href="https://github.com">Github</a>. It’s free, but it takes a bit of skill. I’ve had to learn to use Jekyll, Markdown, and CSS, but through some help on <a href="http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages">ProgrammingHistorian.com</a> and <a href="https://www.lynda.com">Lynda.com</a>, <a href="../../blog/making-a-website-is-fun">I was able to get this site up</a>. The benefit of going this route is I have unlimited flexibility in how the site looks, and I really, really like that.</p>
+<p>Either way, it’s probably worth it to set up a personal domain name. For as little as $1 a month, you can buy your own domain name (like <span style="white-space: nowrap;">www.joeystanley.com</span>), which looks much more professional than <span style="white-space: nowrap;">www.blogsplot.com/joeystanley</span> or <span style="white-space: nowrap;">www.github.com/joeystanley</span>.</p>
+</section>
+<section id="finding-your-conversation" class="level2">
+<h2 class="anchored" data-anchor-id="finding-your-conversation">Finding Your Conversation</h2>
+<p>The last thing we talked about in our workshop is to find where the big names in your field are having their online conversations. This sounds a little weird at first, but every field has some secret space where people are collaborating and sharing ideas informally as well as posting calls for papers, invitations for publications, and job openings. The problem is that where is space is is different for every field.</p>
+<p>In some fields, these are a listserv. As far as I know, network analysis and Slavic languages each have a well-known listserv where all the conversation happens. If you’re not on that listserv, you’re out of the loop. Digital Humanities has a space on <a href="https://slack.com">Slack</a> where over 800 researchers get together and talk. For some fields, it might just be at coffee breaks during certain conferences. You may have to ask around established academics in your field to find that space.</p>
+<p>One thing I will mention is that a lot of action happens on Twitter. I’ve covered this in more depth in <a href="../../blog/the-importance-of-twitter">an earlier blog post</a>, but basically a lot of good stuff can come out of following the right people and seeing just the right tweets.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Overall, I thought the workshop went very well. Most of the attendees did end up setting up some sort of profile: some did an academia.edu profile, some google scholar, and a few were ambitious and set up a github page. At the very least, I got this very webpage set up as a result of preparing for this workshop, and I learned a <em>lot</em> about all these other pages. It was a great feeling to see a dozen students directly benefiting from our presentation.</p>
+<hr>
+<p>You can download the old version slideshow we used for this presentation <a href="../../downloads/161111-DigiLab-slides.pdf">here</a>.</p>
+<p>I am indebted to the <a href="http://blog.impactstory.org/category/impact-challenge/">Impact Challenge blog series</a>, with the <a href="http://blog.impactstory.org/research-impact-challenge-ebook/">accompanying 200+ page pdf</a>, from which I learned a lot about all this. I would highly recommend that you download it and take a look. Not only does it include much more than what I’ve mentioned here, including step-by-step how-to guides to getting these profiles set up, but also many more topics to get yourself more visible. Thanks, Impact Challenge.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>CSS</category>
+  <category>Github</category>
+  <category>How-to Guides</category>
+  <category>Meta</category>
+  <category>Presentations</category>
+  <category>Twitter</category>
+  <guid>https://new.joeystanley.com/blog/brand-yourself/index.html</guid>
+  <pubDate>Sat, 12 Nov 2016 00:23:00 GMT</pubDate>
+</item>
+<item>
   <title>DiVar</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/divar/index.html</link>
