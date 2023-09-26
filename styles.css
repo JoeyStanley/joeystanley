@@ -1,1 +1,27 @@
 /* css styles */
+
+
+/*Hyperlinkes are black, not blue */
+:not(div.thumbnail) > p > a[href*="http"] {
+    color:default;
+}
+
+/* Hyperlinks have the little circle thing after it.*/
+:not(div.thumbnail) > p > a[href*="http"]:after {
+    content: 'º';
+    color: darkred;
+}
+
+/* Hyperlinks are not underlined */
+a {
+   text-decoration: none;
+}
+
+/* Add my flair of what a hyperlink looks like when you hover over it. */
+p a:hover { 
+  color: #376092;
+	border-bottom-style: dotted;
+	border-bottom-width: 1.5px;
+}
+
+
