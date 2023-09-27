@@ -53,7 +53,7 @@ Twitter has also been good for me to discover new datasets. This tweet for examp
 ```{=html}
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
-About a month or so later I was starting a course in Digital Humanties, so this corpus became the main tool for my term paper for that class. I ended up downloading all the Reddit comments from its inception (2007) until October 2015. It was a whopping 50 *billion* words of text sitting on a terabyte of storage. If this were printed on standard book-sized sheets of paper, it would be something like 2½ miles long! And growing at about 4 feet an hour. That's a lot of data. I don't have a terabyte of storage available for something like this, so I wrote a Perl script that cut it down to a hundredth of its original size ("only" 500 million words!).
+About a month or so later I was starting a course in Digital Humanities, so this corpus became the main tool for my term paper for that class. I ended up downloading all the Reddit comments from its inception (2007) until October 2015. It was a whopping 50 *billion* words of text sitting on a terabyte of storage. If this were printed on standard book-sized sheets of paper, it would be something like 2½ miles long! And growing at about 4 feet an hour. That's a lot of data. I don't have a terabyte of storage available for something like this, so I wrote a Perl script that cut it down to a hundredth of its original size ("only" 500 million words!).
 
 I ended up having to download it all using lab computers in the student center off and on for a week. In fact, I had four computers going simultaneously, all downloading Reddit files, one month at a time, and running Perl scripts to make them smaller. I wasn't surprised when IT came over and wondered what the heck I was doing. Turns out it was the fact that my login was used on four computers that triggered their systems, not the fact that I was running four computers at full speed for a couple hours. Once they saw what I was doing they shrugged their shoulders and said it was totally fine.
 
@@ -92,4 +92,4 @@ I myself live tweeted for the first time at a linguistics conference here at UGA
 
 ## Twitter is great
 
-So in the end, having a Twitter account is a lot of fun. I've benefitted personally and professionally, and it's definitely a worthy investment of my time.
+So in the end, having a Twitter account is a lot of fun. I've benefited personally and professionally, and it's definitely a worthy investment of my time.
