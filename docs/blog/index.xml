@@ -166,6 +166,108 @@
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Website Version 2</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/website-version-2/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today I finally rolled out a new version of my website! The previous version was great and was an excellent stepping stone into web design, but it was mostly borrowed code. Unsatisfied with some of the way it was designed, I decided to go ahead and just write a new site completely from scratch. It has taken about a month or so to get it going, but I think it’s a lot better than before.</p>
+<section id="new-site" class="level2">
+<h2 class="anchored" data-anchor-id="new-site">New Site?</h2>
+<p>As I’ve mentioned <a href="../../blog/making-a-website-is-fun">previously</a>, I went through a course on <a href="http://lynda.com">Lynda.com</a>, called “Jekyll for Web Designers” that showed me the basics in how to get that website up. I was still in unfamiliar territory though as I navagated my way around CSS and HTML and any changes I wanted to make to the site were difficult to do. I liked the instructor for that course (James Willliamson) though, so when I looked up some of his other ones and saw that he did several others that would be relevant to me, I decided to go ahead an take them as well.</p>
+<p>I first took his “CSS Core Concepts” where I learned all about CSS and how it works. At a whopping 9 hours long, I knew I was going to get a thorough treatment of CSS. Essentially I learned how to make things look the way I want on a webpage. I learned how to do anything I want to text like change the font, size, and color as well as add things like bold, italic, and small caps. I also learned how to add space around text or between elements on a webpage.</p>
+<blockquote class="twitter-tweet blockquote" data-cards="hidden" data-lang="en">
+<p lang="en" dir="ltr">
+I learned about <a href="https://twitter.com/hashtag/Web?src=hash">#Web</a> on <a href="https://t.co/n13drggo1T">https://t.co/n13drggo1T</a>. I completed CSS: Core Concepts by <a href="https://twitter.com/jameswillweb"><span class="citation" data-cites="jameswillweb">@jameswillweb</span></a> <a href="https://t.co/at3VlMgyPD">https://t.co/at3VlMgyPD</a> via <a href="https://twitter.com/lynda"><span class="citation" data-cites="lynda">@lynda</span></a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/828293046538207234">February 5, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>When I finished that, I continued on to the next course called “CSS Page Layouts” which I’m pretty close to finishing. This is more about web design and how to get from a sketch book drawing of a webpage to the screen. Most of the time was in CSS still (as opposed to the HTML) but I learned how to position things on the webpage.</p>
+<p>The layout of site I had before was simply copied from the last tutorial in the first course. Since I didn’t write the HTML or the CSS, I didn’t know exactly what was going on, so if I wanted to make changes it was really hard to do. Now that I’ve written this new site from scratch, I know exactly what’s going on in all the webpages and in CSS.</p>
+<p>Of course, the sacrifice is that this new site isn’t quite as clean as the old one was. For example, I know it looks good on my Apple laptop in Safari, but I don’t know all the code I need to watch out for to make it fully compatible with other browsers, let alone other versions of other browsers. The site also doesn’t adapt to smaller screens like phones and tablets. I’m still working on that.</p>
+</section>
+<section id="so-whats-the-difference" class="level2">
+<h2 class="anchored" data-anchor-id="so-whats-the-difference">So what’s the difference?</h2>
+<p>I didn’t do any major changes to the overall structure or the general typographic details that I use in everything I do. The fonts are still Iowan Old Style and Avenir and the background is still “smokewhite” (96% white, 4% black). The blue from before was, coincidentally, very similar to the blue I use in my power point slides, but not exactly, so I went ahead and changed it to <em>my</em> blue to match my slides.</p>
+<p>Just to give you an idea of what the site looked like before, here are some screenshots. This first one is my home page from my old site:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_home.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Old site’s homepage</figcaption>
+</figure>
+</div>
+<p>And this is my new home page:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_home.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New site’s homepage</figcaption>
+</figure>
+</div>
+<p>A couple layout changes. First, I’ve widened it from something like 70% of the screen to a standard 960 pixels. That gave me the option of keeping my ideal width at roughly 66 characters still while giving me room for a sidebar.</p>
+<p>I changed the header as well. I felt like it was the weakest part of my page, and I didn’t like how it looked. I knew I wanted my social media links to be somewhere prominent, and of course the navigation links should be there too. But I wanted to include temporary links to recent presentations so people can download the slideshow if they visit my site, and those didn’t quite fit up there. And I didn’t have anywhere to put a photo.</p>
+<p>One solution was to have the top just include my name and the navigation buttons, which are now more descriptive. A sidebar could then have my photo, social media, and temporary links to recent presentations. There was also room to put an excerpt of my most recent blog post too, which I figured out how to do dynamically, which is pretty cool.</p>
+</section>
+<section id="a-new-research-tab" class="level2">
+<h2 class="anchored" data-anchor-id="a-new-research-tab">A new Research tab!</h2>
+<p>I also added a Research tab. I’ve seen this on lots of other people’s pages and I thought I’d include one in my own. I guess I figured everyone would clearly see what my research was by skimming through my CV, but putting it in prose like that makes a lot more sense.</p>
+<p>The layout was a blatant copy from the UGA DigiLab <a href="https://digi.uga.edu/projects/">projects tab</a>. I think adding images, even if they’re simple like mine, contribute a lot to the page.</p>
+<p>Eventually, I’d like to create a separate page for each of these. There I’d go into more detail on my findings, put a list of publications, and have links to any relevant blog posts. I’ll get there eventually. For now, I’ll just make the the excerpts a little longer.</p>
+</section>
+<section id="blogi-mean-news" class="level2">
+<h2 class="anchored" data-anchor-id="blogi-mean-news">Blog—I mean, “News”</h2>
+<p>My blog is now relabeled “News” just because it sounds less, well, blog-like. Here’s the old one:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_blog.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Old site’s blog</figcaption>
+</figure>
+</div>
+<p>And here’s the new one:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_blog.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New site’s blog</figcaption>
+</figure>
+</div>
+<p>I also redesigned the blog page itself. First off, I didn’t like that you could only see 4 at a time and that you’d have to scroll back to see older entries. I don’t like it that way. I’ve still got the code still there, but it’ll only create a second page once I’ve got 50 posts. I’ve got like 15 for now so I don’t think it’ll slow anyone down by loading this page.</p>
+<p>The rest of the page was completely revamped. To be quite honest, I googled around for great examples of blog layouts and I found <a href="http://johnhenry.ie">this one</a>, which I copied quite a bit of. I think it works well for my site.</p>
+<p>Another big thing I didn’t like about the old layout was that the “Archive” tab didn’t make sense as its own page and the label didn’t really make sense.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_tags.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Old site’s “archive” page</figcaption>
+</figure>
+</div>
+<p>Instead, I moved it to a separate sidebar on the blog. That way it’s clear that the tags and the blog work together.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_tags.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New site’s “tags” page</figcaption>
+</figure>
+</div>
+<p>If I could change one thing on the main “news” page, it would be that sidebar though. Right now, if you click on a tag, it’ll take you to a page where it lists all the blog posts by category. I don’t like that separate page. I wanted to do something fancy like you click on a tab and a list of posts will expand down. Turns out I couldn’t do that without Java scripting and I don’t know how to do any of that. I also looked into just having pages for each category created on the spot, with blog excerpts instead of just the titles for that one category, but I couldn’t figure out how to do that.</p>
+</section>
+<section id="anything-else" class="level2">
+<h2 class="anchored" data-anchor-id="anything-else">Anything else?</h2>
+<p>Nope. That’s about it. My CV page has remained essentially the same. I added “Resources” and “Teaching” tabs, but those are blank for now. I’ll add content to them eventually. There are still a few layout things I need to work on, but I thought I’d launch the site anyway—imperfect as it is for now—because it’s a major improvement over the last one.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>CSS</category>
+  <category>Skills</category>
+  <category>Meta</category>
+  <category>Github</category>
+  <category>How-to Guides</category>
+  <guid>https://new.joeystanley.com/blog/website-version-2/index.html</guid>
+  <pubDate>Sun, 26 Feb 2017 21:29:00 GMT</pubDate>
+</item>
+<item>
   <title>Excel Workshop</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/excel_workshop/index.html</link>
@@ -223,7 +325,7 @@ Tip
 </section>
 <section id="downloads" class="level2">
 <h2 class="anchored" data-anchor-id="downloads">Downloads</h2>
-<p>Again, you can download this handout [here])(/downloads/170127-ExcelWorkshop.pdf). Feel free to also download the three datasets I used: the vowels for <a href="../../data/vowels_oneSpeaker.xlsx">one speaker</a> and the vowels subset of <a href="../../data/vowels_1.xlsx">larger dataset</a>, which both come from the <a href="http://www.lap.uga.edu">Linguistic Atlas of the Gulf States</a>, and the Cowlitz County <a href="../../data/cowlitzData.xlsx">1930 census data</a>, which I gathered myself. Please also visit the accompanying blog post on the <a href="https://digi.uga.edu/news/be-a-data-magician/">DigiLab website</a>.</p>
+<p>Again, you can download this handout <a href="../../downloads/170127-ExcelWorkshop.pdf">here</a>. Feel free to also download the three datasets I used: the vowels for <a href="../../data/vowels_oneSpeaker.xlsx">one speaker</a> and the vowels subset of <a href="../../data/vowels_1.xlsx">larger dataset</a>, which both come from the <a href="http://www.lap.uga.edu">Linguistic Atlas of the Gulf States</a>, and the Cowlitz County <a href="../../data/cowlitzData.xlsx">1930 census data</a>, which I gathered myself. Please also visit the accompanying blog post on the <a href="https://digi.uga.edu/news/be-a-data-magician/">DigiLab website</a>.</p>
 
 
 </section>

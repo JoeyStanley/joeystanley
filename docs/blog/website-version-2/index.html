@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2017-02-26">
+
+<title>Joey Stanley - Website Version 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joey Stanley</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Website Version 2</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">CSS</div>
+                <div class="quarto-category">Skills</div>
+                <div class="quarto-category">Meta</div>
+                <div class="quarto-category">Github</div>
+                <div class="quarto-category">How-to Guides</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 26, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#new-site" id="toc-new-site" class="nav-link active" data-scroll-target="#new-site">New Site?</a></li>
+  <li><a href="#so-whats-the-difference" id="toc-so-whats-the-difference" class="nav-link" data-scroll-target="#so-whats-the-difference">So what’s the difference?</a></li>
+  <li><a href="#a-new-research-tab" id="toc-a-new-research-tab" class="nav-link" data-scroll-target="#a-new-research-tab">A new Research tab!</a></li>
+  <li><a href="#blogi-mean-news" id="toc-blogi-mean-news" class="nav-link" data-scroll-target="#blogi-mean-news">Blog—I mean, “News”</a></li>
+  <li><a href="#anything-else" id="toc-anything-else" class="nav-link" data-scroll-target="#anything-else">Anything else?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Today I finally rolled out a new version of my website! The previous version was great and was an excellent stepping stone into web design, but it was mostly borrowed code. Unsatisfied with some of the way it was designed, I decided to go ahead and just write a new site completely from scratch. It has taken about a month or so to get it going, but I think it’s a lot better than before.</p>
+<section id="new-site" class="level2">
+<h2 class="anchored" data-anchor-id="new-site">New Site?</h2>
+<p>As I’ve mentioned <a href="../../blog/making-a-website-is-fun">previously</a>, I went through a course on <a href="http://lynda.com">Lynda.com</a>, called “Jekyll for Web Designers” that showed me the basics in how to get that website up. I was still in unfamiliar territory though as I navagated my way around CSS and HTML and any changes I wanted to make to the site were difficult to do. I liked the instructor for that course (James Willliamson) though, so when I looked up some of his other ones and saw that he did several others that would be relevant to me, I decided to go ahead an take them as well.</p>
+<p>I first took his “CSS Core Concepts” where I learned all about CSS and how it works. At a whopping 9 hours long, I knew I was going to get a thorough treatment of CSS. Essentially I learned how to make things look the way I want on a webpage. I learned how to do anything I want to text like change the font, size, and color as well as add things like bold, italic, and small caps. I also learned how to add space around text or between elements on a webpage.</p>
+<blockquote class="twitter-tweet blockquote" data-cards="hidden" data-lang="en">
+<p lang="en" dir="ltr">
+I learned about <a href="https://twitter.com/hashtag/Web?src=hash">#Web</a> on <a href="https://t.co/n13drggo1T">https://t.co/n13drggo1T</a>. I completed CSS: Core Concepts by <a href="https://twitter.com/jameswillweb"><span class="citation" data-cites="jameswillweb">@jameswillweb</span></a> <a href="https://t.co/at3VlMgyPD">https://t.co/at3VlMgyPD</a> via <a href="https://twitter.com/lynda"><span class="citation" data-cites="lynda">@lynda</span></a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/828293046538207234">February 5, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>When I finished that, I continued on to the next course called “CSS Page Layouts” which I’m pretty close to finishing. This is more about web design and how to get from a sketch book drawing of a webpage to the screen. Most of the time was in CSS still (as opposed to the HTML) but I learned how to position things on the webpage.</p>
+<p>The layout of site I had before was simply copied from the last tutorial in the first course. Since I didn’t write the HTML or the CSS, I didn’t know exactly what was going on, so if I wanted to make changes it was really hard to do. Now that I’ve written this new site from scratch, I know exactly what’s going on in all the webpages and in CSS.</p>
+<p>Of course, the sacrifice is that this new site isn’t quite as clean as the old one was. For example, I know it looks good on my Apple laptop in Safari, but I don’t know all the code I need to watch out for to make it fully compatible with other browsers, let alone other versions of other browsers. The site also doesn’t adapt to smaller screens like phones and tablets. I’m still working on that.</p>
+</section>
+<section id="so-whats-the-difference" class="level2">
+<h2 class="anchored" data-anchor-id="so-whats-the-difference">So what’s the difference?</h2>
+<p>I didn’t do any major changes to the overall structure or the general typographic details that I use in everything I do. The fonts are still Iowan Old Style and Avenir and the background is still “smokewhite” (96% white, 4% black). The blue from before was, coincidentally, very similar to the blue I use in my power point slides, but not exactly, so I went ahead and changed it to <em>my</em> blue to match my slides.</p>
+<p>Just to give you an idea of what the site looked like before, here are some screenshots. This first one is my home page from my old site:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="site_old_home.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Old site’s homepage</figcaption>
+</figure>
+</div>
+<p>And this is my new home page:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="site_new_home.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New site’s homepage</figcaption>
+</figure>
+</div>
+<p>A couple layout changes. First, I’ve widened it from something like 70% of the screen to a standard 960 pixels. That gave me the option of keeping my ideal width at roughly 66 characters still while giving me room for a sidebar.</p>
+<p>I changed the header as well. I felt like it was the weakest part of my page, and I didn’t like how it looked. I knew I wanted my social media links to be somewhere prominent, and of course the navigation links should be there too. But I wanted to include temporary links to recent presentations so people can download the slideshow if they visit my site, and those didn’t quite fit up there. And I didn’t have anywhere to put a photo.</p>
+<p>One solution was to have the top just include my name and the navigation buttons, which are now more descriptive. A sidebar could then have my photo, social media, and temporary links to recent presentations. There was also room to put an excerpt of my most recent blog post too, which I figured out how to do dynamically, which is pretty cool.</p>
+</section>
+<section id="a-new-research-tab" class="level2">
+<h2 class="anchored" data-anchor-id="a-new-research-tab">A new Research tab!</h2>
+<p>I also added a Research tab. I’ve seen this on lots of other people’s pages and I thought I’d include one in my own. I guess I figured everyone would clearly see what my research was by skimming through my CV, but putting it in prose like that makes a lot more sense.</p>
+<p>The layout was a blatant copy from the UGA DigiLab <a href="https://digi.uga.edu/projects/">projects tab</a>. I think adding images, even if they’re simple like mine, contribute a lot to the page.</p>
+<p>Eventually, I’d like to create a separate page for each of these. There I’d go into more detail on my findings, put a list of publications, and have links to any relevant blog posts. I’ll get there eventually. For now, I’ll just make the the excerpts a little longer.</p>
+</section>
+<section id="blogi-mean-news" class="level2">
+<h2 class="anchored" data-anchor-id="blogi-mean-news">Blog—I mean, “News”</h2>
+<p>My blog is now relabeled “News” just because it sounds less, well, blog-like. Here’s the old one:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="site_old_blog.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Old site’s blog</figcaption>
+</figure>
+</div>
+<p>And here’s the new one:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="site_new_blog.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New site’s blog</figcaption>
+</figure>
+</div>
+<p>I also redesigned the blog page itself. First off, I didn’t like that you could only see 4 at a time and that you’d have to scroll back to see older entries. I don’t like it that way. I’ve still got the code still there, but it’ll only create a second page once I’ve got 50 posts. I’ve got like 15 for now so I don’t think it’ll slow anyone down by loading this page.</p>
+<p>The rest of the page was completely revamped. To be quite honest, I googled around for great examples of blog layouts and I found <a href="http://johnhenry.ie">this one</a>, which I copied quite a bit of. I think it works well for my site.</p>
+<p>Another big thing I didn’t like about the old layout was that the “Archive” tab didn’t make sense as its own page and the label didn’t really make sense.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="site_old_tags.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Old site’s “archive” page</figcaption>
+</figure>
+</div>
+<p>Instead, I moved it to a separate sidebar on the blog. That way it’s clear that the tags and the blog work together.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="site_new_tags.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">New site’s “tags” page</figcaption>
+</figure>
+</div>
+<p>If I could change one thing on the main “news” page, it would be that sidebar though. Right now, if you click on a tag, it’ll take you to a page where it lists all the blog posts by category. I don’t like that separate page. I wanted to do something fancy like you click on a tab and a list of posts will expand down. Turns out I couldn’t do that without Java scripting and I don’t know how to do any of that. I also looked into just having pages for each category created on the spot, with blog excerpts instead of just the titles for that one category, but I couldn’t figure out how to do that.</p>
+</section>
+<section id="anything-else" class="level2">
+<h2 class="anchored" data-anchor-id="anything-else">Anything else?</h2>
+<p>Nope. That’s about it. My CV page has remained essentially the same. I added “Resources” and “Teaching” tabs, but those are blank for now. I’ll add content to them eventually. There are still a few layout things I need to work on, but I thought I’d launch the site anyway—imperfect as it is for now—because it’s a major improvement over the last one.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
