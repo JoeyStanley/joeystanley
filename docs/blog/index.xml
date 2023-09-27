@@ -174,6 +174,31 @@ Tip
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>A Survey of the Western American English using MTurk</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/a-survey-of-western-american-english-using-mturk/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’m so happy to announce I’ve been selected as a recipient of the UGA Graduate School Innovative and Interdisciplinary Research Grant! This $2,500 grant is part of the Graduate School’s strategic initiative to support innovation and interdisciplinary in the research being conducted by doctoral students. My project is entitled “A Survey of Western American English using Amazon Mechanic Turk.”</p>
+<div class="page-columns page-full"><p>Amazon Mechanical Turk (“MTurk”) is a crowdsourcing marketplace through Amazon.com where people and business can post tasks for others to perform for a small amount of payment. They are usually menial tasks like completing surveys or data entry. At NWAV last year, Kim, Reddy, Wyschogrod, and Stanford did a presentation on how they cleverly used MTurk to gather recordings of people across the Northeast. After some discussion with some of the authors, I decided to apply for a grant that would pay for the same kind of data collection but targeting the West.</p><div class="no-row-height column-margin column-container"><span class="">Kim, Chaeyoon, Sravana Reddy, Ezra Wyschogrod &amp; James Stanford. 2016. A large-scale online study of dialect variation in the US Northeast: Crowdsourcing with Amazon Mechanical Turk. Paper presented at the New Ways of Analyzing Variation 45, Victoria, BC.</span></div></div>
+<p>Compared to other parts of the country, the West has relatively little linguistic research. Some of that is changing, thanks to some of the folks in Stanford, University of Washington, and other universities. But there are large portions of the country like Montana, Wyoming, and other places that have very little written about them. The population isn’t huge, but there are people there, and those people do speak. So what do they sound like?</p>
+<p>This project will hopefully get recordings from possibly up to 500 people in specific western states. This will result in a corpus of over 100 hours of audio and roughly 200,000 words—a sizable linguistic corpus which I can analyze for many years to come. This will allow a slightly deeper look into some of these places, acting as a launchpad for further research in specific cities.</p>
+<p>I’m really excited to have gotten this grant and to get started. I will post updates as they come. Stay tuned.</p>
+
+
+
+ ]]></description>
+  <category>Pacific Northwest</category>
+  <category>Research</category>
+  <category>West</category>
+  <category>MTurk</category>
+  <guid>https://new.joeystanley.com/blog/a-survey-of-western-american-english-using-mturk/index.html</guid>
+  <pubDate>Fri, 21 Apr 2017 14:30:00 GMT</pubDate>
+</item>
+<item>
   <title>Brother Joseph</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/brother-joseph/index.html</link>
@@ -986,34 +1011,6 @@ a[href*="http"]:after {
   <category>Statistics</category>
   <guid>https://new.joeystanley.com/blog/jmp/index.html</guid>
   <pubDate>Tue, 04 Oct 2016 09:31:00 GMT</pubDate>
-</item>
-<item>
-  <title>The Linguistic Atlas of the Pacific Northwest</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/linguistic-atlas-of-the-pacific-northwest/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>As a part of my research assistantship this year, I work with the <a href="http://lap.uga.edu">Linguistic Atlas Project</a>, under the direction of Dr.&nbsp;William Kretzschmar. It’s an exciting project to be a part of.</p>
-<p>There is a lot going on in the lab right now. We’ve got a team of over a dozen undergrad transcribers working dutifully on an NSF grant awarded to Kretzschmar and Dr.&nbsp;Peggy Renwick, not to mention the web developers for the Atlas Project and for Complex Systems.</p>
-<p>One of the things I’m excited about is that I now have access to all the data for the Atlas Projects from over half a century ago. In a nutshell, what happened is that in the 30s and through the 50s and 60s, Hans Kurath and a team of researchers set out to document the language geography of the United States and Canada. Armed with whatever recording devices they could afford, several hours’ worth of interview questions, and expert phonetic transcribers, they set out to document all the accents and dialects of English in North America.</p>
-<p>They were partially successful. Starting in New England and in the East, they talked to a couple thousand people, painstakingly analyzed the data, and published a couple multi-volume works specifically focused on certain areas of the United States. Thus, we have the Linguistic Atlases of New England (LANE), the Gulf States (LAGS), and the Upper Midwest (LAUM). However, funding was cut short. Realizing they may have bitten off more than they can chew, the data collected in other portions of the country was never published, other than some brief overviews by some of the researchers. Time passed, and for one reason or another, the majority of this unpublished data disappeared into obscurity.</p>
-<p>By the late 1970s and into the 1980s, the original handwritten field notes and any extant recordings were scattered across multiple locations. The original researchers’ dream to publish this data for a general audience was never fulfilled, let alone the majority of potential publications for a more specialized audience. The data was always supposed to be accessible to anyone interested, and just a few decades later it was collecting dust in basements, accessible to probably the half a dozen people that knew about it.</p>
-<p>In 1983 some of the data was under threat of being thrown out. Luckily, William Kretzschmar offered to take all the data from all projects and house it at the University of Georgia. Since then, he has been in the process of realizing the original researchers’ dream of making the data accessible. In the 21st century, that means digitizing it all and putting it online. And there has been success in that endeavor.</p>
-<p>This is where I come in. As a lowly out-of-state grad student, I’m not particularly concerned with language around Georgia, as interesting as it is. I do however like research on the opposite side of the country: the Pacific Northwest. Only after reading about the <em>Linguistic Atlas of the Pacific Northwest</em> (LAPNW) did I realize that all that data was being housed by my own university. So as soon as I was offered the assistantship in the Linguistic Atlas office, I expressed interest in the LAPNW data. Well, just today, I made a visit to the repository where all the data is held.</p>
-<p>After sitting alone for half an hour on the concrete floor literally in the furthest corner in that warehouse, I was quickly able to assess the situation. From what I’ve been able to tell, there are just four boxes of LAPNW data. Compared to the dozens of boxes in the large-scale projects (LANE, LAGS, etc.), it’s a meager project. One box contains the original handwritten notes for about half of the 51 participants, which is great, but I’m a little sad that some of the originals have been lost. But the other three boxes were all copies, including a complete set for all participants and another partial set. I don’t know who did the photocopies or when they were done, but I’m really glad we have them.</p>
-<p>So, I brought them back to the office and I’ve started to look through them. It’s a bit exciting for me actually. Since being housed at UGA, I don’t know if these boxes have been opened by <em>anyone</em>. As far as I know, there are probably ten people in the world that would be interested in the LAPNW data, and certainly none of them have had the ability to peruse UGA’s repository. So this stuff literally hasn’t seen the light of day for decades. I don’t know what I’m going to do with this goldmine, but I’d sure like to revive it somehow and possibly do what I can to make it accessible. It’s an exciting time for me.</p>
-
-
-
- ]]></description>
-  <category>Linguistic Atlas</category>
-  <category>Pacific Northwest</category>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/linguistic-atlas-of-the-pacific-northwest/index.html</guid>
-  <pubDate>Fri, 30 Sep 2016 20:23:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
