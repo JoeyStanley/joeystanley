@@ -66,7 +66,7 @@
 </ul>
 
 
-<div class="no-row-height column-margin column-container"><span class="">I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page</a>.</span></div></section>
+<div class="no-row-height column-margin column-container"><span class="">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div></section>
 
  ]]></description>
   <category>Meta</category>
@@ -164,6 +164,117 @@
  ]]></description>
   <guid>https://new.joeystanley.com/blog/dissertation/index.html</guid>
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Tweeting LSA2017</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/tweeting_LSA2017/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In addition to the awesome experiences I had overall at the LSA2017 conference (which you can read about <a href="../../blog/lsa2017">here</a>), I made an effort to be active on Twitter during the conference.</p>
+<p>I’ve followed conferences in the past (such as LSA and NWAV last year) when I wasn’t able to attend them, and really enjoy them. I livetweeted the Linguistics Conference at the University of Georgia (LCUGA) in October, which was my first experience as a livetweeter, though I didn’t do much other than introduce who was presenting next. So this year, not only did I follow the twitter feed, but I also contributed as much as I could myself. Here are some of my more popular tweets:</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+For anyone at <a href="https://twitter.com/hashtag/LSA2017?src=hash">#LSA2017</a>, you should come to the first session of <a href="https://twitter.com/hashtag/ADS2017?src=hash">#ADS2017</a> ("Vowels, vowels, vowels") and hear me talk about Washington State!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/817121851512160257">January 5, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This one got a surprising amount of traffic (over 800 people saw it on Twitter) for being self promotion, but it’s because the LSA account retweeted it. I don’t think they retweet everyone’s self-advertising tweets though, so I wonder why mine made the cut… Either way, I didn’t mind the advertising!</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Thomas &amp; Kendall: “You can't get a full sociolinguistic picture of a community by looking at only one kind of variable.” <a href="https://twitter.com/hashtag/ADS2017?src=hash">#ADS2017</a> <a href="https://twitter.com/hashtag/LSA2017?src=hash">#LSA2017</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/817467349540409344">January 6, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This one was one of many tweets during Erik Thomas and Tyler Kendall’s presentation, a direct quote from one of their last slides. It’s a really good quote overall and a lot of people seemed to like it.</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Antieau: Double modals. One Utahn used “might usually would”. Nice! <a href="https://twitter.com/hashtag/ADS2017?src=hash">#ADS2017</a> <a href="https://twitter.com/hashtag/LSA2017?src=hash">#LSA2017</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/817759261266677761">January 7, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This was one of many things that Lamont Antieau found in the <em>Linguistic Atlas of the Middle Rockies</em>. Having lived in Utah, most of his results were surprising to me, but this one was especially so. Apparently others thought so too.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/BrentPWoo"><span class="citation" data-cites="BrentPWoo">@BrentPWoo</span></a>: "and/or" as a fully lexicalized coordinator with the union set of constraints of on "and" and "or." <a href="https://twitter.com/hashtag/lsa2017?src=hash">#lsa2017</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/817777627314405377">January 7, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Brent Woo from the University of Washington is doing some really interesting research. We met when he presented at the Linguistics Conference at the University of Georgia in October. He must have some dedicated twitter followers though because anything I tweet at him gets a lot of traffic. I mean, his findings are pretty cool though.</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Preston: “I grew up in a paint store so I have female-like familiarity with color, and it hasn’t costed me my masculinity.”<a href="https://twitter.com/hashtag/ADS2017?src=hash">#ADS2017</a> <a href="https://twitter.com/hashtag/LSA2017?src=hash">#LSA2017</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/817834097888399360">January 7, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This was a random side comment Dennis Preston made after explaining the color scheme in is graphs. Instead of red, green, and blue or something, he used lavender, forest green, chartreuse, and a couple others. After explaining which colors represented which variable, he said that line. Even though it had a typo (hasn’t costed <em>me</em> my masculinity), a lot of people liked it. I mean, Dennis Preston seems like a pretty funny guy, so this was great.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+After <a href="https://twitter.com/hashtag/LSA2017?src=hash">#LSA2017</a> I feel simultaneously intimidated, inspired, and exhausted. A clear sign that this was a fantastic conference.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/818213558123134976">January 8, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>At the end of conferences, there’s a lot of “I’m so sad the conference is over” tweets. As I’ve mentioned above, I put as much as I could into the conference, and I did feel exhausted. I was intimidated because seeing what great stuff other grad students are doing I suddenly feel less employable. But I was inspired to do more and better research. This tweet succinctly summed up what my conference experience, and it looks like others felt the same way too.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+This was my first time &amp; it took more multitasking than expected. I have a newfound respect for tweeters and I appreciate 'em even more now. <a href="https://t.co/1HgUFmHzvV">https://t.co/1HgUFmHzvV</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/818244412417470464">January 8, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This was part of a small thread that was going. Basically, people were thanking all the livetweeters out there, and I got a mention. I thought I’d thank the other livetweeters as well, now that I know how hard it is.</p>
+<p>All this tweeting paid off though because I think people are noticing me on twitter now, and I think I’m seen as “one of the live-tweeters”. Not a bad reputation to have. I’m about to get my hundredth follower, now that I’ve gotten about 10 more since this conference. (I got about 10 just by <em>following</em> NWAV and liking tweets, and another half dozen when I tweeted very basic things at the LCUGA conference.) My goal is for my followers to outnumber the people I follow, but I don’t know if that’ll happen anytime soon. I’m not very active on twitter outside of conferences, other than shameless self-promotion. Maybe I should get better at that.</p>
+<p>If you’re interested in getting more into twitter, I’d recommend this guide:</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/joey_stan"><span class="citation" data-cites="joey_stan">@joey_stan</span></a> have you seen <a href="https://twitter.com/GretchenAMcC"><span class="citation" data-cites="GretchenAMcC">@GretchenAMcC</span></a>'s excellent guide? <a href="https://t.co/03AjgiGtuq">https://t.co/03AjgiGtuq</a>
+</p>
+— Rachael Tatman (<span class="citation" data-cites="rctatman">@rctatman</span>) <a href="https://twitter.com/rctatman/status/818254265974145024">January 9, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I enjoy being active on twitter for <a href="../../blog/the-importance-of-twitter">lots of reasons</a>, most of them completely selfish, but starting to get a small following is pretty exciting and it’s a fun group to be a part of.</p>
+
+
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Twitter</category>
+  <guid>https://new.joeystanley.com/blog/tweeting_LSA2017/index.html</guid>
+  <pubDate>Sat, 14 Jan 2017 00:12:00 GMT</pubDate>
+</item>
+<item>
+  <title>LSA2017</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/lsa2017/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Last weekend, I had the opportunity to present at the 2017 Annual Meeting of the American Dialect Society, as well as attend the other meetings of the Linguistic Society of America annual meeting in Austin, TX. There were a lot of really awesome things about the whole thing.</p>
+<div class="page-columns page-full"><p>First off, I feel like I had a great experience giving <a href="../../downloads/170105-ADS-slides.pdf">my presentation</a>. I presented Thursday afternoon in the session called “Vowels, Vowels, Vowels” which was chaired by Erik Thomas, and saw other presentations by Charlie Farrington &amp; Tyler Kendall, Matthew Gordon, and Michol Hoffman. There were about 30 people in the room, and I could name about half of them. In fact, while summarizing previous research, I realized that half the people I cited were sitting right there. Afterwards, I had a lot of discussion and great feedback. I couldn’t have asked for a better experience.</p><div class="no-row-height column-margin column-container"><span class="">As part of the presentation, I showed <a href="../../downloads/170105-ADS-video.mov">this video</a>.</span></div></div>
+<p>During the course of the next several days, I made a point to introduce myself to people. Networking is an important part of going to conferences, and I haven’t really taken that opportunity in the past. So I was able to meet several of the greats and tell them how much I enjoyed some of the things they’ve written. I also met some grad students that have similar interests as me. I feel a lot more connected to other researchers than I did before.</p>
+<p>Going into this conference, I knew I wanted to give it everything I had. I got funding from UGA for the first time, both through the Linguistics Program and the Graduate School, and I wanted to make sure the money I received went to a good cause. The conference was busy, but I attended as many presentations as I could. In fact, I hardly had time to eat, and ended up only eating one meal a day during the four days. I actually lost four pounds attending this conference! I also stayed at an Airbnb for the first time, and I didn’t want to take the bus all the way to the apartment when I knew there were things to do at the conference. I ended up attending 35 presentations and visited about a dozen posters. It made for four very long and busy days, but they were extremely productive.</p>
+<p>I also made an effort to be active on Twitter during the conference, but I have a separate blog post about that which you can read <a href="../../blog/tweeting_LSA2017">here</a>.</p>
+<p>Overall, a fantastic experience. The best I could have hoped for, and the best conference I’ve been to.</p>
+
+
+
+ ]]></description>
+  <category>Pacific Northwest</category>
+  <category>Conferences</category>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/lsa2017/index.html</guid>
+  <pubDate>Wed, 11 Jan 2017 00:12:00 GMT</pubDate>
 </item>
 <item>
   <title>Interactive Guarani Dictionary</title>

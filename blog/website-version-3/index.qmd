@@ -40,7 +40,7 @@ I've tried to keep as much of the original structure of the site the same as I c
 
 Here's a list of the changes I've made.
 
--   Each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this[I'm stealing this way of visualizing file structure directly from [TJ Mahr's Migrating-to-Quarto page](https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd).]{.aside}:
+-   Each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this[By the way, I'm stealing this way of visualizing file structure directly from [TJ Mahr's Migrating-to-Quarto page.](https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd).]{.aside}:
 
     ```         
     ├──📁blog
