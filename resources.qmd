@@ -22,8 +22,7 @@ This is a series of workshops on how to use R which includes a variety of topics
 
 This tutorial walks you through writing a praat script that extracts formant measurements from vowels. If you've never worked with Praat scripting but want to work with vowels, this might be a good starting point.
 
-### Vowel plots in R tutorials ([Part 1]({% post_url 2018-03-18-making-vowel-plots-in-r-part-1 %}) and [Part 2]({% post_url 2018-06-06-making-vowel-plots-in-r-part-2 %}))
-
+### Vowel plots in R tutorials ([Part 1](/blog/making-vowel-plots-in-r-part-1) and [Part 2](/blog/making-vowel-plots-in-r-part-2))
 This is a multi-part tutorial on how to make sort of the typical vowel plots in R. Part 1 shows plotting single-point measurements as scatter plots and serves as a mild introduction to `ggplot2`. Part 2 shows how to plot trajectories, both in the F1-F2 space and in a Praat-like time-Hz space, and is a bit of an introduction to `tidyverse` as well.
 
 ### Measuring vowel overlap in R ([Part 1](/blog/a-tutorial-in-calculating-vowel-overlap) and [Part 2](/blog/vowel-overlap-in-r-advanced-topics))
