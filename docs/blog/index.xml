@@ -166,6 +166,69 @@
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Mount St. Helens and Vowels</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/mount-st-helens-and-vowels/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today in our Linguistics Colloquium here at UGA, I got to present on some of my ongoing research on English in a smaller town in Washington. For the past few months I’ve mostly looked at vowel mergers and using lots of statistical tests to show some very subtle changes. Over the past week or so as I’ve prepared for this presentation, I’ve discovered something pretty awesome about my data. And it has to do with Mount St.&nbsp;Helens!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/170407-Colloquium.pdf">here</a>!</p>
+</div>
+</div>
+<p>In the presentation, I focus on a couple linguistic variables. The first is what linguists call /æg/-raising, which is where words like <em>bag</em>, <em>flag</em>, and <em>dragon</em> to sound more like <em>bayg</em>, <em>flayg</em>, or <em>draygon</em>. The other variable is what we call /o/-fronting and /o/-monophthongization, which is where vowel sounds in words like <em>go</em>, <em>snow</em>, or <em>show</em> sound kinda like they would in stereotypical “Minnesohhta”. These have been studied extensively by researchers in the West regarding Pacific Northwest English and surrounding regions. So, nothing new here.</p>
+<p>But looking at the data in relation to speaker age, I noticed a striking pattern: there’s a clear difference between the speech of people born before 1970 and those born after. I mean really clear. In my sample, /æg/ raising virtually disappears after 1970, and /o/ is suddenly diphthongal. /o/ admittedly gradually fronts, so the 1970 date isn’t quite as drastic in that regard.</p>
+<p>So what happened in 1970? Well, not much. But in 1980, Mount St.&nbsp;Helens erupted and seriously affected the logging-based economy of Longview. Up until then, it was easy to find work in the logging industry with only a high school degree, if that. And the salary was relatively good considering it was blue collar work. But when some of the mills started to close, there was a drastic change in the dynamics of the town. Now you need a college education to get a job and even then it’s not paying well.</p>
+<p>So though nothing happened in 1970, those who were born around then were teenagers at the time of this change, and were the first affected by the lack of easy-to-get, high-paying jobs. This marks a paradigm shift in the culture of Longview, and I believe it had to do with the clear changes in the speech. In other words, I think Mount St.&nbsp;Helens played a role in linguistic change in Longview. (The title of the talk was “Volcanic Vocalic Changes”—a title I’m quite proud of!)</p>
+<p>This is super exciting for me because up until now most of my work has been phonetic-based and focused on vowel mergers. This the first clearly sociolinguistic project I’ve done—something I’ve been meaning to do this whole time—and I think the results are cool. It’s uncharacteristically qualitative and the statistics don’t play a huge role, which is weird for me. I like this change and I hope I can do more with this research.</p>
+
+
+
+ ]]></description>
+  <category>Pacific Northwest</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/mount-st-helens-and-vowels/index.html</guid>
+  <pubDate>Sat, 08 Apr 2017 15:15:00 GMT</pubDate>
+</item>
+<item>
+  <title>SECOL 2017</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/secol2017/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I was unable to attend this year, but my colleagues presented two papers I was a part of at the 84th Southeastern Conference on Linguistics (<a href="http://conf2017.secol.org">SECOL84</a>) in Charleston, South Carolina.</p>
+<p>The first presentation was with Bill Kretzschmar and Katie Kuiper and was called “Automated Large-Scale Phonetic Analysis: DASS” wherein we introduce the NSF-funded project—with Drs. Kretzschmar and Peggy Renwick as PIs—that I am involved in. A PDF of the slide show is are available <a href="../../downloads/170310-SECOL84a-slides.pdf">here</a>.</p>
+<p>The second presentation was with Rachel Olsen, Mike Olsen, and Peggy Renwick and was called “Transcribing the Digital Archive of Southern Speech: Methods and Preliminary Analysis” wherein we talked about the nuts and bolts of how to get a project of this size running. A PDF of the slide show is available <a href="../../downloads/170310-SECOL84b-slides.pdf">here</a>.</p>
+<p>This work is part of an ongoing project at the Linguistic Atlas Office at the University of Georgia. We have several hundred hours of recordings from the 1970s of speakers all across the South. We have around 40 undergraduate workers transcribing for us with another couple grad students (including myself) doing the less soul-sucking work. Eventually we’ll have all this data freely available online, but in the meantime we’re figuring out how to process such scratchy recordings and doing linguistic analysis on it. It’s been a lot of fun and I’m glad we were able to show others our work.</p>
+
+
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Linguistic Atlas</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <category>Skills</category>
+  <guid>https://new.joeystanley.com/blog/secol2017/index.html</guid>
+  <pubDate>Thu, 09 Mar 2017 23:12:00 GMT</pubDate>
+</item>
+<item>
   <title>Updated mvnorm.etest() function</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/updated_mvnorm.etest-function/index.html</link>
