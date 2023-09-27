@@ -166,6 +166,43 @@
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Updated mvnorm.etest() function</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/updated_mvnorm.etest-function/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="page-columns page-full"><p>In Levshina’s <em>How to do Linguistics with R</em>, the function <code>mvnorm.etest()</code> from the <code>energy</code> library is used. This runs what’s called the “E-statistic (Energy) Test of Multivariate Normality” which used to test whether multivariate data is normally distributed. This is important because it’s an assumption that should be met for several statistical tests like MANOVA and for testing statistical significance of a correlation. Well, the code from the book is broken.</p><div class="no-row-height column-margin column-container"><span class="">Levshina, Natalia. 2015. <a href="https://benjamins.com/sites/z.195/">How to do Linguistics with R: Data exploration and statistical analysis</a>. Amsterdam: John Benjamins Publishing Company.</span><span class="">Maria L. Rizzo and Gabor J. Szekely (2016). energy: E-Statistics: Multivariate Inference via the Energy of Data. R package version 1.7-0. <a href="https://cran.r-project.org/web/packages/energy/index.html">https://CRAN.R-project.org/package=energy</a></span></div></div>
+<p>I looked into it and it turns out that the book was based on an older version of the <code>energy</code> package (&lt;1.7). But if you’ve updated the package since August 2016 to version 1.7 or later, the code breaks. What happened? Here’s the old code:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mvnorm.etest</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(x, y))</span></code></pre></div>
+<p>While this worked with the old versions, in the newer versions this returns a <em>p</em>-value of “NA”. This function does some bootstrapping meaning it runs some function on the data over and over some number of times. In the old version of the package, the default was 999 replicates. In the new version there is no default, so you have to specify the number of replicates with the <code>R=999</code> argument:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mvnorm.etest</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(x, y), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">R=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">999</span>)</span></code></pre></div>
+<p>You can of course change this number to whatever you want, but 999 was the default before so I figure it’s a good number to keep. Just thought you ought to know.</p>
+
+
+
+ ]]></description>
+  <category>Statistics</category>
+  <category>R</category>
+  <category>Skills</category>
+  <guid>https://new.joeystanley.com/blog/updated_mvnorm.etest-function/index.html</guid>
+  <pubDate>Tue, 28 Feb 2017 23:12:00 GMT</pubDate>
+</item>
+<item>
   <title>Website Version 2</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/website-version-2/index.html</link>
