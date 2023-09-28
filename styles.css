@@ -25,3 +25,11 @@ p a:hover {
 }
 
 
+
+
+/* Center Images*/
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
