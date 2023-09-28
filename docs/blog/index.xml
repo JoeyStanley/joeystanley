@@ -9,7 +9,7 @@
 <link>https://new.joeystanley.com/blog/index.html</link>
 <atom:link href="https://new.joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.353</generator>
+<generator>quarto-1.3.433</generator>
 <lastBuildDate>Mon, 25 Sep 2023 04:12:00 GMT</lastBuildDate>
 <item>
   <title>Website Version 3</title>
@@ -274,6 +274,136 @@ Now I've just got to do forced alignment (which includes spell checking) and ext
   <category>Research</category>
   <guid>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</guid>
   <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
+</item>
+<item>
+  <title>Testing English Phonetics</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/testing-english-phonetics/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>So I’m teaching phonetics and phonology this semester and we’re using Ladefoged &amp; Johnson’s <em>A Course in Phonetics</em> textbook. As I was preparing to teach about stops, I thought it might be a good idea as a homework assignment for students to gather their own data to see if some of these ideas panned out. Here’s my quick study.</p>
+<section id="hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses">Hypotheses</h2>
+<p>The four hypotheses I wanted to test come from Chapter 3 from my 6th edition of <em>A Course in Phonetics</em>:</p>
+<ol type="1">
+<li><p>Word-initially, /p, t, k/ have longer aspiration than /b, d, g/.</p></li>
+<li><p>After onset /s/, /p, t, k/ have about as much aspiration as word-initial /b, d, g/.</p></li>
+<li><p>Word-finally, voiced obstruents have an overall longer duration (closure + burst + aspiration) than voiceless obstruents.</p></li>
+<li><p>Vowels preceding voiced obstruents are longer than those preceded by voiceless obstruents.</p></li>
+</ol>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>Each student was asked to record a friend reading the following words: <em>tack</em>, <em>soap</em>, <em>days</em>, <em>pad</em>, <em>steep</em>, <em>sit</em>, <em>code</em>, <em>tab</em>, <em>bees</em>, <em>scope</em>, <em>dice</em>, <em>goes</em>, <em>bus</em>, <em>seep</em>, <em>cab</em>, <em>spit</em>, <em>gas</em>, <em>peg</em>. I chose these words to maximize onset and coda obstruents in as few words as possible. Vowel quality is assumed to have no effect.</p>
+<p>For stops, student measured durations of aspiration and closure; for fricatives it was duration of the fricative itself. This was done in Praat. They have worked with Praat once before in this course, and were taught how to identify boundaries for these, but were otherwise relatively untrained linguistics undergraduates. I provided them with a template spreadsheet to fill out.</p>
+<p>I ended up with measurements from 432 words: 18 unique words each from 24 students. I then combined the spreadsheets and wrote up the R code.</p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="word-initial-stop-aspiration" class="level3">
+<h3 class="anchored" data-anchor-id="word-initial-stop-aspiration">Word-initial stop aspiration</h3>
+<p>The first hypothesis is one that is commonly taught in intro to linguistics courses: word-initial voiceless stops have aspiration and word-initial voiced stops have little, if any. In my data, this turned out to be the case based on the words <em>pad</em>, <em>peg</em>, <em>tab</em>, <em>tack</em>, <em>cab</em>, <em>code</em>, <em>bees</em>, <em>bus</em>, <em>days</em>, <em>dice</em>, <em>gas</em>, and <em>goes</em>.</p>
+<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/word-initial-stops.png" class="img-fluid" style="width:30em"></p>
+<p>A mixed-effects regression model that predicts this aspiration with the underlying voicing of the stop as a fixed effect and student and word as random effects suggests that this difference is significant.</p>
+<pre><code>summary(lmer(aspiration ~ underlying_voicing + (1|student) + (1|word), data=wi_stops))
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ student  (Intercept) 1.039e-03 0.03224 
+ word     (Intercept) 9.550e-06 0.00309 
+ Residual             1.084e-03 0.03293 
+Number of obs: 285, groups:  student, 24; word, 12
+
+Fixed effects:
+                            Estimate Std. Error t value
+(Intercept)                 0.047309   0.007241   6.534
+underlying_voicingvoiceless 0.037331   0.004291   8.699</code></pre>
+<p>Conclusion: Yep. Based on this data, the model predicts that voiced stops get around 47ms of aspiration while voiceless stops get about 85ms. Cool.</p>
+</section>
+<section id="stops-following-s" class="level3">
+<h3 class="anchored" data-anchor-id="stops-following-s">Stops following /s/</h3>
+<p>We learn that voiceless stops following /s/ in the same syllable are not aspirated in English. In our sample, this also proved to be correct based on the same words as above with the addition of <em>spit</em>, <em>steep</em>, and <em>scope</em>.</p>
+<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/onset-stops.png" class="img-fluid" style="width:30em"></p>
+<p>I ran a mixed-effects regression model like the one described above but with position (=environment) as the main effect and voiced word-initial stops as the reference level.</p>
+<pre><code>summary(lmer(aspiration ~ position + (1|student) + (1|word), data=onset_stops))
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ student  (Intercept) 0.001153 0.03395 
+ word     (Intercept) 0.000000 0.00000 
+ Residual             0.001150 0.03391 
+Number of obs: 355, groups:  student, 24; word, 15
+
+Fixed effects:
+                                Estimate Std. Error t value
+(Intercept)                     0.047309   0.007485   6.321
+positionvoiceless word-initial  0.037395   0.004019   9.304
+positionfollowing /s/          -0.007779   0.004948  -1.572</code></pre>
+<p>We get the same coefficients for word-initial stops. Only this time, we can see how stops followed by /s/ fit in. The model shows that the duration of aspiration was not significantly different from word-initial voiced stops. There’s some indication that the stops following /s/ have even <em>less</em> aspiration, but this didn’t reach significance.</p>
+</section>
+<section id="duration-of-word-final-stops" class="level3">
+<h3 class="anchored" data-anchor-id="duration-of-word-final-stops">Duration of word-final stops</h3>
+<p>What I didn’t know before preparing for this class was that the overall duration of word final stops (closure + burst + aspiration) is longer for voiceless obstruents than it is for voiced obstruents. Based on all 18 words (<em>scope</em>, <em>seep</em>, <em>soap</em>, <em>steep</em>, <em>sit</em>, <em>spit</em>, <em>tack</em>, <em>cab</em>, <em>tab</em>, <em>code</em>, <em>pad</em>, <em>peg</em>, <em>bus</em>, <em>dice</em>, <em>gas</em>, <em>bees</em>, <em>days</em>, <em>goes</em>), this was true.</p>
+<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/word-final-duration.png" class="img-fluid" style="width:30em"></p>
+<p>The difference is small but significant: in a mixed-effects regression model that predicts duration with voicing and manner of articulation as fixed effects and student and word as random effects, the difference reached statistical significance.</p>
+<pre><code>summary(lmer(duration ~ underlying_voicing + manner + (1|student) + (1|word), data=wf))
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ student  (Intercept) 3.002e-03 0.054790
+ word     (Intercept) 3.745e-06 0.001935
+ Residual             7.550e-03 0.086893
+Number of obs: 427, groups:  student, 24; word, 18
+
+Fixed effects:
+                          Estimate Std. Error t value
+(Intercept)               0.194404   0.012836  15.145
+underlying_voicingvoiced -0.035321   0.008540  -4.136
+mannerfricative           0.096638   0.008976  10.766
+</code></pre>
+<p>This model shows that the voiceless stops were about 194ms long, and voiced stops were 159ms (35ms shorter). Furthermore, and I didn’t expect this until I saw the plot, fricatives were generally about 97ms longer than stops. I don’t do a lot of nitty-gritty phonetics work like this too often, especially on consonants, so this was news to me.</p>
+</section>
+<section id="vowel-length" class="level3">
+<h3 class="anchored" data-anchor-id="vowel-length">Vowel length</h3>
+<p>Finally, it is pretty well known that vowels before voiced obstruents are said to be longer than vowels before voiceless obstruents. As expected, the data showed this to be the case.</p>
+<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/word-final-obstruents-and-vowel-duration.png" class="img-fluid" style="width:30em"></p>
+<p>One last regression model, similar to what was done previously, showed not only that this voicing difference is significant but that the manner of articulation mattered as well.</p>
+<pre><code>summary(lmer(vowel ~ underlying_voicing + manner + (1|student) + (1|word), data=wf))
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ student  (Intercept) 0.001937 0.04401 
+ word     (Intercept) 0.001114 0.03337 
+ Residual             0.002274 0.04769 
+Number of obs: 431, groups:  student, 24; word, 18
+
+Fixed effects:
+                         Estimate Std. Error t value
+(Intercept)               0.18905    0.01513  12.495
+underlying_voicingvoiced  0.09595    0.01654   5.799
+mannerfricative           0.05349    0.01744   3.067</code></pre>
+<p>Here, we see that vowels followed by voiceless stops are predicted to have a duration of 189ms. If the following segment is voiced, the model predicts it to actually be 285ms (an increase of 95ms). What stands out is that vowels followed by /g/ were quite a bit shorter. Due to an oversight in my data, there was just one /g/-final word, <em>peg</em>, and it was listed last on the stimulus. No doubt this had an effect. In fact, a more rigorous study that would include more tokens and randomization might find the difference to be even greater, assuming /g/ falls more in like with /b/ and /d/.</p>
+<p>I learned something new here as well: fricatives lengthen the vowel even more. The model predicts that vowels preceding fricatives will be 53ms longer than stops with the same voicing. I didn’t know that.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This study was short, unsystematic, and full of methodological issues. Despite its flaws, it shows evidence to support what Ladefoged and Johnson say in <em>A Course in Phonetics</em>. I also learned a few things: in addition to themselves being longer than stops, fricatives cause their preceding vowels to lengthen as well.</p>
+<p>Special thanks goes to my Fall 2017 LING 3060 class at the University of Georgia, who bothered their friends with this silly assignment and painstakingly measured durations in software they barely know how to use.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Side Projects</category>
+  <category>Teaching</category>
+  <category>Statistics</category>
+  <category>Phonetics</category>
+  <guid>https://new.joeystanley.com/blog/testing-english-phonetics/index.html</guid>
+  <pubDate>Fri, 08 Sep 2017 04:02:00 GMT</pubDate>
 </item>
 <item>
   <title>General Update</title>
@@ -1138,101 +1268,6 @@ This was my first time &amp; it took more multitasking than expected. I have a n
   <category>Side Projects</category>
   <guid>https://new.joeystanley.com/blog/interactive-guarani-dictionary/index.html</guid>
   <pubDate>Sat, 10 Dec 2016 18:21:00 GMT</pubDate>
-</item>
-<item>
-  <title>Brand Yourself</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/brand-yourself/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Go <a href="../../blog/brand-yourself-2">here</a> to see a more recent version of this talk.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="../../downloads/170413-brand-yourself.pdf">Download the slides here!</a></p>
-</div>
-</div>
-<p>Today <a href="http://emilymcginn.com">Emily McGinn</a> of the Digital Humanities Lab at UGA and I did a workshop called “Brand Yourself: A professionalization workshop for grad students” [Edit: and again by invitation April 13, 2017]. We gave a presentation on different ways grad students can boost their online presence through building a personal webpage, utilizing social media, and finding your field’s conversation. We then let the attendees a chance to work on their own to create a new online profile, using what they learned.</p>
-<section id="social-media" class="level2">
-<h2 class="anchored" data-anchor-id="social-media">Social Media</h2>
-<p><a href="http://academia.edu">Academia.edu</a> is a social networking site for academics. Users can create profiles, upload their papers, and follow particular research topics. They can also follow others that have done the same. It’s a great resource for finding papers that may be behind a paywall, although it has gotten a lot of criticism for this. Papers you upload can be found by Google Scholar, which is a nice perk. The website will keep track of your analytics, and there’s nothing more thrilling than getting an email saying someone has found your profile!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://new.joeystanley.com/blog/brand-yourself/academia_email.png" class="img-fluid figure-img" width="300"></p>
-</figure>
-</div>
-<p>The site got some criticism for offering authors the chance to promote their work for a fee. There’s also a chance at any time the site could get shut down because publishers aren’t happy about it, but with 30 million users, I don’t know if that’s going to happen any time soon.</p>
-<p>I’m less familiar with <a href="https://www.researchgate.net">ResearchGate</a>, but in my cursory look, there’s a lot of overlap with academia.edu as far as its features. A big difference I noticed is that it seems like it’s more focused on creating networks based on people you cite and your co-authors while academia.edu is more focused on following your field and your interests. One thing I don’t like about ResearchGate is that the number of emails it sends you is borderline spam. It invites me to follow other grad students at my university, but, no offense to the sciences, I’m not particularly concerned with what a microbiologist on the other side of campus is doing.</p>
-<p>I would imagine most researchers use <a href="https://scholar.google.com">Google Scholar</a> regularly, but did you know you can create a profile for others to see? You can tell a researcher has done that when you see their name underlined in a search:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://new.joeystanley.com/blog/brand-yourself/google_scholar.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>In this screenshot (<a href="https://scholar.google.com/scholar?hl=en&amp;q=American+English%3A+dialects+and+variation&amp;btnG=&amp;as_sdt=1%2C11&amp;as_sdtp=&amp;oq=">live link here</a>), you can see that Walt Wolfram, Natalie Schilling, Sali Tagliamonte have created their profiles, but Shanna Poplack and Penny Eckert have not. I’d like to see what else the last two researchers have written, but I can’t simply click on their names like I can with the first three. When you do click on their links, you can see the full profile including what else they have written and how many times each has been cited.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://new.joeystanley.com/blog/brand-yourself/natalie_schilling.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>It does take a bit of work to get a full profile going, because Google’s data can be a bit messy, so you’ll have to add stuff in by hand. But I think the payoff is worth the effort.</p>
-<p>There are a handful of other websites out there that can help you build an online presence. <a href="https://profiles.impactstory.org/about">Impact Story</a> is one that can keep track of how much of an impact you have on people by keeping track of when people cite, mention, read you and your work. For $10 a month, it might not be worth it for a grad student, but for a professor applying for tenure this might be.</p>
-<p><a href="https://www.linkedin.com">LinkedIn</a> is one I should mention, but I don’t find it terribly useful for academics. It might be worth it to set up a low-maintenance page that gives a good view of you in a nutshell, just in case people look.</p>
-</section>
-<section id="building-a-personal-webpage" class="level2">
-<h2 class="anchored" data-anchor-id="building-a-personal-webpage">Building a Personal Webpage</h2>
-<p>Keeping track of all these profiles can be tedious. Do you need to update seven different profiles every time you present at a conference? Is it worth it to invest the time in these sites that don’t communicate with each other? One solution is to keep your top (or only!) three or four papers on the social media sites, but include links to a central page that has your full profile. For this reason, it’s nice to have a personal webpage.</p>
-<p>The problem with personal webpages it that they come with a cost, either in money or skills (and sometimes both). You can set up a webpage through <a href="https://wordpress.com">Word Press</a>, <a href="http://www.wix.com">Wix.com</a>, or <a href="https://www.squarespace.com">Square Space</a>, which take little technical skill to get a professional page set up. These can be free, but you can get some extra features for $10 a month or more. To me, that’s a pretty penny to pay for a relatively simple webpage.</p>
-<p>Another option, which is what I did for the previous version of this website, is to host the page on <a href="https://github.com">Github</a>. It’s free, but it takes a bit of skill. I’ve had to learn to use Jekyll, Markdown, and CSS, but through some help on <a href="http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages">ProgrammingHistorian.com</a> and <a href="https://www.lynda.com">Lynda.com</a>, <a href="../../blog/making-a-website-is-fun">I was able to get this site up</a>. The benefit of going this route is I have unlimited flexibility in how the site looks, and I really, really like that.</p>
-<p>Either way, it’s probably worth it to set up a personal domain name. For as little as $1 a month, you can buy your own domain name (like <span style="white-space: nowrap;">www.joeystanley.com</span>), which looks much more professional than <span style="white-space: nowrap;">www.blogsplot.com/joeystanley</span> or <span style="white-space: nowrap;">www.github.com/joeystanley</span>.</p>
-</section>
-<section id="finding-your-conversation" class="level2">
-<h2 class="anchored" data-anchor-id="finding-your-conversation">Finding Your Conversation</h2>
-<p>The last thing we talked about in our workshop is to find where the big names in your field are having their online conversations. This sounds a little weird at first, but every field has some secret space where people are collaborating and sharing ideas informally as well as posting calls for papers, invitations for publications, and job openings. The problem is that where is space is is different for every field.</p>
-<p>In some fields, these are a listserv. As far as I know, network analysis and Slavic languages each have a well-known listserv where all the conversation happens. If you’re not on that listserv, you’re out of the loop. Digital Humanities has a space on <a href="https://slack.com">Slack</a> where over 800 researchers get together and talk. For some fields, it might just be at coffee breaks during certain conferences. You may have to ask around established academics in your field to find that space.</p>
-<p>One thing I will mention is that a lot of action happens on Twitter. I’ve covered this in more depth in <a href="../../blog/the-importance-of-twitter">an earlier blog post</a>, but basically a lot of good stuff can come out of following the right people and seeing just the right tweets.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Overall, I thought the workshop went very well. Most of the attendees did end up setting up some sort of profile: some did an academia.edu profile, some google scholar, and a few were ambitious and set up a github page. At the very least, I got this very webpage set up as a result of preparing for this workshop, and I learned a <em>lot</em> about all these other pages. It was a great feeling to see a dozen students directly benefiting from our presentation.</p>
-<hr>
-<p>You can download the old version slideshow we used for this presentation <a href="../../downloads/161111-DigiLab-slides.pdf">here</a>.</p>
-<p>I am indebted to the <a href="http://blog.impactstory.org/category/impact-challenge/">Impact Challenge blog series</a>, with the <a href="http://blog.impactstory.org/research-impact-challenge-ebook/">accompanying 200+ page pdf</a>, from which I learned a lot about all this. I would highly recommend that you download it and take a look. Not only does it include much more than what I’ve mentioned here, including step-by-step how-to guides to getting these profiles set up, but also many more topics to get yourself more visible. Thanks, Impact Challenge.</p>
-
-
-</section>
-
- ]]></description>
-  <category>CSS</category>
-  <category>Github</category>
-  <category>How-to Guides</category>
-  <category>Meta</category>
-  <category>Presentations</category>
-  <category>Twitter</category>
-  <guid>https://new.joeystanley.com/blog/brand-yourself/index.html</guid>
-  <pubDate>Sat, 12 Nov 2016 00:23:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
