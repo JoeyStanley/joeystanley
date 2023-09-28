@@ -83,10 +83,10 @@
 
 
 <p>So, I just acquired a goldmine of data that I can use for linguistic analysis. Sitting in my office are 452 cassette tapes, each containing at least 30 minutes of recorded interviews with an older folks from Heber City, Utah. And that’s about half of the collection: the other half is with a historian in Midway, Utah. So, I’m looking at roughly 400–500 hours of audio. Not sure how I’m going to process it all, but I wanted to kick off the beginning of this long-term project with a blog post describing the history of the tapes, why I’m interested in them, and speculations about the future.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/kohler-tapes/kohler_tapes.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">452 tapes sitting on my shelf!</figcaption>
+<figcaption class="figure-caption margin-caption">452 tapes sitting on my shelf!</figcaption>
 </figure>
 </div>
 <section id="background" class="level2 page-columns page-full">
@@ -143,10 +143,10 @@
 
 
 <p>I’m happy to report that I successfully defended my dissertation today! The <a href="../../downloads/191209-dissertation_defense.pdf">defense</a> was held in the DigiLab (300 Main Library). The study itself is called “Vowel Dynamics of the Elsewhere Shift: A sociophonetic analysis of English in Cowlitz County, Washington.”</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/dissertation/dissertation_defense.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Me with my committee: Chad Howe, Peggy Renwick, and Bill Kretzschmar (Skyping in).</figcaption>
+<figcaption class="figure-caption margin-caption">Me with my committee: Chad Howe, Peggy Renwick, and Bill Kretzschmar (Skyping in).</figcaption>
 </figure>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -274,6 +274,42 @@ Now I've just got to do forced alignment (which includes spell checking) and ext
   <category>Research</category>
   <guid>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</guid>
   <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
+</item>
+<item>
+  <title>Laboratory Research</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/laboratory-research/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Recently, I’ve <a href="../../blog/lsa2017">presented</a> on words like <i>pool</i>, <i>pull</i>, and <i>pole</i> and how the difference between them can be really hard to describe, both by me and the non-specialist alike. Based on my findings in Washington, I decided I wanted to dig a little deeper into what these words are like, so I started a study that is less sociolinguistic and more laboratory phonology-based, which is a little unusual for me.</p>
+<p>Broadly, I want to look at the phonetics of English vowels before coda laterals. So, after making a list of lots and lots of possible words, cutting them down based on frequency and other factors, I’ve got a decent list of targeted words.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+List of all ~401 monosyllabic English words with a coda lateral, organized by vowel and syllable structure? Check. My favorite? Squelched.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/861032509534031873">May 7, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I got IRB approval just a little too late into the semester to recruit people and offer them extra credit in courses, so I had to wait a few weeks to get started. Now that Maymester has started, I’ve approached some professors and asked them to offer participation in my research as an extra credit opportunity. I even hand out little business cards after I’ve done my pitch to the class, so they have my contact information—an idea that proved very effective for me in Washington:</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://new.joeystanley.com/blog/laboratory-research/businesscard.png" class="img-fluid figure-img" style="width:15em"></p>
+<figcaption class="figure-caption margin-caption">Recruitment business card</figcaption>
+</figure>
+</div>
+<p>So I’m now meeting with students in the <a href="https://linglab.franklinresearch.uga.edu">linguistics laboratory</a> that we have here at UGA. It’s unfortunately under-utilized but nonetheless very good. Inside the already very quiet recording studio is a tiny booth where the best recordings can be made. I have participants reading a bunch of carefully selected sentences that target key sounds and then taking a quick follow-up survey. It amounts to about 30–40 minutes of speech from each person, which is kind of a lot.</p>
+<p>I don’t have a specific goal for how many people I want to get, but I should have 20 by the end of the month and potentially up to 50 by the end of the summer. My only limitation is how much time I can put into this. I’ll do some preliminary analyses on those and see if I need to recalibrate the sentences or maybe collect more data. This will probably be an ongoing project for a while: the IRB and consent forms are purposely pretty open-ended to allow me to modify things where needed without much hassle.</p>
+<p>Anyway, it’s been fun being in the lab, and I’m excited to analyze <em>really</em> clean audio for a change.</p>
+
+
+
+ ]]></description>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/laboratory-research/index.html</guid>
+  <pubDate>Thu, 18 May 2017 02:30:00 GMT</pubDate>
 </item>
 <item>
   <title>Admission to Candidacy</title>
@@ -666,21 +702,21 @@ I learned about <a href="https://twitter.com/hashtag/Web?src=hash">#Web</a> on <
 <p>The layout of site I had before was simply copied from the last tutorial in the first course. Since I didn’t write the HTML or the CSS, I didn’t know exactly what was going on, so if I wanted to make changes it was really hard to do. Now that I’ve written this new site from scratch, I know exactly what’s going on in all the webpages and in CSS.</p>
 <p>Of course, the sacrifice is that this new site isn’t quite as clean as the old one was. For example, I know it looks good on my Apple laptop in Safari, but I don’t know all the code I need to watch out for to make it fully compatible with other browsers, let alone other versions of other browsers. The site also doesn’t adapt to smaller screens like phones and tablets. I’m still working on that.</p>
 </section>
-<section id="so-whats-the-difference" class="level2">
+<section id="so-whats-the-difference" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="so-whats-the-difference">So what’s the difference?</h2>
 <p>I didn’t do any major changes to the overall structure or the general typographic details that I use in everything I do. The fonts are still Iowan Old Style and Avenir and the background is still “whitesmoke” (96% white, 4% black). The blue from before was, coincidentally, very similar to the blue I use in my power point slides, but not exactly, so I went ahead and changed it to <em>my</em> blue to match my slides.</p>
 <p>Just to give you an idea of what the site looked like before, here are some screenshots. This first one is my home page from my old site:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_home.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Old site’s homepage</figcaption>
+<figcaption class="figure-caption margin-caption">Old site’s homepage</figcaption>
 </figure>
 </div>
 <p>And this is my new home page:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_home.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">New site’s homepage</figcaption>
+<figcaption class="figure-caption margin-caption">New site’s homepage</figcaption>
 </figure>
 </div>
 <p>A couple layout changes. First, I’ve widened it from something like 70% of the screen to a standard 960 pixels. That gave me the option of keeping my ideal width at roughly 66 characters still while giving me room for a sidebar.</p>
@@ -693,36 +729,36 @@ I learned about <a href="https://twitter.com/hashtag/Web?src=hash">#Web</a> on <
 <p>The layout was a blatant copy from the UGA DigiLab <a href="https://digi.uga.edu/projects/">projects tab</a>. I think adding images, even if they’re simple like mine, contribute a lot to the page.</p>
 <p>Eventually, I’d like to create a separate page for each of these. There I’d go into more detail on my findings, put a list of publications, and have links to any relevant blog posts. I’ll get there eventually. For now, I’ll just make the the excerpts a little longer.</p>
 </section>
-<section id="blogi-mean-news" class="level2">
+<section id="blogi-mean-news" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="blogi-mean-news">Blog—I mean, “News”</h2>
 <p>My blog is now relabeled “News” just because it sounds less, well, blog-like. Here’s the old one:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_blog.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Old site’s blog</figcaption>
+<figcaption class="figure-caption margin-caption">Old site’s blog</figcaption>
 </figure>
 </div>
 <p>And here’s the new one:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_blog.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">New site’s blog</figcaption>
+<figcaption class="figure-caption margin-caption">New site’s blog</figcaption>
 </figure>
 </div>
 <p>I also redesigned the blog page itself. First off, I didn’t like that you could only see 4 at a time and that you’d have to scroll back to see older entries. I don’t like it that way. I’ve still got the code still there, but it’ll only create a second page once I’ve got 50 posts. I’ve got like 15 for now so I don’t think it’ll slow anyone down by loading this page.</p>
 <p>The rest of the page was completely revamped. To be quite honest, I googled around for great examples of blog layouts and I found <a href="http://johnhenry.ie">this one</a>, which I copied quite a bit of. I think it works well for my site.</p>
 <p>Another big thing I didn’t like about the old layout was that the “Archive” tab didn’t make sense as its own page and the label didn’t really make sense.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_tags.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Old site’s “archive” page</figcaption>
+<figcaption class="figure-caption margin-caption">Old site’s “archive” page</figcaption>
 </figure>
 </div>
 <p>Instead, I moved it to a separate sidebar on the blog. That way it’s clear that the tags and the blog work together.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_tags.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">New site’s “tags” page</figcaption>
+<figcaption class="figure-caption margin-caption">New site’s “tags” page</figcaption>
 </figure>
 </div>
 <p>If I could change one thing on the main “news” page, it would be that sidebar though. Right now, if you click on a tag, it’ll take you to a page where it lists all the blog posts by category. I don’t like that separate page. I wanted to do something fancy like you click on a tab and a list of posts will expand down. Turns out I couldn’t do that without Java scripting and I don’t know how to do any of that. I also looked into just having pages for each category created on the spot, with blog excerpts instead of just the titles for that one category, but I couldn’t figure out how to do that.</p>
@@ -949,30 +985,30 @@ This was my first time &amp; it took more multitasking than expected. I have a n
 <p>I was in my last year at BYU. I was working as a programmer, creating eBooks for <a href="http://www.wordcruncher.com">WordCruncher</a> and had access to an HTML file of the Guarani Book of Mormon. I had taken a class in Perl already and had gotten pretty proficient through that job. I had also taken Mark Davies’ Corpus Linguistics course. So when I took an NLP course as the capstone to my minor in Linguistic Computing, I decided to write a Guarani translator.</p>
 <div class="page-columns page-full"><p>The program worked pretty well and was exactly what I was dreaming of in Brazil. I had paired the Guarani and English text as a “parallel corpus”, meaning each line in one file corresponded to a translated line in the other. What the translator does is it takes an input string (say, <em>mba’apo</em>) and it displays all the Guarani sentences with that word with the English underneath it. Made it very handy to see how words (or parts of words) were used in other contexts.</p><div class="no-row-height column-margin column-container"><span class="">This corpus might actually be the largest Guarani-English parallel dictionary. It had 329K Guarani words when first wrote the translator, but it’s now up to 606K after adding some more translated church material. I’ve got another ≈250K to add to it, whenever I get the time. I could nearly double it even then if I get access to the Guarani Bible, though I don’t know if that’ll happen anytime soon. Granted, these are all translated texts from English, and are religious-based, obviously representing a <em>very</em> different style than naturally occurring, spoken Guarani.</span></div></div>
 <p>What it then does it is look at all the words in both the English and Guarani sentences with the word, keeps track of their frequencies, then looks at the frequencies for all words in the entire corpus and compares the two. Words that have nothing to do with the translation will occur with roughly the same frequency in the matched sentences as they do in the full corpus. But words that correspond to the same meaning will occur relatively much more often in the matched sentences compared the corpus as a whole. So say the word <em>work</em> appears once every 1000 words in the whole corpus. If it suddenly appears once every 25 words in the matched words, statistically that’s a big difference, and odds are pretty good that <em>work</em> is a translation for <em>mba’apo</em> (and it is).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/interactive-guarani-dictionary/guarani_search.png" class="img-fluid figure-img" style="width:30em"></p>
-<figcaption class="figure-caption">Guarani Search engine</figcaption>
+<figcaption class="figure-caption margin-caption">Guarani Search engine</figcaption>
 </figure>
 </div>
 <p>So using this I could find out which English words correlated with which Guarani words. Not a perfect translator, especially since it didn’t use any fancy NLP processing, but not bad.</p>
 <p>My interest in Guarani, which was mostly about its nasal harmony, verbal morphology, and trying to document the grammar as a whole, started to wane as I started grad school and focused more on sociolinguistics and dialectology. But my reading comprehension is still… okay let’s face it, not that great, but I’m surprised at how much I was able to learn through self-study and a custom computer program.</p>
 </section>
-<section id="interactive-dictionary" class="level2">
+<section id="interactive-dictionary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="interactive-dictionary">Interactive Dictionary</h2>
 <p>I think what started this recent resurgence in Guarani was, strangely enough, making this website. I’ve acquired some more HTML and CSS skills and realized that I could make something useful with a web browser. So I dusted off my old files and started something fun.</p>
 <p>In just a week I was able to make a pretty useful website (locally hosted only for now) with two main pages. The first is the entire corpus. Unlike what I had before, I could take advantage of the formatting to display useful information. All the words I know are in regular black text, but the words I don’t know stand out in blue. That makes it easy to figure out which ones I need to learn next. For the words I do know, the roots are underlined, so I can quickly see the base and what morphology is stemming off of it. The interactive part is that if I mouseover the root, a basic definition shows up in the form of a tooltip. So if I’ve forgotten a word, I can very quickly remind myself of what it means. Very handy.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/interactive-guarani-dictionary/guarani_corpus.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Guarani Corpus screenshot</figcaption>
+<figcaption class="figure-caption margin-caption">Guarani Corpus screenshot</figcaption>
 </figure>
 </div>
 <p>How am I keeping track of what I know and don’t know? The other page on the site is a dictionary. I usually kept all this stuff in a spreadsheet somewhere, but here I can utilize the formatting to make it look like a real dictionary. I’ve got roots, possible word forms, derivatives, translations, parts of speech, etymology, other notes, and the infrastructure to include example sentences and other metadata. All this is stored on a file on my computer, and when I learn a new word, I just add it to the bottom of the file and a Perl script will take care of alphabetizing it and making sure it looks good for the CSS to take over.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://new.joeystanley.com/blog/interactive-guarani-dictionary/guarani_dictionary.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Guarani Dictionary screenshot</figcaption>
+<figcaption class="figure-caption margin-caption">Guarani Dictionary screenshot</figcaption>
 </figure>
 </div>
 <p>The result is a slick system where I can quickly see what words I need to learn and I can easily add them to the dictionary. I then run a lightning fast Perl script and refresh my browser, and I’ve got an updated corpus and dictionary.</p>
@@ -1136,77 +1172,6 @@ a[href*="http"]:after {
   <category>Meta</category>
   <guid>https://new.joeystanley.com/blog/how-i-implemented-the-links-in-this-site/index.html</guid>
   <pubDate>Tue, 01 Nov 2016 22:53:00 GMT</pubDate>
-</item>
-<item>
-  <title>The Importance of Twitter</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/the-importance-of-twitter/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m preparing a workshop right now for the DigiLab here at UGA on how to increase your web presence. I’ll give a more detailed explanation of that later on, but I just wanted to point how how cool Twitter has been for me.</p>
-<p>I don’t remember when or why I got a Twitter account, but I remember early on that I wanted to keep it professional. I don’t follow very many friends or family: just other random linguists I find. That means my feed is nothing but linguistics stuff, and mini posts that other linguists find interesting. Granted, a lot of these folks post non-linguistic stuff as well, so I do have to sift through those sometimes. But there have been some really valuable gems I’ve found because of Twitter.</p>
-<section id="fun-stuff" class="level2">
-<h2 class="anchored" data-anchor-id="fun-stuff">Fun Stuff</h2>
-<p>First, we’ll start with the fun stuff.</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-</p><p>Check out <a href="https://twitter.com/JWGrieve"><span class="citation" data-cites="JWGrieve">@JWGrieve</span></a>’s wordmapper app (before it gets overwhelmed by traffic!) – plots Twitter usage across U.S.: <a href="https://t.co/9nBh3h9z9v">https://t.co/9nBh3h9z9v</a></p>
-<p></p>
-<p>— Ben Zimmer (<span class="citation" data-cites="bgzimmer">@bgzimmer</span>) <a href="https://twitter.com/bgzimmer/status/693113133632720896">January 29, 2016</a></p>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>This didn’t lead to anything in my work, but it was pretty awesome to see what Jack Grieve had done. In case the link doesn’t load above, it shows an interactive program where you can type in a word and see its regional distribution across Twitter. It’s a lot of fun to play around with.</p>
-</section>
-<section id="datasets" class="level2">
-<h2 class="anchored" data-anchor-id="datasets">Datasets</h2>
-<p>Twitter has also been good for me to discover new datasets. This tweet for example let me know that the entire contents of Reddit had been extracted and were available for download.</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-</p><p>1 terabyte corpus of Reddit comments, up to may 2015, from <a href="https://twitter.com/internetarchive"><span class="citation" data-cites="internetarchive">@internetarchive</span></a>. What a glorious day <a href="http://t.co/cHtmhKZyHW">http://t.co/cHtmhKZyHW</a></p>
-<p></p>
-<p>— heather froehlich (<span class="citation" data-cites="heatherfro">@heatherfro</span>) <a href="https://twitter.com/heatherfro/status/619123195115868160">July 9, 2015</a></p>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>About a month or so later I was starting a course in Digital Humanities, so this corpus became the main tool for my term paper for that class. I ended up downloading all the Reddit comments from its inception (2007) until October 2015. It was a whopping 50 <em>billion</em> words of text sitting on a terabyte of storage. If this were printed on standard book-sized sheets of paper, it would be something like 2½ miles long! And growing at about 4 feet an hour. That’s a lot of data. I don’t have a terabyte of storage available for something like this, so I wrote a Perl script that cut it down to a hundredth of its original size (“only” 500 million words!).</p>
-<p>I ended up having to download it all using lab computers in the student center off and on for a week. In fact, I had four computers going simultaneously, all downloading Reddit files, one month at a time, and running Perl scripts to make them smaller. I wasn’t surprised when IT came over and wondered what the heck I was doing. Turns out it was the fact that my login was used on four computers that triggered their systems, not the fact that I was running four computers at full speed for a couple hours. Once they saw what I was doing they shrugged their shoulders and said it was totally fine.</p>
-<p>Handling this much data, even though it was a hundredth of the original size, was rough. I made a frequency list of all the words, which ended up being about half a million rows long. I wanted to track language across time so I had information about how often each word was used every month for about 100 months. That’s a lot of columns for all those rows. I pushed Excel (and my little laptop) to its limits.</p>
-<p>Anyway, this project turned into a fun term paper that I never published. I wanted to look at the language of the most upvoted comments as compared to all other comments and see if there were any differences. I found a few, but with biggish data like this, statistical significance is everywhere so you have to be more careful about things.</p>
-<p>Bottom line: Because of Twitter I got to work with an enormous corpus which was a lot of fun.</p>
-</section>
-<section id="new-methodology" class="level2">
-<h2 class="anchored" data-anchor-id="new-methodology">New Methodology</h2>
-<p>On Twitter people also post new things they see at conferences and other places. During NWAV44, I followed the live tweets and saw this gem:</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-</p><p><span class="citation" data-cites="wgi_02445_temp">@wgi_02445_temp</span> has given us another gift. Bhattacharyya’s affinity to measure overlap: <a href="https://t.co/26byi2KpRk">https://t.co/26byi2KpRk</a> <a href="https://twitter.com/hashtag/NWAV44?src=hash">#NWAV44</a></p>
-<p></p>
-<p>— Paul De Decker (<span class="citation" data-cites="pmdedecker">@pmdedecker</span>) <a href="https://twitter.com/pmdedecker/status/658290609153843200">October 25, 2015</a></p>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Basically, Daniel Johnson talked about another way to measure vowel overlap—something I do a lot in my research. In the Shiny App linked above, Johnson compares Pillai scores and something called Bhattacharyya affinity. I ended up using this in a <a href="../../downloads/160714-LabPhon15-poster.pdf">poster</a> (abstract <a href="../../downloads/160714-LabPhon15-abstract.pdf">here</a>) I did with <a href="http://faculty.franklin.uga.edu/mrenwick/">Peggy Renwick</a> at <a href="http://labphon.org/labphon15/program">LabPhon</a>, and will continue to use this new measure of overlap, not exclusively, but in addition to the other measures out there.</p>
-</section>
-<section id="live-tweeting-conferences" class="level2">
-<h2 class="anchored" data-anchor-id="live-tweeting-conferences">Live Tweeting Conferences</h2>
-<p>I’m a lowly grad student and don’t have a ton of funding for conferences, so I can’t attend some of the big ones all the time. Luckily, a lot of people live tweet what’s going on at most major conferences, so I can follow along and feel like a part of the group.</p>
-<p>I myself live tweeted for the first time at a linguistics conference here at UGA. I don’t have a ton of followers, and the conference isn’t super well-known. But I did try to find people’s Twitter handles whenever possible, as well as their department’s, and would include them in the tweets. Well as it turns out I got about half a dozen new followers from that conference. Not a huge deal, but it does spread my name just a little bit further, and maybe onto the right person’s computer screen.</p>
-</section>
-<section id="twitter-is-great" class="level2">
-<h2 class="anchored" data-anchor-id="twitter-is-great">Twitter is great</h2>
-<p>So in the end, having a Twitter account is a lot of fun. I’ve benefited personally and professionally, and it’s definitely a worthy investment of my time.</p>
-
-
-</section>
-
- ]]></description>
-  <category>How-to Guides</category>
-  <category>Methods</category>
-  <category>Research</category>
-  <category>Twitter</category>
-  <guid>https://new.joeystanley.com/blog/the-importance-of-twitter/index.html</guid>
-  <pubDate>Mon, 31 Oct 2016 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

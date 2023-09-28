@@ -14,4 +14,4 @@ title-block-banner: true
 format:
   html:
     toc: true
-    
+    cap-location: margin
