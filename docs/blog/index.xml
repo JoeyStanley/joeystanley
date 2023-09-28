@@ -174,6 +174,108 @@ Tip
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Transcribing a Sociolinguistic Corpus</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In the summer of 2016, I went to Cowlitz County, Washington to do traditional sociolinguistic interviews. I talked to 54 people and gathered my first audio corpus. It took a lot of preparation beforehand and it took a lot of time in the field. What I could not have expected was the amount of time it would take to transcribe that corpus. Now, two years later, I have finally finished transcriptions.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+I'm DONE! 54 speakers, 46½ hours of audio, 172 hours of work (averaging about 1h50m over like 92 days), producing an audio corpus of 327,000 words! <a href="https://twitter.com/hashtag/amNOLONGERtranscribing?src=hash&amp;ref_src=twsrc%5Etfw">#amNOLONGERtranscribing</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096903878639621?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This come after a lot of work. Since others might be going through the same thing, I thought I’d share some thoughts on transcribing a sociolinguistic corpus.</p>
+<section id="finding-the-motivation" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="finding-the-motivation">Finding the motivation</h2>
+<div class="page-columns page-full"><p>I think my original goal was to have it all transcribed by the end of 2016. So I gave myself about five months. But then I did the first hour of audio and it took me about 5 hours. Yikes!  At that rate, I estimated it would take about 200 hours of work to finish. I think staring down the barrel of any 200 hour task is a motivation killer. So I put it off.</p><div class="no-row-height column-margin column-container"><span class="">I don’t know what I expected—of course it’s going to take a long time to transcribe!</span></div></div>
+<p>I wrote a <a href="../../blog/lots-of-transcribing">blog post</a> nine months later when I had my first wake up call that I needed to get transcriptions done. I talked about some of the struggles I had getting started but mostly made excuses for why I hadn’t done much. And I got a lot of work done over the next month or so and made it about a quarter of the way through. I remember though just getting burned out after just 10 or 15 minutes of work and would call it a day after half an hour. At that rate, yeah, it’ll take forever.</p>
+<p>So I put it off for an entire year. In the meantime I was getting a lot done—mostly to distract me from the task I inevitably have to do before graduating. For some reason this distraction was in the form of collecting more audio. I got some <a href="../../blog/laboratory-research">laboratory audio</a>, and gathered another corpus using <a href="../../blog/using-mturk">Amazon Mechanical Turk</a>, and in January I went out to Utah to do some more fieldwork. And yet, this audio from 2016 was collecting dust on my computer, just waiting to be analyzed. I think I found that it was easier to collect new data than it was to finish processing the old stuff. Consequently, I had collected something like 150 hours of audio over two years for various projects—and less than 5% of it was processed.</p>
+<p>When I finally defended my prospectus in April, it occurred to me that if I wanted to graduate in 2019, I needed to have data to write about. And the only way to do that was to transcribe that darn audio. So, that was what finally got me to crack down and work at this every day. Even then, it took three months of grinding to finally finish. But I’m so glad it’s done.</p>
+</section>
+<section id="a-rite-of-passage" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="a-rite-of-passage">A rite of passage</h2>
+<p>I mentioned as a part of my celebratory tweetstorm that doing this kind of work might be something like a rite of passage for sociolinguists.</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+I think putting this much work into a corpus is some sort of rite of passage for sociolinguists. I'm glad I went through it, but ugh, never again.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096905564835842?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="page-columns page-full"><p>It seems like a lot of sociolinguists do research on their own corpora, and while the flashy part of statistical analysis, data visualization, or even fieldwork stories are what you see and hear about the most, a significant portion of what we do is the behind-the-scenes tedium on the computer. My university doesn’t have a huge group of sociolinguists and there’s no sort of shared corpus that we can use. So if I want to study contemporary spoken English, I was going to have to collect the audio myself. I think would have done fieldwork myself anyway though. I think it was always something I’ve wanted to do. Plus, there’s this:</p><div class="no-row-height column-margin column-container"><span class="">Yes, the Linguistic Atlas Project has been here since the 80s, but very few of those recordings are transcribed, so they’re of little use in their current state.</span></div></div>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Also, shout out to <a href="https://twitter.com/DrDialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="DrDialect">@DrDialect</span></a>, who I heard say at a Q&amp;A at SECOL in 2015 something like, "the best career move you can do is to create a corpus: you'll be able to analyze it forever." Some of the best advice I've ever heard.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096909041885185?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>And from the looks of it, this corpus that I now have is definitely going to last me a while, that’s for sure!</p>
+</section>
+<section id="what-software-did-i-use" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-software-did-i-use">What software did I use?</h2>
+<p>For transcription, I think there are two ways of doing it. The first method is to find some software that will automatically transcribe it for you, and since it’s not going to be perfect, then spend the time to correct that transcription. I considered doing that, specifically using the transcriber in <a href="http://darla.dartmouth.edu">DARLA</a>. But I found that it took much longer to correct the transcriptions that it would have taken me to just do it by hand. However, DARLA specifically says on their website that their automatic transcriber is not great, so my rate might have been better if I had used a different transcriber. DARLA was what came to mind because it’s easy to use and free. You might have better luck if you use a more sophisticated transcriber.</p>
+<p>The other option therefore was to just do it myself. As far as I can tell, there are two or three main pieces of software you can use. One is <a href="http://trans.sourceforge.net/en/presentation.php">Transcriber</a>. This is one that we use in the Linguistic Atlas Office when we have our undergrads do transcriptions. It’s free and easy to use. One concern is that it’s a little bit tricky to get its output to a TextGrid format. The other concern was that I couldn’t see the spectrogram to accurately place boundaries. Another option is <a href="http://www.mpi.nl/corpus/html/elan/index.html">ELAN</a>, which I hear is fantastic. The only reason I didn’t use it was frankly because I didn’t want to take the time to learn a new program.</p>
+<p>What I settled on was just plain ol’ Praat. It’s software that I’m comfortable with and I’ve used a lot. I can zoom in as close as I want so I can easy skip over stutters or other noise. Plus, I create a TextGrid right there, which is the format I’m most comfortable working with for scripting purposes. The downside to Praat is that I ended up having to use my trackpad on my laptop more than I wanted to (for scrolling side to side and placing boundaries). I wanted to avoid using my mouse as much as possible because I feel like it hurts my wrist more and I don’t want carpel tunnel.</p>
+<div class="page-columns page-full"><p>Based on my own experience, what I would recommend <em>not</em> doing is hiring out the transcriptions unless you’re not able to do it yourself. For one, I’m cheap, and didn’t want to pay however much per minute of audio. But more importantly, going through my audio a second time gave me a chance to pick up on things that I didn’t catch or forgot about when I was doing the interviews in person. Things like interesting linguistic phenomena  or passages I may want to quote later. Using the Praat textgrids, I just added a separate tier for my own annotations and could make whatever notes I wanted to about a particular section of audio. I learned so much about my people going through it a second time, and I don’t think I would have gotten those intuitions about their speech if I had hired it out. Of course, if you need the transcriptions sooner than you can process them or if you’re not able to do the work yourself, then of course hiring it out might be the better option.</p><div class="no-row-height column-margin column-container"><span class="">I got a token of <em>liketa</em> and two people said <em>I and John</em> instead of <em>John and I</em> which was super cool. I don’t remember those specifically and would never have caught them if I didn’t do the transcriptions myself.</span></div></div>
+</section>
+<section id="the-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="the-next-steps">The next steps</h2>
+<p>So while finishing those transcriptions was a monster step, unfortunately the work wasn’t done.</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Now I've just got to do forced alignment (which includes spell checking) and extract some formants and I'll be ready to go!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096904885366784?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<section id="forced-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="forced-alignment">Forced alignment</h3>
+<p>I’ve been using DARLA for the past few years, but I had some trouble getting the long audio files to process using their web interface. So this gave me a great opportunity to download and install the <a href="https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner">Montreal Forced Aligner</a> on my own computer. Having this in-house provides lots of benefits like processing the files in bulk and quicker turnaround time since I don’t have to upload the files.</p>
+<p>The bad news was that I had to do the spell-checking myself. I completely took for granted that DARLA can handle out-of-dictionary words by guessing their pronunciation. So since the Montreal Forced Aligner doesn’t do that, I had to check the words myself. When you run it, it’ll produce a list of out-of-dictionary words for you, so all you need to do is add them to the dictionary or correct the spelling in Praat. It seems simple, but it takes a long time. I had at least 20 or 30 typos or new words in every interview, so I probably spent 15 or 20 hours just doing the spell-checking (I think I added over 1000 new dictionary entries too!).</p>
+<p>Luckily, all this was made easier with the help of some custom Praat scripts I wrote for this project. One does pre-processing to get the files ready for forced-alignment. It splits the audio and textgrid into two halves (it was easier to process that way), it moves these files into a specific directory, and renames the tiers so that they’re consistent. As a bonus, it spits out the command that I need to use to run the aligner on those specific files, so all I need to do is copy and paste that into my terminal and it’ll go on its merry way. This was super helpful because typing path names over and over got old real quick.</p>
+<p>Once the spell-checking was done and the files were aligned, I had a post-processing script that I used. This one rejoins the two halves into one TextGrid again, adds the new phoneme and word tier to the top of the main TextGrid (so I’ve got the phoneme, word, sentence, and other tiers all in one file), and saves this in that speaker’s directory on my hard drive. Super handy.</p>
+<p>Now ideally, I would go back and hand-check all the boundaries. Maybe one day I’ll have the time to do that, but oh my goodness that’s not going to happen any time soon.</p>
+</section>
+<section id="formant-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="formant-extraction">Formant extraction</h3>
+<p>So keep in mind that all this work, the nearly 200 hours I’ve put into transcribing and force aligning, was mostly just so I could have Praat know where the vowels were in the audio.</p>
+<p>So, I modified a couple scripts I wrote to do formant extraction. Of course, I’ve mostly worked with shorter passages of audio (word lists and reading passages and stuff), so what I didn’t anticipate was that Praat kind of has trouble working with audio longer than about 30 minutes. So I had to modify the script so that it splits the audio into roughly five minute chunks, processes each one individually, and then stitches all the output back together.</p>
+<p>And of course, the formant measurements ideally should be handchecked. But again, I just spent way too much time transcribing, so I’m not about to spend even more time hand-checking these. Not yet at least.</p>
+</section>
+</section>
+<section id="the-end-result-a-giant-spreadsheet" class="level2">
+<h2 class="anchored" data-anchor-id="the-end-result-a-giant-spreadsheet">The end result: A giant spreadsheet!</h2>
+<p>So what were the main steps here?</p>
+<ol type="1">
+<li><p>Collect audio.</p></li>
+<li><p>Transcription.</p></li>
+<li><p>Forced alignment.</p></li>
+<li><p>Formant extraction.</p></li>
+</ol>
+<p>What do I have now? A giant spreadsheet. All this work has been so that I can get a big ol’ spreadsheet that I can then analyze in R. That’s where I am right now. I’ve got the finalized dataset that I’ll use for my dissertation, so I don’t even need to open up Praat much anymore, or even plug in my external hard drive. Almost all my work is in R now. But it is quite satisfying to have this monster spreadsheet of my own data.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>Transcribing (and the subsequent processing of) a sociolinguistic corpus takes a ton of time, patience, diligence, and determination. My eyesight may have suffered a little bit from staring at the computer, my headphones are a little worn down, my keyboard has had to endure well over a million keystrokes, and my wrists and fingers sure took a hit. But, y’know what? It’s a <em>lot</em> better than it used to be. At least we have tools like forced-alignment, FAVE, and Praat to make our lives easier. But in the end, it is really awesome to have completed this corpus.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Dissertation</category>
+  <category>Methods</category>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</guid>
+  <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
+</item>
+<item>
   <title>Admission to Candidacy</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/admission-to-candidacy/index.html</link>
@@ -198,6 +300,7 @@ Tip
 
  ]]></description>
   <category>Research</category>
+  <category>Dissertation</category>
   <guid>https://new.joeystanley.com/blog/admission-to-candidacy/index.html</guid>
   <pubDate>Thu, 04 May 2017 14:30:00 GMT</pubDate>
 </item>
@@ -350,6 +453,7 @@ I saved the funnest interview for last. This guy's a fourth generation euphonium
  ]]></description>
   <category>Pacific Northwest</category>
   <category>Research</category>
+  <category>Dissertation</category>
   <guid>https://new.joeystanley.com/blog/lots-of-transcribing/index.html</guid>
   <pubDate>Thu, 27 Apr 2017 14:30:00 GMT</pubDate>
 </item>
@@ -1103,46 +1207,6 @@ a[href*="http"]:after {
   <category>Twitter</category>
   <guid>https://new.joeystanley.com/blog/the-importance-of-twitter/index.html</guid>
   <pubDate>Mon, 31 Oct 2016 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Making a website is fun!</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/making-a-website-is-fun/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>In the past month or so I’ve been putting a lot of time and effort into increasing my professional web presence. In about a year I’ll be applying for academic positions, and it would sure be nice to be more visible to my potential employers. The sheer fact that you’re reading this means you’ve seen some of the fruits of my labor.</p>
-<section id="why-now" class="level2">
-<h2 class="anchored" data-anchor-id="why-now">Why now?</h2>
-<p>It took me a while before I wanted to find out what area of linguistics I wanted to go into. I’ve been interested in a lot of things at one time or another: typology, documentation, indigenous languages of South America, language change, simulation, morphology, network analysis, forms of address, among other things. I’ve even gone to conferences presenting some of this research. But I knew at the time that whatever it was that I was presenting on wasn’t going to be what I wanted to be known for. So I didn’t bother networking with other people, and I hardly took people’s advice because I would brush this off and say it was just a glorified term paper.</p>
-<p>But I’ve found my niche. I’m interested in sociolinguistics, dialectology, phonetics, phonology, and using computer and statistics to help me out. This is something I’d like to be known for. Right now I’m working on English in the Pacific Northwest, and I’m familiar with a lot of the work that’s been done in that area, so I know who to talk to at conferences because I’ve read a lot of their work.</p>
-</section>
-<section id="github" class="level2">
-<h2 class="anchored" data-anchor-id="github">Github</h2>
-<p>Over the past five years or so in my undergrad and graduate education, I’ve acquired some computer skills. I minored in linguistic computing, so I learned Perl and C# as a part of the required coursework. More importantly though, I learned that learning to use computers is pretty darn useful for my research. So I’ve learned a few other skills along the way to help me out with my larger linguistics questions.</p>
-<p>Just this month I presented a paper on Quechua morphology. I mentioned in it that I wrote a computer script to help me out with generating the correct forms of the paradigm. One of the participants in the Q&amp;A session asked if the code was available on Github and I said it wasn’t. But why shouldn’t it be? That acted as a catalyst into getting a github profile and uploading some code. I also found out I could host a webpage (this webpage!) on there too. Well sweet.</p>
-</section>
-<section id="creating-the-webpage" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="creating-the-webpage">Creating the webpage</h2>
-<p>Having never done web design before, I had a lot to learn. Turns out you’ve gotta host the webpage somewhere. By that I mean that all the files and formatting and content and stuff in a webpage has to be stored on some computer somewhere. It can’t be mine, because I’ve set it up as a server and stuff and that’s way beyond me expertise—plus I’m pretty sure I don’t want to have my laptop as a web server. So luckily, Github, will host mine for free. Okay good.</p>
-<p>The next task was to figure out how. I had recently heard about a website called <a href="http://programminghistorian.org">The Programming Historian</a>, which has a lot of slick, easy-to-follow tutorials on how to do useful computer stuff for research. Well, one of their pages is called “<a href="http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages">Building a static website with Jekyll and GitHub Pages</a>”. Awesome. Now, to be clear, it wasn’t the easiest tutorial. You have to download all sorts of stuff to your computer using the command line and manage a bunch of files and stuff. But that’s fine. I got it. I was able to create a simple webpage.</p>
-<div class="page-columns page-full"><p>Well, I’m never really satisfied with the default design of things, and I like having unlimited flexibility in how things look. So, I went over to <a href="http://lynda.com">Lynda.com</a>, which I have access to through UGA, and took a more detailed course on how to build a webpage using Jekyll. And it was great. I learned a lot and figured out what a lot of stuff means.</p><div class="no-row-height column-margin column-container"><span class="">Edit: Looks like the “Jekyll Web Design” course is no longer available. Makes sense; it was from 2016!</span></div></div>
-<div class="page-columns page-full"><p>But, I’m still not satisfied with the way it looks. I learned how the website works in that course, but not a lot of formatting. So I’m currently taking another Lynda.com , which I think will help me a lot. As it turns out, the concepts are very similar to the job I did as an undergrad, where I essentially created eBooks for a program called <a href="http://wordcruncher.com">WordCruncher</a>.</p><div class="no-row-height column-margin column-container"><span class="">Looks like this one is missing too. It was called CSS Core Concepts. I wish I knew who the instructor was.</span></div></div>
-<div class="page-columns page-full"><p>My goal in all this is to be able to make a beautiful webpage that is uniquely mine. I want all the flexibility I could ever want in how it works and looks. By so doing, I’m learning a lot of new skills like CSS, but that’s perfectly okay with me. So, today the webpage is still a hack off of the tutorial I went through, but hopefully over the course of the next few weeks and months it’ll slowly transform into my own.</p><div class="no-row-height column-margin column-container"><span class="">Now that I’ve switched to Quarto, I’ve lost much of that uniqueness and flexibility.</span></div></div>
-<p>I guess the end goal of this is to wow potential employers still. But, let’s be honest, I’m sure enjoying the journey.</p>
-
-
-</section>
-
- ]]></description>
-  <category>CSS</category>
-  <category>Github</category>
-  <category>How-to Guides</category>
-  <category>Meta</category>
-  <guid>https://new.joeystanley.com/blog/making-a-website-is-fun/index.html</guid>
-  <pubDate>Tue, 18 Oct 2016 17:34:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2018-08-06">
+
+<title>Joey Stanley - Transcribing a Sociolinguistic Corpus</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joey Stanley</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Transcribing a Sociolinguistic Corpus</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Dissertation</div>
+                <div class="quarto-category">Methods</div>
+                <div class="quarto-category">Research</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 6, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#finding-the-motivation" id="toc-finding-the-motivation" class="nav-link active" data-scroll-target="#finding-the-motivation">Finding the motivation</a></li>
+  <li><a href="#a-rite-of-passage" id="toc-a-rite-of-passage" class="nav-link" data-scroll-target="#a-rite-of-passage">A rite of passage</a></li>
+  <li><a href="#what-software-did-i-use" id="toc-what-software-did-i-use" class="nav-link" data-scroll-target="#what-software-did-i-use">What software did I use?</a></li>
+  <li><a href="#the-next-steps" id="toc-the-next-steps" class="nav-link" data-scroll-target="#the-next-steps">The next steps</a>
+  <ul class="collapse">
+  <li><a href="#forced-alignment" id="toc-forced-alignment" class="nav-link" data-scroll-target="#forced-alignment">Forced alignment</a></li>
+  <li><a href="#formant-extraction" id="toc-formant-extraction" class="nav-link" data-scroll-target="#formant-extraction">Formant extraction</a></li>
+  </ul></li>
+  <li><a href="#the-end-result-a-giant-spreadsheet" id="toc-the-end-result-a-giant-spreadsheet" class="nav-link" data-scroll-target="#the-end-result-a-giant-spreadsheet">The end result: A giant spreadsheet!</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<p>In the summer of 2016, I went to Cowlitz County, Washington to do traditional sociolinguistic interviews. I talked to 54 people and gathered my first audio corpus. It took a lot of preparation beforehand and it took a lot of time in the field. What I could not have expected was the amount of time it would take to transcribe that corpus. Now, two years later, I have finally finished transcriptions.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+I'm DONE! 54 speakers, 46½ hours of audio, 172 hours of work (averaging about 1h50m over like 92 days), producing an audio corpus of 327,000 words! <a href="https://twitter.com/hashtag/amNOLONGERtranscribing?src=hash&amp;ref_src=twsrc%5Etfw">#amNOLONGERtranscribing</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096903878639621?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This come after a lot of work. Since others might be going through the same thing, I thought I’d share some thoughts on transcribing a sociolinguistic corpus.</p>
+<section id="finding-the-motivation" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="finding-the-motivation">Finding the motivation</h2>
+<div class="page-columns page-full"><p>I think my original goal was to have it all transcribed by the end of 2016. So I gave myself about five months. But then I did the first hour of audio and it took me about 5 hours. Yikes!  At that rate, I estimated it would take about 200 hours of work to finish. I think staring down the barrel of any 200 hour task is a motivation killer. So I put it off.</p><div class="no-row-height column-margin column-container"><span class="">I don’t know what I expected—of course it’s going to take a long time to transcribe!</span></div></div>
+<p>I wrote a <a href="../../blog/lots-of-transcribing">blog post</a> nine months later when I had my first wake up call that I needed to get transcriptions done. I talked about some of the struggles I had getting started but mostly made excuses for why I hadn’t done much. And I got a lot of work done over the next month or so and made it about a quarter of the way through. I remember though just getting burned out after just 10 or 15 minutes of work and would call it a day after half an hour. At that rate, yeah, it’ll take forever.</p>
+<p>So I put it off for an entire year. In the meantime I was getting a lot done—mostly to distract me from the task I inevitably have to do before graduating. For some reason this distraction was in the form of collecting more audio. I got some <a href="../../blog/laboratory-research">laboratory audio</a>, and gathered another corpus using <a href="../../blog/using-mturk">Amazon Mechanical Turk</a>, and in January I went out to Utah to do some more fieldwork. And yet, this audio from 2016 was collecting dust on my computer, just waiting to be analyzed. I think I found that it was easier to collect new data than it was to finish processing the old stuff. Consequently, I had collected something like 150 hours of audio over two years for various projects—and less than 5% of it was processed.</p>
+<p>When I finally defended my prospectus in April, it occurred to me that if I wanted to graduate in 2019, I needed to have data to write about. And the only way to do that was to transcribe that darn audio. So, that was what finally got me to crack down and work at this every day. Even then, it took three months of grinding to finally finish. But I’m so glad it’s done.</p>
+</section>
+<section id="a-rite-of-passage" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="a-rite-of-passage">A rite of passage</h2>
+<p>I mentioned as a part of my celebratory tweetstorm that doing this kind of work might be something like a rite of passage for sociolinguists.</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+I think putting this much work into a corpus is some sort of rite of passage for sociolinguists. I'm glad I went through it, but ugh, never again.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096905564835842?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="page-columns page-full"><p>It seems like a lot of sociolinguists do research on their own corpora, and while the flashy part of statistical analysis, data visualization, or even fieldwork stories are what you see and hear about the most, a significant portion of what we do is the behind-the-scenes tedium on the computer. My university doesn’t have a huge group of sociolinguists and there’s no sort of shared corpus that we can use. So if I want to study contemporary spoken English, I was going to have to collect the audio myself. I think would have done fieldwork myself anyway though. I think it was always something I’ve wanted to do. Plus, there’s this:</p><div class="no-row-height column-margin column-container"><span class="">Yes, the Linguistic Atlas Project has been here since the 80s, but very few of those recordings are transcribed, so they’re of little use in their current state.</span></div></div>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Also, shout out to <a href="https://twitter.com/DrDialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="DrDialect">@DrDialect</span></a>, who I heard say at a Q&amp;A at SECOL in 2015 something like, "the best career move you can do is to create a corpus: you'll be able to analyze it forever." Some of the best advice I've ever heard.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096909041885185?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>And from the looks of it, this corpus that I now have is definitely going to last me a while, that’s for sure!</p>
+</section>
+<section id="what-software-did-i-use" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-software-did-i-use">What software did I use?</h2>
+<p>For transcription, I think there are two ways of doing it. The first method is to find some software that will automatically transcribe it for you, and since it’s not going to be perfect, then spend the time to correct that transcription. I considered doing that, specifically using the transcriber in <a href="http://darla.dartmouth.edu">DARLA</a>. But I found that it took much longer to correct the transcriptions that it would have taken me to just do it by hand. However, DARLA specifically says on their website that their automatic transcriber is not great, so my rate might have been better if I had used a different transcriber. DARLA was what came to mind because it’s easy to use and free. You might have better luck if you use a more sophisticated transcriber.</p>
+<p>The other option therefore was to just do it myself. As far as I can tell, there are two or three main pieces of software you can use. One is <a href="http://trans.sourceforge.net/en/presentation.php">Transcriber</a>. This is one that we use in the Linguistic Atlas Office when we have our undergrads do transcriptions. It’s free and easy to use. One concern is that it’s a little bit tricky to get its output to a TextGrid format. The other concern was that I couldn’t see the spectrogram to accurately place boundaries. Another option is <a href="http://www.mpi.nl/corpus/html/elan/index.html">ELAN</a>, which I hear is fantastic. The only reason I didn’t use it was frankly because I didn’t want to take the time to learn a new program.</p>
+<p>What I settled on was just plain ol’ Praat. It’s software that I’m comfortable with and I’ve used a lot. I can zoom in as close as I want so I can easy skip over stutters or other noise. Plus, I create a TextGrid right there, which is the format I’m most comfortable working with for scripting purposes. The downside to Praat is that I ended up having to use my trackpad on my laptop more than I wanted to (for scrolling side to side and placing boundaries). I wanted to avoid using my mouse as much as possible because I feel like it hurts my wrist more and I don’t want carpel tunnel.</p>
+<div class="page-columns page-full"><p>Based on my own experience, what I would recommend <em>not</em> doing is hiring out the transcriptions unless you’re not able to do it yourself. For one, I’m cheap, and didn’t want to pay however much per minute of audio. But more importantly, going through my audio a second time gave me a chance to pick up on things that I didn’t catch or forgot about when I was doing the interviews in person. Things like interesting linguistic phenomena  or passages I may want to quote later. Using the Praat textgrids, I just added a separate tier for my own annotations and could make whatever notes I wanted to about a particular section of audio. I learned so much about my people going through it a second time, and I don’t think I would have gotten those intuitions about their speech if I had hired it out. Of course, if you need the transcriptions sooner than you can process them or if you’re not able to do the work yourself, then of course hiring it out might be the better option.</p><div class="no-row-height column-margin column-container"><span class="">I got a token of <em>liketa</em> and two people said <em>I and John</em> instead of <em>John and I</em> which was super cool. I don’t remember those specifically and would never have caught them if I didn’t do the transcriptions myself.</span></div></div>
+</section>
+<section id="the-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="the-next-steps">The next steps</h2>
+<p>So while finishing those transcriptions was a monster step, unfortunately the work wasn’t done.</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Now I've just got to do forced alignment (which includes spell checking) and extract some formants and I'll be ready to go!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096904885366784?ref_src=twsrc%5Etfw">July 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<section id="forced-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="forced-alignment">Forced alignment</h3>
+<p>I’ve been using DARLA for the past few years, but I had some trouble getting the long audio files to process using their web interface. So this gave me a great opportunity to download and install the <a href="https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner">Montreal Forced Aligner</a> on my own computer. Having this in-house provides lots of benefits like processing the files in bulk and quicker turnaround time since I don’t have to upload the files.</p>
+<p>The bad news was that I had to do the spell-checking myself. I completely took for granted that DARLA can handle out-of-dictionary words by guessing their pronunciation. So since the Montreal Forced Aligner doesn’t do that, I had to check the words myself. When you run it, it’ll produce a list of out-of-dictionary words for you, so all you need to do is add them to the dictionary or correct the spelling in Praat. It seems simple, but it takes a long time. I had at least 20 or 30 typos or new words in every interview, so I probably spent 15 or 20 hours just doing the spell-checking (I think I added over 1000 new dictionary entries too!).</p>
+<p>Luckily, all this was made easier with the help of some custom Praat scripts I wrote for this project. One does pre-processing to get the files ready for forced-alignment. It splits the audio and textgrid into two halves (it was easier to process that way), it moves these files into a specific directory, and renames the tiers so that they’re consistent. As a bonus, it spits out the command that I need to use to run the aligner on those specific files, so all I need to do is copy and paste that into my terminal and it’ll go on its merry way. This was super helpful because typing path names over and over got old real quick.</p>
+<p>Once the spell-checking was done and the files were aligned, I had a post-processing script that I used. This one rejoins the two halves into one TextGrid again, adds the new phoneme and word tier to the top of the main TextGrid (so I’ve got the phoneme, word, sentence, and other tiers all in one file), and saves this in that speaker’s directory on my hard drive. Super handy.</p>
+<p>Now ideally, I would go back and hand-check all the boundaries. Maybe one day I’ll have the time to do that, but oh my goodness that’s not going to happen any time soon.</p>
+</section>
+<section id="formant-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="formant-extraction">Formant extraction</h3>
+<p>So keep in mind that all this work, the nearly 200 hours I’ve put into transcribing and force aligning, was mostly just so I could have Praat know where the vowels were in the audio.</p>
+<p>So, I modified a couple scripts I wrote to do formant extraction. Of course, I’ve mostly worked with shorter passages of audio (word lists and reading passages and stuff), so what I didn’t anticipate was that Praat kind of has trouble working with audio longer than about 30 minutes. So I had to modify the script so that it splits the audio into roughly five minute chunks, processes each one individually, and then stitches all the output back together.</p>
+<p>And of course, the formant measurements ideally should be handchecked. But again, I just spent way too much time transcribing, so I’m not about to spend even more time hand-checking these. Not yet at least.</p>
+</section>
+</section>
+<section id="the-end-result-a-giant-spreadsheet" class="level2">
+<h2 class="anchored" data-anchor-id="the-end-result-a-giant-spreadsheet">The end result: A giant spreadsheet!</h2>
+<p>So what were the main steps here?</p>
+<ol type="1">
+<li><p>Collect audio.</p></li>
+<li><p>Transcription.</p></li>
+<li><p>Forced alignment.</p></li>
+<li><p>Formant extraction.</p></li>
+</ol>
+<p>What do I have now? A giant spreadsheet. All this work has been so that I can get a big ol’ spreadsheet that I can then analyze in R. That’s where I am right now. I’ve got the finalized dataset that I’ll use for my dissertation, so I don’t even need to open up Praat much anymore, or even plug in my external hard drive. Almost all my work is in R now. But it is quite satisfying to have this monster spreadsheet of my own data.</p>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>Transcribing (and the subsequent processing of) a sociolinguistic corpus takes a ton of time, patience, diligence, and determination. My eyesight may have suffered a little bit from staring at the computer, my headphones are a little worn down, my keyboard has had to endure well over a million keystrokes, and my wrists and fingers sure took a hit. But, y’know what? It’s a <em>lot</em> better than it used to be. At least we have tools like forced-alignment, FAVE, and Praat to make our lives easier. But in the end, it is really awesome to have completed this corpus.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

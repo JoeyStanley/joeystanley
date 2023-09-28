@@ -1,0 +1,92 @@
+---
+layout: post
+title:  "Transcribing a Sociolinguistic Corpus"
+date:   2018-08-06 15:10:00 -0400
+categories:
+  - Dissertation
+  - Methods
+  - Research
+---
+
+In the summer of 2016, I went to Cowlitz County, Washington to do traditional sociolinguistic interviews. I talked to 54 people and gathered my first audio corpus. It took a lot of preparation beforehand and it took a lot of time in the field. What I could not have expected was the amount of time it would take to transcribe that corpus. Now, two years later, I have finally finished transcriptions. 
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I&#39;m DONE! 54 speakers, 46½ hours of audio, 172 hours of work (averaging about 1h50m over like 92 days), producing an audio corpus of 327,000 words! <a href="https://twitter.com/hashtag/amNOLONGERtranscribing?src=hash&amp;ref_src=twsrc%5Etfw">#amNOLONGERtranscribing</a></p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1017096903878639621?ref_src=twsrc%5Etfw">July 11, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+This come after a lot of work. Since others might be going through the same thing, I thought I'd share some thoughts on transcribing a sociolinguistic corpus.
+
+## Finding the motivation
+
+I think my original goal was to have it all transcribed by the end of 2016. So I gave myself about five months. But then I did the first hour of audio and it took me about 5 hours. Yikes! [I don't know what I expected---of course it's going to take a long time to transcribe!]{.aside} At that rate, I estimated it would take about 200 hours of work to finish. I think staring down the barrel of any 200 hour task is a motivation killer. So I put it off. 
+
+I wrote a [blog post](/blog/lots-of-transcribing) nine months later when I had my first wake up call that I needed to get transcriptions done. I talked about some of the struggles I had getting started but mostly made excuses for why I hadn't done much. And I got a lot of work done over the next month or so and made it about a quarter of the way through. I remember though just getting burned out after just 10 or 15 minutes of work and would call it a day after half an hour. At that rate, yeah, it'll take forever. 
+
+So I put it off for an entire year. In the meantime I was getting a lot done---mostly to distract me from the task I inevitably have to do before graduating. For some reason this distraction was in the form of collecting more audio. I got some [laboratory audio](/blog/laboratory-research), and gathered another corpus using [Amazon Mechanical Turk](/blog/using-mturk), and in January I went out to Utah to do some more fieldwork. And yet, this audio from 2016 was collecting dust on my computer, just waiting to be analyzed. I think I found that it was easier to collect new data than it was to finish processing the old stuff. Consequently, I had collected something like 150 hours of audio over two years for various projects---and less than 5% of it was processed.
+
+When I finally defended my prospectus in April, it occurred to me that if I wanted to graduate in 2019, I needed to have data to write about. And the only way to do that was to transcribe that darn audio. So, that was what finally got me to crack down and work at this every day. Even then, it took three months of grinding to finally finish. But I'm so glad it's done.
+
+## A rite of passage
+
+I mentioned as a part of my celebratory tweetstorm that doing this kind of work might be something like a rite of passage for sociolinguists. 
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">I think putting this much work into a corpus is some sort of rite of passage for sociolinguists. I&#39;m glad I went through it, but ugh, never again.</p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1017096905564835842?ref_src=twsrc%5Etfw">July 11, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+It seems like a lot of sociolinguists do research on their own corpora, and while the flashy part of statistical analysis, data visualization, or even fieldwork stories are what you see and hear about the most, a significant portion of what we do is the behind-the-scenes tedium on the computer. My university doesn't have a huge group of sociolinguists and there's no sort of shared corpus that we can use.[Yes, the Linguistic Atlas Project has been here since the 80s, but very few of those recordings are transcribed, so they're of little use in their current state.]{.aside} So if I want to study contemporary spoken English, I was going to have to collect the audio myself. I think would have done fieldwork myself anyway though. I think it was always something I've wanted to do. Plus, there's this:
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Also, shout out to <a href="https://twitter.com/DrDialect?ref_src=twsrc%5Etfw">@DrDialect</a>, who I heard say at a Q&amp;A at SECOL in 2015 something like, &quot;the best career move you can do is to create a corpus: you&#39;ll be able to analyze it forever.&quot; Some of the best advice I&#39;ve ever heard.</p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1017096909041885185?ref_src=twsrc%5Etfw">July 11, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+And from the looks of it, this corpus that I now have is definitely going to last me a while, that's for sure!
+
+## What software did I use?
+
+For transcription, I think there are two ways of doing it. The first method is to find some software that will automatically transcribe it for you, and since it's not going to be perfect, then spend the time to correct that transcription. I considered doing that, specifically using the transcriber in [DARLA](http://darla.dartmouth.edu). But I found that it took much longer to correct the transcriptions that it would have taken me to just do it by hand. However, DARLA specifically says on their website that their automatic transcriber is not great, so my rate might have been better if I had used a different transcriber. DARLA was what came to mind because it's easy to use and free. You might have better luck if you use a more sophisticated transcriber.
+
+The other option therefore was to just do it myself. As far as I can tell, there are two or three main pieces of software you can use. One is [Transcriber](http://trans.sourceforge.net/en/presentation.php). This is one that we use in the Linguistic Atlas Office when we have our undergrads do transcriptions. It's free and easy to use. One concern is that it's a little bit tricky to get its output to a TextGrid format. The other concern was that I couldn't see the spectrogram to accurately place boundaries. Another option is [ELAN](http://www.mpi.nl/corpus/html/elan/index.html), which I hear is fantastic. The only reason I didn't use it was frankly because I didn't want to take the time to learn a new program. 
+
+What I settled on was just plain ol' Praat. It's software that I'm comfortable with and I've used a lot. I can zoom in as close as I want so I can easy skip over stutters or other noise. Plus, I create a TextGrid right there, which is the format I'm most comfortable working with for scripting purposes. The downside to Praat is that I ended up having to use my trackpad on my laptop more than I wanted to (for scrolling side to side and placing boundaries). I wanted to avoid using my mouse as much as possible because I feel like it hurts my wrist more and I don't want carpel tunnel. 
+
+
+Based on my own experience, what I would recommend *not* doing is hiring out the transcriptions unless you're not able to do it yourself. For one, I'm cheap, and didn't want to pay however much per minute of audio. But more importantly, going through my audio a second time gave me a chance to pick up on things that I didn't catch or forgot about when I was doing the interviews in person. Things like interesting linguistic phenomena [I got a token of *liketa* and two people said *I and John* instead of *John and I* which was super cool. I don't remember those specifically and would never have caught them if I didn't do the transcriptions myself.]{.aside} or passages I may want to quote later. Using the Praat textgrids, I just added a separate tier for my own annotations and could make whatever notes I wanted to about a particular section of audio. I learned so much about my people going through it a second time, and I don't think I would have gotten those intuitions about their speech if I had hired it out. Of course, if you need the transcriptions sooner than you can process them or if you're not able to do the work yourself, then of course hiring it out might be the better option.
+
+## The next steps
+
+So while finishing those transcriptions was a monster step, unfortunately the work wasn't done. 
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Now I&#39;ve just got to do forced alignment (which includes spell checking) and extract some formants and I&#39;ll be ready to go!</p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1017096904885366784?ref_src=twsrc%5Etfw">July 11, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+### Forced alignment
+
+I've been using DARLA for the past few years, but I had some trouble getting the long audio files to process using their web interface. So this gave me a great opportunity to download and install the [Montreal Forced Aligner](https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner) on my own computer. Having this in-house provides lots of benefits like processing the files in bulk and quicker turnaround time since I don't have to upload the files. 
+
+The bad news was that I had to do the spell-checking myself. I completely took for granted that DARLA can handle out-of-dictionary words by guessing their pronunciation. So since the Montreal Forced Aligner doesn't do that, I had to check the words myself. When you run it, it'll produce a list of out-of-dictionary words for you, so all you need to do is add them to the dictionary or correct the spelling in Praat. It seems simple, but it takes a long time. I had at least 20 or 30 typos or new words in every interview, so I probably spent 15 or 20 hours just doing the spell-checking (I think I added over 1000 new dictionary entries too!). 
+
+Luckily, all this was made easier with the help of some custom Praat scripts I wrote for this project. One does pre-processing to get the files ready for forced-alignment. It splits the audio and textgrid into two halves (it was easier to process that way), it moves these files into a specific directory, and renames the tiers so that they're consistent. As a bonus, it spits out the command that I need to use to run the aligner on those specific files, so all I need to do is copy and paste that into my terminal and it'll go on its merry way. This was super helpful because typing path names over and over got old real quick. 
+
+Once the spell-checking was done and the files were aligned, I had a post-processing script that I used. This one rejoins the two halves into one TextGrid again, adds the new phoneme and word tier to the top of the main TextGrid (so I've got the phoneme, word, sentence, and other tiers all in one file), and saves this in that speaker's directory on my hard drive. Super handy.
+
+Now ideally, I would go back and hand-check all the boundaries. Maybe one day I'll have the time to do that, but oh my goodness that's not going to happen any time soon.
+
+### Formant extraction
+
+So keep in mind that all this work, the nearly 200 hours I've put into transcribing and force aligning, was mostly just so I could have Praat know where the vowels were in the audio.
+
+So, I modified a couple scripts I wrote to do formant extraction. Of course, I've mostly worked with shorter passages of audio (word lists and reading passages and stuff), so what I didn't anticipate was that Praat kind of has trouble working with audio longer than about 30 minutes. So I had to modify the script so that it splits the audio into roughly five minute chunks, processes each one individually, and then stitches all the output back together. 
+
+And of course, the formant measurements ideally should be handchecked. But again, I just spent way too much time transcribing, so I'm not about to spend even more time hand-checking these. Not yet at least.
+
+## The end result: A giant spreadsheet!
+
+So what were the main steps here?
+
+1. Collect audio.
+
+1. Transcription.
+
+1. Forced alignment.
+
+1. Formant extraction.
+
+What do I have now? A giant spreadsheet. All this work has been so that I can get a big ol' spreadsheet that I can then analyze in R. That's where I am right now. I've got the finalized dataset that I'll use for my dissertation, so I don't even need to open up Praat much anymore, or even plug in my external hard drive. Almost all my work is in R now. But it is quite satisfying to have this monster spreadsheet of my own data. 
+
+## Conclusions
+
+Transcribing (and the subsequent processing of) a sociolinguistic corpus takes a ton of time, patience, diligence, and determination. My eyesight may have suffered a little bit from staring at the computer, my headphones are a little worn down, my keyboard has had to endure well over a million keystrokes, and my wrists and fingers sure took a hit. But, y'know what? It's a *lot* better than it used to be. At least we have tools like forced-alignment, FAVE, and Praat to make our lives easier. But in the end, it is really awesome to have completed this corpus.
