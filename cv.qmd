@@ -1,6 +1,10 @@
 ---
 layout: cv
 title: Curriculum Vitae
+date-modified: 5/8/23
+format:
+  html:
+    toc: true
 ---
 
 <p id="updated">Updated May 8, 2023. Download PDF <a href="/downloads/CV.pdf" target="_blank" title="open a pdf of my CV in a new window">here</a>.</p>
@@ -583,10 +587,6 @@ Guest host on *Faith Promoting Rumors* podcast. “Brother Joseph,” April 10, 
 <br/>
 
 
--------------
--------------
-
-
 
 ## Teaching
 
@@ -625,8 +625,6 @@ Basic Humanities Computing Skills (LINGC 200). Teaching Assistant for Monte Shel
 <br/>
 <br/>
 
--------------
--------------
 
 <br/>
 
@@ -663,16 +661,12 @@ Graduate Thesis Reader for Shawn C. Foster, UGA Center for Undergraduate Researc
 
 <br/>
 <br/>
-
--------------
--------------
-
 <br/>
 
 
 ## Funding and Awards
 
-## Grants
+### Grants
 
 BYU College of Humanities Research Funding ($2,500). "Idaho English." 
 
@@ -736,10 +730,6 @@ Assistant for Dr. Peggy Renwick in developing materials and establishing an onli
 Programmer for the [Maxwell Institute for Religious Scholarship](http://mi.byu.edu). 2013. 
 
 <br />
-
--------------
--------------
-
 <br />
 
 ## Professional Service
@@ -833,10 +823,6 @@ SouthEastern Conference on Linguistics ([SECOL](http://secol.org))
 Society for the Study of the Indigenous Languages of the Americas ([SSILA](http://www.ssila.org))
 
 <br/>
-
--------------
--------------
-
 <br/>
 
 

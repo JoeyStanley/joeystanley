@@ -1,10 +1,10 @@
 ---
 layout: resources
 title: Resources
-toc: false
+format:
+  html:
+    toc: true
 ---
-
-# Resources
 
 On this page you'll find links to all sorts of stuff that I have found useful, including tutorials, books, and general reading on R and Praat, statistics, software, corpora, design, and other stuff.
 

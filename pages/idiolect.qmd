@@ -4,11 +4,12 @@ author: Joey Stanley
 title: My Idiolect
 date: "01/16/23"
 date-modified: last-modified
+format:
+  html:
+    toc: true
 aliases:
   - /idiolect
 ---
-
-# My Idiolect
 
 Here is a never-complete but growing description of my idiolect. I'll add to it whenever I think of or discover new things about the way I speak English.
 

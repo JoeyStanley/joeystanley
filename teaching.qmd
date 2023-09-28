@@ -1,9 +1,10 @@
 ---
 layout: aside
 title: Teaching
+format:
+  html:
+    toc: true
 ---
-
-# Teaching
 
 I am currently teaching… 
 
