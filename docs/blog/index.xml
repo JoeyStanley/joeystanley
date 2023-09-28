@@ -276,6 +276,61 @@ Now I've just got to do forced alignment (which includes spell checking) and ext
   <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
 </item>
 <item>
+  <title>General Update</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/general-update/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Because I know I have such a <em>massive</em> following, I thought I’d give an update on my research since it’s been a few months since the last time I wrote.</p>
+<section id="publications" class="level1 page-columns page-full">
+<h1>Publications</h1>
+<p>At the Linguistic Atlas Office, we’re working hard on publishing some of our preliminary results. Currently, I’m on two papers submitted to <em>Proceedings of Meetings on Acoustics</em> that are in various stages of reviewing. I’m excited to see these come out.</p>
+<div class="page-columns page-full"><p>I’m also working on some of my own research. I’ve got three manuscripts going right now: one on near-mergers in Washington, one on language change within a speaker’s lifespan, and another on Amazon Mechanical Turk. I still haven’t submitted a paper to an actual journal so mentally this is a big hurdle for me to get over.</p><div class="no-row-height column-margin column-container"><span class="">Edit (September 2023): Lol, none of these manuscripts were even finished.</span></div></div>
+</section>
+<section id="conferences" class="level1">
+<h1>Conferences</h1>
+<p>I’m happy to say I’ve been accepted into two conferences that’ll happen over the next few months. The first is a paper called <a href="../../downloads/71007-LCUGA4-UT-slides.pdf">“Consonantal variation in Utah English: What el[t]se is happening[k]?”</a> that I’m doing with Kyle Vanderniet, a fellow grad student here at UGA. Using the MTurk data I collected recently, we focused on just the 14 speakers from Utah and gathered a lot of really interesting tokens of non-standard variants. I’ve also been accepted to present a poster at NWAV on some of my findings in Washington.</p>
+<p>I’m also still waiting to hear back from three other conferences: <a href="https://pubs.aip.org/asa/jasa/article/142/4_Supplement/2540/703907/Vowel-mergers-in-the-American-South">ASA</a> and <a href="../../blog/ads2018.qmd">two at ADS</a>.</p>
+</section>
+<section id="teaching" class="level1">
+<h1>Teaching</h1>
+<p>So I’m teaching for the first time this semester. Because our normal phonetician will be gone, I was asked to teach Phonetics &amp; Phonology. This is pretty cool because normally grad students at UGA don’t get to teach that class. I’ve really enjoyed it so far! I’ve got 29 students who are all linguistics majors or minors. It takes quite a bit of time, but I’m having a great time.</p>
+</section>
+<section id="r-series" class="level1">
+<h1>R Series</h1>
+<p>Fortunately, my funding through the DigiLab at the UGA Main Library continues this school year. I’m really excited be giving <a href="../../pages/r-workshops.html">a whole series of workshops on R</a>. Next week I’ll start with just a basic introduction to R. Next month I’ll do a day on <a href="http://ggplot2.tidyverse.org"><code>ggplot2</code></a> and in November will be one on the rest of the <a href="http://www.tidyverse.org"><code>tidyverse</code></a>. I plan on producing some detailed handouts that will be available on this website as a product of these workshops. I’m really looking forward to them.</p>
+</section>
+<section id="grant" class="level1">
+<h1>Grant</h1>
+<p>I applied for a small grant a week or so ago that I’m waiting to hear back about. If I get it, it’ll pay for some fieldwork out West I’d like to do. Stay tuned. (Update: I got the grant.)</p>
+</section>
+<section id="dissertation" class="level1 page-columns page-full">
+<h1>Dissertation</h1>
+<p>Ah, the dissertation. This <em>should</em> be my primary task right now, and I’m putting as much time as I can into it. I originally wanted to do something on my Washington data. I could do a purely descriptive work and it would make for a fine dissertation. I’ve read through some of those and they’re perfectly good.</p>
+<p>The problem with that is if I would do that, it would be of interest only to people interested in Washington English. A very small group of dialectologists. Not that my ultimate goal is to boost the number of citations, but I feel like a dissertation, which is supposed to make a real contribution to the field, should be more than that.</p>
+<p>I’ve read a couple other dissertations that are heavily based in dialectology and sociolinguistic fieldwork, but they make a bigger statement. They make some advancement on the study of language change, <em>using</em> the data they’ve collected as an <em>illustration</em>. For example, Ruth Herold’s (1990) UPenn dissertation is based on the <em>cot-caught merger</em> parts of Pennsylvania. Instead of simply describing the data, she makes some very cool statements about how language change works, especially in relation to mergers and generational changes, using the data she collected as evidence. The data is supporting the claim rather than the claim itself.</p>
+<div class="page-columns page-full"><p>I’ve got around 180 hours of my own data right now, gathered from lots of sources. All of it has to do with mergers in some way. I feel like I’ve got a dissertation bubbling inside of me relating to vowel mergers. I can use my data as support, illustration, and evidence for some claim that I’d like to make.</p><div class="no-row-height column-margin column-container"><span class="">Update: I stuck with the Washington data for my dissertation, but Betsy Sneller and I did eventually write <a href="https://doi.org/10.1121/10.0016757">something about mergers</a> using the Washington data, so I guess that scratched that itch.</span></div></div>
+<p>So I’m working on my prospectus right now and will be pitching it to my committee this semester. I’ll keep you informed.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>West</category>
+  <category>Utah</category>
+  <category>MTurk</category>
+  <category>Research</category>
+  <category>Conferences</category>
+  <category>Linguistic Atlas</category>
+  <category>Pacific Northwest</category>
+  <category>Dissertation</category>
+  <guid>https://new.joeystanley.com/blog/general-update/index.html</guid>
+  <pubDate>Tue, 05 Sep 2017 14:30:00 GMT</pubDate>
+</item>
+<item>
   <title>Using MTurk</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/using-mturk/index.html</link>
@@ -1178,28 +1233,6 @@ Tip
   <category>Twitter</category>
   <guid>https://new.joeystanley.com/blog/brand-yourself/index.html</guid>
   <pubDate>Sat, 12 Nov 2016 00:23:00 GMT</pubDate>
-</item>
-<item>
-  <title>DiVar</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/divar/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m excited to announce I’ve been accepted to present at the first iteration of the Diversity and Variation in Language Conference (<a href="http://linguistics.emory.edu/home/conferences/divar1/index.html">DiVar1</a>), which will be held at Emory University in Atlanta February 10–11. I’m excited to hear that many of my colleagues at UGA have also been accepted, so it should be a fun day for us.</p>
-<p>In a nutshell I’m showing that in word lists people pronounce <em>pull</em> and <em>pole</em> the same but <em>Mary</em> and <em>merry</em> different, but in a minimal pair task, <em>pull</em> and <em>pole</em> are separate while <em>Mary</em> and <em>merry</em> are the same. I spent the summer in Washington state, and I’m only looking at a little less than 3% of everything I recorded for this conference.</p>
-<p>I’ll post a summary of the presentation and the slides once the conference is over. Stay tuned.</p>
-
-
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Pacific Northwest</category>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/divar/index.html</guid>
-  <pubDate>Fri, 04 Nov 2016 00:08:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
