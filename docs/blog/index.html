@@ -72,7 +72,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -190,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(25)</span></div><div class="category" data-category="CSS">CSS <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Conferences">Conferences <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Data Viz">Data Viz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Dissertation">Dissertation <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Github">Github <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Guarani">Guarani <span class="quarto-category-count">(1)</span></div><div class="category" data-category="How-to Guides">How-to Guides <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Linguistic Atlas">Linguistic Atlas <span class="quarto-category-count">(2)</span></div><div class="category" data-category="MTurk">MTurk <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Meta">Meta <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Methods">Methods <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Pacific Northwest">Pacific Northwest <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Presentations">Presentations <span class="quarto-category-count">(5)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Research">Research <span class="quarto-category-count">(13)</span></div><div class="category" data-category="Side Projects">Side Projects <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Skills">Skills <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Statistics">Statistics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Twitter">Twitter <span class="quarto-category-count">(3)</span></div><div class="category" data-category="West">West <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(26)</span></div><div class="category" data-category="CSS">CSS <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Conferences">Conferences <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Data Viz">Data Viz <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Dissertation">Dissertation <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Github">Github <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Guarani">Guarani <span class="quarto-category-count">(1)</span></div><div class="category" data-category="How-to Guides">How-to Guides <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Linguistic Atlas">Linguistic Atlas <span class="quarto-category-count">(2)</span></div><div class="category" data-category="MTurk">MTurk <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Meta">Meta <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Methods">Methods <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Pacific Northwest">Pacific Northwest <span class="quarto-category-count">(8)</span></div><div class="category" data-category="Presentations">Presentations <span class="quarto-category-count">(5)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Research">Research <span class="quarto-category-count">(14)</span></div><div class="category" data-category="Side Projects">Side Projects <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Skills">Skills <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Statistics">Statistics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Twitter">Twitter <span class="quarto-category-count">(3)</span></div><div class="category" data-category="West">West <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -348,7 +349,42 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="Research,Dissertation" data-listing-date-sort="1493908200000" data-listing-file-modified-sort="1695879211039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="4" data-categories="Research" data-listing-date-sort="1495074600000" data-listing-file-modified-sort="1695879915349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="../blog/laboratory-research/index.html"> <p class="card-img-top"><img src="laboratory-research/businesscard.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="../blog/laboratory-research/index.html">
+<h3 class="no-anchor listing-title">
+Laboratory Research
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Research'); return false;">
+Research
+</div>
+</div>
+<a href="../blog/laboratory-research/index.html">
+<div class="listing-description">
+Recently, I’ve presented on words like <i>pool</i>, <i>pull</i>, and <i>pole</i> and how the difference between them can be really hard to describe, both by me and the non-specialist alike. Based on my findings in Washington, I decided I wanted to dig a…
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../blog/laboratory-research/index.html">
+<div class="listing-date">
+May 17, 2017
+</div>
+<div class="listing-author">
+Joey Stanley
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="Research,Dissertation" data-listing-date-sort="1493908200000" data-listing-file-modified-sort="1695879211039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/admission-to-candidacy/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -386,7 +422,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="Pacific Northwest,Research,Dissertation" data-listing-date-sort="1493303400000" data-listing-file-modified-sort="1695879201788" data-listing-date-modified-sort="1531893600000" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="6" data-categories="Pacific Northwest,Research,Dissertation" data-listing-date-sort="1493303400000" data-listing-file-modified-sort="1695879201788" data-listing-date-modified-sort="1531893600000" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="../blog/lots-of-transcribing/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -427,7 +463,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="Pacific Northwest,Research,West,MTurk" data-listing-date-sort="1492785000000" data-listing-file-modified-sort="1695831120124" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="7" data-categories="Pacific Northwest,Research,West,MTurk" data-listing-date-sort="1492785000000" data-listing-file-modified-sort="1695831120124" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/a-survey-of-western-american-english-using-mturk/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -471,7 +507,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Side Projects" data-listing-date-sort="1491853320000" data-listing-file-modified-sort="1695790109376" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="8" data-categories="Side Projects" data-listing-date-sort="1491853320000" data-listing-file-modified-sort="1695790109376" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="../blog/brother-joseph/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -506,7 +542,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="Pacific Northwest,Presentations,Research" data-listing-date-sort="1491664500000" data-listing-file-modified-sort="1695789629661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="9" data-categories="Pacific Northwest,Presentations,Research" data-listing-date-sort="1491664500000" data-listing-file-modified-sort="1695789629661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="../blog/mount-st-helens-and-vowels/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -547,7 +583,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="Conferences,Linguistic Atlas,Presentations,Research,Skills" data-listing-date-sort="1489101120000" data-listing-file-modified-sort="1695789350467" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="10" data-categories="Conferences,Linguistic Atlas,Presentations,Research,Skills" data-listing-date-sort="1489101120000" data-listing-file-modified-sort="1695789350467" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/secol2017/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -594,7 +630,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="Statistics,R,Skills" data-listing-date-sort="1488323520000" data-listing-file-modified-sort="1695789082918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="11" data-categories="Statistics,R,Skills" data-listing-date-sort="1488323520000" data-listing-file-modified-sort="1695789082918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/updated_mvnorm.etest-function/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -635,7 +671,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="CSS,Skills,Meta,Github,How-to Guides" data-listing-date-sort="1488144540000" data-listing-file-modified-sort="1695790662781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="12" data-categories="CSS,Skills,Meta,Github,How-to Guides" data-listing-date-sort="1488144540000" data-listing-file-modified-sort="1695790662781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="../blog/website-version-2/index.html"> <p class="card-img-top"><img src="website-version-2/site_old_home.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -682,7 +718,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="How-to Guides,Presentations,Skills" data-listing-date-sort="1485562320000" data-listing-file-modified-sort="1695787800006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="quarto-post image-right" data-index="13" data-categories="How-to Guides,Presentations,Skills" data-listing-date-sort="1485562320000" data-listing-file-modified-sort="1695787800006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
 <div class="thumbnail">
 <p><a href="../blog/excel_workshop/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -723,7 +759,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="Conferences,Twitter" data-listing-date-sort="1484352720000" data-listing-file-modified-sort="1695786653553" data-listing-date-modified-sort="1695708000000" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="14" data-categories="Conferences,Twitter" data-listing-date-sort="1484352720000" data-listing-file-modified-sort="1695786653553" data-listing-date-modified-sort="1695708000000" data-listing-reading-time-sort="5">
 <div class="thumbnail">
 <p><a href="../blog/tweeting_LSA2017/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -761,7 +797,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="Pacific Northwest,Conferences,Research" data-listing-date-sort="1484093520000" data-listing-file-modified-sort="1695786579017" data-listing-date-modified-sort="1695708000000" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="15" data-categories="Pacific Northwest,Conferences,Research" data-listing-date-sort="1484093520000" data-listing-file-modified-sort="1695786579017" data-listing-date-modified-sort="1695708000000" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="../blog/lsa2017/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -802,7 +838,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="CSS,Guarani,Side Projects" data-listing-date-sort="1481394060000" data-listing-file-modified-sort="1695790347986" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="8">
+<div class="quarto-post image-right" data-index="16" data-categories="CSS,Guarani,Side Projects" data-listing-date-sort="1481394060000" data-listing-file-modified-sort="1695790347986" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="8">
 <div class="thumbnail">
 <p><a href="../blog/interactive-guarani-dictionary/index.html"> <p class="card-img-top"><img src="interactive-guarani-dictionary/guarani_search.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -843,7 +879,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="CSS,Github,How-to Guides,Meta,Presentations,Twitter" data-listing-date-sort="1478910180000" data-listing-file-modified-sort="1695790201242" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="17" data-categories="CSS,Github,How-to Guides,Meta,Presentations,Twitter" data-listing-date-sort="1478910180000" data-listing-file-modified-sort="1695790201242" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="../blog/brand-yourself/index.html"> <p class="card-img-top"><img src="brand-yourself/academia_email.png"  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -893,7 +929,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="Conferences,Pacific Northwest,Research" data-listing-date-sort="1478218080000" data-listing-file-modified-sort="1695692925530" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="18" data-categories="Conferences,Pacific Northwest,Research" data-listing-date-sort="1478218080000" data-listing-file-modified-sort="1695692925530" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
 <p><a href="../blog/divar/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -934,7 +970,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="CSS,How-to Guides,Meta" data-listing-date-sort="1478040780000" data-listing-file-modified-sort="1695670601820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="19" data-categories="CSS,How-to Guides,Meta" data-listing-date-sort="1478040780000" data-listing-file-modified-sort="1695670601820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/how-i-implemented-the-links-in-this-site/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -975,7 +1011,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="How-to Guides,Methods,Research,Twitter" data-listing-date-sort="1477954800000" data-listing-file-modified-sort="1695790536195" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="20" data-categories="How-to Guides,Methods,Research,Twitter" data-listing-date-sort="1477954800000" data-listing-file-modified-sort="1695790536195" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="5">
 <div class="thumbnail">
 <p><a href="../blog/the-importance-of-twitter/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -1019,7 +1055,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="CSS,Github,How-to Guides,Meta" data-listing-date-sort="1476812040000" data-listing-file-modified-sort="1695790438956" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="21" data-categories="CSS,Github,How-to Guides,Meta" data-listing-date-sort="1476812040000" data-listing-file-modified-sort="1695790438956" data-listing-date-modified-sort="1695621600000" data-listing-reading-time-sort="5">
 <div class="thumbnail">
 <p><a href="../blog/making-a-website-is-fun/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -1063,7 +1099,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="Conferences,Research" data-listing-date-sort="1475861640000" data-listing-file-modified-sort="1695621504029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="22" data-categories="Conferences,Research" data-listing-date-sort="1475861640000" data-listing-file-modified-sort="1695621504029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
 <p><a href="../blog/reviewer-feedback/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -1101,7 +1137,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="Data Viz,Presentations,Skills,Statistics" data-listing-date-sort="1475573460000" data-listing-file-modified-sort="1695563082833" data-listing-date-modified-sort="1475820000000" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="23" data-categories="Data Viz,Presentations,Skills,Statistics" data-listing-date-sort="1475573460000" data-listing-file-modified-sort="1695563082833" data-listing-date-modified-sort="1475820000000" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/jmp/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -1145,7 +1181,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="Linguistic Atlas,Pacific Northwest,Research" data-listing-date-sort="1475266980000" data-listing-file-modified-sort="1695562802219" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="24" data-categories="Linguistic Atlas,Pacific Northwest,Research" data-listing-date-sort="1475266980000" data-listing-file-modified-sort="1695562802219" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
 <p><a href="../blog/linguistic-atlas-of-the-pacific-northwest/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -1186,7 +1222,7 @@ Joey Stanley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="Conferences,Pacific Northwest,Research" data-listing-date-sort="1474316580000" data-listing-file-modified-sort="1695562847116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="25" data-categories="Conferences,Pacific Northwest,Research" data-listing-date-sort="1474316580000" data-listing-file-modified-sort="1695562847116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../blog/ads-meeting/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -1231,6 +1267,9 @@ Joey Stanley
 <div class="listing-no-matching d-none">
 No matching items
 </div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
