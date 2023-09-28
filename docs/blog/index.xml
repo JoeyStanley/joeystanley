@@ -276,6 +276,66 @@ Now I've just got to do forced alignment (which includes spell checking) and ext
   <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
 </item>
 <item>
+  <title>Using MTurk</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/using-mturk/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>A few weeks ago, I <a href="../../blog/a-survey-of-western-american-english-using-mturk">wrote</a> about a grant I was awarded where I’ll use Amazon Mechanical Turk (“MTurk”) to collect data from people all across the West. Today, I did a soft launch of the request and already got recordings from five people!</p>
+<p>After weeks of carefully wrangling my MTurk request, my Qualtrics survey, and my IRB forms, I finally got it all set up. I’ve had a handful of projects get approved by the IRB, but this one was a little different since it was through MTurk, so I was a little unsure how to go about some things. Luckily, our IRB office was having open houses all through the semester, which were <em>very</em> helpful.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Just got IRB approval on my first try. I'm getting better at this! Huh, so going to the <a href="https://twitter.com/UGAHSO"><span class="citation" data-cites="UGAHSO">@UGAHSO</span></a> open houses helps a ton! Who'da thunk?
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/864932387712630784">May 17, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I decided to do a soft release first. $2500 is a lot of money to just throw into a task all at once and I wanted to make sure things were working out right. So I put in enough for five people do to the task. Within the hour I was getting data sent to me! It was crazy!</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+With MTurk, I'm literally getting data emailed to me throughout the day. Pretty exciting.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/865311077491462144">May 18, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I got all five in one day with no problem. I’m glad I did the soft release though because there were a couple small snafus that I had to fix. For example, I underestimated how much time it would take people to finish the task, so I’ll raise the amount they’re compensated: I can afford fewer workers that way, but at least I pay them an honest amount.</p>
+<p>I’ll spend the next few days making absolutely certain that the task I want them to do is what’s right for this project. But at some point, I’ll pull the trigger and let’er rip. From that point on, all I need to do is approve people’s work (to make sure they get paid) and then just enjoy the hours and hours of recordings showing up in my inbox. What a way to collect data!</p>
+<section id="may-22" class="level2">
+<h2 class="anchored" data-anchor-id="may-22">May 22</h2>
+<p>So this happened:</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Thank you, MTurker, for pointing out that my consent form says the software I ask you download "will be harmful to your computer." <a href="https://twitter.com/hashtag/Typo?src=hash">#Typo</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/866703105798410240">May 22, 2017</a>
+</blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="june-9" class="level2">
+<h2 class="anchored" data-anchor-id="june-9">June 9</h2>
+<p>Okay, so several weeks have passed, and the data collection phase is drawing to a close. In just a couple of weeks, I was able to get data from almost 200 people. I had some major time constraints on how I could use my money, so I had to find ways to use it quicker. I ended up creating an entirely new task, similar to the first one, with a whole new batch of sentences and words for people to read. A large portion of my participants returned to do the second part, meaning I have around 30 minutes of audio from almost 100 people.</p>
+<p>This is an incredible dataset I’ve collected. I don’t know how much audio I have total yet, but it’s well over 50 hours. That’s pretty good for just three weeks.</p>
+<p>However, I will be the first to say that it was a rough three weeks. It seems like every hour I was getting data emailed to me, and several times a day I had to sit and catalogue the recordings and speaker metadata, while managing the MTurk tasks. Most of the time, it was relatively straightforward, but some participants needed a little extra attention because of technical difficulties, glitches in the system, or complaints here and there. Luckily, I did this when I wasn’t in classes, because otherwise it would have been impossible.</p>
+</section>
+<section id="june-20" class="level2">
+<h2 class="anchored" data-anchor-id="june-20">June 20</h2>
+<p>At last, my data collection has drawn to a close. I ended up with about 212 speakers and 84 hours of data. Not bad. Now comes the daunting task of processing all of this. For every person, if I just want to do a small task that only takes a minute, it’ll take over 3 hours to do it for all speakers! This will take a <em>very</em> long time for me to get through, but from the 2% that I’ve looked at so far, it’s going to be very fruitful corpus.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>West</category>
+  <category>Pacific Northwest</category>
+  <category>MTurk</category>
+  <guid>https://new.joeystanley.com/blog/using-mturk/index.html</guid>
+  <pubDate>Thu, 18 May 2017 14:30:00 GMT</pubDate>
+</item>
+<item>
   <title>Laboratory Research</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/laboratory-research/index.html</link>
@@ -1140,38 +1200,6 @@ Tip
   <category>Research</category>
   <guid>https://new.joeystanley.com/blog/divar/index.html</guid>
   <pubDate>Fri, 04 Nov 2016 00:08:00 GMT</pubDate>
-</item>
-<item>
-  <title>How I Implemented the Links in this Site</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/how-i-implemented-the-links-in-this-site/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>A while ago I stumbled across <a href="http://practicaltypography.com">Butterick’s Practical Typography</a>. I’ve never been <em>that</em> into typography, but I do make sure my documents look good. I’ve yet to implement good typography into this website, but I did find a neat trick that I was able to pull off.</p>
-<p>Hyperlinks traditionally are in blue and underlined. It’s been the standard for so long now that we’ve gotten used to it and don’t notice how bad it looks. In Butterick’s book though he has linked text the same color and style as the rest of the page, but there’s a little red circle after it, as if it was a link to a footnote or something. It’s a pretty clever way to soften the look, but still get the point across that that particular text is a link.</p>
-<p>I like to write stuff with links everywhere. I figure it might save people a google search if I just do it for them. On my CV, I link readers to the PDF and other documents, my co-authors’ pages, and other pages that might be useful. The result though makes it look like Wikipedia, unless I can find a way to soften how links look.</p>
-<p>Thanks to some CSS skills I’ve been learning from Lynda.com, I’ve found out that I can add those little red circles by adding this to my <code>.css</code> file:</p>
-<pre><code>a[href*="http"] {
-    color: black;
-}
-a[href*="http"]:after {
-    content: 'º';
-    color: darkred;
-}</code></pre>
-<p>What the first block does is it targets just the <code>&lt;a&gt;</code> tags that contain an <code>href</code>, meaning they’re an external link, and it changes the color to black, overwriting the default blue. From there, the <code>:after</code> selector in the next block puts specific text, the little circle, after the hyperlinked text in the tag every time. I may need to change some things later to make sure it does exactly what I want on all the pages, but it works for now.</p>
-<p>I don’t know if I’ll keep it the way it is, but it does look a lot better than tons of blue underlined text.</p>
-
-
-
- ]]></description>
-  <category>CSS</category>
-  <category>How-to Guides</category>
-  <category>Meta</category>
-  <guid>https://new.joeystanley.com/blog/how-i-implemented-the-links-in-this-site/index.html</guid>
-  <pubDate>Tue, 01 Nov 2016 22:53:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
