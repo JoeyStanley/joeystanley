@@ -347,6 +347,89 @@ Tip
   <pubDate>Sun, 07 Jan 2018 20:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>/ɑr/-Raising</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/ar-raising/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="page-columns page-full"><p>I’ve noticed for a while in my own speech that the vowel in <em>star</em> is higher and longer than <em>start</em>. I have American Raising, which, simplifying a bit, is where /aɪ/ is raised before voiceless consonants. So I just expected this to be another manifestation of that. I had some time so I thought I’d test this empirically. So here’s a breif study on my own speech to figure out what’s going on.</p><div class="no-row-height column-margin column-container"><span class="">See <a href="https://read.dukeupress.edu/pads/issue/106/1">Davis &amp; Berkson 2021</a> for more detail on American Raising. I particularly liked <a href="https://doi.org/10.1215/00031283-9551267">Moreton’s chapter</a> because it shows how stress, syllable structure, and morphologica structure all matter.</span></div></div>
+<section id="hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis">Hypothesis</h2>
+<p>/ɑr/ raises before voiceless segments.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>In COCA’s list of the most frequent 5000 words, there are 88 that have the /ɑr/ sequence in stressed position. Here they are in order of frequency.</p>
+<p><em>large, car, art, party, heart, article, artist, argue, hard, card, bar, yard, garden, partner, sorry, argument, department, apartment, farm, tomorrow, start, army, farmer, largely, hardly, smart, sharp, regarding, dark, far, mark, marketing, parking, darkness, armed, chart, remarkable, market, garlic, partly, partnership, regardless, target, carbon, borrow, margin, architect, park, architecture, march, harsh, particle, guitar, guard, alarm, starter, carve, starting, departure, sharply, hardware, garbage, cart, barn, carpet, star, jar, shark, charter, charge, partially, harm, artifact, partial, marketplace, part, harmony, remark, regard, arm, apart, marble, charm, marker, spark, harvest, depart, cargo</em></p>
+<p>The words were randomized and I recorded myself reading them using Praat in a quiet place with a good mic. I segmented out the /ar/ sequence by hand (incidentally, I sounded like a seal: “ar ar ar ar”). Using a Praat script, I extracted formants at 30% of the way into the /ar/ sequence (what seemed to be about the midpoint of the vowel). Filtered out a few bad measurements. Analyzed in R. For this analysis, word-final /ar/ is being treated as pre-voiced.</p>
+</section>
+<section id="results" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>I’ll split my analysis up into monosyllabic words and polysyllabic words because the results were cleaner.</p>
+<section id="monosyllabic-words" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="monosyllabic-words">Monosyllabic words</h3>
+<p>The effect that place of articulation had on duration was clear. A simple boxplot shows the stark contrast.</p>
+<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_duration.png" class="img-fluid" style="width:80.0%"></p>
+<p>With the exception of <em>arm</em> being short and <em>mark</em> being long, there’s a clear difference. In fact, the longest ones were mostly the word-final /ɑr/ words, but for this analysis I’ll group word-final and pre-voiced into one category.</p>
+<p>Moving on to vowel quality, it’s clear that the voicing of the following segment has an effect. In fact, there’s virtually no overlap between the two vowel classes.</p>
+<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_plot.png" class="img-fluid" style="width:80.0%"></p>
+<p>I ran a MANOVA test that took into account F1, F2, and duration, and the results show that the two groups are distinct.</p>
+<pre><code>summary(manova(cbind(F1, F2, dur) ~ fol_voice, data=ar))
+
+          Df  Pillai approx F num Df den Df    Pr(&gt;F)    
+fol_voice  1 0.51552   28.375      3     80 1.348e-12 ***
+Residuals 82                                                                                        </code></pre>
+<div class="page-columns page-full"><p> The <em>p</em>-value is small, which indicates the two are different, but I’ve noticed they tend to be on vowel data even for what seems like merged classes. More importantly, the Pillai score is pretty high: on a scale from 0 (=complete overlap) to 1 (completely separate), it’s about in the middle.</p><div class="no-row-height column-margin column-container"><span class="">Using the formula that me and Betsy Sneller came up with in our 2022 paper, we’d expect a Pillai score less than 0.0618 with this much data if the two classes were underlyingly merged. The fact that it’s so high with a sample size of 88 is pretty indicative of separation. In case the visual wasn’t clear enough.</span></div></div>
+<p>Out of curiosity, I did a k-means clustering analysis. I made it blind to phonetic environment so it finds the best two clusters based on F1 and F2 alone. As expected, the clusters essentially captured the voicing distinction, but there were a couple exceptions: <em>march</em> is voiced but clustered with the voiceless words, and both <em>yard</em> and <em>guard</em> are voiced but clustered with the voiceless words.</p>
+<p>Conclusion so far: with the exception of a few words, it’s pretty clear that /ɑr/ is raised, fronted, and shorter before voiceless sounds.</p>
+</section>
+<section id="polysyllabic-words" class="level3">
+<h3 class="anchored" data-anchor-id="polysyllabic-words">Polysyllabic words</h3>
+<p>When there’s more than one syllable, things get complicated because of their distribution within the word. Most of the two-syllable words have word-initial stress, but there are a few misfits (<em>alarm</em>, <em>depart</em>, <em>guitar</em>, <em>regard</em>, <em>remark</em>). With three syllables stress is either on the first syllable (<em>architect</em>, <em>argument</em>, <em>article</em>, <em>artifact</em>, <em>harmony</em>, <em>marketing</em>, <em>marketplace</em>, <em>partially</em>, <em>particle</em>, <em>partnership</em>) or the second (<em>apartment</em>, <em>department</em>, <em>departure</em>, <em>regarding</em>, <em>regardless</em>, <em>tomorrow</em>). There were two four-syllable words, with the /ɑr/ segment on different syllables (<em>architecture</em>, <em>remarkable</em>). Most of these can be split up by the voicing of the following segment too, which spreads the data pretty thin.</p>
+<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_poly_plot.png" class="img-fluid" style="width:80.0%"></p>
+<p>Generally, the the raised variant occurs with voiceless segments, but this data is a little bit messier. What’s interesting is to look at the exceptions.</p>
+<p>There were several pre-voiced segments that appeared to be raised: <em>sorry</em>, <em>regardless</em>, <em>target</em> (that one’s hard to see), <em>regarding</em> and maybe <em>argue</em>, <em>argument</em>, <em>garden</em>, and <em>regard</em>. I can’t help but notice that a lot of those words have the sequence /gɑr/. In fact, the only other /gɑr/ words were <em>garlic</em> and <em>garbage</em>, which were the most fronted voiced words even though they weren’t raised.</p>
+<p>It’s interesting that <em>guard</em> was one of the few exceptions on the k-means clustering analysis on the monosyllabic words and was raised and fronted compared to the others. A part of me wants to think that /ɑr/ is raised after /g/, which would be cool.</p>
+<p>It’s also worth noting that most of the voiceless words that were outside the ellipse were after bilabials: <em>depart</em>, <em>market</em>, <em>remark</em>, <em>remarkable</em>, etc. These are actually near the voiced segments after bilabials like <em>borrow</em> and <em>tomorrow</em>. This even explains why <em>march</em> was one of the exceptions detected by the k-means clustering analysis. Perhaps bilabials have something to do with backing.</p>
+</section>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>There is a phonetic explanation for the behavior of both the velars and the bilabials. Let’s talk about transition formants for a second. To start, the low vowel /ɑ/ has a high F1 and a low F2. Velars cause F1 to lower and F2 to raise (the latter as a part of the velar pinch), which is more like a higher, fronter vowel. Meanwhile, bilabials cause all formants to lower (because of the slight lengthening of the vocal tract), meaning raising and backing.</p>
+<p>What’s happening is that some of these transition formants are raising the nucleus of the /gɑr/ sequence. The reason why we don’t see raising in /kɑr/ sequences such as <em>car</em>, <em>carbon</em>, <em>cargo</em>, <em>carve</em>, etc. is because of the extra padding of the aspiration. Transition formants do appear in aspiration and the fact that this VOT increases the time between the velar stop and the vowel gives my articulators time to transition to a full /ɑ/.</p>
+<p>I don’t know of a good formal way to test this right now, but we can look at measurements at other points along the vowels’ durations and see if they’re predicted by the place of articulation. Moving closer to the vowel onset, the /gɑr/ words are even higher and fronter. And in fact, at 10% into the /ɑr/ sequence, the distribution is more easily predicted by the previous place of articulation.</p>
+<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_10_percent.png" class="img-fluid" style="width:80.0%"></p>
+<p>Here, we see that the /gɑr/ sequences (highlighted in green now) are all very high and very front, together with /jɑr/ and /ʃɑr/ which have similar transition formant patterns. Similarly, the /ɑr/ words after bilabials (now in yellow) are somewhat backer, though this isn’t as stark. In fact the difference in voicing of the following stop is much smaller, and might not even be significant at all anymore.</p>
+<p>If we measure later in time, the influence of the /r/ and its following consonant is increasing and the distinctions between the vowels also decreases.</p>
+<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_50_70_percent.png" class="img-fluid" style="width:80.0%"></p>
+<p>Here we see that at halfway through the /ɑr/ sequence, the /gɑr/ words are still among the higher and fronter within the blue cloud. But at 70%, they are pretty much randomly dispersed among the other pre-voiced segments. The bilabials make it clear that the following place of articulation predicts this vowel plot: words like <em>mark</em>, <em>park</em>, and <em>spark</em> are higher and fronter due to the velar pinch.</p>
+<p>Going back to that 30% point, which is roughly the middle of the vowel itself, here it is again, but with the highlights.</p>
+<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_30_percent_dots.png" class="img-fluid" style="width:80.0%"></p>
+<p>Here, the position of each word within the voiced/voiceless cloud is already being influenced by the surrounding consonants. Word that end in velars like <em>mark</em>, <em>park</em>, and <em>spark</em> are already fronting. Nearly all the /gɑr/ words are followed by an alveolar sound, which cause some raising and fronting but not as extreme as velars. So it makes sense that they would stay high but not as high as the pre-velars.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In my speech, I definitely have evidence to reject the null hypothesis and to conclude that /ar/ is raised before voiceless segments. I think that part is pretty clear.</p>
+<p>I’ll admit, I came into writing this blog in hopes of showing that my /gɑr/ sequence is also raised. But after doing more tests, visualizations, and especially after taking into account the pattern of the bilabials, I just don’t have enough evidence to suggest it’s anything more than influence of surrounding consonants.</p>
+<p>This makes me think hard about how to interpret vowel plots in the future. Every combination of surrounding consonants has its own trajectory, and it’s crazy that we can find patterns anywhere. This means ideally we should take into account more consonantal influences when interpreting vowel data. But at the same time that often spreads out data out way too thin since there will be only so a few tokens for any combination.</p>
+<p>I’ve seen studies where they’ll put following place of articulation as a random effect in a mixed-effects model. In my opinion, that doesn’t seem methodologically sound because there’s a finite number of possible options, we generally know their effects, and any duplication study would mostly have the same places of articulation. Now, I’m reconsidering this, and I wonder if it might be a good idea to put a combination of previous and following consonant as a random factor (since they interact). While we probably know the effects of these interactions, any replication of the study might not have the same words and therefore might not have the exact same combinations of previous and following consonants. It’s quite common to go the extreme route and just put each word as a random effect since “every word has its own history.”</p>
+<p>It’s also important to consider trajectory information more. As I showed above, just looking at one measurement can lead to erroneous claims, and we can get a more fuller picture by looking at the trajectory information. There are statistical methods out there that we can use for trajectories (SS-ANOVA, GAMMs, etc.) but I haven’t quite got the hang of them yet.</p>
+<p>Well, I learned a few things by doing this quick study: surrounding consonants affect vowels and trajectories are important. Seems like old news, but it’s nice to have learned this for myself.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Side Projects</category>
+  <category>Phonetics</category>
+  <category>Statistics</category>
+  <guid>https://new.joeystanley.com/blog/ar-raising/index.html</guid>
+  <pubDate>Wed, 27 Sep 2017 04:11:00 GMT</pubDate>
+</item>
+<item>
   <title>Testing VOT Durations in A Course in Phonetics</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/testing-vot-durations/index.html</link>
@@ -1250,31 +1333,6 @@ This was my first time &amp; it took more multitasking than expected. I have a n
   <category>Twitter</category>
   <guid>https://new.joeystanley.com/blog/tweeting_LSA2017/index.html</guid>
   <pubDate>Sat, 14 Jan 2017 00:12:00 GMT</pubDate>
-</item>
-<item>
-  <title>LSA2017</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/lsa2017/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Last weekend, I had the opportunity to present at the 2017 Annual Meeting of the American Dialect Society, as well as attend the other meetings of the Linguistic Society of America annual meeting in Austin, TX. There were a lot of really awesome things about the whole thing.</p>
-<div class="page-columns page-full"><p>First off, I feel like I had a great experience giving <a href="../../downloads/170105-ADS-slides.pdf">my presentation</a>. I presented Thursday afternoon in the session called “Vowels, Vowels, Vowels” which was chaired by Erik Thomas, and saw other presentations by Charlie Farrington &amp; Tyler Kendall, Matthew Gordon, and Michol Hoffman. There were about 30 people in the room, and I could name about half of them. In fact, while summarizing previous research, I realized that half the people I cited were sitting right there. Afterwards, I had a lot of discussion and great feedback. I couldn’t have asked for a better experience.</p><div class="no-row-height column-margin column-container"><span class="">As part of the presentation, I showed <a href="../../downloads/170105-ADS-video.mov">this video</a>.</span></div></div>
-<p>During the course of the next several days, I made a point to introduce myself to people. Networking is an important part of going to conferences, and I haven’t really taken that opportunity in the past. So I was able to meet several of the greats and tell them how much I enjoyed some of the things they’ve written. I also met some grad students that have similar interests as me. I feel a lot more connected to other researchers than I did before.</p>
-<p>Going into this conference, I knew I wanted to give it everything I had. I got funding from UGA for the first time, both through the Linguistics Program and the Graduate School, and I wanted to make sure the money I received went to a good cause. The conference was busy, but I attended as many presentations as I could. In fact, I hardly had time to eat, and ended up only eating one meal a day during the four days. I actually lost four pounds attending this conference! I also stayed at an Airbnb for the first time, and I didn’t want to take the bus all the way to the apartment when I knew there were things to do at the conference. I ended up attending 35 presentations and visited about a dozen posters. It made for four very long and busy days, but they were extremely productive.</p>
-<p>I also made an effort to be active on Twitter during the conference, but I have a separate blog post about that which you can read <a href="../../blog/tweeting_LSA2017">here</a>.</p>
-<p>Overall, a fantastic experience. The best I could have hoped for, and the best conference I’ve been to.</p>
-
-
-
- ]]></description>
-  <category>Pacific Northwest</category>
-  <category>Conferences</category>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/lsa2017/index.html</guid>
-  <pubDate>Wed, 11 Jan 2017 00:12:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
