@@ -349,7 +349,7 @@ Tip
 <item>
   <title>Testing VOT Durations in A Course in Phonetics</title>
   <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/testing-english-phonetics/index.html</link>
+  <link>https://new.joeystanley.com/blog/testing-vot-durations/index.html</link>
   <description><![CDATA[ 
 
 
@@ -377,7 +377,7 @@ Tip
 <section id="word-initial-stop-aspiration" class="level3">
 <h3 class="anchored" data-anchor-id="word-initial-stop-aspiration">Word-initial stop aspiration</h3>
 <p>The first hypothesis is one that is commonly taught in intro to linguistics courses: word-initial voiceless stops have aspiration and word-initial voiced stops have little, if any. In my data, this turned out to be the case based on the words <em>pad</em>, <em>peg</em>, <em>tab</em>, <em>tack</em>, <em>cab</em>, <em>code</em>, <em>bees</em>, <em>bus</em>, <em>days</em>, <em>dice</em>, <em>gas</em>, and <em>goes</em>.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/word-initial-stops.png" class="img-fluid" style="width:30em"></p>
+<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/word-initial-stops.png" class="img-fluid" style="width:30em"></p>
 <p>A mixed-effects regression model that predicts this aspiration with the underlying voicing of the stop as a fixed effect and student and word as random effects suggests that this difference is significant.</p>
 <pre><code>summary(lmer(aspiration ~ underlying_voicing + (1|student) + (1|word), data=wi_stops))
 
@@ -397,7 +397,7 @@ underlying_voicingvoiceless 0.037331   0.004291   8.699</code></pre>
 <section id="stops-following-s" class="level3">
 <h3 class="anchored" data-anchor-id="stops-following-s">Stops following /s/</h3>
 <p>We learn that voiceless stops following /s/ in the same syllable are not aspirated in English. In our sample, this also proved to be correct based on the same words as above with the addition of <em>spit</em>, <em>steep</em>, and <em>scope</em>.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/onset-stops.png" class="img-fluid" style="width:30em"></p>
+<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/onset-stops.png" class="img-fluid" style="width:30em"></p>
 <p>I ran a mixed-effects regression model like the one described above but with position (=environment) as the main effect and voiced word-initial stops as the reference level.</p>
 <pre><code>summary(lmer(aspiration ~ position + (1|student) + (1|word), data=onset_stops))
 
@@ -418,7 +418,7 @@ positionfollowing /s/          -0.007779   0.004948  -1.572</code></pre>
 <section id="duration-of-word-final-stops" class="level3">
 <h3 class="anchored" data-anchor-id="duration-of-word-final-stops">Duration of word-final stops</h3>
 <p>What I didn’t know before preparing for this class was that the overall duration of word final stops (closure + burst + aspiration) is longer for voiceless obstruents than it is for voiced obstruents. Based on all 18 words (<em>scope</em>, <em>seep</em>, <em>soap</em>, <em>steep</em>, <em>sit</em>, <em>spit</em>, <em>tack</em>, <em>cab</em>, <em>tab</em>, <em>code</em>, <em>pad</em>, <em>peg</em>, <em>bus</em>, <em>dice</em>, <em>gas</em>, <em>bees</em>, <em>days</em>, <em>goes</em>), this was true.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/word-final-duration.png" class="img-fluid" style="width:30em"></p>
+<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/word-final-duration.png" class="img-fluid" style="width:30em"></p>
 <p>The difference is small but significant: in a mixed-effects regression model that predicts duration with voicing and manner of articulation as fixed effects and student and word as random effects, the difference reached statistical significance.</p>
 <pre><code>summary(lmer(duration ~ underlying_voicing + manner + (1|student) + (1|word), data=wf))
 
@@ -440,7 +440,7 @@ mannerfricative           0.096638   0.008976  10.766
 <section id="vowel-length" class="level3">
 <h3 class="anchored" data-anchor-id="vowel-length">Vowel length</h3>
 <p>Finally, it is pretty well known that vowels before voiced obstruents are said to be longer than vowels before voiceless obstruents. As expected, the data showed this to be the case.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-english-phonetics/word-final-obstruents-and-vowel-duration.png" class="img-fluid" style="width:30em"></p>
+<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/word-final-obstruents-and-vowel-duration.png" class="img-fluid" style="width:30em"></p>
 <p>One last regression model, similar to what was done previously, showed not only that this voicing difference is significant but that the manner of articulation mattered as well.</p>
 <pre><code>summary(lmer(vowel ~ underlying_voicing + manner + (1|student) + (1|word), data=wf))
 
@@ -473,7 +473,7 @@ mannerfricative           0.05349    0.01744   3.067</code></pre>
   <category>Teaching</category>
   <category>Statistics</category>
   <category>Phonetics</category>
-  <guid>https://new.joeystanley.com/blog/testing-english-phonetics/index.html</guid>
+  <guid>https://new.joeystanley.com/blog/testing-vot-durations/index.html</guid>
   <pubDate>Fri, 08 Sep 2017 04:02:00 GMT</pubDate>
 </item>
 <item>
