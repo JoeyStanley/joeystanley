@@ -1,0 +1,52 @@
+---
+layout: post
+title:  "ADS2018"
+date:   2018-01-07 16:00:00 -0400
+date-modified: 2023-09-28
+categories:
+  - Conferences
+  - Dissertation
+  - Linguistic Atlas
+  - Phonetics
+  - Presentations
+  - Research
+  - Utah
+aliases:
+  - ads2018
+---
+
+Thanks for attending my presentations. At the 2018 annual meeting of the American Dialect Society in Salt Lake City, Utah, I was fortunate to present on two aspects of my research. 
+
+## Thursday's presentation on the "GSV"
+
+:::callout-tip
+Download the slideshow [here](/downloads/180105-ads2018-gsv.pdf)!
+:::
+
+Thursday, I represented Peggy Renwick, Bill Kretzschmar, Rachel Olsen, and Mike Olsen and introduced a website called [*The Gazetteer of Southern Vowels*](http://lap3.libs.uga.edu/u/jstanley/vowelcharts/). This is a online tool that makes it easy to visualize linguistic atlas data (specifically, the Digital Archive of Southern Speech, or [DASS](https://www.lap.uga.edu/Site/DASS.html)) that is currently being processed at the University of Georgia. The site has several features:
+
+1. Side-by-side plots make it easy to compare two subsets of our data, whether it be by demographic factors, language-internal factors, or methodological differences.
+
+1. A "point-pattern analysis" page shows an underlaid grid on the plot as an alternative way of visualizing the vowel space.
+
+1. At the top of each page are options to subset the data however you like. Speakers can be selected by typical demographic factors. You can filter out stop words or examine specific words. You can subset by vowel, stress, and following consonant. Different transcription systems, filtering algorithms, and normalization procedures are available.
+
+1. The plots themselves are highly customizable. Users can display any combination of points, ellipses, averages, and words. For each of these, the size and opacity can be controlled. This makes it easy to visualize the same data in lots of different ways.
+
+We hope that you enjoy the *Gazetteer of Southern Vowels* and find it useful for visualizing linguistic atlas data. 
+
+## Sundays's presentation on consonants in Utah
+
+:::callout-tip
+Download the slideshow [here](/downloads/180108-ads2018-utah.pdf)!
+:::
+
+On Sunday afternoon, Kyle Vanderniet and I presented on consonantal variation in Utah English. We looked at three variables:
+
+1. We found that words like *mountain*, *cotton*, and *Latin* have three pronunciations in Utah. The most common is what most other North American Engilsh speakers say: *moun*[ʔn̩]. Some women in our sample frequently used a second form, *moun*[ʔɨn], which has become almost stereotypical in Utah and has a lot of stigma. Finally, a third form, *moun*[tʰɨn], appears to be a hyperarticulated form in response to the stigma associated with the glottal stop. This was relatively frequent in our sample: about 25% of tokens had it, which is much more than similar audio from other states. Men tended to use this more, especially younger men. 
+
+1. Then we looked at [t]-epenthesis in words like *false*, *also*, and *else* and found that while this isn't particularly common overall, some women had it a fair amount in their speech.
+
+1. Finally, we looked at [k]-epenthesis after velar nasals. Despite being very frequent in other Utah English studies (like Di Paolo and Johnson's study just before ours), this was rarely attested in our sample, so we have to figure out why.
+
+Overall, we feel that consonants in Utah deserve further study because of the high amount of variation.
