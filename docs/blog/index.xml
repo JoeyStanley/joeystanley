@@ -63,6 +63,7 @@
 |  |  ├──  📄index.qmd
 |  |  ├──  🌅image2.png</code></pre>
 <p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p></li>
+<li><p>Within each post, I need to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed. I remove excerpts because I only used them with my “big-link” style button. I’m replacing big-links with a standard callout box. I haven’t figured out if I can do redirects-to, which is a bummer for the GSV.</p></li>
 </ul>
 
 
@@ -269,6 +270,64 @@ Tip
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>LCUGA6</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/lcuga6/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I presented at the 6th annual Linguistics Conference at UGA today! My presentation, which was called “Real Time Vowel Shifts in Georgia English” compared Georgians born around the 1890s to those born in the 1990s—100 years of change! The gist: nearly every vowel has changed, and it seems like the trajectory of that change is in the direction of the Elsewhere Shift, rather than just a simple recession of Southern features.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/191004-lcuga6.pdf">here</a>!</p>
+</div>
+</div>
+<p>The data came from two very different sources. The older speakers, were born between 1887 and 1903, were recorded doing Linguistic Atlas interviews and are part of the <em>Digital Archive of Southern Speech</em>. The younger speakers, who were born between 1994 and 1997) were UGA undergraduates that I recorded as they read sentences in a lab. Two very different datasets, but they’re all Georgian natives, so it starts to give us a glimpse into how things have changed around here.</p>
+<p>Here’s a summary of the changes I found.</p>
+<ul>
+<li><p><sc>price</sc> was monophthongal for older speakers and definitely a diphthong in the younger speakers.</p></li>
+<li><p>The Euclidean distance between <sc>fleece</sc> and <sc>kit</sc> and between <span class="smallcaps">face</span> and <sc>dress</sc> was grew over 100 years, suggesting the younger speakers’ vowels are not as “Southern” sounding.</p></li>
+<li><p>While the older speakers’ <sc>lot</sc> and <sc>thought</sc> were close, the younger speakers’ were almost entirely merged.</p></li>
+<li><p>The front lax vowels, <sc>trap</sc>, <sc>dress</sc>, and <sc>kit</sc> were front and monophthongal in the older speakers while the younger speakers realized them more centralized and more diphthongal. <sc>trap</sc> underwent the most change, then <sc>dress</sc>, and then <sc>kit</sc>.</p></li>
+<li><p><span class="smallcaps">goose</span> was centralized even in the older speakers, but the younger speakers took it further by using an even more fronted onset.</p></li>
+</ul>
+<p>This animation basically sums up the entire talk. Plus I just had fun making animations! Here’s the change for the women.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/lcuga6/georgia_animation_female.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>And here’s the change for the men.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://new.joeystanley.com/blog/lcuga6/georgia_animation_male.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Overall, it appears that it’s not just that the younger speakers lack features associated with the South, it’s that they’re also using realizations characteristic of other regions like California and Canada. It makes sense, since Atlanta is a large metropolitan area and is kind of known as a non-Southern city in the middle of the South. But this might be an indication that the Elsewhere Shift has made its way into the South.</p>
+
+
+
+ ]]></description>
+  <category>Animations</category>
+  <category>Conferences</category>
+  <category>Linguistic Atlas</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <category>South</category>
+  <guid>https://new.joeystanley.com/blog/lcuga6/index.html</guid>
+  <pubDate>Fri, 04 Oct 2019 04:30:00 GMT</pubDate>
+</item>
+<item>
   <title>DH 2019</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/dh2019/index.html</link>
@@ -385,7 +444,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/181012-lcuga5_thr.pdf">here</a>!</p>
+<p>Download the slides <a href="../../downloads/181012-lcuga5_thr.pdf">here</a>!</p>
 </div>
 </div>
 <p>First, I presented on something I’ve noticed in a few speakers, something I call (thr)-flapping. Some people pronounce the /ɹ/ after /θ/ as a flap [ɾ]. In this presentation, I presented some data supporting this hunch.</p>
@@ -406,7 +465,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/181012-lcuga5_dass.pdf">here</a>!</p>
+<p>Download the slides <a href="../../downloads/181012-lcuga5_dass.pdf">here</a>!</p>
 </div>
 </div>
 <p>In the next session, I presented research I been doing with Peggy Renwick on the vowel shifts in the South. The Southern Vowel Shift has front lax vowels raising and front tense vowels lowering, resulting in vowel pairs swapping. Meanwhile, back vowels are fronting. The African American Vowel Shift has the front lax vowels raising, but tense vowels are not lowering, so there wouldn’t be any swapping. Furthermore, back vowels typically aren’t fronted.</p>
@@ -1218,31 +1277,6 @@ I saved the funnest interview for last. This guy's a fourth generation euphonium
   <category>Dissertation</category>
   <guid>https://new.joeystanley.com/blog/lots-of-transcribing/index.html</guid>
   <pubDate>Thu, 27 Apr 2017 14:30:00 GMT</pubDate>
-</item>
-<item>
-  <title>A Survey of the Western American English using MTurk</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/a-survey-of-western-american-english-using-mturk/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m so happy to announce I’ve been selected as a recipient of the UGA Graduate School Innovative and Interdisciplinary Research Grant! This $2,500 grant is part of the Graduate School’s strategic initiative to support innovation and interdisciplinary in the research being conducted by doctoral students. My project is entitled “A Survey of Western American English using Amazon Mechanic Turk.”</p>
-<div class="page-columns page-full"><p>Amazon Mechanical Turk (“MTurk”) is a crowdsourcing marketplace through Amazon.com where people and business can post tasks for others to perform for a small amount of payment. They are usually menial tasks like completing surveys or data entry. At NWAV last year, Kim, Reddy, Wyschogrod, and Stanford did a presentation on how they cleverly used MTurk to gather recordings of people across the Northeast. After some discussion with some of the authors, I decided to apply for a grant that would pay for the same kind of data collection but targeting the West.</p><div class="no-row-height column-margin column-container"><span class="">Kim, Chaeyoon, Sravana Reddy, Ezra Wyschogrod &amp; James Stanford. 2016. A large-scale online study of dialect variation in the US Northeast: Crowdsourcing with Amazon Mechanical Turk. Paper presented at the New Ways of Analyzing Variation 45, Victoria, BC.</span></div></div>
-<p>Compared to other parts of the country, the West has relatively little linguistic research. Some of that is changing, thanks to some of the folks in Stanford, University of Washington, and other universities. But there are large portions of the country like Montana, Wyoming, and other places that have very little written about them. The population isn’t huge, but there are people there, and those people do speak. So what do they sound like?</p>
-<p>This project will hopefully get recordings from possibly up to 500 people in specific western states. This will result in a corpus of over 100 hours of audio and roughly 200,000 words—a sizable linguistic corpus which I can analyze for many years to come. This will allow a slightly deeper look into some of these places, acting as a launchpad for further research in specific cities.</p>
-<p>I’m really excited to have gotten this grant and to get started. I will post updates as they come. Stay tuned.</p>
-
-
-
- ]]></description>
-  <category>Pacific Northwest</category>
-  <category>Research</category>
-  <category>West</category>
-  <category>MTurk</category>
-  <guid>https://new.joeystanley.com/blog/a-survey-of-western-american-english-using-mturk/index.html</guid>
-  <pubDate>Fri, 21 Apr 2017 14:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

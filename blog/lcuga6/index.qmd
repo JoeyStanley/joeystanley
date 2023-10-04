@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "LCUGA6"
+date:   2019-10-04 00:30:00 -0400
+categories:
+ - Animations
+ - Conferences
+ - Linguistic Atlas
+ - Presentations
+ - Research
+ - South
+aliases: 
+  - /lcuga6
+---
+
+I presented at the 6th annual Linguistics Conference at UGA today! My presentation, which was called "Real Time Vowel Shifts
+in Georgia English" compared Georgians born around the 1890s to those born in the 1990s---100 years of change! The gist: nearly every vowel has changed, and it seems like the trajectory of that change is in the direction of the Elsewhere Shift, rather than just a simple recession of Southern features.
+
+:::callout-tip
+Download the slides [here](/downloads/191004-lcuga6.pdf)!
+:::
+
+The data came from two very different sources. The older speakers, were born between 1887 and 1903, were recorded doing Linguistic Atlas interviews and are part of the *Digital Archive of Southern Speech*. The younger speakers, who were born between 1994 and 1997) were UGA undergraduates that I recorded as they read sentences in a lab. Two very different datasets, but they're all Georgian natives, so it starts to give us a glimpse into how things have changed around here. 
+
+Here's a summary of the changes I found.
+
+* <sc>price</sc> was monophthongal for older speakers and definitely a diphthong in the younger speakers.
+
+* The Euclidean distance between <sc>fleece</sc> and <sc>kit</sc> and between <span style="font-variant:small-caps;">face</span> and <sc>dress</sc> was grew over 100 years, suggesting the younger speakers' vowels are not as "Southern" sounding.
+
+* While the older speakers' <sc>lot</sc> and <sc>thought</sc> were close, the younger speakers' were almost entirely merged.
+
+* The front lax vowels, <sc>trap</sc>, <sc>dress</sc>, and <sc>kit</sc> were front and monophthongal in the older speakers while the younger speakers realized them more centralized and more diphthongal. <sc>trap</sc> underwent the most change, then <sc>dress</sc>, and then <sc>kit</sc>. 
+
+* <span style="font-variant:small-caps;">goose</span> was centralized even in the older speakers, but the younger speakers took it further by using an even more fronted onset. 
+
+This animation basically sums up the entire talk. Plus I just had fun making animations! Here's the change for the women.
+
+![](georgia_animation_female.gif){fig-width=85%}
+
+And here's the change for the men.
+
+![](georgia_animation_male.gif){fig-width=85%}
+
+Overall, it appears that it's not just that the younger speakers lack features associated with the South, it's that they're also using realizations characteristic of other regions like California and Canada. It makes sense, since Atlanta is a large metropolitan area and is kind of known as a non-Southern city in the middle of the South. But this might be an indication that the Elsewhere Shift has made its way into the South.
