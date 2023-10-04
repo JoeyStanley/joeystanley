@@ -174,6 +174,70 @@ Tip
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>LCUGA5</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/lcuga5/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today, I was fortunate to give two presentations on very different areas of my research at the <a href="http://www.linguistics.uga.edu/lcuga-5">5th Annual Linguistics Conference at UGA</a>, one on an obscure consonantal phonological pattern in the West using new recordings and another on well-studied vowel shifts in the South using very old recordings.</p>
+<section id="thr-flapping" class="level2">
+<h2 class="anchored" data-anchor-id="thr-flapping">(thr)-flapping</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/181012-lcuga5_thr.pdf">here</a>!</p>
+</div>
+</div>
+<p>First, I presented on something I’ve noticed in a few speakers, something I call (thr)-flapping. Some people pronounce the /ɹ/ after /θ/ as a flap [ɾ]. In this presentation, I presented some data supporting this hunch.</p>
+<p>The articulatory motivations are clear: as the tongue tip moves from between the teeth to a retroflexed position, it may make brief contact with the alveolar ridge. What may have started as an accidental gesture appears to have been phonologized by some speakers.</p>
+<p>Looking at phonological factors, in my data (thr)-flapping happened more when the following vowel was non-high and non-front. So it happened more in <em>throb</em>, <em>throng</em>, <em>throne</em>, <em>thrust</em>, and <em>thrive</em> than in <em>thrash</em>, <em>threaten</em>, <em>thread</em>, <em>thrill</em>, <em>three</em> and <em>through</em>. I offer some tentative explanations for this, but without articulatory data, I can’t know for sure.</p>
+<p>To my surprise, the social factors I looked at were the opposite of what I expected. Age and sex were not significant, meaning there’s probably not a lot of change in time. But what state people came from (Washington verses Utah—my two fieldsites) <em>was</em> significant. <a href="../../downloads/180108-ads2018-utah.pdf">Utah English has a lot of hyperarticulated consonants</a> and at ADS this year, Di Paolo &amp; Johnson (2018) hypothesize that this has to do with the high proportion of members of the Church of Jesus Christ of Latter-day Saints in Utah. Since public speaking is a common part of their worship services (even as early as the age of 3!), elements of this hyperarticulated register may have spread into other speech styles. (thr)-flapping may be just another manifestation of that. But without attitude or perceptual data, I can’t know for sure.</p>
+<p>(thr)-flapping is something I’ve noticed for a while now, and despite the shortcomings of this study, and I was glad to finally present solid evidence that it is a thing!</p>
+</section>
+<section id="vowel-shifts-in-southern-american-english" class="level2">
+<h2 class="anchored" data-anchor-id="vowel-shifts-in-southern-american-english">Vowel Shifts in Southern American English</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/181012-lcuga5_dass.pdf">here</a>!</p>
+</div>
+</div>
+<p>In the next session, I presented research I been doing with Peggy Renwick on the vowel shifts in the South. The Southern Vowel Shift has front lax vowels raising and front tense vowels lowering, resulting in vowel pairs swapping. Meanwhile, back vowels are fronting. The African American Vowel Shift has the front lax vowels raising, but tense vowels are not lowering, so there wouldn’t be any swapping. Furthermore, back vowels typically aren’t fronted.</p>
+<p>We use the Digital Archive of Southern Speech, a corpus of interviews from the 1970s and 1980s. The people in these recordings were born while these shifts were going on, so we can see their development in a way that newer recordings wouldn’t be able to do.</p>
+<p>Using Pillai scores and linear mixed-effects models, we find that younger, European American women are leading in the front vowel swapping and that African Americans are participating less in the back vowel fronting. These findings are exactly what we expect, showing that these older recordings confirm what newer ones suggest.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Pacific Northwest</category>
+  <category>Phonetics</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <category>South</category>
+  <category>Utah</category>
+  <guid>https://new.joeystanley.com/blog/lcuga5/index.html</guid>
+  <pubDate>Fri, 12 Oct 2018 12:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Transcribing a Sociolinguistic Corpus</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</link>
@@ -1148,108 +1212,6 @@ font-style: inherit;">999</span>)</span></code></pre></div>
   <category>Skills</category>
   <guid>https://new.joeystanley.com/blog/updated_mvnorm.etest-function/index.html</guid>
   <pubDate>Tue, 28 Feb 2017 23:12:00 GMT</pubDate>
-</item>
-<item>
-  <title>Website Version 2</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/website-version-2/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Today I finally rolled out a new version of my website! The previous version was great and was an excellent stepping stone into web design, but it was mostly borrowed code. Unsatisfied with some of the way it was designed, I decided to go ahead and just write a new site completely from scratch. It has taken about a month or so to get it going, but I think it’s a lot better than before.</p>
-<section id="new-site" class="level2">
-<h2 class="anchored" data-anchor-id="new-site">New Site?</h2>
-<p>As I’ve mentioned <a href="../../blog/making-a-website-is-fun">previously</a>, I went through a course on <a href="http://lynda.com">Lynda.com</a>, called “Jekyll for Web Designers” that showed me the basics in how to get that website up. I was still in unfamiliar territory though as I navigated my way around CSS and HTML and any changes I wanted to make to the site were difficult to do. I liked the instructor for that course (James Willliamson) though, so when I looked up some of his other ones and saw that he did several others that would be relevant to me, I decided to go ahead an take them as well.</p>
-<p>I first took his “CSS Core Concepts” where I learned all about CSS and how it works. At a whopping 9 hours long, I knew I was going to get a thorough treatment of CSS. Essentially I learned how to make things look the way I want on a webpage. I learned how to do anything I want to text like change the font, size, and color as well as add things like bold, italic, and small caps. I also learned how to add space around text or between elements on a webpage.</p>
-<blockquote class="twitter-tweet blockquote" data-cards="hidden" data-lang="en">
-<p lang="en" dir="ltr">
-I learned about <a href="https://twitter.com/hashtag/Web?src=hash">#Web</a> on <a href="https://t.co/n13drggo1T">https://t.co/n13drggo1T</a>. I completed CSS: Core Concepts by <a href="https://twitter.com/jameswillweb"><span class="citation" data-cites="jameswillweb">@jameswillweb</span></a> <a href="https://t.co/at3VlMgyPD">https://t.co/at3VlMgyPD</a> via <a href="https://twitter.com/lynda"><span class="citation" data-cites="lynda">@lynda</span></a>
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/828293046538207234">February 5, 2017</a>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>When I finished that, I continued on to the next course called “CSS Page Layouts” which I’m pretty close to finishing. This is more about web design and how to get from a sketch book drawing of a webpage to the screen. Most of the time was in CSS still (as opposed to the HTML) but I learned how to position things on the webpage.</p>
-<p>The layout of site I had before was simply copied from the last tutorial in the first course. Since I didn’t write the HTML or the CSS, I didn’t know exactly what was going on, so if I wanted to make changes it was really hard to do. Now that I’ve written this new site from scratch, I know exactly what’s going on in all the webpages and in CSS.</p>
-<p>Of course, the sacrifice is that this new site isn’t quite as clean as the old one was. For example, I know it looks good on my Apple laptop in Safari, but I don’t know all the code I need to watch out for to make it fully compatible with other browsers, let alone other versions of other browsers. The site also doesn’t adapt to smaller screens like phones and tablets. I’m still working on that.</p>
-</section>
-<section id="so-whats-the-difference" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="so-whats-the-difference">So what’s the difference?</h2>
-<p>I didn’t do any major changes to the overall structure or the general typographic details that I use in everything I do. The fonts are still Iowan Old Style and Avenir and the background is still “whitesmoke” (96% white, 4% black). The blue from before was, coincidentally, very similar to the blue I use in my power point slides, but not exactly, so I went ahead and changed it to <em>my</em> blue to match my slides.</p>
-<p>Just to give you an idea of what the site looked like before, here are some screenshots. This first one is my home page from my old site:</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_home.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">Old site’s homepage</figcaption>
-</figure>
-</div>
-<p>And this is my new home page:</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_home.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">New site’s homepage</figcaption>
-</figure>
-</div>
-<p>A couple layout changes. First, I’ve widened it from something like 70% of the screen to a standard 960 pixels. That gave me the option of keeping my ideal width at roughly 66 characters still while giving me room for a sidebar.</p>
-<p>I changed the header as well. I felt like it was the weakest part of my page, and I didn’t like how it looked. I knew I wanted my social media links to be somewhere prominent, and of course the navigation links should be there too. But I wanted to include temporary links to recent presentations so people can download the slideshow if they visit my site, and those didn’t quite fit up there. And I didn’t have anywhere to put a photo.</p>
-<p>One solution was to have the top just include my name and the navigation buttons, which are now more descriptive. A sidebar could then have my photo, social media, and temporary links to recent presentations. There was also room to put an excerpt of my most recent blog post too, which I figured out how to do dynamically, which is pretty cool.</p>
-</section>
-<section id="a-new-research-tab" class="level2">
-<h2 class="anchored" data-anchor-id="a-new-research-tab">A new Research tab!</h2>
-<p>I also added a Research tab. I’ve seen this on lots of other people’s pages and I thought I’d include one in my own. I guess I figured everyone would clearly see what my research was by skimming through my CV, but putting it in prose like that makes a lot more sense.</p>
-<p>The layout was a blatant copy from the UGA DigiLab <a href="https://digi.uga.edu/projects/">projects tab</a>. I think adding images, even if they’re simple like mine, contribute a lot to the page.</p>
-<p>Eventually, I’d like to create a separate page for each of these. There I’d go into more detail on my findings, put a list of publications, and have links to any relevant blog posts. I’ll get there eventually. For now, I’ll just make the the excerpts a little longer.</p>
-</section>
-<section id="blogi-mean-news" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="blogi-mean-news">Blog—I mean, “News”</h2>
-<p>My blog is now relabeled “News” just because it sounds less, well, blog-like. Here’s the old one:</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_blog.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">Old site’s blog</figcaption>
-</figure>
-</div>
-<p>And here’s the new one:</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_blog.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">New site’s blog</figcaption>
-</figure>
-</div>
-<p>I also redesigned the blog page itself. First off, I didn’t like that you could only see 4 at a time and that you’d have to scroll back to see older entries. I don’t like it that way. I’ve still got the code still there, but it’ll only create a second page once I’ve got 50 posts. I’ve got like 15 for now so I don’t think it’ll slow anyone down by loading this page.</p>
-<p>The rest of the page was completely revamped. To be quite honest, I googled around for great examples of blog layouts and I found <a href="http://johnhenry.ie">this one</a>, which I copied quite a bit of. I think it works well for my site.</p>
-<p>Another big thing I didn’t like about the old layout was that the “Archive” tab didn’t make sense as its own page and the label didn’t really make sense.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/website-version-2/site_old_tags.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">Old site’s “archive” page</figcaption>
-</figure>
-</div>
-<p>Instead, I moved it to a separate sidebar on the blog. That way it’s clear that the tags and the blog work together.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/website-version-2/site_new_tags.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">New site’s “tags” page</figcaption>
-</figure>
-</div>
-<p>If I could change one thing on the main “news” page, it would be that sidebar though. Right now, if you click on a tag, it’ll take you to a page where it lists all the blog posts by category. I don’t like that separate page. I wanted to do something fancy like you click on a tab and a list of posts will expand down. Turns out I couldn’t do that without Java scripting and I don’t know how to do any of that. I also looked into just having pages for each category created on the spot, with blog excerpts instead of just the titles for that one category, but I couldn’t figure out how to do that.</p>
-</section>
-<section id="anything-else" class="level2">
-<h2 class="anchored" data-anchor-id="anything-else">Anything else?</h2>
-<p>Nope. That’s about it. My CV page has remained essentially the same. I added “Resources” and “Teaching” tabs, but those are blank for now. I’ll add content to them eventually. There are still a few layout things I need to work on, but I thought I’d launch the site anyway—imperfect as it is for now—because it’s a major improvement over the last one.</p>
-
-
-</section>
-
- ]]></description>
-  <category>CSS</category>
-  <category>Skills</category>
-  <category>Meta</category>
-  <category>Github</category>
-  <category>How-to Guides</category>
-  <guid>https://new.joeystanley.com/blog/website-version-2/index.html</guid>
-  <pubDate>Sun, 26 Feb 2017 21:29:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

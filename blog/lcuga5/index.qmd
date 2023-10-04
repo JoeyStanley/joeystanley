@@ -1,0 +1,45 @@
+---
+layout: post
+title: LCUGA5
+date: 2018-10-12 08:00:00 -0400
+aliases:
+  - /lcuga5
+categories: 
+  - Conferences
+  - Pacific Northwest
+  - Phonetics
+  - Presentations
+  - Research
+  - South
+  - Utah
+---
+
+Today, I was fortunate to give two presentations on very different areas of my research at the [5th Annual Linguistics Conference at UGA](http://www.linguistics.uga.edu/lcuga-5), one on an obscure consonantal phonological pattern in the West using new recordings and another on well-studied vowel shifts in the South using very old recordings. 
+
+## (thr)-flapping
+
+:::callout-tip
+Download the poster [here](/downloads/181012-lcuga5_thr.pdf)!
+:::
+
+First, I presented on something I've noticed in a few speakers, something I call (thr)-flapping. Some people pronounce the /ɹ/ after /θ/ as a flap [ɾ]. In this presentation, I presented some data supporting this hunch. 
+
+The articulatory motivations are clear: as the tongue tip moves from between the teeth to a retroflexed position, it may make brief contact with the alveolar ridge. What may have started as an accidental gesture appears to have been phonologized by some speakers. 
+
+Looking at phonological factors, in my data (thr)-flapping happened more when the following vowel was non-high and non-front. So it happened more in *throb*, *throng*, *throne*, *thrust*, and *thrive* than in *thrash*, *threaten*, *thread*, *thrill*, *three* and *through*. I offer some tentative explanations for this, but without articulatory data, I can't know for sure. 
+
+To my surprise, the social factors I looked at were the opposite of what I expected. Age and sex were not significant, meaning there's probably not a lot of change in time. But what state people came from (Washington verses Utah---my two fieldsites) *was* significant. [Utah English has a lot of hyperarticulated consonants](/downloads/180108-ads2018-utah.pdf) and at ADS this year, Di Paolo & Johnson (2018) hypothesize that this has to do with the high proportion of members of the Church of Jesus Christ of Latter-day Saints in Utah. Since public speaking is a common part of their worship services (even as early as the age of 3!), elements of this hyperarticulated register may have spread into other speech styles. (thr)-flapping may be just another manifestation of that. But without attitude or perceptual data, I can't know for sure.
+
+(thr)-flapping is something I've noticed for a while now, and despite the shortcomings of this study, and I was glad to finally present solid evidence that it is a thing!
+
+## Vowel Shifts in Southern American English
+
+:::callout-tip
+Download the poster [here](/downloads/181012-lcuga5_dass.pdf)!
+:::
+
+In the next session, I presented research I been doing with Peggy Renwick on the vowel shifts in the South. The Southern Vowel Shift has front lax vowels raising and front tense vowels lowering, resulting in vowel pairs swapping. Meanwhile, back vowels are fronting. The African American Vowel Shift has the front lax vowels raising, but tense vowels are not lowering, so there wouldn't be any swapping. Furthermore, back vowels typically aren't fronted.
+
+We use the Digital Archive of Southern Speech, a corpus of interviews from the 1970s and 1980s. The people in these recordings were born while these shifts were going on, so we can see their development in a way that newer recordings wouldn't be able to do.
+
+Using Pillai scores and linear mixed-effects models, we find that younger, European American women are leading in the front vowel swapping and that African Americans are participating less in the back vowel fronting. These findings are exactly what we expect, showing that these older recordings confirm what newer ones suggest.
