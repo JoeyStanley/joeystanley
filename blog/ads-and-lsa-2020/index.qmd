@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "LSA and ADS 2020"
+date:   2020-01-02 07:20:00 -0400
+categories:
+  - Animations
+  - Conferences
+  - Linguistic Atlas
+  - Research
+  - South
+aliases: 
+    - /ads2020
+    - /lsa2020
+---
+
+For the first time in a few years, I did not attend the ADS/LSA annual meetings. It would have been nice to hang out in New Orleans this weekend. However, my research will still be represented: my colleagues presented some research focusing on Southern American English vowels that I've been a part of this year.
+
+<br/>
+
+## Friday's ADS poster on Southern American English vowels
+
+:::callout-tip
+Download the poster [here](/downloads/200103-ads2020.pdf)!
+:::
+
+Friday morning at the American Dialect Society poster session, Bill Kretzschmar presented some research on behalf of the entire Linguistic Atlas research team at UGA (Peggy Renwick, Katie Kuiper, Lisa Lipani, Mike Olsen, Rachel Olsen, and me). In it he presents findings from our now-complete dataset from the *Digital Archive of Southern Speech*. With a dataset this size, we can make comparisons to other varieties of American English regarding the distribution of vowels in the F1-F2 space.
+
+## Sunday's LSA presentation on formant trajectories
+
+:::callout-tip
+Download the slides [here](/downloads/200105-lsa2020.pdf)!
+:::
+
+Sunday, [Peggy Renwick](http://faculty.franklin.uga.edu/mrenwick/) presented our research on formant dynamics of back vowels in Southern American English vowels. Focusing on just the White Americans in the *Digital Archive of Southern Speech (DASS)*, we wanted to see how formant trajectory shapes and their relative positions vary across male and female speakers in different generations. Many of our findings can be summarized in this animation:
+
+![](lsa2020.gif)
+
+<sc>goose</sc> doesn't change much, especially for the women, suggesting <sc>goose</sc> fronting is an old shift and was nearing completion by the time our speakers acquired language. Meanwhile <sc>goat</sc> lowers between the Lost and GI generations of women, and then a generation later for the men. <sc>foot</sc> doesn't change much, suggesting it doesn't pattern with <sc>goose</sc>-fronting. The low vowels <sc>lot</sc> and <sc>thought</sc> are near each other, but not merged because of their different positions in the F1-F2 space and their different formant shapes.
+
+Something that stands out to me is that each vowel's trajectory didn't change all that much over time. This wasn't a product of how our GAMM was specified: each combination of vowel, sex, and generation was interacted and therefore, fit independently of the other. So the fact that the trajectories show remarkable stability is really interesting to me. So, at least among these DASS speakers, Southern American English vowels appear to shift the nucleus and glide in tandem.

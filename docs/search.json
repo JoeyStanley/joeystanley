@@ -1237,5 +1237,26 @@
     "title": "Data Visualization Workshops",
     "section": "",
     "text": "You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "blog/ads-and-lsa-2020/index.html",
+    "href": "blog/ads-and-lsa-2020/index.html",
+    "title": "LSA and ADS 2020",
+    "section": "",
+    "text": "For the first time in a few years, I did not attend the ADS/LSA annual meetings. It would have been nice to hang out in New Orleans this weekend. However, my research will still be represented: my colleagues presented some research focusing on Southern American English vowels that I’ve been a part of this year."
+  },
+  {
+    "objectID": "blog/ads-and-lsa-2020/index.html#fridays-ads-poster-on-southern-american-english-vowels",
+    "href": "blog/ads-and-lsa-2020/index.html#fridays-ads-poster-on-southern-american-english-vowels",
+    "title": "LSA and ADS 2020",
+    "section": "Friday’s ADS poster on Southern American English vowels",
+    "text": "Friday’s ADS poster on Southern American English vowels\n\n\n\n\n\n\nTip\n\n\n\nDownload the poster here!\n\n\nFriday morning at the American Dialect Society poster session, Bill Kretzschmar presented some research on behalf of the entire Linguistic Atlas research team at UGA (Peggy Renwick, Katie Kuiper, Lisa Lipani, Mike Olsen, Rachel Olsen, and me). In it he presents findings from our now-complete dataset from the Digital Archive of Southern Speech. With a dataset this size, we can make comparisons to other varieties of American English regarding the distribution of vowels in the F1-F2 space."
+  },
+  {
+    "objectID": "blog/ads-and-lsa-2020/index.html#sundays-lsa-presentation-on-formant-trajectories",
+    "href": "blog/ads-and-lsa-2020/index.html#sundays-lsa-presentation-on-formant-trajectories",
+    "title": "LSA and ADS 2020",
+    "section": "Sunday’s LSA presentation on formant trajectories",
+    "text": "Sunday’s LSA presentation on formant trajectories\n\n\n\n\n\n\nTip\n\n\n\nDownload the slides here!\n\n\nSunday, Peggy Renwick presented our research on formant dynamics of back vowels in Southern American English vowels. Focusing on just the White Americans in the Digital Archive of Southern Speech (DASS), we wanted to see how formant trajectory shapes and their relative positions vary across male and female speakers in different generations. Many of our findings can be summarized in this animation:\n\ngoose doesn’t change much, especially for the women, suggesting goose fronting is an old shift and was nearing completion by the time our speakers acquired language. Meanwhile goat lowers between the Lost and GI generations of women, and then a generation later for the men. foot doesn’t change much, suggesting it doesn’t pattern with goose-fronting. The low vowels lot and thought are near each other, but not merged because of their different positions in the F1-F2 space and their different formant shapes.\nSomething that stands out to me is that each vowel’s trajectory didn’t change all that much over time. This wasn’t a product of how our GAMM was specified: each combination of vowel, sex, and generation was interacted and therefore, fit independently of the other. So the fact that the trajectories show remarkable stability is really interesting to me. So, at least among these DASS speakers, Southern American English vowels appear to shift the nucleus and glide in tandem."
   }
 ]
