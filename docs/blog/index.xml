@@ -174,6 +174,48 @@ Tip
   <pubDate>Wed, 04 Dec 2019 13:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>NWAV47</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/nwav47/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today, I gave a poster presentation on prevelar raising. As it turns out, despite <sc>beg</sc> and <sc>bag</sc> being relatively small lexical classes, I found phonological, morphological, and lexical effects on the degree of raising, and that the two vowel classes reacted to these influences differently.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/181019-nwav47.pdf">here</a>!</p>
+</div>
+</div>
+<img src="https://new.joeystanley.com/blog/nwav47/nwav47_in_action.jpg" class="img-fluid">
+<center>
+(Photo by <a href="https://www.research.manchester.ac.uk/portal/maciej.baranowski.html">Maciej Baranowski</a>.) <br><br>
+</center>
+<p>So for some speakers, mostly in the Pacific Northwest, the Upper Midwest, and Canada, they raise the <sc>dress</sc> (<sc>beg</sc>) and <sc>trap</sc> (<sc>bag</sc>) vowels before voiced velars. The idea for this research mostly came about because I was trying to figure out whether I have <sc>beg</sc>-raising. Turns out, I do, except for in a few words like <em>integrity</em>, <em>negligible</em>, and <em>segregate</em> which seems somewhat unexpected.</p>
+<p>So I set up a categorization task that I distributed via Reddit. I showed people a bunch of <sc>beg</sc> and <sc>bag</sc> words and asked them whether the vowel in their pronunciation is most like that in <em>bake</em>, <em>deck</em>, or <em>back</em>. Almost 7,000 people took the survey and I got over 500,000 observations.</p>
+<p>As it turns out, there were clear phonological effects for <sc>beg</sc>. If the /ɡ/ was followed by a sonorant (as in <em>regular</em> or <em>segment</em>), particular a liquid (<em>negligible</em> or <em>segregate</em>), it was indicated to be raised less. Adding suffixes had different effects: people indicated a raised vowel more when <em>-ed</em> was added to verbs, but only for <sc>bag</sc>. There were lexical effects too: for <sc>bag</sc>, more frequent words were raised more, borrowings with <sc>beg</sc> were raised more, and <sc>beg</sc> words with orthographic &lt;ex&gt; (like <em>exile</em> or <em>exit</em>) were virtually never raised.</p>
+<p>The takeaway is that even though these are relatively marginal lexical classes, they still have interesting language-internal factors. And, even though <sc>beg</sc>- and <sc>bag</sc>-raising are generally considered to be the same phenomenon of prevelar raising, the two are different. There are some major limitations here, particularly because reported speech is never completely reliable, so I’d like to follow up with an acoustic study. But, I think it’s important to include many more words in a word list because some of these patterns would not have been found if a just small one was used.</p>
+
+
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Pacific Northwest</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/nwav47/index.html</guid>
+  <pubDate>Thu, 18 Oct 2018 12:00:00 GMT</pubDate>
+</item>
+<item>
   <title>LCUGA5</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/lcuga5/index.html</link>
@@ -1175,43 +1217,6 @@ Tip
   <category>Skills</category>
   <guid>https://new.joeystanley.com/blog/secol2017/index.html</guid>
   <pubDate>Thu, 09 Mar 2017 23:12:00 GMT</pubDate>
-</item>
-<item>
-  <title>Updated mvnorm.etest() function</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/updated_mvnorm.etest-function/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="page-columns page-full"><p>In Levshina’s <em>How to do Linguistics with R</em>, the function <code>mvnorm.etest()</code> from the <code>energy</code> library is used. This runs what’s called the “E-statistic (Energy) Test of Multivariate Normality” which used to test whether multivariate data is normally distributed. This is important because it’s an assumption that should be met for several statistical tests like MANOVA and for testing statistical significance of a correlation. Well, the code from the book is broken.</p><div class="no-row-height column-margin column-container"><span class="">Levshina, Natalia. 2015. <a href="https://benjamins.com/sites/z.195/">How to do Linguistics with R: Data exploration and statistical analysis</a>. Amsterdam: John Benjamins Publishing Company.</span><span class="">Maria L. Rizzo and Gabor J. Szekely (2016). energy: E-Statistics: Multivariate Inference via the Energy of Data. R package version 1.7-0. <a href="https://cran.r-project.org/web/packages/energy/index.html">https://CRAN.R-project.org/package=energy</a></span></div></div>
-<p>I looked into it and it turns out that the book was based on an older version of the <code>energy</code> package (&lt;1.7). But if you’ve updated the package since August 2016 to version 1.7 or later, the code breaks. What happened? Here’s the old code:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mvnorm.etest</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cbind</span>(x, y))</span></code></pre></div>
-<p>While this worked with the old versions, in the newer versions this returns a <em>p</em>-value of “NA”. This function does some bootstrapping meaning it runs some function on the data over and over some number of times. In the old version of the package, the default was 999 replicates. In the new version there is no default, so you have to specify the number of replicates with the <code>R=999</code> argument:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mvnorm.etest</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cbind</span>(x, y), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">R=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">999</span>)</span></code></pre></div>
-<p>You can of course change this number to whatever you want, but 999 was the default before so I figure it’s a good number to keep. Just thought you ought to know.</p>
-
-
-
- ]]></description>
-  <category>Statistics</category>
-  <category>R</category>
-  <category>Skills</category>
-  <guid>https://new.joeystanley.com/blog/updated_mvnorm.etest-function/index.html</guid>
-  <pubDate>Tue, 28 Feb 2017 23:12:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
