@@ -478,6 +478,97 @@ Tip
   <pubDate>Mon, 08 Jul 2019 22:30:00 GMT</pubDate>
 </item>
 <item>
+  <title>LSA and ADS 2019</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/ads-and-lsa-2019/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Thanks for attending my presentations. At the 2019 annual meetings of the American Dialect Society and the Linguistic Society of America in New York City, I was fortunate to present three presentations!</p>
+<p><br></p>
+<section id="thursdays-lsa-poster-on-southern-vowels" class="level2">
+<h2 class="anchored" data-anchor-id="thursdays-lsa-poster-on-southern-vowels">Thursday’s LSA poster on southern vowels</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/190103-lsa2019.pdf">here</a>!</p>
+</div>
+</div>
+<p>Thursday, <a href="http://faculty.franklin.uga.edu/mrenwick/">Peggy Renwick</a> and I presented our poster on social patterns in static and dynamic measurements of Southern American English vowels. Our dataset was the Digital Archive of Southern Speech (DASS), a collection of 64 interviews from the 1970s. We looked at Pillai scores to measure the degree of “swapping” between pairs of front vowels (/i&nbsp;ɪ/ and /e&nbsp;ɛ/) and we used vector length, trajectory length, and spectral rate of change to see how dynamic the vowels were.</p>
+<p>We found a bunch of cool patterns! You can see the poster for all of them, but one of the cooler ones was that /e/ and /ɛ/ swapped more in younger speakers. This plot shows the trajectories of these two vowels split up by generation and you can see how they get closer together (though keep in mind that because the trajectories are drastically different, these aren’t merging).</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_EY_EH_gen.jpeg" class="img-fluid"></p>
+<p>This is to be expected for speakers with the Southern Vowel Shift. But, the African American Vowel Shift doesn’t have this same swapping. So sure enough, if we look at the data split by ethnicity, we see that the African American speakers had less speakers than the European Americans.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_EY_EH_eth.jpeg" class="img-fluid"></p>
+<p>So our results are mostly what we expected to find. But this corpus of older recordings give us a unique peek into the past while these changes were developing. And by using both static <em>and</em> dynamic measurements, we can get a more complete picture of what’s going on.</p>
+<p><br> <br></p>
+</section>
+<section id="fridays-ads-presentation-on-prevelar-raising" class="level2">
+<h2 class="anchored" data-anchor-id="fridays-ads-presentation-on-prevelar-raising">Friday’s ADS presentation on prevelar raising</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/190104-ads2019_prevelar.pdf">here</a>!</p>
+</div>
+</div>
+<p>Early Friday morning, I talked about regional patterns in <sc>beg</sc>- and <sc>bag</sc>-raising in North American English. There’s been a lot of research on these phenomena, but only in places like the Upper Midwest, Western Canada, and the Pacific Northwest. Perhaps there is prevelar raising in other areas too?</p>
+<p>I used the same dataset that I used for my <a href="../../nwav47">NWAV47</a> presentation: I set up an online survey and asked people how they pronounced several dozen prevelar words. For geographic data, I used GPS coordinates of people’s childhood homes. I ended up with over 500,000 data points!</p>
+<p>It was clear that there were differences between the two vowels. <sc>bag</sc>-raising was pretty clear cut: either people had it or they did not. And most people didn’t. There just weren’t too many people that were sort of on the middle ground. However, with and <sc>beg</sc>-raising, while there were lots of people with no raising, there were tons of people with varying amounts of raising. Basically, <sc>beg</sc> was much more variable than <sc>bag</sc>.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_bag_raising_histogram.jpeg" class="img-fluid"></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_beg_raising_histogram.jpeg" class="img-fluid"></p>
+<p>And then I showed some plots. The first was <sc>bag</sc>-raising which was reported in pretty much all the areas we expected.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_bag_raising_map.jpg" class="img-fluid"></p>
+<p>But then other map showed that <sc>bag</sc>-raising was pretty much everywhere except for the South. It’s particularly widespread in the West and the Midlands.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_beg_raising_map.jpg" class="img-fluid"></p>
+<p>When you combine the two maps, you can start to see where one occurs without the other. Here, green areas are those that have <sc>bag</sc>-raising but not <sc>beg</sc>-raising and purple are areas with <sc>beg</sc>-raising without <sc>bag</sc>-raising.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2019/ads2019_combined_map.jpg" class="img-fluid"></p>
+<p>Basically, the purpose of this study was to see whether there were differences between <sc>beg</sc>-raising and <sc>bag</sc>-raising in where they occur regionally. I think these maps show that there are differences. Now I just want to go confirm these patterns with phonetic data!</p>
+<p><br> <br></p>
+</section>
+<section id="sundays-ads-presentation-on-the-perception-of-southern-american-english" class="level2">
+<h2 class="anchored" data-anchor-id="sundays-ads-presentation-on-the-perception-of-southern-american-english">Sunday’s ADS presentation on the perception of Southern American English</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/190106-ads2019_dass.pdf">here</a>!</p>
+</div>
+</div>
+<p>My last presentation of the weekend was Sunday morning at the American Dialect Society. On behalf of my coauthors, Rachel Olsen, Mike Olsen, Lisa Lipani, and Peggy Renwick, I talked about our research on comparing acoustic data with fieldworker transcriptions in the Digital Archive of Southern Speech. Doing this kind of comparison is not new, and people have found that Linguistic Atlas transcriptions are not really that reliable, but we wanted to look into this for ourselves in our newly transcribed corpus.</p>
+<p>So for now, we’re just focusing on the canonical diphthongs /aɪ, aʊ, ɔɪ/ because they’re quite a bit more monophthongal in the South than in other areas. To measure this acoustically, we used trajectory length. For the perception, we looked at the original fieldworker’s protocols they created for each informant, which has example tokens and how those people would pronounce them (in IPA).</p>
+<p>Basically there was no correlation between how monophthongal the vowels were acoustically and how they were transcribed. Besides that, in transcriptions the vowels were more monophthongal when they were before /r/, but acoustically they were more monophthongal before /l/ and among European Americans. The two give different results.</p>
+<p>So we’ve at least found that whatever the fieldworkers heard when they transcribed these words, it wasn’t trajectory length. Perhaps in the future we can explore some other acoustic measures and see if they correlate better with the transcriptions.</p>
+<p><br></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://new.joeystanley.com/blog/ads-and-lsa-2019/index.html</guid>
+  <pubDate>Thu, 03 Jan 2019 11:20:00 GMT</pubDate>
+</item>
+<item>
   <title>NWAV47</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/nwav47/index.html</link>
@@ -1192,35 +1283,6 @@ List of all ~401 monosyllabic English words with a coda lateral, organized by vo
   <category>Research</category>
   <guid>https://new.joeystanley.com/blog/laboratory-research/index.html</guid>
   <pubDate>Thu, 18 May 2017 02:30:00 GMT</pubDate>
-</item>
-<item>
-  <title>Admission to Candidacy</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/admission-to-candidacy/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>This morning I successfully defended my second qualifying paper, “Near-Mergers in Cowlitz County, Washington,” which means I’m officially a doctoral candidate! (Okay, actually, a couple forms need to be signed, but that’s no biggie.) What an important step for me!</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-"Doctoral candidate" just sounds so much cooler than mere "Ph.D.&nbsp;student." <br><br>I like my new title :)
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/860211954090160128">May 4, 2017</a>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>The paper I defended was essentially what I presented at the <a href="../../blog/LSA2017">ADS</a> conference in January and at DiVar in February. I presented some of my data that I collected in Washington State and discussed the <i>Mary-merry-marry</i> merger (or lack thereof) and a collection of mergers involving higher back vowels before coda laterals (<em>pool</em>, <em>pull</em>, <em>pole</em>, and <em>pulp</em>). I got some great feedback from my committee.</p>
-<div class="page-columns page-full"><p>What are my plans for the rest of my schooling? I’m still deciding if I want to finish my dissertation and graduate next year or the year after. I’ll start things up and see how I’m feeling in six months, but I’m on the fence. On the one hand, while I will probably be able to secure funding for my fifth year, no matter what it is it’s probably going to be less pay than a real job, so I’ll want to graduate after my fourth year. On the other hand, giving myself <em>two</em> years to finish will allow me to really put a lot of time into the dissertation, as well as the couple other sizable side projects I have going on, thus beefing up my CV before graduating.</p><div class="no-row-height column-margin column-container"><span class="">Edit: I ended up graduating in 2020 after my sixth year.😳</span></div></div>
-<p>I’ll have to weigh my research goals against my personal, familial, and financial needs and make some decisions at some point. But for now I’m just happy to have made that leap to ABD.</p>
-
-
-
- ]]></description>
-  <category>Research</category>
-  <category>Dissertation</category>
-  <guid>https://new.joeystanley.com/blog/admission-to-candidacy/index.html</guid>
-  <pubDate>Thu, 04 May 2017 14:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

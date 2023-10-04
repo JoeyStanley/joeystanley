@@ -1,0 +1,90 @@
+---
+layout: post
+title:  "LSA and ADS 2019"
+date:   2019-01-03 07:20:00 -0400
+tags: 
+  - Conferences 
+  - Linguistic Atlas 
+  - esearch 
+  - South
+aliases: 
+    - /ads2019
+    - /lsa2019
+---
+
+Thanks for attending my presentations. At the 2019 annual meetings of the American Dialect Society and the Linguistic Society of America in New York City, I was fortunate to present three presentations!
+
+<br/>
+
+## Thursday's LSA poster on southern vowels
+
+:::callout-tip
+Download the poster [here](/downloads/190103-lsa2019.pdf)!
+:::
+
+Thursday, [Peggy Renwick](http://faculty.franklin.uga.edu/mrenwick/) and I presented our poster on social patterns in static and dynamic measurements of Southern American English vowels. Our dataset was the Digital Archive of Southern Speech (DASS), a collection of 64 interviews from the 1970s. We looked at Pillai scores to measure the degree of "swapping" between pairs of front vowels (/i&nbsp;ɪ/ and /e&nbsp;ɛ/) and we used vector length, trajectory length, and spectral rate of change to see how dynamic the vowels were. 
+
+We found a bunch of cool patterns! You can see the poster for all of them, but one of the cooler ones was that /e/ and /ɛ/ swapped more in younger speakers. This plot shows the trajectories of these two vowels split up by generation and you can see how they get closer together (though keep in mind that because the trajectories are drastically different, these aren't merging). 
+
+![](ads2019_EY_EH_gen.jpeg)
+
+This is to be expected for speakers with the Southern Vowel Shift. But, the African American Vowel Shift doesn't have this same swapping. So sure enough, if we look at the data split by ethnicity, we see that the African American speakers had less speakers than the European Americans. 
+
+![](ads2019_EY_EH_eth.jpeg)
+
+So our results are mostly what we expected to find. But this corpus of older recordings give us a unique peek into the past while these changes were developing. And by using both static *and* dynamic measurements, we can get a more complete picture of what's going on.
+
+<br/>
+<br/>
+
+
+## Friday's ADS presentation on prevelar raising
+
+:::callout-tip
+Download the slides [here](/downloads/190104-ads2019_prevelar.pdf)!
+:::
+
+Early Friday morning, I talked about regional patterns in <sc>beg</sc>- and <sc>bag</sc>-raising in North American English. There's been a lot of research on these phenomena, but only in places like the Upper Midwest, Western Canada, and the Pacific Northwest. Perhaps there is prevelar raising in other areas too?
+
+I used the same dataset that I used for my [NWAV47](/nwav47) presentation: I set up an online survey and asked people how they pronounced several dozen prevelar words. For geographic data, I used GPS coordinates of people's childhood homes. I ended up with over 500,000 data points! 
+
+It was clear that there were differences between the two vowels. <sc>bag</sc>-raising was pretty clear cut: either people had it or they did not. And most people didn't. There just weren't too many people that were sort of on the middle ground. However, with and <sc>beg</sc>-raising, while there were lots of people with no raising, there were tons of people with varying amounts of raising. Basically, <sc>beg</sc> was much more variable than <sc>bag</sc>.
+
+![](ads2019_bag_raising_histogram.jpeg)
+
+![](ads2019_beg_raising_histogram.jpeg)
+
+And then I showed some plots. The first was <sc>bag</sc>-raising which was reported in pretty much all the areas we expected. 
+
+![](ads2019_bag_raising_map.jpg)
+
+But then other map showed that <sc>bag</sc>-raising was pretty much everywhere except for the South. It's particularly widespread in the West and the Midlands. 
+
+![](ads2019_beg_raising_map.jpg)
+
+When you combine the two maps, you can start to see where one occurs without the other. Here, green areas are those that have <sc>bag</sc>-raising but not <sc>beg</sc>-raising and purple are areas with <sc>beg</sc>-raising without <sc>bag</sc>-raising. 
+
+![](ads2019_combined_map.jpg)
+
+Basically, the purpose of this study was to see whether there were differences between <sc>beg</sc>-raising and <sc>bag</sc>-raising in where they occur regionally. I think these maps show that there are differences. Now I just want to go confirm these patterns with phonetic data!
+
+
+<br/>
+<br/>
+
+
+## Sunday's ADS presentation on the perception of Southern American English
+
+:::callout-tip
+Download the slides [here](/downloads/190106-ads2019_dass.pdf)!
+:::
+
+My last presentation of the weekend was Sunday morning at the American Dialect Society. On behalf of my coauthors, Rachel Olsen, Mike Olsen, Lisa Lipani, and Peggy Renwick, I talked about our research on comparing acoustic data with fieldworker transcriptions in the Digital Archive of Southern Speech. Doing this kind of comparison is not new, and people have found that Linguistic Atlas transcriptions are not really that reliable, but we wanted to look into this for ourselves in our newly transcribed corpus.
+
+So for now, we're just focusing on the canonical diphthongs /aɪ, aʊ, ɔɪ/ because they're quite a bit more monophthongal in the South than in other areas. To measure this acoustically, we used trajectory length. For the perception, we looked at the original fieldworker's protocols they created for each informant, which has example tokens and how those people would pronounce them (in IPA). 
+
+Basically there was no correlation between how monophthongal the vowels were acoustically and how they were transcribed. Besides that, in transcriptions the vowels were more monophthongal when they were before /r/, but acoustically they were more monophthongal before /l/ and among European Americans. The two give different results.
+
+So we've at least found that whatever the fieldworkers heard when they transcribed these words, it wasn't trajectory length. Perhaps in the future we can explore some other acoustic measures and see if they correlate better with the transcriptions. 
+
+<br/>
