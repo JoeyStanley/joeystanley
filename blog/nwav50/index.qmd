@@ -1,0 +1,30 @@
+---
+layout: post
+title: NWAV50
+date: 2022-10-13 21:30:00 -0600
+date-modified: 2022-02-14
+aliases:
+  - /nwav50
+categories:
+  - Conferences
+  - Methods
+  - Phonetics
+  - Presentations
+  - Research
+  - Simulations
+  - Statistics
+  - Vowel Overlap
+---
+
+
+Today I gave a talk that Betsy Sneller and I have been working on called "How Sample Size Impacts Pillai Scores – and What Sociophoneticians Should Do About It" at the 50th New Ways of Analyzing Variation conference in San Jose! This is an updateto what we presented at [ASA2021](/blog/asa2021).
+
+We have three things you can download. 
+
+1. First is [the actual powerpoint file](/downloads/221014-NWAV50_pillai.pptx). In the notes of each slide though you can see the actual script I read, so you can read every word that was said during the talk.
+
+2. Next, if that's too much for you, you can download just [a PDF of the talk](/downloads/221014-NWAV50_pillai.pdf). In case you want this ligherweight version of the slides.
+
+3. ~~Finally, here is the current manuscript that is under review with the *Journal of the Acoustical Society of America*. The final product will likely change somewhat, but most of the information is there.~~ [Edit (December 14, 2022): [Here](/downloads/221202-Pillai-preprint.pdf) is the accepted version.]
+
+If you need to calculate Pillai scores in R, I've got a two-part tutorial for you ([here](/blog/a-tutorial-in-calculating-vowel-overlap) and [here](/blog/vowel-overlap-in-r-advanced-topics)). I also did a blog post ([here](/blog/pillai-scores-dont-change-after-normalization)) about how Pillai scores don't seem to change after normalization. 
