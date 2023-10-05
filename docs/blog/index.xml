@@ -107,6 +107,107 @@
   <pubDate>Fri, 14 Oct 2022 03:30:00 GMT</pubDate>
 </item>
 <item>
+  <title>ADS and LSA 2022</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/ads-and-lsa-2022/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’m attending the Annual Meeting of the Linguistic Society of America and the American Dialect Society and I’ve got three presentations to tell you about! Please find links, summaries, and images from these presentations below!</p>
+<section id="perspectives-on-georgia-vowels-from-legacy-to-synchrony" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="perspectives-on-georgia-vowels-from-legacy-to-synchrony">Perspectives on Georgia Vowels: From Legacy to Synchrony</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/220106-ADS-Georgia.pdf">here</a>!</p>
+</div>
+</div>
+<div class="page-columns page-full"><p>On Thursday afternoon, Peggy Renwick, Jon Forrest, Lelia Glass, and I kicked off the ADS sessions with our presentation on English in Georgia. The four of us have been collaborating for about a year, pooling together datasets and sharing resources, on a project focusing on English in Georgia. This is our first talk showcasing some of our findings. Our results are largely descriptive at this point. Here are the main plots we used (in a fun dark mode!) split up by generation, gender, and ethnicity:</p><div class="no-row-height column-margin column-container"><span class="">For those of you that were there, this was the one that was horribly Zoombombed!</span></div></div>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/ADS2022-white_older.png" class="img-fluid"></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/ADS2022-white_younger.png" class="img-fluid"></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/ADS2022-black.png" class="img-fluid"></p>
+<p>Turns out pretty vowel changes if you give it 100 years. We’re just excited to see acoustic data from such a large span of time analyzed together.</p>
+<p><br></p>
+</section>
+<section id="homogeneity-and-heterogeneity-in-western-american-english" class="level2">
+<h2 class="anchored" data-anchor-id="homogeneity-and-heterogeneity-in-western-american-english">Homogeneity and Heterogeneity in Western American English</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/220107-ADS-MTurk.pdf">here</a>!</p>
+</div>
+</div>
+<p>At the ADS poster session on Friday, I presented a poster with two students, Jessica Shepherd and Auna Nygaard. As a bit of background, in <em>Speech in the Western States: Volume 2</em>, Fridland et al (2012:172) point out that pretty much every study of the front lax vowels in the Western US has been based on independent, isolated studies. Because each research collects and processes data their own way, it’s difficult to disentangle differences that may be due to region and differences that may be due to methodological choices. They say that “clearly, collecting the same type of data from all sites would be optimal in allowing us the most reliable cross-region assessment.”</p>
+<p>This project is a direct response to that call. When I was a grad student I recruited people via Amazon Mechanical Turk to a bunch of recordings of people reading sentences and wordlists. In total, 212 people completed the task, scattered all across the Western US. This poster describes the first results from this project. As it turns out, our findings match the West’s description as exhibiting both “homogeneity and heterogeneity” (Fridland et al.&nbsp;2012:172). We find homogeneity in that most people have the LBMS to some degree and that education level and region weren’t statistically significant predictors. However, there’s a wide range of variation for the LBMS and <sc>ban</sc>-raising, with younger people and sometimes women appearing to lead both of these sound changes. Here are some sample plots from four representative speakers.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/ADS2022-mturk_samples.png" class="img-fluid"></p>
+<p>And here’s an overall look at the vowel space in our dataset, with some additional allophones we don’t analyze here.</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/ADS2022-mturk_overall.png" class="img-fluid"></p>
+<p>We look forward to digging into this dataset a little bit more in the future!</p>
+<p><br></p>
+</section>
+<section id="vowels-can-merge-because-of-changes-in-trajectory-prelaterals-in-rural-utah-english" class="level2">
+<h2 class="anchored" data-anchor-id="vowels-can-merge-because-of-changes-in-trajectory-prelaterals-in-rural-utah-english">Vowels can merge because of changes in trajectory: Prelaterals in rural Utah English</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/220107-LSA-Prelaterals.pdf">here</a>!</p>
+</div>
+</div>
+<p>Finally, on Friday afternoon, Lisa Johnson and I talked about vowel trajectories and what they can tell us about vowel merger. We look at prelaterals in rural Utah and find that, on the surface, they look like mergers by approximation. However, when we looked at the trajectories (with the help of some pretty cool animations!), it seems like the lateral gradually increases its influence on the vowel so that the merger happens “leftward,” from the coda to the onset. In this example, we have <sc>zeal</sc> and <sc>guilt</sc>, representing /il/ (<em>feel</em>, <em>deal</em>, <em>meal</em>) and /ɪl/ (<em>fill</em>, <em>dill</em>, <em>mill</em>), <a href="../../blog/extending-wells-lexical-sets-to-prelateral-vowels">respectively.</a></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/lsa2022_ZEAL-GUILT.gif" class="img-fluid"></p>
+<p><br></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/lsa2022_FLAIL-SHELF.gif" class="img-fluid"></p>
+<p><br></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/lsa2022_JOLT-MULCH.gif" class="img-fluid"></p>
+<p><br></p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2022/lsa2022_WOLF-MULCH.gif" class="img-fluid"></p>
+<p>This was a pretty consistent pattern across all the pairs of prelateral vowels we looked at. We suspect that we might find this among other conditioned and vowel shifts, like prevelar raising, the <sc>mary-merry-marry</sc> merger, and post-coronal /u/-fronting. The point is, we think trajectories should be considered more when looking at vowel mergers because even among these supposed monophthongs, trajectories really illuminated how that merger happened.</p>
+<p><br></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Animations</category>
+  <category>Conferences</category>
+  <category>Data Viz</category>
+  <category>MTurk</category>
+  <category>Phonetics</category>
+  <category>Presentations</category>
+  <category>R</category>
+  <category>Research</category>
+  <category>South</category>
+  <category>Students</category>
+  <category>Utah</category>
+  <category>Vowel Overlap</category>
+  <category>West</category>
+  <guid>https://new.joeystanley.com/blog/ads-and-lsa-2022/index.html</guid>
+  <pubDate>Sun, 02 Jan 2022 12:00:00 GMT</pubDate>
+</item>
+<item>
   <title>ASA181</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/asa181/index.html</link>
@@ -325,6 +426,66 @@ Tip
  ]]></description>
   <guid>https://new.joeystanley.com/blog/kohler-tapes/index.html</guid>
   <pubDate>Sat, 13 Feb 2021 21:16:00 GMT</pubDate>
+</item>
+<item>
+  <title>LSA and ADS 2020</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/ads-and-lsa-2020/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>For the first time in a few years, I did not attend the ADS/LSA annual meetings. It would have been nice to hang out in New Orleans this weekend. However, my research will still be represented: my colleagues presented some research focusing on Southern American English vowels that I’ve been a part of this year.</p>
+<p><br></p>
+<section id="fridays-ads-poster-on-southern-american-english-vowels" class="level2">
+<h2 class="anchored" data-anchor-id="fridays-ads-poster-on-southern-american-english-vowels">Friday’s ADS poster on Southern American English vowels</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/200103-ads2020.pdf">here</a>!</p>
+</div>
+</div>
+<p>Friday morning at the American Dialect Society poster session, Bill Kretzschmar presented some research on behalf of the entire Linguistic Atlas research team at UGA (Peggy Renwick, Katie Kuiper, Lisa Lipani, Mike Olsen, Rachel Olsen, and me). In it he presents findings from our now-complete dataset from the <em>Digital Archive of Southern Speech</em>. With a dataset this size, we can make comparisons to other varieties of American English regarding the distribution of vowels in the F1-F2 space.</p>
+</section>
+<section id="sundays-lsa-presentation-on-formant-trajectories" class="level2">
+<h2 class="anchored" data-anchor-id="sundays-lsa-presentation-on-formant-trajectories">Sunday’s LSA presentation on formant trajectories</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/200105-lsa2020.pdf">here</a>!</p>
+</div>
+</div>
+<p>Sunday, <a href="http://faculty.franklin.uga.edu/mrenwick/">Peggy Renwick</a> presented our research on formant dynamics of back vowels in Southern American English vowels. Focusing on just the White Americans in the <em>Digital Archive of Southern Speech (DASS)</em>, we wanted to see how formant trajectory shapes and their relative positions vary across male and female speakers in different generations. Many of our findings can be summarized in this animation:</p>
+<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2020/lsa2020.gif" class="img-fluid"></p>
+<p><sc>goose</sc> doesn’t change much, especially for the women, suggesting <sc>goose</sc> fronting is an old shift and was nearing completion by the time our speakers acquired language. Meanwhile <sc>goat</sc> lowers between the Lost and GI generations of women, and then a generation later for the men. <sc>foot</sc> doesn’t change much, suggesting it doesn’t pattern with <sc>goose</sc>-fronting. The low vowels <sc>lot</sc> and <sc>thought</sc> are near each other, but not merged because of their different positions in the F1-F2 space and their different formant shapes.</p>
+<p>Something that stands out to me is that each vowel’s trajectory didn’t change all that much over time. This wasn’t a product of how our GAMM was specified: each combination of vowel, sex, and generation was interacted and therefore, fit independently of the other. So the fact that the trajectories show remarkable stability is really interesting to me. So, at least among these DASS speakers, Southern American English vowels appear to shift the nucleus and glide in tandem.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Animations</category>
+  <category>Conferences</category>
+  <category>Linguistic Atlas</category>
+  <category>Research</category>
+  <category>South</category>
+  <guid>https://new.joeystanley.com/blog/ads-and-lsa-2020/index.html</guid>
+  <pubDate>Thu, 02 Jan 2020 11:20:00 GMT</pubDate>
 </item>
 <item>
   <title>Dissertation</title>
@@ -1187,102 +1348,6 @@ mannerfricative           0.05349    0.01744   3.067</code></pre>
   <category>Dissertation</category>
   <guid>https://new.joeystanley.com/blog/general-update/index.html</guid>
   <pubDate>Tue, 05 Sep 2017 14:30:00 GMT</pubDate>
-</item>
-<item>
-  <title>Using MTurk</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/using-mturk/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>A few weeks ago, I <a href="../../blog/a-survey-of-western-american-english-using-mturk">wrote</a>about a grant I was awarded where I’ll use Amazon Mechanical Turk (“MTurk”) to collect data from people all across the West. Today, I did a soft launch of the request and already got recordings from five people!</p>
-<p>After weeks of carefully wrangling my MTurk request, my Qualtrics survey, and my IRB forms, I finally got it all set up. I’ve had a handful of projects get approved by the IRB, but this one was a little different since it was through MTurk, so I was a little unsure how to go about some things. Luckily, our IRB office was having open houses all through the semester, which were <em>very</em> helpful.</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-Just got IRB approval on my first try. I'm getting better at this! Huh, so going to the <a href="https://twitter.com/UGAHSO"><span class="citation" data-cites="UGAHSO">@UGAHSO</span></a> open houses helps a ton! Who'da thunk?
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/864932387712630784">May 17, 2017</a>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>I decided to do a soft release first. $2500 is a lot of money to just throw into a task all at once and I wanted to make sure things were working out right. So I put in enough for five people do to the task. Within the hour I was getting data sent to me! It was crazy!</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-With MTurk, I'm literally getting data emailed to me throughout the day. Pretty exciting.
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/865311077491462144">May 18, 2017</a>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>I got all five in one day with no problem. I’m glad I did the soft release though because there were a couple small snafus that I had to fix. For example, I underestimated how much time it would take people to finish the task, so I’ll raise the amount they’re compensated: I can afford fewer workers that way, but at least I pay them an honest amount.</p>
-<p>I’ll spend the next few days making absolutely certain that the task I want them to do is what’s right for this project. But at some point, I’ll pull the trigger and let’er rip. From that point on, all I need to do is approve people’s work (to make sure they get paid) and then just enjoy the hours and hours of recordings showing up in my inbox. What a way to collect data!</p>
-<section id="may-22" class="level2">
-<h2 class="anchored" data-anchor-id="may-22">May 22</h2>
-<p>So this happened:</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-Thank you, MTurker, for pointing out that my consent form says the software I ask you download "will be harmful to your computer." <a href="https://twitter.com/hashtag/Typo?src=hash">#Typo</a>
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/866703105798410240">May 22, 2017</a>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</section>
-<section id="june-9" class="level2">
-<h2 class="anchored" data-anchor-id="june-9">June 9</h2>
-<p>Okay, so several weeks have passed, and the data collection phase is drawing to a close. In just a couple of weeks, I was able to get data from almost 200 people. I had some major time constraints on how I could use my money, so I had to find ways to use it quicker. I ended up creating an entirely new task, similar to the first one, with a whole new batch of sentences and words for people to read. A large portion of my participants returned to do the second part, meaning I have around 30 minutes of audio from almost 100 people.</p>
-<p>This is an incredible dataset I’ve collected. I don’t know how much audio I have total yet, but it’s well over 50 hours. That’s pretty good for just three weeks.</p>
-<p>However, I will be the first to say that it was a rough three weeks. It seems like every hour I was getting data emailed to me, and several times a day I had to sit and catalogue the recordings and speaker metadata, while managing the MTurk tasks. Most of the time, it was relatively straightforward, but some participants needed a little extra attention because of technical difficulties, glitches in the system, or complaints here and there. Luckily, I did this when I wasn’t in classes, because otherwise it would have been impossible.</p>
-</section>
-<section id="june-20" class="level2">
-<h2 class="anchored" data-anchor-id="june-20">June 20</h2>
-<p>At last, my data collection has drawn to a close. I ended up with about 212 speakers and 84 hours of data. Not bad. Now comes the daunting task of processing all of this. For every person, if I just want to do a small task that only takes a minute, it’ll take over 3 hours to do it for all speakers! This will take a <em>very</em> long time for me to get through, but from the 2% that I’ve looked at so far, it’s going to be very fruitful corpus.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Research</category>
-  <category>West</category>
-  <category>Pacific Northwest</category>
-  <category>MTurk</category>
-  <guid>https://new.joeystanley.com/blog/using-mturk/index.html</guid>
-  <pubDate>Thu, 18 May 2017 14:30:00 GMT</pubDate>
-</item>
-<item>
-  <title>Laboratory Research</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/laboratory-research/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Recently, I’ve <a href="../../blog/lsa2017">presented</a> on words like <i>pool</i>, <i>pull</i>, and <i>pole</i> and how the difference between them can be really hard to describe, both by me and the non-specialist alike. Based on my findings in Washington, I decided I wanted to dig a little deeper into what these words are like, so I started a study that is less sociolinguistic and more laboratory phonology-based, which is a little unusual for me.</p>
-<p>Broadly, I want to look at the phonetics of English vowels before coda laterals. So, after making a list of lots and lots of possible words, cutting them down based on frequency and other factors, I’ve got a decent list of targeted words.</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-List of all ~401 monosyllabic English words with a coda lateral, organized by vowel and syllable structure? Check. My favorite? Squelched.
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/861032509534031873">May 7, 2017</a>
-</blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>I got IRB approval just a little too late into the semester to recruit people and offer them extra credit in courses, so I had to wait a few weeks to get started. Now that Maymester has started, I’ve approached some professors and asked them to offer participation in my research as an extra credit opportunity. I even hand out little business cards after I’ve done my pitch to the class, so they have my contact information—an idea that proved very effective for me in Washington:</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/laboratory-research/businesscard.png" class="img-fluid figure-img" style="width:15em"></p>
-<figcaption class="figure-caption margin-caption">Recruitment business card</figcaption>
-</figure>
-</div>
-<p>So I’m now meeting with students in the <a href="https://linglab.franklinresearch.uga.edu">linguistics laboratory</a> that we have here at UGA. It’s unfortunately under-utilized but nonetheless very good. Inside the already very quiet recording studio is a tiny booth where the best recordings can be made. I have participants reading a bunch of carefully selected sentences that target key sounds and then taking a quick follow-up survey. It amounts to about 30–40 minutes of speech from each person, which is kind of a lot.</p>
-<p>I don’t have a specific goal for how many people I want to get, but I should have 20 by the end of the month and potentially up to 50 by the end of the summer. My only limitation is how much time I can put into this. I’ll do some preliminary analyses on those and see if I need to recalibrate the sentences or maybe collect more data. This will probably be an ongoing project for a while: the IRB and consent forms are purposely pretty open-ended to allow me to modify things where needed without much hassle.</p>
-<p>Anyway, it’s been fun being in the lab, and I’m excited to analyze <em>really</em> clean audio for a change.</p>
-
-
-
- ]]></description>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/laboratory-research/index.html</guid>
-  <pubDate>Thu, 18 May 2017 02:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
