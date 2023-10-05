@@ -368,6 +368,80 @@ Tip
   <pubDate>Mon, 18 Oct 2021 12:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>#365 Papers (Update)</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/365-papers-update/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>At the beginning of 2018, I set the ambitious goal of reading 365 papers during that year. I <a href="https://twitter.com/joey_stan/status/971972160322387968?s=20">tweeted</a> about it and <a href="../../blog/365-papers">blogged</a> about it, but ultimately didn’t achieve my goal. Turns out 365 is a lot. Well, after 1338 days, I can finally say I’ve ready 365 papers! So here’s just some visuals to see what kinds of things I’ve been reading.</p>
+<p>What counts as a “paper” and what counts as “reading” it? I didn’t have any hard and fast rules, but these were the guidelines I laid out before starting.</p>
+<ul>
+<li><p><em>Chapters are okay</em>: I think that in addition to journal articles, chapters from either edited volumes, monographs, or dissertations count as one each.</p></li>
+<li><p><em>Notes are required</em>: I like to take a lot of notes while I read things, so I’ll only count it if I dutifully summarize and take notes as I go along. This means that skimming an article doesn’t count. If I’ve already read an article but for whatever reason didn’t take notes, I’ll only count it if I go through it again and take notes.</p></li>
+<li><p><em>Conferences don’t count</em>: At least for me, attending a conference and taking notes there doesn’t count, and neither does going through the slides/poster if available. Not that there’s anything wrong with conferences, but this is #365<em>papers</em> after all.</p></li>
+</ul>
+<p>In a few cases, I counted full books as a single entry, like if they had short chapters. I think a 3-page chapter of a book shouldn’t count the same as an article in <em>Language</em>, for example. Similarly, a lot of the Masters Theses I read were shorter and about the same as an article reading so those counted as one.</p>
+<p>I will say that <em>re-reading</em> something counts a second time if I do it just as thoroughly. Things like textbook chapters from classes I’m teaching are the main culprit, but it’s nice to revisit things after a few years.</p>
+<p>And to be clear, this doesn’t represent <em>all</em> the papers I’ve ever read. In fact, I’d say the bulk of reading for my dissertation happened before I started keeping track. I’ve kept decent notes about what I’ve read since about 2010, but I’ll just focus on the most recent 365 for now.</p>
+<section id="pace" class="level2">
+<h2 class="anchored" data-anchor-id="pace">Pace</h2>
+<p>If I wanted to read 365 papers in a year, that’s obviously one paper a day. What was my actual pace and did it change? The following plot answers this. From left to right are the months of the year. The colored lines go up as I finished a paper that year. In dashed gray lines, I have benchmarks for where the colored lines would be if I had maintained a constant rate.</p>
+<p><img src="https://new.joeystanley.com/blog/365-papers-update/pace.jpg" class="img-fluid"></p>
+<p>Looks like in 2018 and 2019 (when I was in the throes of dissertation-writing), my pace was usually somewhere around one paper every 4 to 8 days. So about one a week or occasionally two a week, on average. Starting in 2020 and continuing into this year, my pace is quicker and I’m reading a paper at least every three days on average.</p>
+<p>My pace ebbed and flowed within a single year quite a bit and it’s interesting to see the patterns. In August of 2018 for example, I started really hunkering down and writing my dissertation, so there’s a sudden increase in pace (in the blue line). In early 2019 you can see I read in short bursts (I binge-read several 3rd Wave sociolinguistics papers). In June 2019 I took GIS and Stats courses so that uptick was from those classes. In September I was in a data visualization phase. And it looks like the time between when I submitted my dissertation and when I defended it (in December 2019), I didn’t do much reading at all.</p>
+<p>My pace went up quite a bit in 2020 as I was transitioning from dissertation work to teaching. I read some material related to my job talk and was working on submitting my chapter in <em>Speech in the Western States: Volume III</em>. The biggest jump was in March 2020. Yes, that’s when COVID hit, but I was also fortunate to be hired as an “instructional designer” for BYU so I was prepping a course and doing a <em>lot</em> of reading. Things waned as I moved to Utah but when Fall semester hit, I kept that pretty quick pace up as I was prepping two new courses. This continued into 2021 as I prepped another two new courses. And you can see my recent uptick as I start getting ready to teach again.</p>
+</section>
+<section id="content" class="level2">
+<h2 class="anchored" data-anchor-id="content">Content</h2>
+<p>So now that we’ve got the pace covered, let’s look at the content itself.</p>
+<section id="years" class="level3">
+<h3 class="anchored" data-anchor-id="years">Years</h3>
+<p>First, I’ll show the publication years of the things I read. Note that I do have two colums for “no date” and forthcoming: those are mostly reviews I did or other sneak-peaks at unpublished work.</p>
+<p><img src="https://new.joeystanley.com/blog/365-papers-update/years.jpg" class="img-fluid"></p>
+<p>I’m happy to see that a large proportion of what I read was recent, having come out since I started this little project. Looks like half of the papers I read came out in 2008 or later (or rather, within the last 10–14 years); a third was 2017 or later (the last 1–4 years). I honestly wish I had read even more recent stuff though because I feel a little behind the times. A quarter of what I read was before 1993. It’s good to read the classics, but I think I need to be staying more up to date though. Something that certainly accounts for this older skew is that I read while walking and the things I read are typically older (Trudgill 1978, Petyt 1980, Preston 1989, etc). I’m happy I read some older things, but I wish this plot had been more skewed towards the right.</p>
+</section>
+<section id="topics" class="level3">
+<h3 class="anchored" data-anchor-id="topics">Topics</h3>
+<p>Next, here’s a plot of the broad topic the papers fell in. I only gave each paper a single tag, and sometimes the decision to call something sociolinguistics vs dialectology, for example, was somewhat arbitrary. But this should give you a rough idea of what things I read.</p>
+<p><img src="https://new.joeystanley.com/blog/365-papers-update/tags.jpg" class="img-fluid"></p>
+<p>It should come to no surprise that most of what I read was sociolinguistic in nature, followed closely by dialectology. The socio stuff is relevant to research and teaching and the dialectology stuff is mostly for research. Phonetics and statistics coming next are also exactly what I’d expect. I wish I had a bit wider range of topics though so that I can be more well-rounded of a linguist.</p>
+</section>
+<section id="publication-type" class="level3">
+<h3 class="anchored" data-anchor-id="publication-type">Publication Type</h3>
+<p>Next, here’s a basic plot on the publication type. I’ve divided everything into three broad categories: journal articles (which include conference proceedings), monographs, and edited volumes.</p>
+<p><img src="https://new.joeystanley.com/blog/365-papers-update/pub_type.jpg" class="img-fluid"></p>
+<p>This is where I think I fall short. I’m happy to see that journal articles were the most common, but I think I should be reading a higher proportion of newer articles than I am. In fact, monographs and edited volumes combined make up 54% of what I read. This may also be because I read as I walk to and from my car and around my building, so I do get more regular book-reading time than sit-and-read-an-article time.</p>
+</section>
+<section id="publication-venue" class="level3">
+<h3 class="anchored" data-anchor-id="publication-venue">Publication Venue</h3>
+<p>Finally, the publication venue. Just focusing on the journal articles, here’s a list of the venues I read from the most. (I’ve filtered out venues that I only read from once or twice, for space issues).</p>
+<p><img src="https://new.joeystanley.com/blog/365-papers-update/venue.jpg" class="img-fluid"></p>
+<p>Based on my research, it should come as no surprise that <em>American Speech</em> and <em>LVC</em> are the top two. I have a print subscription to <em>American Speech</em>, and I had a habit of reading through all the articles while on the bus. My guess is that the <em>PWPL</em> ones are mostly proceedings from NWAV too. <em>JASA</em>, <em>JEngL</em>, and <em>J. Soc.</em> are also not much of a surprise.</p>
+<p>However, this plot again highlights what I think are my shortcomings. I feel like I need to be reading more <em>Language in Society</em> and <em>Journal of Sociolinguistics</em>. I also think I need to be reading about languages other than English too. I feel like I’ve latched on to my venues to my detriment and I’m missing a lot of interesting work by not expanding my horizons.</p>
+</section>
+</section>
+<section id="outlook" class="level2">
+<h2 class="anchored" data-anchor-id="outlook">Outlook</h2>
+<p>I’m glad I did this exercise ad I’ll certainly continue with it. And looking back at the past 3⅔ years has been enlightening to say the least. My goals for the next 365 papers are the following:</p>
+<ul>
+<li><p>Read a larger proportion of journal articles. Specifically, I want to go from 45% journal articles to 65%.</p></li>
+<li><p>Read a larger proportion of newer articles. Specifically, I want over half of what I read to be since 2015 (6–9 years old).</p></li>
+<li><p>Finish 365 papers sooner. It took 44 months to do this first batch. Since I’ve been keeping a pretty good pace of a paper every three days, I’ll aim for 36 months and finish by August 31, 2024.</p></li>
+</ul>
+<p>I also want to get through my to-read list. I have about 50 papers on it. It is always growing, and as I read more I find more things to read. But my current list has been nagging me so I want to knock out a bunch of those.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Personal</category>
+  <guid>https://new.joeystanley.com/blog/365-papers-update/index.html</guid>
+  <pubDate>Tue, 31 Aug 2021 15:03:00 GMT</pubDate>
+</item>
+<item>
   <title>Kohler Tapes</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/kohler-tapes/index.html</link>
@@ -938,6 +1012,233 @@ Now I've just got to do forced alignment (which includes spell checking) and ext
   <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
 </item>
 <item>
+  <title>#365papers</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/365-papers/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Around the first of the year, I saw that several academics I follow on Twitter made a goal to read 365 papers during 2018. They tweet about their papers and use the hashtag #365papers. I don’t stand a chance at reaching that goal of 365 papers, but I decided to join in.</p>
+<section id="whats-the-point" class="level2">
+<h2 class="anchored" data-anchor-id="whats-the-point">What’s the point?</h2>
+<p>First off, why bother doing this over Twitter? I can think of several reasons.</p>
+<ol type="1">
+<li><p>Twitter is an interesting place for academics and this just sort of fits in with what goes on there.</p></li>
+<li><p>If I read papers written by people I know on Twitter, I’ll @ them. It not only lets them know I’m reading their work, it’s a quick way to incorporate them into the conversation.</p></li>
+<li><p>In general, keeping track of the papers I read is healthy because it’s easier to go back and find something I read when I have a spreadsheet.</p></li>
+<li><p>Keeping track in a way for others to see is even more motivating because I don’t want to quit halfway through.</p></li>
+</ol>
+<p>Essentially, I find it useful to keep track of things. I always feel like I need to read more academic work, so this is a nice way to motivate myself to do so.</p>
+<!--
+## Ground rules
+
+I've decided to set up some ground rules. What counts and what doesn't? 
+
+* *Chapters are okay*: I think that in addition to journal articles, chapters from either an edited volume, monographs, or dissertation count as one each.
+
+* *Notes are required*: I like to take a lot of notes while I read things, so I'll only count it if I dutifully summarize and take notes as I go along. This means that skimming an article doesn't count. If I've already read an article but for whatever reason didn't take notes, I'll only count it if I go through it again and take notes.
+
+* *Conferences don't count*: At least for me, attending a conference and taking notes there doesn't count, and neither does going through the slides/poster if available. Not that there's anything wrong with conferences, but this is #365*papers* after all. 
+
+Again, these are my rules. Do whatever you want. 
+
+## Other comments
+
+The interesting thing about this is that I can essentially track my train of thought. Often times, I read a paper because I saw it cited in another paper. Sometimes I'll then read another papers that gets cited in that paper and work backwards in time for a while. -->
+</section>
+<section id="twitter-feed" class="level2">
+<h2 class="anchored" data-anchor-id="twitter-feed">Twitter feed</h2>
+<p>The rest of this post will be updated periodically to include my tweets. For brevity, I’ll only post parent tweets here, but sometimes I do a tweetstorm and include some commentary, which sometimes includes comments from others.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+All right, all you <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> have convinced me. I'm behind, but I'll mention what I remember reading so far this year:<br><br>#1–6: <a href="https://twitter.com/americandialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="americandialect">@americandialect</span></a>'s PADS vol 2 (<a href="https://t.co/Yoy5YoIfaX">https://t.co/Yoy5YoIfaX</a>) with <a href="https://twitter.com/aliciabwassink?ref_src=twsrc%5Etfw"><span class="citation" data-cites="aliciabwassink">@aliciabwassink</span></a>, <a href="https://twitter.com/dialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="dialect">@dialect</span></a>, <a href="https://twitter.com/cotterw?ref_src=twsrc%5Etfw"><span class="citation" data-cites="cotterw">@cotterw</span></a>, <a href="https://twitter.com/sociolx?ref_src=twsrc%5Etfw"><span class="citation" data-cites="sociolx">@sociolx</span></a>, etc. etc.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971972160322387968?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/aliciabwassink?ref_src=twsrc%5Etfw"><span class="citation" data-cites="aliciabwassink">@aliciabwassink</span></a>. 2015. Sociolinguistic patterns in Seattle English. Language Variation and Change 27(01). 31–58. <a href="https://t.co/4e4xSylA2B">https://t.co/4e4xSylA2B</a> <br>It somehow slipped through the cracks in my research on Pacific Northwest English. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #7
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971972746933542917?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Trudgill, Peter &amp; Tina Foxcroft. 1978. On the sociolinguistics of vocalic mergers: Transfer and approximation in East Anglia.<br><br>Labov (1994) cites this as where mergers by approximation and transfer came from. Thought I'd go to the source. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #8
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971973219560316928?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/dialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="dialect">@dialect</span></a> 2013. ’Flip-flop’and mergers-in-progress. English Language and Linguistics 17(02). 359–390.<br><br>It's been on my to-read list for a while. Was not disappointed. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #9
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971973601866862595?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Zeller, Christine. 1997. The investigation of a sound change in progress : /æ/ to /e/ in Midwestern American English. Journal of English Linguistics 25(2). 142–155.<br><br>I'm researching BAG-raising. This was one of the first. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #10
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971973829483364353?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Bauer, Matt &amp; Frank Parker. 2008. /æ/-raising in Wisconsin English. American Speech 83(4). 403–431.<br><br>More research on BAG-raising. Also, ultrasound is sweet. Also, add Ohala (2003) to my to-read list. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #11
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971974244878831616?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Faber &amp; Di Paolo. 1990. Phonation differences and the phonetic content of the tense-lax contrast in Utah English. LVC 2(02). 155–204. doi:10.1017/S0954394500000326.<br><br>Their last statement says it all: "There is more to vowels than their formant frequencies." <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #12
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/976092639698280448?ref_src=twsrc%5Etfw">March 20, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Dinkin. 2016. Phonological Transfer as a Forerunner of Merger in Upstate New York. Journal of English Linguistics 44(2). 162–188. doi:10.1177/0075424216634795.<br><br>Introduces a new type of merger, distinct from Approximation, Transfer, and Expansion. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #13
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/976490400121786369?ref_src=twsrc%5Etfw">March 21, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Lisker, Leigh. 1986. “Voicing” in English: A Catalogue of Acoustic Features Signaling /b/ versus /p/ in Trochees. Language and Speech 29(1). 3–11.<br><br>There are no fewer than 16 acoustic cues to differentiate /p/ and /b/ in "rapid" vs.&nbsp;"rabid." <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #14 1/6
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/977009109525585920?ref_src=twsrc%5Etfw">March 23, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Milroy, James &amp; Lesley Milroy. 1978. Belfast: Change and variation in an urban vernacular. In Peter Trudgill (ed.), Sociolinguistic Patterns in British English, 19–36. London: Edward Arnold. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #15 1/2
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/983891266982305792?ref_src=twsrc%5Etfw">April 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 1: Introduction. I need to learn more about phonetics, so this will be a great book. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #16 (I'm counting book chapters as papers.)
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/985334403827208192?ref_src=twsrc%5Etfw">April 15, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 2: American English Phonemes. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #17
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/985399065453228032?ref_src=twsrc%5Etfw">April 15, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 3: Speech and Sound. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #18<br><br>A nice overview of the acoustics of sound is always good every once in a while.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986322723730284545?ref_src=twsrc%5Etfw">April 17, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Gerry O. Knowles. 1978. The Nature of Phonological Variables in Scouse. In Peter Trudgill (ed.), Sociolinguistic Patterns in British English, 19–36. London: Edward Arnold. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #19
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986575759212011522?ref_src=twsrc%5Etfw">April 18, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 4: Static Properties of Speech Sounds <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #20
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986953888476647425?ref_src=twsrc%5Etfw">April 19, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+James Milroy. 1981. Regional accents of English: Belfast. Chapter 5: Belfast Vowels in Detail <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #21.<br><br>Thanks, <a href="https://twitter.com/EstherAsprey?ref_src=twsrc%5Etfw"><span class="citation" data-cites="EstherAsprey">@EstherAsprey</span></a>, for the recommendation!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986954461175312384?ref_src=twsrc%5Etfw">April 19, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 5: Vowel Transitions. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #22
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/987133215499579392?ref_src=twsrc%5Etfw">April 20, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 6: Obstruent and Vowel Transitions. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #23
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/991052278684676096?ref_src=twsrc%5Etfw">April 30, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 6: Consonantal Sonorants and Vowels. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #24
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/991052280744022016?ref_src=twsrc%5Etfw">April 30, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 8: Consonant Interactions. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #25
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/993470678388170752?ref_src=twsrc%5Etfw">May 7, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/karmaglow?ref_src=twsrc%5Etfw"><span class="citation" data-cites="karmaglow">@karmaglow</span></a>. 2018. A remedial path to merger: Merger by phonological transfer in British Columbia English. Toronto Working Papers in Linguistics 40(1). <a href="https://t.co/bonUfob51K">https://t.co/bonUfob51K</a> <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #26<br><br>Working on pre-velar raising myself right now so this was perfect for me!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/994567063313289216?ref_src=twsrc%5Etfw">May 10, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 9: Acoustic Variability. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #27<br><br>Basically, this whole book can be summed up in their last two sentences:
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/994923321425842176?ref_src=twsrc%5Etfw">May 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Labov, William. 1994. Principles of Linguistic Change (Volume 1). Chapter 14: The Suspension of Phonemic Contrast. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #28
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/997095687232860160?ref_src=twsrc%5Etfw">May 17, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/JoFrhwld?ref_src=twsrc%5Etfw"><span class="citation" data-cites="JoFrhwld">@JoFrhwld</span></a> 2017. Generations, lifespans, and the zeitgeist. Language Variation and Change 29(1). 1–27. doi:10.1017/S0954394517000060.<br><br>Added to my todo list: 1) Acquire big corpora 2) Be able to use and explain advanced statistical models like a boss. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #29
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/999003725439164416?ref_src=twsrc%5Etfw">May 22, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Labov, William. 1994. Principles of Linguistic Change (Volume 1). Chapter 5: General Principles of Vowel Shifting. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #30<br><br>Hey, it's only taken me almost 6 months to get to 30, but that's a start!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/999026281332297729?ref_src=twsrc%5Etfw">May 22, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>At this point, I decided to stop Tweeting. It was more of a commitment than I was willing to get myself into. Plus, I was reading some foundational things that I felt embarrassed to admit I hadn’t read yet. 😅 But I did finish, and you can read my post about when I read my 365th paper <a href="../../blog/365-papers-update">here</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>Side Projects</category>
+  <category>Twitter</category>
+  <guid>https://new.joeystanley.com/blog/365-papers/index.html</guid>
+  <pubDate>Fri, 09 Mar 2018 19:49:00 GMT</pubDate>
+</item>
+<item>
   <title>ADS2018</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/ads2018/index.html</link>
@@ -1163,191 +1464,6 @@ Residuals 82                                                                    
   <category>Statistics</category>
   <guid>https://new.joeystanley.com/blog/ar-raising/index.html</guid>
   <pubDate>Wed, 27 Sep 2017 04:11:00 GMT</pubDate>
-</item>
-<item>
-  <title>Testing VOT Durations in A Course in Phonetics</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/testing-vot-durations/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>So I’m teaching phonetics and phonology this semester and we’re using Ladefoged &amp; Johnson’s <em>A Course in Phonetics</em> textbook. As I was preparing to teach about stops, I thought it might be a good idea as a homework assignment for students to gather their own data to see if some of these ideas panned out. Here’s my quick study.</p>
-<section id="hypotheses" class="level2">
-<h2 class="anchored" data-anchor-id="hypotheses">Hypotheses</h2>
-<p>The four hypotheses I wanted to test come from Chapter 3 from my 6th edition of <em>A Course in Phonetics</em>:</p>
-<ol type="1">
-<li><p>Word-initially, /p, t, k/ have longer aspiration than /b, d, g/.</p></li>
-<li><p>After onset /s/, /p, t, k/ have about as much aspiration as word-initial /b, d, g/.</p></li>
-<li><p>Word-finally, voiced obstruents have an overall longer duration (closure + burst + aspiration) than voiceless obstruents.</p></li>
-<li><p>Vowels preceding voiced obstruents are longer than those preceded by voiceless obstruents.</p></li>
-</ol>
-</section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Each student was asked to record a friend reading the following words: <em>tack</em>, <em>soap</em>, <em>days</em>, <em>pad</em>, <em>steep</em>, <em>sit</em>, <em>code</em>, <em>tab</em>, <em>bees</em>, <em>scope</em>, <em>dice</em>, <em>goes</em>, <em>bus</em>, <em>seep</em>, <em>cab</em>, <em>spit</em>, <em>gas</em>, <em>peg</em>. I chose these words to maximize onset and coda obstruents in as few words as possible. Vowel quality is assumed to have no effect.</p>
-<p>For stops, student measured durations of aspiration and closure; for fricatives it was duration of the fricative itself. This was done in Praat. They have worked with Praat once before in this course, and were taught how to identify boundaries for these, but were otherwise relatively untrained linguistics undergraduates. I provided them with a template spreadsheet to fill out.</p>
-<p>I ended up with measurements from 432 words: 18 unique words each from 24 students. I then combined the spreadsheets and wrote up the R code.</p>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<section id="word-initial-stop-aspiration" class="level3">
-<h3 class="anchored" data-anchor-id="word-initial-stop-aspiration">Word-initial stop aspiration</h3>
-<p>The first hypothesis is one that is commonly taught in intro to linguistics courses: word-initial voiceless stops have aspiration and word-initial voiced stops have little, if any. In my data, this turned out to be the case based on the words <em>pad</em>, <em>peg</em>, <em>tab</em>, <em>tack</em>, <em>cab</em>, <em>code</em>, <em>bees</em>, <em>bus</em>, <em>days</em>, <em>dice</em>, <em>gas</em>, and <em>goes</em>.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/word-initial-stops.png" class="img-fluid" style="width:30em"></p>
-<p>A mixed-effects regression model that predicts this aspiration with the underlying voicing of the stop as a fixed effect and student and word as random effects suggests that this difference is significant.</p>
-<pre><code>summary(lmer(aspiration ~ underlying_voicing + (1|student) + (1|word), data=wi_stops))
-
-Random effects:
- Groups   Name        Variance  Std.Dev.
- student  (Intercept) 1.039e-03 0.03224 
- word     (Intercept) 9.550e-06 0.00309 
- Residual             1.084e-03 0.03293 
-Number of obs: 285, groups:  student, 24; word, 12
-
-Fixed effects:
-                            Estimate Std. Error t value
-(Intercept)                 0.047309   0.007241   6.534
-underlying_voicingvoiceless 0.037331   0.004291   8.699</code></pre>
-<p>Conclusion: Yep. Based on this data, the model predicts that voiced stops get around 47ms of aspiration while voiceless stops get about 85ms. Cool.</p>
-</section>
-<section id="stops-following-s" class="level3">
-<h3 class="anchored" data-anchor-id="stops-following-s">Stops following /s/</h3>
-<p>We learn that voiceless stops following /s/ in the same syllable are not aspirated in English. In our sample, this also proved to be correct based on the same words as above with the addition of <em>spit</em>, <em>steep</em>, and <em>scope</em>.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/onset-stops.png" class="img-fluid" style="width:30em"></p>
-<p>I ran a mixed-effects regression model like the one described above but with position (=environment) as the main effect and voiced word-initial stops as the reference level.</p>
-<pre><code>summary(lmer(aspiration ~ position + (1|student) + (1|word), data=onset_stops))
-
-Random effects:
- Groups   Name        Variance Std.Dev.
- student  (Intercept) 0.001153 0.03395 
- word     (Intercept) 0.000000 0.00000 
- Residual             0.001150 0.03391 
-Number of obs: 355, groups:  student, 24; word, 15
-
-Fixed effects:
-                                Estimate Std. Error t value
-(Intercept)                     0.047309   0.007485   6.321
-positionvoiceless word-initial  0.037395   0.004019   9.304
-positionfollowing /s/          -0.007779   0.004948  -1.572</code></pre>
-<p>We get the same coefficients for word-initial stops. Only this time, we can see how stops followed by /s/ fit in. The model shows that the duration of aspiration was not significantly different from word-initial voiced stops. There’s some indication that the stops following /s/ have even <em>less</em> aspiration, but this didn’t reach significance.</p>
-</section>
-<section id="duration-of-word-final-stops" class="level3">
-<h3 class="anchored" data-anchor-id="duration-of-word-final-stops">Duration of word-final stops</h3>
-<p>What I didn’t know before preparing for this class was that the overall duration of word final stops (closure + burst + aspiration) is longer for voiceless obstruents than it is for voiced obstruents. Based on all 18 words (<em>scope</em>, <em>seep</em>, <em>soap</em>, <em>steep</em>, <em>sit</em>, <em>spit</em>, <em>tack</em>, <em>cab</em>, <em>tab</em>, <em>code</em>, <em>pad</em>, <em>peg</em>, <em>bus</em>, <em>dice</em>, <em>gas</em>, <em>bees</em>, <em>days</em>, <em>goes</em>), this was true.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/word-final-duration.png" class="img-fluid" style="width:30em"></p>
-<p>The difference is small but significant: in a mixed-effects regression model that predicts duration with voicing and manner of articulation as fixed effects and student and word as random effects, the difference reached statistical significance.</p>
-<pre><code>summary(lmer(duration ~ underlying_voicing + manner + (1|student) + (1|word), data=wf))
-
-Random effects:
- Groups   Name        Variance  Std.Dev.
- student  (Intercept) 3.002e-03 0.054790
- word     (Intercept) 3.745e-06 0.001935
- Residual             7.550e-03 0.086893
-Number of obs: 427, groups:  student, 24; word, 18
-
-Fixed effects:
-                          Estimate Std. Error t value
-(Intercept)               0.194404   0.012836  15.145
-underlying_voicingvoiced -0.035321   0.008540  -4.136
-mannerfricative           0.096638   0.008976  10.766
-</code></pre>
-<p>This model shows that the voiceless stops were about 194ms long, and voiced stops were 159ms (35ms shorter). Furthermore, and I didn’t expect this until I saw the plot, fricatives were generally about 97ms longer than stops. I don’t do a lot of nitty-gritty phonetics work like this too often, especially on consonants, so this was news to me.</p>
-</section>
-<section id="vowel-length" class="level3">
-<h3 class="anchored" data-anchor-id="vowel-length">Vowel length</h3>
-<p>Finally, it is pretty well known that vowels before voiced obstruents are said to be longer than vowels before voiceless obstruents. As expected, the data showed this to be the case.</p>
-<p><img src="https://new.joeystanley.com/blog/testing-vot-durations/word-final-obstruents-and-vowel-duration.png" class="img-fluid" style="width:30em"></p>
-<p>One last regression model, similar to what was done previously, showed not only that this voicing difference is significant but that the manner of articulation mattered as well.</p>
-<pre><code>summary(lmer(vowel ~ underlying_voicing + manner + (1|student) + (1|word), data=wf))
-
-Random effects:
- Groups   Name        Variance Std.Dev.
- student  (Intercept) 0.001937 0.04401 
- word     (Intercept) 0.001114 0.03337 
- Residual             0.002274 0.04769 
-Number of obs: 431, groups:  student, 24; word, 18
-
-Fixed effects:
-                         Estimate Std. Error t value
-(Intercept)               0.18905    0.01513  12.495
-underlying_voicingvoiced  0.09595    0.01654   5.799
-mannerfricative           0.05349    0.01744   3.067</code></pre>
-<p>Here, we see that vowels followed by voiceless stops are predicted to have a duration of 189ms. If the following segment is voiced, the model predicts it to actually be 285ms (an increase of 95ms). What stands out is that vowels followed by /g/ were quite a bit shorter. Due to an oversight in my data, there was just one /g/-final word, <em>peg</em>, and it was listed last on the stimulus. No doubt this had an effect. In fact, a more rigorous study that would include more tokens and randomization might find the difference to be even greater, assuming /g/ falls more in like with /b/ and /d/.</p>
-<p>I learned something new here as well: fricatives lengthen the vowel even more. The model predicts that vowels preceding fricatives will be 53ms longer than stops with the same voicing. I didn’t know that.</p>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This study was short, unsystematic, and full of methodological issues. Despite its flaws, it shows evidence to support what Ladefoged and Johnson say in <em>A Course in Phonetics</em>. I also learned a few things: in addition to themselves being longer than stops, fricatives cause their preceding vowels to lengthen as well.</p>
-<p>Special thanks goes to my Fall 2017 LING 3060 class at the University of Georgia, who bothered their friends with this silly assignment and painstakingly measured durations in software they barely know how to use.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Side Projects</category>
-  <category>Teaching</category>
-  <category>Statistics</category>
-  <category>Phonetics</category>
-  <guid>https://new.joeystanley.com/blog/testing-vot-durations/index.html</guid>
-  <pubDate>Fri, 08 Sep 2017 04:02:00 GMT</pubDate>
-</item>
-<item>
-  <title>General Update</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/general-update/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Because I know I have such a <em>massive</em> following, I thought I’d give an update on my research since it’s been a few months since the last time I wrote.</p>
-<section id="publications" class="level1 page-columns page-full">
-<h1>Publications</h1>
-<p>At the Linguistic Atlas Office, we’re working hard on publishing some of our preliminary results. Currently, I’m on two papers submitted to <em>Proceedings of Meetings on Acoustics</em> that are in various stages of reviewing. I’m excited to see these come out.</p>
-<div class="page-columns page-full"><p>I’m also working on some of my own research. I’ve got three manuscripts going right now: one on near-mergers in Washington, one on language change within a speaker’s lifespan, and another on Amazon Mechanical Turk. I still haven’t submitted a paper to an actual journal so mentally this is a big hurdle for me to get over.</p><div class="no-row-height column-margin column-container"><span class="">Edit (September 2023): Lol, none of these manuscripts were even finished.</span></div></div>
-</section>
-<section id="conferences" class="level1">
-<h1>Conferences</h1>
-<p>I’m happy to say I’ve been accepted into two conferences that’ll happen over the next few months. The first is a paper called <a href="../../downloads/71007-LCUGA4-UT-slides.pdf">“Consonantal variation in Utah English: What el[t]se is happening[k]?”</a> that I’m doing with Kyle Vanderniet, a fellow grad student here at UGA. Using the MTurk data I collected recently, we focused on just the 14 speakers from Utah and gathered a lot of really interesting tokens of non-standard variants. I’ve also been accepted to present a poster at NWAV on some of my findings in Washington.</p>
-<p>I’m also still waiting to hear back from three other conferences: <a href="https://pubs.aip.org/asa/jasa/article/142/4_Supplement/2540/703907/Vowel-mergers-in-the-American-South">ASA</a> and <a href="../../blog/ads2018">two at ADS</a>.</p>
-</section>
-<section id="teaching" class="level1">
-<h1>Teaching</h1>
-<p>So I’m teaching for the first time this semester. Because our normal phonetician will be gone, I was asked to teach Phonetics &amp; Phonology. This is pretty cool because normally grad students at UGA don’t get to teach that class. I’ve really enjoyed it so far! I’ve got 29 students who are all linguistics majors or minors. It takes quite a bit of time, but I’m having a great time.</p>
-</section>
-<section id="r-series" class="level1">
-<h1>R Series</h1>
-<p>Fortunately, my funding through the DigiLab at the UGA Main Library continues this school year. I’m really excited be giving <a href="../../pages/r-workshops.html">a whole series of workshops on R</a>. Next week I’ll start with just a basic introduction to R. Next month I’ll do a day on <a href="http://ggplot2.tidyverse.org"><code>ggplot2</code></a> and in November will be one on the rest of the <a href="http://www.tidyverse.org"><code>tidyverse</code></a>. I plan on producing some detailed handouts that will be available on this website as a product of these workshops. I’m really looking forward to them.</p>
-</section>
-<section id="grant" class="level1">
-<h1>Grant</h1>
-<p>I applied for a small grant a week or so ago that I’m waiting to hear back about. If I get it, it’ll pay for some fieldwork out West I’d like to do. Stay tuned. (Update: I got the grant.)</p>
-</section>
-<section id="dissertation" class="level1 page-columns page-full">
-<h1>Dissertation</h1>
-<p>Ah, the dissertation. This <em>should</em> be my primary task right now, and I’m putting as much time as I can into it. I originally wanted to do something on my Washington data. I could do a purely descriptive work and it would make for a fine dissertation. I’ve read through some of those and they’re perfectly good.</p>
-<p>The problem with that is if I would do that, it would be of interest only to people interested in Washington English. A very small group of dialectologists. Not that my ultimate goal is to boost the number of citations, but I feel like a dissertation, which is supposed to make a real contribution to the field, should be more than that.</p>
-<p>I’ve read a couple other dissertations that are heavily based in dialectology and sociolinguistic fieldwork, but they make a bigger statement. They make some advancement on the study of language change, <em>using</em> the data they’ve collected as an <em>illustration</em>. For example, Ruth Herold’s (1990) UPenn dissertation is based on the <em>cot-caught merger</em> parts of Pennsylvania. Instead of simply describing the data, she makes some very cool statements about how language change works, especially in relation to mergers and generational changes, using the data she collected as evidence. The data is supporting the claim rather than the claim itself.</p>
-<div class="page-columns page-full"><p>I’ve got around 180 hours of my own data right now, gathered from lots of sources. All of it has to do with mergers in some way. I feel like I’ve got a dissertation bubbling inside of me relating to vowel mergers. I can use my data as support, illustration, and evidence for some claim that I’d like to make.</p><div class="no-row-height column-margin column-container"><span class="">Update: I stuck with the Washington data for my dissertation, but Betsy Sneller and I did eventually write <a href="https://doi.org/10.1121/10.0016757">something about mergers</a> using the Washington data, so I guess that scratched that itch.</span></div></div>
-<p>So I’m working on my prospectus right now and will be pitching it to my committee this semester. I’ll keep you informed.</p>
-
-
-</section>
-
- ]]></description>
-  <category>West</category>
-  <category>Utah</category>
-  <category>MTurk</category>
-  <category>Research</category>
-  <category>Conferences</category>
-  <category>Linguistic Atlas</category>
-  <category>Pacific Northwest</category>
-  <category>Dissertation</category>
-  <guid>https://new.joeystanley.com/blog/general-update/index.html</guid>
-  <pubDate>Tue, 05 Sep 2017 14:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

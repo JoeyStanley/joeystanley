@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2018-03-09">
+
+<title>Joey Stanley - #365papers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joey Stanley</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">#365papers</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Research</div>
+                <div class="quarto-category">Side Projects</div>
+                <div class="quarto-category">Twitter</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 9, 2018</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#whats-the-point" id="toc-whats-the-point" class="nav-link active" data-scroll-target="#whats-the-point">What’s the point?</a></li>
+  <li><a href="#twitter-feed" id="toc-twitter-feed" class="nav-link" data-scroll-target="#twitter-feed">Twitter feed</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Around the first of the year, I saw that several academics I follow on Twitter made a goal to read 365 papers during 2018. They tweet about their papers and use the hashtag #365papers. I don’t stand a chance at reaching that goal of 365 papers, but I decided to join in.</p>
+<section id="whats-the-point" class="level2">
+<h2 class="anchored" data-anchor-id="whats-the-point">What’s the point?</h2>
+<p>First off, why bother doing this over Twitter? I can think of several reasons.</p>
+<ol type="1">
+<li><p>Twitter is an interesting place for academics and this just sort of fits in with what goes on there.</p></li>
+<li><p>If I read papers written by people I know on Twitter, I’ll @ them. It not only lets them know I’m reading their work, it’s a quick way to incorporate them into the conversation.</p></li>
+<li><p>In general, keeping track of the papers I read is healthy because it’s easier to go back and find something I read when I have a spreadsheet.</p></li>
+<li><p>Keeping track in a way for others to see is even more motivating because I don’t want to quit halfway through.</p></li>
+</ol>
+<p>Essentially, I find it useful to keep track of things. I always feel like I need to read more academic work, so this is a nice way to motivate myself to do so.</p>
+<!--
+## Ground rules
+
+I've decided to set up some ground rules. What counts and what doesn't? 
+
+* *Chapters are okay*: I think that in addition to journal articles, chapters from either an edited volume, monographs, or dissertation count as one each.
+
+* *Notes are required*: I like to take a lot of notes while I read things, so I'll only count it if I dutifully summarize and take notes as I go along. This means that skimming an article doesn't count. If I've already read an article but for whatever reason didn't take notes, I'll only count it if I go through it again and take notes.
+
+* *Conferences don't count*: At least for me, attending a conference and taking notes there doesn't count, and neither does going through the slides/poster if available. Not that there's anything wrong with conferences, but this is #365*papers* after all. 
+
+Again, these are my rules. Do whatever you want. 
+
+## Other comments
+
+The interesting thing about this is that I can essentially track my train of thought. Often times, I read a paper because I saw it cited in another paper. Sometimes I'll then read another papers that gets cited in that paper and work backwards in time for a while. -->
+</section>
+<section id="twitter-feed" class="level2">
+<h2 class="anchored" data-anchor-id="twitter-feed">Twitter feed</h2>
+<p>The rest of this post will be updated periodically to include my tweets. For brevity, I’ll only post parent tweets here, but sometimes I do a tweetstorm and include some commentary, which sometimes includes comments from others.</p>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+All right, all you <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> have convinced me. I'm behind, but I'll mention what I remember reading so far this year:<br><br>#1–6: <a href="https://twitter.com/americandialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="americandialect">@americandialect</span></a>'s PADS vol 2 (<a href="https://t.co/Yoy5YoIfaX">https://t.co/Yoy5YoIfaX</a>) with <a href="https://twitter.com/aliciabwassink?ref_src=twsrc%5Etfw"><span class="citation" data-cites="aliciabwassink">@aliciabwassink</span></a>, <a href="https://twitter.com/dialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="dialect">@dialect</span></a>, <a href="https://twitter.com/cotterw?ref_src=twsrc%5Etfw"><span class="citation" data-cites="cotterw">@cotterw</span></a>, <a href="https://twitter.com/sociolx?ref_src=twsrc%5Etfw"><span class="citation" data-cites="sociolx">@sociolx</span></a>, etc. etc.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971972160322387968?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/aliciabwassink?ref_src=twsrc%5Etfw"><span class="citation" data-cites="aliciabwassink">@aliciabwassink</span></a>. 2015. Sociolinguistic patterns in Seattle English. Language Variation and Change 27(01). 31–58. <a href="https://t.co/4e4xSylA2B">https://t.co/4e4xSylA2B</a> <br>It somehow slipped through the cracks in my research on Pacific Northwest English. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #7
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971972746933542917?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Trudgill, Peter &amp; Tina Foxcroft. 1978. On the sociolinguistics of vocalic mergers: Transfer and approximation in East Anglia.<br><br>Labov (1994) cites this as where mergers by approximation and transfer came from. Thought I'd go to the source. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #8
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971973219560316928?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/dialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="dialect">@dialect</span></a> 2013. ’Flip-flop’and mergers-in-progress. English Language and Linguistics 17(02). 359–390.<br><br>It's been on my to-read list for a while. Was not disappointed. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #9
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971973601866862595?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Zeller, Christine. 1997. The investigation of a sound change in progress : /æ/ to /e/ in Midwestern American English. Journal of English Linguistics 25(2). 142–155.<br><br>I'm researching BAG-raising. This was one of the first. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #10
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971973829483364353?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Bauer, Matt &amp; Frank Parker. 2008. /æ/-raising in Wisconsin English. American Speech 83(4). 403–431.<br><br>More research on BAG-raising. Also, ultrasound is sweet. Also, add Ohala (2003) to my to-read list. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #11
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/971974244878831616?ref_src=twsrc%5Etfw">March 9, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Faber &amp; Di Paolo. 1990. Phonation differences and the phonetic content of the tense-lax contrast in Utah English. LVC 2(02). 155–204. doi:10.1017/S0954394500000326.<br><br>Their last statement says it all: "There is more to vowels than their formant frequencies." <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #12
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/976092639698280448?ref_src=twsrc%5Etfw">March 20, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Dinkin. 2016. Phonological Transfer as a Forerunner of Merger in Upstate New York. Journal of English Linguistics 44(2). 162–188. doi:10.1177/0075424216634795.<br><br>Introduces a new type of merger, distinct from Approximation, Transfer, and Expansion. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #13
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/976490400121786369?ref_src=twsrc%5Etfw">March 21, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Lisker, Leigh. 1986. “Voicing” in English: A Catalogue of Acoustic Features Signaling /b/ versus /p/ in Trochees. Language and Speech 29(1). 3–11.<br><br>There are no fewer than 16 acoustic cues to differentiate /p/ and /b/ in "rapid" vs.&nbsp;"rabid." <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #14 1/6
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/977009109525585920?ref_src=twsrc%5Etfw">March 23, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Milroy, James &amp; Lesley Milroy. 1978. Belfast: Change and variation in an urban vernacular. In Peter Trudgill (ed.), Sociolinguistic Patterns in British English, 19–36. London: Edward Arnold. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #15 1/2
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/983891266982305792?ref_src=twsrc%5Etfw">April 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 1: Introduction. I need to learn more about phonetics, so this will be a great book. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #16 (I'm counting book chapters as papers.)
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/985334403827208192?ref_src=twsrc%5Etfw">April 15, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 2: American English Phonemes. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #17
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/985399065453228032?ref_src=twsrc%5Etfw">April 15, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 3: Speech and Sound. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #18<br><br>A nice overview of the acoustics of sound is always good every once in a while.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986322723730284545?ref_src=twsrc%5Etfw">April 17, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Gerry O. Knowles. 1978. The Nature of Phonological Variables in Scouse. In Peter Trudgill (ed.), Sociolinguistic Patterns in British English, 19–36. London: Edward Arnold. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #19
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986575759212011522?ref_src=twsrc%5Etfw">April 18, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 4: Static Properties of Speech Sounds <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #20
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986953888476647425?ref_src=twsrc%5Etfw">April 19, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+James Milroy. 1981. Regional accents of English: Belfast. Chapter 5: Belfast Vowels in Detail <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #21.<br><br>Thanks, <a href="https://twitter.com/EstherAsprey?ref_src=twsrc%5Etfw"><span class="citation" data-cites="EstherAsprey">@EstherAsprey</span></a>, for the recommendation!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/986954461175312384?ref_src=twsrc%5Etfw">April 19, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 5: Vowel Transitions. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #22
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/987133215499579392?ref_src=twsrc%5Etfw">April 20, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 6: Obstruent and Vowel Transitions. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #23
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/991052278684676096?ref_src=twsrc%5Etfw">April 30, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 6: Consonantal Sonorants and Vowels. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #24
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/991052280744022016?ref_src=twsrc%5Etfw">April 30, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 8: Consonant Interactions. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #25
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/993470678388170752?ref_src=twsrc%5Etfw">May 7, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/karmaglow?ref_src=twsrc%5Etfw"><span class="citation" data-cites="karmaglow">@karmaglow</span></a>. 2018. A remedial path to merger: Merger by phonological transfer in British Columbia English. Toronto Working Papers in Linguistics 40(1). <a href="https://t.co/bonUfob51K">https://t.co/bonUfob51K</a> <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #26<br><br>Working on pre-velar raising myself right now so this was perfect for me!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/994567063313289216?ref_src=twsrc%5Etfw">May 10, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Olive, Joseph P., Alice Greenwood, &amp; John Coleman. 1993. Acoustics of American English Speech: A Dynamic Approach. Chapter 9: Acoustic Variability. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #27<br><br>Basically, this whole book can be summed up in their last two sentences:
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/994923321425842176?ref_src=twsrc%5Etfw">May 11, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Labov, William. 1994. Principles of Linguistic Change (Volume 1). Chapter 14: The Suspension of Phonemic Contrast. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #28
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/997095687232860160?ref_src=twsrc%5Etfw">May 17, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/JoFrhwld?ref_src=twsrc%5Etfw"><span class="citation" data-cites="JoFrhwld">@JoFrhwld</span></a> 2017. Generations, lifespans, and the zeitgeist. Language Variation and Change 29(1). 1–27. doi:10.1017/S0954394517000060.<br><br>Added to my todo list: 1) Acquire big corpora 2) Be able to use and explain advanced statistical models like a boss. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #29
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/999003725439164416?ref_src=twsrc%5Etfw">May 22, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote" data-lang="en">
+<p lang="en" dir="ltr">
+Labov, William. 1994. Principles of Linguistic Change (Volume 1). Chapter 5: General Principles of Vowel Shifting. <a href="https://twitter.com/hashtag/365papers?src=hash&amp;ref_src=twsrc%5Etfw">#365papers</a> #30<br><br>Hey, it's only taken me almost 6 months to get to 30, but that's a start!
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/999026281332297729?ref_src=twsrc%5Etfw">May 22, 2018</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>At this point, I decided to stop Tweeting. It was more of a commitment than I was willing to get myself into. Plus, I was reading some foundational things that I felt embarrassed to admit I hadn’t read yet. 😅 But I did finish, and you can read my post about when I read my 365th paper <a href="../../blog/365-papers-update">here</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
