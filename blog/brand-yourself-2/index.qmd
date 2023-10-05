@@ -1,0 +1,73 @@
+---
+layout: post
+title:  "Brand Yourself 2"
+date:   2018-09-28 03:23:00 -0400
+categories:
+  - CSS
+  - Github
+  - How-to Guides
+  - Meta
+  - Presentations
+  - Twitter
+---
+
+Today, I was asked to do a professionalization workshop on different ways grad students can boost their online presence through building a personal webpage, utilizing social media, and finding their field's conversation---basically, how to make yourself more googleable. At the end, I challenged people to not leave the room until they had built some sort of new online profile they didn't have when they walked in.
+
+:::callout-tip
+Download the slides [here](/downloads/180928-brand-yourself.pdf)!
+:::
+
+## Social Media
+
+### [Academia.edu](http://academia.edu)
+If you have zero online presence, Academia.edu is a great way to get something up and running quickly. Basically, it's a freemium social networking site for academics. Users can create profiles, upload their papers, and follow particular research topics. They can also follow others that have done the same. It's a great resource for finding papers that may be behind a paywall, although it has gotten a lot of criticism for this. Papers you upload can be found by Google Scholar, which is a nice perk. The website will keep track of your analytics, and there's nothing more thrilling than getting an email saying someone has found your profile!   
+
+![](academia_email.png){fig.width="15em"}
+
+There are some negative aspects of Academia.edu. The site got some criticism a few years ago for offering authors the chance to promote their work for a fee. As of about two years ago, they launched a Premium version ($8.25 a month) with extra features and they constantly bug you about it. There's also a chance at any time the site could get shut down because publishers aren't happy about it, but with 30 million users, I don't know if that's going to happen any time soon. Full disclosure, I deleted my account about a year ago, now that I have this site up and running. 
+
+### [ResearchGate](https://www.researchgate.net)
+I'm less familiar with ResearchGate, but in my cursory look, there's a lot of overlap with academia.edu as far as its features. A big difference I noticed is that it seems like it's more focused on creating networks based on *people* (folks you you cite and co-author with) while academia.edu is more focused on following *topics*. Two thing I don't like about ResearchGate is that the number of emails it sends you is borderline spam and that it'll create a profile for you based on information that other people put up without you knowing. I think in some fields ResearchGate is more popular than Academia.edu, so it might be worth it to have a profile on both.
+
+### [Google Scholar](https://scholar.google.com)
+I would imagine most researchers use Google Scholar regularly, but did you know you can create a profile for others to see? You can tell a researcher has done that when you see their name underlined in a search:
+
+![](google_scholar.png)
+
+In this screenshot ([live link here](https://scholar.google.com/scholar?lookup=0&q=American+English:+dialects+and+variation&hl=en&as_sdt=0,11)), you can see that Walt Wolfram, Natalie Schilling, Sali Tagliamonte have created their profiles, but Shanna Poplack and Penny Eckert have not. I'd like to see what else the last two researchers have written, but I can't simply click on their names like I can with the first three. When you do click on their links, you can see the full profile including what else they have written and how many times each has been cited. 
+
+![](natalie_schilling.png)
+
+It does take a bit of work to get a full profile going, because Google's data can be a bit messy, so you'll have to add stuff in by hand. But I think the payoff is worth the effort.
+
+### Other Academic Social Media
+
+[I am indebted to the [Impact Challenge blog series](http://blog.impactstory.org/category/impact-challenge/), with the [accompanying 200+ page pdf](http://blog.impactstory.org/research-impact-challenge-ebook/), from which I learned a lot about all this. I would highly recommend that you download it and take a look. Not only does it include much more than what I've mentioned here, including step-by-step how-to guides to getting these profiles set up, but also many more topics to get yourself more visible. Thanks, Impact Challenge.]{.aside}
+There are a handful of other websites out there that can help you build an online presence. [Impact Story](https://www.impactstory.org) is one that can keep track of how much of an impact you have on people by keeping track of when people cite, mention, read you and your work. For $10 a month, it might not be worth it for a grad student, but for a professor applying for tenure this might be worth it. 
+
+### What about [LinkedIn](https://www.linkedin.com)?
+I haven't found LinkedIn terribly useful for people looking for academic jobs (like me). It might be worth it to set up a low-maintenance page that gives a good view of you in a nutshell, just in case people look.
+
+## Building a Personal Webpage
+
+Keeping track of all these profiles can be tedious. Do you need to update seven different profiles every time you present at a conference? Is it worth it to invest the time in these sites that don't communicate with each other? One solution is to choose one site to be your main one and build a full profile there. Then, create a "highlights" version on the other social media sites and redirect people to your main page. What should be your main site though? For this reason, it's nice to have a personal webpage. 
+
+The problem with personal webpages it that they come with a cost, either in money or skills (and sometimes both). You can set up a webpage through [Word Press](https://wordpress.com), [Wix.com](http://www.wix.com), or [Square Space](https://www.squarespace.com), which take little technical skill to get a professional page set up. These can be free, but you can get some extra features for $10 a month or more. To me, that's a pretty penny to pay for a relatively simple webpage.
+
+Another option, which is what ~~I'm doing for~~ [Edit: *did* for the old version of] this website], is to host the page on [Github](https://github.com). It's free, but it takes a bit of skill. I've had to learn to use Jekyll, Markdown, and CSS, but through some help on [ProgrammingHistorian.com](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages) and [Lynda.com](https://www.lynda.com), I was able to get this site up. The benefit of going this route is I have unlimited flexibility in how the site looks, and I really, really like that.  
+
+Either way, it's probably worth it to set up a personal domain name. For as little as $1 a month, you can buy your own domain name (like <span style="white-space: nowrap;">www.joeystanley.com</span>), which looks much more professional than <span style="white-space: nowrap;">www.blogsplot.com/joeystanley</span> or <span style="white-space: nowrap;">www.github.com/joeystanley</span>. 
+
+## Finding Your Conversation
+
+The last thing we talked about in our workshop is to find where the big names in your field are having their online conversations. This sounds a little weird at first, but every field has some secret space where people are collaborating and sharing ideas informally as well as posting calls for papers, invitations for publications, and job openings. The problem is that where is space is is different for every field. 
+
+In some fields, these are a listserv. As far as I know, network analysis and Slavic languages each have a well-known listserv where all the conversation happens. If you're not on that listserv, you're out of the loop. Digital Humanities has a space on [Slack](https://slack.com) where over 800 researchers get together and talk. For some fields, it might just be at coffee breaks during certain conferences. You may have to ask around established academics in your field to find that space. 
+
+One thing I will mention is that a lot of action happens on Twitter, like livetweeting conferences. I've covered this in more depth in [an earlier blog post](/blog/the-importance-of-twitter), but basically a lot of good stuff can come out of following the right people and seeing just the right tweets. 
+
+<div class="sidenote">I've given this presentation multiple times now. You can see the (very similar) [slides](/downloads/170413-brand-yourself.pdf) from April 13, 2017 and the [ones](/blog/brand-yourself) from November 11, 2016.
+
+## Conclusion
+
+In today's job market, there's no surefire way to ensure you'll get hired. But increasing your online presence and making yourself more googleable probably helps.
