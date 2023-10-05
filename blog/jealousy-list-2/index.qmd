@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "Jealousy List 2"
+date:   2018-10-15 22:15:00 -0400
+categories:
+  - Jealousy Lists
+  - R
+  - Skills
+  - Data Viz
+---
+
+This is the second post in my occasional series of [Jealousy Lists](https://fivethirtyeight.com/features/damn-we-wish-wed-done-these-11-stories/). I'm subscribed to about 50 blogs, most of them Data Science--related, and I've see a lot of really cool stuff coming out recently. It makes me really want to take my R skills to the next level. Anyway, these are some cool posts that I read recently:
+
+1. [Michael Höhle](http://staff.math.su.se/hoehle/). ["Judging Freehand Circle Drawing Competitions"](http://staff.math.su.se/hoehle/blog/2018/07/31/circle.html).
+
+    Have you ever noticed it's really hard to draw a perfect circle? Apparently, there are people that are really good at it. This post shows how you might determine how perfect the a handdrawn circle is: "We took elements of computer vision, image analysis and total least squares to segment a chalk-drawn circle on a blackboard and provided measures of it’s circularness." Spoiler alert: the guy's circle was pretty dang near perfect.
+
+1. [Yihui Xie](https://yihui.name). ["Impact: Depth or Breadth?"](https://yihui.name/en/2018/08/influence-depth-or-breadth/)
+
+    In this brief post, Yihui discusses whether we should strive for breadth or depth in our research. He says, "I prefer a small number of people (could even be only one person) feeling extremely excited over a large number of people only slightly nodding." The logic is that that one person may shout from the rooftops for you, and your impact will spread from there. Also, the one person may just be you. I've heard this about app development (make something that *you* want to use) and it was interesting to see it applied to research too.
+
+1. [Julia Silge](https://juliasilge.com/about/). ["Training, Evaluating, and Interpreting Topic Models"](https://juliasilge.com/blog/evaluating-stm/).
+
+    I'm a big fan of Julia Silge's work, and though I've never needed to topic modeling in my own research, her blogs (and [book](https://www.tidytextmining.com)) always make me want to start. In this post, she takes a bunch of texts from the Hacker News Corpus and shows how you might determine the best number of topics to choose when doing topic modeling. She then does the analysis itself and shows how the words fit into topics.
+
+1. [Thomas Lin Pedersen](https://www.data-imaginist.com). ["What Are We Plotting, What Are We Animating"](https://www.data-imaginist.com/2018/what-are-we-plotting-what-are-we-animating/)
+
+    Animations are getting more and more popular, and Pedersen's [gganimiate](https://gganimate.com) package is a great tool for you to create them in R. This post looks at what happens when you try to animate things that are a big different from each other. One type of animation will do so clunkily (like if you want to use Powerpoint to animate transitions between slides…). This post takes a dive at what happens under the hood in ggplot2 and gganimate to help you understand your data and the functions you use.
+
+1. [Laura Ellis](https://www.littlemissdata.com/about/). ["Create stylish tables in R using formattable"](https://www.littlemissdata.com/blog/prettytables).
+
+    By default, tables in R are nothing more than text. In this post, Laura Ellis demonstrates the `formattable` package in R and shows how you can make things look a *lot* prettier. You can add colors, alignment, font, and all sorts of other stuff. 
+    
+So that's my jealousy list for now. Image recognition, research, topic modeling, animations, and tables. I'm glad other people put so much interesting stuff online. 

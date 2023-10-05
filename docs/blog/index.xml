@@ -660,6 +660,74 @@ Tip
   <pubDate>Fri, 04 Oct 2019 04:30:00 GMT</pubDate>
 </item>
 <item>
+  <title>Jealousy List 3</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/jealousy-list-3/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is the third iteration of my <a href="https://fivethirtyeight.com/features/damn-we-wish-wed-done-these-11-stories/">Jealousy List</a>, which is a list of articles so good I wish I had been the one to write them. My first two lists were posted about a year ago (see the list of lists <a href="../../blog/#category=Jealousy Lists">here</a>) and this one is long overdue, so I apologize for some of the posts being a little less recent. Regardless, here are a list of posts I’ve found in the past few weeks and months that I found exceptional in some way, entertaining, informative, or just plain cool.</p>
+<ol type="1">
+<li><p><strong><a href="https://twitter.com/trashystats">Saskia Freytag</a></strong>. <a href="http://rpubs.com/Saskia/520216">“Workshop: Dimension reduction with R”</a>.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+</p><p>So I wrote a tutorial on dimension reductions in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>. It has actually turned out to be fairly comprehensive. It uses a fun example dataset on cereals (🎉 - not looking for at iris) I would love some feedback: <a href="https://t.co/VsiHX2KYdT">https://t.co/VsiHX2KYdT</a></p>
+<p></p>
+<p>— Saskia Freytag (<span class="citation" data-cites="trashystats">@trashystats</span>) <a href="https://twitter.com/trashystats/status/1162234718504411136?ref_src=twsrc%5Etfw">August 16, 2019</a></p>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>You may have heard of PCA (Principle Components Analysis) as a way to reduce a bunch of variables down to a more manageable number. As it turns out, this is just one way to do a <em>dimension reduction</em> on your data. Freytag’s workshop does a really nice job at explaining some of the different dimension reduction techniques that are out there, including helpful plots for the visual learners out there. It also goes into detail about the pros and cons of each method, and gives some sample R code showing you how to run the analysis yourself. I wish there were more workshops like there floating around! Plus, it uses data from a bunch of cereals, and I’m pretty sure I’ve used that dataset before in my workshops…</p>
+<p><br></p></li>
+<li><p><strong><a href="https://austinwehrwein.com">Austin Wehrwein</a></strong>. <a href="https://austinwehrwein.com/data-visualization/housing/">“Burden of roof: Revisiting housing costs with tidycensus”</a>.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+</p><p>In this episode I use the A+ tidycensus <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> package to examine housing costs along with income data AND stretch wordplay as far as it will go. Burden of roof: revisiting housing costs with tidycensus. <a href="https://t.co/gDVlOb9N9H">https://t.co/gDVlOb9N9H</a> <a href="https://t.co/i3gxzz6C8G">pic.twitter.com/i3gxzz6C8G</a></p>
+<p></p>
+<p>— Austin Wehrwein (<span class="citation" data-cites="awhstin">@awhstin</span>) <a href="https://twitter.com/awhstin/status/1157290104416849921?ref_src=twsrc%5Etfw">August 2, 2019</a></p>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This is a short blog post, but I really like it because is succinctly shows how to quickly produce a really complelling story with some data and a nice visual. It uses the <a href="https://walkerke.github.io/tidycensus/">tidycensus</a> package by <a href="http://personal.tcu.edu/kylewalker/">Kyle Walker</a> to extract some information about median income and housing prices per US county, and then creates a stunning map to display the data. I also learned that the county I live in now, Clarke County, Georgia, was among the top 25 <em>worst</em> counties in the country in this regard. I guess that’s where all my money is going!</p>
+<p><br></p></li>
+<li><p><strong><a href="https://www.garrickadenbuie.com">Garrick Aden-Buie</a></strong>. <a href="https://www.garrickadenbuie.com/blog/custom-discrete-color-scales-for-ggplot2/">“Custom Discrete Color Scales for ggplot2”</a>.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+</p><p>I wrote up a short blog post on creating custom ggplot2 color scales. I focused on discrete color scales to demo a setup that makes binary colors easy, but I hope the post is helpful if you're working on a <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a> theme for your org or brand. <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/jQDxE61K3W">https://t.co/jQDxE61K3W</a></p>
+<p></p>
+<p>— Garrick Aden-Buie (<span class="citation" data-cites="grrrck">@grrrck</span>) <a href="https://twitter.com/grrrck/status/1162419274566262784?ref_src=twsrc%5Etfw">August 16, 2019</a></p>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I’ve become a bit of a color snob, so I appreciate a good post on colors in data visualization. This one is less about the colors themselves, and more about how to more easily implement your own custom color scheme in ggplot2. Aden-Buie even goes so far as to provide helpful tips for when you compile all these custom commands into an R package. I’ll definitely be using this whenever I get my package off the ground.</p>
+<p><br></p></li>
+<li><p><strong><a href="http://rafalab.github.io//">Rafael Irizarry</a></strong>. <a href="https://simplystatistics.org/posts/2019-02-21-dynamite-plots-must-die/">“Dynamite Plots must Die”</a>. From <em><a href="https://simplystatistics.org">Simply Statistics</a></em>.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+</p><p>Open letter to journal editors: dynamite plots must die. Dynamite plots, also known as bar and line graphs, hide important information. Editors should require authors to show readers the data and avoid these plots. <a href="https://t.co/0GNKEIUCJL">https://t.co/0GNKEIUCJL</a> <a href="https://t.co/OS9ytEFRZN">pic.twitter.com/OS9ytEFRZN</a></p>
+<p></p>
+<p>— Rafael Irizarry (<span class="citation" data-cites="rafalab">@rafalab</span>) <a href="https://twitter.com/rafalab/status/1098973538260840449?ref_src=twsrc%5Etfw">February 22, 2019</a></p>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Data visualization must have been on my mind for a while now, because five months ago I bookmarked this blog post so that it’d make it on my next Jealousy List. This is a nice critique about <em>Dynamite Plots</em>, or basically bar plots with those little error bars at the top. Basically, they obscure the underlying distribution and can be replaced by a very small table. Fortunately, the complaint comes with a few recommendations for alternative visuals.</p>
+<p><br></p></li>
+<li><p><strong><a href="https://juliasilge.com">Julia Silge</a></strong>. <a href="https://juliasilge.com/blog/introducing-tidylo/">“Introducing Tidylo”</a>.</p>
+<p>There will probably always be at least one Julia Silge post on my Jealousy Lists. This one introduces a new R package, tidylo, which calculates weighted log odds using within the framework of the tidyverse. The post itself is, as always, a fun read and there are some great visuals. This’ll make it really easy to choose a baby name characteristic of like the 1920s for my next kid or something.</p></li>
+</ol>
+<p><br></p>
+<p>So that’s it for my long-overdue Jealousy List: statistical procedures, succinct tutorials, color, data visualization, and more statistics. Again, a decent representation of what I’ve been reading recently.</p>
+
+
+
+ ]]></description>
+  <category>Jealousy Lists</category>
+  <category>Data Viz</category>
+  <category>R</category>
+  <category>Skills</category>
+  <category>Statistics</category>
+  <guid>https://new.joeystanley.com/blog/jealousy-list-3/index.html</guid>
+  <pubDate>Sat, 17 Aug 2019 04:25:00 GMT</pubDate>
+</item>
+<item>
   <title>DH 2019</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/dh2019/index.html</link>
@@ -846,6 +914,40 @@ Tip
   <pubDate>Thu, 18 Oct 2018 12:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Jealousy List 2</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/jealousy-list-2/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is the second post in my occasional series of <a href="https://fivethirtyeight.com/features/damn-we-wish-wed-done-these-11-stories/">Jealousy Lists</a>. I’m subscribed to about 50 blogs, most of them Data Science–related, and I’ve see a lot of really cool stuff coming out recently. It makes me really want to take my R skills to the next level. Anyway, these are some cool posts that I read recently:</p>
+<ol type="1">
+<li><p><a href="http://staff.math.su.se/hoehle/">Michael Höhle</a>. <a href="http://staff.math.su.se/hoehle/blog/2018/07/31/circle.html">“Judging Freehand Circle Drawing Competitions”</a>.</p>
+<p>Have you ever noticed it’s really hard to draw a perfect circle? Apparently, there are people that are really good at it. This post shows how you might determine how perfect the a handdrawn circle is: “We took elements of computer vision, image analysis and total least squares to segment a chalk-drawn circle on a blackboard and provided measures of it’s circularness.” Spoiler alert: the guy’s circle was pretty dang near perfect.</p></li>
+<li><p><a href="https://yihui.name">Yihui Xie</a>. <a href="https://yihui.name/en/2018/08/influence-depth-or-breadth/">“Impact: Depth or Breadth?”</a></p>
+<p>In this brief post, Yihui discusses whether we should strive for breadth or depth in our research. He says, “I prefer a small number of people (could even be only one person) feeling extremely excited over a large number of people only slightly nodding.” The logic is that that one person may shout from the rooftops for you, and your impact will spread from there. Also, the one person may just be you. I’ve heard this about app development (make something that <em>you</em> want to use) and it was interesting to see it applied to research too.</p></li>
+<li><p><a href="https://juliasilge.com/about/">Julia Silge</a>. <a href="https://juliasilge.com/blog/evaluating-stm/">“Training, Evaluating, and Interpreting Topic Models”</a>.</p>
+<p>I’m a big fan of Julia Silge’s work, and though I’ve never needed to topic modeling in my own research, her blogs (and <a href="https://www.tidytextmining.com">book</a>) always make me want to start. In this post, she takes a bunch of texts from the Hacker News Corpus and shows how you might determine the best number of topics to choose when doing topic modeling. She then does the analysis itself and shows how the words fit into topics.</p></li>
+<li><p><a href="https://www.data-imaginist.com">Thomas Lin Pedersen</a>. <a href="https://www.data-imaginist.com/2018/what-are-we-plotting-what-are-we-animating/">“What Are We Plotting, What Are We Animating”</a></p>
+<p>Animations are getting more and more popular, and Pedersen’s <a href="https://gganimate.com">gganimiate</a> package is a great tool for you to create them in R. This post looks at what happens when you try to animate things that are a big different from each other. One type of animation will do so clunkily (like if you want to use Powerpoint to animate transitions between slides…). This post takes a dive at what happens under the hood in ggplot2 and gganimate to help you understand your data and the functions you use.</p></li>
+<li><p><a href="https://www.littlemissdata.com/about/">Laura Ellis</a>. <a href="https://www.littlemissdata.com/blog/prettytables">“Create stylish tables in R using formattable”</a>.</p>
+<p>By default, tables in R are nothing more than text. In this post, Laura Ellis demonstrates the <code>formattable</code> package in R and shows how you can make things look a <em>lot</em> prettier. You can add colors, alignment, font, and all sorts of other stuff.</p></li>
+</ol>
+<p>So that’s my jealousy list for now. Image recognition, research, topic modeling, animations, and tables. I’m glad other people put so much interesting stuff online.</p>
+
+
+
+ ]]></description>
+  <category>Jealousy Lists</category>
+  <category>R</category>
+  <category>Skills</category>
+  <category>Data Viz</category>
+  <guid>https://new.joeystanley.com/blog/jealousy-list-2/index.html</guid>
+  <pubDate>Tue, 16 Oct 2018 02:15:00 GMT</pubDate>
+</item>
+<item>
   <title>LCUGA5</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/lcuga5/index.html</link>
@@ -908,6 +1010,47 @@ Tip
   <category>Utah</category>
   <guid>https://new.joeystanley.com/blog/lcuga5/index.html</guid>
   <pubDate>Fri, 12 Oct 2018 12:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Jealousy List 1</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/jealousy-list-1/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This year, FiveThirtyEight started a monthly <a href="https://fivethirtyeight.com/tag/envy/">Jealousy List</a>, which is essentially a list of really cool articles they saw other people do that they wish they had been the ones to write. This is an idea they got from <a href="https://www.bloomberg.com/features/2017-jealousy-list/">Bloomberg</a> and I think others are starting to do their own as well. It’s kind of a fun way to showcase some of the best stuff that has come out recently and to share others’ work. I kinda like the idea so I thought I’d start an occasional jealousy list of my own.</p>
+<p>I’m a linguist at heart, but because I’m interested learning more about R and statistics, I tend to keep tabs on a lot of what’s going on in the data science world. I follow a lot of data scientists on Twitter and I’m also subscribed to something like 50 academics’ blogs that I read when I have a spare minute. Consequently, most of what I’ll post here will probably not be directly related to linguistics, but they’ll show off some really cool R skills. Things that I find really cool or I wish I could have been the one to do write it. I tend to share some of this kind of stuff on Twitter, but I thought I’d start compiling them here.</p>
+<p>So, in no particular order, here is a list of some of the things I liked the most in the past few weeks/months. Some are tutorials, others are just information, but they’re all stuff I jealously wish I could have written:</p>
+<ol type="1">
+<li><p>Helen Graham. <a href="https://helengraham.netlify.app/post/2018-07-23-now-that-what-i-call/now-that-s-what-i-call-text-mining-and-sentiment-analysis/">“Now that’s what I call text mining and sentiment analysis”</a></p>
+<p>This is an analysis of all the lyrics in the 100 <em>Now!</em> music albums. (Yeah, those are still a thing, and the UK series just released their <a href="http://www.nowmusic.com/album/now-100/">hundredth</a> album!) First, they use <code>rvest</code> for web scraping and <code>geniusR</code> for extracting the lyrics from <a href="https://genius.com">genius.com</a>. But the real fun comes from <code>tidytext</code> and looking at how word usage, sentiments, and other trends change over time. I’ve never done we scraping but I feel like maybe it’s not so hard after reading this.</p></li>
+<li><p>Listen Data. <a href="https://www.listendata.com/2018/03/regression-analysis.html">“15 Types of Regression you should Know”</a></p>
+<p>This is just a quick overview of lots of different kinds of regression analysis. I took a course in regression so I felt pretty confident going into this, but I learned about some cool types of models that I hadn’t heard of like Lasso, Poisson, and other fancier ones. There’s some brief R code and a simple explanation of how each is different from the others. I’m particularly interested in the Poisson regression and wonder how that might be used in corpus studies.</p></li>
+<li><p>Laura Ellis. <a href="https://www.littlemissdata.com/blog/highlight">“Highlighting with ggplot2: The Old School and New School Way”</a></p>
+<p>Something that you might need to do in ggplot2 is to highlight data. This author explains two ways to do that. I had been doing what they refer to as the “old school” way, which is essentially overlay a second layer using just a subset of the data (which is <em>exactly</em> what I did <a href="../../blog/ar-raising/#discussion">here</a>). After reading this, I think I should switch to the new school way, which uses <a href="https://note.mu/yutannihilation">Hiroaki Yutani’s</a> <a href="https://yutannihilation.github.io/gghighlight/articles/gghighlight.html"><code>gghighlight</code></a> package. I can’t wait to try it out.</p></li>
+<li><p>Josef Fruehwald. <a href="https://val-systems.blogspot.com/2018/07/why-does-labov-have-such-weird.html">“Why does Labov have such weird transcriptions?”</a></p>
+<p>The title of this post is literally something I’ve asked myself. If I had really dug around for an answer, I probably could have found some of the early sources that explain it, but this blog post summarizes it all up nicely for you. One of the reasons is that the “transcriptional system is now encoding a phonological analysis.”</p></li>
+<li><p>Timo Grossenbacher. <a href="https://timogrossenbacher.ch/2018/03/categorical-spatial-interpolation-with-r/">“Categorical spatial interpolation with R”</a></p>
+<p>I recently got a fair amount of spatial data and I’ve been meaning to learn how to visualize some of what I got. This post gives a complete tutorial for how to do k-nearest neighbor categorical interpolation using the <code>kkNN</code> package. Because this involves some pretty complicated calculations, I also learned I could utilize the multiple cores I have on my computer for super intense stuff, which is always fun. I ended up creating this map, thanks to this tutorial:</p>
+<p><img src="https://new.joeystanley.com/blog/jealousy-list-1/map_raster.png" class="img-fluid"></p>
+<p>As far as <em>what</em> this map shows, well, no spoilers, but I’m waiting to hear back from ADS about whether I get to present on this data.</p></li>
+</ol>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I can say now that it shows prevelar raising. I presented on it at <a href="blog/ads-and-lsa-2019/#fridays-ads-presentation-on-prevelar-raising">ADS</a> and eventually published the results in <a href="https://doi.org/10.1215/00031283-9308384"><em>American Speech</em></a>.</span></div></div>
+<p>So that’s my jealousy list. Text analysis, regression, ggplot2, vowel transcriptions, and GIS. That’s actually a nice smattering of the things I read about the most.</p>
+
+
+
+ ]]></description>
+  <category>Jealousy Lists</category>
+  <category>R</category>
+  <category>Skills</category>
+  <category>Statistics</category>
+  <category>GIS</category>
+  <category>Data Viz</category>
+  <guid>https://new.joeystanley.com/blog/jealousy-list-1/index.html</guid>
+  <pubDate>Tue, 14 Aug 2018 02:15:00 GMT</pubDate>
 </item>
 <item>
   <title>Transcribing a Sociolinguistic Corpus</title>
@@ -1308,162 +1451,6 @@ Tip
   <category>Utah</category>
   <guid>https://new.joeystanley.com/blog/ads2018/index.html</guid>
   <pubDate>Sun, 07 Jan 2018 20:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>NWAV46</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/nwav46/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>At the 46th New Way of Analyzing Variation conference in Madison, Wisconsin, I presented a poster called <em>Changes in the Timber Industry as a Catalyst for Linguistic Change</em>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/171103-nwav46.pdf">here</a>!</p>
-</div>
-</div>
-<p>In a nutshell, I found a couple interesting things going on in a small town in Washington:</p>
-<p><em>Linguistic changes</em>—I focused on two variables: <sc>bag</sc>-raising and <sc>goat</sc>-diphthongization. Specifically, older people raised <span class="smallcaps">bag</span> and younger people had a more diphthongal <span class="smallcaps">goat</span>. The generational divide was around 1970 and the difference between older and younger people was sudden.</p>
-<p><em>Census data</em>—Based on topics of conversation in the interviews, I took a look at census data and found some correlation with these linguistic changes. The mills laid a bunch of people off, people were earning less money, a bunch of people left town, and more of those who stayed worked outside the community. Correlation does not equal causation, but it’s paints a pretty compelling picture.</p>
-<p><em>Catastrophic events</em>—One of the interesting findings was using regression with breakpoint as a way to model catastrophic change. I’m refining this methodology right now, but it does seem to work for modeling language change in time.</p>
-<p><img src="https://new.joeystanley.com/blog/nwav46/nwav46_in_action.jpg" class="img-fluid"></p>
-<center>
-(Photo credits I believe go to <a href="https://www.research.manchester.ac.uk/portal/maciej.baranowski.html">Maciej Baranowski</a>)
-</center>
-
-
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Dissertation</category>
-  <category>Pacific Northwest</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/nwav46/index.html</guid>
-  <pubDate>Sat, 04 Nov 2017 00:11:00 GMT</pubDate>
-</item>
-<item>
-  <title>LCUGA4</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/lcuga4/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>This weekend, I had the opportunity to present twice at the <a href="http://www.linguistics.uga.edu/lcuga-4">4th Annual Linguistics Conference at UGA</a>. One was planned and the other was a last-minute fill-in for someone who couldn’t make it. I was happy to do both.</p>
-<p>Friday’s presentation was called <em>The linguistic effects of a changing timber industry: Language change in Cowlitz County, WA</em>. Here, I talk about some of the sudden linguistic changes that I found in apparent time and suggest that they had to do with changes in the timber industry around that time. Because this was last-minute, it is basically a precursor to (and a slideshow version of) my <a href="../../blog/nwav46">NWAV46</a> poster that I’ll be giving in a few weeks. You can download the slides for this talk <a href="../../downloads/171006-LCUGA4-WA-slides.pdf">here</a></p>
-<p>Saturday’s presentation with <a href="https://clyguy.wixsite.com/profile">Kyle Vanderniet</a> was called <em>Consonantal variation in Utah English: What el[t]se is happening[k]?</em>. We talked about three variables that seem to be particularly salient in Utah English</p>
-<ol type="1">
-<li><p>The various pronunciation of words like <em>mountain</em>, <em>button</em>, or <em>satin</em> with the last syllables as [ʔn̩], [ʔɨn], or [tʰɨn].</p></li>
-<li><p>Insertion of [t] between /ls/ clusters, as in <em>fal</em>[t]<em>se</em> or <em>el</em>[t]<em>se</em>.</p></li>
-<li><p>Realizing word-final <em>ing</em> as [ɪŋk].</p></li>
-</ol>
-<p>You can see our slides for this presentation <a href="../../downloads/171007-LCUGA4-UT-slides.pdf" target="_blank" title="download LCUGA4 (UT)">here</a>. Edit: we later presented additional findings from this research at <a href="../../blog/ads2018">ADS2018</a>.]</p>
-
-
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Pacific Northwest</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>Utah</category>
-  <guid>https://new.joeystanley.com/blog/lcuga4/index.html</guid>
-  <pubDate>Sat, 07 Oct 2017 15:11:00 GMT</pubDate>
-</item>
-<item>
-  <title>/ɑr/-Raising</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/ar-raising/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<div class="page-columns page-full"><p>I’ve noticed for a while in my own speech that the vowel in <em>star</em> is higher and longer than <em>start</em>. I have American Raising, which, simplifying a bit, is where /aɪ/ is raised before voiceless consonants. So I just expected this to be another manifestation of that. I had some time so I thought I’d test this empirically. So here’s a breif study on my own speech to figure out what’s going on.</p><div class="no-row-height column-margin column-container"><span class="">See <a href="https://read.dukeupress.edu/pads/issue/106/1">Davis &amp; Berkson 2021</a> for more detail on American Raising. I particularly liked <a href="https://doi.org/10.1215/00031283-9551267">Moreton’s chapter</a> because it shows how stress, syllable structure, and morphologica structure all matter.</span></div></div>
-<section id="hypothesis" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis">Hypothesis</h2>
-<p>/ɑr/ raises before voiceless segments.</p>
-</section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>In COCA’s list of the most frequent 5000 words, there are 88 that have the /ɑr/ sequence in stressed position. Here they are in order of frequency.</p>
-<p><em>large, car, art, party, heart, article, artist, argue, hard, card, bar, yard, garden, partner, sorry, argument, department, apartment, farm, tomorrow, start, army, farmer, largely, hardly, smart, sharp, regarding, dark, far, mark, marketing, parking, darkness, armed, chart, remarkable, market, garlic, partly, partnership, regardless, target, carbon, borrow, margin, architect, park, architecture, march, harsh, particle, guitar, guard, alarm, starter, carve, starting, departure, sharply, hardware, garbage, cart, barn, carpet, star, jar, shark, charter, charge, partially, harm, artifact, partial, marketplace, part, harmony, remark, regard, arm, apart, marble, charm, marker, spark, harvest, depart, cargo</em></p>
-<p>The words were randomized and I recorded myself reading them using Praat in a quiet place with a good mic. I segmented out the /ar/ sequence by hand (incidentally, I sounded like a seal: “ar ar ar ar”). Using a Praat script, I extracted formants at 30% of the way into the /ar/ sequence (what seemed to be about the midpoint of the vowel). Filtered out a few bad measurements. Analyzed in R. For this analysis, word-final /ar/ is being treated as pre-voiced.</p>
-</section>
-<section id="results" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>I’ll split my analysis up into monosyllabic words and polysyllabic words because the results were cleaner.</p>
-<section id="monosyllabic-words" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="monosyllabic-words">Monosyllabic words</h3>
-<p>The effect that place of articulation had on duration was clear. A simple boxplot shows the stark contrast.</p>
-<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_duration.png" class="img-fluid" style="width:80.0%"></p>
-<p>With the exception of <em>arm</em> being short and <em>mark</em> being long, there’s a clear difference. In fact, the longest ones were mostly the word-final /ɑr/ words, but for this analysis I’ll group word-final and pre-voiced into one category.</p>
-<p>Moving on to vowel quality, it’s clear that the voicing of the following segment has an effect. In fact, there’s virtually no overlap between the two vowel classes.</p>
-<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_plot.png" class="img-fluid" style="width:80.0%"></p>
-<p>I ran a MANOVA test that took into account F1, F2, and duration, and the results show that the two groups are distinct.</p>
-<pre><code>summary(manova(cbind(F1, F2, dur) ~ fol_voice, data=ar))
-
-          Df  Pillai approx F num Df den Df    Pr(&gt;F)    
-fol_voice  1 0.51552   28.375      3     80 1.348e-12 ***
-Residuals 82                                                                                        </code></pre>
-<div class="page-columns page-full"><p> The <em>p</em>-value is small, which indicates the two are different, but I’ve noticed they tend to be on vowel data even for what seems like merged classes. More importantly, the Pillai score is pretty high: on a scale from 0 (=complete overlap) to 1 (completely separate), it’s about in the middle.</p><div class="no-row-height column-margin column-container"><span class="">Using the formula that me and Betsy Sneller came up with in our 2022 paper, we’d expect a Pillai score less than 0.0618 with this much data if the two classes were underlyingly merged. The fact that it’s so high with a sample size of 88 is pretty indicative of separation. In case the visual wasn’t clear enough.</span></div></div>
-<p>Out of curiosity, I did a k-means clustering analysis. I made it blind to phonetic environment so it finds the best two clusters based on F1 and F2 alone. As expected, the clusters essentially captured the voicing distinction, but there were a couple exceptions: <em>march</em> is voiced but clustered with the voiceless words, and both <em>yard</em> and <em>guard</em> are voiced but clustered with the voiceless words.</p>
-<p>Conclusion so far: with the exception of a few words, it’s pretty clear that /ɑr/ is raised, fronted, and shorter before voiceless sounds.</p>
-</section>
-<section id="polysyllabic-words" class="level3">
-<h3 class="anchored" data-anchor-id="polysyllabic-words">Polysyllabic words</h3>
-<p>When there’s more than one syllable, things get complicated because of their distribution within the word. Most of the two-syllable words have word-initial stress, but there are a few misfits (<em>alarm</em>, <em>depart</em>, <em>guitar</em>, <em>regard</em>, <em>remark</em>). With three syllables stress is either on the first syllable (<em>architect</em>, <em>argument</em>, <em>article</em>, <em>artifact</em>, <em>harmony</em>, <em>marketing</em>, <em>marketplace</em>, <em>partially</em>, <em>particle</em>, <em>partnership</em>) or the second (<em>apartment</em>, <em>department</em>, <em>departure</em>, <em>regarding</em>, <em>regardless</em>, <em>tomorrow</em>). There were two four-syllable words, with the /ɑr/ segment on different syllables (<em>architecture</em>, <em>remarkable</em>). Most of these can be split up by the voicing of the following segment too, which spreads the data pretty thin.</p>
-<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_poly_plot.png" class="img-fluid" style="width:80.0%"></p>
-<p>Generally, the the raised variant occurs with voiceless segments, but this data is a little bit messier. What’s interesting is to look at the exceptions.</p>
-<p>There were several pre-voiced segments that appeared to be raised: <em>sorry</em>, <em>regardless</em>, <em>target</em> (that one’s hard to see), <em>regarding</em> and maybe <em>argue</em>, <em>argument</em>, <em>garden</em>, and <em>regard</em>. I can’t help but notice that a lot of those words have the sequence /gɑr/. In fact, the only other /gɑr/ words were <em>garlic</em> and <em>garbage</em>, which were the most fronted voiced words even though they weren’t raised.</p>
-<p>It’s interesting that <em>guard</em> was one of the few exceptions on the k-means clustering analysis on the monosyllabic words and was raised and fronted compared to the others. A part of me wants to think that /ɑr/ is raised after /g/, which would be cool.</p>
-<p>It’s also worth noting that most of the voiceless words that were outside the ellipse were after bilabials: <em>depart</em>, <em>market</em>, <em>remark</em>, <em>remarkable</em>, etc. These are actually near the voiced segments after bilabials like <em>borrow</em> and <em>tomorrow</em>. This even explains why <em>march</em> was one of the exceptions detected by the k-means clustering analysis. Perhaps bilabials have something to do with backing.</p>
-</section>
-</section>
-<section id="discussion" class="level2">
-<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
-<p>There is a phonetic explanation for the behavior of both the velars and the bilabials. Let’s talk about transition formants for a second. To start, the low vowel /ɑ/ has a high F1 and a low F2. Velars cause F1 to lower and F2 to raise (the latter as a part of the velar pinch), which is more like a higher, fronter vowel. Meanwhile, bilabials cause all formants to lower (because of the slight lengthening of the vocal tract), meaning raising and backing.</p>
-<p>What’s happening is that some of these transition formants are raising the nucleus of the /gɑr/ sequence. The reason why we don’t see raising in /kɑr/ sequences such as <em>car</em>, <em>carbon</em>, <em>cargo</em>, <em>carve</em>, etc. is because of the extra padding of the aspiration. Transition formants do appear in aspiration and the fact that this VOT increases the time between the velar stop and the vowel gives my articulators time to transition to a full /ɑ/.</p>
-<p>I don’t know of a good formal way to test this right now, but we can look at measurements at other points along the vowels’ durations and see if they’re predicted by the place of articulation. Moving closer to the vowel onset, the /gɑr/ words are even higher and fronter. And in fact, at 10% into the /ɑr/ sequence, the distribution is more easily predicted by the previous place of articulation.</p>
-<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_10_percent.png" class="img-fluid" style="width:80.0%"></p>
-<p>Here, we see that the /gɑr/ sequences (highlighted in green now) are all very high and very front, together with /jɑr/ and /ʃɑr/ which have similar transition formant patterns. Similarly, the /ɑr/ words after bilabials (now in yellow) are somewhat backer, though this isn’t as stark. In fact the difference in voicing of the following stop is much smaller, and might not even be significant at all anymore.</p>
-<p>If we measure later in time, the influence of the /r/ and its following consonant is increasing and the distinctions between the vowels also decreases.</p>
-<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_50_70_percent.png" class="img-fluid" style="width:80.0%"></p>
-<p>Here we see that at halfway through the /ɑr/ sequence, the /gɑr/ words are still among the higher and fronter within the blue cloud. But at 70%, they are pretty much randomly dispersed among the other pre-voiced segments. The bilabials make it clear that the following place of articulation predicts this vowel plot: words like <em>mark</em>, <em>park</em>, and <em>spark</em> are higher and fronter due to the velar pinch.</p>
-<p>Going back to that 30% point, which is roughly the middle of the vowel itself, here it is again, but with the highlights.</p>
-<p><img src="https://new.joeystanley.com/blog/ar-raising/ar_30_percent_dots.png" class="img-fluid" style="width:80.0%"></p>
-<p>Here, the position of each word within the voiced/voiceless cloud is already being influenced by the surrounding consonants. Word that end in velars like <em>mark</em>, <em>park</em>, and <em>spark</em> are already fronting. Nearly all the /gɑr/ words are followed by an alveolar sound, which cause some raising and fronting but not as extreme as velars. So it makes sense that they would stay high but not as high as the pre-velars.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In my speech, I definitely have evidence to reject the null hypothesis and to conclude that /ar/ is raised before voiceless segments. I think that part is pretty clear.</p>
-<p>I’ll admit, I came into writing this blog in hopes of showing that my /gɑr/ sequence is also raised. But after doing more tests, visualizations, and especially after taking into account the pattern of the bilabials, I just don’t have enough evidence to suggest it’s anything more than influence of surrounding consonants.</p>
-<p>This makes me think hard about how to interpret vowel plots in the future. Every combination of surrounding consonants has its own trajectory, and it’s crazy that we can find patterns anywhere. This means ideally we should take into account more consonantal influences when interpreting vowel data. But at the same time that often spreads out data out way too thin since there will be only so a few tokens for any combination.</p>
-<p>I’ve seen studies where they’ll put following place of articulation as a random effect in a mixed-effects model. In my opinion, that doesn’t seem methodologically sound because there’s a finite number of possible options, we generally know their effects, and any duplication study would mostly have the same places of articulation. Now, I’m reconsidering this, and I wonder if it might be a good idea to put a combination of previous and following consonant as a random factor (since they interact). While we probably know the effects of these interactions, any replication of the study might not have the same words and therefore might not have the exact same combinations of previous and following consonants. It’s quite common to go the extreme route and just put each word as a random effect since “every word has its own history.”</p>
-<p>It’s also important to consider trajectory information more. As I showed above, just looking at one measurement can lead to erroneous claims, and we can get a more fuller picture by looking at the trajectory information. There are statistical methods out there that we can use for trajectories (SS-ANOVA, GAMMs, etc.) but I haven’t quite got the hang of them yet.</p>
-<p>Well, I learned a few things by doing this quick study: surrounding consonants affect vowels and trajectories are important. Seems like old news, but it’s nice to have learned this for myself.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Side Projects</category>
-  <category>Phonetics</category>
-  <category>Statistics</category>
-  <guid>https://new.joeystanley.com/blog/ar-raising/index.html</guid>
-  <pubDate>Wed, 27 Sep 2017 04:11:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
