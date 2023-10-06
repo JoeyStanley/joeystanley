@@ -820,6 +820,2591 @@ Tip
   <pubDate>Mon, 24 Jun 2019 06:14:00 GMT</pubDate>
 </item>
 <item>
+  <title>Simulating Chutes and Ladders</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We tried teaching our little almost-three-year-old <em>Chutes and Ladders</em> today. She wasn’t very good at counting tiles. But, as I was sitting there climbing up and sliding down over and over, I wondered what the average number of turns it would take to finish the game. So I decided to take a stab at simulating the game. So here’s a post on a simple simulation of <em>Chutes and Ladders</em> that demonstrates absolutely nothing about linguistics and instead shows off some R skills.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggthemes)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(scico)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(readxl)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(gganimate)</span></code></pre></div>
+</div>
+<p>I’m trying to increase my Github presence, so the code for this project can be found on my <a href="http://joeystanley.com/blog/simulating_chutes_and_ladders">Github</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On October 6, 2023, I updated the code for this post to reflect a few changes in some of the tidyverse functions.</p>
+</div>
+</div>
+<section id="the-game" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-game">The game</h2>
+<div class="page-columns page-full"><p>For those of you deprived people who have never played <em>Chutes and Ladders</em>, the game is quite simple. There are 100 tiles arranged in a 10 by 10 board. With 1–3 of your closest friends, you start at Tile 1, roll a die, and advance that number of tiles. Players take turns moving up the board boustrophedonically. until one person reaches 100. The catch is that there are various “chutes” and “ladders” on the board. If you land on the bottom of one of about half a dozen ladders, you climb to the top, advancing anywhere from 10 to 54 tiles. But, if you land at the top of about a dozen chutes, you slide down anywhere from 4 to 63 tiles. There is no skill and it’s 100% luck—perfect for small kids.</p><div class="no-row-height column-margin column-container"><span class="">I’ll admit that half the reason I wrote this post was so I could use this word!</span></div></div>
+<p>Here’s a simplified version of the board. First, I’ll read in the data I prepared ahead of time. It just gives the <em>x</em>-<em>y</em> coordinates for each of the 100 tiles.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_f660d57b53f40713d3d4a147a37dab6a">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">tile_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> readxl<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_excel</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chutes_ladders_data.xlsx"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sheet =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(tile_data)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+   tile     x     y
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1     1     1
+2     2     2     1
+3     3     3     1
+4     4     4     1
+5     5     5     1
+6     6     6     1</code></pre>
+</div>
+</div>
+<p>Now, I’ll read in information about the chutes and ladders themselves, as in where they start and where they stop.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_6c86bd66b6917ee3f261b4662db30dc2">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">chutes_and_ladders_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> readxl<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_excel</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chutes_ladders_data.xlsx"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sheet =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowid_to_column</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"id"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gather</span>(position, tile, start, end) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(tile_data, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tile"</span>)</span>
+<span id="cb4-5">chutes_and_ladders_data</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 38 × 6
+      id type   position  tile     x     y
+   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1     1 ladder start        1     1     1
+ 2     2 ladder start        4     4     1
+ 3     3 ladder start        9     9     1
+ 4     4 ladder start       21     1     3
+ 5     5 ladder start       28     8     3
+ 6     6 ladder start       36     5     4
+ 7     7 ladder start       51    10     6
+ 8     8 ladder start       71    10     8
+ 9     9 ladder start       80     1     8
+10    10 chute  start       16     5     2
+# ℹ 28 more rows</code></pre>
+</div>
+</div>
+<p>Just some information about the lines for the chutes and ladders, mostly for visual purposes.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_99deffb22fc35bd10727fb12a1e2cd11">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">lines_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_excel</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chutes_ladders_data.xlsx"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sheet =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowid_to_column</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"id"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gather</span>(point, value, beg_x, beg_y, end_x, end_y) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">separate</span>(point, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">into =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"location"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"axis"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">spread</span>(axis, value)</span>
+<span id="cb6-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(lines_data)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+     id type    location     x     y
+  &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+1     1 outside beg        0.5   0.5
+2     1 outside end       10.5   0.5
+3     2 outside beg        0.5  10.5
+4     2 outside end       10.5  10.5
+5     3 outside beg        0.5   0.5
+6     3 outside end        0.5  10.5</code></pre>
+</div>
+</div>
+<p>Now make a basic plot.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_b180a27e25687a2101c82ea7b2ee7805">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(tile_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(x, y)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> lines_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> type)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> tile), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_x =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A Simplified Chutes and Ladders Board"</span>,</span>
+<span id="cb8-5">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> chutes_and_ladders_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> type),</span>
+<span id="cb8-7">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"in"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"closed"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_linetype_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_fixed</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ratio =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>The game we bought is actually a knock-off (I’m a poor grad student—what do you expect?), but I found an image of the authentic version online so I’ll go with that for this blog post. And for simplicity, I’ll just simulate a one-person game.</p>
+</section>
+<section id="the-simulation" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-simulation">The simulation</h2>
+<p>Simulating the game is relatively straightforward. All you really need is a way to keep track of what tile you’re on, a way to roll the die, and sequence of if-else statements to simulate the chutes and ladders. The die rolling is pretty simple with the help of <code>sample</code>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>We could wrap that up into a function to make it slightly more transparent too:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">roll_die <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>() { </span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) </span>
+<span id="cb11-3">}</span>
+<span id="cb11-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>Now, in this game, every time you roll a die, you’ll need to advance your token by that many pieces. I could write a separate <code>advance_token</code> function, but with functions this simple, I’ll just combine them into one. This time, it’ll take an argument, <code>spot</code>, which is the current tile number (from 1 to 100) that you’re on. The function takes this spot, rolls a die, and adds that value to it, returning the tile you’ll land on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">roll_die <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(spot) { </span>
+<span id="cb17-2">  spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb17-3">}</span>
+<span id="cb17-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 82</code></pre>
+</div>
+</div>
+<p>Awesome. Now with this, it makes for a pretty uneventful game, so we’ll have to simulate the chutes and ladders. I know base R has <code>switch</code> syntax, but I’ve never been able to get it to work, so I’ll use <code>case_when</code> from the <code>dplyr</code> package to do this. I’ll of course wrap it up in another function verbosely called <code>check_for_chute_or_ladder</code>. Here, I input the start and end points to all the chutes and ladders. So for example, if you land on the very first tile, there’s a ladder that’ll take you to tile 38. If you land on tile 16, you’ll slide down a chute to tile 6. The function will return the new tile you’ll end up on. If you don’t land on any of them, the function will return the same number you sent in.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">check_for_chute_or_ladder <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(spot) {</span>
+<span id="cb25-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb25-3">    </span>
+<span id="cb25-4">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ladders (9)</span></span>
+<span id="cb25-5">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">38</span>,</span>
+<span id="cb25-6">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>,</span>
+<span id="cb25-7">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">31</span>,</span>
+<span id="cb25-8">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>,</span>
+<span id="cb25-9">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">84</span>,</span>
+<span id="cb25-10">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">36</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">44</span>,</span>
+<span id="cb25-11">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">67</span>,</span>
+<span id="cb25-12">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">71</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span>,</span>
+<span id="cb25-13">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>,</span>
+<span id="cb25-14">    </span>
+<span id="cb25-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Chutes (10)</span></span>
+<span id="cb25-16">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>   <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>,</span>
+<span id="cb25-17">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">47</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">26</span>,</span>
+<span id="cb25-18">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">49</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>,</span>
+<span id="cb25-19">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">56</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">53</span>,</span>
+<span id="cb25-20">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">62</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">19</span>,</span>
+<span id="cb25-21">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">64</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>,</span>
+<span id="cb25-22">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">87</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">24</span>,</span>
+<span id="cb25-23">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">93</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">73</span>,</span>
+<span id="cb25-24">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">95</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">76</span>,</span>
+<span id="cb25-25">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">98</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">78</span>,</span>
+<span id="cb25-26">    </span>
+<span id="cb25-27">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># No change</span></span>
+<span id="cb25-28">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> spot)</span>
+<span id="cb25-29">}</span>
+<span id="cb25-30"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">check_for_chute_or_ladder</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 38</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">check_for_chute_or_ladder</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">check_for_chute_or_ladder</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>Great. Now we’ve got a full turn. For kicks, I can wrap all this up into yet another function that’ll simulate taking a turn in the game:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1">take_turn <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(spot) {</span>
+<span id="cb31-2">  spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb31-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">roll_die</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb31-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">check_for_chute_or_ladder</span>()</span>
+<span id="cb31-5">}</span>
+<span id="cb31-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">take_turn</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">take_turn</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">take_turn</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">take_turn</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">take_turn</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p>So as it turns out, these are all the functions I need to simulate an entire game. But, the way it’s set up now, I have to run each turn one at a time, check the output, and run it again. It would be better if I could automate the whole thing and save the results into a dataframe or something.</p>
+<div class="page-columns page-full"><p>So I’ve created the larger <code>simulate_game</code> function below. When I run this function, it’ll simulate an entire (1-player) game. First, it’ll create a mostly empty data frame that will be populated as the turns advance. I know that some programming languages are slow if you try to append rows to a dataframe with each iteration of a loop, so I wanted to make sure there was room for a full game before we do anything else. Also, in theory, the game could last forever because of looping chutes and ladders, so I made it large enough to handle a game with 1000 turns—probably way too many for this, but I wanted to make sure. In that dataframe, I have columns for the turn number, what the dice roll was (those are all predetermined), where you landed, whether it has a chute or a ladder, and finally, where you ended up after traveling on that chute or ladder.</p><div class="no-row-height column-margin column-container"><span class="">I think Perl doesn’t care, and I miss that…</span><span class="">I started with 100 turns, but that actually wasn’t enough turns for some of the simulated games!</span></div></div>
+<div class="page-columns page-full"><p>I’ve never done a simulation in R before, so I don’t know what the protocol is for looping through something an unknown number of times, so I did this whole <code>while(keep_playing)</code> thing. The <code>keep_playing</code> object is initially true, and at the end of each iteration, I check to see if we’ve gotten to 100; if so, I’ll set that to false, which’ll kill the loop. However, I wanted some sort of iterating number (like in a <code>for</code> loop), so I added <code>i</code> myself.</p><div class="no-row-height column-margin column-container"><span class="">I tried just looping through the <code>turn_num</code> column, but I couldn’t get the loop to stop after the player hit tile 100.</span></div></div>
+<p>Okay, so then inside that loop, there are several main chunks. Most of it is fluff for handling the data and keeping track of stuff and the actual game portion is just two lines in the middle.</p>
+<ol type="1">
+<li><p>First, if it’s the first iteration of the loop, set the start tile number to 0. Otherwise, set it to wherever we ended up last time.</p></li>
+<li><p>Then, I add the dice roll to to the start tile to get the (potentially) temporary <code>land</code> tile. I then send that number off to <code>check_for_chute_or_ladder</code> and get the actual <code>end</code> tile.</p></li>
+<li><p>I then do another conditional to tell whether I had a chute or ladder. In theory, I should just be able to tell that with the <code>check_for_chute_or_ladder</code> function, but I’m not sure how to return two values at once in R like I can with Perl.</p></li>
+<li><p>Finally, I’ll do one more conditional to see if we’ve reached tile 100. If not, go on to the next iteration of the loop. If so, we’re done.</p></li>
+</ol>
+<p>After the looping is done, we’ve completed a game. Remember that I started by declaring enough space for 1000 turns. I don’t need all the extra rolls, so just before I return the dataframe with all the game information, filter out the rolls that didn’t happen.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1">simulate_game <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game_num =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) {</span>
+<span id="cb41-2">  </span>
+<span id="cb41-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Declare space for the full game.</span></span>
+<span id="cb41-4">  n <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span></span>
+<span id="cb41-5">  turns <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">turn_num =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>n,</span>
+<span id="cb41-6">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">start    =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb41-7">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">roll     =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">replace =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb41-8">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">land     =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb41-9">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">chute_or_ladder =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>,</span>
+<span id="cb41-10">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">end      =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>)</span>
+<span id="cb41-11">  </span>
+<span id="cb41-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Loop until the game is over</span></span>
+<span id="cb41-13">  i <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb41-14">  keep_playing <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb41-15">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">while</span>(keep_playing) {</span>
+<span id="cb41-16">    </span>
+<span id="cb41-17">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 1: Start at zero</span></span>
+<span id="cb41-18">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (i <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) {</span>
+<span id="cb41-19">      turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb41-20">      </span>
+<span id="cb41-21">      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Otherwise, start where the last turn ended.</span></span>
+<span id="cb41-22">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb41-23">      turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end[[i <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]]</span>
+<span id="cb41-24">    }</span>
+<span id="cb41-25">    </span>
+<span id="cb41-26">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 2: This is where the game actually happens.</span></span>
+<span id="cb41-27">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add dice roll to the start tile</span></span>
+<span id="cb41-28">    turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>land[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>start[[i]] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>roll[[i]]</span>
+<span id="cb41-29">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check for chute or ladder</span></span>
+<span id="cb41-30">    turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">check_for_chute_or_ladder</span>(turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>land[[i]])</span>
+<span id="cb41-31">    </span>
+<span id="cb41-32">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 3: Keep track of whether I had a chute or ladder.</span></span>
+<span id="cb41-33">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>land[[i]] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end[[i]]) {</span>
+<span id="cb41-34">      turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>chute_or_ladder[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ladder"</span></span>
+<span id="cb41-35">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>land[[i]] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end[[i]]) {</span>
+<span id="cb41-36">      turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>chute_or_ladder[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chute"</span></span>
+<span id="cb41-37">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb41-38">      turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>chute_or_ladder[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span></span>
+<span id="cb41-39">    }</span>
+<span id="cb41-40">    </span>
+<span id="cb41-41">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 4: Check if it's game over.</span></span>
+<span id="cb41-42">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (turns<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>end[[i]] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>) {</span>
+<span id="cb41-43">      keep_playing <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb41-44">    } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb41-45">      i <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> i <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb41-46">    }</span>
+<span id="cb41-47">  }</span>
+<span id="cb41-48">  </span>
+<span id="cb41-49">  turns <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb41-50">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(turn_num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> i) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb41-51">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>()</span>
+<span id="cb41-52">}</span></code></pre></div>
+</div>
+<p>Now let’s see it in action!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">simulate_game</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 6
+   turn_num start  roll  land chute_or_ladder   end
+      &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
+ 1        1     0     2     2 &lt;NA&gt;                2
+ 2        2     2     6     8 &lt;NA&gt;                8
+ 3        3     8     6    14 &lt;NA&gt;               14
+ 4        4    14     2    16 ladder              6
+ 5        5     6     1     7 &lt;NA&gt;                7
+ 6        6     7     5    12 &lt;NA&gt;               12
+ 7        7    12     5    17 &lt;NA&gt;               17
+ 8        8    17     1    18 &lt;NA&gt;               18
+ 9        9    18     1    19 &lt;NA&gt;               19
+10       10    19     6    25 &lt;NA&gt;               25
+# ℹ 11 more rows</code></pre>
+</div>
+</div>
+<p>Hooray! A complete game. This one appears to have been completed in just 15 moves after hitting four chutes and one ladder.</p>
+</section>
+<section id="simulating-lots-of-games" class="level1">
+<h1>Simulating lots of games</h1>
+<p>Okay, so I’ve got the code for simulating a game of <em>Chutes and Ladders</em> and in the example above, I finished a game in just 15 moves. Is that average or did I finish a bit sooner than normal?</p>
+<p>To answer this question, I’ll just run the <code>simulate_game</code> function a whole bunch of times and then see if I can see some generalizations. I’ll accomplish this with <code>map</code> from the <code>purrr</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">201006</span>)</span>
+<span id="cb44-2">games <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game_num =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb44-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(game_num, simulate_game)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb44-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> game)</span>
+<span id="cb44-5">games</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 36,003 × 7
+   game_num turn_num start  roll  land chute_or_ladder   end
+      &lt;int&gt;    &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
+ 1        1        1     0     2     2 &lt;NA&gt;                2
+ 2        1        2     2     3     5 &lt;NA&gt;                5
+ 3        1        3     5     1     6 &lt;NA&gt;                6
+ 4        1        4     6     4    10 &lt;NA&gt;               10
+ 5        1        5    10     4    14 &lt;NA&gt;               14
+ 6        1        6    14     5    19 &lt;NA&gt;               19
+ 7        1        7    19     3    22 &lt;NA&gt;               22
+ 8        1        8    22     1    23 &lt;NA&gt;               23
+ 9        1        9    23     3    26 &lt;NA&gt;               26
+10        1       10    26     1    27 &lt;NA&gt;               27
+# ℹ 35,993 more rows</code></pre>
+</div>
+</div>
+<p>This <code>games</code> object now contains the data for 1000 games of <em>Chutes and Ladders</em>. It’s nothing more than a bunch of outputs from the <code>simulate_game</code> function all combined into one mega dataframe. It’s got about 36K rows in it, so there’s a lot of information. We can now take this and get some summarized information about each of the games. With <code>summarize</code> I have reduced this down into just one row per game, with information about how many turns the game took, as well as how many chutes and ladders I went through.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1">games_summary <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> games <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb46-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(game_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb46-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">turns =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(turn_num),</span>
+<span id="cb46-4">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_chutes  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(chute_or_ladder <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chute"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb46-5">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_ladders =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(chute_or_ladder <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ladder"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>))</span>
+<span id="cb46-6">games_summary</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,000 × 4
+   game_num turns n_chutes n_ladders
+      &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;int&gt;
+ 1        1   114        4        14
+ 2        2    18        2         0
+ 3        3    28        3         2
+ 4        4    16        1         1
+ 5        5    17        4         1
+ 6        6    54        4         5
+ 7        7    23        3         2
+ 8        8    16        2         1
+ 9        9    48        4         5
+10       10    52        7         7
+# ℹ 990 more rows</code></pre>
+</div>
+</div>
+<p>Looks like there’s a lot of variation. Game 1 was finished in 68 moves, but Game 2 was done in just 11. Game 4 took a whopping 144 moves! With just plain ol’ <code>summary</code>, I can now just get some information about what an average game was like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(games_summary)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    game_num          turns        n_chutes       n_ladders     
+ Min.   :   1.0   Min.   :  7   Min.   : 0.00   Min.   : 0.000  
+ 1st Qu.: 250.8   1st Qu.: 19   1st Qu.: 2.00   1st Qu.: 1.000  
+ Median : 500.5   Median : 29   Median : 3.00   Median : 3.000  
+ Mean   : 500.5   Mean   : 36   Mean   : 3.24   Mean   : 4.014  
+ 3rd Qu.: 750.2   3rd Qu.: 47   3rd Qu.: 4.00   3rd Qu.: 6.000  
+ Max.   :1000.0   Max.   :200   Max.   :15.00   Max.   :32.000  </code></pre>
+</div>
+</div>
+<p>So it appears that it took about 36 turns on average to make it to tile 100. That Game 4 in 16 turns was pretty short—in the top 25%. But now the shortest one took just 7 moves. However, the game theoretically could go on forever, and indeed one game took a whopping 200 turns to finish! I don’t think my two-year-old would appreciate that so much.</p>
+<p>Since the data looks a little skewed, let’s visualize that distribution:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(games_summary, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(turns)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb50-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#376092"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#132A45"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb50-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">expand =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expansion</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb50-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">expand =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expansion</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb50-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of turns finish Chutes and Ladders"</span>,</span>
+<span id="cb50-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Based on 1000 simulated games"</span>,</span>
+<span id="cb50-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>,</span>
+<span id="cb50-8">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number of games"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So, most of the time, I’ll finish my game in about 15–30 moves. I guess that’s not too bad.</p>
+<p>Obviously the most exciting part of the game is getting to travel on some chutes or ladders. How many times did I do that on average? The summary statistics above suggest maybe 3 or 4, but it was also pretty skewed. Let’s look at some visuals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(games_summary, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(n_chutes)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb51-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#376092"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#132A45"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb51-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of chutes in a game of Chutes and Ladders"</span>,</span>
+<span id="cb51-4">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Based on 1000 simulated games"</span>,</span>
+<span id="cb51-5">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>,</span>
+<span id="cb51-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chutes per game"</span>,</span>
+<span id="cb51-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number of games"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So it looks like given that there are 10 chutes in this game, I’m probably going to hit about three or four of them. Sometimes it’ll be more though, which would make for an unfortunate game.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(games_summary, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(n_ladders)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb52-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#376092"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#132A45"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb52-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of ladders in a game of Chutes and Ladders"</span>,</span>
+<span id="cb52-4">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Based on 1000 simulated games"</span>,</span>
+<span id="cb52-5">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>,</span>
+<span id="cb52-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ladders per game"</span>,</span>
+<span id="cb52-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number of games"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Compared to the chutes though the ladders had even more variation. Over 10% of the games didn’t see any of the nine ladders. You’re most likely to hit just one of them, but there were still plenty of games that had as many as 10. I’m not sure why the distribution of chutes and ladders is so different.</p>
+<p>So I guess that answered the questions I had. I’m typically going to finish the game in about 20–30 moves, and I’ll have perhaps a half dozen eventful rolls with a chute or a ladder.</p>
+</section>
+<section id="animating-a-game" class="level1">
+<h1>Animating a Game</h1>
+<p>I’m just learning how to use gganimate, and it’s pretty cool, so here’s an animation of the longest game. I was curious as to why the one game took 200 moves to finish!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">one_long_game <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> games <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(game_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(turn_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>game_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gather</span>(timing, tile, start, land, end) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">timing =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(timing, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"start"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"land"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"end"</span>))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(turn_num, timing) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(chute_or_ladder) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> timing <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"land"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(tile_data, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tile"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb53-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowid_to_column</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"t"</span>)</span>
+<span id="cb53-12"></span>
+<span id="cb53-13">long_game_animation <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(tile_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(x, y)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> lines_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> type), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray33"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> tile), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_x =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> one_long_game, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> chutes_and_ladders_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> type),</span>
+<span id="cb53-18">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"in"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"closed"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  </span>
+<span id="cb53-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_linetype_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_fixed</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ratio =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A 200-turn game of Chutes and Ladders"</span>,</span>
+<span id="cb53-22">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle  =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Turn {floor(frame / 10)} of 200'</span>,</span>
+<span id="cb53-23">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-25">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-26">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">transition_time</span>(t) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-27">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ease_aes</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cubic-in-out'</span>)</span>
+<span id="cb53-28"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">animate</span>(long_game_animation, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nframe =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-20-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<p>It’s simultaneously entertaining and frustrating to watch.</p>
+</section>
+<section id="most-likely-tiles" class="level1 page-columns page-full">
+<h1>Most likely tiles</h1>
+<p>So of course the next question you might want to ask is what tiles are you most likely to land on. Well it’s not going to be an even distribution because of the chutes and ladders throwing you all over the place. Here’s a simple plot that shows how often the simulation ended a turn on a particular tile.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(games, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(end)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb54-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#376092"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#132A45"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb54-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb54-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb54-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Tile frequency in Chutes and Ladders"</span>,</span>
+<span id="cb54-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Based on 1000 simulated games"</span>,</span>
+<span id="cb54-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>,</span>
+<span id="cb54-8">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tile"</span>,</span>
+<span id="cb54-9">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number of turns"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now obviously the large spikes are the ends of ladders and chutes, so you’re twice as likely to end up there, either because you took the chute/ladder or because you ended up there by approaching it from a previous tile. But what is interesting to me is the gradual ebb and flow: you’ll spend more time in the 20–50 range and in the 80s, but less time in the 50–70 range. Kinda cool.</p>
+<p>Here’s a different way of looking at that data in a way that more closely matches the board.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1">tile_freq <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> games <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb55-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">tile =</span> end) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb55-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count</span>(tile) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb55-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">full_join</span>(tile_data, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tile"</span>)</span>
+<span id="cb55-5"></span>
+<span id="cb55-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(tile_freq, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(x, y)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> n), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"square"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> lines_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> type), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"black"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> tile), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_x =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nudge_y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> chutes_and_ladders_data, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> type),</span>
+<span id="cb55-11">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"in"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"closed"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_scico</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"turns"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lajolla"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">direction =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_linetype_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"solid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_fixed</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ratio =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Tile frequency in Chutes and Ladders"</span>,</span>
+<span id="cb55-16">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Based on 1000 simulated games"</span>,</span>
+<span id="cb55-17">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb55-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb55-19">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.ticks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb55-20">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb55-21">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb55-22">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.border =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(),</span>
+<span id="cb55-23">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<div class="page-columns page-full"><p>This is a cool plot and I’m glad I figured out how to make it, but because of the boustrophedonic layout, the overall pattern isn’t quite as clear as the histogram above.</p><div class="no-row-height column-margin column-container"><span class="">There it is again!</span></div></div>
+</section>
+<section id="changing-the-game" class="level1">
+<h1>Changing the game</h1>
+<p>Okay so now the last thing I want to do is explore what happens if you change the game up. If I take away a ladder, how does that affect the game? It probably depends on the length, but let’s try taking out the longest ones and see what happens.</p>
+<p>To do this, I’ll create a new version of <code>check_for_chute_and_ladder</code> only the longest ladder is commented out. I’ll then rerun the simulation and compare the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1">check_for_chute_or_ladder <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(spot) {</span>
+<span id="cb56-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb56-3">    </span>
+<span id="cb56-4">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ladders (9)</span></span>
+<span id="cb56-5">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">38</span>,</span>
+<span id="cb56-6">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>,</span>
+<span id="cb56-7">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">31</span>,</span>
+<span id="cb56-8">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>,</span>
+<span id="cb56-9">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#spot == 28 ~  84,</span></span>
+<span id="cb56-10">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">36</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">44</span>, </span>
+<span id="cb56-11">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">67</span>,</span>
+<span id="cb56-12">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">71</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span>,</span>
+<span id="cb56-13">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>,</span>
+<span id="cb56-14">    </span>
+<span id="cb56-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Chutes (10)</span></span>
+<span id="cb56-16">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>   <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>,</span>
+<span id="cb56-17">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">47</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">26</span>,</span>
+<span id="cb56-18">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">49</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>,</span>
+<span id="cb56-19">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">56</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">53</span>,</span>
+<span id="cb56-20">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">62</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">19</span>,</span>
+<span id="cb56-21">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">64</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>,</span>
+<span id="cb56-22">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">87</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">24</span>,</span>
+<span id="cb56-23">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">93</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">73</span>,</span>
+<span id="cb56-24">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">95</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">76</span>,</span>
+<span id="cb56-25">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">98</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">78</span>,</span>
+<span id="cb56-26">    </span>
+<span id="cb56-27">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># No change</span></span>
+<span id="cb56-28">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> spot)</span>
+<span id="cb56-29">}</span>
+<span id="cb56-30">games_without_longest_ladder <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game_num =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb56-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(game_num, simulate_game)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb56-32">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> game)</span></code></pre></div>
+</div>
+<p>Now I’ll do the same thing without the longest chute.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1">check_for_chute_or_ladder <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(spot) {</span>
+<span id="cb57-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb57-3">    </span>
+<span id="cb57-4">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Ladders (9)</span></span>
+<span id="cb57-5">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">38</span>,</span>
+<span id="cb57-6">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">14</span>,</span>
+<span id="cb57-7">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">31</span>,</span>
+<span id="cb57-8">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">21</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>,</span>
+<span id="cb57-9">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">84</span>,</span>
+<span id="cb57-10">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">36</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">44</span>, </span>
+<span id="cb57-11">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">67</span>,</span>
+<span id="cb57-12">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">71</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span>,</span>
+<span id="cb57-13">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">80</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>,</span>
+<span id="cb57-14">    </span>
+<span id="cb57-15">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Chutes (10)</span></span>
+<span id="cb57-16">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>   <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>,</span>
+<span id="cb57-17">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">47</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">26</span>,</span>
+<span id="cb57-18">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">49</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">11</span>,</span>
+<span id="cb57-19">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">56</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">53</span>,</span>
+<span id="cb57-20">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">62</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">19</span>,</span>
+<span id="cb57-21">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">64</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>,</span>
+<span id="cb57-22">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#spot == 87 ~  24,</span></span>
+<span id="cb57-23">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">93</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">73</span>,</span>
+<span id="cb57-24">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">95</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">76</span>,</span>
+<span id="cb57-25">    spot <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">98</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">78</span>,</span>
+<span id="cb57-26">    </span>
+<span id="cb57-27">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># No change</span></span>
+<span id="cb57-28">    <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> spot)</span>
+<span id="cb57-29">}</span>
+<span id="cb57-30">games_without_longest_chute <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game_num =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb57-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">game =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(game_num, simulate_game)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb57-32">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> game)</span></code></pre></div>
+</div>
+<p>Now I’ll combine all this game data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1">modified_games <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">original =</span> games,</span>
+<span id="cb58-2">                                 <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">w/o longest ladder</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> games_without_longest_ladder,</span>
+<span id="cb58-3">                                 <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">w/o longest chute</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> games_without_longest_chute),</span>
+<span id="cb58-4">                            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.id =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"modification"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb58-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(modification, game_num) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb58-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">turns =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(turn_num),</span>
+<span id="cb58-7">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_chutes  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(chute_or_ladder <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"chute"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb58-8">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_ladders =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(chute_or_ladder <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ladder"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb58-9">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"drop_last"</span>)</span>
+<span id="cb58-10">modified_games</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,000 × 5
+# Groups:   modification [3]
+   modification game_num turns n_chutes n_ladders
+   &lt;chr&gt;           &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;int&gt;
+ 1 original            1   114        4        14
+ 2 original            2    18        2         0
+ 3 original            3    28        3         2
+ 4 original            4    16        1         1
+ 5 original            5    17        4         1
+ 6 original            6    54        4         5
+ 7 original            7    23        3         2
+ 8 original            8    16        2         1
+ 9 original            9    48        4         5
+10 original           10    52        7         7
+# ℹ 2,990 more rows</code></pre>
+</div>
+</div>
+<p>And now I’ll plot their distributions all overlaid on top of each other.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(modified_games, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(turns, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> modification)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb60-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_density</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb60-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb60-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Number of turns finish Chutes and Ladders"</span>,</span>
+<span id="cb60-5">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Based on 1000 simulated games"</span>,</span>
+<span id="cb60-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley.com"</span>,</span>
+<span id="cb60-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"proportion of games"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb60-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#376092"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#4237C4"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#C46D37"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So, not surprisingly, if you ignore the longest chute, the games tend to be a little shorter. More games were finished in less than 40 moves and far fewer games took more than about 50 to get finished. And it turns out if you remove the longest ladder, the games are less likely to be shorter and more likely to be longer.</p>
+<section id="the-end" class="level2">
+<h2 class="anchored" data-anchor-id="the-end">The End</h2>
+<p>So that’s it. Thanks for joining me on my journey of simulating <em>Chutes and Ladders</em>!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Animations</category>
+  <category>Github</category>
+  <category>Side Projects</category>
+  <category>Simulations</category>
+  <guid>https://new.joeystanley.com/blog/simulating_chutes_and_ladders/index.html</guid>
+  <pubDate>Wed, 24 Apr 2019 19:41:00 GMT</pubDate>
+</item>
+<item>
   <title>LSA and ADS 2019</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/ads-and-lsa-2019/index.html</link>
@@ -1174,108 +3759,6 @@ Tip
   <category>Data Viz</category>
   <guid>https://new.joeystanley.com/blog/jealousy-list-1/index.html</guid>
   <pubDate>Tue, 14 Aug 2018 02:15:00 GMT</pubDate>
-</item>
-<item>
-  <title>Transcribing a Sociolinguistic Corpus</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>In the summer of 2016, I went to Cowlitz County, Washington to do traditional sociolinguistic interviews. I talked to 54 people and gathered my first audio corpus. It took a lot of preparation beforehand and it took a lot of time in the field. What I could not have expected was the amount of time it would take to transcribe that corpus. Now, two years later, I have finally finished transcriptions.</p>
-<blockquote class="twitter-tweet blockquote" data-lang="en">
-<p lang="en" dir="ltr">
-I'm DONE! 54 speakers, 46½ hours of audio, 172 hours of work (averaging about 1h50m over like 92 days), producing an audio corpus of 327,000 words! <a href="https://twitter.com/hashtag/amNOLONGERtranscribing?src=hash&amp;ref_src=twsrc%5Etfw">#amNOLONGERtranscribing</a>
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096903878639621?ref_src=twsrc%5Etfw">July 11, 2018</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>This come after a lot of work. Since others might be going through the same thing, I thought I’d share some thoughts on transcribing a sociolinguistic corpus.</p>
-<section id="finding-the-motivation" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="finding-the-motivation">Finding the motivation</h2>
-<div class="page-columns page-full"><p>I think my original goal was to have it all transcribed by the end of 2016. So I gave myself about five months. But then I did the first hour of audio and it took me about 5 hours. Yikes!  At that rate, I estimated it would take about 200 hours of work to finish. I think staring down the barrel of any 200 hour task is a motivation killer. So I put it off.</p><div class="no-row-height column-margin column-container"><span class="">I don’t know what I expected—of course it’s going to take a long time to transcribe!</span></div></div>
-<p>I wrote a <a href="../../blog/lots-of-transcribing">blog post</a> nine months later when I had my first wake up call that I needed to get transcriptions done. I talked about some of the struggles I had getting started but mostly made excuses for why I hadn’t done much. And I got a lot of work done over the next month or so and made it about a quarter of the way through. I remember though just getting burned out after just 10 or 15 minutes of work and would call it a day after half an hour. At that rate, yeah, it’ll take forever.</p>
-<p>So I put it off for an entire year. In the meantime I was getting a lot done—mostly to distract me from the task I inevitably have to do before graduating. For some reason this distraction was in the form of collecting more audio. I got some <a href="../../blog/laboratory-research">laboratory audio</a>, and gathered another corpus using <a href="../../blog/using-mturk">Amazon Mechanical Turk</a>, and in January I went out to Utah to do some more fieldwork. And yet, this audio from 2016 was collecting dust on my computer, just waiting to be analyzed. I think I found that it was easier to collect new data than it was to finish processing the old stuff. Consequently, I had collected something like 150 hours of audio over two years for various projects—and less than 5% of it was processed.</p>
-<p>When I finally defended my prospectus in April, it occurred to me that if I wanted to graduate in 2019, I needed to have data to write about. And the only way to do that was to transcribe that darn audio. So, that was what finally got me to crack down and work at this every day. Even then, it took three months of grinding to finally finish. But I’m so glad it’s done.</p>
-</section>
-<section id="a-rite-of-passage" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="a-rite-of-passage">A rite of passage</h2>
-<p>I mentioned as a part of my celebratory tweetstorm that doing this kind of work might be something like a rite of passage for sociolinguists.</p>
-<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
-<p lang="en" dir="ltr">
-I think putting this much work into a corpus is some sort of rite of passage for sociolinguists. I'm glad I went through it, but ugh, never again.
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096905564835842?ref_src=twsrc%5Etfw">July 11, 2018</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<div class="page-columns page-full"><p>It seems like a lot of sociolinguists do research on their own corpora, and while the flashy part of statistical analysis, data visualization, or even fieldwork stories are what you see and hear about the most, a significant portion of what we do is the behind-the-scenes tedium on the computer. My university doesn’t have a huge group of sociolinguists and there’s no sort of shared corpus that we can use. So if I want to study contemporary spoken English, I was going to have to collect the audio myself. I think would have done fieldwork myself anyway though. I think it was always something I’ve wanted to do. Plus, there’s this:</p><div class="no-row-height column-margin column-container"><span class="">Yes, the Linguistic Atlas Project has been here since the 80s, but very few of those recordings are transcribed, so they’re of little use in their current state.</span></div></div>
-<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
-<p lang="en" dir="ltr">
-Also, shout out to <a href="https://twitter.com/DrDialect?ref_src=twsrc%5Etfw"><span class="citation" data-cites="DrDialect">@DrDialect</span></a>, who I heard say at a Q&amp;A at SECOL in 2015 something like, "the best career move you can do is to create a corpus: you'll be able to analyze it forever." Some of the best advice I've ever heard.
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096909041885185?ref_src=twsrc%5Etfw">July 11, 2018</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>And from the looks of it, this corpus that I now have is definitely going to last me a while, that’s for sure!</p>
-</section>
-<section id="what-software-did-i-use" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="what-software-did-i-use">What software did I use?</h2>
-<p>For transcription, I think there are two ways of doing it. The first method is to find some software that will automatically transcribe it for you, and since it’s not going to be perfect, then spend the time to correct that transcription. I considered doing that, specifically using the transcriber in <a href="http://darla.dartmouth.edu">DARLA</a>. But I found that it took much longer to correct the transcriptions that it would have taken me to just do it by hand. However, DARLA specifically says on their website that their automatic transcriber is not great, so my rate might have been better if I had used a different transcriber. DARLA was what came to mind because it’s easy to use and free. You might have better luck if you use a more sophisticated transcriber.</p>
-<p>The other option therefore was to just do it myself. As far as I can tell, there are two or three main pieces of software you can use. One is <a href="http://trans.sourceforge.net/en/presentation.php">Transcriber</a>. This is one that we use in the Linguistic Atlas Office when we have our undergrads do transcriptions. It’s free and easy to use. One concern is that it’s a little bit tricky to get its output to a TextGrid format. The other concern was that I couldn’t see the spectrogram to accurately place boundaries. Another option is <a href="http://www.mpi.nl/corpus/html/elan/index.html">ELAN</a>, which I hear is fantastic. The only reason I didn’t use it was frankly because I didn’t want to take the time to learn a new program.</p>
-<p>What I settled on was just plain ol’ Praat. It’s software that I’m comfortable with and I’ve used a lot. I can zoom in as close as I want so I can easy skip over stutters or other noise. Plus, I create a TextGrid right there, which is the format I’m most comfortable working with for scripting purposes. The downside to Praat is that I ended up having to use my trackpad on my laptop more than I wanted to (for scrolling side to side and placing boundaries). I wanted to avoid using my mouse as much as possible because I feel like it hurts my wrist more and I don’t want carpel tunnel.</p>
-<div class="page-columns page-full"><p>Based on my own experience, what I would recommend <em>not</em> doing is hiring out the transcriptions unless you’re not able to do it yourself. For one, I’m cheap, and didn’t want to pay however much per minute of audio. But more importantly, going through my audio a second time gave me a chance to pick up on things that I didn’t catch or forgot about when I was doing the interviews in person. Things like interesting linguistic phenomena  or passages I may want to quote later. Using the Praat textgrids, I just added a separate tier for my own annotations and could make whatever notes I wanted to about a particular section of audio. I learned so much about my people going through it a second time, and I don’t think I would have gotten those intuitions about their speech if I had hired it out. Of course, if you need the transcriptions sooner than you can process them or if you’re not able to do the work yourself, then of course hiring it out might be the better option.</p><div class="no-row-height column-margin column-container"><span class="">I got a token of <em>liketa</em> and two people said <em>I and John</em> instead of <em>John and I</em> which was super cool. I don’t remember those specifically and would never have caught them if I didn’t do the transcriptions myself.</span></div></div>
-</section>
-<section id="the-next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="the-next-steps">The next steps</h2>
-<p>So while finishing those transcriptions was a monster step, unfortunately the work wasn’t done.</p>
-<blockquote class="twitter-tweet blockquote" data-conversation="none" data-lang="en">
-<p lang="en" dir="ltr">
-Now I've just got to do forced alignment (which includes spell checking) and extract some formants and I'll be ready to go!
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1017096904885366784?ref_src=twsrc%5Etfw">July 11, 2018</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<section id="forced-alignment" class="level3">
-<h3 class="anchored" data-anchor-id="forced-alignment">Forced alignment</h3>
-<p>I’ve been using DARLA for the past few years, but I had some trouble getting the long audio files to process using their web interface. So this gave me a great opportunity to download and install the <a href="https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner">Montreal Forced Aligner</a> on my own computer. Having this in-house provides lots of benefits like processing the files in bulk and quicker turnaround time since I don’t have to upload the files.</p>
-<p>The bad news was that I had to do the spell-checking myself. I completely took for granted that DARLA can handle out-of-dictionary words by guessing their pronunciation. So since the Montreal Forced Aligner doesn’t do that, I had to check the words myself. When you run it, it’ll produce a list of out-of-dictionary words for you, so all you need to do is add them to the dictionary or correct the spelling in Praat. It seems simple, but it takes a long time. I had at least 20 or 30 typos or new words in every interview, so I probably spent 15 or 20 hours just doing the spell-checking (I think I added over 1000 new dictionary entries too!).</p>
-<p>Luckily, all this was made easier with the help of some custom Praat scripts I wrote for this project. One does pre-processing to get the files ready for forced-alignment. It splits the audio and textgrid into two halves (it was easier to process that way), it moves these files into a specific directory, and renames the tiers so that they’re consistent. As a bonus, it spits out the command that I need to use to run the aligner on those specific files, so all I need to do is copy and paste that into my terminal and it’ll go on its merry way. This was super helpful because typing path names over and over got old real quick.</p>
-<p>Once the spell-checking was done and the files were aligned, I had a post-processing script that I used. This one rejoins the two halves into one TextGrid again, adds the new phoneme and word tier to the top of the main TextGrid (so I’ve got the phoneme, word, sentence, and other tiers all in one file), and saves this in that speaker’s directory on my hard drive. Super handy.</p>
-<p>Now ideally, I would go back and hand-check all the boundaries. Maybe one day I’ll have the time to do that, but oh my goodness that’s not going to happen any time soon.</p>
-</section>
-<section id="formant-extraction" class="level3">
-<h3 class="anchored" data-anchor-id="formant-extraction">Formant extraction</h3>
-<p>So keep in mind that all this work, the nearly 200 hours I’ve put into transcribing and force aligning, was mostly just so I could have Praat know where the vowels were in the audio.</p>
-<p>So, I modified a couple scripts I wrote to do formant extraction. Of course, I’ve mostly worked with shorter passages of audio (word lists and reading passages and stuff), so what I didn’t anticipate was that Praat kind of has trouble working with audio longer than about 30 minutes. So I had to modify the script so that it splits the audio into roughly five minute chunks, processes each one individually, and then stitches all the output back together.</p>
-<p>And of course, the formant measurements ideally should be handchecked. But again, I just spent way too much time transcribing, so I’m not about to spend even more time hand-checking these. Not yet at least.</p>
-</section>
-</section>
-<section id="the-end-result-a-giant-spreadsheet" class="level2">
-<h2 class="anchored" data-anchor-id="the-end-result-a-giant-spreadsheet">The end result: A giant spreadsheet!</h2>
-<p>So what were the main steps here?</p>
-<ol type="1">
-<li><p>Collect audio.</p></li>
-<li><p>Transcription.</p></li>
-<li><p>Forced alignment.</p></li>
-<li><p>Formant extraction.</p></li>
-</ol>
-<p>What do I have now? A giant spreadsheet. All this work has been so that I can get a big ol’ spreadsheet that I can then analyze in R. That’s where I am right now. I’ve got the finalized dataset that I’ll use for my dissertation, so I don’t even need to open up Praat much anymore, or even plug in my external hard drive. Almost all my work is in R now. But it is quite satisfying to have this monster spreadsheet of my own data.</p>
-</section>
-<section id="conclusions" class="level2">
-<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
-<p>Transcribing (and the subsequent processing of) a sociolinguistic corpus takes a ton of time, patience, diligence, and determination. My eyesight may have suffered a little bit from staring at the computer, my headphones are a little worn down, my keyboard has had to endure well over a million keystrokes, and my wrists and fingers sure took a hit. But, y’know what? It’s a <em>lot</em> better than it used to be. At least we have tools like forced-alignment, FAVE, and Praat to make our lives easier. But in the end, it is really awesome to have completed this corpus.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Dissertation</category>
-  <category>Methods</category>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/transcribing-a-sociolinguistic-corpus/index.html</guid>
-  <pubDate>Mon, 06 Aug 2018 19:10:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
