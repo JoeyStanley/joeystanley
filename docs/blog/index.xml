@@ -660,6 +660,60 @@ Tip
   <pubDate>Fri, 04 Oct 2019 04:30:00 GMT</pubDate>
 </item>
 <item>
+  <title>Thank You</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/thank-you/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Some of you may have noticed that at the bottom of a lot of the pages on my website, I’ve got this button:</p>
+<center>
+  <script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script><script type="text/javascript">kofiwidget2.init('Buy me a Coffee', '#376092', 'E1E1OQ2R');kofiwidget2.draw();</script> 
+</center>
+<br>
+<br>
+<p>I’ve created an account on <a href="https://ko-fi.com">ko-fi.com</a>, which is a platform that, in their words, provides “a friendly way for fans to support your work for the price of a coffee.” To put it more bluntly, I’ve created a way for people to give me money for my tutorials and stuff. At the risk of sounding arrogant, I’ll brag for just a little bit before geeking out about the new books I’ve gotten because of that little button.</p>
+<section id="let-me-brag-for-just-a-sec" class="level2">
+<h2 class="anchored" data-anchor-id="let-me-brag-for-just-a-sec">Let me brag for just a sec</h2>
+<p>So I’ve put together half a dozen tutorials and another dozen or so workshops. The most popular ones are the tutorials on how to make vowel plots, how do formant extraction, measuring vowel overlap, and my series of R workshops. You can find them all on my <a href="../../resources">Resources</a> page.</p>
+<p>These were skills that aren’t typically taught in a linguistics course, but they’re expected of sociophoneticians, and I knew I had to learn how to do them. So, I hunkered down, did <em>lots</em> of googling, and figured out this stuff on my own by frankensteining what I could find from lots of other pages online. After a while, word spread among my peers that I had acquired some skills, and I ended up helping lots of people do these things on their own data.</p>
+<p>Eventually, I realized that there was a niche to be filled: my peers could benefit from a clear tutorial on some basic scripting techniques in sociophonetics. So, I started to write the tutorials that I wish I had had when I was learning this stuff. When I finish them, I share them on Twitter, and they’ve consistently remained among my most visited pages on my website. People from about ten different countries on four continents have contacted me for various reasons, explaining how useful they’ve found the tutorials. And there are likely many more anonymous folks too.</p>
+<p>Since then, lots of other people have produced excellent tutorials that cover some of the same topics mine have. And that’s awesome! I’m just glad that people have so many resources available to them to learn these skills.</p>
+</section>
+<section id="so-whats-this-ko-fi-thing" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="so-whats-this-ko-fi-thing">So what’s this Ko-fi thing?</h2>
+<p>So someone (I forget who) offhandedly mentioned that I should charge people for my tutorials. There was no way I was going to do that. I got this information for free, so I give it for free.</p>
+<div class="page-columns page-full"><p>But, I figured if people wanted to <em>donate</em> money, well, who was I to stop them? So I looked around and settled on Ko-fi as a way to give people that opportunity if they wanted to take it. It seems simple enough: the button above will take you to my Ko-fi page, and from there you can donate $3, or about the price of a coffee.  The money gets sent to my PayPal account and I can deposit into my bank account.</p><div class="no-row-height column-margin column-container"><span class="">Ironically, I don’t drink coffee, so you can think of it as a fancy glass bottle of Coca-Cola or something.</span></div></div>
+<p>So I set it up, put and put it at the bottom of my tutorials, and didn’t think anything of it because I didn’t expect much to happen. But slowly, here and there—and much to my surprise—the donations came in. It’s not bumping me up to the next tax bracket or anything, but it does make me feel that the work I put into the tutorials is appreciated.</p>
+<p><em>Update: Now that I’m faculty, I have a real salary, and I feel back taking money from people, especially grad students. But, I’ve been told that sometimes people appreciate having a way to express their appreciation.</em></p>
+</section>
+<section id="what-am-i-doing-with-the-money" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-am-i-doing-with-the-money">What am I doing with the money?</h2>
+<p>Instead of just dumping it into my bank account, I figure I should do something special with the money. I decided to get a couple books. In particular, I wanted to get some books on data visualization, since that’s relevant to the tutorials themselves.</p>
+<p>My first goal was <em>Data Visualization</em> by Kieren Healy. I had been following the book as it was approaching publication and was excited to see it’s positive reception. Yes, it’s pretty much all available online, but I wanted the physical copy for two reasons. For one, it’s a beautiful book and a paragon of excellence in typography. But also, I should return the favor of financially supporting someone who produces tutorials online. Thanks to one large donation that bumped me well past my goal, I’m now a proud owner of Healy’s book!</p>
+<p><img src="https://new.joeystanley.com/blog/thank-you/joey_healy.jpg" class="img-fluid" style="width:85.0%"></p>
+<p>So I tweeted about it and did a small humble brag. And again, much to my surprise, some more donations came in! So in the same week, I met my second goal of purchasing <em>Fundamentals of Data Visualization</em> by Claus O. Wilke.</p>
+<div class="page-columns page-full"><p> <img src="https://new.joeystanley.com/blog/thank-you/joey_wilke.jpg" class="img-fluid" style="width:85.0%"></p><div class="no-row-height column-margin column-container"><span class="">I’m now realizing the front phone on my camera is quite fuzzy.</span></div></div>
+<p>With these two books in hand, I hope my knowledge of data visualization will increase and that this percolates into future tutorials and workshops.</p>
+<p>So I didn’t think this whole thing would work. Apparently it has. I’ve now started to compile a list of additional books I’d like to get, including Edward Tufte’s quartet of data visualization books, some linguistics books I’ve been meaning to get, and a couple statistics manuals.</p>
+</section>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank You</h2>
+<p>The reason for all this is to say thank you. I’m so thrilled to hear that people seem to find some utility in my tutorials, and I’m humbled that some folks went out of their way to send me a little extra pocket money as a token of their appreciation. I’m honored to be helping the linguistics community in a small way. Thank you.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Data Viz</category>
+  <category>Meta</category>
+  <category>Statistics</category>
+  <guid>https://new.joeystanley.com/blog/thank-you/index.html</guid>
+  <pubDate>Sun, 18 Aug 2019 12:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Jealousy List 3</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/jealousy-list-3/index.html</link>
@@ -3718,47 +3772,6 @@ Tip
   <category>Twitter</category>
   <guid>https://new.joeystanley.com/blog/brand-yourself-2/index.html</guid>
   <pubDate>Fri, 28 Sep 2018 07:23:00 GMT</pubDate>
-</item>
-<item>
-  <title>Jealousy List 1</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/jealousy-list-1/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>This year, FiveThirtyEight started a monthly <a href="https://fivethirtyeight.com/tag/envy/">Jealousy List</a>, which is essentially a list of really cool articles they saw other people do that they wish they had been the ones to write. This is an idea they got from <a href="https://www.bloomberg.com/features/2017-jealousy-list/">Bloomberg</a> and I think others are starting to do their own as well. It’s kind of a fun way to showcase some of the best stuff that has come out recently and to share others’ work. I kinda like the idea so I thought I’d start an occasional jealousy list of my own.</p>
-<p>I’m a linguist at heart, but because I’m interested learning more about R and statistics, I tend to keep tabs on a lot of what’s going on in the data science world. I follow a lot of data scientists on Twitter and I’m also subscribed to something like 50 academics’ blogs that I read when I have a spare minute. Consequently, most of what I’ll post here will probably not be directly related to linguistics, but they’ll show off some really cool R skills. Things that I find really cool or I wish I could have been the one to do write it. I tend to share some of this kind of stuff on Twitter, but I thought I’d start compiling them here.</p>
-<p>So, in no particular order, here is a list of some of the things I liked the most in the past few weeks/months. Some are tutorials, others are just information, but they’re all stuff I jealously wish I could have written:</p>
-<ol type="1">
-<li><p>Helen Graham. <a href="https://helengraham.netlify.app/post/2018-07-23-now-that-what-i-call/now-that-s-what-i-call-text-mining-and-sentiment-analysis/">“Now that’s what I call text mining and sentiment analysis”</a></p>
-<p>This is an analysis of all the lyrics in the 100 <em>Now!</em> music albums. (Yeah, those are still a thing, and the UK series just released their <a href="http://www.nowmusic.com/album/now-100/">hundredth</a> album!) First, they use <code>rvest</code> for web scraping and <code>geniusR</code> for extracting the lyrics from <a href="https://genius.com">genius.com</a>. But the real fun comes from <code>tidytext</code> and looking at how word usage, sentiments, and other trends change over time. I’ve never done we scraping but I feel like maybe it’s not so hard after reading this.</p></li>
-<li><p>Listen Data. <a href="https://www.listendata.com/2018/03/regression-analysis.html">“15 Types of Regression you should Know”</a></p>
-<p>This is just a quick overview of lots of different kinds of regression analysis. I took a course in regression so I felt pretty confident going into this, but I learned about some cool types of models that I hadn’t heard of like Lasso, Poisson, and other fancier ones. There’s some brief R code and a simple explanation of how each is different from the others. I’m particularly interested in the Poisson regression and wonder how that might be used in corpus studies.</p></li>
-<li><p>Laura Ellis. <a href="https://www.littlemissdata.com/blog/highlight">“Highlighting with ggplot2: The Old School and New School Way”</a></p>
-<p>Something that you might need to do in ggplot2 is to highlight data. This author explains two ways to do that. I had been doing what they refer to as the “old school” way, which is essentially overlay a second layer using just a subset of the data (which is <em>exactly</em> what I did <a href="../../blog/ar-raising/#discussion">here</a>). After reading this, I think I should switch to the new school way, which uses <a href="https://note.mu/yutannihilation">Hiroaki Yutani’s</a> <a href="https://yutannihilation.github.io/gghighlight/articles/gghighlight.html"><code>gghighlight</code></a> package. I can’t wait to try it out.</p></li>
-<li><p>Josef Fruehwald. <a href="https://val-systems.blogspot.com/2018/07/why-does-labov-have-such-weird.html">“Why does Labov have such weird transcriptions?”</a></p>
-<p>The title of this post is literally something I’ve asked myself. If I had really dug around for an answer, I probably could have found some of the early sources that explain it, but this blog post summarizes it all up nicely for you. One of the reasons is that the “transcriptional system is now encoding a phonological analysis.”</p></li>
-<li><p>Timo Grossenbacher. <a href="https://timogrossenbacher.ch/2018/03/categorical-spatial-interpolation-with-r/">“Categorical spatial interpolation with R”</a></p>
-<p>I recently got a fair amount of spatial data and I’ve been meaning to learn how to visualize some of what I got. This post gives a complete tutorial for how to do k-nearest neighbor categorical interpolation using the <code>kkNN</code> package. Because this involves some pretty complicated calculations, I also learned I could utilize the multiple cores I have on my computer for super intense stuff, which is always fun. I ended up creating this map, thanks to this tutorial:</p>
-<p><img src="https://new.joeystanley.com/blog/jealousy-list-1/map_raster.png" class="img-fluid"></p>
-<p>As far as <em>what</em> this map shows, well, no spoilers, but I’m waiting to hear back from ADS about whether I get to present on this data.</p></li>
-</ol>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I can say now that it shows prevelar raising. I presented on it at <a href="blog/ads-and-lsa-2019/#fridays-ads-presentation-on-prevelar-raising">ADS</a> and eventually published the results in <a href="https://doi.org/10.1215/00031283-9308384"><em>American Speech</em></a>.</span></div></div>
-<p>So that’s my jealousy list. Text analysis, regression, ggplot2, vowel transcriptions, and GIS. That’s actually a nice smattering of the things I read about the most.</p>
-
-
-
- ]]></description>
-  <category>Jealousy Lists</category>
-  <category>R</category>
-  <category>Skills</category>
-  <category>Statistics</category>
-  <category>GIS</category>
-  <category>Data Viz</category>
-  <guid>https://new.joeystanley.com/blog/jealousy-list-1/index.html</guid>
-  <pubDate>Tue, 14 Aug 2018 02:15:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
