@@ -1,0 +1,174 @@
+---
+layout: post
+title:  "Why do people use BAT instead of TRAP?"
+date:   2019-10-28 21:48:00 -0400
+categories: [Lexical Sets, Methods]
+---
+
+In English sociolinguistics, you'll often see vowel phonemes represented by a single word in small caps. For example, <sc>trap</sc> represents /æ/. However, in a lot of American dialectology papers, you'll see authors use the label <sc>bat</sc> instead. In this post, I explain why I think these competing labels are used... and why I prefer <sc>trap</sc> over <sc>bat</sc>.
+
+See also: ["Thoughts on allophonic extensions to Wells' lexical sets."](/blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets)
+
+## Wells Lexical Sets
+
+As it turns out the <sc>trap</sc> label came first. In fact, <sc>trap</sc> is just one in a set of 24 labels, one for each English vowel. The creator of this lexical set is John C. Wells, who established them in his 1982 three-volume series, [*Accents of English*](https://www.amazon.com/Accents-English-Introduction-J-Wells/dp/0521297192/). In the preface of each volume, Wells explains a notation system that has since been called the "Wells Lexical Sets." Because it is brief, I'll quote it in its entirety (bold and small caps in original):
+
+> **Words written in capitals**
+
+> Throughout the work, use is made of the concept of **standard lexical sets**. These enable one to refer concisely to large groups of words which tend to share the same vowel, and to the vowel which they share. They are based on the vowel correspondences which apply between British Received Pronunciation and (a variety of) General American, and make use of **keywords** intended to be unmistakable no matter what accent one says them in. Thus 'the <sc>kit</sc> words' refers to 'ship, bridge, milk...'; 'the <sc>kit</sc> vowel' refers to the vowel these words have (in most accents, /ɪ/); both may just be referred to as <sc>kit</sc>.
+
+Wells then provides this table:
+
+| RP  | GenAm |      |                  |                                               |
+|:----------:|:----------:|-----------:|:----------:|------------------------|
+|  ɪ  |   ɪ   |  1\. |   <sc>kit</sc>   | ship, sick, bridge, milk, myth, busy...       |
+|  e  |   ɛ   |  2\. |  <sc>dress</sc>  | step, neck, edge, shelf, friend, ready...     |
+|  æ  |   æ   |  3\. |  <sc>trap</sc>   | tap, back, badge, scalp, hand, cancel...      |
+|  ɒ  |   ɑ   |  4\. |   <sc>lot</sc>   | stop, sock, dodge, romp, possible, quality... |
+|  ʌ  |   ʌ   |  5\. |  <sc>strut</sc>  | cup, suck, budge, pulse, trunk, blood...      |
+|  ʊ  |   ʊ   |  6\. |  <sc>foot</sc>   | put, bush, full, good, look, wolf...          |
+| ɑː  |   æ   |  7\. |  <sc>bath</sc>   | staff, brass, ask, dance, sample, calf...     |
+|  ɒ  |   ɔ   |  8\. |  <sc>cloth</sc>  | cough, broth, cross, long, Boston...          |
+| ɜː  |  ɜr   |  9\. |  <sc>nurse</sc>  | hurt, lurk, urge, burst, jerk, term...        |
+| iː  |   u   | 10\. | <sc>fleece</sc>  | creep, speak, leave, feel, key, people...     |
+| eɪ  |  eɪ   | 11\. |  <sc>face</sc>   | tape, cake, raid, veil, steak, day...         |
+| ɑː  |   ɑ   | 12\. |  <sc>palm</sc>   | psalm, father, bra, spa, lager...             |
+| ɔː  |   ɔ   | 13\. | <sc>thought</sc> | taught, sauce, hawk, jaw, broad...            |
+| əʊ  |   o   | 14\. |  <sc>goat</sc>   | soap, joke, home, know, so, roll...           |
+| uː  |   u   | 15\. |  <sc>goose</sc>  | loop, shoot, tomb, mute, huge, view...        |
+| aɪ  |  aɪ   | 16\. |  <sc>price</sc>  | ripe, write, arrive, high, try, buy...        |
+| ɔɪ  |  ɔɪ   | 17\. | <sc>choice</sc>  | adroit, noise, join, toy, royal...            |
+| aʊ  |  aʊ   | 18\. |  <sc>mouth</sc>  | out, house, loud, count, crowd, cow...        |
+| ɪə  |  ɪ(r  | 19\. |  <sc>near</sc>   | beer, sincere, fear, beard, serum...          |
+| ɛə  |  ɛ(r  |   20 | <sc>square</sc>  | care, fair, pear, where, scarce, vary...      |
+| ɑː  |  ɑ(r  |   21 |  <sc>start</sc>  | far, sharp, bark, carve, farm, heart...       |
+| ɔː  |  ɔ(r  |   22 |  <sc>north</sc>  | for, war, short, scorch, born warm...         |
+| ɔː  |  o(r  |   23 |  <sc>force</sc>  | four, wore, sport, porch, borne, story...     |
+| ʊə  |  ʊ(r  | 24\. |  <sc>cure</sc>   | poor, tourist, pure, plural, jury...          |
+
+: Table 1: Wells' original lexical sets. From Wells (1982:xviii--xix).
+
+Later on in the book (p. 122--124), Wells compares Received Pronunciation and General American English and goes into more detail about the principle behind the lexical sets:
+
+> When we compare the pronunciation of particular words in the two accents, we find that in many respects there is a good match: for example, almost all words that have /iː/ in RP have the corresponding /i/ in GenAm, and vice versa: thus *creep*, *sleeve*, *key*, *people* and hundreds of other words. Likewise /aɪ/, transcribed identically for the two accents, and used in both cases for *ripe*, *arrive*, *high*, *try* and many other words...
+
+> Investigation shows that... we can successfully match the vowels in RP and GenAm forms of particular words for the vast bulk of the vocabulary...
+
+> This matching furnishes us with the framework of **standard lexical sets** which we use not only for comparing RP and GenAm but also for describing the lexical incidence of vowels in all the many accents we consider in this work. It turns out that for vowels in strong (stressed or stressable) syllables there are twenty-four matching pairs of RP and GenAm vowels. We identify each pair, and each standard lexical set of words whose stressed syllable exhibits the correspondence in question, by a keyword, which we shall always write in <sc>small capitals</sc>. Thus the correspondence between RP /iː/ and GenAm /i/ is the basis for the standard lexical set <sc>fleece</sc>...
+
+> In the rest of this work standard lexical set keywords will also be used to refer to (i) any or all of the words belonging to the standard lexical set in question; and (ii) the vowel sound used for the standard lexical set in question in the accent under consideration. Rather than using expressions such as 'short *i*/ for example, we shall speak of the <sc>kit</sc> vowel or simply of <sc>kit</sc>.
+
+If you're unfamiliar with these labels, I encourage you to look at Wells' book. He explains each of these lexical sets in greater detail on pages 122--168 of Volume I.
+
+<!--http://phonetic-blog.blogspot.com/search?q=lexical+set-->
+
+## An Alternative Lexical Set: the <sc>b_t</sc> frame
+
+The Wells sets are very useful, but for some reason, they have not become adopted universally. Several researchers have opted to use an alternative set of labels that take advantage of a large minimal set in English, the <sc>b_t</sc> frame.
+
+I did some digging in old *American Speech* and volumes of the *Publications of the American Dialect Society* to see when these labels were first used. The earliest instance I could find goes all the way back to [Sumner Ives. 1954. The Phonology of the Uncle Remus Stories. *Publication of the American Dialect Society* 22(1): 3--59. <https://doi.org/10.1215/-22-1-3>]{.aside} Sumner Ives' 1954 study called *The Phonology of the Uncle Remus Stories*, which was the 22nd volume in the *PADS* series. On page 6, the author states that the following words are to refer to English vowels: *beet*, *bit*, *bait*, *bet*, *bat*, *not*, *bought*, *boat*, *put*, *boot*, *but*, *curt*, *bite*, *bout*, *boy*, and *above*. This set is remarkably close to what some researchers use today!
+
+[Erik Thomas & Malcah Yaeger-Dror, eds. 2009. African American English Speakers and Their Participation in Local Sound Changes: A Comparative Study. *Publication of the American Dialect Society* 94. Available [here](https://read.dukeupress.edu/pads/issue/94/1).]{.aside} In contemporary sociolinguistics, I believe the <sc>b_t</sc> frame was popularized by Erik Thomas & Malcah Yaeger-Dror's 2009 edited volume, *African American English Speakers and Their Participation in Local Sound Changes: A Comparative Study*. In the introduction, starting on page 8 and spilling into page 9, they say that they
+
+> ...found that it would be helpful to formulate a convention to unify the text and simplify the reader's task; with that thought in mind, we have suggested that authors use neither a phonological / / nor a variable ( ) presentation, both of which differ in conventions from author to author. We have chosen instead to refer to a given vowel class using keywords, following the principle behind Wells (1982). To further simplify, we turned to Ladefoged's (2005) choice of keyword paradigm, which uses words that are as untrammeled by their consonantal environment as possible. To obtain these keywords, he chose an <sc>h_d</sc> frame, to have his speakers "say <sc>heed</sc> again.
+
+> To minimize the need for varying the "carrier" environment, in each case, the vowel being focused on here will be a <sc>b_t</sc> paradigm.
+
+| IPA  |     Keyword     |
+|:----:|:---------------:|
+| /i/  |  <sc>beet</sc>  |
+| /ɪ/  |  <sc>bit</sc>   |
+| /e/  |  <sc>bait</sc>  |
+| /ɛ/  |  <sc>bet</sc>   |
+| /æ/  |  <sc>bat</sc>   |
+| /ɑ/  |  <sc>bot</sc>   |
+| /ɔ/  | <sc>bought</sc> |
+| /o/  |  <sc>boat</sc>  |
+| /ʌ/  |  <sc>but</sc>   |
+| /ʊ/  |  <sc>book</sc>  |
+| /u/  |  <sc>boot</sc>  |
+| /aɪ/ |  <sc>bite</sc>  |
+| /aʊ/ |  <sc>bout</sc>  |
+| /ɔɪ/ |  <sc>boy</sc>   |
+| /ɚ/  |  <sc>bird</sc>  |
+
+: Table 2: The lexical set based on the <sc>b_t</sc> frame. This is a subset of the table by Thomas & Yaeger-Dror (2009:6).
+
+<br/>
+
+They end with this statement:
+
+> We hope that this convention will permit the reader to follow all the authors without difficult transitioning between chapters.
+
+[Valerie Fridland, Tyler Kendall, Betsy E. Evans, & Alicia Beckford Wassink, eds. 2016. Speech in the Western States, Vol 1., The Coastal States. *Publication of the American Dialect Society* 101. Available [here](https://read.dukeupress.edu/pads/issue/101/1).]{.aside} It appears that their goal for continuity has beyond their volume because the set was used in later volumes of the *Publications of the American Dialect Society*. For instance, here are the remarks by the editors of *Speech in the Western States: Volume 1: The Coastal States* (Fridland *et al.* 2016):
+
+[The description in *Speech in the [Speech in the Western States: Volume 2: The Mountain West](https://read.dukeupress.edu/pads/issue/102/1)* (Fridland et al. 2017) is almost identical.]{.aside}
+
+> For the purpose of clarity and continuity, authors use the conventions of the International Phonetic Alphabet throughout the chapters, though, in many cases, keywords in the <sc>b_t</sc> frame are used to highlight particular word classes and subclasses, following other recent PADS volumes (Thomas & Yaeger-Dror 2009). These frames are built upon those made for comparative study of English dialects by Wells (1982) but have been adapted to allow representation of the particular vowel changes and conditioning environments of interest to the present study of the U.S. West.
+
+|   IPA    |          Wells Keyword          |   b_t Keyword   |
+|:--------:|:-------------------------------:|:---------------:|
+|    ɪ     |          <sc>kit</sc>           |  <sc>bit</sc>   |
+|    ɛ     |         <sc>dress</sc>          |  <sc>bet</sc>   |
+|    æ     |          <sc>trap</sc>          |  <sc>bat</sc>   |
+|  ɑ \~ a  |          <sc>lot</sc>           |  <sc>bot</sc>   |
+|  ɔ \~ a  | <sc>cloth</sc>/<sc>thought</sc> | <sc>bought</sc> |
+|    ʌ     |         <sc>strut</sc>          |  <sc>but</sc>   |
+|    ʊ     |          <sc>foot</sc>          |  <sc>book</sc>  |
+|    ɚ     |         <sc>nurse</sc>          |  <sc>burt</sc>  |
+|    i     |         <sc>fleece</sc>         |  <sc>beet</sc>  |
+|    e     |          <sc>face</sc>          |  <sc>bait</sc>  |
+|    o     |          <sc>goat</sc>          |  <sc>boat</sc>  |
+|    u     |         <sc>goose</sc>          |  <sc>boot</sc>  |
+|    aɪ    |         <sc>price</sc>          |  <sc>bite</sc>  |
+|    ɔɪ    |         <sc>choice</sc>         |  <sc>boy</sc>   |
+|    aʊ    |         <sc>mouth</sc>          |  <sc>bout</sc>  |
+| ɪɹ \~ iɹ |          <sc>near</sc>          |  <sc>beer</sc>  |
+|    ɚɹ    |         <sc>square</sc>         |  <sc>bare</sc>  |
+|    ɑɹ    |         <sc>start</sc>          |  <sc>bar</sc>   |
+| ɔr / or  |  <sc>north</sc>/<sc>force</sc>  |  <sc>bore</sc>  |
+|    ʊɹ    |          <sc>cure</sc>          |  <sc>burr</sc>  |
+|    əɹ    |         <sc>letter</sc>         |                 |
+|    ə     |         <sc>comma</sc>          |                 |
+
+: Table 3: The lexical set used in the <i>Speech in the Western States</i> volumes. From Fridland et al. 2016:3 and Fridland et al. 2016:5; Table 1.1 in both. The columns have been rearranged for consistency within this blog post.
+
+The only difference is that <sc>bird</sc> was changed to <sc>burt</sc>.
+
+Outside of the *PADS* volumes, this frame was also used in [McCarthy (2011)](https://journals.sagepub.com/doi/abs/10.1177/0075424210384226), which explicitly states that these labels were used because of Thomas & Yaeger-Dror (2009).
+
+I don't know the reason why the <sc>b_t</sc> frame was designed when the Wells lexical sets were already established. Perhaps the draw of the nearly complete minimal set to contrast all English vowels was useful. Maybe it's because the words in the <sc>b_t</sc> frame are shorter, which makes for less cluttered visualizations and written prose. Thomas & Yaeger-Dror did say that the use of the consonants /b/ and /t/ in the keywords helped reduce the effects of surrounding consonants on the vowels themselves. Ultimately though, I'm not sure.
+
+## My thoughts on the <sc>b_t</sc> frame
+
+Hot take: I don't think this the <sc>b_t</sc> is any more useful than IPA. Hear me out:
+
+Imagine you're at a conference talking about the low back merger and you yourself have the merger. Since you don't naturally differentiate the words *bot* and *bought*, you struggle to explain the differences that may exist in your study. Even if you do distinguish the sounds, many people in your audience may not, so they'll have a hard time understanding. This was one of the reasons Wells came up with his lexical sets: neither you nor your audience would have much difficulty understanding the words *lot* or *thought* since, as far as I know, /lɔt/ and /θɑt/ are not English words.
+
+Even if you're not talking about a merger, if you are someone with particularly shifted vowels, when you say an isolated, ambiguous token like \[bɛ̞t\] or \[bæ̙t\], it may not be immediately clear to listeners of other dialects which vowel you're talking about.
+
+The words in the <sc>b_t</sc> frame may be "untrammeled by their consonantal environment," but I don't know if the lack of transition formants make for the most effective label in speech or writing. Keywords are labels to refer to large lexical sets, so while they may not make for ideal tokens when collecting phonetic data, they need to still serve the purpose of unambiguously identifying a vowel phoneme.
+
+In fact, Wells specifically designed his original set so that it specifically would *not* use the <sc>b_t</sc> frame:
+
+> The keywords have been chosen in such a way that clarity is maximized: whatever accent of English they are spoken in, they can hardly be mistaken for other words. Although *fleece* is not the commonest of words, it cannot be mistaken for a word with some other vowel; whereas *beat*, say, if we had chosen it instead, would have been subject to the drawback that one man's pronunciation of *beat* may sound like another's pronunciation of *bait* or *bit*. (Wells 1982:123)
+
+I question the usefulness of the <sc>b_t</sc> frame. It's convenient that a common enough English word can be created by filling in almost any vowel into the template, but I don't know if this large minimal set makes for the most unambiguous lexical set. When he introduces his keywords, Wells says that they are "intended to be unmistakable no matter what accent one says them in." This property is not retained in the <sc>b_t</sc> set of keywords. In fact, creating a set based on minimal pairs defeats the very purpose of a lexical set.
+
+To put it another way, just because we call something the *cot-caught* merger doesn't mean we should refer to the entire lexical sets as <sc>cot</sc> and <sc>caught</sc>. In fact, I think we should actively *avoid* referring to them as <sc>cot</sc> and <sc>caught</sc> for the very reason that they *do* form a minimal pair.
+
+It's my impression that researchers on non-American varieties of English use Wells' original lexical sets without any problems. Using a different set is potentially confusing and may alienate ourselves from studies on other World Englishes.
+
+To be clear, I am in no way criticizing the researchers who came up with or use the <sc>b_t</sc> frame. If you're familiar with what I do you'll know that their work is *highly* relevant to my own studies, and I cite *a lot* of studies that use the <sc>b_t</sc> frame. Their work is excellent and I model my own work after their theirs. I just think the labels could be clearer.
+
+## Conclusion
+
+[This reminds me of how some people use the Labovian transcription system instead of standard IPA. See <a href="http://val-systems.blogspot.com/2018/07/why-does-labov-have-such-weird.html">Josef Fruehwald's blog post</a> on those.]{.sidenote} There are two competing systems of lexical sets being used in American dialectology: the Wells lexical set and the <sc>b_t</sc> frame. To answer my titular question of why people use <sc>bat</sc> instead of <sc>trap</sc>... I don't really know. I think it may largely depend on what university the work is coming out of. But, I think Wells' original set may be a little better.
+
+PS: Regardless of which system you use, I think we should make sure we use <sc>small caps</sc> instead of ALL CAPS or even <sc>Capitalized Small Caps</sc>. It's truer to Wells' original notation and I think they just look a lot better typographically.
+
+PPS: To my knowledge, Wells never intended for the lexical set labels (or even the example words in the original explanation) to be ideal tokens for eliciting the vowels they represent. So, while the <sc>b_t</sc> labels might be "untrammeled by their consonantal environment," the Wells labels are not. So, there's probably no need to eliciting the words *fleece*, *kit*, *face*, *dress*, etc. when getting tokens of these vowels.
+
+<br/>
+
+Update: [Click here for further musings, ramblings, and recommendations for non-canonical extensions to Wells' lexical sets when referring to allophones.](/blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets)
