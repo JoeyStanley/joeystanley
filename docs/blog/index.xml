@@ -502,6 +502,95 @@ Tip
   <pubDate>Sat, 13 Feb 2021 21:16:00 GMT</pubDate>
 </item>
 <item>
+  <title>UGA Linguistics Colloquium 2020</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/colloquium-2020/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>For the fourth time in six years, I presented some of my research at the UGA Linguistics Colloquium. I talked about some findings from my <a href="../../blog/dissertation">dissertation</a>, though I focused on just the low vowels <sc>trap</sc>, <sc>lot</sc>, and <sc>thought</sc>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/200110-colloquium.pdf">here</a></p>
+</div>
+</div>
+<section id="these-are-relatively-old-changes" class="level2">
+<h2 class="anchored" data-anchor-id="these-are-relatively-old-changes">These are relatively old changes</h2>
+<p>The gist of the talk is that <sc>trap</sc> has been gradually lowering over the course of four generations in Cowlitz County Washington, with men consistently lagging behind the women and with the first half of the trajectory doing most of the lowering. Meanwhile, <sc>lot</sc> and <sc>thought</sc> have been in a near-merged state since at least the 1930s, with no apparent conditioning by sex or generation. Considering that Cowlitz County was settled by English speakers since only the 1850s, these are relatively old changes for this area.</p>
+<p>The interesting part is that while the <em>position</em> of <sc>trap</sc> is consistently lower for the women, the <em>shape</em> of the trajectory is the same within a generation. That is, when it comes to the vowel’s dynamics, the men are keeping up with the women. It’s just that the global position of that vowel is less advanced.</p>
+<p>For me, this opens up a lot of questions about vowel trajectories. I’m curious about what kinds of social conditioning can be found in the <em>trajectory</em> of a vowel, rather than its relative position in the F1-F2 space. In fact, I’ve got some experimental work in motion to answer just that…</p>
+</section>
+<section id="interpreting-difference-smooths" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="interpreting-difference-smooths">Interpreting Difference Smooths</h2>
+<p>One thing I included in this presentation is an animation to help learn how to interpret difference smooths.<span class="sidenote-left">I’ve been meaning to include this animation in a presentation for a bit now, and with the 40 minute afforded me in this presentation, I finally had the time to do so.</span> Difference smooths are a type of plot that aid in the interpretation of GAMs and you can learn more about them in <a href="http://eprints.whiterose.ac.uk/113858/2/1703_05339v1.pdf">Mártin Sóskuthy’s tutorial on GAMs</a>. Unfortunately for those of us that fit GAMs to vowel formant data, they look awfully like vowel formant curves, so they can be tricky to interpret. I’ll probably expand this into a full blog post later on, but for now, here’s a brief explanation of (my interpretation of) difference smooths.</p>
+<p>Let’s say we have some data, a blue curve and a red curve, sampled at 11 time points. Here, these 11 data points are plotted, with lines connecting the dots.</p>
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/raw.jpg" class="img-fluid" style="width:85.0%"></p>
+<p>When you fit a generalized additive model to this data, you can get two fit lines (left, below), which is basically a smoothed version of the jagged line above. It’s as if you had sampled continuously rather than at 11 discrete timepoints. When you plot a difference smooth, you get the plot on the right (below), which is essentially one curve “minus” the other curve.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/raw_fit.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>Now, it may not be completely transparent how the difference smooth relates to the two fit lines. So, to help out, the two plots below show the exact same curves, only several vertical lines have been added. On the fit lines, the vertical lines connect the two curves, with the height (and color) of the line representing the distance between them. On the right, the vertical lines connect the difference smooth and a horizontal line. The kicker: the height of the vertical lines in both plots is identical.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/raw_vlines.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth_vlines.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>If you’re like me, it still might not be clear how they connect. The following animation may help. It starts with the two curves with the vertical lines between them. Since I’m getting the <em>difference</em> between the two, I’m “subtracting” the bottom from the top. This has the effect of flattening out the bottom one to a perfectly straight, horizontal line. In order to keep the vertical lines the same height, the amount of “bend” that has to happen to the bottom line has to apply equally to the top line. The result is a new curve called the difference smooth.</p>
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/diff_smooth_anim.gif" class="img-fluid" style="width:85.0%"></p>
+<div class="page-columns page-full"><p>Once you’ve grasped that, you can then add some additional information to the plot. Typically, difference smooths come with confidence intervals, which I highlight in gray below. Wherever the confidence interval does <em>not</em> overlap with the horizontal (zero) line, the curves are interpreted as being statistically significantly different from each other.</p><div class="no-row-height column-margin column-container"><span class="">Exactly how these confidence intervals are calculated is something I’m still learning.</span></div></div>
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth_ci.jpg" class="img-fluid" style="width:85.0%"></p>
+<p>In this case, since the original red line is subtracted from the original blue one, with the confidence intervals on this difference smooth, I can say that the blue line is significantly higher than the red for some region.</p>
+<div class="page-columns page-full"><p> Finally, the plot below is the version of the difference smooths I use in this presentation, my dissertation, and anywhere else I’ve needed them so far.</p><div class="no-row-height column-margin column-container"><span class="">There are R packages that can create difference smooths (I think itsadug might be most well-known). I’m not a huge fan of the aesthetics of that plot, so I’ve created my own version using the same data, and in ggplot2. I’d like to release it in a package sometime soon so you can use them too if you’d like.</span></div></div>
+<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth_full.jpg" class="img-fluid" style="width:85.0%"></p>
+<p>I’ve just added some additional annotation to better highlight the region of statistical significance:</p>
+<ul>
+<li><p>The center line is blue and slightly thicker in contrast with the gray, thinner lines.</p></li>
+<li><p>The horizontal axis is blue in the region of statistical significance.</p></li>
+<li><p>At the point where the confidence interval intersects 0 (the horizontal axis), I’ve added vertical dotted lines.</p></li>
+<li><p>I’ve also added the timepoint where that intersection happens. In this case, the time spans from 0 to 1, so these two lines are statistically significantly different from one another between 0.122s and 0.526s. NOTE: It’s important that you take these ranges with a grain of salt and perhaps interpret them very broadly rather than paying too much attention to the exact number.</p></li>
+</ul>
+<p>I just kinda like the look of this style of plot, so that’s the one I’ve been using.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>I’ve at least benefited from interpreting difference smooths in this way. Hopefully the attendees of my talk today (and now you!) will have slightly better understanding of them as well.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Animations</category>
+  <category>Dissertation</category>
+  <category>Pacific Northwest</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/colloquium-2020/index.html</guid>
+  <pubDate>Thu, 09 Jan 2020 11:20:00 GMT</pubDate>
+  <media:content url="https://new.joeystanley.com/blog/colloquium-2020/smooth_full.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>LSA and ADS 2020</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/ads-and-lsa-2020/index.html</link>
@@ -625,11 +714,11 @@ Tip
 <table class="table">
 <caption>Table 1: Wells’ original lexical sets. From Wells (1982:xviii–xix).</caption>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 42%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -842,70 +931,70 @@ Tip
 <caption>Table 2: The lexical set based on the <sc>b_t</sc> frame. This is a subset of the table by Thomas &amp; Yaeger-Dror (2009:6).</caption>
 <thead>
 <tr class="header">
-<th>IPA</th>
-<th>Keyword</th>
+<th style="text-align: center;">IPA</th>
+<th style="text-align: center;">Keyword</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>/i/</td>
-<td><sc>beet</sc></td>
+<td style="text-align: center;">/i/</td>
+<td style="text-align: center;"><sc>beet</sc></td>
 </tr>
 <tr class="even">
-<td>/ɪ/</td>
-<td><sc>bit</sc></td>
+<td style="text-align: center;">/ɪ/</td>
+<td style="text-align: center;"><sc>bit</sc></td>
 </tr>
 <tr class="odd">
-<td>/e/</td>
-<td><sc>bait</sc></td>
+<td style="text-align: center;">/e/</td>
+<td style="text-align: center;"><sc>bait</sc></td>
 </tr>
 <tr class="even">
-<td>/ɛ/</td>
-<td><sc>bet</sc></td>
+<td style="text-align: center;">/ɛ/</td>
+<td style="text-align: center;"><sc>bet</sc></td>
 </tr>
 <tr class="odd">
-<td>/æ/</td>
-<td><sc>bat</sc></td>
+<td style="text-align: center;">/æ/</td>
+<td style="text-align: center;"><sc>bat</sc></td>
 </tr>
 <tr class="even">
-<td>/ɑ/</td>
-<td><sc>bot</sc></td>
+<td style="text-align: center;">/ɑ/</td>
+<td style="text-align: center;"><sc>bot</sc></td>
 </tr>
 <tr class="odd">
-<td>/ɔ/</td>
-<td><sc>bought</sc></td>
+<td style="text-align: center;">/ɔ/</td>
+<td style="text-align: center;"><sc>bought</sc></td>
 </tr>
 <tr class="even">
-<td>/o/</td>
-<td><sc>boat</sc></td>
+<td style="text-align: center;">/o/</td>
+<td style="text-align: center;"><sc>boat</sc></td>
 </tr>
 <tr class="odd">
-<td>/ʌ/</td>
-<td><sc>but</sc></td>
+<td style="text-align: center;">/ʌ/</td>
+<td style="text-align: center;"><sc>but</sc></td>
 </tr>
 <tr class="even">
-<td>/ʊ/</td>
-<td><sc>book</sc></td>
+<td style="text-align: center;">/ʊ/</td>
+<td style="text-align: center;"><sc>book</sc></td>
 </tr>
 <tr class="odd">
-<td>/u/</td>
-<td><sc>boot</sc></td>
+<td style="text-align: center;">/u/</td>
+<td style="text-align: center;"><sc>boot</sc></td>
 </tr>
 <tr class="even">
-<td>/aɪ/</td>
-<td><sc>bite</sc></td>
+<td style="text-align: center;">/aɪ/</td>
+<td style="text-align: center;"><sc>bite</sc></td>
 </tr>
 <tr class="odd">
-<td>/aʊ/</td>
-<td><sc>bout</sc></td>
+<td style="text-align: center;">/aʊ/</td>
+<td style="text-align: center;"><sc>bout</sc></td>
 </tr>
 <tr class="even">
-<td>/ɔɪ/</td>
-<td><sc>boy</sc></td>
+<td style="text-align: center;">/ɔɪ/</td>
+<td style="text-align: center;"><sc>boy</sc></td>
 </tr>
 <tr class="odd">
-<td>/ɚ/</td>
-<td><sc>bird</sc></td>
+<td style="text-align: center;">/ɚ/</td>
+<td style="text-align: center;"><sc>bird</sc></td>
 </tr>
 </tbody>
 </table>
@@ -4100,70 +4189,6 @@ Tip
   <category>Data Viz</category>
   <guid>https://new.joeystanley.com/blog/jealousy-list-2/index.html</guid>
   <pubDate>Tue, 16 Oct 2018 02:15:00 GMT</pubDate>
-</item>
-<item>
-  <title>LCUGA5</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/lcuga5/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Today, I was fortunate to give two presentations on very different areas of my research at the <a href="http://www.linguistics.uga.edu/lcuga-5">5th Annual Linguistics Conference at UGA</a>, one on an obscure consonantal phonological pattern in the West using new recordings and another on well-studied vowel shifts in the South using very old recordings.</p>
-<section id="thr-flapping" class="level2">
-<h2 class="anchored" data-anchor-id="thr-flapping">(thr)-flapping</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/181012-lcuga5_thr.pdf">here</a>!</p>
-</div>
-</div>
-<p>First, I presented on something I’ve noticed in a few speakers, something I call (thr)-flapping. Some people pronounce the /ɹ/ after /θ/ as a flap [ɾ]. In this presentation, I presented some data supporting this hunch.</p>
-<p>The articulatory motivations are clear: as the tongue tip moves from between the teeth to a retroflexed position, it may make brief contact with the alveolar ridge. What may have started as an accidental gesture appears to have been phonologized by some speakers.</p>
-<p>Looking at phonological factors, in my data (thr)-flapping happened more when the following vowel was non-high and non-front. So it happened more in <em>throb</em>, <em>throng</em>, <em>throne</em>, <em>thrust</em>, and <em>thrive</em> than in <em>thrash</em>, <em>threaten</em>, <em>thread</em>, <em>thrill</em>, <em>three</em> and <em>through</em>. I offer some tentative explanations for this, but without articulatory data, I can’t know for sure.</p>
-<p>To my surprise, the social factors I looked at were the opposite of what I expected. Age and sex were not significant, meaning there’s probably not a lot of change in time. But what state people came from (Washington verses Utah—my two fieldsites) <em>was</em> significant. <a href="../../downloads/180108-ads2018-utah.pdf">Utah English has a lot of hyperarticulated consonants</a> and at ADS this year, Di Paolo &amp; Johnson (2018) hypothesize that this has to do with the high proportion of members of the Church of Jesus Christ of Latter-day Saints in Utah. Since public speaking is a common part of their worship services (even as early as the age of 3!), elements of this hyperarticulated register may have spread into other speech styles. (thr)-flapping may be just another manifestation of that. But without attitude or perceptual data, I can’t know for sure.</p>
-<p>(thr)-flapping is something I’ve noticed for a while now, and despite the shortcomings of this study, and I was glad to finally present solid evidence that it is a thing!</p>
-</section>
-<section id="vowel-shifts-in-southern-american-english" class="level2">
-<h2 class="anchored" data-anchor-id="vowel-shifts-in-southern-american-english">Vowel Shifts in Southern American English</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/181012-lcuga5_dass.pdf">here</a>!</p>
-</div>
-</div>
-<p>In the next session, I presented research I been doing with Peggy Renwick on the vowel shifts in the South. The Southern Vowel Shift has front lax vowels raising and front tense vowels lowering, resulting in vowel pairs swapping. Meanwhile, back vowels are fronting. The African American Vowel Shift has the front lax vowels raising, but tense vowels are not lowering, so there wouldn’t be any swapping. Furthermore, back vowels typically aren’t fronted.</p>
-<p>We use the Digital Archive of Southern Speech, a corpus of interviews from the 1970s and 1980s. The people in these recordings were born while these shifts were going on, so we can see their development in a way that newer recordings wouldn’t be able to do.</p>
-<p>Using Pillai scores and linear mixed-effects models, we find that younger, European American women are leading in the front vowel swapping and that African Americans are participating less in the back vowel fronting. These findings are exactly what we expect, showing that these older recordings confirm what newer ones suggest.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Pacific Northwest</category>
-  <category>Phonetics</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>South</category>
-  <category>Utah</category>
-  <guid>https://new.joeystanley.com/blog/lcuga5/index.html</guid>
-  <pubDate>Fri, 12 Oct 2018 12:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
