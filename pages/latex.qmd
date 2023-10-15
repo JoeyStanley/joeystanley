@@ -1,0 +1,30 @@
+---
+layout: aside
+title: LaTeX Workshops
+redirect_from: 
+    - "/latex"
+---
+
+Caleb Crumley, Jonathan Crum, and I will be hosting a series of three workshops on LaTeX during Spring 2020 as a way to introduce our new UGA Grad School--approved LaTeX dissertation template. This page will house some of the materials for those workshops, with links to GitHub repositories where you can find out more.
+
+Note: All workshops will be held at 3:35pm at the DigiLab (300 Main Library) 
+
+<br/>
+
+## [*Intro to LaTeX*](https://github.com/JoeyStanley/LaTeX_workshops)
+
+*January 31, 2020*---In this workshop, I introduce some essential LaTeX skills, including basic typesetting, special characters, text formatting, document structure, internal references, lists, alignment, and white space. I also get into more typographical topics like font choice, line spacing, hyphenation and justification, and a few other things. This workshop was my most well-attended so far, with 30 registered attendees and another 55 or so on the waitlist. It was a [full house](/blog/full-house-at-my-first-latex-workshop)!
+
+<br/>
+
+## [*The UGA LaTeX Template*](https://github.com/DigiUGA/UGA-Dissertation-LaTeX-Template)
+
+*February 7, 2020*---Caleb Crumley will lead this workshop and will introduce the UGA LaTeX template. This has been approved by the Graduate School. The purpose of the template is to take care of the nit-picky aspects of your document to help ensure it passes the format check so that you're free to spend your time actually writing it. Caleb will show how to download it, toggle some of the options you may want, and show additional LaTeX skills like inserting tables and images. 
+
+<br/>
+
+## [*Advanced topics in LaTeX*](https://github.com/krummja/2020_LaTeX_Workshops)
+
+*February 14, 2020*---Jonathan Crum will lead this workshop and will illustrate some of the more technical aspects of LaTeX for more advanced users. Some topics include custom commands, advanced font encoding, more document structure, document splitting and compiling, environments, compilers, and everyday workflow. 
+
+<br/>

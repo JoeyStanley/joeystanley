@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Full house at my first LaTeX workshop!"
+date:   2020-01-31 16:45:00 -0400
+categories:
+  - Github
+  - LaTeX
+  - Presentations
+---
+
+Today I had the opportunity to teach LaTeX for the first time. [Caleb Crumley](https://twitter.com/calebcrumley), an RA for the [DigiLab](https://digi.uga.edu) at UGA, has been working on a dissertation template in LaTeX that conforms with UGA's formatting check. He finished it, and it's got the stamp of approval from the Graduate School. To advertise the template, Caleb, Jonathan Crum, and I put on a three-part series to introduce the template and teach a little LaTeX as well.
+
+As always, marketing these workshops is tricky and it's rare to get more than about a dozen attendees. But, with some persistence from the DigiLab's coordinator, [Emily McGinn](https://emilymcginn.com), the Grad School agreed to advertise a little for us, and sent out the information to the approximately 6000 grad students at UGA! 
+
+Within minutes, we had dozens of people registering for the workshop. After day or two, we doubled, and then tripled the registration cap! Sure enough, the DigiLab was fuller than I had ever seen it, and we decided to host repeat sessions of the three workshops as soon as the first cycle is over. 
+
+![Action shot of me showing how to make a bulletted list!](latex_workshop.jpg)
+
+
+Knowing there would be so many people there, I was a little nervous prepping the workshop because I'm not as comfortable with LaTeX as I am with R. I've been dabbling with it for a couple year but I've only been using it seriously for about a year. [I began using it when I switched my [dissertation](/blog/dissertation) over from Word. It took about 20 hours to do so, but seriously, best decision ever.]{.aside} All things considered, I think it went well, and I enjoyed it a quite a lot.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">This&#39;ll be my first time teaching LaTeX, but I had a lot of fun putting this workshop together with <a href="https://twitter.com/CalebCrumley?ref_src=twsrc%5Etfw">@CalebCrumley</a> and Jonathan Crum. The materials for today&#39;s workshop can be found at <a href="https://t.co/uyGNAq1EMe">https://t.co/uyGNAq1EMe</a> <a href="https://t.co/uhnz7sptRz">https://t.co/uhnz7sptRz</a></p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1223325382218153984?ref_src=twsrc%5Etfw">January 31, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+You can see more details about the workshop series [here](/pages/latex), the handout for the workshop [on my github](https://github.com/JoeyStanley/LaTeX_workshops), and the UGA LaTeX dissertation template that Caleb made on the DigiLab's [github](https://github.com/DigiUGA/UGA-Dissertation-LaTeX-Template).
