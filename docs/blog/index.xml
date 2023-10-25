@@ -107,6 +107,73 @@
   <pubDate>Fri, 14 Oct 2022 03:30:00 GMT</pubDate>
 </item>
 <item>
+  <title>New publication in the Penn Working Papers in Linguistics</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/new-publication-in-pwpl/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’ve just been informed that a manuscript I submitted to the <em>Penn Working Papers in Linguistics</em> has been published! It’s called “Order of Operations in Sociophonetic Analysis” and is available <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/">here</a>. In a nutshell, I discuss the various processing steps that are typical of a sociophonetic analysis an I show that changing the order that you run them can have a non-negligible impact on the overall results. I end the paper with a recommended order that we can use.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>I originally started this paper because I noticed, by accident, that I was getting different results after moving some code around. I was in the middle of an analysis (of the very dataset I use in the paper) and had already gotten some results, but I had to change a few things in the processing and ended up moving a chunk of code up a little bit so that it happened before another chunks. Lo and behold, the results changed. Nothing about the underlying data changed, and nothing about the functions I ran changed—other than their order.</p>
+<p>So this sent me down a bit of a rabbit hole. I identified seven processing steps that I did in my analysis pipeline. I then wrote some code that arranged those seven steps into all possible orderings, all 5,040 of them. I then took the exact same input dataset, and processed it 5,040 times, once for each permutation. With each resulting spreadsheet, I then calculated things like how shifted or overlapped people’s vowels were. Again, to be clear, the underlying data was identical, and the functions I ran were identical. The only thing that changed was the order that I ran them.</p>
+<p>Well, as you can read in the paper, the results were a little concerning. First, I got many unique values for each person. Not 5,040 unique values, because some pipeline result in identical outputs. But sometimes hundreds of unique values. Some of these were admittedly very similar, but others were quite drastic. In one case, I point out that if I use some pipelines, a particular individual may be interpreted as being a linguistic innovator since she had advanced measures of some of the shifts. But in other pipelines, she would be seen as linguistically conservative since those same measures returned less-advanced measures. Taking the entire group of 53 speakers collectively, some pipelines showed that about half had shifted vowels while other pipelines showed that nearly all of them did. So, just by changing the order that I run my code can have an impact on how my dataset is interpreted!</p>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please note that this is a different order than what I suggest in my NWAV49 talk! The version shown here is what I currently stand by.</p>
+</div>
+</div>
+<p>So, in addition to pointing out the problem, I do offer a potential solution by prescribing an order of operations. Here’s what that is:</p>
+<ol type="1">
+<li><p>Reclassify your data into allophones</p>
+<p>This is important because subsequent steps really need to run by <em>allophone</em> rather than by <em>phoneme</em>. I’d even say that we should separate the data into allophones even for vowels we’re not interested in (like allophones of /u/ even if we’re only interested in front vowels) because it has implications for what data gets excluded which could affect the centering when you normalize.</p></li>
+<li><p>Remove “bad” data</p>
+<p>This is when you remove outliers. Again, I argue that it should be done by allophone. I also recommend that stopwords and unstressed vowels be treated as their own separate category as well. But, I’m no married to that idea.</p></li>
+<li><p>Normalize</p>
+<p>Regardless of what normalization procedure you use, I think it is at this point in the pipeline that the procedure should happen. The normalization should include all good data (even if it’s not pertinent to the study) and not include any bad data.</p></li>
+<li><p>Remove “good” but otherwise uninteresting data.</p>
+<p>Finally, here is where you should subset your data to focus on just the stuff you’re interested. So, get rid of vowels or allophones you don’t want, stopwords, unstressed vowels, etc. Importantly though, it is only at this point in the pipeline that you should toss vowel trajectories! If you never extracted them in the first place, or just ignored those columns in FAVE’s output, then you’re excluding trajectory data as step 1 and that has an impact on your results!</p></li>
+</ol>
+<p>For now, these steps are based more on logic and theory (and I appreciate the input from Rich Ross and Thomas Kettig for helping me out with that)! I have a manuscript at the moment that dives more into these steps and provides some more quantitative justification for them. Stay tuned!</p>
+</section>
+<section id="my-soapbox" class="level2">
+<h2 class="anchored" data-anchor-id="my-soapbox">My Soapbox</h2>
+<p>Finally, towards the end, I do get a little preachy. First, I recommend that Order of Operations be explained in detail in methods sections so that we can evaluate them better. In fact, it was only after I submitted this paper that I found <a href="https://linkinghub.elsevier.com/retrieve/pii/S0095447021000711">Brand, Hay, Clark, Watson, &amp; Sóskuthy’s (2021) paper</a> that does exactly what I want to see! That’s exactly the kind of transparency that we need. Of course, at this point, it’s hard to interpret what effect one order has upon the data as opposed to another order, though, again, stay tuned for my manuscript which does exactly that!</p>
+<p>I then say that quantitative linguists should be more mindful of how the data is being processed. I basically subtweet some methods that I’m not particularly fond of (Lobanov transformations, ANAE “benchmarks”) without calling them out specifically. I also subtweet a reviewer for a different paper who said to me that I shouldn’t use New Technique X and should instead use Old Technique Y for comparability with previous studies, even though recent research has shown that Old Technique Y is flawed and New Technique X is better. Anyway, so if those paragraphs sound cryptic, now you know some background.</p>
+<p>Finally, I encourage quantitatively-minded linguists to continue writing methods papers. Whether it be developing a new technique or comparing existing techniques against each other, all that stuff is good for the field.</p>
+<p>Anyway, I took the opportunity in this non-peer-reviewed methods paper to stand on my soapbox a little bit and talk about some of my views on the current state of quantitative linguistics. And I stand by what I wrote in the paper.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>So that’s it! This was a fun one to write because it literally has nothing to do with language or how language works: it’s purely methods. In fact, it’s not even about one specific method. It’s about how we should run our R code! Very niche. But I hope it does some small part in improving quantitative linguistics papers.</p>
+<p>PS: In my notes I refer to “Order of Operations” as “OoO”. I’m 1000% okay with having <em>OoO</em> be a new abbreviation in people’s code and in methods sections now. Who wants to be the first? :)</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Methods</category>
+  <category>Research</category>
+  <category>Publications</category>
+  <category>Vowel Overlap</category>
+  <guid>https://new.joeystanley.com/blog/new-publication-in-pwpl/index.html</guid>
+  <pubDate>Tue, 20 Sep 2022 04:11:00 GMT</pubDate>
+</item>
+<item>
   <title>ADS and LSA 2022</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/ads-and-lsa-2022/index.html</link>
@@ -1741,74 +1808,6 @@ Tip
   <category>Statistics</category>
   <guid>https://new.joeystanley.com/blog/thank-you/index.html</guid>
   <pubDate>Sun, 18 Aug 2019 12:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Jealousy List 3</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/jealousy-list-3/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>This is the third iteration of my <a href="https://fivethirtyeight.com/features/damn-we-wish-wed-done-these-11-stories/">Jealousy List</a>, which is a list of articles so good I wish I had been the one to write them. My first two lists were posted about a year ago (see the list of lists <a href="../../blog/#category=Jealousy Lists">here</a>) and this one is long overdue, so I apologize for some of the posts being a little less recent. Regardless, here are a list of posts I’ve found in the past few weeks and months that I found exceptional in some way, entertaining, informative, or just plain cool.</p>
-<ol type="1">
-<li><p><strong><a href="https://twitter.com/trashystats">Saskia Freytag</a></strong>. <a href="http://rpubs.com/Saskia/520216">“Workshop: Dimension reduction with R”</a>.</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-</p><p>So I wrote a tutorial on dimension reductions in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a>. It has actually turned out to be fairly comprehensive. It uses a fun example dataset on cereals (🎉 - not looking for at iris) I would love some feedback: <a href="https://t.co/VsiHX2KYdT">https://t.co/VsiHX2KYdT</a></p>
-<p></p>
-<p>— Saskia Freytag (<span class="citation" data-cites="trashystats">@trashystats</span>) <a href="https://twitter.com/trashystats/status/1162234718504411136?ref_src=twsrc%5Etfw">August 16, 2019</a></p>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>You may have heard of PCA (Principle Components Analysis) as a way to reduce a bunch of variables down to a more manageable number. As it turns out, this is just one way to do a <em>dimension reduction</em> on your data. Freytag’s workshop does a really nice job at explaining some of the different dimension reduction techniques that are out there, including helpful plots for the visual learners out there. It also goes into detail about the pros and cons of each method, and gives some sample R code showing you how to run the analysis yourself. I wish there were more workshops like there floating around! Plus, it uses data from a bunch of cereals, and I’m pretty sure I’ve used that dataset before in my workshops…</p>
-<p><br></p></li>
-<li><p><strong><a href="https://austinwehrwein.com">Austin Wehrwein</a></strong>. <a href="https://austinwehrwein.com/data-visualization/housing/">“Burden of roof: Revisiting housing costs with tidycensus”</a>.</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-</p><p>In this episode I use the A+ tidycensus <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> package to examine housing costs along with income data AND stretch wordplay as far as it will go. Burden of roof: revisiting housing costs with tidycensus. <a href="https://t.co/gDVlOb9N9H">https://t.co/gDVlOb9N9H</a> <a href="https://t.co/i3gxzz6C8G">pic.twitter.com/i3gxzz6C8G</a></p>
-<p></p>
-<p>— Austin Wehrwein (<span class="citation" data-cites="awhstin">@awhstin</span>) <a href="https://twitter.com/awhstin/status/1157290104416849921?ref_src=twsrc%5Etfw">August 2, 2019</a></p>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>This is a short blog post, but I really like it because is succinctly shows how to quickly produce a really complelling story with some data and a nice visual. It uses the <a href="https://walkerke.github.io/tidycensus/">tidycensus</a> package by <a href="http://personal.tcu.edu/kylewalker/">Kyle Walker</a> to extract some information about median income and housing prices per US county, and then creates a stunning map to display the data. I also learned that the county I live in now, Clarke County, Georgia, was among the top 25 <em>worst</em> counties in the country in this regard. I guess that’s where all my money is going!</p>
-<p><br></p></li>
-<li><p><strong><a href="https://www.garrickadenbuie.com">Garrick Aden-Buie</a></strong>. <a href="https://www.garrickadenbuie.com/blog/custom-discrete-color-scales-for-ggplot2/">“Custom Discrete Color Scales for ggplot2”</a>.</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-</p><p>I wrote up a short blog post on creating custom ggplot2 color scales. I focused on discrete color scales to demo a setup that makes binary colors easy, but I hope the post is helpful if you're working on a <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a> theme for your org or brand. <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/jQDxE61K3W">https://t.co/jQDxE61K3W</a></p>
-<p></p>
-<p>— Garrick Aden-Buie (<span class="citation" data-cites="grrrck">@grrrck</span>) <a href="https://twitter.com/grrrck/status/1162419274566262784?ref_src=twsrc%5Etfw">August 16, 2019</a></p>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>I’ve become a bit of a color snob, so I appreciate a good post on colors in data visualization. This one is less about the colors themselves, and more about how to more easily implement your own custom color scheme in ggplot2. Aden-Buie even goes so far as to provide helpful tips for when you compile all these custom commands into an R package. I’ll definitely be using this whenever I get my package off the ground.</p>
-<p><br></p></li>
-<li><p><strong><a href="http://rafalab.github.io//">Rafael Irizarry</a></strong>. <a href="https://simplystatistics.org/posts/2019-02-21-dynamite-plots-must-die/">“Dynamite Plots must Die”</a>. From <em><a href="https://simplystatistics.org">Simply Statistics</a></em>.</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-</p><p>Open letter to journal editors: dynamite plots must die. Dynamite plots, also known as bar and line graphs, hide important information. Editors should require authors to show readers the data and avoid these plots. <a href="https://t.co/0GNKEIUCJL">https://t.co/0GNKEIUCJL</a> <a href="https://t.co/OS9ytEFRZN">pic.twitter.com/OS9ytEFRZN</a></p>
-<p></p>
-<p>— Rafael Irizarry (<span class="citation" data-cites="rafalab">@rafalab</span>) <a href="https://twitter.com/rafalab/status/1098973538260840449?ref_src=twsrc%5Etfw">February 22, 2019</a></p>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Data visualization must have been on my mind for a while now, because five months ago I bookmarked this blog post so that it’d make it on my next Jealousy List. This is a nice critique about <em>Dynamite Plots</em>, or basically bar plots with those little error bars at the top. Basically, they obscure the underlying distribution and can be replaced by a very small table. Fortunately, the complaint comes with a few recommendations for alternative visuals.</p>
-<p><br></p></li>
-<li><p><strong><a href="https://juliasilge.com">Julia Silge</a></strong>. <a href="https://juliasilge.com/blog/introducing-tidylo/">“Introducing Tidylo”</a>.</p>
-<p>There will probably always be at least one Julia Silge post on my Jealousy Lists. This one introduces a new R package, tidylo, which calculates weighted log odds using within the framework of the tidyverse. The post itself is, as always, a fun read and there are some great visuals. This’ll make it really easy to choose a baby name characteristic of like the 1920s for my next kid or something.</p></li>
-</ol>
-<p><br></p>
-<p>So that’s it for my long-overdue Jealousy List: statistical procedures, succinct tutorials, color, data visualization, and more statistics. Again, a decent representation of what I’ve been reading recently.</p>
-
-
-
- ]]></description>
-  <category>Jealousy Lists</category>
-  <category>Data Viz</category>
-  <category>R</category>
-  <category>Skills</category>
-  <category>Statistics</category>
-  <guid>https://new.joeystanley.com/blog/jealousy-list-3/index.html</guid>
-  <pubDate>Sat, 17 Aug 2019 04:25:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
