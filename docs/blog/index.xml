@@ -127,6 +127,80 @@
   <pubDate>Wed, 14 Dec 2022 15:12:00 GMT</pubDate>
 </item>
 <item>
+  <title>Prevelar raising paper published in American Speech</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/prevelar-raising-american-speech/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’m thrilled to announce that a paper of mine has been <a href="https://read.dukeupress.edu/american-speech/article/97/3/374/174069/Regional-Patterns-in-Prevelar-Raising">published in <em>American Speech</em></a>! It’s called “Regional patterns in prevelar raising.” This one has been in the works for quite some time, so it’s very exciting to see it finally published.</p>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Some people pronounce words like <em>bag</em>, <em>flag</em>, and <em>dragon</em> with a raised vowel, so that <em>bag</em> rhymes with <em>vague</em>. There are also some people who pronounce words like <em>beg</em>, <em>peg</em>, and <em>leggings</em> with that same raised vowel. People have studied this in a few places, most notably Wisconsin and the Pacific Northwest, but not really much anywhere else. I’m from St.&nbsp;Louis and I’ve got <sc>beg</sc>-raising pretty strong. So, where else do you get prevelar raising? Whenever I have a question like that, I just ask my 7000 closest friends what they do, as one does :)</p>
+<p>I set up a survey that asks people to indicate how they pronounce something like 70 prevelar words. I distributed it on Reddit to get good geographic coverage. Using fancy GIS skills (thanks, Jack Grieve for helping me with that!), I was able to produce some pretty cool maps showing where you get raising. As it turns out, the regions where people reported <sc>bag</sc>-raising lines up with where <sc>bag</sc>-raising has been reported in the ANAE based on acoustic data, which is good because it means the data I have is at least somewhat reliable. For <sc>beg</sc>-raising though, I found that it’s much more widespread. Pretty much everywhere except the South and Michigan you’ll find people who have it, and you’re more likely to find it in places like Ohio, Indiana, the Upper Rockies, and Canadian Praries.</p>
+<p>Anyway, I had a lot of fun with this one. There’s less work on prevelar raising at the moment compared to like five years ago when I first had the idea for the project. But that’s okay. It was fun to learn how to make cool maps.</p>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>I take careful notes of when my projects hit major milestones. I figued I’d share those with you here:</p>
+<ul>
+<li>November 2017: I had the idea for the study. I was teaching a phonetics and phonology class and noticed that I have <sc>beg</sc>-raising in all but about six words, and that most of my exceptions have a sonorant following the /ɡ/: <em>integrity</em>, <em>interregnum</em>, etc. On November 10, I sent out a pilot study to my friends on Facebook. I got about 350 people to take it, which was pretty cool. In my notes I said I was hesitant to do a blog post about it because “these are legit results that I could publish.”</li>
+<li>April 2018: I presented this preliminary data at an informal “TinyTalks” event to the linguistics grad students at UGA. I started making the full version of the survey and began filling out IRB forms. Approval was soon granted.</li>
+<li>April–May 2018: I distributed the survey on Reddit and collected 7000 responses in two weeks. I made a plan to submit an abstract about phonological factors to NWAV and submit an abstract on regional factors to ADS.</li>
+<li>Summer 2018. I submitted both abstracts as planned. I’m amazed at myself that the precise plans I made in the early days of the project all happened to a tee.</li>
+<li>October 2018–January 2019: I presented at <a href="../../blog/nwav47">NWAV47</a> and <a href="../../blog/ads-and-lsa-2019">ADS2019</a> as planned. I wrote up preliminary findings and submitted a manuscript to our <a href="https://ling.franklin.uga.edu/wp2019-Stanley">UGA Working Papers in Linguistics</a>. I also wrote up the results in layperson’s terms in a <a href="../../blog/prevelar-raising-survey-results">blog post</a> to send to my participants.</li>
+<li>September 13, 2019: Submitted the manuscript to <em>American Speech</em>. Not quite sure why it took me so long to finish the darn thing, but it might because it was my first Real Paper™. I was motivated to get this done so that I could include it in job applications.</li>
+<li>December 4, 2019: Got an R&amp;R from <em>American Speech</em>.</li>
+<li>2020: I put off working on this for a full year. I had my <a href="../../blog/dissertation">dissertation defense</a>, job interviews, a campus visit, dissertation revisions, an contract job with BYU during covid lockdown, graduation, moving to Utah, <a href="../../blog/I-got-a-job">starting a new job at BYU</a> in June, and teaching three new preps over the next six months. In November 2020 I set a goal to get this returned by the end of the year.</li>
+<li>December 29, 2020: Resubmitted to <em>American Speech</em>.</li>
+<li>April 8, 2021: Accept with revisions! Yay!</li>
+<li>June 8, 2021: Returned the manuscript. I was told by <em>American Speech</em> that there’s a bit of a backlog, so it’d come out in 2022.</li>
+<li>August 26, 2022: Got proofs from <em>American Speech</em>.</li>
+<li>October 19, 2022: Got the physical copy in the mail!</li>
+<li>November 2, 2022: I noticed it was published online!</li>
+</ul>
+<p>So from the start of the idea until publication was just about five years. I don’t really work on prevelar raising anymore, and this was a side project I wanted to get done quickly in grad school. It’s just interesting that a project I started so long ago and presented first as a grad student was used as a writing sample for job applications, and now it’ll go in my tenure portfolio! I’ve had a few papers that I started after this one come out already, but I guess I’m particularly excited about this because it was my first manuscript submitted to a peer-reviewed journal.</p>
+</section>
+<section id="misc-topics" class="level2">
+<h2 class="anchored" data-anchor-id="misc-topics">Misc topics</h2>
+<section id="unofficial-erratum" class="level3">
+<h3 class="anchored" data-anchor-id="unofficial-erratum">Unofficial erratum</h3>
+<p>Figure 9 was a very tricky one to do and I created probably dozens of versions of the plot trying to find the right one. Online, you’ll see the one I settled on, which does a pretty cool thing with color where I map two different variables to color.</p>
+<p><img src="https://new.joeystanley.com/blog/prevelar-raising-american-speech/stanley2022_figure9_color.png" class="img-fluid"></p>
+<p>This is basically impossible to print in black and white though, so I was asked to make a print-friendly one. The compromise that either I or the editors came up with was to do diagonal slashes in the regions.</p>
+<p><img src="https://new.joeystanley.com/blog/prevelar-raising-american-speech/stanley2022_figure9_bw.png" class="img-fluid"></p>
+<p>Unfortunately, it looks like the Figure 9 in my physical copy is just a black-and-white version of the online map, rather than the one specifically for print. This is especially confusing because the print version specifically mentions the slashes even though they’re not there. Oh well. More people will read the online version anyway.</p>
+<p>[Update: Pretty soon after writing this, I got more physical copies in the mail. I suspected it was to correct this Figure 9 and sure enough it was. So, if you got an extra copy of that issue of <em>American Speech</em>, you can blame my darn complicated plot. I hope it didn’t cost the ADS too much money…]</p>
+</section>
+<section id="boustrophedonic-plots" class="level3">
+<h3 class="anchored" data-anchor-id="boustrophedonic-plots">Boustrophedonic plots</h3>
+<p>A while ago, I tweeted what would become one of my most viewed tweets:</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Okay, I'm trying something out. I have this histogram with one very tall bar and many shorter ones. So to save space, I made that tall bar follow the edge of the plotting area boustrophedonically—my favorite word!—but I'm not sure if I like it. Thoughts? <a href="https://twitter.com/hashtag/dataviz?src=hash&amp;ref_src=twsrc%5Etfw">#dataviz</a> <a href="https://t.co/9b9QYqQJLg">pic.twitter.com/9b9QYqQJLg</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1339467980820910080?ref_src=twsrc%5Etfw">December 17, 2020</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I even wrote <a href="../../blog/boustrophedonically">a blog post</a> about the suggestions people gave about alternative plots.</p>
+<p>I’ll let you in on a little secret: I was working on this paper when I came up with the idea for that plot! The data shows the distribution of <sc>beg</sc>-raising across my entire sample. I wanted to show that there were lots of people without it, but also show that there is lots of variation among those who do have it.</p>
+<p>Unfortunately, the plot didn’t make it into the manuscript. I just couldn’t do it. Figure 10 is my compromise:</p>
+<p><img src="https://new.joeystanley.com/blog/prevelar-raising-american-speech/stanley2022_figure10.png" class="img-fluid"></p>
+<p>So, not as fun, but prehaps more normal. Do I regret not including the boustrophedonic plot? Yeah, maybe a little.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Publications</category>
+  <category>Research</category>
+  <guid>https://new.joeystanley.com/blog/prevelar-raising-american-speech/index.html</guid>
+  <pubDate>Wed, 02 Nov 2022 14:45:00 GMT</pubDate>
+</item>
+<item>
   <title>NWAV50</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/nwav50/index.html</link>
@@ -1748,64 +1822,6 @@ Tip
   <category>Methods</category>
   <guid>https://new.joeystanley.com/blog/why-do-people-use-bat-instead-of-trap/index.html</guid>
   <pubDate>Tue, 29 Oct 2019 01:48:00 GMT</pubDate>
-</item>
-<item>
-  <title>LCUGA6</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/lcuga6/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I presented at the 6th annual Linguistics Conference at UGA today! My presentation, which was called “Real Time Vowel Shifts in Georgia English” compared Georgians born around the 1890s to those born in the 1990s—100 years of change! The gist: nearly every vowel has changed, and it seems like the trajectory of that change is in the direction of the Elsewhere Shift, rather than just a simple recession of Southern features.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/191004-lcuga6.pdf">here</a>!</p>
-</div>
-</div>
-<p>The data came from two very different sources. The older speakers, were born between 1887 and 1903, were recorded doing Linguistic Atlas interviews and are part of the <em>Digital Archive of Southern Speech</em>. The younger speakers, who were born between 1994 and 1997) were UGA undergraduates that I recorded as they read sentences in a lab. Two very different datasets, but they’re all Georgian natives, so it starts to give us a glimpse into how things have changed around here.</p>
-<p>Here’s a summary of the changes I found.</p>
-<ul>
-<li><p><sc>price</sc> was monophthongal for older speakers and definitely a diphthong in the younger speakers.</p></li>
-<li><p>The Euclidean distance between <sc>fleece</sc> and <sc>kit</sc> and between <span class="smallcaps">face</span> and <sc>dress</sc> was grew over 100 years, suggesting the younger speakers’ vowels are not as “Southern” sounding.</p></li>
-<li><p>While the older speakers’ <sc>lot</sc> and <sc>thought</sc> were close, the younger speakers’ were almost entirely merged.</p></li>
-<li><p>The front lax vowels, <sc>trap</sc>, <sc>dress</sc>, and <sc>kit</sc> were front and monophthongal in the older speakers while the younger speakers realized them more centralized and more diphthongal. <sc>trap</sc> underwent the most change, then <sc>dress</sc>, and then <sc>kit</sc>.</p></li>
-<li><p><span class="smallcaps">goose</span> was centralized even in the older speakers, but the younger speakers took it further by using an even more fronted onset.</p></li>
-</ul>
-<p>This animation basically sums up the entire talk. Plus I just had fun making animations! Here’s the change for the women.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://new.joeystanley.com/blog/lcuga6/georgia_animation_female.gif" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>And here’s the change for the men.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://new.joeystanley.com/blog/lcuga6/georgia_animation_male.gif" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>Overall, it appears that it’s not just that the younger speakers lack features associated with the South, it’s that they’re also using realizations characteristic of other regions like California and Canada. It makes sense, since Atlanta is a large metropolitan area and is kind of known as a non-Southern city in the middle of the South. But this might be an indication that the Elsewhere Shift has made its way into the South.</p>
-
-
-
- ]]></description>
-  <category>Animations</category>
-  <category>Conferences</category>
-  <category>Linguistic Atlas</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>South</category>
-  <guid>https://new.joeystanley.com/blog/lcuga6/index.html</guid>
-  <pubDate>Fri, 04 Oct 2019 04:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
