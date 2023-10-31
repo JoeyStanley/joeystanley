@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2017-12-21">
+
+<title>Joey Stanley - A Tutorial on Extracting Formants in Praat</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joey Stanley</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">A Tutorial on Extracting Formants in Praat</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">How-to Guides</div>
+                <div class="quarto-category">Phonetics</div>
+                <div class="quarto-category">Praat</div>
+                <div class="quarto-category">Skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 21, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sample-data" id="toc-sample-data" class="nav-link active" data-scroll-target="#sample-data">Sample data</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#extracting-the-names-of-praat-objects" id="toc-extracting-the-names-of-praat-objects" class="nav-link" data-scroll-target="#extracting-the-names-of-praat-objects">Extracting the names of Praat objects</a></li>
+  <li><a href="#getting-feedback-from-praat" id="toc-getting-feedback-from-praat" class="nav-link" data-scroll-target="#getting-feedback-from-praat">Getting feedback from Praat</a></li>
+  <li><a href="#finding-the-number-of-phonemes" id="toc-finding-the-number-of-phonemes" class="nav-link" data-scroll-target="#finding-the-number-of-phonemes">Finding the number of phonemes</a></li>
+  <li><a href="#loop-through-the-intervals" id="toc-loop-through-the-intervals" class="nav-link" data-scroll-target="#loop-through-the-intervals">Loop through the intervals</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#detecting-the-phoneme" id="toc-detecting-the-phoneme" class="nav-link" data-scroll-target="#detecting-the-phoneme">Detecting the phoneme</a></li>
+  <li><a href="#determining-the-extraction-time" id="toc-determining-the-extraction-time" class="nav-link" data-scroll-target="#determining-the-extraction-time">Determining the extraction time</a></li>
+  <li><a href="#creating-a-formant-object" id="toc-creating-a-formant-object" class="nav-link" data-scroll-target="#creating-a-formant-object">Creating a Formant Object</a></li>
+  <li><a href="#formant-extraction" id="toc-formant-extraction" class="nav-link" data-scroll-target="#formant-extraction">Formant Extraction</a></li>
+  <li><a href="#save-to-a-file" id="toc-save-to-a-file" class="nav-link" data-scroll-target="#save-to-a-file">Save to a file</a></li>
+  <li><a href="#add-other-output" id="toc-add-other-output" class="nav-link" data-scroll-target="#add-other-output">Add other output</a></li>
+  <li><a href="#the-finished-product" id="toc-the-finished-product" class="nav-link" data-scroll-target="#the-finished-product">The Finished Product!</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I gave a workshop that covered the contents of this workshop. You can find the handout <a href="../../downloads/191002-formant_extraction.html">here</a>, which is slightly modified from this blog post.</p>
+</div>
+</div>
+<p>Just this week I’ve had three people ask for a Praat script that extracts formant measurements. I’ve been meaning to create some Praat scripting tutorials so this was a good excuse to get something going. Instead of providing you a Praat script, I’m going to show how to write your own. Instead of giving you a fish to feed you for a night, I’ll teach you how to fish.</p>
+<p>Note, this post was written in small chunks over Christmas break with my in-laws in town and I haven’t had time to proofread it carefully. I explain <em>what</em> to do, but I barely skim the surface when it comes to <em>why</em> you need to do it that way (for example, I gloss over basic computer coding concepts like for loops and variables). Hopefully it’ll work for you.</p>
+<section id="sample-data" class="level2">
+<h2 class="anchored" data-anchor-id="sample-data">Sample data</h2>
+<p>For this tutorial, I’ll work with a recording of myself reading a couple dozen words with the /u/ vowel that I created for something a few months ago. I did the word-level transcription by hand (including boundaries) and then I sent it off to <a href="darla.dartmouth.edu">DARLA</a> for forced alignment. Here’s what one word looks like:</p>
+<p><img src="praat_sound_file.png" class="img-fluid" style="width:30em"></p>
+<p>The important part to note is that I have the word-level transcription in the second tier, and a phoneme-level transcription—in ARPABET—in the first tier. I’m going to assume you’ve used DARLA or FAVE to process your files so they should look like mine does.</p>
+</section>
+<section id="getting-started" class="level1">
+<h1>Getting Started</h1>
+<p>To get started, open Praat and load your Sound file and TextGrid. There are ways to load files in automatically through scripting—which is useful if you need to process many files—but we’ll keep it simple for now. Note that if you want to extract formants, you should load it in as a <em>Sound</em> file and not as a <em>LongSound</em>.</p>
+<p><img src="praat_objects_window.png" class="img-fluid" style="width:30em"></p>
+<p>Once you’ve done that create a script by going to Praat &gt; New Praat Script.</p>
+<p><img src="praat_file_menu.png" class="img-fluid" style="width:10em"></p>
+<p>A blank window should open up for you to write your script in.</p>
+<p><img src="praat_new_script.png" class="img-fluid" style="width:30em"></p>
+<p>So now we have a blank canvas. Let’s pause for a second and think about what the script is going to do. The goal is to turn this phoneme-level transcription and accompanying audio into a spreadsheet of formants. To accomplish this task, there are the steps I’ll take:</p>
+<ol type="1">
+<li>Go through each phoneme in your TextGrid.</li>
+<li>Find the midpoint.</li>
+<li>Extract formant measurements at that midpoint.</li>
+<li>Save those formants into some file so I can use it later (in R or something).</li>
+</ol>
+<p>That’s the gist of the script. Now we “just” need to translate that into Praat’s scripting language.</p>
+</section>
+<section id="extracting-the-names-of-praat-objects" class="level1">
+<h1>Extracting the names of Praat objects</h1>
+<p>Before we can do any of that, Praat needs to figure out a few things. First off, it doesn’t even know what files to work with! We can tell it to work with the Sound and TextGrid files that are already loaded by putting in these lines of code into your Praat script:</p>
+<pre class="praat"><span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+</pre>
+<p><img src="praat_basic_script.png" class="img-fluid" style="width:30em"></p>
+<p>What the first line does is it tells Praat to look at whatever Sound file is selected and extract its name. This name is then stored in a variable called <span class="praat"><span class="v"><code>thisSound$</code></span></span>. The dollar sign at the end of that variable name means that the variable contains text rather than a number (in computer circles, text is often called “strings,” as in a string of characters). My Sound file is called “Joey”, so now the variable <span class="praat"><span class="v"><code>thisSound$</code></span></span> contains the string “<code>Joey</code>”.</p>
+<p>The second line does the exact same thing, but it looks saves the name of the TextGrid instead. The end result of these two lines of code is that Praat now has the names of the two files you highlighted. They’re saved in these variable names so we can call upon them later on in the script when we need to.</p>
+<p>To run this script, go to where the two files are in the Objects Window and select both of them.</p>
+<p><img src="praat_objects_window.png" class="img-fluid" style="width:30em"></p>
+<p>Then, go to your scripting window and click Run &gt; Run (or command+R in Macs). This will run the entire script all at once. Nothing seemingly happens because it’s so simple, but assuming you don’t have any errors, then it should run fine. If you do have errors, check to make sure you’ve typed (or copy and pasted) the code correctly, and make sure that both the Sound file and TextGrid are loaded into Praat and are highlighted.</p>
+</section>
+<section id="getting-feedback-from-praat" class="level1">
+<h1>Getting feedback from Praat</h1>
+<p>If you want some visual feedback just to know Praat ran, you can have Praat write messages to you. For example, you can do a simple “Hello, World!” with the <span class="praat"><span class="k"><code>writeInfo</code></span></span> command (be sure to note the capitalized <em>I</em> in <span class="praat"><span class="k"><code>writeInfo</code></span></span>!):</p>
+<pre class="praat">writeInfo: <span class="s">"Hello, World!"</span>
+</pre>
+<p>When you run this, it’ll open a new window, the Praat Info window, and will display that text.</p>
+<p><img src="praat_hello_world.png" class="img-fluid" style="width:30em"></p>
+<p>A couple things to note. There are four variants of this command:</p>
+<ol type="1">
+<li><span class="praat"><span class="k"><code>writeInfo</code></span></span> clears whatever text is in the Praat Info window and replaces it with your new text.</li>
+<li><span class="praat"><span class="k"><code>writeInfoLine</code></span></span> does the same as <span class="praat"><span class="k"><code>writeInfo</code></span></span> but it adds a new line character to the end. In other words, it makes sure that the next thing you write is on a new line rather than as a continuation of the current line.</li>
+<li><span class="praat"><span class="k"><code>appendInfo</code></span></span> doesn’t erase what was there before and simply appends text to the Praat Info window.</li>
+<li><span class="praat"><span class="k"><code>appendInfoLine</code></span></span> does the same as <span class="praat"><span class="k"><code>appendInfo</code></span></span> but with a new line character at the end.</li>
+</ol>
+<p>I almost always use <span class="praat"><span class="k"><code>appendInfoLine</code></span></span> for these messages, except for the very first one in a script which is <span class="praat"><span class="k"><code>writeInfoLine</code></span></span>. I hardly ever use <span class="praat"><span class="k"><code>writeInfo</code></span></span> or <span class="praat"><span class="k"><code>appendInfo</code></span></span>.</p>
+<p>To make sure that Praat is running, let’s put something useful at the start of our script, just to let us know what’s going on.</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+</pre>
+<p>Now, every time you run the script, you’ll get that message. I also like to end my scripts with a little message saying that it’s done, just so I know that the script didn’t crash.</p>
+<pre class="praat"><span class="k">appendInfoLine</span>: newline$, newline$ <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>So at this point, your script should match the following block of code, and when you run it your Praat Info box should be the same as mine.</p>
+<pre class="praat"><b><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span></b>
+
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<b><span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span></b>
+</pre>
+<p><img src="praat_info_window1.png" class="img-fluid" style="width:30em"></p>
+<p>So far this script is pretty useless. Let’s actually get it to work for you.</p>
+</section>
+<section id="finding-the-number-of-phonemes" class="level1">
+<h1>Finding the number of phonemes</h1>
+<p>Now that we’ve told Praat where to find the names of the files, we can start processing them. Our first step is to examine each phoneme in our TextGrid one at a time. To do this, we need to know how many potential phonemes there are for us to look through. We can do this using the <code>Get number of intervals</code> command:</p>
+<pre class="praat"><span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = <b>Get number of intervals:</b> <span class="d">1</span>
+</pre>
+<p>The first line of this code selects the TextGrid with the name that’s stored inside the <span class="praat"><span class="v"><code>thisTextGrid$</code></span></span> variable name. It we want to work with TextGrids, we have to select them in Praat. Since we need to extract information about the TextGrid (how many phonemes there are) we need to make sure Praat is working with the right object.</p>
+<p>What the next line does is it goes to the first tier—hence the <span class="praat"><span class="d"><code>1</code></span></span> in that line—and it finds out how many intervals there are in it. This number is saved into a new variable called <span class="praat"><span class="v"><code>numberOfPhonemes</code></span></span>. Remember that all of these variable names are completely arbitrary and you can call them whatever you want. I tend to use verbose names, but that’s just my own style of Praat scripting. Also, remember that the variable name <span class="praat"><span class="v"><code>numberOfPhonemes</code></span></span> does <em>not</em> end with a <span class="praat"><span class="v"><code>$</code></span></span> sign because this stores a number instead of a string.</p>
+<p>To see how many of these intervals there are, let’s display this information:</p>
+<pre class="praat"><span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+</pre>
+<p>In my file, I’m told there are 534 intervals. This includes all the vowels but also all the consonants and all the blank intervals between words. So now your script looks like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<b><span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span></b>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>So now we have a script that knows what files to look at and how many intervals there are on the phoneme tier in the TextGrid.</p>
+</section>
+<section id="loop-through-the-intervals" class="level1">
+<h1>Loop through the intervals</h1>
+<p>What we now need to do is construct a <span class="praat"><span class="k"><code>for</code></span></span> loop. This is something that can be done in virtually every programming language. We tell Praat to execute the same command some pre-specified number of times. In this case, we want to do analyze and extract information from potentially all 534 intervals in the phoneme tier, so we’ll run a loop 534 times.</p>
+<p>A for loop example in Praat looks like this:</p>
+<pre class="praat"><span class="k">for</span> i <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="d">10</span>
+    ...do stuff here...
+    ...do more stuff here...
+<span class="k">endfor</span>
+</pre>
+<p>On the outside there is code to indicate where the loop starts and stops. Everything between those lines is what gets executed some number of times. Here, it’s going to run 10 times, because we told it to do this <span class="praat"><span class="k"><code>from</code></span><code></code><span class="d"><code>1</code></span><code></code><span class="k"><code>to</code></span><code></code><span class="d"><code>10</code></span></span>. Note that while not necessary, it’s a good idea to indent any code that is in the for loop. It just makes the structure of your code easier to see.</p>
+<p>To keep track of what iteration we’re on, it also creates a variable called <span class="praat"><span class="v"><code>i</code></span></span> that stores the <em>n</em>th iteration we’re on. In other words, on the first iteration of the loop, <span class="praat"><span class="v"><code>i</code></span></span> = 1, on the second, <span class="praat"><span class="v"><code>i</code></span></span> = 2, etc. In fact, we can print out this <code>i</code> variable each time:</p>
+<pre class="praat"><span class="k">for</span> i <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="d">10</span>
+    <span class="k">appendInfoLine</span>: i
+<span class="k">endfor</span>
+</pre>
+<p><img src="praat_info_window2.png" class="img-fluid" style="width:30em"></p>
+<p>So instead of looping from 1 to 10, we can loop from 1 to however many intervals we have. We do this by replacing the <span class="praat"><span class="d"><code>10</code></span></span> with the variable name <span class="praat"><span class="v"><code>numberOfPhonemes</code></span></span>. I’m also going to change the variable name from <code>i</code> to <span class="praat"><span class="v"><code>thisInterval</code></span></span> because to me it’s clearer that way. Your script should look like this now:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<b><span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="k">appendInfoLine</span>: <span class="v">thisInterval</span>
+<span class="k">endfor</span></b>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>When you run your script now (after highlighting both the Sound and the TextGrid as usual), it’ll just print a list of numbers from 1 to however many intervals you have. If you have several hundred intervals or more, you’ll notice that the rate that it prints things gradually decreases. I’ve noticed that Praat loops get slower and slower as they go on—but only when printing things out! They’re still lightening fast if you don’t print anything.</p>
+</section>
+<section id="comments" class="level1">
+<h1>Comments</h1>
+<p>At this point, we’ve started to write some code that might not be immediately transparent. It’s good to pause and put comments in your code. Comments, which are just lines that start with the pound symbol (<span class="praat"><span class="c"><code>#</code></span></span>), are ignored by Praat and serve the purpose of making your code more readable. You might want to add comments above each block of code to remind yourself about what they do.</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<b><span class="c"># Extract the names of the Praat objects</span></b>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<b><span class="c"><span class="c"># Extract the number of intervals in the phoneme tier</span>.</span>
+<span class="c"># This is so that we know how many iterations to do in the for loop.</span></b>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<b><span class="c"># Loop through each interval on the phoneme tier.</span></b>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="k">appendInfoLine</span>: <span class="v">thisInterval</span>
+<span class="k">endfor</span>
+
+<b><span class="c"># And we're done!</span></b>
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>You can put more comments to explain the nitty-gritty details about things too. Like it might be good to mention that the phoneme tier is on top so that’s why the <code>1</code> is in that line of code. It’s all up to you. It’s a <em>really</em> good idea to at least put some comments in. Not only is it good coding practice, but you’ll thank yourself next time you go look at the script.</p>
+<p>For now I’m going to “comment out” the one line of code inside the for loop, the one that prints the interval number. This is because it slows Praat down a lot. Putting the pound sign at the start treats it like a comment, meaning it gets ignored by Praat, but is good to have in code you want to put it back in for whatever reason.</p>
+<pre class="praat"><span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <b><span class="c">#appendInfoLine: thisInterval</span></b>
+<span class="k">endfor</span>
+
+</pre>
+</section>
+<section id="detecting-the-phoneme" class="level1">
+<h1>Detecting the phoneme</h1>
+<p>So we’ve got a loop going from 1 to 534. But those are just numbers—we’re not actually getting any information about the TextGrid itself. We need to actually start working with the intervals in the TextGrid. We can do this using the loop: on the 1st iteration, look at the 1st interval in the TextGrid. On the second iteration of the loop, look at the second interval. Keep doing this until we’re on the 534th iteration of the loop and we look at the 534th (and last) interval. So in this way we’re technically looping through numbers still but use those to access the TextGrid. I don’t know of a way to loop through the intervals themselves.</p>
+<p>We need to start by seeing the contents of those intervals, <em>i.e.</em> their “labels”. To do that, we need to use the function <code>Get label of interval:</code>. As additional “arguments” to this function, we need to tell it what tier to look at and then what interval. So if we want to look at the third interval of the top(=first) tier, we would use this code:</p>
+<pre class="praat">Get label of interval: <span class="d">1</span>, <span class="d">3</span>
+</pre>
+<p>This command would go to the third interval in the first tier and would pull out whatever text is in there. We can save this text by starting that line of code with “<span class="praat"><span class="v"><code>thisPhoneme$</code></span></span>”:</p>
+<pre class="praat"><b><span class="v">thisPhoneme$</span> = </b>Get label of interval: <span class="d">1</span>, <span class="d">3</span>
+</pre>
+<p>What we can do is put this inside of the loop, and instead of specifically saying to look at the third interval, we’ll put in the <span class="praat"><span class="v"><code>thisInterval</code></span></span> variable. Remember <span class="praat"><span class="v"><code>thisInterval</code></span></span> changes for every iteration of the loop, from 1 to 534. We’ll save this into the new variable <span class="praat"><span class="v"><code>thisPhoneme$</code></span></span>. So our for loop might now look like this:</p>
+<pre class="praat"><span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <b><span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span></b>
+<span class="k">endfor</span>
+</pre>
+<p>If you run the code as is, it’s almost instantaneous. But you can’t tell what’s going on. If you’d like you can add <span class="praat"><span class="k"><code>appendInfoLine</code></span></span>: <span class="praat"><span class="v"><code>thisPhoneme$</code></span></span> just before the end of the for loop, but when you run it it’s noticeably slower. But at least you can get some feedback to make sure that the code is working properly.</p>
+<pre class="praat"><span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <b><span class="c">#appendInfoLine: thisPhoneme$</span></b>
+<span class="k">endfor</span>
+</pre>
+<p>Like the previous <code>appendInfoLine</code> line, I’ll comment it out again, but it’s there in case you need to debug or something.</p>
+<p>So, our script with everything so far should look like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="c"># Extract the names of the Praat objects</span>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="c"># Extract the number of intervals in the phoneme tier</span>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <b><span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="c">#appendInfoLine: thisPhoneme$</span></b>
+<span class="k">endfor</span>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+</section>
+<section id="determining-the-extraction-time" class="level1">
+<h1>Determining the extraction time</h1>
+<p>So we’ve got a loop that looks at each interval on the phoneme tier. It’s common and relatively straightforward to extract formants at the midpoint of each vowel. So the next step is to find exactly at what time point in the file the midoint of each interval is.</p>
+<p>Unfortunately, there’s no command that gets the midpoint as far as I’m aware. But we can use simple math to determine the midpoint: it’s just halfway between the beginning and the end of the interval. Luckily, we can extract the beginning and end times of the interval. Let’s do that using the <code>Get start point:</code> and <code>Get end point:</code> functions. Both of these take two arguments: the tier and the interval number to look at. In my file, the phoneme tier is tier 1, and the interval number is saved in the variable <span class="praat"><span class="v"><code>thisInterval</code></span></span>. I’ll save these numbers into variables called <span class="praat"><span class="v"><code>thisPhonemeStartTime</code></span></span> and <span class="praat"><span class="v"><code>thisPhonemeEndTime</code></span></span> (again, my Praat variables tend to be verbose for clarity).</p>
+<pre class="praat"><span class="v">thisPhonemeStartTime</span> = Get start point: <span class="d">1</span>, <span class="v">thisInterval</span>
+<span class="v">thisPhonemeEndTime</span>   = Get end point:   <span class="d">1</span>, <span class="v">thisInterval</span>
+</pre>
+<p>To find the midpoint between these, I calculate the duration and add half of that to the start time:</p>
+<pre class="praat"><span class="v">duration</span> = <span class="v">thisPhonemeEndTime</span> - <span class="v">thisPhonemeStartTime</span>
+<span class="v">midpoint</span> = <span class="v">thisPhonemeStartTime</span> + <span class="v">duration</span>/<span class="d">2</span>
+</pre>
+<p>Now, the variable <span class="praat"><span class="v"><code>midpoint</code></span></span> contains the time (in seconds) of how far into the audio to extract formant measurements. Keep in mind that, just like everything inside the loop, this changes for each interval as we loop through them one at a time. At any one point, <span class="praat"><span class="v"><code>midpoint</code></span></span> only has one number stored in it, but this will change at every iteration of the loop.</p>
+<p>Now our script looks like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="c"># Extract the names of the Praat objects</span>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="c"># Extract the number of intervals in the phoneme tier</span>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="c">#appendInfoLine: thisPhoneme$</span>
+
+    <b><span class="c"># Find the midpoint.</span>
+    <span class="v">thisPhonemeStartTime</span> = Get start point: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">thisPhonemeEndTime</span>   = Get end point:   <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">duration</span> = <span class="v">thisPhonemeEndTime</span> - <span class="v">thisPhonemeStartTime</span>
+    <span class="v">midpoint</span> = <span class="v">thisPhonemeStartTime</span> + <span class="v">duration</span>/<span class="d">2</span></b>
+
+<span class="k">endfor</span>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+</section>
+<section id="creating-a-formant-object" class="level1">
+<h1>Creating a Formant Object</h1>
+<p>We finally have all the information needed to actually extract formants. The first step for formant extraction is to create a “formant object.” Honestly, I’m not completely sure what a formant object is under the hood, but the important part is that you need to need it to get formant measurements.</p>
+<p>We actually only need to do this once for the entire file, rather than for every iteration of the loop. We just create one object and then query from it. We do this by selecting the Sound object and then using the command <code>To Formant (burg)...</code> on it. This command takes five arguments: the time step, the maximum number of formants, the maximum hertz, the window length, and the dynamic range (in decibels). I don’t know enough about how this is done to say anything about the time step, window length, and dynamic range, but the maximum number of hertz and the number of formants is important. Praat’s recommended settings are 5000 Hz for men and 5500 for women, each with five formants, but you should play around with these settings to see which ones produce the cleanest data.</p>
+<pre class="praat"><span class="c"># Create the Formant Object</span>
+<span class="k">select</span> Sound '<span class="v">thisSound$</span>'
+To Formant (burg)... <span class="d">0</span> <span class="d">5</span> <span class="d">5000</span> <span class="d">0.025</span> <span class="d">50</span>
+</pre>
+<p>This bit of code should go just before the loop. I’ve got mine after where we extract the names of the Praat objects, and before before finding out how many intervals there are on the phoneme tier. Your code should now look like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="c"># Extract the names of the Praat objects</span>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="c"># Extract the number of intervals in the phoneme tier</span>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<b><span class="c"># Create the Formant Object</span>
+<span class="k">select</span> Sound '<span class="v">thisSound$</span>'
+To Formant (burg)... <span class="d">0</span> <span class="d">5</span> <span class="d">5000</span> <span class="d">0.025</span> <span class="d">50</span></b>
+
+<span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="c">#appendInfoLine: thisPhoneme$</span>
+
+    <span class="c"># Find the midpoint.</span>
+    <span class="v">thisPhonemeStartTime</span> = Get start point: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">thisPhonemeEndTime</span>   = Get end point:   <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">duration</span> = <span class="v">thisPhonemeEndTime</span> - <span class="v">thisPhonemeStartTime</span>
+    <span class="v">midpoint</span> = <span class="v">thisPhonemeStartTime</span> + <span class="v">duration</span>/<span class="d">2</span>
+
+<span class="k">endfor</span>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>Note that creating formant objects takes a relatively long time. Up until now, your Praat script was probably near-instantaneous. Now it might take a few seconds to a few minutes, depending on how long your file is.</p>
+</section>
+<section id="formant-extraction" class="level1">
+<h1>Formant Extraction</h1>
+<p>At last, we can now extract formants. We’ve got the times we need to extract from (the <span class="praat"><span class="v"><code>midpoint</code></span></span> variable), and now we have the formant object to query. The command we need is <code>Get value at time...</code>, which takes four arguments: the formant number, the time, the units, and the interpolation. The formant number is just a number (1 for F2, 2 for F2, etc.), and the time is the time point we want to extract from (this is saved in the <span class="praat"><span class="v"><code>midpoint</code></span></span> variable in our code). I always use Hertz and Linear for the other two arguments because of inherited code I had when I was first learning Praat but you’re welcome to explore the other options Praat has available.</p>
+<p>To run this command, we actually need to select the Formant object rather than the Sound or TextGrid. Since this object has the same name as the Sound object, we can refer to the Formant object by name using the <span class="praat"><span class="v"><code>thisSound$</code></span></span> variable.</p>
+<pre class="praat"><span class="c"># Extract formant measurements</span>
+select Formant '<span class="v">thisSound$</span>'
+</pre>
+<p>We then run the function three times, one for each formant, and save it into three new variables, <span class="praat"><span class="v"><code>f1</code></span></span>, <span class="praat"><span class="v"><code>f2</code></span></span>, and <span class="praat"><span class="v"><code>f3</code></span></span>.</p>
+<pre class="praat"><span class="v">f1</span> = Get value at time... <span class="d">1</span> <span class="v">midpoint</span> Hertz Linear
+<span class="v">f2</span> = Get value at time... <span class="d">2</span> <span class="v">midpoint</span> Hertz Linear
+<span class="v">f3</span> = Get value at time... <span class="d">3</span> <span class="v">midpoint</span> Hertz Linear
+</pre>
+<p>In your code, this goes after where we find the midpoint but still inside the loop. So your code should now look like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="c"># Extract the names of the Praat objects</span>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="c"># Extract the number of intervals in the phoneme tier</span>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<span class="c"># Create the Formant Object</span>
+<span class="k">select</span> Sound '<span class="v">thisSound$</span>'
+To Formant (burg)... <span class="d">0</span> <span class="d">5</span> <span class="d">5000</span> <span class="d">0.025</span> <span class="d">50</span>
+
+<span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="c">#appendInfoLine: thisPhoneme$</span>
+
+    <span class="c"># Find the midpoint.</span>
+    <span class="v">thisPhonemeStartTime</span> = Get start point: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">thisPhonemeEndTime</span>   = Get end point:   <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">duration</span> = <span class="v">thisPhonemeEndTime</span> - <span class="v">thisPhonemeStartTime</span>
+    <span class="v">midpoint</span> = <span class="v">thisPhonemeStartTime</span> + <span class="v">duration</span>/<span class="d">2</span>
+
+    <b><span class="c"># Extract formant measurements</span>
+    select Formant '<span class="v">thisSound$</span>'
+    <span class="v">f1</span> = Get value at time... <span class="d">1</span> <span class="v">midpoint</span> Hertz Linear
+    <span class="v">f2</span> = Get value at time... <span class="d">2</span> <span class="v">midpoint</span> Hertz Linear
+    <span class="v">f3</span> = Get value at time... <span class="d">3</span> <span class="v">midpoint</span> Hertz Linear</b>
+
+<span class="k">endfor</span>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>Hooray! You’ve extracted formant measurements! Unfortunately, we didn’t save any of this information, so it was lost as soon as the script finished. In the next section, we’ll look at how to save these measurements into an external file.</p>
+</section>
+<section id="save-to-a-file" class="level1">
+<h1>Save to a file</h1>
+<p>The easiest way to save formants is to write them out to some sort of spreadsheet. So before the loop starts I create the file and write the first line out (the headers). Then, within the loop and after I’ve extracted the formant measurements, I append to that file one line that contains all the information I’ve just extracted.</p>
+<p>To start with the first line, we use the command <span class="praat"><span class="k"><code>writeFileLine</code></span></span>:. This is analogous to the <span class="praat"><span class="k"><code>writeInfoLine</code></span></span> function I described previously, only this time it writes the information out onto some file. As the first argument, you need to supply a path name. I’ll create a file called <code>formants.csv</code>, which is located in the folder <code>/Users/joeystanley/Desktop/Projects/Praat/</code>. Note that I’m on a Mac, and Windows users will probably need to use double <em>forward</em> slashes instead of backslashes: <code>C:\\Users\\joeystanley\\Desktop\\Projects\\Praat\\</code>.</p>
+<p>For convenience, I like to save the path to the file into a variable called <span class="praat"><span class="v"><code>outputPath$</code></span></span>. After doing that, we can then just refer to it in the <span class="praat"><span class="k"><code>writeFileLine:</code></span></span> function. This goes just before your loop.</p>
+<pre class="praat"><span class="c"># Create the output file and write the first line.</span>
+<span class="v">outputPath$</span> = <span class="s">"/Users/joeystanley/Desktop/Projects/Praat/formants.csv"</span>
+</pre>
+<p>We then have to decide what information we want to save. All we have right now is the time, the phoneme, and the first three formants. We’ll start with that. In <span class="praat"><span class="k"><code>writeFileLine:</code></span></span>, be sure to put <span class="praat"><span class="v"><code>outputPath$</code></span></span> first, a comma, and then whatever you want to have on the top line, each separated by a comma. (We use commas as separators since we’re making a csv, a “comma separated value” file.) Be sure to mind the quotes.</p>
+<pre class="praat"><span class="k">writeFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, <span class="s">"time,phoneme,F1,F2,F3"</span>
+</pre>
+<p>After you run this, a new spreadsheet should have been created that contains that top line. Now we need to add the rest of the spreadsheet. Down inside your loop, just after the part where you extract the formants, add this block of code:</p>
+<pre class="praat"><span class="c"># Save to a spreadsheet</span>
+<span class="k">appendFileLine</span>:  <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, 
+                ...<span class="v">midpoint</span>, <span class="s">","</span>,
+                ...<span class="v">thisPhoneme$</span>, <span class="s">","</span>,
+                ...<span class="v">f1</span>, <span class="s">","</span>, 
+                ...<span class="v">f2</span>, <span class="s">","</span>, 
+                ...<span class="v">f3</span>
+</pre>
+<p>What I’m doing is just like writing out that first line, only I’m using variable names and I’ve separated it out onto multiple lines. We start out by referencing the <span class="praat"><span class="v"><code>outputPath$</code></span></span> variable name, and then proceed to add each cell of that row of the spreadsheet. When we refer to variable names, we don’t need to put them in quotes, but then because we need to add the comma afterwards, we have to add the whole <span class="praat"><span class="s"><code>","</code></span></span>, business afterwards. To have a line of code spill over into multiple lines, just start the next line with a <code>...</code> before putting the actual content.</p>
+<p>Your code should now look like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="c"># Extract the names of the Praat objects</span>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="c"># Extract the number of intervals in the phoneme tier</span>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<span class="c"># Create the Formant Object</span>
+<span class="k">select</span> Sound '<span class="v">thisSound$</span>'
+To Formant (burg)... <span class="d">0</span> <span class="d">5</span> <span class="d">5000</span> <span class="d">0.025</span> <span class="d">50</span>
+
+<b><span class="c"># Create the output file and write the first line.</span>
+<span class="v">outputPath$</span> = <span class="s">"/Users/joeystanley/Desktop/Projects/Praat/formants.csv"</span>
+<span class="k">writeFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, <span class="s">"time,phoneme,F1,F2,F3"</span></b>
+
+<span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="c">#appendInfoLine: thisPhoneme$</span>
+    
+    <span class="c"># Find the midpoint.</span>
+    <span class="v">thisPhonemeStartTime</span> = Get start point: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">thisPhonemeEndTime</span>   = Get end point:   <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">duration</span> = <span class="v">thisPhonemeEndTime</span> - <span class="v">thisPhonemeStartTime</span>
+    <span class="v">midpoint</span> = <span class="v">thisPhonemeStartTime</span> + <span class="v">duration</span>/<span class="d">2</span>
+    
+    <span class="c"># Extract formant measurements</span>
+    select Formant '<span class="v">thisSound$</span>'
+    <span class="v">f1</span> = Get value at time... <span class="d">1</span> <span class="v">midpoint</span> Hertz Linear
+    <span class="v">f2</span> = Get value at time... <span class="d">2</span> <span class="v">midpoint</span> Hertz Linear
+    <span class="v">f3</span> = Get value at time... <span class="d">3</span> <span class="v">midpoint</span> Hertz Linear
+
+    <b><span class="c"># Save to a spreadsheet</span>
+    <span class="k">appendFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, 
+                    ...<span class="v">midpoint</span>, <span class="s">","</span>,
+                    ...<span class="v">thisPhoneme$</span>, <span class="s">","</span>,
+                    ...<span class="v">f1</span>, <span class="s">","</span>, 
+                    ...<span class="v">f2</span>, <span class="s">","</span>, 
+                    ...<span class="v">f3</span></b>
+
+<span class="k">endfor</span>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>When you run this code, you should now have a spreadsheet that is populated with the relevant information.</p>
+<p><img src="praat_output1.png" class="img-fluid" style="width:30em"></p>
+<p>Now, because formants are typically extracted for vowel, you’re probably going to want to filter out all the consonants when you analyze this data in R or something. It’s possible to do in Praat, but for simplicity I’m leaving that out of this tutorial.</p>
+<p>But hey! Congrats! You now have a spreadsheet full of formant values! Now, we need to put some final touches on your code to make it work better for you.</p>
+</section>
+<section id="add-other-output" class="level1">
+<h1>Add other output</h1>
+<p>First off, you’ll probably want to put the filename in this output. If you’ve got multiple speakers, it’s easy to lose track of which file belongs to which, especially if you name them all “formants.csv”. We have the filename already stored in a variable called <span class="praat"><span class="v"><code>thisSound$</code></span></span>, so we can just add that in with the output, both at the top and the bottom portions.</p>
+<pre class="praat"><span class="c"># Create the output file and write the first line.</span>
+<span class="v">outputPath$</span> = <span class="s">"/Users/joeystanley/Desktop/Projects/Praat/formants.csv"</span>
+<span class="k">writeFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, <span class="s">"<b>file,</b>time,phoneme,F1,F2,F3"</span>
+
+...
+
+<span class="c"># Save to a spreadsheet</span>
+<span class="k">appendFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, 
+                    <b>...<span class="v">thisSound$</span>, <span class="s">","</span>,</b>
+                    ...<span class="v">midpoint</span>, <span class="s">","</span>,
+                    ...<span class="v">thisPhoneme$</span>, <span class="s">","</span>,
+                    ...<span class="v">f1</span>, <span class="s">","</span>, 
+                    ...<span class="v">f2</span>, <span class="s">","</span>, 
+                    ...<span class="v">f3</span>
+</pre>
+<p>It would also be good to know what word these formants came from. We have what phoneme it was, but no information about the word. We’ve seen how to get the label of an interval given an interval number, but now we need to get the interval number given a specific time. First, this will go after formant extraction which is working with the formant object, so we need to switch back to the TextGrid object.</p>
+<pre class="praat"><span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+</pre>
+<p>Then, we’ll use the <code>Get interval at time:</code> function and supply what tier number we want to look at (tier 2 in this file) and the time (stored in the <span class="praat"><span class="v"><code>midpoint</code></span></span> variable). This will return a number, which is the nth interval in the word tier that contains that time. We’ll save that into a variable called <span class="praat"><span class="v"><code>thisWordInterval</code></span></span>.</p>
+<pre class="praat"><span class="v">thisWordInterval</span> = Get interval at time: <span class="d">2</span>, <span class="v">midpoint</span>
+</pre>
+<p>Finally, we’ll use that number like we did before and get the label of the interval, this time querying from the word tier.</p>
+<pre class="praat"><span class="v">thisWord$</span> = Get label of interval: <span class="d">2</span>, <span class="v">thisWordInterval</span>
+</pre>
+<p>The end result is a new variable called <span class="praat"><span class="v"><code>thisWord$</code></span></span> which contains the word that the phoneme is in. We then need to add that to our output like before:</p>
+<pre class="praat"><span class="c"># Create the output file and write the first line.</span>
+<span class="v">outputPath$</span> = <span class="s">"/Users/joeystanley/Desktop/Projects/Praat/formants.csv"</span>
+<span class="k">writeFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, <span class="s">"file,time,<b>word,</b>phoneme,F1,F2,F3"</span>
+
+...
+
+<span class="c"># Save to a spreadsheet</span>
+<span class="k">appendFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, 
+                    ...<span class="v">thisSound$</span>, <span class="s">","</span>,
+                    ...<span class="v">midpoint</span>, <span class="s">","</span>,
+                    <b>...<span class="v">thisWord$</span>, <span class="s">","</span>,</b>
+                    ...<span class="v">thisPhoneme$</span>, <span class="s">","</span>,
+                    ...<span class="v">f1</span>, <span class="s">","</span>, 
+                    ...<span class="v">f2</span>, <span class="s">","</span>, 
+                    ...<span class="v">f3</span>
+</pre>
+</section>
+<section id="the-finished-product" class="level1">
+<h1>The Finished Product!</h1>
+<p>We’re done! After making the above changes, the script looks like this:</p>
+<pre class="praat"><span class="k">writeInfoLine</span>: <span class="s">"Extracting formants..."</span>
+
+<span class="c"># Extract the names of the Praat objects</span>
+<span class="v">thisSound$</span> = selected$(<span class="s">"Sound"</span>)
+<span class="v">thisTextGrid$</span> = selected$(<span class="s">"TextGrid"</span>)
+
+<span class="c"># Extract the number of intervals in the phoneme tier</span>
+<span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+<span class="v">numberOfPhonemes</span> = Get number of intervals: <span class="d">1</span>  
+<span class="k">appendInfoLine</span>: <span class="s">"There are "</span>, <span class="v">numberOfPhonemes</span>, <span class="s">" intervals."</span>
+
+<span class="c"># Create the Formant Object</span>
+<span class="k">select</span> Sound '<span class="v">thisSound$</span>'
+To Formant (burg)... <span class="d">0</span> <span class="d">5</span> <span class="d">5000</span> <span class="d">0.025</span> <span class="d">50</span>
+
+<span class="c"># Create the output file and write the first line.</span>
+<span class="v">outputPath$</span> = <span class="s">"/Users/joeystanley/Desktop/Projects/Praat/formants.csv"</span>
+<span class="k">writeFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, <span class="s">"file,time,<b>word,</b>phoneme,F1,F2,F3"</span>
+
+<span class="c"># Loop through each interval on the phoneme tier.</span>
+<span class="k">for</span> <span class="v">thisInterval</span> <span class="k">from</span> <span class="d">1</span> <span class="k">to</span> <span class="v">numberOfPhonemes</span>
+    <span class="c">#appendInfoLine: thisInterval</span>
+
+    <span class="c"># Get the label of the interval</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisPhoneme$</span> = Get label of interval: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="c">#appendInfoLine: thisPhoneme$</span>
+    
+    <span class="c"># Find the midpoint.</span>
+    <span class="v">thisPhonemeStartTime</span> = Get start point: <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">thisPhonemeEndTime</span>   = Get end point:   <span class="d">1</span>, <span class="v">thisInterval</span>
+    <span class="v">duration</span> = <span class="v">thisPhonemeEndTime</span> - <span class="v">thisPhonemeStartTime</span>
+    <span class="v">midpoint</span> = <span class="v">thisPhonemeStartTime</span> + <span class="v">duration</span>/<span class="d">2</span>
+    
+    <span class="c"># Extract formant measurements</span>
+    select Formant '<span class="v">thisSound$</span>'
+    <span class="v">f1</span> = Get value at time... <span class="d">1</span> <span class="v">midpoint</span> Hertz Linear
+    <span class="v">f2</span> = Get value at time... <span class="d">2</span> <span class="v">midpoint</span> Hertz Linear
+    <span class="v">f3</span> = Get value at time... <span class="d">3</span> <span class="v">midpoint</span> Hertz Linear
+
+    <b><span class="c"># Get the word interval and then the label</span>
+    <span class="k">select</span> TextGrid <span class="s">'<span class="v">thisTextGrid$</span>'</span>
+    <span class="v">thisWordInterval</span> = Get interval at time: <span class="d">2</span>, <span class="v">midpoint</span>
+    <span class="v">thisWord$</span> = Get label of interval: <span class="d">2</span>, <span class="v">thisWordInterval</span></b>
+
+    <span class="c"># Save to a spreadsheet</span>
+    <span class="k">appendFileLine</span>: <span class="s">"'</span><span class="v">outputPath$</span><span class="s">'"</span>, 
+            ...<span class="v">thisSound$</span>, <span class="s">","</span>,
+            ...<span class="v">midpoint</span>, <span class="s">","</span>,
+            <b>...<span class="v">thisWord$</span>, <span class="s">","</span>,</b>
+            ...<span class="v">thisPhoneme$</span>, <span class="s">","</span>,
+            ...<span class="v">f1</span>, <span class="s">","</span>, 
+            ...<span class="v">f2</span>, <span class="s">","</span>, 
+            ...<span class="v">f3</span>
+
+<span class="k">endfor</span>
+
+<span class="k">appendInfoLine</span>: newline$, newline$, <span class="s">"Whoo-hoo! It didn't crash!"</span>
+</pre>
+<p>So for now, this is the finished product. There’s still a lot of things that could be made to this script to make it easier to use in the future (such as saving the tier numbers as variables, detecting whether an interval contains a vowel, adding flexibility in the formant extraction settings, and running this script on multiple files at once) but that’ll have to wait for another blog post. This script should get you the information you want if you want to do a basic formant extraction.</p>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>As I said in the introduction, this tutorial has shown you <em>what</em> to do, but not necessarily <em>how</em> or <em>why</em>. To learn more about how this is done—and especially to learn how to modify it to suit your own needs better—you’ll have to get your hands dirty and play around and learn on your own. Google and Praat’s built-in documentation will have everything you need.</p>
+<p>More importantly, what I can’t teach is the thought process of how the code should be set up. How did I know to do it as a loop? How did I know to use those functions? My answer is trial and error. When faced with a task (“I want to extract formant measurements automatically in Praat. How can I do that?”), I started googling. I found other Praat scripts—lots of others—that had pieces of what I wanted, and pretty much all of mine are Frankensteined together from whatever I could find online. I had to see what they did and how they did it in order to learn. You can too!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
