@@ -1,0 +1,263 @@
+---
+layout: post
+title:  "Randomizing a Wordlist"
+date:   2018-01-23 13:31:00 -0400
+categories:
+  - How-to Guides
+  - Methods
+  - R
+  - Research
+  - Skills
+  - Utah
+---
+ 
+A few weeks ago I did some fieldwork in Utah and used a wordlist as part of my data collection. I've needed to compile wordlists several times in the past and have never been completely satisfied with how they've been randomized. I thought I'd share what I did today.
+
+# Background
+
+A lot of my research has to do with mergers involving infrequent lexical classes, such as /ʊl/ in words like *pull* or *bull* or /eɡ/ in words like *vague* and *flagrant*. These words do come up in conversation, but usually not enough for a robust, person-level statistical analysis. For this reason, I often supplement my interviews with relatively extensive word lists (150+ words), so that they contain enough tokens from each lexical class for a meaningful analysis. 
+
+Because I often target lots of mergers/shifts in any one project, I usually have words from at least a dozen or so lexical classes all interspersed in the wordlist. To put them in some order that distracts speakers from the underlying questions, what I've done in the past is use Excel's `rand()` function to put the words in a random order. Then I'd go through the list myself to find anything I didn't like, like pairs of words from the same lexical class. But inevitably, when I transcribe them and listen to the list over and over, there's always some sequence of words I wish I could have changed.
+
+So, for this trip to Utah, I decided do a smart randomization process using R so that I can be sure it's how I want it to be.
+
+# The dataset
+
+I won't go into detail about exactly how I compiled my wordlist, but I'll share the variables I've included. Because I'm working on Utah English, I've got the <sc>cord-card</sc> merger, various pre-lateral mergers (<sc>feel-fill</sc>, <sc>fail-fell</sc>, <sc>pool-pull</sc>, etc.), and a handful of other consonantal things like words like *mountain*, [t]-epenthesis in words like *false* (see my [ADS presentation](/blog/blog/ads2018/#sundays-presentation-on-consonants-in-utah) with Kyle Vanderniet in January), and a couple small things I'd like to test out. In total, I've got 17 lexical classes, grouped into three broad questions: vowels before /r/, vowels before /l/, and "other."
+
+# The goal
+
+I recently started watching the TV show *Numb3rs* and this actually came up in the first episode. (It's interesting and on Netflix, so you should see it for yourself). He asks a group of people to randomly place themselves in the room. Once they did, he pointed out that the way they were standing was not random because they were roughly equidistant from each other. Truly random distributions will produce some clusters. So there's a difference between truly random and what humans perceive as random.
+
+To bring this back into wordlists, if I randomly sort the words in Excel, I will get a (close to) truly random order. But this inevitably creates clusters, or words from the same lexical class near or next to each other, which is undesirable. What I actually want is a pseudo-random order that humans perceive to be as random but actually has quite a bit of order to it.
+
+Specifically, here are the criteria that I came up with for an ideal wordlist order:
+
+1. Adjacent words should not contain vowels from the same lexical class. Better yet, there should be a buffer of at least two words between vowels.
+
+1. Really, I don't even want adjacent words within the same research question (pre-laterals, pre-rhotics, etc.) next to each other. And even if they're close I don't want them to be similar vowels. 
+
+1. Adjacent words starting with the same letter or sounds (no alliteration).
+
+1. Adjacent words shouldn't end with the same morpheme (no rhyming). 
+
+I don't know if these restrictions has any effect on pronunciation, but I don't want to take any chances, nor do I want people to catch on to what I'm studying.
+
+# The solution
+
+The first step to all this is to prepare the data. In my spreadsheet, I've got columns for the word, what lexical class it belongs to, and what broad research question it targets. But now I need to add columns such as vowel height, vowel backness, syllable structure, and morphological structure. The others I can easily get through formulas in R. The point is that I need columns for all the restrictions I want to control for.
+
+Once that is done, I came up with this workflow for the script: 
+
+1. If there no words yet, pick a random word to start.
+1. Compile a list of all the words that haven't been used in the wordlist yet.
+1. Filter out the ones that shouldn't be next based on the criteria specified.
+1. Of the remaining candidates, pick a random one. 
+1. Repeat until all the words are chosen.
+
+What I found though was that the conditions were often too restrictive: when there was about 10 or 20 words left, there wouldn't be any remaining words eligible to come next. So I wrapped this whole process into another loop and ran it until it "converged" and all words were used (it took about 50 times). 
+
+# The code
+
+Before the loop, I declare a few variables. Disclaimer/Apology: writing loops brings be back to my Perl days, so this might not be the most efficient R code.
+
+```r
+library(tidyverse)
+
+# Read the data in.
+wordlist <- original <- read_csv(...) %>%
+
+    # Add a column to keep track if it's been used yet.
+    mutate(used_yet = FALSE,
+           # Extract first and last letters
+           first_letter = str_extract(.$word, "^."),
+           last_three   = str_extract(.$word, "...$"))
+
+# While this is true, keep the loop going.
+keep_going <- TRUE
+
+# Keep track of the number of attempts needed to finally converge.
+attempt <- 1
+
+# Keep the attempted orders in a list, just in case none converge.
+tries <- list(1:100)
+```
+
+Now comes the loop itself. This main loop theoretically only needs to run once, but if the randomizing doesn't come up with a complete list, it'll jump back up to here again and start over from scratch.
+
+```r
+while(keep_going) {
+```
+
+First, there are some things I need to do for each attempt, like randomly choosing the first word.
+
+```r
+    # Create an empty list to keep track of the new order of words.
+    newlist <- list(1:nrow(wordlist))
+    
+    # Populate the first row right here. It's just easier to to do it here than to incorporate it into the later loop.
+    next_word <- wordlist %>% sample_n(1)
+
+    # Go back to the original list and mark the "used_yet" column as true.
+    # This keeps track of what words already have a place in the new order.
+    wordlist[wordlist$word == next_word$word,]$used_yet <- TRUE
+
+    # This first word is now saved as the first entry in the new wordlist.
+    newlist[[1]] <- next_word
+```
+
+Now that we've got the first word set, start another loop that continues as long as there are words that haven't been used yet. In other words, this'll run for as many iterations as you have words total.
+
+```r
+    # The nth iteration of the loop. 2 because we're looking for the second word.
+    i <- 2
+
+    # Start the loop. Loop until all the words are used (= marked as TRUE).
+    while (FALSE %in% wordlist$used_yet) {
+```
+
+Now once we're here, we compile a list of potential words.
+
+```r     
+        # Get the previous word so I know what I'm working with
+        prev_word <- newlist[[i-1]]
+        
+        # Find a list of potential words
+        potential_words <- wordlist %>%
+            
+            # Only unused words
+            filter(used_yet == FALSE,
+                   
+                   # Can't start with the same first letter
+                   first_letter != prev_word$first_letter)
+```
+
+Now I actually filter out this list of potential words based on various criteria I've come up with. The code is slightly more complex because not every word has properties that I care about (for example, in a word that focuses on the consonants elicited, I'm not too concerned about the vowel quality[This came back to bite me and I only realized it until after the data collection was over. I included the word <i>scale</i> to get at /e/ before /l/, so it was tagged as a pre-lateral word. I also had the word <i>whale</i> to get a (wh)-aspiration. Since I didn't care about the vowel qualities of words included for their consonants, sure enough <i>scale</i> and <i>whale</i> ended up next to each other. Figures.]{.aside}) so there are `NA`s. So I need to first see if the previous word in the list is an `NA`. If it's not, then I need to select from only the words that do not share that property, or are also `NA`s. Does that makes sense?
+
+Here, I do this three times. If the previous word has a pre-lateral vowel, the next one can too, just not with the same vowel. Or a word without a pre-lateral vowel is okay too. Same thing with syllabic/morphological structure (the `context` column). And same thing with the last three letters of the word.
+                
+```r
+        # Filter by lateral vowel
+        if (!is.na(prev_word$lateral_vowel)) {
+            potential_words <- potential_words %>%
+                filter(lateral_vowel != prev_word$lateral_vowel | is.na(lateral_vowel))
+        }
+        
+        # Filter by context
+        if (!is.na(prev_word$context)) {
+            potential_words <- potential_words %>%
+                filter(context != prev_word$context | is.na(context))
+        }
+
+        # Filter by ending (I don't want two -ing words in a row)
+        if (!is.na(two_words_ago$last_three)) {
+            potential_words <- potential_words %>%
+                filter(last_three != prev_word$last_three | is.na(last_three)) %>%
+        }
+```
+
+Some filters I want to be longer distance than just adjacent words. I don't want words in the same lexical class to be near each other at all: specifically, there should be at least three filler words between any words within the same class. Because of the way my code is written, I can't run this chunk unless I'm in the third or fourth iteration of my loop (there's probably a better way to do this, but I'm fine with this), so I've got a condition around the whole thing blocking it until we're sufficiently far into the iterations.
+
+```r
+        # Put three fillers in a row between the same lexical class
+        if (i >= 4) {
+            # Like "prev_word", save the info about two and three words ago.
+            three_words_ago <- newlist[[i-3]]
+            two_words_ago   <- newlist[[i-2]]
+
+            # The variable shouldn't match any of these
+            potential_words <- potential_words %>%
+                filter(variable != prev_word$variable,
+                       variable != two_words_ago$variable,
+                       variable != three_words_ago$variable)
+
+        # A shorter version if we're on the third iteration of the loop.
+        } else if (i >= 3) {
+            two_words_ago <- newlist[[i-2]]
+            potential_words <- potential_words %>%
+                filter(variable != prev_word$variable,
+                       variable != two_words_ago$variable)
+
+        # And even shorter if we're on the second iteration.
+        } else {
+            potential_words <- potential_words %>%
+                filter(variable != prev_word$variable)
+        }
+```
+
+So that's the filtering that I've done. Now I need to see if there are any words left. If there aren't any, exit the loop. This list has failed.
+
+```r
+        # If there aren't any left, cut our losses: this list is a bust.
+        if (nrow(potential_words) == 0) { break }
+```
+
+[I had code for a while where it selected the next word alphabetically instead of randomly. This was good for debugging and let me see how it chose the next word. To do this, replace <code class="highlight-rouge">sample_n(1)</code> with <code class="highlight-rouge">arrange(word) %>% head(1)</code>.]{.aside}
+
+At this point, we only make it this far in the loop if there are any potential words left. This'll happen most of the time. It's here that we select a random word.
+
+```r
+        # Get the next word
+        next_word <- potential_words %>%
+            sample_n(1)
+```
+        
+Now that we've selected a word, go back to the *original* dataframe and mark this word as used so that it doesn't come up as a potential word again. Save this word as the next item in the word list, and increment the counter. 
+
+```r
+        # Mark the next word as selected
+        wordlist[wordlist$word == next_word$word,]$used_yet <- TRUE
+        
+        # Add it to the list
+        newlist[[i]] <- next_word
+        
+        # Increment the counter
+        i <- i+1
+
+    } # End the inner while loop. Go on to find the next word or exit if we're done.
+```
+
+We're done with this inner `while` loop. We exit the loop either because we're done and all the words are in the new wordlist, or because we broke early because there were no more potential words that fit all the criteria.
+
+To finish processing, first we have to use `bind_rows()` to get this list of one-row dataframes into a single dataframe.
+    
+```r
+    newlist <- bind_rows(newlist) %>%
+        # Also, get rid of the "used_yet" column since it's TRUE for all words.
+        select(-used_yet)
+```
+
+Then, we see if we need to continue looping. If we've already made 100 attempts and no complete list was found, break out and end: I don't want to loop for infinity if no order is even possible. If the list contains all the words, that means we're done: set `keep_going` to false to stop the outer `while` loop. Otherwise (meaning, not all the words are included but we haven't hit 100 attempts), save the list (for future examination), send a message, and increment the attempts counter. The loop starts all over again and a new list is created from scratch.
+
+```r
+    if (attempt > 100) {
+        break
+    } else if (nrow(newlist) == nrow(wordlist)) {
+        keep_going <- FALSE
+    } else {
+        tries[[attempt]] <- newlist
+        message("Attempt ", attempt, "\t", nrow(newlist))
+        attempt <- attempt + 1
+    }
+} # end of the main loop. We're done!
+```
+
+Once we're done, `newlist` should contain the exact same information as `wordlist`, only in a pseudo-randomized order that you controlled. If it didn't converge, you can use `anti_join` to see what words didn't get selected.
+
+```r
+anti_join(wordlist, newlist)
+```
+
+And that's it! You've got yourself a nice wordlist in a great order. 
+
+# Just one list though?
+
+Now ideally, every participant would see the same list of words in a *different* random order. This makes sure that fatigue and other factors don't have an effect. But I find it best to distribute this wordlist on paper, and it's kind of a pain to keep track of dozens of different orders. Crucially, you have to keep track of what list people are assigned to because if a speaker has a near-merger, it's really hard to tell which word is which unless you have their "script" handy as you transcribe.
+
+Perhaps it would be nice to have speakers read these on a tablet. A fancy app that kept track of randomly generated orders would be cool, but a quick and dirty solution is to have dozens of PDFs ready and labeled, and the speaker would read the code at the top to identify which order they're saying. In that case, the method I've described in this post would certainly apply: you would just need to run it a couple dozen times to get different lists.
+
+As a side note, I ended up producing just one list, mostly because it took so long to converge on one possible order. That ended up hurting me because I noticed that speakers paid more attention for the first dozen words or so and said things differently. In the future, I would recommend different orders for each person.
+
+# Conclusion
+
+Going through my list, I was impressed with just how random the words seemed. Like the episode of *Numb3rs*, what I perceived to be *more* random actually had a lot of structure to it and was deliberately devoid of clusters. Previous lists I've used were had close to a truly random order, but this one seems even better. It's much harder to tell that these words come from a relatively small set lexical classes. I think the key is that similar words aren't near each other, which is not what you get with a random number generator. I think this guided pseudo-random order is a better way to go for eliciting linguistic data in a wordlist.
