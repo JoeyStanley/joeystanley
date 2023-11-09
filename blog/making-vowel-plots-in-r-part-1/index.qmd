@@ -12,7 +12,7 @@ categories:
   - Data Viz
 ---
 
-Last week I was approached by a fellow graduate student who asked how they might go about making vowel plots in R. I've made my share of these plots and have learned some tricks along the way, so I thought it might make for an interesting blog post. Actually, I thought it would make for an interesting *series* of blog posts. In this first one, I'll stick with scatterplots and look at the code you'll need for them. In the [next one](/posts/making-vowel-plots-in-r-part-2) I show how to plot vowel trajectories. 
+Last week I was approached by a fellow graduate student who asked how they might go about making vowel plots in R. I've made my share of these plots and have learned some tricks along the way, so I thought it might make for an interesting blog post. Actually, I thought it would make for an interesting *series* of blog posts. In this first one, I'll stick with scatterplots and look at the code you'll need for them. In the [next one](/blog/making-vowel-plots-in-r-part-2) I show how to plot vowel trajectories. 
 
 For this workshop, we'll need just two packages: `dplyr` and `ggplot2`. Let's load those now.
 
