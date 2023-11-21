@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2019-08-19">
+
+<title>Joey Stanley - 3D Vowel Plots with Rayshader</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joey Stanley</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">3D Vowel Plots with Rayshader</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Animations</div>
+                <div class="quarto-category">Data Viz</div>
+                <div class="quarto-category">Github</div>
+                <div class="quarto-category">How-to Guides</div>
+                <div class="quarto-category">Phonetics</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Side Projects</div>
+                <div class="quarto-category">Skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 19, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-rayshader" id="toc-what-is-rayshader" class="nav-link active" data-scroll-target="#what-is-rayshader">What is rayshader?</a></li>
+  <li><a href="#an-f1-f2-vowel-plot" id="toc-an-f1-f2-vowel-plot" class="nav-link" data-scroll-target="#an-f1-f2-vowel-plot">An F1-F2 vowel plot</a>
+  <ul class="collapse">
+  <li><a href="#d-vowel-plots" id="toc-d-vowel-plots" class="nav-link" data-scroll-target="#d-vowel-plots">2D vowel plots</a></li>
+  <li><a href="#d-vowel-plots-1" id="toc-d-vowel-plots-1" class="nav-link" data-scroll-target="#d-vowel-plots-1">3D vowel plots</a></li>
+  <li><a href="#a-3d-animation" id="toc-a-3d-animation" class="nav-link" data-scroll-target="#a-3d-animation">A 3D animation</a></li>
+  </ul></li>
+  <li><a href="#a-spectrogram" id="toc-a-spectrogram" class="nav-link" data-scroll-target="#a-spectrogram">A Spectrogram</a>
+  <ul class="collapse">
+  <li><a href="#getting-a-ggplot2-spectrogram" id="toc-getting-a-ggplot2-spectrogram" class="nav-link" data-scroll-target="#getting-a-ggplot2-spectrogram">Getting a ggplot2 spectrogram</a></li>
+  <li><a href="#a-2d-spectrogram" id="toc-a-2d-spectrogram" class="nav-link" data-scroll-target="#a-2d-spectrogram">A 2D spectrogram</a></li>
+  <li><a href="#a-3d-spectrogram" id="toc-a-3d-spectrogram" class="nav-link" data-scroll-target="#a-3d-spectrogram">A 3D spectrogram</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<p>So <a href="https://www.tylermw.com">Tyler Morgan-Wall</a> has recently come out with the <a href="https://www.rayshader.com">rayshader</a> package and the R and data science Twitter community has been buzzing. I’ve seen people post some absolutely amazing 3D plots and animations. I haven’t seen any linguists using it though, so I’m hopping on that bandwagon—a little late in the game—to show what kinds of 3D visuals we can produce using vowel data.</p>
+<section id="what-is-rayshader" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-rayshader">What is rayshader?</h2>
+<p>Rayshader is an R package that makes it easy to create stunning 3D plots. My impression is that it was designed primarily with geospatial data in mind, so that you can create really nice 3D models of terrain and stuff. But recently, rayshader has been updated to take any plot created in ggplot2 and make it 3-dimensional. Here are just a few examples I found on Twitter:</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+First try with <a href="https://twitter.com/hashtag/rayshader?src=hash&amp;ref_src=twsrc%5Etfw">#rayshader</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/eEUq0eKSbq">pic.twitter.com/eEUq0eKSbq</a>
+</p>
+— David Solito (<span class="citation" data-cites="dsolito">@dsolito</span>) <a href="https://twitter.com/dsolito/status/1102954041380954112?ref_src=twsrc%5Etfw">March 5, 2019</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Finally found the time to try out some of that sweet new <a href="https://twitter.com/hashtag/rayshader?src=hash&amp;ref_src=twsrc%5Etfw">#rayshader</a> + <a href="https://twitter.com/hashtag/ggplot2?src=hash&amp;ref_src=twsrc%5Etfw">#ggplot2</a>, 3D functionality! Loving it 😍 and can't wait to play more! <a href="https://t.co/qdcjLKZKRq">pic.twitter.com/qdcjLKZKRq</a>
+</p>
+— Laura Ellis (<span class="citation" data-cites="LittleMissData">@LittleMissData</span>) <a href="https://twitter.com/LittleMissData/status/1145537869056020481?ref_src=twsrc%5Etfw">July 1, 2019</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+Flying over the dunes of Mars using <a href="https://twitter.com/hashtag/rayshader?src=hash&amp;ref_src=twsrc%5Etfw">#rayshader</a> + <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> + <a href="https://twitter.com/HiRISE?ref_src=twsrc%5Etfw"><span class="citation" data-cites="HiRISE">@HiRISE</span></a> data<br><br>(working on a camera translation API so you can 🐦fly around your rayshader scenes) <a href="https://t.co/8uPIxojNKg">pic.twitter.com/8uPIxojNKg</a>
+</p>
+— Tyler Morgan-Wall (<span class="citation" data-cites="tylermorganwall">@tylermorganwall</span>) <a href="https://twitter.com/tylermorganwall/status/1161974508028383232?ref_src=twsrc%5Etfw">August 15, 2019</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+I just discovered the <a href="https://twitter.com/hashtag/rayshader?src=hash&amp;ref_src=twsrc%5Etfw">#rayshader</a> package by <a href="https://twitter.com/tylermorganwall?ref_src=twsrc%5Etfw"><span class="citation" data-cites="tylermorganwall">@tylermorganwall</span></a>. It turns a 2D ggplot2 object into a 3D object. <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/w0x3vy9qB3">pic.twitter.com/w0x3vy9qB3</a>
+</p>
+— We are R-Ladies (<span class="citation" data-cites="WeAreRLadies">@WeAreRLadies</span>) <a href="https://twitter.com/WeAreRLadies/status/1144189570730397697?ref_src=twsrc%5Etfw">June 27, 2019</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>If you’re interested in learning how to use the package to make your ggplot2 plots stand out, I’d highly recommend looking through Morgan-Wall’s <a href="https://www.tylermw.com/3d-ggplots-with-rayshader/">tutorial</a>. What I’m doing in this blog is essentially following that post, but using some vowel data. Let’s get to it.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rayshader)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By the way, the code and data for this blog post are all available as an Rmd file on my <a href="https://github.com/JoeyStanley/rayshader_on_vowel_data">GitHub</a>.</p>
+</section>
+<section id="an-f1-f2-vowel-plot" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="an-f1-f2-vowel-plot">An F1-F2 vowel plot</h2>
+<p>Let me start with sort of a basic vowel plot. I’ll first load in some of my own vowel data, and for simplicity, I’ll just isolate tokens with stressed /i/ before obstruents. I’ll use the Mahalanobis function to filter out bad measurements.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">See my unannounced, buggy, but functional <a href="https://github.com/JoeyStanley/joeyr">joeyr</a> package for code for <code>tidy_mahalanobis</code>, which makes it easy to implement the Mahalanobis distance within a tidyverse pipeline.</span></div></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_iy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://joeystanley.com/data/joey.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter it down</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vowel <span class="sc">==</span> <span class="st">"IY"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>         stress <span class="sc">==</span> <span class="dv">1</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         plt_manner <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"stop"</span>, <span class="st">"fricative"</span>, <span class="st">"affricate"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Keep just the columns I need</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(word, F1, F2) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># There were a few bad outliers.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mahal_dist =</span> joeyr<span class="sc">::</span><span class="fu">tidy_mahalanobis</span>(F2, F1)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mahal_dist <span class="sc">&lt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>mahal_dist) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That leaves me with 117 tokens of /i/.</p>
+<section id="d-vowel-plots" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="d-vowel-plots">2D vowel plots</h3>
+<p>Let’s look at that using a pretty traditional scatterplot.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_iy, <span class="fu">aes</span>(F2, F1, <span class="at">label =</span> <span class="fu">tolower</span>(word))) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>() <span class="sc">+</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="iy_with_words.jpeg" class="img-fluid"></p>
+<div class="page-columns page-full"><p>So, to get the 3D plot to work with rayshader, I need some variable that should act as the depth dimension. In Morgan-Wall’s example, he adopts a pretty standard technique when looking at coordinate data. You basically overlay some tessellating shape like a hexagon, count how many points are in each hexagon, and color that cell based on how may points there are in it. I haven’t seen this used too much in vowel data, other than Bill Kretzschmar’s recent work, but it’s a possibility. Fortunately, this is straightforward with <code>geom_hex</code>.</p><div class="no-row-height column-margin column-container"><span class="">Also, see my recent presentation at <a href="../../blog/dh2019">DH2019</a>.</span></div></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hex_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(my_iy, <span class="fu">aes</span>(F2, F1)) <span class="sc">+</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hex</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"C"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>hex_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="hex_plot.jpeg" class="img-fluid"></p>
+<p>Already kind of a cool way at looking at it. But we’re just getting started.</p>
+</section>
+<section id="d-vowel-plots-1" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="d-vowel-plots-1">3D vowel plots</h3>
+<p>Now make it 3D. This is really quite straightforward with <code>plot_gg</code>. I’m mostly using the default parameters because I don’t know enough about 3D modeling to play with some of the other features, and yet it still looks fantastic.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">FYI, this took about a minute and half to render on my laptop.</span></div></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gg</span>(hex_plot, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">height =</span> <span class="dv">5</span>, <span class="at">width =</span> <span class="dv">7</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">scale =</span> <span class="dv">250</span>, <span class="at">zoom =</span> <span class="fl">0.6</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">windowsize =</span> <span class="fu">c</span>(<span class="dv">1400</span>, <span class="dv">800</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">multicore =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="hex_plot_3D.png" class="img-fluid"></p>
+<p>Well that’s super cool.</p>
+<p>By the way, here’s the code I used to export the plot to a file on my computer. I added a small bit of simulated focus/blur to it, which is always kind cool.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">render_depth</span>(<span class="at">focus =</span> <span class="fl">0.5</span>, <span class="at">focallength =</span> <span class="dv">15</span>, <span class="at">filename =</span> <span class="st">"hex_plot.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So now let’s make this even better!</p>
+</section>
+<section id="a-3d-animation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="a-3d-animation">A 3D animation</h3>
+<p>Now a static plot is awesome. Don’t get me wrong. But, turning it into an animation is even cooler. Plus, Morgan-Wall says that viewing a 3D plot from different angles is one way to turn them from gimmicky visuals to legit tools for conveying information. He says <a href="https://www.tylermw.com/3d-ggplots-with-rayshader/">here</a>:</p>
+<blockquote class="blockquote">
+<p>“It’s difficult to interpret static 3D visualizations, as the display is an inherently 2D medium and the reader can’t accurately reconstruct the depth information of 3D data… [T]he continuous underlying substrate provides perceptual context for the missing depth information. The issue of ‘small box close, or big box far away?’ doesn’t occur with [rayshader plots], since those points can always be located in 3D space by referencing the surrounding data.”</p>
+</blockquote>
+<p>I’m paraphrasing slightly and you should go read the full post because I believe he makes a compelling argument <em>in favor</em> of 3D plots, which is something I had never seen before.</p>
+<p>So here’s the code—and the amazing thing is that it’s really just this one line!—for turning this 3D vowel plot into an animation.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">This took about 3.5 minutes to render.</span></div></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">render_movie</span>(<span class="at">filename =</span> <span class="st">"hex_plot_orbit"</span>, <span class="at">type =</span> <span class="st">"orbit"</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">phi =</span> <span class="dv">45</span>, <span class="at">theta =</span> <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="hex_plot_orbit.mp4"></video></div>
+<p>That orbiting thing is cool. It’s interesting to see a vowel space from all sides.</p>
+<p>As it turns out though, you can actually adjust where the “camera” is pretty freely. Here is some code I swiped from Morgan-Wall’s tutorial that does a really slick zoom in, pan, zoom out thing.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">This took about 5 minutes to render.</span></div></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the camera position and angle</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>phivechalf <span class="ot">=</span> <span class="dv">30</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">7</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">180</span>)<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>phivecfull <span class="ot">=</span> <span class="fu">c</span>(phivechalf, <span class="fu">rev</span>(phivechalf))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>thetavec <span class="ot">=</span> <span class="dv">0</span> <span class="sc">+</span> <span class="dv">60</span> <span class="sc">*</span> <span class="fu">sin</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">359</span>,<span class="at">length.out =</span> <span class="dv">360</span>) <span class="sc">*</span> pi<span class="sc">/</span><span class="dv">180</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>zoomvec <span class="ot">=</span> <span class="fl">0.45</span> <span class="sc">+</span> <span class="fl">0.2</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">180</span>)))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>zoomvecfull <span class="ot">=</span> <span class="fu">c</span>(zoomvec, <span class="fu">rev</span>(zoomvec))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Actually render the video.</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">render_movie</span>(<span class="at">filename =</span> <span class="st">"hex_plot_fancy"</span>, <span class="at">type =</span> <span class="st">"custom"</span>, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">frames =</span> <span class="dv">360</span>,  <span class="at">phi =</span> phivecfull, <span class="at">zoom =</span> zoomvecfull, <span class="at">theta =</span> thetavec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="hex_plot_fancy.mp4"></video></div>
+<p>So that is definitely a new way at visualizing vowel data.</p>
+</section>
+</section>
+<section id="a-spectrogram" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="a-spectrogram">A Spectrogram</h2>
+<p>After getting all this to work, the next question I had was this: What other kind of linguistics data can be represented in 3D? I immediately thought about a spectrogram. In Praat, you’ve got a spectrogram with three continuous variables: time along the <em>x</em>-axis, frequency along the <em>y</em>-axis, and amplitude being represented by color. What if, in addition to color, we could represent amplitude with the <em>z</em>-axis?</p>
+<p>As it turns out, the tricker part with this plot was trying to get the data in a format I could plot with <code>ggplot</code>. The 3D rendering was a snap once that was done (again, hooray for rayshader!), so if you just want to skip to the good stuff, scroll to the bottom. If you’re curious about how I hacked this, read on.</p>
+<section id="getting-a-ggplot2-spectrogram" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="getting-a-ggplot2-spectrogram">Getting a ggplot2 spectrogram</h3>
+<p>Now, I’m sure there are lots of smart people that work with audio in R and could get spectrogram data in a format suitable for <code>ggplot</code> in a snap. But since I process my audio almost entirely in Praat, getting this to work in R was new and a bit tricky for me. But I found a way. It might not be the best way, but it is a way.</p>
+<div class="page-columns page-full"><p>First, I’ll use the <code>tuneR</code> package to process the raw .wav file. In this case, it’s a short recording of me saying the word <em>boy</em>.  I don’t exactly know how sound is digitized, but if it is just a bunch of acoustic samples, then I presume it’s nothing more than a bunch of numbers organized in some way. And numbers I can work with.</p><div class="no-row-height column-margin column-container"><span class="">I thought something nice and dynamic like /ɔɪ/ would make for a better visual.</span></div></div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">I know it’s sloppy style to load packages midway through an R script, but this is a pretty tangential point, and it better reflects my actual process of accomplishing this task.</span></div></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tuneR)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>boy_wav <span class="ot">&lt;-</span> <span class="fu">readWave</span>(<span class="st">"joey_boy.wav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When I use the <code>readWave</code> function, it loads in the audio and stores it into an R object of class Wave. Unfortunately, it’s not immediately useful to me.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>boy_wav</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">##Wave Object</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  Number of Samples:      36874</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Duration (seconds):     0.84</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Samplingrate (Hertz):   44100</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  Channels (Mono/Stereo): Mono</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  PCM (integer format):   TRUE</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  Bit (8/16/24/32/64):    16 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So the task is to extract the data I want into a plain ol’ dataframe. Again, I’m sure there’s a better way, but I used the <code>inputw</code> function from the <code>seewave</code> package even though it explicitly says in the documentation that it is “not to be called by the user.” But using these functions, I was able to access that list.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(seewave)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>input <span class="ot">&lt;-</span> <span class="fu">inputw</span>(<span class="at">wave =</span> boy_wav)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>wave <span class="ot">&lt;-</span> input<span class="sc">$</span>w</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wave)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1]</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]  127</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [2,]  125</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [3,]  123</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [4,]  131</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [5,]  134</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [6,]  131</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So now, the <code>wave</code> object is very long and has one row for each sample. Okay, that means I’m getting close. I’ll take what I’ve got, convert it into a tibble, add the sample number, and then add a time variable to it, based on the sampling rate in the original audio.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wav_df <span class="ot">&lt;-</span> wave <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">hz =</span> V1) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowid_to_column</span>(<span class="st">"sample"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">t =</span> sample <span class="sc">/</span> boy_wav<span class="sc">@</span>samp.rate) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 36,874 x 3</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    sample    hz         t</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  1      1   127 0.0000227</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  2      2   125 0.0000454</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  3      3   123 0.0000680</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  4      4   131 0.0000907</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  5      5   134 0.000113 </span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  6      6   131 0.000136 </span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  7      7   135 0.000159 </span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  8      8   134 0.000181 </span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  9      9   142 0.000204 </span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 10     10   140 0.000227 </span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 36,864 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The next question then is whether I can plot this to make it look like a spectrogram. The way it’s structured now, it’s a cinch to plot the wave form:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wav_df, <span class="fu">aes</span>(t, hz)) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="waveform.jpeg" class="img-fluid"></p>
+<p>But I would kinda like to see a spectrogram. Fortunately, the <code>phonTools</code> package by <a href="http://santiagobarreda.com">Santiago Barreda</a> does exactly what I want! This package can do a heck of a lot more than plot a single spectrogram, and I encourage you to explore the package more. But for now, I’ll do a little more hacking to get the visual I want.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phonTools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>So first off, <code>phonTools</code> already has a <code>spectrogram</code> function that can plot the data as is.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spectrogram</span>(wav_df<span class="sc">$</span>hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="spectrogram_phonTools.jpg" class="img-fluid"></p>
+<p>This is an excellent plot and I appreciate the work that goes into creating it. But, being the nit-picky person I am, I wanted to have some more control over the plot and I wanted to use ggplot2 so that I could then incorporate rayshader. The data that’s being plotted had to have been processed in some way because it’s not a waveform anymore. I wanted to find how it transformed it from a time-vs.-amplitude format to the time-vs.-frequency formant you see above.</p>
+<p>I did some digging and I just could not find a way to extract the data that gets eventually plotted in <code>spectrogram</code>. I mean, it has to have gone through some Fourier analysis or something first to be able to extract frequencies. So, I figure if the <code>spectrogram</code> function could do it, the key was in the function itself. Thanks to R’s naturally open-source nature, I popped the hood of the code behind <code>spectrogram</code> and extracted the portion I needed. So, basically what you see here is a version of the <code>spectrogram</code> function from <code>phonTools</code> written by Barreda, except the final plotting portion is commented out. I’ll admit, I don’t fully understand what all this code is doing, but after lots of trial and error, it works, so I’ll leave it at that.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>joey_spec <span class="ot">&lt;-</span> <span class="cf">function</span> (sound, <span class="at">fs =</span> <span class="dv">22050</span>, <span class="at">windowlength =</span> <span class="dv">5</span>, <span class="at">timestep =</span> <span class="sc">-</span><span class="dv">1000</span>, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">padding =</span> <span class="dv">10</span>, <span class="at">preemphasisf =</span> <span class="dv">50</span>, <span class="at">maxfreq =</span> <span class="dv">5000</span>, <span class="at">colors =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">dynamicrange =</span> <span class="dv">50</span>, <span class="at">nlevels =</span> dynamicrange, <span class="at">maintitle =</span> <span class="st">""</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">show =</span> <span class="cn">TRUE</span>, <span class="at">window =</span> <span class="st">"kaiser"</span>, <span class="at">windowparameter =</span> <span class="dv">3</span>, <span class="at">quality =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">class</span>(sound) <span class="sc">==</span> <span class="st">"ts"</span>) </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        fs <span class="ot">=</span> <span class="fu">frequency</span>(sound)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">class</span>(sound) <span class="sc">==</span> <span class="st">"sound"</span>) {</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        fs <span class="ot">=</span> sound<span class="sc">$</span>fs</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        sound <span class="ot">=</span> sound<span class="sc">$</span>sound</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">=</span> <span class="fu">ceiling</span>((fs<span class="sc">/</span><span class="dv">1000</span>) <span class="sc">*</span> windowlength)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (n<span class="sc">%%</span><span class="dv">2</span>) </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        n <span class="ot">=</span> n <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (timestep <span class="sc">&gt;</span> <span class="dv">0</span>) </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        timestep <span class="ot">=</span> <span class="fu">floor</span>(timestep<span class="sc">/</span><span class="dv">1000</span> <span class="sc">*</span> fs)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (timestep <span class="sc">&lt;=</span> <span class="dv">0</span>) </span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        timestep <span class="ot">=</span> <span class="fu">floor</span>(<span class="fu">length</span>(sound)<span class="sc">/-</span>timestep)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (preemphasisf <span class="sc">&gt;</span> <span class="dv">0</span>) </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>        sound <span class="ot">=</span> <span class="fu">preemphasis</span>(sound, preemphasisf, fs)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    spots <span class="ot">=</span> <span class="fu">seq</span>(<span class="fu">floor</span>(n<span class="sc">/</span><span class="dv">2</span>), <span class="fu">length</span>(sound) <span class="sc">-</span> n, timestep)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    padding <span class="ot">=</span> n <span class="sc">*</span> padding</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ((n <span class="sc">+</span> padding)<span class="sc">%%</span><span class="dv">2</span>) </span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>        padding <span class="ot">=</span> padding <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    N <span class="ot">=</span> n <span class="sc">+</span> padding</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    spect <span class="ot">=</span> <span class="fu">sapply</span>(spots, <span class="cf">function</span>(x) {</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">=</span> sound[x<span class="sc">:</span>(x <span class="sc">+</span> n <span class="sc">-</span> <span class="dv">1</span>)] <span class="sc">*</span> <span class="fu">windowfunc</span>(sound[x<span class="sc">:</span>(x <span class="sc">+</span> n <span class="sc">-</span> <span class="dv">1</span>)], window, windowparameter)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">=</span> <span class="fu">c</span>(tmp, <span class="fu">rep</span>(<span class="dv">0</span>, padding))</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">=</span> tmp <span class="sc">-</span> <span class="fu">mean</span>(tmp)</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">=</span> <span class="fu">fft</span>(tmp)[<span class="dv">1</span><span class="sc">:</span>(N<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)]</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">=</span> <span class="fu">abs</span>(tmp)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>        tmp <span class="ot">=</span> <span class="fu">log</span>(tmp, <span class="dv">10</span>) <span class="sc">*</span> <span class="dv">10</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    spect <span class="ot">=</span> <span class="fu">t</span>(spect)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(spect)) spect[i, <span class="dv">1</span>] <span class="ot">=</span> <span class="fu">min</span>(spect[i, <span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    hz <span class="ot">=</span> (<span class="dv">0</span><span class="sc">:</span>(N<span class="sc">/</span><span class="dv">2</span>)) <span class="sc">*</span> (fs<span class="sc">/</span>N)</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    times <span class="ot">=</span> spots <span class="sc">*</span> (<span class="dv">1000</span><span class="sc">/</span>fs)</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rownames</span>(spect) <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">round</span>(times, <span class="dv">2</span>))</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(spect) <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">round</span>(hz, <span class="dv">2</span>))</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (colors <span class="sc">==</span> <span class="st">"alternate"</span>) </span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>        colors <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"red"</span>, <span class="st">"orange"</span>, <span class="st">"yellow"</span>, <span class="st">"white"</span>)</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (maxfreq <span class="sc">&gt;</span> (fs<span class="sc">/</span><span class="dv">2</span>)) </span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>        maxfreq <span class="ot">=</span> fs<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>    spect <span class="ot">=</span> spect <span class="sc">-</span> <span class="fu">max</span>(spect)</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># specobject = list(spectrogram = spect, fs = fs, windowlength = windowlength,</span></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                   timestep = timestep, dynamicrange = dynamicrange, colors = colors,</span></span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                   maxfreq = maxfreq)</span></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># class(specobject) = "spectrogram"</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># if (show == TRUE) </span></span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    <span class="co">#     plot(specobject, ylim = c(0, maxfreq), quality = quality)</span></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># invisible(specobject)</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(spect)</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With this modification of the function, I can now convert my data from waveform format to spectrogram format. What you se here is a giant spreadsheet where each row is a time point, each column is a frequency, and the cells contain amplitude (or something) at that time for that frequency.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">joey_spec</span>(wav_df<span class="sc">$</span>hz) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowid_to_column</span>(<span class="st">"sample"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,020 x 618</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     sample   `0` `17.9` `35.8` `53.69` `71.59` `89.49` `107.39` `125.28`</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">##      &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1       1 -80.3  -53.7  -53.5   -53.1   -52.6   -52.1    -51.7    -51.3</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2       2 -77.9  -42.7  -42.8   -43.0   -43.2   -43.5    -43.9    -44.3</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3       3 -82.5  -33.3  -33.4   -33.5   -33.6   -33.8    -34.1    -34.4</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4       4 -71.0  -41.9  -39.6   -37.4   -35.6   -34.1    -32.9    -31.8</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5       5 -73.0  -27.7  -27.7   -27.6   -27.5   -27.4    -27.3    -27.2</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6       6 -74.6  -39.4  -39.2   -38.9   -38.5   -38.1    -37.6    -37.0</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7       7 -88.0  -39.5  -39.5   -39.6   -39.6   -39.7    -39.8    -39.9</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8       8 -93.7  -33.5  -33.5   -33.6   -33.7   -33.9    -34.0    -34.2</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9       9 -69.6  -34.5  -34.6   -34.8   -35.0   -35.3    -35.7    -36.0</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10      10 -83.2  -33.6  -33.6   -33.7   -33.7   -33.7    -33.8    -33.9</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,010 more rows, and 609 more variables: [truncated for space]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This isn’t the most useful format, so I’ll do some reshaping with <code>gather</code> and turn it into a very tall spreadsheet with 629,340 rows.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>spec_tall <span class="ot">&lt;-</span> spec <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(hz, value, <span class="sc">-</span>sample) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hz =</span> <span class="fu">as.double</span>(hz)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 629,340 x 3</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     sample    hz value</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="do">##      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1       1     0 -80.3</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2       2     0 -77.9</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3       3     0 -82.5</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4       4     0 -71.0</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5       5     0 -73.0</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6       6     0 -74.6</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7       7     0 -88.0</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8       8     0 -93.7</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9       9     0 -69.6</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10      10     0 -83.2</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 629,330 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="page-columns page-full"><p> And now, finally, I’ve got my acoustic data in the format I want! Now we’re in business.</p><div class="no-row-height column-margin column-container"><span class="">Also, let’s take a second to appreciate that there are 629,340 data points for one 0.83 second recording. I can now understand why long audio files are so large!</span></div></div>
+</section>
+<section id="a-2d-spectrogram" class="level3">
+<h3 class="anchored" data-anchor-id="a-2d-spectrogram">A 2D spectrogram</h3>
+<p>Okay, so using this data, I can already do a basic plot in ggplot2 to make sure it looks good.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spec_tall, <span class="fu">aes</span>(sample, hz, <span class="at">color =</span> value)) <span class="sc">+</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">alpha =</span> <span class="fl">0.03</span>) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_c</span>(<span class="at">option =</span> <span class="st">"A"</span>) <span class="sc">+</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="spec_points.jpeg" class="img-fluid"></p>
+<p>It may not look like it, but that plot is made up of several hundred thousand dots. With that much data, a PDF would get huge since each dot has to be rendered individually. Since they all visually sort of blur together anyway, might as well simplify things and turn it into a 2D-density plot with <code>geom_raster</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spec_tall, <span class="fu">aes</span>(sample<span class="sc">/</span><span class="fu">max</span>(sample) <span class="sc">*</span> <span class="fl">0.83</span>, hz)) <span class="sc">+</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_raster</span>(<span class="fu">aes</span>(<span class="at">fill =</span> value), <span class="at">interpolate =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4500</span>)) <span class="sc">+</span> </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"A"</span>) <span class="sc">+</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"time (s)"</span>)<span class="sc">+</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="spec_raster.jpeg" class="img-fluid"></p>
+<p>The difference visually is relatively small, other than the colors being bolder. But rather than plotting individual points, this is a mosaic of tiles all arranged neatly to fill the space. So the underlying structure is quite different, and in this case, more appropriate for transforming into a 3D plot.</p>
+</section>
+<section id="a-3d-spectrogram" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="a-3d-spectrogram">A 3D spectrogram</h3>
+<p>Anyway, I’ve belabored the point for too long. Let’s now turn this into a 3D spectrogram!</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Took about a minute to render and save.</span></div></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_gg</span>(spec, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">3</span>, <span class="at">scale =</span> <span class="dv">300</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">windowsize =</span> <span class="fu">c</span>(<span class="dv">1000</span>, <span class="dv">800</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">fov =</span> <span class="dv">70</span>, <span class="at">zoom =</span> <span class="fl">0.6</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">theta =</span> <span class="dv">330</span>, <span class="at">phi =</span> <span class="dv">40</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">multicore =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">render_depth</span>(<span class="at">focus =</span> <span class="fl">0.68</span>, <span class="at">focallength =</span> <span class="dv">1</span>, <span class="at">filename =</span> <span class="st">"spec_3D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="spec_3D.png" class="img-fluid"></p>
+<p>I love this! There’s so much detail. I mean, you can really see the individual glottal pulses. Super cool.</p>
+<p>And now I’ll use the same code from before to make a super awesome video only this time I’ll make a slight change to the viewing angle.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Took about 2.5 minutes.</span></div></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>phivechalf <span class="ot">=</span> <span class="dv">45</span> <span class="sc">+</span> <span class="dv">45</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="fu">seq</span>(<span class="sc">-</span><span class="dv">7</span>, <span class="dv">20</span>, <span class="at">length.out =</span> <span class="dv">180</span>)<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>phivecfull <span class="ot">=</span> <span class="fu">c</span>(phivechalf, <span class="fu">rev</span>(phivechalf))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">render_movie</span>(<span class="at">filename =</span> <span class="st">"spec_plot_fancy"</span>, <span class="at">type =</span> <span class="st">"custom"</span>, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">frames =</span> <span class="dv">360</span>,  <span class="at">phi =</span> phivecfull, <span class="at">zoom =</span> zoomvecfull, <span class="at">theta =</span> thetavec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="spec_plot_fancy.mp4"></video></div>
+<p>Okay that is slick. I’m extremely impressed with the quality of this animation. <em>Especially</em> considering I know nothing about animation.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The rayshader package really is an impressive one and does so much work behind the scenes to make it easy for people to become amateur animators, at least with quantitative data. For right now, I’ll admit that I’m not exactly gleaning anything new from the visuals that I didn’t already know, but that doesn’t mean looking a wider variety of linguistic data using 3D animations like this won’t uncover something new. I can’t wait until my next conference presentation so I can see if I can weasel one of these in there somehow.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
+<script>videojs(video_shortcode_videojs_video3);</script>
+
+
+
+</body></html>
