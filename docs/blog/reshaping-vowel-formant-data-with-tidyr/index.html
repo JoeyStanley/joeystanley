@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2019-11-20">
+
+<title>Joey Stanley - Reshaping Vowel Formant Data with tidyr 1.0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Joey Stanley</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html" rel="" target="">
+ <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html" rel="" target="">
+ <span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Reshaping Vowel Formant Data with tidyr 1.0</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">How-to Guides</div>
+                <div class="quarto-category">Methods</div>
+                <div class="quarto-category">Phonetics</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Skills</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 20, 2019</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">November 23, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#prep-the-data" id="toc-prep-the-data" class="nav-link" data-scroll-target="#prep-the-data">Prep the data</a></li>
+  <li><a href="#one-row-per-token-f1-f2-single-point-plots" id="toc-one-row-per-token-f1-f2-single-point-plots" class="nav-link" data-scroll-target="#one-row-per-token-f1-f2-single-point-plots">One row per token: F1-F2 single-point plots</a></li>
+  <li><a href="#one-row-per-measurement-spectrogram-like-plots" id="toc-one-row-per-measurement-spectrogram-like-plots" class="nav-link" data-scroll-target="#one-row-per-measurement-spectrogram-like-plots">One row per measurement: Spectrogram-like plots</a></li>
+  <li><a href="#one-row-per-timepoint-trajectories-in-the-vowel-space" id="toc-one-row-per-timepoint-trajectories-in-the-vowel-space" class="nav-link" data-scroll-target="#one-row-per-timepoint-trajectories-in-the-vowel-space">One row per timepoint: Trajectories in the vowel space</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<p>Vowel trajectory data can be tricky to work with in R. Sometimes I need to reshape my data into specific format to make a particular type of visual, run some test, or calculate some number. And it can be frustrating. While it has always been possible to accomplish this task in R, with the <code>pivot_longer</code> function from latest version of <code>tidyr</code>, all this reshaping can be done in a single line of code! This post shows you how.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>To be clear, I understand the frustration that comes when trying to reshape your data. Here’s an actual tweet I posted a few years ago after several hours of wrangling.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+In any given project, I think I spend more time trying to figure out how to reshape, melt, and cast my data than anything else.
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/799076461013516291?ref_src=twsrc%5Etfw">November 17, 2016</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Some of you may be able to deduce that I was working with Hadley Wickham’s <code>reshape2</code> package, which had the functions <code>melt</code> and <code>cast</code>. In fact, I was so frustrated that I ended up hacking a solution in a Praat script(!) since I couldn’t figure out how do it in R. Fortunately for me, Wickham later released the <code>tidyr</code> package, sort of meant to replace <code>reshape2</code>, and included the functions <code>gather</code> and <code>spread</code>. With the help of the relevant section of <a href="https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering"><em>R for Data Science</em></a> I was able to learn to use these functions well and now I use them all the time.</p>
+<p>Well, <code>tidyr</code> has grown up and is now on version 1.0. Some people (not me though) didn’t find the names or syntax of <code>gather</code> and <code>spread</code> intuitive enough, so they were renamed <code>pivot_longer</code> and <code>pivot_wider</code>. But it was more than just a cosmetic change: these functions got some major modifications to make them far more powerful than they were before.</p>
+<p>Vowel trajectory data is complicated because we’ve got multiple formant measurements at multiple timepoints. You may also have multiple versions of the measurements, like normalized or transformed into Barks. If you’re working with this kind of data, you need to be comfortable with any sort of reshaping you need so that you can quickly and effectively do what you need to do with your data.</p>
+<p>Note that much of this blog post overlaps with my post on <a href="../../blog/making-vowel-plots-in-r-part-2">visualizing trajectory data</a>. That tutorial uses the old <code>gather</code> and <code>spread</code> functions. This post shows how to accomplish the same thing with the new <code>pivot_longer</code> function.</p>
+</section>
+<section id="prep-the-data" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="prep-the-data">Prep the data</h2>
+<p>First, we’ll need to make sure we’ve got the latest version of <code>tidyr</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="st">"tidyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’ll now load it, together with the rest of the tidyverse:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s start with a regular dataset. This is one that I’ve used in lots of my other blog posts. I sat at my kitchen table and read about 300 sentences. The audio was processed using DARLA’s fully automated option: it was automatically transcribed, then force-aligned with ProsodyLab (DARLA used ProsodyLab instead of the MFA back then), and then formants were automatically extracted using FAVE. Not the cleanest method, but it’s good enough for this post. My guess is that if you’ve used FAVE before, the output will look very similar to your own data.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Note that I’m using the <code>read_csv</code> function instead of <code>read.csv</code>. The one with the underscore will preserve the original column names, like <code>F1@20%</code>, even if it’s hard to work with them down the road. Meanwhile <code>read.csv</code> will replace troublesome characters with periods, so that <code>F1@20%</code> becomes <code>F1.20.</code>. I’ll use the underscore version in this post, which has ramifications for code later on. If things crash for you, check to see that you read your data in with <code>read_csv</code>.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>joey_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://joeystanley.com/data/joey.csv"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,504 × 43
+   name       sex   vowel stress pre_word word    fol_word    F1    F2 F3    
+   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
+ 1 LA000-Joey M     AY         1 THE      THAI    SP        826  1520. 2529.5
+ 2 LA000-Joey M     AY         1 SP       TIMER   SP        581. 1306  1835.6
+ 3 LA000-Joey M     ER         0 SP       TIMER   SP        484. 1449. 1644.6
+ 4 LA000-Joey M     IY         1 SP       HERE    WE'LL     235. 2044. 3106.3
+ 5 LA000-Joey M     IY         1 HERE     WE'LL   SP        302. 1974. 2549.5
+ 6 LA000-Joey M     AA         1 SP       BARRING INJURY    573.  925. 2296.1
+ 7 LA000-Joey M     IH         1 BARRING  INJURY  OR        362. 2262. 2591.2
+ 8 LA000-Joey M     IY         0 BARRING  INJURY  OR        258. 2222. 3197.5
+ 9 LA000-Joey M     ER         0 INJURY   OR      A         370.  872. 1654.5
+10 LA000-Joey M     EY         1 A        CHANGE  OF        428. 2210. 2531.2
+# ℹ 3,494 more rows
+# ℹ 33 more variables: F1_LobanovNormed_unscaled &lt;dbl&gt;,
+#   F2_LobanovNormed_unscaled &lt;dbl&gt;, B1 &lt;dbl&gt;, B2 &lt;dbl&gt;, B3 &lt;chr&gt;, t &lt;dbl&gt;,
+#   beg &lt;dbl&gt;, end &lt;dbl&gt;, dur &lt;dbl&gt;, plt_vclass &lt;chr&gt;, plt_manner &lt;chr&gt;,
+#   plt_place &lt;chr&gt;, plt_voice &lt;chr&gt;, plt_preseg &lt;chr&gt;, plt_folseq &lt;chr&gt;,
+#   pre_seg &lt;chr&gt;, fol_seg &lt;chr&gt;, context &lt;chr&gt;, vowel_index &lt;dbl&gt;,
+#   pre_word_trans &lt;chr&gt;, word_trans &lt;chr&gt;, fol_word_trans &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>For now, I’m going to make the dataset smaller so it’s easier to work with:</p>
+<ul>
+<li><p>First, I’ll use <code>filter</code> to exclude some stuff out based on linguistic criteria: only stressed vowels, all vowels <em>except</em> diphthongs and /ɚ/, and vowels that are <em>not</em> followed by a sonorant.</p></li>
+<li><p>Then I’ll use <code>select</code> to keep just the columns I need in this tutorial. Today, I’ll just need the columns containing information about the vowel, the word, the time, and all the formant measurements. As a shorthand, I use the function <code>contains</code> and then the string <code>"@"</code> to get all the columns that contain the @ symbol. This <code>contains</code> shortcut saves a lot of typing and ensures I don’t miss any.</p></li>
+<li><p>Then, because I don’t want an overly large dataset, I’ll just keep the first 25 tokens of each vowel. First, I use <code>group_by</code> to group the data by vowel, then I use <code>top_n</code> to keep the top 25 vowels, with the <code>t</code> column specified to make sure that they’re the first 25 based on time. Then since I’m done grouping them, I’ll use <code>ungroup</code>.</p></li>
+</ul>
+<p>The final result is a dataframe with 275 rows and 13 columns. Much more manageable than the 3504 rows and 43 columns I had before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>joey <span class="ot">&lt;-</span> joey_raw <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>, <span class="st">"ER"</span>), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"L"</span>, <span class="st">"M"</span>, <span class="st">"N"</span>, <span class="st">"NG"</span>, <span class="st">"Y"</span>, <span class="st">"W"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vowel, word, t, <span class="fu">contains</span>(<span class="st">"@"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">25</span>, t) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 275 × 13
+   vowel word           t `F1@20%` `F2@20%` `F1@35%` `F2@35%` `F1@50%` `F2@50%`
+   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1 AO    CROSSING    623.     379.     942.     426      950.     534.     978.
+ 2 AO    WASHINGTON  703.     609.     937.     612.     940      630.     996.
+ 3 AO    COST        738.     871.    1398.     862.    1371.     637.    1040.
+ 4 AO    FROST       771.     564.    1034.     621.    1046.     283.    1016 
+ 5 UH    LOOKED      885.     439.    1074.     436.    1082.     380.    1210.
+ 6 AH    COUPLE      891.     405.    1316.     405.    1316.     492.    1236.
+ 7 AH    OTHER       899.     402.    1298      407.    1281.     481.    1103.
+ 8 AO    CROSS       904.     630.    1094      611.    1106      595.    1124 
+ 9 UH    GOOD        908.     388.    1525.     362.    1518.     376.    1466.
+10 AH    OTHER       910.     466.    2088.     960.    1743.     475.    1340.
+# ℹ 265 more rows
+# ℹ 4 more variables: `F1@65%` &lt;dbl&gt;, `F2@65%` &lt;dbl&gt;, `F1@80%` &lt;dbl&gt;,
+#   `F2@80%` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="one-row-per-token-f1-f2-single-point-plots" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="one-row-per-token-f1-f2-single-point-plots">One row per token: F1-F2 single-point plots</h2>
+<p>Let’s pause for a second and think about how our data is structured. We have 275 rows in our spreadsheet. What does each row represent? A single vowel token. We have 10 formant measurements per token, each in its own column.</p>
+<p>What is this type of data good for? Well, it’s perfect for if you want to make F1-F2 plots and you only want to point a single point per token.</p>
+<p>Here’s a simple plot with this data. I’ll only plot the midpoints. There are some outliers—probably bad measurements—but that’s the nature of automatically processed data. In a later blog post, I’ll show some ways to filter those out.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">Notice that I’ve got the little tick marks (`) around <code>F2@50%</code> and <code>F1@50%</code>. Since the <code>@</code> and <code>%</code> symbols are hard to work with in R, you have to use the ticks when referring to a column name that includes them.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joey, <span class="fu">aes</span>(<span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="at">color =</span> vowel)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So, if all you need to do is make that kind of plot, then you’re golden and you don’t need to reshape the data at all. The downside is that if you want to work with trajectories, you can’t really visualize them very well.</p>
+</section>
+<section id="one-row-per-measurement-spectrogram-like-plots" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="one-row-per-measurement-spectrogram-like-plots">One row per measurement: Spectrogram-like plots</h2>
+<p>As it turns out, you can store the exact same data using very different structures. The previous section looked at plots when the data was in a one-token-per-row format. It had 275 rows and 13 columns. We can reshape this data so that each individual formant measurement gets is own row. Basically, we’re collapsing all those <code>F1@20%</code>, <code>F2@20%</code> columns down into one. Here’s what that looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,750 x 5</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel word         t formant_percent    hz</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 AO    CROSSING  623. F1@20%           379.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 AO    CROSSING  623. F2@20%           942.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 AO    CROSSING  623. F1@35%           426 </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 AO    CROSSING  623. F2@35%           950.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 AO    CROSSING  623. F1@50%           534.</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 AO    CROSSING  623. F2@50%           978.</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 AO    CROSSING  623. F1@65%           548.</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 AO    CROSSING  623. F2@65%          1018.</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 AO    CROSSING  623. F1@80%           534.</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 AO    CROSSING  623. F2@80%          1037.</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,740 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that a new column, <code>formant_percent</code> contains the column names <code>F1@20%</code>, <code>F2@20%</code>, etc. In corresponding rows, we have the actual formant measurement in the <code>hz</code> column. This is the exact same data, only now we have 2,750 rows of just 5 columns.</p>
+<p>So how do we do this transformation—and can we clean it up a little bit better?</p>
+<p>In a <a href="../../blog/making-vowel-plots-in-r-part-2">previous tutorial</a>, I show how to accomplish this task using <code>tidyr::gather</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(formant_percent, hz, <span class="fu">contains</span>(<span class="st">"@"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,750 × 5
+   vowel word           t formant_percent    hz
+   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
+ 1 AO    CROSSING    623. F1@20%           379.
+ 2 AO    WASHINGTON  703. F1@20%           609.
+ 3 AO    COST        738. F1@20%           871.
+ 4 AO    FROST       771. F1@20%           564.
+ 5 UH    LOOKED      885. F1@20%           439.
+ 6 AH    COUPLE      891. F1@20%           405.
+ 7 AH    OTHER       899. F1@20%           402.
+ 8 AO    CROSS       904. F1@20%           630.
+ 9 UH    GOOD        908. F1@20%           388.
+10 AH    OTHER       910. F1@20%           466.
+# ℹ 2,740 more rows</code></pre>
+</div>
+</div>
+<p>This method is not obsolete <em>per se</em>, but the <code>gather</code> function is considered “retired” because a new and improved function, <code>pivot_longer</code>, can get the job done better. It is recommended that new code use <code>pivot_longer</code> instead of <code>gather</code> now. If you’d like to learn more about <code>pivot_longer</code>, check out the <a href="https://tidyr.tidyverse.org/articles/pivot.html">vignette on pivoting</a>. I’ll just go over some of the most relevant details here.</p>
+<p>So, if you’re like me and are very used to <code>gather</code>, you can mimic its syntax pretty well with <code>pivot_longer</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,750 × 5
+   vowel word         t formant_percent    hz
+   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
+ 1 AO    CROSSING  623. F1@20%           379.
+ 2 AO    CROSSING  623. F2@20%           942.
+ 3 AO    CROSSING  623. F1@35%           426 
+ 4 AO    CROSSING  623. F2@35%           950.
+ 5 AO    CROSSING  623. F1@50%           534.
+ 6 AO    CROSSING  623. F2@50%           978.
+ 7 AO    CROSSING  623. F1@65%           548.
+ 8 AO    CROSSING  623. F2@65%          1018.
+ 9 AO    CROSSING  623. F1@80%           534.
+10 AO    CROSSING  623. F2@80%          1037.
+# ℹ 2,740 more rows</code></pre>
+</div>
+</div>
+<p>But it turns out that <code>pivot_longer</code> has some pretty awesome additional functionality that <code>gather</code> didn’t have!</p>
+<div class="page-columns page-full"><p> First off, we shouldn’t be satisfied with the <code>formant_percent</code> column. It’s a single column containing two pieces of information: what formant the measurement is, and how far into the vowel’s duration it came from. If you want, you can easily split the two up using <code>separate</code>.</p><div class="no-row-height column-margin column-container"><span class=""><code>separate</code> has actually now been replaced by <code>separate_wider_position</code> and <code>separate_wider_delim</code>.</span></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(formant_percent, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">extra =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,750 × 6
+   vowel word         t formant percent    hz
+   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
+ 1 AO    CROSSING  623. F1      20       379.
+ 2 AO    CROSSING  623. F2      20       942.
+ 3 AO    CROSSING  623. F1      35       426 
+ 4 AO    CROSSING  623. F2      35       950.
+ 5 AO    CROSSING  623. F1      50       534.
+ 6 AO    CROSSING  623. F2      50       978.
+ 7 AO    CROSSING  623. F1      65       548.
+ 8 AO    CROSSING  623. F2      65      1018.
+ 9 AO    CROSSING  623. F1      80       534.
+10 AO    CROSSING  623. F2      80      1037.
+# ℹ 2,740 more rows</code></pre>
+</div>
+</div>
+<p>However, you can now incorporate that separation into the <code>pivot_longer</code> itself! One potential way to do it is by using the <code>names_sep</code> argument. You provide the string that separates the eventual column names and it’ll take care of splitting it up.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_sep =</span> <span class="st">"@"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,750 × 6
+   vowel word         t formant percent    hz
+   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
+ 1 AO    CROSSING  623. F1      20%      379.
+ 2 AO    CROSSING  623. F2      20%      942.
+ 3 AO    CROSSING  623. F1      35%      426 
+ 4 AO    CROSSING  623. F2      35%      950.
+ 5 AO    CROSSING  623. F1      50%      534.
+ 6 AO    CROSSING  623. F2      50%      978.
+ 7 AO    CROSSING  623. F1      65%      548.
+ 8 AO    CROSSING  623. F2      65%     1018.
+ 9 AO    CROSSING  623. F1      80%      534.
+10 AO    CROSSING  623. F2      80%     1037.
+# ℹ 2,740 more rows</code></pre>
+</div>
+</div>
+<p>But this is a little problematic because the values in <code>percent</code> column still have the “%” symbol attached. With <code>separate</code> we could just toss it with <code>extra = "drop"</code> but it doesn’t look so easy with <code>pivot_longer</code>.</p>
+<p>Fortunately, <code>pivot_longer</code> has a more sophisticated way to separate columns. Instead of <code>names_sep</code>, we can use <code>names_pattern</code>. Here, we use what’s called a <em>regular expression</em> to capture the necessary groups within the old column names. So, if we think about all our column names <code>F1@20%</code>, <code>F2@20%</code>, <code>F1@35%</code>, etc. we can see that the “template” is “F#@##%”—that is, an <em>F</em> followed by a number, then the @ symbol, two numbers, and then the % symbol. So, knowing that <code>\\d</code> is the regular expression for a digit, we can use the search pattern <code>"(F\\d)@(\\d\\d)%"</code> to represent our column names. The crucial part here is that we have the information we want to keep, <code>F\\d</code> and <code>\\d\\d</code>, in parentheses. <code>pivot_longer</code> will then use those captured groups as new column names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,750 × 6
+   vowel word         t formant percent    hz
+   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
+ 1 AO    CROSSING  623. F1      20       379.
+ 2 AO    CROSSING  623. F2      20       942.
+ 3 AO    CROSSING  623. F1      35       426 
+ 4 AO    CROSSING  623. F2      35       950.
+ 5 AO    CROSSING  623. F1      50       534.
+ 6 AO    CROSSING  623. F2      50       978.
+ 7 AO    CROSSING  623. F1      65       548.
+ 8 AO    CROSSING  623. F2      65      1018.
+ 9 AO    CROSSING  623. F1      80       534.
+10 AO    CROSSING  623. F2      80      1037.
+# ℹ 2,740 more rows</code></pre>
+</div>
+</div>
+<p>And like magic, the 10 columns in the old dataset are turned into tidy <code>formant</code> and <code>percent</code> columns.</p>
+<p>There’s one more thing that can be done, if you’d like. By default, <code>pivot_longer</code> will make these new columns into character vectors. In our case, we may want to turn them into factors and numeric vectors.</p>
+<p>We can specify this with the <code>names_ptypes</code> argument. As its value, we provide a list of the column names and then how they should be encoded. For <code>formant</code>, I’m turning it into a factor, making sure to specify that the order of the levels goes “F1” first and then “F2”. For the <code>percent</code> column, R doens’t like going directly from a character type to a numeric, so you’ll have to do this more directly using <code>names_transform</code> rather than <code>names_ptypes</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,750 × 6
+   vowel word         t formant percent    hz
+   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
+ 1 AO    CROSSING  623. F1           20  379.
+ 2 AO    CROSSING  623. F2           20  942.
+ 3 AO    CROSSING  623. F1           35  426 
+ 4 AO    CROSSING  623. F2           35  950.
+ 5 AO    CROSSING  623. F1           50  534.
+ 6 AO    CROSSING  623. F2           50  978.
+ 7 AO    CROSSING  623. F1           65  548.
+ 8 AO    CROSSING  623. F2           65 1018.
+ 9 AO    CROSSING  623. F1           80  534.
+10 AO    CROSSING  623. F2           80 1037.
+# ℹ 2,740 more rows</code></pre>
+</div>
+</div>
+<p>When these are all incorporated into <code>pivot_longer</code>, we get a single function call that takes care of everything. Before, I had to do <code>gather</code>, then <code>separate</code>, and then <code>mutate</code> to change the column types. So this is a lot handier.</p>
+<p>The reason you might want to do all this is because this format is ideal if you want to to a spectrogram-like plot. Here’s what would happen if you tried one right now:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, hz, <span class="at">color =</span> formant, <span class="at">group =</span> t)) <span class="sc">+</span> </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Unfortunately, we need to do a <em>little</em> more data processing. The key is what <code>ggplot</code> uses as the <code>group</code> variable. We some column that will contain a unique value per line. Right now, we’re close: we have a unique value (<code>t</code>) for each vowel token. But there are 10 rows per vowel token, corresponding to the five measurements for F1 and F2. We need to create a new column that will uniquely identify each formant for each vowel token.</p>
+<p>The simplest way I know is to just use the <code>unite</code> function. It simply combines two columns into one by concatenating the values together. We have the two columns we need, <code>t</code> and <code>formant</code>, so I’ll combine them to create <code>traj_id</code>. I’ll also add <code>remove = FALSE</code> because I want to keep the original ones (so that I can color the lines by formant). When I set this <code>traj_id</code> as the group variable, it works just as expected.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(traj_id, t, formant, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, hz, <span class="at">color =</span> formant, <span class="at">group =</span> traj_id)) <span class="sc">+</span> </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Two comments on this. First, if you have more than one recording, you’ll want to use a different variable than <code>t</code> to uniquely identify tokens. After all, it’s possible that two tokens from two different recordings will have the exact same time measurement. One solution is to combine three variables (speaker, time, and formant), which will work just fine. I like to just create a new column to give each token a unique id. I’ll do that with <code>rowid_to_column</code> and call the new column <code>id</code>, which I’ll do before <code>pivot_longer</code> since the data is still in the one-token-per-row format. I’ll then create <code>traj_id</code> with <code>id</code> and <code>formant</code>.</p>
+<p>Also, I’ll go ahead and facet the plot by vowel so you can see the individual vowel curves.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowid_to_column</span>(<span class="st">"id"</span>) <span class="sc">%&gt;%</span> <span class="co"># &lt;- this is the new line</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(traj_id, id, formant, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, hz, <span class="at">color =</span> formant, <span class="at">group =</span> traj_id)) <span class="sc">+</span> </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>vowel) <span class="sc">+</span> </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So, if you’re interested in plotting vowel trajectories this way, then you’ll need to reshape the data a bit to get it to work. The downside is that if you want to plot these in the F1-F2 space, you’ll have to do yet another technique.</p>
+</section>
+<section id="one-row-per-timepoint-trajectories-in-the-vowel-space" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="one-row-per-timepoint-trajectories-in-the-vowel-space">One row per timepoint: Trajectories in the vowel space</h2>
+<p>The last main way that you may need to reshape your data is similar to the one-row-per-measurement, except we want F1 and F2 pairs to be on the same row. I’m calling this one the one-row-per-timepoint. Here’s what this format looks like. It’s very similar except F1 ad F2 are spread out into two different columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,375 x 6</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel word           t percent    F1    F2</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 AO    CROSSING    623.      20  379.  942.</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 AO    CROSSING    623.      35  426   950.</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 AO    CROSSING    623.      50  534.  978.</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 AO    CROSSING    623.      65  548. 1018.</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 AO    CROSSING    623.      80  534. 1037.</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 AO    WASHINGTON  703.      20  609.  937.</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 AO    WASHINGTON  703.      35  612.  940 </span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 AO    WASHINGTON  703.      50  630.  996.</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 AO    WASHINGTON  703.      65  627. 1074.</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 AO    WASHINGTON  703.      80  612. 1080.</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,365 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In a <a href="../../blog/making-vowel-plots-in-r-part-2">previous tutorial</a>, I show how to accomplish this task using <code>gather</code>, then <code>separate</code>, and then <code>spread</code> all in a row. It was a whole ordeal.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">"formant_percent"</span>, <span class="st">"hz"</span>, <span class="fu">starts_with</span>(<span class="st">"F"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(formant_percent, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), <span class="at">extra =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(formant, hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,375 × 6
+   vowel word        t percent    F1    F2
+   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+ 1 AA    ADOPTED 1622. 20       498  1621.
+ 2 AA    ADOPTED 1622. 35       609. 1382.
+ 3 AA    ADOPTED 1622. 50       658. 1184.
+ 4 AA    ADOPTED 1622. 65       683. 1160.
+ 5 AA    ADOPTED 1622. 80       554. 1237.
+ 6 AA    BODY    1785. 20       430. 1149.
+ 7 AA    BODY    1785. 35       585. 1054.
+ 8 AA    BODY    1785. 50       683. 1103.
+ 9 AA    BODY    1785. 65       632. 1169.
+10 AA    BODY    1785. 80       597. 1253.
+# ℹ 1,365 more rows</code></pre>
+</div>
+</div>
+<p>It worked, but three functions was cumbersome and complicated. I even put a note in that tutorial saying it took me forever to figure out how to do that. I had to do it so often that I even wrote a custom function to accomplish it and just had it at the top of all my scripts.</p>
+<p>Using the new <code>pivot_longer</code> function, here’s one way that closely approximates my old code. I use the same <code>pivot_longer</code> to make it in the one-measurement-per-row format we had before and then I use the inverse function, <code>pivot_wider</code>, to spread it back out a little bit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,375 × 6
+   vowel word           t percent    F1    F2
+   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 AO    CROSSING    623.      20  379.  942.
+ 2 AO    CROSSING    623.      35  426   950.
+ 3 AO    CROSSING    623.      50  534.  978.
+ 4 AO    CROSSING    623.      65  548. 1018.
+ 5 AO    CROSSING    623.      80  534. 1037.
+ 6 AO    WASHINGTON  703.      20  609.  937.
+ 7 AO    WASHINGTON  703.      35  612.  940 
+ 8 AO    WASHINGTON  703.      50  630.  996.
+ 9 AO    WASHINGTON  703.      65  627. 1074.
+10 AO    WASHINGTON  703.      80  612. 1080.
+# ℹ 1,365 more rows</code></pre>
+</div>
+</div>
+<p>Believe it or not though, <code>pivot_longer</code> can accomplish this in just one function call now. It’s incredible. If you look at the code in the pivot vignette, specifically in the section called <a href="https://tidyr.tidyverse.org/articles/pivot.html#multiple-observations-per-row">“Multiple observations per row”</a>, you’ll see an example using a dataset called <code>anscombe</code>. This is structurally very similar to our original data frame.</p>
+<p>The way you pull this off I swear is black magic. In the <code>names_to</code> argument, instead of <code>"formant"</code>, if you just type the keyword <code>".value"</code> (with the period), it will somehow know to spread F1 and F2 into separate columns. Try it!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,375 × 6
+   vowel word           t percent    F1    F2
+   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 AO    CROSSING    623.      20  379.  942.
+ 2 AO    CROSSING    623.      35  426   950.
+ 3 AO    CROSSING    623.      50  534.  978.
+ 4 AO    CROSSING    623.      65  548. 1018.
+ 5 AO    CROSSING    623.      80  534. 1037.
+ 6 AO    WASHINGTON  703.      20  609.  937.
+ 7 AO    WASHINGTON  703.      35  612.  940 
+ 8 AO    WASHINGTON  703.      50  630.  996.
+ 9 AO    WASHINGTON  703.      65  627. 1074.
+10 AO    WASHINGTON  703.      80  612. 1080.
+# ℹ 1,365 more rows</code></pre>
+</div>
+</div>
+<div class="page-columns page-full"><p> I’m still trying to wrap my head around it, but it works beautifully. Of course now that there’s no intermediate step of the <code>hz</code> column, I don’t need the <code>values_to = "hz"</code> argument, and I don’t need to include the <code>names_ptype</code> list anymore either.</p><div class="no-row-height column-margin column-container"><span class="">Try swapping “percent” for “.value” instead and see what it does.</span></div></div>
+<p>I guess the question then is why we would want to do this in the first place. The main reason is because you may want to create trajectory plots in the F1-F2 space. This data is now perfectly suited for that kind of plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">group =</span> t)) <span class="sc">+</span> </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>vowel) <span class="sc">+</span> </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>I never said it’d be pretty, but that is the plot. You can of course incorporate whatever you want into the pipeline after you’ve reshaped. Here I get mean trajectories per vowel and pick some vowels to be colored a certain way. In the <code>ggplot</code>, the <code>t</code> column no longer exists, but since we just have one trajectory per vowel, we can use <code>vowel</code> as the <code>group</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reshape</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"percent"</span>), </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>,</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel, percent) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional processing</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize_at</span>(<span class="fu">vars</span>(F1, F2), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">is_AE =</span> vowel <span class="sc">==</span> <span class="st">"AE"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">group =</span> vowel, <span class="at">color =</span> is_AE)) <span class="sc">+</span> </span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle =</span> <span class="dv">10</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.5</span>, <span class="st">"cm"</span>), <span class="at">type =</span> <span class="st">"closed"</span>)) <span class="sc">+</span> </span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">TRUE</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"maroon"</span>, <span class="st">`</span><span class="at">FALSE</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"gray75"</span>)) <span class="sc">+</span> </span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TRAP in the context of my vowel space"</span>) <span class="sc">+</span> </span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>(If you’re looking to add labels to the plot, check out my <a href="../../blog/making-vowel-plots-in-r-part-2">previous tutorial</a>, which shows how to do that.)</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>If you’re able to quickly identify what format you data needs to be in and then seamlessly reshape from one structure to another, it will make your life a <em>lot</em> easier. I reshape my data all the time: it’s not just visualizations that rely on a specific format, but things like normalization and outlier detection are much easier when the data is structured a certain way. These are good skills to learn and I highly encourage you to have them under your fingertips.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
