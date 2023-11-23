@@ -15,9 +15,9 @@ I built my old website in September 2016. I had a research assistantship at the 
 
 However, it got a bit unwieldy. The blog was organized just fine, but I also added pages here and there to go along with workshops and other presentations I gave. It got more confusing when I gave the same workshop a second time and had multiple similar pages floating around. Since I didn't foresee some of these additions, its growth was reminiscent of unplanned suburban sprawl. For examples, sometimes images were just dumped into a folder, others were better organized. Non-blog pages were hidden and were sometimes a top-level page and other times within a dedicated subdirectory. Each individual addition wasn't a big deal, but once I stepped back and looked at it all, it was a mess.
 
-The format of my tutorials wasn't consistent either. I have lots of handouts on my website, tucked away here and there. If they were associated with a workshop, they were separate R Markdown files that didn't fit in with the rest of the site. Some of my earliest ones are PDFs of Word files!If they weren't associated with a workshop, they're regular blog posts. But because the site wasn't connected to R, I had to do a *lot* of copying and pasting R Markdown code and careful insertion of images to get those tutorials to look right. In some cases, the extra work made it possible to do things like syntax highlighting in Praat and highlighting specific lines of code. But that was all done by manually inserting HTML tags and updating my CSS.
+The format of my tutorials wasn't consistent either. I have lots of handouts on my website, tucked away here and there. If they were associated with a workshop, they were separate R Markdown files that didn't fit in with the rest of the site. Some of my earliest ones are PDFs of Word files! If they weren't associated with a workshop, they're regular blog posts. But because the site wasn't connected to R, I had to do a *lot* of copying and pasting R Markdown code and careful insertion of images to get those tutorials to look right. In some cases, the extra work made it possible to do things like syntax highlighting in Praat and highlighting specific lines of code. But that was all done by manually inserting HTML tags and updating my CSS.
 
-Also, as careful as I was about my CSS, it wasn't perfect. I think there were some issues if like a list had only one element, and there were things with hyperlinks. Some one-off portions of blogs or tutorials sometimes didn't look right. I had a disclaimer at the top of every page, something like, "This website is built from scratch. Pardon the flaws; I am not a web designer." Which was a humble brag if anything. But as the site grew I didn't want to change the CSS because it might change some blog post from years ago in unexpected ways.
+Also, as careful as I was about my CSS, it wasn't perfect. I think there were some issues if like a list had only one element, and there were things with hyperlinks. Some one-off portions of blogs or tutorials sometimes didn't look right. I had a disclaimer at the bottom of every page, saying something like, "This website is built from scratch. Pardon the flaws; I am not a web designer." Which was a humble brag if anything. But as the site grew I didn't want to change the CSS because it might change some blog post from years ago in unexpected ways.
 
 Ultimately, I didn't mind the mess because it's what made my site unique. But, what made me finally decide to migrate to Quarto was the underlying architecture. It was built using Jekyll, which involves a programming language called Ruby in some way. After seven years I still have no idea what either of those are. I did this because it's what the tutorial I followed used. When the site worked, it was great. But sometimes, the Ruby dependencies (called "gems") would update or break or whatever and I had to google around trying to find a fix. I had no idea what I was doing and it led to a lot of frustrated late nights trying to get my website up and running again.
 
@@ -29,12 +29,23 @@ So, I've gradually built up to web development in R over the years and Quarto se
 
 I'm doing this page by page. Here's the order I took:
 
--   My homepage and any links on it. I didn't clean up the linked pages, but at least there weren't any dead links.
--   My blogs.
+* My homepage and any links on it. I didn't clean up the linked pages, but at least there weren't any dead links.
+* My blog posts
+  - I started with some of my earliest ones because they were the simplest.
+  - Then moved on to any conference or paper announcement. As part of that, I also transferred the associated slides, papers, and other files.
+  - I then finished any non-tutorial posts. 
+  - I saved the tutorials for last because they would take the most time. Fortunately, it wasn't too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.
+* Other miscellaneous pages
+
+This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.
+
+It was kinda fun to read through some of my old posts. In some cases, I added marginalia that basically pointed out how silly I was several years ago. I don't think many people visit those early blog posts, so no one's going to see them anyway. 
+
+
 
 ## Things that are the same
 
-I've tried to keep as much of the original structure of the site the same as I could. However, as I migrate
+I've tried to keep as much of the original structure of the site the same as I could. However, as I migrated, I realized that I could make things overall a bit more contained by changing the structure of associated files. 
 
 ## Changes
 
@@ -65,4 +76,9 @@ Here's a list of the changes I've made.
 
     It shouldn't affect any urls to existing blog posts because the url `blog/blog post 1` in the old format would go to the `blog post 1.md` file and in the new one it'll go to the `blog post 1` directory, which'll display `index.qmd` by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn't want those urls to break. I think this'll work *and* it'll keep the site better organized.
 
-- Within each post, I need to update the header. I change from "tags" to "categories", from "redirect_from" to "aliases." I add a date-modified if needed. I remove excerpts because I only used them with my "big-link" style button. I'm replacing big-links with a standard callout box. I haven't figured out if I can do redirects-to, which is a bummer for the GSV.
+- Within each post, I needed to update the header. I change from "tags" to "categories", from "redirect_from" to "aliases." I add a date-modified if needed. I remove excerpts because I only used them with my "big-link" style button. I'm replacing big-links with a standard callout box. I haven't figured out if I can do redirects-to, which is a bummer for the GSV.
+
+
+TODO
+* Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.
+
