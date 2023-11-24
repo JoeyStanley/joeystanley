@@ -26,13 +26,6 @@ p a:hover {
 
 
 
-.caption {
-	font-size: 90%; 
-	margin:auto;
-	font-style: italic;
-}
-
-
 
 /* Center Images*/
 img {
@@ -75,3 +68,42 @@ pre.praat {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 } 
+
+
+
+
+
+/* ########################################## */
+/*                   Tables                   */
+/* ########################################## */
+
+
+#wells {
+	font-size: 95%;
+	text-align: center;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+/* Bottom border on header row */
+#wells th {
+	border-bottom: 1px solid black;
+}
+
+/* Small caps and lowercase */
+table .sc {
+	font-variant: small-caps;
+}
+table .lc {
+	font-variant: normal;
+}
+
+.caption {
+	font-size: 90%; 
+	margin:auto;
+	font-style: italic;
+}
+
+.center {
+	text-align: center;
+}
