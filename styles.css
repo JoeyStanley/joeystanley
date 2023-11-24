@@ -26,6 +26,13 @@ p a:hover {
 
 
 
+.caption {
+	font-size: 90%; 
+	margin:auto;
+	font-style: italic;
+}
+
+
 
 /* Center Images*/
 img {
