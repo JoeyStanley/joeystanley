@@ -1,0 +1,263 @@
+---
+layout: post
+title:  "Thoughts on Allophonic Extensions to Wells' Lexical Sets"
+date:   2019-12-19 01:52:00 -0400
+categories: 
+  - Lexical Sets 
+  - Methods
+---
+
+In a previous post called ["Why do people use <sc>bat</sc> instead of <sc>trap</sc>"](/blog/why-do-people-use-bat-instead-of-trap), I wrote a little bit about the Wells Lexical sets (<sc>fleece</sc>, <sc>trap</sc>, <sc>thought</sc>, etc.), a competing set (<sc>beet</sc>, <sc>bat</sc>, <sc>bought</sc>, etc.), and why I think Wells' original labels are better. In this post, I continue my musings on Wells' inspired labels for lexical sets, only this time I focus on those used for specific allophones of vowels (<sc>ban</sc>, <sc>pin</sc>, <sc>toot</sc>, etc.). I point out several issues that have arisen over the years and offer some solutions that may make future papers more consistent and less confusing.
+
+## The need for labels for allophones
+
+As explained [previously](/blog/why-do-people-use-bat-instead-of-trap), John C. Wells came up with some labels as a shorthand to refer to words [John C. Wells. 1982. *Accents of English: Vol 1*. p. xviii.]{.aside}"which tend to share the same vowel, and to the vowel which they share." These labels, traditionally notated in <sc>small capitals</sc>, are carefully selected words that don't form minimal pairs with another words so that there is no confusion as to which vowel is being referred to when spoken. 
+
+<table id="wells">
+    <thead style="text-align: left;">
+        <tr>
+            <th>RP&nbsp;</th>
+            <th>GenAm</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody style="text-align: left;">
+        <tr>
+            <td>ɪ</td>
+            <td>ɪ</td>
+            <td>1.</td>
+            <td><sc>kit</sc></td>
+            <td>ship, sick, bridge, milk, myth, busy…</td>
+        </tr>
+        <tr>
+            <td>e</td>
+            <td>ɛ</td>
+            <td>2.</td>
+            <td><sc>dress</sc></td>
+            <td>step, neck, edge, shelf, friend, ready…</td>
+        </tr>
+        <tr>
+            <td>æ</td>
+            <td>æ</td>
+            <td>3.</td>
+            <td><sc>trap</sc></td>
+            <td>tap, back, badge, scalp, hand, cancel…</td>
+        </tr>
+        <tr>
+            <td>ɒ</td>
+            <td>ɑ</td>
+            <td>4.</td>
+            <td><sc>lot</sc></td>
+            <td>stop, sock, dodge, rmp, possible, quality…</td>
+        </tr>
+        <tr>
+            <td>ʌ</td>
+            <td>ʌ</td>
+            <td>5.</td>
+            <td><sc>strut</sc></td>
+            <td>cup, suck, budge, pulse, trunk, blood…</td>
+        </tr>
+        <tr>
+            <td>ʊ</td>
+            <td>ʊ</td>
+            <td>6.</td>
+            <td><sc>foot</sc></td>
+            <td>put, bush, full, good, look, wolf…</td>
+        </tr>
+        <tr>
+            <td>ɑː</td>
+            <td>æ</td>
+            <td>7.</td>
+            <td><sc>bath</sc></td>
+            <td>staff, brass, ask, dance, sample, calf…</td>
+        </tr>
+        <tr>
+            <td>ɒ</td>
+            <td>ɔ</td>
+            <td>8.</td>
+            <td><sc>cloth</sc></td>
+            <td>cough, broth, cross, long, Boston…</td>
+        </tr>
+        <tr>
+            <td>ɜː</td>
+            <td>ɜr</td>
+            <td>9.</td>
+            <td><sc>nurse</sc></td>
+            <td>hurt, lurk, urge, burst, jerk, term…</td>
+        </tr>
+        <tr>
+            <td>iː</td>
+            <td>u</td>
+            <td>10.</td>
+            <td><sc>fleece</sc></td>
+            <td>creep, speak, leave, feel, key, people…</td>
+        </tr>
+        <tr>
+            <td>eɪ</td>
+            <td>eɪ</td>
+            <td>11.</td>
+            <td><sc>face</sc></td>
+            <td>tape, cake, raid, veil, steak, day…</td>
+        </tr>
+        <tr>
+            <td>ɑː</td>
+            <td>ɑ</td>
+            <td>12.</td>
+            <td><sc>palm</sc></td>
+            <td>psalm, father, bra, spa, lager…</td>
+        </tr>
+        <tr>
+            <td>ɔː</td>
+            <td>ɔ</td>
+            <td>13.</td>
+            <td><sc>thought</sc></td>
+            <td>taught, sauce, hawk, jaw, broad…</td>
+        </tr>
+        <tr>
+            <td>əʊ</td>
+            <td>o</td>
+            <td>14.</td>
+            <td><sc>goat</sc></td>
+            <td>soap, joke, home, know, so, roll…</td>
+        </tr>
+        <tr>
+            <td>uː</td>
+            <td>u</td>
+            <td>15.</td>
+            <td><sc>goose</sc></td>
+            <td>loop, shoot, tomb, mute, huge, view…</td>
+        </tr>
+        <tr>
+            <td>aɪ</td>
+            <td>aɪ</td>
+            <td>16.</td>
+            <td><sc>price</sc></td>
+            <td>ripe, write, arrive, high, try, buy…</td>
+        </tr>
+        <tr>
+            <td>ɔɪ</td>
+            <td>ɔɪ</td>
+            <td>17.</td>
+            <td><sc>choice</sc></td>
+            <td>adroit, noise, join, toy, royal…</td>
+        </tr>
+        <tr>
+            <td>aʊ</td>
+            <td>aʊ</td>
+            <td>18.</td>
+            <td><sc>mouth</sc></td>
+            <td>out, house, loud, count, crowd, cow…</td>
+        </tr>
+        <tr>
+            <td>ɪə</td>
+            <td>ɪ(r</td>
+            <td>19.</td>
+            <td><sc>near</sc></td>
+            <td>beer, sincere, fear, beard, serum…</td>
+        </tr>
+        <tr>
+            <td>ɛə</td>
+            <td>ɛ(r</td>
+            <td>20</td>
+            <td><sc>square</sc></td>
+            <td>care, fair, pear, where, scarce, vary…</td>
+        </tr>
+        <tr>
+            <td>ɑː</td>
+            <td>ɑ(r</td>
+            <td>21</td>
+            <td><sc>start</sc></td>
+            <td>far, sharp, bark, carve, farm, heart…</td>
+        </tr>
+        <tr>
+            <td>ɔː</td>
+            <td>ɔ(r</td>
+            <td>22</td>
+            <td><sc>north</sc></td>
+            <td>for, war, short, scorch, born warm…</td>
+        </tr>
+        <tr>
+            <td>ɔː</td>
+            <td>o(r</td>
+            <td>23</td>
+            <td><sc>force</sc></td>
+            <td>four, wore, sport, porch, borne, story…</td>
+        </tr>
+        <tr>
+            <td>ʊə</td>
+            <td>ʊ(r</td>
+            <td>24.</td>
+            <td><sc>cure</sc></td>
+            <td>poor, tourist, pure, plural, jury…</td>
+        </tr>
+    </tbody>
+</table>
+<p class="caption center">Wells' original lexical sets. From Wells (1982:xviii–xix).</p>
+<br/>
+
+As research on American English continues though, we find ourselves needing to propose extensions to these lexical sets refer to specific allophones of vowels. For example, a common phenomenon is that <sc>goose</sc> is fronted even more if it's following a coronal sound, so that *toot* has a fronter vowel than *boot*.<span class="sidenote">In fact, *boot* itself is probably fronter than *pool*. I won't get into prelateral allophones too much here though because I'm going to devote an entire post to prelateral allophones in the near future.</span> A lot of this variability is simply phonetic conditioning, it's probably not necessary to propose a label for every allophone known to exist in English.
+
+However, since some of these allophones exhibit *socially* conditioned variation, it becomes important to talk about these subsets of words. And, to fit in with the existing labels that Wells proposed, these relevant environments are often referred to using a new label. That's where the trouble begins.
+
+## Problems that arise with labels for allophones
+
+Proposing a lexical set for the vowel classes in English (and select allophones) may be somewhat straightforward (Wells said later he created his over the course of a weekend). However, when trying to do the same for English *allophones*, there are a number of issues that have come up: competing labels, variety-specific labels, and keeping track of modifications to Wells' original labels. Let's consider each of these problems.
+
+### Competing standards
+
+We see a recurring problem when scientists study some new thing: we don't know what to call it. And when independent research is happening in parallel on that new thing, multiple terms are introduced, each with perfectly good and justifiable reasoning.[Another example is the California Vowel Shift a.k.a. Canadian Vowel Shift a.k.a. Elsewhere Shift a.k.a. Western Vowel Pattern a.k.a. Low-Back-Merger Shift a.k.a. Short Front Vowel Shift a.k.a. Third Dialect Shift etc.]{.aside} This is what has happened with labels for allophones in the study of English sociolinguistics.
+
+As an example, let's look at the <sc>kit</sc> and <sc>dress</sc> vowels before nasals. I have not studied the *pin-pen* merger with very much depth, but three labels I have seen are <sc>pin</sc> & <sc>pen</sc>, <sc>bin</sc> & <sc>ben</sc>, and <sc>kin</sc> & <sc>den</sc>. Without careful reading, it wouldn't be immediately clear that each of these pairs refers to the exact same allophones. So why so many different labels?  
+
+Well, each one is perfectly justified. First, because the phenomena is most often called the *pin-pen* merger, it would make sense to just refer to the two classes of words as <sc>pin</sc> and <sc>pen</sc>. Alternatively, some people use <sc>bin</sc> and <sc>ben</sc> because they most closely resemble the <sc>b_t</sc> frame, so that <sc>bit</sc>, <sc>bet</sc>, <sc>bin</sc>, and <sc>ben</sc> can be used alongside each other. Similarly, <sc>kin</sc> and <sc>den</sc> were used because they have the same onset as Wells' <sc>kit</sc> and <sc>dress</sc> labels. All are perfectly reasonable explanations---which is unfortunate because I think that's why these competing standards are perpetuated.
+
+<!--Another good one to look into is TOOT, TOO, and maybe other ones.-->
+
+These inconsistencies have lead some papers to use the lexical set *and* an IPA symbol, just for clarity. [Boberg (2019:22)](https://doi.org/10.1177/0075424219831353) consistently refers to vowels by their ANAE transcription followed by the Wells keyword in parentheses. For example: "the raising of /aw/ (<sc>mouth</sc>) and /ay/ (<sc>price</sc>) is clearly evident in the vowel means produced by the present sample of Canadians…." Similarly, [Wassink (2016)](https://doi.org/10.1215/00031283-3772912) uses IPA followed by keyword in the <sc>b_t</sc> frame: "It may be seen that for these speakers, /ɑ/ <sc>bot</sc> is clearly merged with /ɔ/ <sc>bought</sc>." I think a labeling system fails if it needs backup from another transcription system.
+
+As long as authors are clear about what their labels refer to, it shouldn't pose much of a problem when reading a particular work (since it hasn't really so far). However, it does create inevitable confusion when comparing different labels across studies.
+
+### Not all varieties need all labels
+
+Another issue that arises when creating extensions to the Wells' Lexical sets is that they're often specific to some varieties. The original labels were designed to be used for studying both American and British varieties of English. This mostly works since they more or less have the same vowel inventory. The problem is not all allophones are relevant to all varieties of English.
+
+Take, for example, Wells' <sc>force</sc> and <sc>north</sc> labels for pre-rhotic allophones. If you're like me, you may not have previously realized that words like *four*, *porch*, and *sport* are not in the same lexical set as *short*, *scorch*, and *born*. The first set, <sc>force</sc>, historically contained /oɹ/ and the second, <sc>north</sc>, historically had /ɔɹ/. Most varieties of North American English merge them today, though in a few places like St. Louis[Growing up near St. Louis, I heard that you're a true St. Louisian if you call Interstate 44 "highway *farty-far*". But this is not actually how they'd say it: *four* is part of <sc>force</sc> but *forty* has <sc>north</sc>, so a true St. Louisian would actually say it like *farty-four*. Since I grew up in the suburbs, I don't have this in my speech, but if you want to hear an authentic St. Louis pronunciation of that number, listen to Phyllis Smith in season 8 episode 21 of *The Office*.]{.aside}, Utah, and Texas you might hear <sc>north</sc> with a lower vowel, often merged with <sc>start</sc>. The point is, for most varieties of North American English, it doesn't make sense to distinguish <sc>force</sc> and <sc>north</sc> because they've long since merged.
+
+As a more extreme example, an increasing number of varieties of English have collapsed <sc>lot</sc>, <sc>thought</sc>, <sc>cloth</sc>, and <sc>palm</sc> down to just a single low back vowel. When studying such varieties, there is clearly no need for all four labels.
+
+On the other hand, phonemic splits have necessitated more specific labels. At least one has been encoded into Wells' original labels: the [<sc>trap</sc>-<sc>bath</sc> split](https://en.wikipedia.org/wiki/Trap-bath_split). However, in Philadelphia and other areas, [the short-*a* split](https://en.wikipedia.org/wiki//æ/_raising#Phonemic_/æ/_raising_systems) divides <sc>trap</sc> another way into "tense" and "lax" realizations, sometimes labeled <sc>bad</sc> and <sc>bat</sc>, respectively. Other varieties have other splits: [Rebecca Starr](https://www.rebeccaluriestarr.com) has recently reported on the apparently arbitrary lexical split of <sc>dress</sc> in Singapore English, a phenomena she calls the <sc>next-text</sc> split. Not all varieties need to worry about these splits, so these labels are only relevant to certain varieties of English.
+
+If you look through studies on other World Englishes, particularly the *Varieties of English* volumes, [<a href="https://www.degruyter.com/view/product/534272">Edgar Schneider, ed. 2005. <i>Varieties of English</i> (4 volumes)</a> and <a href="https://www.degruyter.com/viewbooktoc/product/36453">Bernd Kortmann, et al., eds. 2008. <i>A Handbook of Varieties of English</i> (2 volumes).</a>]{.aside} you'll see lots and lots of ad hoc, variety-specific labels. One that I read recently was in relation to Southern American English is the <sc>dance</sc> class, which contains "words in which RP shows [ɑː] before a nasal/obstruent cluster." Some varieties of Southern American English realize this vowel as /æ̱ɛ/ which is distinct from the <sc>hand</sc> (/æ/ before nasals) class that is realized as a triphthongal /æɛæ/.[<a href="https://doi.org/10.1515/9783110175325.1.300">Erik R. Thomas. 2005. "Rural Southern White Accents."</a>]{.aside} To my knowledge, not all varieties of English will need to distinguish <sc>dance</sc> from <sc>hand</sc> (or <sc>ban</sc> or <sc>tan</sc> or whatever you want to call it), but for this variety it's important.
+
+Overall, it becomes difficult to standardize these labels. In future varieties of English, we will most certainly see allophonic/morphological/lexical splits that we could not have anticipated. So even if someone were to canonize a large set of extensions to Wells' lexical sets, they'd become outdated as language change continues its merry way. Furthermore, not all varieties and not all speakers classify words into the same lexical sets, so a strict definition wouldn't be uniform across all dialects anyway. 
+
+In the end, I think defining *ad hoc* labels is fine. However, I feel that they should be more rigorously defined to facilitate comparison across studies. 
+
+
+
+### Narrowing of the original Wells label
+
+One final issue that I've run into is that the original Wells or <sc>b_t</sc> label is sometimes narrowed to refer to a specific allophone (often the elsewhere allophone) of the original vowel.
+
+For example, in the South, glide reduction in <sc>price</sc> is partially conditioned by phonological environment. Therefore, researchers have proposed the labels <sc>prize</sc> and <sc>pry</sc> to refer to /aɪ/ before voiced sounds and /aɪ/ word-finally, while the original <sc>price</sc> is narrowed to just /aɪ/ before voiceless sounds. It makes for a tidy set within that study (<sc>price</sc>, <sc>prize</sc>, and <sc>pry</sc>) but is there a more cross-dialect-friendly way? 
+
+The problem is that we now have two different meanings of Wells' original <sc>price</sc> label. In its original sense, <sc>price</sc> referred to /aɪ/ in all environments; in this new sense, <sc>price</sc> only refers to prevoiceless /aɪ/. In other words, some allophones of /aɪ/ have been carved out of the full <sc>price</sc> lexical set, leaving a smaller, modified <sc>price</sc> behind. The result is that when a researcher refers to <sc>price</sc>, it is not clear whether they are referring to the phoneme /aɪ/ or the pre-voiceless allophone of /aɪ/. 
+
+This failure to create a new label for the elsewhere allophone can lead to confusing labels. One study I've read used the labels <sc>bag</sc> for /æɡ/, <sc>bang</sc> for /æŋ/, and <sc>ban</sc> for /æn/ or /æm/. Those are mostly fine. However, confusingly, the label <sc>bat2</sc> was used to refer to the elsewhere allophone of /æ/ (i.e. before all obstruents except /ɡ/). So in a single paper, the label <sc>bat</sc> was used to refer to the entire vowel category, and <sc>bat2</sc> was used for preobstruent /æ/. There was nothing wrong with the study itself, but I think the transcription system could have been better.
+
+My recommendation is that, if allophones are to be referred to by a non-canonical label, the elsewhere allophone should also get a new one. The canonical label can then be reserved for the entire vowel phoneme. In my [dissertation](/blog/dissertation), I used  a set of labels for allophones of /æ/ (<sc>bag</sc>, <sc>bang</sc>, <sc>ban</sc>, and <sc>bat</sc>), but collectively I refer to the entire vowel class as <sc>trap</sc>. [I acknolwedge that this now creates confusion for those who are used <sc>boot</sc> as synonymous with <sc>goose</sc>, because my <sc>boot</sc> refers to a more restricted set of words than others' <sc>boot</sc>. But I think it strikes a nice balance between the Wells and <sc>b_t</sc> labels.]{.aside}In [an upcoming LSA presentation](/blog/ads-and-lsa-2020), I'll refer to post-coronal /u/ as <sc>toot</sc> and non-post-coronal /u/ as <sc>boot</sc>, with <sc>goose</sc> being the umbrella term for both allophones. It is not a perfect solution, but I think using the Wells set for entire phoneme and using standardized sets for allophones makes intuitive sense. At the very least, <sc>bat2</sc> (as well as <sc>bet2</sc> and <sc>bit2</sc>) should not be used.
+
+
+## Recommendations
+
+To sum up my ramblings, here are some suggestions that I have come up with:
+
+1. If you are considering proposing a new label, **check to see whether one has already been created** for that set of words. We don't need more labels to refer to the same thing. However, if the label(s) violates some of the suggestions below, perhaps a new standard is needed.
+
+1.  **Non-canonical, Wells-inspired labels should be more rigorously defined, ideally accompanied with wordlists in an appendix.** It should not be difficult to provide at least the 20 most common words. In fact, for reasonably-sized corpora, I don't think it's asking too much to put an exhaustive list of words that are attested in your data, especially if online appendices are an option. After all, how did you code your data? You've got that list on some spreadsheet somewhere already.
+
+1.  The set of words that existing Wells labels refer to should not be modified; if the lexical space of some set is divided into subsets, be sure to also propose a new label for the elsewhere allophone. This avoids the confusion with <sc>price</sc>-as-/aɪ/ vs. <sc>price</sc>-as-prevoiceless-/aɪ/ and the coexistence of <sc>bat</sc> and <sc>bat2</sc>. **Reserve the original Wells label to refer to the phoneme rather than to any specific allophone. Consider using the <sc>b_t</sc> frame for these elsewhere allophones.**
+
+1. More going back to my previous post, **labels should not be based on minimal pairs** or minimal sets. They may be fine in writing, but they get confusing when spoken. If a new label is proposed, carefully consider potential mergers with nearby vowels and choose a word that satisfies the ideal property of being unambiguous regardless of the speaker's variety. 
