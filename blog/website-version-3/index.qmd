@@ -82,3 +82,4 @@ Here's a list of the changes I've made.
 TODO
 * Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.
 
+* Change any me-specific HTML, like <span class="sidenote"> and tables. Within sidenotes themselves, I had to do HTML rather than markdown.

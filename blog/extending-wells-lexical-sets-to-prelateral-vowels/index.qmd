@@ -1,0 +1,685 @@
+---
+layout: post
+title:  "Extending Wells' Lexical Set to Prelateral Vowels"
+date:   2019-12-27 08:37:00 -0400
+categories:
+  - Lexical Sets
+  - Methods
+---
+
+At some point in the past few years, I've analyzed pretty much every English vowel before laterals. They're pretty cool because they're understudied, they're somewhat infrequent, and they're involved in a lot of different mergers in different parts of the country. When referring to these prelateral vowels, several labels have been used in the past, but none do the job quite right. So, I think prelaterals should get a standardized set of Wells-style labels, like prerhotics have. The problem is figuring out what they should be. In this post, I explain why existing labels aren't great and then propose a complete set of new labels for prelateral vowels.
+
+To cut to the chase, this table---particularly the column labeled "Prelateral Keyword"---shows the labels I've come up with:
+
+<center>
+<table id="wells">
+    <thead>
+        <tr>
+            <th>&nbsp;&nbsp;IPA&nbsp;&nbsp;</th>
+            <th>Wells<br/>Keyword</th>
+            <th>Prelateral<br/>Keyword</th>
+            <th>&nbsp;</th>
+            <th style="text-align:left;">Example words</th>
+        </tr>
+    </thead>
+    <tbody class = "sc">
+        <tr>
+            <td class="lc">i</td>
+            <td><sc>fleece</sc></td>
+            <td><sc>zeal</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">feel, peel, deal, kneel, meal, seal, yield, shield</td>
+        </tr>
+        <tr>
+            <td class="lc">ɪ</td>
+            <td><sc>kit</sc></td>
+            <td><sc>guilt</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">ill, pill, dill, gill, shrill, drill, kilt, quill, thrill</td>
+        </tr>
+        <tr>
+            <td class="lc">e</td>
+            <td><sc>face</sc></td>
+            <td><sc>flail</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">fail, tail, whale, scale, jail, trail, grail, shale, ale</td>
+        </tr>
+        <tr>
+            <td class="lc">ɛ</td>
+            <td><sc>dress</sc></td>
+            <td><sc>shelf</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">fell, bell, weld, gel, smell, swell, dwell, delve, realm</td>
+        </tr>
+        <tr>
+            <td class="lc">u</td>
+            <td><sc>goose</sc></td>
+            <td><sc>spool</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">fool, cool, tool, ghoul, stool, school, drool, cruel, Yule</td>
+        </tr>
+        <tr>
+            <td class="lc">ʊ</td>
+            <td><sc>foot</sc></td>
+            <td><sc>wolf</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">full, pull, bull, wool, wolf</td>
+        </tr>
+        <tr>
+            <td class="lc">o</td>
+            <td><sc>goat</sc></td>
+            <td><sc>jolt</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">hole, coal, bowl, goal, cold, scold, troll, molt, gold</td>
+        </tr>
+        <tr>
+            <td class="lc">ʌ</td>
+            <td><sc>strut</sc></td>
+            <td><sc>mulch</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">hull, dull, gull, pulse, skull, cult, gulf, lull, sulk, sculpt</td>
+        </tr>
+        <tr>
+            <td class="lc">æ</td>
+            <td><sc>trap</sc></td>
+            <td><sc>talc</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">pal, gal, shall, scalp, talc, valve, Hal, Alps</td>
+        </tr>
+        <tr>
+            <td class="lc">ɑ</td>
+            <td><sc>lot</sc></td>
+            <td><sc>golf</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">doll, alm, golf, qualm, psalm</td>
+        </tr>
+        <tr>
+            <td class="lc">ɔ</td>
+            <td><sc>thought</sc></td>
+            <td><sc>fault</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">all, hall, fall, scald, bald, shawl, crawl, vault, false</td>
+        </tr>
+        <tr>
+            <td class="lc">aɪ</td>
+            <td><sc>price</sc></td>
+            <td><sc>child</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">aisle, dial, pile, tile, bile, mile, child, trial, vile, guile</td>
+        </tr>
+        <tr>
+            <td class="lc">aʊ</td>
+            <td><sc>mouth</sc></td>
+            <td><sc>prowl</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">foul, howl, towel, bowels, jowl, scowl, growl, owl</td>
+        </tr>
+        <tr>
+            <td class="lc">ɔɪ</td>
+            <td><sc>choice</sc></td>
+            <td><sc>broil</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">oil, foil, boil, coil, toil, spoil, broil, soil, royal(?)</td>
+        </tr>
+        <tr>
+            <td class="lc">ɚ</td>
+            <td><sc>nurse</sc></td>
+            <td><sc>twirl</sc></td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">Earl, girl, curl, hurl, pearl, whirl, swirl, twirl</td>
+        </tr>
+    </tbody>
+</table>
+<p class="caption center">A standard set of prelateral keywords.</p>
+<br/>
+</center>
+
+Yes, this is probably another case of [competing standards](https://imgs.xkcd.com/comics/standards.png), but it illustrates [what I think lexical sets for allophones should look like](/blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets).
+
+For additional background how and why I came up with these labels, read on.
+
+## Wells Lexical Sets
+
+As a small bit of background, <span class="sidenote">John C. Wells. 1982. <i>Accents of English</i>.</span>John C. Wells came up with standardized labels for sets of words that historically share the same vowel. The labels are also used to refer to the vowel itself. So something like <sc>fleece</sc> may refer to words like *creep*, *speak*, *leave*, *feel*, *key*, and *people* but also to the phoneme /i/. This is useful in cross-dialect comparisons when the actual phonetic quality of that vowel may systematically differ in that set of words.
+
+The keywords themselves are not just arbitrary words within that lexical set, but rather they were carefully selected:
+
+> The keywords have been chosen in such a way that clarity is maximized: whatever accent of English they are spoken in, they can hardly be mistaken for other words. Although *fleece* is not the commonest of words, it cannot be mistaken for a word with some other vowel; whereas *beat*, say, if we had chosen it instead, would have been subject to the drawback that one man's pronunciation of *beat* may sound like another's pronunciation of *bait* or *bit*. (Wells 1982:123)
+
+Presumably then, a good set of keywords for prelateral vowels should be deliberately chosen to follow this same principle of maximal clarity.
+
+To be clear, what I am proposing is a set of keywords that refer to the prelateral allophones of each English vowel. That is, a label like <sc>zeal</sc> would refer to /i/ when followed by an /l/, as in the words *feel*, *peel*, and *deal*. As explained in [my previous post on non-canonical allophonic extensions to Wells' lexical sets](/blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets), <sc>zeal</sc> would be a subset of the umbrella label <sc>fleece</sc>, which refers to all tokens of /i/ regardless of phonetic environment.
+
+## Existing Prelateral Labels
+
+Of the research I've seen on prelateral vowels, if labels are given to them, they usually take the form of a minimal pair or set (or as close to one as possible). [See, for example, [Bowie (2000)](https://repository.upenn.edu/dissertations/AAI9965448/), [Thomas (2004)](https://doi.org/10.1515/9783110175325), and [Tillery & Bailey (2004)](https://doi.org/10.1515/9783110175325).]{.aside}Some of the more common labels include <sc>pool</sc>, <sc>pull</sc>, and <sc>pole</sc> for back vowels, or <sc>feel</sc>, <sc>fill</sc>, <sc>fail</sc>, and <sc>fell</sc> for front vowels. I've used them myself, actually. 
+
+[I presented an abbreviated version of this table already in a [previous post](/blog/why-do-people-use-bat-instead-of-trap) since it's what popularized the <sc>b_t</sc> frame.]{.aside}To my knowledge, the only attempt at standardizing prelateral labels was by [Thomas & Yeager-Dror (2009)](https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2). In their table, reproduced below, they list the labels they use in that volume. In addition to standardizing other allophones' labels, prelateral vowels get an entire column, and a nearly complete set of labels.
+
+<table id="wells">
+    <thead>
+        <tr>
+            <th>&nbsp;&nbsp;IPA&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;Keyword&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;[_r]&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;[_l]&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            <th style="text-align: left">Specific Formulations&nbsp;&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody class = "sc">
+        <tr>
+            <td class="lc">/i/</td>
+            <td>beet</td>
+            <td>beer</td>
+            <td>peel</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɪ/</td>
+            <td>bit</td>
+            <td></td>
+            <td>bill</td>
+            <td class="lc" style="text-align: left"><sc>bin</sc> [_N]</td>
+        </tr>
+        <tr>
+            <td class="lc">/e/</td>
+            <td>bait</td>
+            <td>bear</td>
+            <td>bail</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɛ/</td>
+            <td>bet</td>
+            <td></td>
+            <td>bell</td>
+            <td class="lc" style="text-align: left"><sc>ben</sc> [_N]; <sc>beg</sc> [_ɡ]</td>
+        </tr>
+        <tr>
+            <td class="lc">/æ/</td>
+            <td>bat</td>
+            <td></td>
+            <td></td>
+            <td class="lc" style="text-align: left"><sc>back</sc> [_k]; <sc>bag</sc> [_ɡ]; <sc>ban</sc> [_N]; <sc>tap</sc> [_p]; <sc>tab</sc> [_b]; <sc>bad</sc>, for Milwaukee [_d], for New York see p. 109.</td>
+        </tr>
+        <tr>
+            <td class="lc">/ɑ/</td>
+            <td>bot</td>
+            <td>bar</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɔ/</td>
+            <td>bought</td>
+            <td class="lc"><sc>bor</sc>der</td>
+            <td>ball</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/o/</td>
+            <td>boat</td>
+            <td>boar</td>
+            <td>bowl</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ʌ/</td>
+            <td>but</td>
+            <td></td>
+            <td>cull</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ʊ/</td>
+            <td>book</td>
+            <td>boor</td>
+            <td>pull</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/u/</td>
+            <td>boot</td>
+            <td></td>
+            <td>pool</td>
+            <td class="lc" style="text-align: left"><sc>toot</sc> [C_<sub>coronal</sub>_]</td>
+        </tr>
+        <tr>
+            <td class="lc">/aɪ/</td>
+            <td>bite</td>
+            <td>pyre</td>
+            <td>bile</td>
+            <td class="lc" style="text-align: left"><sc>bide</sc> [_C<sub>vd</sub>]; <sc>buy</sc> [_#]; <sc>pine</sc> [_N]</td>
+        </tr>
+        <tr>
+            <td class="lc">/aʊ/</td>
+            <td>bout</td>
+            <td>hour</td>
+            <td>howl</td>
+            <td class="lc" style="text-align: left"><sc>bough</sc> [_#]</td>
+        </tr>
+        <tr>
+            <td class="lc">/ɔɪ/</td>
+            <td>boy</td>
+            <td></td>
+            <td>boil</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɚ/</td>
+            <td>bird</td>
+            <td></td>
+            <td></td>
+            <td class="lc" style="text-align: left"><sc>burr</sc> [_#]; both<sc>er</sc> [-stress]</td>
+        </tr>
+    </tbody>
+</table>
+<p class="caption center">The lexical set, including prelateral and other allophonic expansions, from <a href="https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2">Thomas & Yeager-Dror (2009:6)</a>.</p>
+<br/>
+
+It appears the authors wanted to select as many keywords as possible that started with /b/. The now somewhat widespread <sc>b_t</sc> frame is established, and most prerhotic labels start with /b/ as well. The prelateral vowels had the most exceptions: there are seven keywords with <sc>b_l</sc>, but there are several consonant onsets to fill in the gaps (three with /p/ and one each with /k/ and /h/). This inconsistency in the prelaterals creates a somewhat haphazard set of labels.
+
+The draw of using minimal sets for prelaterals is tempting, but I believe they have the same problems that the <sc>b_t</sc> frame has. In a [previous post](/blog/why-do-people-use-bat-instead-of-trap), I've already shared my thoughts on why I think the <sc>b_t</sc> frame isn't very helpful, so I won't rehash it further. The gist is this: if you hear someone say [poɫ] in isolation, are they saying *pole* or are do they merge /ʊl/ and /ol/ and are actually saying *pull*? This ambiguity goes against Wells' original intentions of the words being "hardly be mistaken for other words."
+
+:::callout-tip
+
+### My Hot Take 
+
+To put it another way, just because we call something the *pull-pole* merger, that doesn't mean we should refer to the entire lexical sets as <sc>pull</sc> and <sc>pole</sc>. In fact, I think we should actively *avoid* referring to them as <sc>pull</sc> and <sc>pole</sc> for the very reason that they *do* form a minimal pair.
+:::
+
+## Why a minimal set won't work for prelaterals
+
+Let's entertain the idea of using a minimal set to unite all prelateral vowels. We've got <sc>f_l</sc> for front vowels and <sc>p_l</sc> for some of the back vowels. Can we find one frame that works for *all* vowels? 
+
+No. The following table, which is grouped approximately by natural class, lists the frames that have the most words and would therefore be the best candidates for new labels:
+
+<table id="wells">
+    <thead class="sc">
+        <tr>
+            <th class="lc">IPA</th>
+            <th>b_l</th>
+            <th>p_l</th>
+            <th>f_l</th>
+            <th>d_l</th>
+            <th>h_l</th>
+            <th>k_l</th>
+            <th>t_l</th>
+            <th>g_l</th>
+        </tr>
+    </thead>
+    <tbody class="sc">
+        <tr>
+            <td class="lc">/il/</td>
+            <td></td>
+            <td>peel/peal</td>
+            <td>feel</td>
+            <td>deal</td>
+            <td>heal, heel</td>
+            <td>keel</td>
+            <td>teal</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɪl/</td>
+            <td>bill</td>
+            <td>pill</td>
+            <td>fill</td>
+            <td>dill</td>
+            <td>hill</td>
+            <td>kill</td>
+            <td>till</td>
+            <td>gill</td>
+        </tr>
+        <tr>
+            <td class="lc">/el/</td>
+            <td>bale/bail</td>
+            <td>pale/pail</td>
+            <td>fail</td>
+            <td style="color: #999999;">Dale</td>
+            <td>hail</td>
+            <td>kale</td>
+            <td>tale/tail</td>
+            <td>gale</td>
+        </tr>
+        <tr>
+            <td class="lc">/ɛl/</td>
+            <td>bell</td>
+            <td style="color: #999999;">pell</td>
+            <td>fell</td>
+            <td>dell</td>
+            <td>hell</td>
+            <td></td>
+            <td>tell</td>
+            <td></td>
+        </tr>
+        <tr style="border-top: 1px solid #CCCCCC;">
+            <td class="lc">/ul/</td>
+            <td style="color: #999999;">boule</td>
+            <td>pool</td>
+            <td>fool</td>
+            <td style="color: #999999;">duel</td>
+            <td>who'll</td>
+            <td>cool</td>
+            <td>tool</td>
+            <td>ghoul</td>
+        </tr>
+        <tr>
+            <td class="lc">/ʊl/</td>
+            <td>bull</td>
+            <td>pull</td>
+            <td>full</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ol/</td>
+            <td>bowl</td>
+            <td>pole/poll</td>
+            <td>foal</td>
+            <td style="color: #999999;">dole</td>
+            <td>hole/whole</td>
+            <td>coal</td>
+            <td>toll</td>
+            <td>goal</td>
+        </tr>
+        <tr>
+            <td class="lc">/ʌl/</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>dull</td>
+            <td>hull</td>
+            <td>cull</td>
+            <td></td>
+            <td>gull</td>
+        </tr>
+        <tr style="border-top: 1px solid #CCCCCC;">
+            <td class="lc">/æl/</td>
+            <td></td>
+            <td>pal</td>
+            <td></td>
+            <td></td>
+            <td style="color: #999999;">Hal</td>
+            <td style="color: #999999;">Cal</td>
+            <td></td>
+            <td>gal</td>
+        </tr>
+        <tr>
+            <td class="lc">/ɑl/</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>doll</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɔl/</td>
+            <td>ball</td>
+            <td style="color: #999999;">Paul</td>
+            <td>fall</td>
+            <td></td>
+            <td>hall</td>
+            <td>call</td>
+            <td>tall</td>
+            <td>gall</td>
+        </tr>
+        <tr style="border-top: 1px solid #CCCCCC;">
+            <td class="lc">/ɑɪl/</td>
+            <td>bile</td>
+            <td>pile</td>
+            <td>file</td>
+            <td>dial</td>
+            <td></td>
+            <td style="color: #999999;">Kyle</td>
+            <td>tile</td>
+            <td>guile</td>
+        </tr>
+        <tr>
+            <td class="lc">/ɑʊl/</td>
+            <td>bowel</td>
+            <td></td>
+            <td>foul/fowl</td>
+            <td>dowel</td>
+            <td>howl</td>
+            <td></td>
+            <td>towel</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="lc">/ɔɪl/</td>
+            <td>boil</td>
+            <td></td>
+            <td>foil</td>
+            <td style="color: #999999;">Doyle</td>
+            <td></td>
+            <td>coil</td>
+            <td>toil</td>
+            <td style="color: #999999;">Goyle</td>
+        </tr>
+    </tbody>
+</table>
+<p class="caption">Minimal sets of and potential keywords for prelateral vowels. Words in gray are not ideal for a variety of reasons (infrequent words, proper nouns, or inconsistent vowel assignments). Blank cells are, as far as I can tell, accidental gaps in the English lexicon.</p>
+<br/>
+
+As you can see, no one frame works for all vowels. The main culprits are /ʌl/ and /ɑl/ and maybe also /ʊl/ and /æl/. Let's look at each frame individually:
+
+* **<sc>b_l</sc>**---It's closest to the established <sc>b_t</sc> frame, but other than the diphthongs (which are probably least studied), none of the [By natural classes, I'm referring to front vowels, back vowels, low vowels, and diphthongs---environments within which mergers are most commonly reported.]{.aside}natural classes gets a full minimal set. In fact, from what I've been able to find, there are no monosyllabic English words with /#bil/, so you can't even add extra coda material to make it work. 
+
+* **<sc>p_l</sc>**---If the <sc>b_l</sc> frame is the goal, <sc>p_l</sc> makes for a good backup since it's articulatorily closest. For the back vowels, it's probably the least bad option. (If so, I prefer <sc>pole</sc> over <sc>poll</sc>.) For the front vowels, it works fine except the word *pell* isn't exactly that common.
+
+* **<sc>f_l</sc>**---This one is best choice for front vowels with its four common words. Conveniently, it works for the diphthongs too. [I don't speak hypothetically here: I've included *foal* in wordlists and people sometimes do mistake it for *foul*. See also [Wade (2017:7)](http://journal-labphon.org/article/10.5334/labphon.54/) and [Arnold (2015:3)](http://repository.upenn.edu/pwpl/vol21/iss2/2/) who explicitly mentione this problem too.]{.aside}It's a little less ideal for the back vowels because *foal* isn't a particularly common word, and some people confuse it with *foul*.
+
+* **<sc>d_l</sc>**---This one works well for a lot of vowels, but only if you use a couple proper names like *Dale* and *Doyle*. In a lot varieties of American English *dual* works fine here, but not for non-American varieties. Furthermore, *dole* isn't a very well-known word I don't think. The benefit of looking at <sc>d_l</sc> though is that it is the only frame that contrasts /ɑl/ and /ʌl/. 
+
+* **<sc>h_l</sc>**---It works for the front vowels, but I don't really want to plaster <sc>hell</sc> all across my papers. Besides, <sc>who&rsquo;ll</sc> isn't ideal either because if we're okay with contractions, we might as well include <sc>bee&rsquo;ll</sc>, <sc>boo&rsquo;ll</sc>, or any number of words to fit the frame. I will say though that the benefit to using <sc>h_l</sc> is that is has a nice minimal pair contrasting /ɔl/ and /ʌl/, which some varieties merge.
+
+* **<sc>k_l</sc>**---Most of the benefits of <sc>h_l</sc> apply to <sc>k_l</sc> but none of the broad natural classes are complete.
+
+* **<sc>t_l</sc>**---It's comparable to <sc>f_l</sc>, except there's no /ʊl/.
+
+* **<sc>g_l</sc>**---The benefits are similar to <sc>k_l</sc>, except there's no /ɡil/, and I had to fudge /ɔɪ/ with *Goyle* (though Harry Potter fans may enjoy it).
+ 
+Several frames work pretty well, but they all have their problems. More importantly, no one frame works well for all front vowels (if you include /æl/), no one frame works for all back vowels (if you include /ʌl/), and no one frame works for the low vowels (thanks, /ɑl/). To get a complete set of labels, you're going to have to pick three different frames---at a minimum. Such a patchwork of frames is inconsistent and confusing. 
+
+So, should we ditch the minimal sets and go for unambiguous, truly Wells-style lexical sets? Yes.
+
+## Unambiguous labels for prelateral vowels
+
+My goal in all this was to select prelateral vowel keywords that are, in Wells' words, "unmistakable no matter what accent one says them in." So, rather than finding the optimal minimal set, I decided to choose words that were were very different from one another.
+
+To identify potential words, I would need a list of all monosyllabic English words with a prelateral vowel. Fortunately, I've got that (and I've had it for some time)!
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">List of all ~401 monosyllabic English words with a coda lateral, organized by vowel and syllable structure? Check. My favorite? Squelched.</p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/861032509534031873?ref_src=twsrc%5Etfw">May 7, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+This spreadsheet is based on the CMU dictionary. I searched for all words that contained just one vowel and where that vowel was followed by an L. I then just organized them by their consonants in a spreadsheet. It's pretty handy.
+
+With this spreadsheet, I can easily identify candidate representative words. So, loosely based on Wells' original keywords, here were the criteria that I established for selecting a word, approximately in order of importance:[I've outlined more general criteria for selecting a new Wells-inspired label for an allophone in a [previous post](/blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets).]{.aside}
+
+1. They must be monosyllabic.
+
+1. They must be monomorphemic.
+
+1. Words should not form another English word when the vowel is replaced with another (*i.e.* it should have no minimal pairs).
+
+1. Onsets should ideally have just one consonant. Glides are avoided and liquids are acceptable as a last resort.
+
+1. Codas consist of a single voiceless obstruent following the /l/. [I have relaxed the coda requirement a little bit from what Wells says (1982:123):<br/><span style="font-size: 0.8em;">"As far as possible the keywords have been chosen so as to end in a voiceless alveolar or dental consonant: a voiceless consonant minimizes the likelihood of diphthongal glides obscuring a basic vowel quality, while coronality (alveolar or dental place) minimizes the possible allophonic effect of the place of a following consonant. An exception here is <sc>trap</sc> for the /æ/ correspondence, where no items in /-t, -s, -θ/ are altogether suitable; another one is <sc>palm</sc>."</span><br/>I figure the presence of the lateral is enough of a buffer between the vowel and any following consonant (though phoneticians are welcome to correct me).]{.aside}
+
+1. Nouns are preferred.
+
+With this organized spreadsheet, applying the six criteria for each vowel class was relatively straightforward. The below table shows the list I came up with:
+
+<table id="wells">
+    <thead>
+        <tr>
+            <th>&nbsp;&nbsp;IPA&nbsp;&nbsp;</th>
+            <th>Wells<br/>Keyword</th>
+            <th>Prelateral<br/>Keyword</th>
+            <th>&nbsp;</th>
+            <th style="text-align:left;">Example words</th>
+        </tr>
+    </thead>
+    <tbody class = "sc">
+        <tr>
+            <td class="lc">i</td>
+            <td>fleece</td>
+            <td>zeal</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">feel, peel, deal, kneel, meal, seal, yield, shield</td>
+        </tr>
+        <tr>
+            <td class="lc">ɪ</td>
+            <td>kit</td>
+            <td>guilt</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">ill, pill, dill, gill, shrill, drill, kilt, quill, thrill</td>
+        </tr>
+        <tr>
+            <td class="lc">e</td>
+            <td>face</td>
+            <td>flail</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">fail, tail, whale, scale, jail, trail, grail, shale, ale</td>
+        </tr>
+        <tr>
+            <td class="lc">ɛ</td>
+            <td>dress</td>
+            <td>shelf</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">fell, bell, weld, gel, smell, swell, dwell, delve, realm</td>
+        </tr>
+        <tr>
+            <td class="lc">u</td>
+            <td>goose</td>
+            <td>spool</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">fool, cool, tool, ghoul, stool, school, drool, cruel, Yule</td>
+        </tr>
+        <tr>
+            <td class="lc">ʊ</td>
+            <td>foot</td>
+            <td>wolf</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">full, pull, bull, wool, wolf</td>
+        </tr>
+        <tr>
+            <td class="lc">o</td>
+            <td>goat</td>
+            <td>jolt</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">hole, coal, bowl, goal, cold, scold, troll, molt, gold</td>
+        </tr>
+        <tr>
+            <td class="lc">ʌ</td>
+            <td>strut</td>
+            <td>mulch</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">hull, dull, gull, pulse, skull, cult, gulf, lull, sulk, sculpt</td>
+        </tr>
+        <tr>
+            <td class="lc">æ</td>
+            <td>trap</td>
+            <td>talc</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">pal, gal, shall, scalp, talc, valve, Hal, Alps</td>
+        </tr>
+        <tr>
+            <td class="lc">ɑ</td>
+            <td>lot</td>
+            <td>golf</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">doll, alm, golf, qualm, psalm</td>
+        </tr>
+        <tr>
+            <td class="lc">ɔ</td>
+            <td>thought</td>
+            <td>fault</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">all, hall, fall, scald, bald, shawl, crawl, vault, false</td>
+        </tr>
+        <tr>
+            <td class="lc">aɪ</td>
+            <td>price</td>
+            <td>child</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">aisle, dial, pile, tile, bile, mile, child, trial, vile, guile</td>
+        </tr>
+        <tr>
+            <td class="lc">aʊ</td>
+            <td>mouth</td>
+            <td>prowl</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">foul, howl, towel, bowels, jowl, scowl, growl, owl</td>
+        </tr>
+        <tr>
+            <td class="lc">ɔɪ</td>
+            <td>choice</td>
+            <td>broil</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">oil, foil, boil, coil, toil, spoil, broil, soil, royal(?)</td>
+        </tr>
+        <tr>
+            <td class="lc">ɚ</td>
+            <td>nurse</td>
+            <td>twirl</td>
+            <td></td>
+            <td class="lc" style="text-align:left; font-style:italic">Earl, girl, curl, hurl, pearl, whirl, swirl, twirl</td>
+        </tr>
+    </tbody>
+</table>
+<p class="caption center">The prelateral keywords I propose in this post.</p>
+<br/>
+
+Allow me to share a few comments about each one, starting with the front vowels.
+
+* **<sc>zeal</sc>**---The only other word with /il/ and no minimal pairs was *squeal*, and I opted for the one with the simpler onset.
+
+* **<sc>guilt</sc>**---[If I wanted to relax the coda requirement, I really like <sc>chill</sc> as an alternative option.]{.aside}Lots of other words fit the critera, like *filth*, *lilt*, *milk*, and *tilt*, so I arbitrarily chose *guilt* as the representative word. Also, *milk* wouldn't work because a lot of people have /ɛ/ in that word.
+
+* **<sc>flail</sc>**---This was an easy choice because it's the only one with no minimal pair. I'm not a fan of the complex onset, especially with the liquid, but it's the only option. That's okay: since Wells used <sc>fleece</sc>, I think <sc>flail</sc> is fine.
+
+* **<sc>shelf</sc>**---Again, there were lots of other options: *belch*, *help*, *health*, *pelt*, *self*, *wealth*, and *yelp*. Of these, *shelf* just felt like the best choice---though *belch* would have been a great alternative!
+
+For the back vowels, it's especially important that minimal pairs do not exist since there are a variety of mergers that exist among prelateral back vowels, including four-way mergers. 
+
+* **<sc>spool</sc>**---There were no words with /ul/ that didn't form a minimal pair with other prelateral vowels. And in fact, none of the monomorphemic words had any other coda material besides /l/. Given these limitations, I chose *spool* as the representative word. It forms minimal pairs with *spiel*, *spill*, *spell*, and *spoil*, but I'm not aware of any variety of English that would merge *spool* with any of those words. Other candidates were [I'm pretty sure I've seen *school* before but I can't find the source.]{.aside}*school* and *cruel*, but they form minimal pairs with *skull* and *crawl* and I wanted to avoid any words with other back vowels in the same frame.
+
+* **<sc>wolf</sc>**---There really are very few words with /ʊl/, especially monosyllabic ones. As far as I know, there are five: *full*, *pull*, *bull*, *wool*, and *wolf*. Is it coincidental that they all start with labial sounds? Not sure. Probably. Of these, *full*, *pull*, and *bull* form lots of minimal pairs with other back vowels. *Wool* has no obstruent in the coda. That leaves *wolf*. I'm pretty sure my idiolect assigns /o/ to this word, so it goes against my intuition, but Wells himself assigns /ʊ/ to *wolf* and it's the only real option we've got.
+
+* **<sc>jolt</sc>**---There are lots of words with /ol/, but only two lack minimal pairs: *stroll* and *jolt*. Only *jolt* fits the other criteria.
+
+* **<sc>mulch</sc>**---A handful of words fit the criteria: *gulp*, *hulk*, *mulch*, *pulp*, *pulse*. And unless you count the name of the department store *Belk* as a word, then *bulk* also fits. Any of these work well (I've personally used <sc>pulp</sc> in the past), but I chose *mulch* to add a bit of variety in coda consonants to the lexical set.
+
+With the low vowels, the number of options was limited, and I had to relax some of the rules.
+
+* **<sc>talc</sc>**---[Another option is <sc>valve</sc>, and if I wanted to relax the voiceless obstruent requirement, I'd opt for that.]{.aside}The only other word that fit all the criteria was *scalp*, so I chose the one with the simpler onest. 
+
+* **<sc>golf</sc>**---Okay, this one was tricky. The CMU and searchable phonetic dictionaries I have access to didn't have too many words with /ɑl/. Plus I merge /ɑ/ with /ɔ/ before coda laterals, so I don't have intuition to back me up. In fact, the best list I know of is [Dinkin 2016](https://journals.sagepub.com/doi/abs/10.1177/0075424216634795). The word *golf* was the most common word, and though it forms a minimal pair with *gulf*, it's probably the best option. The next best might be *psalm*, but that only works for speakers that pronounce the [l] and who don't have <sc>palm</sc> there. Another option was *doll*, but it's part of a large minimal set.
+
+* **<sc>fault</sc>**---The only two words that formed no minimal pairs, *sprawl* and *false*, aren't ideal because they didn't seem nouny enough. Plus, *sprawl* has has a complex onset, and seeing <sc>false</sc> in capital letters just seems like an error in computer code. The word *fault* forms a minimal pair with *felt* but fits all the other criteria, so I think it'll do. 
+
+For diphthongs and pre-/ɹ/, the choices were also limited. You'll notice that only one has a consonant in the coda, and its voiced, violating my rule 5. The reason is because *none* of the monomorphemic words with these vowels had anything else in the codas, other than *child*, *wild*, and *mild*. 
+
+* **<sc>child</sc>**---There was only one word with no minimal pairs, *whilst*, which didn't seem like a good fit. Though *child* has a voiced coda, it only forms a minimal pair with *chilled* so it seems pretty good otherwise.
+
+* **<sc>prowl</sc>**---It's not the most common word, but it doesn't have any minimal pairs.
+
+* **<sc>broil</sc>**---There were really no good options for /ɔɪl/. They all had minimal pairs with other words, so I chose a word based on the minimal pairs it did have. *Spoil* forms a set with *spool*, *spell*, *spill*, and *spiel*; *soil* forms a set with *sole*/*soul*/*Seoul*, *Saul*, *Sal*, *sell*/*cell*, *sale*/*sail*, *sill*, and *boil*, *toil*, *coil*, *Doyle*, *foil*, and *oil* have even larger minimal sets (see the table above). In comparison, *broil* doesn't seem to bad since it forms a set with just *brawl* and *Braille*. 
+
+* **<sc>twirl</sc>**---I'm not a big fan of the /w/, but it's the only one that doesn't form a minimal pair.
+
+I believe the resulting list forms a decent set of labels to refer to prelateral vowels.
+
+Using this new lexical set, we can now refer to things like the <sc>zeal</sc>-<sc>guilt</sc> merger, the <sc>flail</sc>-<sc>shelf</sc> merger, or the <sc>dress</sc>-<sc>talc</sc> merger among the front vowels. Among the back vowels, we might find the <sc>spool</sc>-<sc>wolf</sc> merger, the <sc>wolf</sc>-<sc>jolt</sc> merger, the <sc>jolt</sc>-<sc>mulch</sc> merger, or possibly, the <sc>wolf</sc>-<sc>mulch</sc> or the <sc>mulch</sc>-<sc>fault</sc> mergers. [I personally have the <sc>golf</sc>-<sc>fault</sc> merger](/pages/idiolect.html), though only if the /l/ is in the coda (*collar* and *caller* are still distinct).
+
+## Conclusion
+
+I have proposed a new set of labels akin to the Wells Lexical set for referring to prelateral vowels. The *ad hoc* labels in existing literature are inconsistent, and the attempts at using lexical sets are unsuccessful. This new set should make labels more consistent in sociolinguistic research going forward.
+
