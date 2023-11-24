@@ -1,0 +1,876 @@
+/*
+Dark blue:  #132A45
+Light blue: #376092
+Black:      #132A45
+
+Green:  #287B43
+Purple: #67287B
+Red:    #924630
+Yellow: #928E33
+*/
+
+
+
+/* New Palette
+Whitesmoke: #F5F5F5
+Raisin Black: #202027
+Yankees Blue: #132A4
+Onyx: #334139
+Charleston Green: #1E2D24
+*/
+
+
+/* Tips hat to Jonathan Crum for showing me how to import fonts. */
+@import url('https://fonts.googleapis.com/css?family=PT+Serif&display=swap');
+
+html {
+	background: whitesmoke;
+}
+
+
+
+/* For older browsers */
+aside, article, section, header, footer, nav {
+	display: block;
+}
+
+/* CSS reset */
+div, h1, h2, h3, p, img, nav, ul, li, header, time, article, a {
+	margin: 0;
+	padding: 0;
+}
+
+
+/* Add border for debugging    
+header, nav, body, aside, footer, h1, h2, p, ul, li, time, a {
+	border: 1px solid #376092;
+	border-radius: 7pt;
+}
+*/
+
+
+/* ########################################## */
+/*                 Global Styles              */
+/* ########################################## */
+
+/* The overall grid */
+body {
+	width: 960px;
+	margin: 0 auto;
+	padding: 0 1rem; /* Add a little extra spacing on either side */
+	font: 110% 'Iowan Old Style', 'PT Serif', 'Palatino', 'Times New Roman', serif;
+}
+
+h1, h2, h3, footer p, .biglink {
+	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
+}
+
+h1, h2, h3 {
+	line-height: 1.2;
+	color: #132A45;
+	margin-bottom: 0.2em;
+	font-weight: 500;
+}
+
+h1 {
+	margin-top: 1em;
+	font-size: 2em;	
+}
+
+h2 {
+	font-size: 1.5em;	
+}
+h3 {
+	font-size: 1.25em;
+}
+
+li {
+	margin-left: 2em;
+}
+
+/* small caps tag */
+sc {
+	font-variant: small-caps;
+}
+
+img.rounded {
+	border: 0px solid #376092;
+	border-radius: 7pt;
+	width: 80%;
+}
+
+
+/* ########################################## */
+/*                 Header Styles              */
+/* ########################################## */
+
+/* There are two headers: the main one at the top of each page, and then the top of each blog post */
+/* Includes name, title, navbar, blog title, blog date, "Posted in", footer */
+header, footer {
+	display: block;
+}
+
+/* This is what fixed the annoying space before the blog post headers */
+#pageHeader {
+	/* margin: 4px;*/
+}
+
+#name, #name a, #tagline {
+	line-height: 100px;
+	/* line-height: 50px;  Changes to 100px in computers */
+
+	color: #132A45;
+	clear: none;
+	/* clear: both;  Changes to "none" in computers */
+
+	float: left;
+	/* In computers only, gets "float: left" */
+
+	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
+}
+
+#name {
+	font-size: 3em;
+	font-weight: 700;
+
+	margin-right: 0.75em;
+
+	font-variant: small-caps;
+	letter-spacing: 0.05em;
+}
+
+#tagline {
+	font-size: 1.4em;
+	font-style: italic;
+	font-weight: normal;
+	
+	text-transform: lowercase;
+	letter-spacing: 0.1em;
+}
+
+/*
+/* Tablets 
+@media only screen and (min-width: 600px) {
+	body {
+		width: 90%;
+	}
+}
+
+/* Computers 
+@media only screen and (min-width: 960px) {
+	body {
+		width: 960px;
+	}
+	#name, #tagline {
+		float: left;
+		clear: none;
+		line-height: 100px;
+	}
+}
+*/
+
+/* ########################################## */
+/*                Navigation Styles           */
+/* ########################################## */
+
+#mainNav, #recents {
+	overflow: auto;
+	margin-bottom: 1em;
+	clear: left;
+	display: flex;
+}
+
+/* Flex stuff */
+#mainNav {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+
+#recents {
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+
+
+#mainNav div {
+	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
+	float: left;
+	background-color: #376092;
+	border: 0px solid #376092;
+	border-radius: 7pt;
+	margin: 0 auto;
+}
+#mainNav div:first-child {
+	margin-left: 0;
+}
+#mainNav div:last-child {
+	margin-right: 0;
+}
+
+/* Includes #mainAside and #tags */
+aside ul {
+	/* Get rid of the bullet points */
+	list-style: none;
+	width: 100%;
+	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
+}
+
+#recents li {
+	float: left;
+	margin-left: 0;
+	margin-right: 1.2%; /* can't figure out how to center it so I fudge it this way */
+	background-color: #376092;
+	border: 0px solid #376092;
+	border-radius: 7pt;
+}
+
+.halfnav p {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#recents li {
+	margin: 5px 0 0 0;
+}
+
+#mainNav a, #recents a {
+	display: block;
+	color: whitesmoke;
+	border: none;
+	font-size: 1.2em;
+	text-align: center;
+	padding: 0.25em 1em;
+	border: 0px solid black;
+	border-radius: 7pt;
+}
+
+#recents a {
+	padding: 0.25em 0.5em;
+}
+
+#mainNav a:hover, #recents a:hover  {
+	background-color: #132A45;
+}
+
+#mainNav em {
+	font-size: .6em;
+	display: block;
+}
+
+/* ########################################## */
+/*                  Link Styles               */
+/* ########################################## */
+
+a {
+	line-height: inherit;
+	text-decoration: none;
+}
+a, a:visited {
+	color: #376092;
+}
+a:hover {
+	color: #132A45;
+}
+
+/* In-text links */
+p a, p a:visited {
+	color: black;
+}
+p a:hover {
+	color: #376092;
+	border-bottom-style: dotted;
+	border-bottom-width: 1.5px;
+}
+
+p a:after {
+	content: 'º';
+	color: #132A45;
+}
+
+/* Override styles */
+.nodot:after {
+	content: '';
+	color: #376092
+}
+
+.biglink a {
+	float: right;
+	color: whitesmoke;
+	background: #376092;
+	border: 0px solid 376092;
+	border-radius: 7pt;
+	padding: 0.25em 0.5em;
+	margin: 0.5em 1em;
+	text-align: center;
+}
+
+.biglink a:hover  {
+	background-color: #132A45;
+}
+
+
+/* ########################################## */
+/*                  Main Styles               */
+/* ########################################## */
+
+/* The box that contains the nav, article, and aside */
+#main {
+	margin: 0px;
+    padding: 0px;
+    display: flex; /* Since the flex items are contained in this, this is what gets this property. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes*/
+	flex-flow: row;
+	
+	/* This is to get the sidenotes to work.*/
+	position: relative;
+}
+
+/* The center box */
+#main > article {
+	width: 725px; /* 960 - 224 (aside) - 11 (margin). I don't know if it's explicity defined otherwise. */
+
+	/* This is inside the main flex element, so it gets this property so it can be flexed. */
+	flex: 3 1 60%;
+	order: 2;
+}
+
+#research {
+	width: 100%;
+	margin: auto;
+}
+
+p {
+	text-align: justify;
+	line-height: 1.4em;
+	margin-bottom: 1em;
+}
+
+sup {
+	font-size: 50%;
+}
+
+/* ########################################## */
+/*                  Aside Styles              */
+/* ########################################## */
+
+/* For the recents section, these are formatted the same way as the buttons in the navigation pane. */
+
+/* The main aside box */
+#mainAside, #tags{
+	margin-left: 1rem;
+	padding: 0;
+
+	/* This is inside the main flex element, so it gets this property so it can be flexed. */
+	flex: 1 6 20%;
+	order: 3;
+}
+
+#mainPhoto {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 0px solid #376092;
+	border-radius: 7pt;
+	width: 100%;
+}
+
+#socialMedia {
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem 0;
+}
+#socialMedia a {
+	text-indent: -9000em;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+}
+#socialMedia li {
+	margin: auto;
+}
+
+#email {
+	background: url(../images/icons/email.svg) no-repeat;
+}
+#github {
+	background: url(../images/icons/github.svg) no-repeat;
+}
+#fb {
+	background: url(../images/icons/facebook.svg) no-repeat;
+}
+#twitter {
+	background: url(../images/icons/twitter.svg) no-repeat;
+}
+#googleScholar {
+	background: url(../images/icons/scholar.svg) no-repeat;
+}
+#feed {
+	background: url(../images/icons/rss.svg) no-repeat;
+}
+
+#mainAside p {
+	font-size: 90%;
+	font-style: italic;
+	text-align: center;
+	margin-top: 2em;
+}
+
+.blog-index {
+	margin-top: 3em;
+}
+
+.blog-index h2  {
+	text-align: center;
+}
+
+.entry-content {
+	font-size: 90%;
+	text-align: justify;
+}
+
+.icon-credit {
+	font-size: 0.6em;
+	text-align: justify;
+}
+
+
+/* ########################################## */
+/*                  Research                  */
+/* ########################################## */
+
+
+.research-img {
+	float: right;
+	width: 20%;
+	border: 0px solid #376092;
+	border-radius: 7pt;
+	padding: 1em;
+}
+
+/* ########################################## */
+/*                  CV Styles                 */
+/* ########################################## */
+
+#cv {
+	width: 75%;
+	margin: auto;
+}
+
+#updated {
+	font-size: 14px;
+	font-weight: 300;
+	clear: both;
+}
+
+#cv h2 {
+	font-variant: small-caps;
+	letter-spacing:.05em;
+	font-weight: 500;
+	margin-top: 2em;
+}
+
+#cv h3 {
+	margin-top: 2em;
+	font-style: italic;
+	font-weight: 300;
+}
+
+
+/* Add icons to the CV link types */
+a.paper:after {
+	content: url('/images/icons/document.svg');
+}
+a.abstract:after {
+	content: url('/images/icons/document.svg');
+}
+a.slides:after {
+	content: url('/images/icons/presentation.svg');
+}
+a.poster:after {
+	content: url('/images/icons/presentation.svg');
+}
+a.video:after {
+	content: url('/images/icons/video.svg');
+}
+a.flyer:after {
+	content: url('/images/icons/flyer.svg');
+}
+a.link:after {
+	content: url('/images/icons/link.svg');
+}
+a.audio:after {
+	content: url('/images/icons/audio.svg');
+}
+/* There should be a way to scale the current github.svg image, but I can't figure it out.*/
+a.github:after {
+	content: url('/images/icons/github_small.svg');
+	height: 30px;
+	width: 30px;
+}
+
+/* ########################################## */
+/*              Resources Page                */
+/* ########################################## */
+
+
+/* Counters  https://2ality.com/2012/01/numbering-headingshtml.html 
+Also appears in blog posts */
+#resources h1, .posts h1 {
+	counter-reset: h2counter;
+}
+#resources h2, .posts h2 {
+	counter-increment: h2counter;
+	counter-reset: h3counter;
+}
+#resources h3, .posts h3 {
+	counter-increment: h3counter;
+}
+#resources h2:before, .posts h2:before {
+	content: counter(h2counter) ".\0000a0\0000a0";
+}
+#resources h3:before, .posts h3:before {
+	content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+}
+.nocounter {
+	content: none;
+}
+
+
+
+/* ########################################## */
+/*              TOC Resources                 */
+/* ########################################## */
+
+.toc-entry {
+	list-style: none;
+}
+
+.toc-h1 a {
+	display: none;
+}
+
+.toc-h2 a {
+	font-size: 120%;
+}
+
+.toc-h3 a {
+	font-size: 100%;
+	margin-left: 1em;
+}
+
+
+/* ########################################## */
+/*               Main Blog Page               */
+/* ########################################## */
+
+#blog article {
+	border-bottom: 1.5px solid grey;
+	margin: 2em 0;
+	overflow: auto;
+}
+
+#blog a {
+	color: #376092;
+}
+
+/* The date of each blog post */
+#blog time a {
+	clear: left;
+	float: left;
+	padding: 1em 5px;
+	width: 80px;
+	text-align: center;
+	background: #376092;
+	color: whitesmoke;
+	border: 1px solid #376092;
+	border-radius: 50%;
+}
+
+/* The titles of each blog post */
+#blog h2 {
+	margin-left: 120px;
+	clear: right;
+}
+
+
+
+.posted_in, .excerpt {
+	margin-left: 120px;
+}
+
+.posted_in {
+	font-size: 80%;
+}
+
+/* The "Read more" after each post */
+.more {
+	padding: 5px 0;
+	float: right;
+}
+.more:before {
+	content: "["
+}
+.more:after {
+	content: "]"
+}
+
+/* ########################################## */
+/*                    Tags                    */
+/* ########################################## */
+
+/* The aside tag with the ID tags */
+
+#tags {
+	text-align: right;	
+	/*background: none;*/
+}
+
+#tags a {
+	color: #376092;
+}
+
+/* ########################################## */
+/*                  Archive                   */
+/* ########################################## */
+
+#tags h2 {
+	background-image: url("");
+	margin-top: 1em;
+}
+
+.taglist {
+	list-style: none;
+	/* Gets rid of the social backgrounds */
+	background-image: url("");
+}
+
+.taglist time {
+	font-size: 75%;
+	margin-left: 0.5em;
+}
+
+
+/* ########################################## */
+/*                 Blog post                  */
+/* ########################################## */
+
+.posts {
+	width: 75%;
+}
+
+.posts header {
+	margin-bottom: 1em;
+}
+
+/* Center images and tweets */
+.posts img, .twitter-tweet {
+	display: block;
+    margin: 0 auto;
+}
+
+.posts .col50 {
+	float: left;
+	width: 50%;
+  }
+  
+  /* Clear floats after image containers */
+  .posts .row::after {
+	content: "";
+	clear: both;
+	display: table;
+  }
+
+.posts h2, h3 {
+	margin-top: 2em;
+}
+
+/* Lists within posts */
+.posts ul {
+	margin-left: 3em;
+}
+
+.posts footer {
+	background: whitesmoke;
+	border-top: 1px solid black;
+}
+
+.posts footer p {
+	padding-top: 1em;
+	text-align: center;
+	color: black;
+}
+
+.prevLink {
+	float: left;
+	max-width: 270px;
+}
+
+.prevLink:before {
+	content: '\00ab\00a0';
+}
+
+.nextLink {
+	float: right;
+	text-align: right;
+	max-width: 270px;
+}
+
+.nextLink:after {
+	content: '\00a0\00bb';
+}
+
+
+/* ########################################## */
+/*                   Tables                   */
+/* ########################################## */
+
+
+#wells {
+	font-size: 95%;
+	text-align: center;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+/* Bottom border on header row */
+#wells th {
+	border-bottom: 1px solid black;
+}
+
+/* Small caps and lowercase */
+table .sc {
+	font-variant: small-caps;
+}
+table .lc {
+	font-variant: normal;
+}
+
+.caption {
+	font-size: 90%; 
+	margin:auto;
+	font-style: italic;
+}
+
+.center {
+	text-align: center;
+}
+
+
+
+
+/* ########################################## */
+/*                 Other pages                */
+/* ########################################## */
+
+
+.sidenote, .sidenote-left {
+
+	text-align: left;
+
+	/* A blue vertical line on left side. */
+	border-left: 5px solid #376092;
+
+	/* Curved border, just on the right side */
+	border-radius: 0 7pt 7pt 0;
+
+	padding: 0.25em 0.5em;
+	background: #D3D3D3;
+	width: 207px; /* Make it 195 or 196 to add a 1em margin to the left*/
+	font-size: 70%;
+
+	hyphens: auto;
+
+	/* This works because the #main selector is "relative." */
+	position: absolute;
+	right: 0;
+	
+	/* Corrected to render properly in Firefox (thanks Jonathan Crum!)*/
+	/*float: right;*/
+	/*right: -90px;*/
+
+	/* The line height looked too spread out so this consenses it */
+	line-height: 1.35;
+}
+
+.sidenote-left {
+	left: -15em;
+	width: 150px;
+}
+
+/* What is this for??? */
+.message {
+	float: center;
+	width: 80%;
+	background: #376092;
+	border: 0px solid 376092;
+	border-radius: 7pt;
+	padding: 0.25em 0.5em;
+	margin: auto;
+}
+
+
+/* ########################################## */
+/*                 Footer Styles              */
+/* ########################################## */
+
+footer {
+	background-color: #376092;
+	vertical-align: middle;
+	clear: both;
+	margin-top: 2em;
+}
+
+footer p {
+	color: whitesmoke;
+	font-size: 0.75em;
+	text-align: center;
+}
+
+/* Make the very bottom footer with rounded corners */
+footer.bottom {
+	border: 0px solid #376092;
+	border-radius: 7pt;
+}
+
+
+/* ########################################## */
+/*            My own syntax highlighting      */
+/* ########################################## */
+
+/* Indent and grey background on syntax highlighting.*/
+div.highlighter-rouge, pre {
+	background-color: #D3D3D3;
+	padding-left: 2em;
+
+	/* Horizontal scroll if it's too wide */
+	max-width: 960px;
+	overflow: auto;
+
+	/* Rounded corners */
+	border: 0px solid #D3D3D3;
+	border-radius: 7pt;
+
+	/* Space around */
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+/* The Praat and R blocks look slightly different and I can't figure out why. */
+
+.language-r	.c1 { color: forestgreen }  /* Comments (one-line comments) */
+.language-r	.kc { color: darkblue }		/* TRUE FALSE (Keyword.Consant) */
+.language-r	.k  { color: darkblue }     /* while break if else (keywords) */
+
+.language-r	.n  { color: black } 		/* Functions and variables (Named variables) */
+.language-r	.p  { color: black }		/* parenthesis (punctuation) */
+.language-r	.w  { color: black }		/* whitespace */
+.language-r	.o  { color: black }		/* operators */
+
+.praat .s { color: maroon } /* strings */
+.praat .d { color: darkgoldenrod } /* digits */
+.praat .k { color: darkblue } /* keywords */
+.praat .c { color: forestgreen } /* comments */
+.praat .v { color: slategrey } /* variables */
