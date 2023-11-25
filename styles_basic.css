@@ -1,0 +1,109 @@
+/* css styles */
+
+
+/*Hyperlinkes are black, not blue */
+:not(div.thumbnail) > p > a[href*="http"] {
+    color:default;
+}
+
+/* Hyperlinks have the little circle thing after it.*/
+:not(div.thumbnail) > p > a[href*="http"]:after {
+    content: 'º';
+    color: darkred;
+}
+
+/* Hyperlinks are not underlined */
+a {
+   text-decoration: none;
+}
+
+/* Add my flair of what a hyperlink looks like when you hover over it. */
+p a:hover { 
+  color: #376092;
+	border-bottom-style: dotted;
+	border-bottom-width: 1.5px;
+}
+
+
+
+
+/* Center Images*/
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Small caps*/
+sc {
+  font-variant: small-caps;
+}
+
+
+
+/* Praat Syntax highlighting */
+.praat .s { color: maroon } /* strings */
+.praat .d { color: darkgoldenrod } /* digits */
+.praat .k { color: darkblue } /* keywords */
+.praat .c { color: forestgreen } /* comments */
+.praat .v { color: slategrey } /* variables */
+/* In-line code block*/
+.praat { background-color: Gainsboro }
+/* standalone code blocks */
+pre.praat {
+	padding-left: 2em;
+
+	/* Horizontal scroll if it's too wide */
+	max-width: 960px;
+	overflow: auto;
+
+	/* Rounded corners */
+	border: 0px solid Gainsboro;
+	border-radius: 7pt;
+
+	/* Space around */
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+} 
+
+
+
+
+
+/* ########################################## */
+/*                   Tables                   */
+/* ########################################## */
+
+
+#wells {
+	font-size: 95%;
+	text-align: center;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+/* Bottom border on header row */
+#wells th {
+	border-bottom: 1px solid black;
+}
+
+/* Small caps and lowercase */
+table .sc {
+	font-variant: small-caps;
+}
+table .lc {
+	font-variant: normal;
+}
+
+.caption {
+	font-size: 90%; 
+	margin:auto;
+	font-style: italic;
+}
+
+.center {
+	text-align: center;
+}

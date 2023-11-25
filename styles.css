@@ -1,5 +1,28 @@
 /* css styles */
 
+:root {
+  --joeyblue: #376092;
+  --darkblue: #132A45;
+  --sansfont: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Make everything whitesmoke background except for this stuff, which should be white still */
+:not(.callout, .callout-icon-container, .callout-title-container, .callout-body-container, .sourceCode *){
+	background: whitesmoke;
+}
+
+
+
+
+
+
+
 
 /*Hyperlinkes are black, not blue */
 :not(div.thumbnail) > p > a[href*="http"] {
@@ -42,68 +65,127 @@ sc {
 
 
 
-/* Praat Syntax highlighting */
-.praat .s { color: maroon } /* strings */
-.praat .d { color: darkgoldenrod } /* digits */
-.praat .k { color: darkblue } /* keywords */
-.praat .c { color: forestgreen } /* comments */
-.praat .v { color: slategrey } /* variables */
-/* In-line code block*/
-.praat { background-color: Gainsboro }
-/* standalone code blocks */
-pre.praat {
-	padding-left: 2em;
-
-	/* Horizontal scroll if it's too wide */
-	max-width: 960px;
-	overflow: auto;
-
-	/* Rounded corners */
-	border: 0px solid Gainsboro;
-	border-radius: 7pt;
-
-	/* Space around */
-	margin-top: 1em;
-	margin-bottom: 1em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-} 
 
 
 
+/* Navbar Stuff */
 
+/* My name */
+.navbar-title {
+  font-family: var(--sansfont);
+  font-size: 2em;
+	font-weight: 500;
 
-/* ########################################## */
-/*                   Tables                   */
-/* ########################################## */
+	margin-right: 0em;
 
-
-#wells {
-	font-size: 95%;
-	text-align: center;
-	border-collapse: collapse;
-	margin: auto;
-}
-
-/* Bottom border on header row */
-#wells th {
-	border-bottom: 1px solid black;
-}
-
-/* Small caps and lowercase */
-table .sc {
 	font-variant: small-caps;
-}
-table .lc {
-	font-variant: normal;
-}
-
-.caption {
-	font-size: 90%; 
-	margin:auto;
-	font-style: italic;
+	letter-spacing: 0.02em;
+	
+	background: whitesmoke;
 }
 
-.center {
+
+/* Container holding the nav bar items*/
+.me-auto {
+  margin: auto;
+  width: 800px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.me-auto .nav-item {
+}
+
+.me-auto .nav-item a {
+  background-color: #376092;
+	border: 0px solid #376092;
+	border-radius: 7pt;
+	
+	font-size: 1.2em;
+	font-weight: 500;
+	width: 6em;
+	margin: 0 0.25em 0 0.25em;
+	
+	font-family: var(--sansfont);
 	text-align: center;
+	
+	flex-grow: 1;
 }
+.me-auto .nav-item:first-child {
+  margin-left: 0;
+}
+.me-auto .nav-item:last-child {
+  margin-right: 0;
+}
+
+.me-auto .menu-text {
+	background-color: #376092;
+	border: 0px solid #376092;
+	border-radius: 7pt;
+	
+	color: whitesmoke;
+}
+
+
+
+
+
+
+/* Sidenotes */
+
+.column-margin > span {
+
+	text-align: left;
+	color: #333333;
+
+	/* A blue vertical line on left side. */
+	border-left: 5px solid #376092;
+
+	/* Curved border, just on the right side */
+	border-radius: 0 7pt 7pt 0;
+
+	padding: 0.25em 0.5em;
+	background: #D3D3D3;
+	width: 207px; /* Make it 195 or 196 to add a 1em margin to the left*/
+	font-size: 80%;
+
+	hyphens: auto;
+
+	/* This works because the #main selector is "relative." */
+	position: relative;
+	right: 0;
+	
+	/* Corrected to render properly in Firefox (thanks Jonathan Crum!)*/
+	/*float: right;*/
+	/*right: -90px;*/
+
+	/* The line height looked too spread out so this consenses it */
+	line-height: 1.35;
+}
+
+
+
+
+/* Background colors */
+
+
+
+
+
+
+
+/* Fonts */
+
+nav *, h1, h2, h3, footer p {
+	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
+}
+
+body {
+  font: 110% 'Iowan Old Style', 'PT Serif', 'Palatino', 'Times New Roman', serif;
+}
+
+
+/* code */
