@@ -1124,6 +1124,527 @@ Okay, so what about "pair", "pear", and "pare"? Is that a minimal triplet for th
   <pubDate>Mon, 28 Sep 2020 15:25:00 GMT</pubDate>
 </item>
 <item>
+  <title>barktools: Functions to help when working with Barks</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/barktools/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’m happy to announce that I’ve just released another small R package called <code>barktools</code>. Now that I’ve got <a href="../../blog/futurevisions-my-first-r-package">one R package out there already</a>, I’ve sort of caught the bug and realized it’s kinda fun to put these small packages out there. This one is just a lightweight little guy that I thought up a few days ago while falling asleep that’ll help me when working with Barks. You can download the package from my <a href="https://joeystanley.github.io/barktools/">GitHub</a>.</p>
+<section id="barktools" class="level1">
+<h1>barktools</h1>
+<p>Functions to help when working with Barks.</p>
+<p>This package makes it easier to work with the Bark scale when analyzing and plotting acoustic data. It contains two pairs of functions. The first (<code>bark</code> and <code>hz</code>) convert between Hz and Barks. The other (<code>scale_x_bark</code> and <code>scale_y_bark</code>) make it easy to plot data in ggplot2 using the Bark scale.</p>
+<p>To install the package, you can do so by downloading it from github.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packages("remotes") # &lt;- if not already installed</span></span>
+<span id="cb1-2">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley/barktools"</span>)</span></code></pre></div>
+</div>
+<p>You can then load it like any other library.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(barktools)</span></code></pre></div>
+</div>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the data</h2>
+<p>For this little vignette, I’ll load some sample vowel data from my own speech. It’s got some outliers, but that’s the nature of automatically-processed data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb3-2">vowels <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"http://joeystanley.com/data/joey.csv"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_col_types =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span></code></pre></div>
+</div>
+<p>Here’s a simple plot that shows my vowel space. For now, I’ll just keep it simple.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(vowels, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Joey's vowels"</span>,</span>
+<span id="cb4-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Data and plot are in Hz"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/barktools/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, let’s say I want to plot using Barks. You can use the <code>bark()</code> function to convert the formant frequencies into Barks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">vowels_with_barks <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> vowels <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F1_bark =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bark</span>(F1),</span>
+<span id="cb5-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F2_bark =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bark</span>(F2))</span>
+<span id="cb5-4"></span>
+<span id="cb5-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(vowels_with_barks, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2_bark, F1_bark)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Joey's vowels"</span>,</span>
+<span id="cb5-11">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Data and plot are in Barks"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/barktools/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The Bark scale turns the nonlinear Hz data into something a little more linear, so the shape of the vowel space should change somewhat.</p>
+<p>The problem is most people can’t readily interpret the Barks unit. What is the Hz equivalent of 6 Barks? We can look this up using the <code>hz()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hz</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 631.1045</code></pre>
+</div>
+</div>
+<p>But it would be better if we could incorporate more interpretable values into the plot itself. I think the first time I saw this was in <a href="https://www.jstor.org/stable/44526873?seq=1#metadata_info_tab_contents">Harrington et al’s (2000) paper</a> on how the Queen of England’s speech changes over time:</p>
+<p><img src="https://new.joeystanley.com/blog/barktools/harrington_sample.jpg" class="img-fluid"></p>
+<p>Notice how the axes are in Barks, but the data is still plotted in Hz. This is a perfect case for using the <code>scale_x_bark()</code> and <code>scale_y_bark()</code> functions. Like the other <code>scale_*</code> functions in ggplot2, this will transform the axes of your plot. In this case, it’ll convert the plotting area to the Bark scale, but the values will be in Hz still.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(vowels, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_bark</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_bark</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Joey's vowels"</span>,</span>
+<span id="cb8-7">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Data is in Hz; plot is in Barks"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/barktools/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, you can see that the shape of the vowel space is identical to the plot above, except the axis labels are more useful: I have a better idea of what 500Hz means. Note that the axes are reversed as well, just like <code>scale_*_reverse</code>.</p>
+<p>At this point, it might be useful to modify the axes with some additional labels. Since <code>scale_*_bark</code> is just a wrapper around <code>scale_*_continuous</code>, any argument that you would normally include in the latter function will work just fine in the bark function. Specifically, I’ll modify which values get labels with <code>breaks</code> and the gridlines with <code>minor_breaks</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(vowels, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_bark</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1500</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3000</span>)),</span>
+<span id="cb9-4">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minor_breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_bark</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">600</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">800</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1500</span>)),</span>
+<span id="cb9-6">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minor_breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Joey's vowels"</span>,</span>
+<span id="cb9-9">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Data is in Hz; plot is in Barks"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/barktools/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Exactly which values you want to put is up to you, obviously, so play around with it until it looks good.</p>
+</section>
+<section id="spectrogram-plots" class="level2">
+<h2 class="anchored" data-anchor-id="spectrogram-plots">Spectrogram plots</h2>
+<p>The other type of plot you might want to use <code>scale_y_bark</code> for is something that looks like a spectrogram, that is a time-by-hz plot. You’ll have to transform the data a little bit. You can use the code that I provided in my <a href="http://joeystanley.com/blog/reshaping-vowel-formant-data-with-tidyr">tutorial</a> with the new <code>pivot_longer</code> function in <code>dplyr</code>. I’ll just pull out my /aʊ/ vowel for this plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">vowels_long <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> vowels <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(vowel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AW"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">contains</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"@"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowid_to_column</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"phoneme_id"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">contains</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"@"</span>), </span>
+<span id="cb10-6">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"formant"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"percent"</span>), </span>
+<span id="cb10-7">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_pattern =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(F</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d)@(</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d)%"</span>, </span>
+<span id="cb10-8">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_ptypes =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">formant =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F1"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F2"</span>))), </span>
+<span id="cb10-9">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_transform =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">percent =</span> as.integer),</span>
+<span id="cb10-10">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hz"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unite</span>(traj_id, phoneme_id, formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">remove =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span></code></pre></div>
+</div>
+<p>Here’s what a spectrogram-like plot might look like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(vowels_long, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(percent, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> traj_id)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/barktools/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, a lot of the change in /ai/ happens along the F1 dimension, but because of the logarithmic nature of sound, F2 visually takes up most of the vertical space and F1 is sort of squished down at the bottom. We can emphasize F1 by transforming the <em>y</em>-axis into the Bark scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(vowels_long, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(percent, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> traj_id)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_bark</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rev =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/barktools/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that this time, I added the argument <code>rev = FALSE</code> to <code>scale_y_bark</code>. By default, the function will flip the axis (like <code>scale_y_reverse</code>), but in this case that behavior is not desired. So, you can suppress that flip by specifying <code>rev = FALSE</code>.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And that’s it! That’s the whole package. I thought it would be a useful thing for me. Perhaps you’ll find some use for it too.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Data Viz</category>
+  <category>Github</category>
+  <category>How-to Guides</category>
+  <category>Methods</category>
+  <category>Phonetics</category>
+  <category>R</category>
+  <category>R Packages</category>
+  <category>Side Projects</category>
+  <category>Skills</category>
+  <guid>https://new.joeystanley.com/blog/barktools/index.html</guid>
+  <pubDate>Mon, 27 Apr 2020 19:45:00 GMT</pubDate>
+</item>
+<item>
   <title>I got a job at BYU!</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/I-got-a-job/index.html</link>
@@ -1580,66 +2101,6 @@ Tip
   <guid>https://new.joeystanley.com/blog/colloquium-2020/index.html</guid>
   <pubDate>Thu, 09 Jan 2020 11:20:00 GMT</pubDate>
   <media:content url="https://new.joeystanley.com/blog/colloquium-2020/smooth_full.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>LSA and ADS 2020</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/ads-and-lsa-2020/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>For the first time in a few years, I did not attend the ADS/LSA annual meetings. It would have been nice to hang out in New Orleans this weekend. However, my research will still be represented: my colleagues presented some research focusing on Southern American English vowels that I’ve been a part of this year.</p>
-<p><br></p>
-<section id="fridays-ads-poster-on-southern-american-english-vowels" class="level2">
-<h2 class="anchored" data-anchor-id="fridays-ads-poster-on-southern-american-english-vowels">Friday’s ADS poster on Southern American English vowels</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/200103-ads2020.pdf">here</a>!</p>
-</div>
-</div>
-<p>Friday morning at the American Dialect Society poster session, Bill Kretzschmar presented some research on behalf of the entire Linguistic Atlas research team at UGA (Peggy Renwick, Katie Kuiper, Lisa Lipani, Mike Olsen, Rachel Olsen, and me). In it he presents findings from our now-complete dataset from the <em>Digital Archive of Southern Speech</em>. With a dataset this size, we can make comparisons to other varieties of American English regarding the distribution of vowels in the F1-F2 space.</p>
-</section>
-<section id="sundays-lsa-presentation-on-formant-trajectories" class="level2">
-<h2 class="anchored" data-anchor-id="sundays-lsa-presentation-on-formant-trajectories">Sunday’s LSA presentation on formant trajectories</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/200105-lsa2020.pdf">here</a>!</p>
-</div>
-</div>
-<p>Sunday, <a href="http://faculty.franklin.uga.edu/mrenwick/">Peggy Renwick</a> presented our research on formant dynamics of back vowels in Southern American English vowels. Focusing on just the White Americans in the <em>Digital Archive of Southern Speech (DASS)</em>, we wanted to see how formant trajectory shapes and their relative positions vary across male and female speakers in different generations. Many of our findings can be summarized in this animation:</p>
-<p><img src="https://new.joeystanley.com/blog/ads-and-lsa-2020/lsa2020.gif" class="img-fluid"></p>
-<p><sc>goose</sc> doesn’t change much, especially for the women, suggesting <sc>goose</sc> fronting is an old shift and was nearing completion by the time our speakers acquired language. Meanwhile <sc>goat</sc> lowers between the Lost and GI generations of women, and then a generation later for the men. <sc>foot</sc> doesn’t change much, suggesting it doesn’t pattern with <sc>goose</sc>-fronting. The low vowels <sc>lot</sc> and <sc>thought</sc> are near each other, but not merged because of their different positions in the F1-F2 space and their different formant shapes.</p>
-<p>Something that stands out to me is that each vowel’s trajectory didn’t change all that much over time. This wasn’t a product of how our GAMM was specified: each combination of vowel, sex, and generation was interacted and therefore, fit independently of the other. So the fact that the trajectories show remarkable stability is really interesting to me. So, at least among these DASS speakers, Southern American English vowels appear to shift the nucleus and glide in tandem.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Animations</category>
-  <category>Conferences</category>
-  <category>Linguistic Atlas</category>
-  <category>Research</category>
-  <category>South</category>
-  <guid>https://new.joeystanley.com/blog/ads-and-lsa-2020/index.html</guid>
-  <pubDate>Thu, 02 Jan 2020 11:20:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

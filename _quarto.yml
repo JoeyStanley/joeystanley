@@ -33,7 +33,7 @@ website:
 format:
   html:
     theme: cosmo
-    css: styles_updated.css
+    css: styles.css
 
 editor: source
 
