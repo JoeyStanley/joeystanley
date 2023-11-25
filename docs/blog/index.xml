@@ -1161,6 +1161,301 @@ Okay, so what about "pair", "pear", and "pare"? Is that a minimal triplet for th
   <pubDate>Fri, 03 Apr 2020 23:13:00 GMT</pubDate>
 </item>
 <item>
+  <title>futurevisions: My first R package!</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/futurevisions/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today I released my first complete, functional, R package! It’s called futurevisions and it’s available on <a href="https://github.com/JoeyStanley/futurevisions">my github</a>. It’s just a little one that contains about 20 different color palettes. I’ve had the idea to work on it for a few months and this week, I decided to go ahead and do it! The rest of this post is the README file for that package and explains the posters the palettes were based on, installation, usage, the list of palettes, and some background.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The color palettes are based on NASA’s <a href="https://www.jpl.nasa.gov/visions-of-the-future/">Visions of the Future</a> poster series, which were produced through NASA’s Jet Propulsion Laboratory through the California Institute of Technology. They are retro-future-style posters depicting humans visiting other planets, moons, and exo-planets. In their words,</p>
+<blockquote class="blockquote">
+<p>Imagination is our window into the future. At NASA/JPL we strive to be bold in advancing the edge of possibility so that someday, with the help of new generations of innovators and explorers, these visions of the future can become a reality. As you look through these images of imaginative travel destinations, remember that you can be an architect of the future.</p>
+</blockquote>
+<p>The posters are available for download for free. You can get them as PDFs or as 20x30 inch TIFF files.</p>
+</section>
+<section id="demo" class="level2">
+<h2 class="anchored" data-anchor-id="demo">Demo</h2>
+<p>You can install the package through <a href="https://github.com/JoeyStanley/futurevisions">my github</a>. The library imports <code>ggplot2</code>, so if there are problems, make sure you have <code>ggplot2</code> installed already. (I’m not good at testing things so if there is trouble, let me know.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"JoeyStanley/futurevisions"</span>)</span></code></pre></div>
+</div>
+<p>You can then load it like a normal R package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(futurevisions)</span></code></pre></div>
+</div>
+<p>The main two functions are <code>futurevisions</code>, which returns a list of colors, and <code>show_palette</code>, which produces a simple image using <code>ggplot2</code> to highlight the colors. For example, here is the palette called <code>mars</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mars"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">futurevisions</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mars"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "#DB3A2F" "#EAB33A" "#275D8E" "#902A57" "#F7EBD3" "#0B0C0B"</code></pre>
+</div>
+</div>
+<p>This can be easily used within <code>ggplot2</code> using <code>scale_color_manual</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(mpg, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(cty, hwy, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(cyl))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">futurevisions</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mars"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="note-on-color-selection" class="level3">
+<h3 class="anchored" data-anchor-id="note-on-color-selection">Note on color selection</h3>
+<p>This is not a rigorous sampling of colors. I picked a few colors from each poster that I felt were representative. They may not necessarily be colorblind-friendly. When using these palettes in data visualization, take care to ensure that your data is not misrepresented.</p>
+</section>
+</section>
+<section id="list-of-palettes" class="level2">
+<h2 class="anchored" data-anchor-id="list-of-palettes">List of palettes</h2>
+<section id="gradient" class="level3">
+<h3 class="anchored" data-anchor-id="gradient">Gradient</h3>
+<p>These are palettes that may lend themselves better to more gradient purposes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ceres"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"europa"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"titan"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cancri"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pso"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="diverging" class="level3">
+<h3 class="anchored" data-anchor-id="diverging">Diverging</h3>
+<p>These are palettes that may lend themselves more to highlighting deviations from a center point.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"earth"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"enceladus"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"kepler186"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"atomic_clock"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="categorical" class="level3">
+<h3 class="anchored" data-anchor-id="categorical">Categorical</h3>
+<p>These are palettes that may lend themselves more to purposes where each color is a stand-alone entity with no meaningful order.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"venus"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mars"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"jupiter"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hd"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"kepler16b"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pegasi"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"trappest"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grand_tour"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"atomic_red"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"atomic_blue"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-10.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"atomic_orange"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-11.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>A portion of the 3rd floor of the Main Library at the University of Georgia has been designed to be evocative of the 1950s when the library was first built. It has some retro-style furniture in a nice study room. It also has some of these Visions of the Future posters hanging up in the hallway. I walk down that hallway every day since the linguistics books, the <a href="https://digi.uga.edu">DigiLab</a>, the best study room on campus, and my personal carrel are all on that floor.</p>
+<p><img src="https://new.joeystanley.com/blog/futurevisions/third_floor.JPG" class="img-fluid"></p>
+<p>In fall 2019 I put together <a href="../../pages/dataviz.html">a series of workshops</a> on data visualization. <a href="../../downloads/191023-color.pdf">One of them</a> was devoted to color, and in preparations for it, I saw that people have made color palettes based on all sorts of things: <a href="https://www.designcontest.com/blog/inspiration-gallery-wes-anderson-color-palettes/">Wes Anderson movies</a>, <a href="http://alyssafrazee.com/2014/03/06/RSkittleBrewer.html">Skittles</a>, <a href="http://pokepalettes.com">Pokemon</a>, you name it. I had the idea that the posters on that floor might make for some fun color palettes. I ended up making the package in February 2020.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Data Viz</category>
+  <category>Github</category>
+  <category>R</category>
+  <category>R Packages</category>
+  <category>Side Projects</category>
+  <guid>https://new.joeystanley.com/blog/futurevisions/index.html</guid>
+  <pubDate>Tue, 11 Feb 2020 15:53:00 GMT</pubDate>
+</item>
+<item>
   <title>Full house at my first LaTeX workshop!</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/full-house-at-my-first-latex-workshop/index.html</link>
@@ -1345,1354 +1640,6 @@ Tip
   <category>South</category>
   <guid>https://new.joeystanley.com/blog/ads-and-lsa-2020/index.html</guid>
   <pubDate>Thu, 02 Jan 2020 11:20:00 GMT</pubDate>
-</item>
-<item>
-  <title>Extending Wells’ Lexical Set to Prelateral Vowels</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/extending-wells-lexical-sets-to-prelateral-vowels/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>At some point in the past few years, I’ve analyzed pretty much every English vowel before laterals. They’re pretty cool because they’re understudied, they’re somewhat infrequent, and they’re involved in a lot of different mergers in different parts of the country. When referring to these prelateral vowels, several labels have been used in the past, but none do the job quite right. So, I think prelaterals should get a standardized set of Wells-style labels, like prerhotics have. The problem is figuring out what they should be. In this post, I explain why existing labels aren’t great and then propose a complete set of new labels for prelateral vowels.</p>
-<p>To cut to the chase, this table—particularly the column labeled “Prelateral Keyword”—shows the labels I’ve come up with:</p>
-<center>
-
-<table id="wells">
-<thead>
-<tr>
-<th>
-&nbsp;&nbsp;IPA&nbsp;&nbsp;
-</th>
-<th>
-Wells<br>Keyword
-</th>
-<th>
-Prelateral<br>Keyword
-</th>
-<th>
-&nbsp;
-</th>
-<th style="text-align:left;">
-Example words
-</th>
-</tr>
-</thead>
-<tbody class="sc">
-<tr>
-<td class="lc">
-i
-</td>
-<td>
-<sc>fleece</sc>
-</td>
-<td>
-<sc>zeal</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-feel, peel, deal, kneel, meal, seal, yield, shield
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɪ
-</td>
-<td>
-<sc>kit</sc>
-</td>
-<td>
-<sc>guilt</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-ill, pill, dill, gill, shrill, drill, kilt, quill, thrill
-</td>
-</tr>
-<tr>
-<td class="lc">
-e
-</td>
-<td>
-<sc>face</sc>
-</td>
-<td>
-<sc>flail</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-fail, tail, whale, scale, jail, trail, grail, shale, ale
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɛ
-</td>
-<td>
-<sc>dress</sc>
-</td>
-<td>
-<sc>shelf</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-fell, bell, weld, gel, smell, swell, dwell, delve, realm
-</td>
-</tr>
-<tr>
-<td class="lc">
-u
-</td>
-<td>
-<sc>goose</sc>
-</td>
-<td>
-<sc>spool</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-fool, cool, tool, ghoul, stool, school, drool, cruel, Yule
-</td>
-</tr>
-<tr>
-<td class="lc">
-ʊ
-</td>
-<td>
-<sc>foot</sc>
-</td>
-<td>
-<sc>wolf</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-full, pull, bull, wool, wolf
-</td>
-</tr>
-<tr>
-<td class="lc">
-o
-</td>
-<td>
-<sc>goat</sc>
-</td>
-<td>
-<sc>jolt</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-hole, coal, bowl, goal, cold, scold, troll, molt, gold
-</td>
-</tr>
-<tr>
-<td class="lc">
-ʌ
-</td>
-<td>
-<sc>strut</sc>
-</td>
-<td>
-<sc>mulch</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-hull, dull, gull, pulse, skull, cult, gulf, lull, sulk, sculpt
-</td>
-</tr>
-<tr>
-<td class="lc">
-æ
-</td>
-<td>
-<sc>trap</sc>
-</td>
-<td>
-<sc>talc</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-pal, gal, shall, scalp, talc, valve, Hal, Alps
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɑ
-</td>
-<td>
-<sc>lot</sc>
-</td>
-<td>
-<sc>golf</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-doll, alm, golf, qualm, psalm
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɔ
-</td>
-<td>
-<sc>thought</sc>
-</td>
-<td>
-<sc>fault</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-all, hall, fall, scald, bald, shawl, crawl, vault, false
-</td>
-</tr>
-<tr>
-<td class="lc">
-aɪ
-</td>
-<td>
-<sc>price</sc>
-</td>
-<td>
-<sc>child</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-aisle, dial, pile, tile, bile, mile, child, trial, vile, guile
-</td>
-</tr>
-<tr>
-<td class="lc">
-aʊ
-</td>
-<td>
-<sc>mouth</sc>
-</td>
-<td>
-<sc>prowl</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-foul, howl, towel, bowels, jowl, scowl, growl, owl
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɔɪ
-</td>
-<td>
-<sc>choice</sc>
-</td>
-<td>
-<sc>broil</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-oil, foil, boil, coil, toil, spoil, broil, soil, royal(?)
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɚ
-</td>
-<td>
-<sc>nurse</sc>
-</td>
-<td>
-<sc>twirl</sc>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-Earl, girl, curl, hurl, pearl, whirl, swirl, twirl
-</td>
-</tr>
-</tbody>
-
-</table>
-<p class="caption center">
-A standard set of prelateral keywords.
-</p>
-<br>
-</center>
-<p>Yes, this is probably another case of <a href="https://imgs.xkcd.com/comics/standards.png">competing standards</a>, but it illustrates <a href="../../blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets">what I think lexical sets for allophones should look like</a>.</p>
-<p>For additional background how and why I came up with these labels, read on.</p>
-<section id="wells-lexical-sets" class="level2">
-<h2 class="anchored" data-anchor-id="wells-lexical-sets">Wells Lexical Sets</h2>
-<p>As a small bit of background, <span class="sidenote">John C. Wells. 1982. <i>Accents of English</i>.</span>John C. Wells came up with standardized labels for sets of words that historically share the same vowel. The labels are also used to refer to the vowel itself. So something like <sc>fleece</sc> may refer to words like <em>creep</em>, <em>speak</em>, <em>leave</em>, <em>feel</em>, <em>key</em>, and <em>people</em> but also to the phoneme /i/. This is useful in cross-dialect comparisons when the actual phonetic quality of that vowel may systematically differ in that set of words.</p>
-<p>The keywords themselves are not just arbitrary words within that lexical set, but rather they were carefully selected:</p>
-<blockquote class="blockquote">
-<p>The keywords have been chosen in such a way that clarity is maximized: whatever accent of English they are spoken in, they can hardly be mistaken for other words. Although <em>fleece</em> is not the commonest of words, it cannot be mistaken for a word with some other vowel; whereas <em>beat</em>, say, if we had chosen it instead, would have been subject to the drawback that one man’s pronunciation of <em>beat</em> may sound like another’s pronunciation of <em>bait</em> or <em>bit</em>. (Wells 1982:123)</p>
-</blockquote>
-<p>Presumably then, a good set of keywords for prelateral vowels should be deliberately chosen to follow this same principle of maximal clarity.</p>
-<p>To be clear, what I am proposing is a set of keywords that refer to the prelateral allophones of each English vowel. That is, a label like <sc>zeal</sc> would refer to /i/ when followed by an /l/, as in the words <em>feel</em>, <em>peel</em>, and <em>deal</em>. As explained in <a href="../../blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets">my previous post on non-canonical allophonic extensions to Wells’ lexical sets</a>, <sc>zeal</sc> would be a subset of the umbrella label <sc>fleece</sc>, which refers to all tokens of /i/ regardless of phonetic environment.</p>
-</section>
-<section id="existing-prelateral-labels" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="existing-prelateral-labels">Existing Prelateral Labels</h2>
-<div class="page-columns page-full"><p>Of the research I’ve seen on prelateral vowels, if labels are given to them, they usually take the form of a minimal pair or set (or as close to one as possible). Some of the more common labels include <sc>pool</sc>, <sc>pull</sc>, and <sc>pole</sc> for back vowels, or <sc>feel</sc>, <sc>fill</sc>, <sc>fail</sc>, and <sc>fell</sc> for front vowels. I’ve used them myself, actually.</p><div class="no-row-height column-margin column-container"><span class="">See, for example, <a href="https://repository.upenn.edu/dissertations/AAI9965448/">Bowie (2000)</a>, <a href="https://doi.org/10.1515/9783110175325">Thomas (2004)</a>, and <a href="https://doi.org/10.1515/9783110175325">Tillery &amp; Bailey (2004)</a>.</span></div></div>
-<div class="page-columns page-full"><p>To my knowledge, the only attempt at standardizing prelateral labels was by <a href="https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2">Thomas &amp; Yeager-Dror (2009)</a>. In their table, reproduced below, they list the labels they use in that volume. In addition to standardizing other allophones’ labels, prelateral vowels get an entire column, and a nearly complete set of labels.</p><div class="no-row-height column-margin column-container"><span class="">I presented an abbreviated version of this table already in a <a href="../../blog/why-do-people-use-bat-instead-of-trap">previous post</a> since it’s what popularized the <sc>b_t</sc> frame.</span></div></div>
-
-<table id="wells">
-<thead>
-<tr>
-<th>
-&nbsp;&nbsp;IPA&nbsp;&nbsp;
-</th>
-<th>
-&nbsp;&nbsp;&nbsp;&nbsp;Keyword&nbsp;&nbsp;&nbsp;&nbsp;
-</th>
-<th>
-&nbsp;&nbsp;&nbsp;&nbsp;[_r]&nbsp;&nbsp;&nbsp;&nbsp;
-</th>
-<th>
-&nbsp;&nbsp;&nbsp;&nbsp;[_l]&nbsp;&nbsp;&nbsp;&nbsp;
-</th>
-<th style="text-align: left">
-Specific Formulations&nbsp;&nbsp;
-</th>
-</tr>
-</thead>
-<tbody class="sc">
-<tr>
-<td class="lc">
-/i/
-</td>
-<td>
-beet
-</td>
-<td>
-beer
-</td>
-<td>
-peel
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɪ/
-</td>
-<td>
-bit
-</td>
-<td>
-</td>
-<td>
-bill
-</td>
-<td class="lc" style="text-align: left">
-<sc>bin</sc> [_N]
-</td>
-</tr>
-<tr>
-<td class="lc">
-/e/
-</td>
-<td>
-bait
-</td>
-<td>
-bear
-</td>
-<td>
-bail
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɛ/
-</td>
-<td>
-bet
-</td>
-<td>
-</td>
-<td>
-bell
-</td>
-<td class="lc" style="text-align: left">
-<sc>ben</sc> [_N]; <sc>beg</sc> [_ɡ]
-</td>
-</tr>
-<tr>
-<td class="lc">
-/æ/
-</td>
-<td>
-bat
-</td>
-<td>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align: left">
-<sc>back</sc> [_k]; <sc>bag</sc> [_ɡ]; <sc>ban</sc> [_N]; <sc>tap</sc> [_p]; <sc>tab</sc> [_b]; <sc>bad</sc>, for Milwaukee [_d], for New York see p.&nbsp;109.
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɑ/
-</td>
-<td>
-bot
-</td>
-<td>
-bar
-</td>
-<td>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɔ/
-</td>
-<td>
-bought
-</td>
-<td class="lc">
-<sc>bor</sc>der
-</td>
-<td>
-ball
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/o/
-</td>
-<td>
-boat
-</td>
-<td>
-boar
-</td>
-<td>
-bowl
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ʌ/
-</td>
-<td>
-but
-</td>
-<td>
-</td>
-<td>
-cull
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ʊ/
-</td>
-<td>
-book
-</td>
-<td>
-boor
-</td>
-<td>
-pull
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/u/
-</td>
-<td>
-boot
-</td>
-<td>
-</td>
-<td>
-pool
-</td>
-<td class="lc" style="text-align: left">
-<sc>toot</sc> [C_<sub>coronal</sub>_]
-</td>
-</tr>
-<tr>
-<td class="lc">
-/aɪ/
-</td>
-<td>
-bite
-</td>
-<td>
-pyre
-</td>
-<td>
-bile
-</td>
-<td class="lc" style="text-align: left">
-<sc>bide</sc> [_C<sub>vd</sub>]; <sc>buy</sc> [_#]; <sc>pine</sc> [_N]
-</td>
-</tr>
-<tr>
-<td class="lc">
-/aʊ/
-</td>
-<td>
-bout
-</td>
-<td>
-hour
-</td>
-<td>
-howl
-</td>
-<td class="lc" style="text-align: left">
-<sc>bough</sc> [_#]
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɔɪ/
-</td>
-<td>
-boy
-</td>
-<td>
-</td>
-<td>
-boil
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɚ/
-</td>
-<td>
-bird
-</td>
-<td>
-</td>
-<td>
-</td>
-<td class="lc" style="text-align: left">
-<sc>burr</sc> [_#]; both<sc>er</sc> [-stress]
-</td>
-</tr>
-</tbody>
-
-</table>
-<p class="caption center">
-The lexical set, including prelateral and other allophonic expansions, from <a href="https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2">Thomas &amp; Yeager-Dror (2009:6)</a>.
-</p>
-<p><br></p>
-<p>It appears the authors wanted to select as many keywords as possible that started with /b/. The now somewhat widespread <sc>b_t</sc> frame is established, and most prerhotic labels start with /b/ as well. The prelateral vowels had the most exceptions: there are seven keywords with <sc>b_l</sc>, but there are several consonant onsets to fill in the gaps (three with /p/ and one each with /k/ and /h/). This inconsistency in the prelaterals creates a somewhat haphazard set of labels.</p>
-<p>The draw of using minimal sets for prelaterals is tempting, but I believe they have the same problems that the <sc>b_t</sc> frame has. In a <a href="../../blog/why-do-people-use-bat-instead-of-trap">previous post</a>, I’ve already shared my thoughts on why I think the <sc>b_t</sc> frame isn’t very helpful, so I won’t rehash it further. The gist is this: if you hear someone say [poɫ] in isolation, are they saying <em>pole</em> or are do they merge /ʊl/ and /ol/ and are actually saying <em>pull</em>? This ambiguity goes against Wells’ original intentions of the words being “hardly be mistaken for other words.”</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-My Hot Take
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>To put it another way, just because we call something the <em>pull-pole</em> merger, that doesn’t mean we should refer to the entire lexical sets as <sc>pull</sc> and <sc>pole</sc>. In fact, I think we should actively <em>avoid</em> referring to them as <sc>pull</sc> and <sc>pole</sc> for the very reason that they <em>do</em> form a minimal pair.</p>
-</div>
-</div>
-</section>
-<section id="why-a-minimal-set-wont-work-for-prelaterals" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="why-a-minimal-set-wont-work-for-prelaterals">Why a minimal set won’t work for prelaterals</h2>
-<p>Let’s entertain the idea of using a minimal set to unite all prelateral vowels. We’ve got <sc>f_l</sc> for front vowels and <sc>p_l</sc> for some of the back vowels. Can we find one frame that works for <em>all</em> vowels?</p>
-<p>No.&nbsp;The following table, which is grouped approximately by natural class, lists the frames that have the most words and would therefore be the best candidates for new labels:</p>
-
-<table id="wells">
-<thead class="sc">
-<tr>
-<th class="lc">
-IPA
-</th>
-<th>
-b_l
-</th>
-<th>
-p_l
-</th>
-<th>
-f_l
-</th>
-<th>
-d_l
-</th>
-<th>
-h_l
-</th>
-<th>
-k_l
-</th>
-<th>
-t_l
-</th>
-<th>
-g_l
-</th>
-</tr>
-</thead>
-<tbody class="sc">
-<tr>
-<td class="lc">
-/il/
-</td>
-<td>
-</td>
-<td>
-peel/peal
-</td>
-<td>
-feel
-</td>
-<td>
-deal
-</td>
-<td>
-heal, heel
-</td>
-<td>
-keel
-</td>
-<td>
-teal
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɪl/
-</td>
-<td>
-bill
-</td>
-<td>
-pill
-</td>
-<td>
-fill
-</td>
-<td>
-dill
-</td>
-<td>
-hill
-</td>
-<td>
-kill
-</td>
-<td>
-till
-</td>
-<td>
-gill
-</td>
-</tr>
-<tr>
-<td class="lc">
-/el/
-</td>
-<td>
-bale/bail
-</td>
-<td>
-pale/pail
-</td>
-<td>
-fail
-</td>
-<td style="color: #999999;">
-Dale
-</td>
-<td>
-hail
-</td>
-<td>
-kale
-</td>
-<td>
-tale/tail
-</td>
-<td>
-gale
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɛl/
-</td>
-<td>
-bell
-</td>
-<td style="color: #999999;">
-pell
-</td>
-<td>
-fell
-</td>
-<td>
-dell
-</td>
-<td>
-hell
-</td>
-<td>
-</td>
-<td>
-tell
-</td>
-<td>
-</td>
-</tr>
-<tr style="border-top: 1px solid #CCCCCC;">
-<td class="lc">
-/ul/
-</td>
-<td style="color: #999999;">
-boule
-</td>
-<td>
-pool
-</td>
-<td>
-fool
-</td>
-<td style="color: #999999;">
-duel
-</td>
-<td>
-who’ll
-</td>
-<td>
-cool
-</td>
-<td>
-tool
-</td>
-<td>
-ghoul
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ʊl/
-</td>
-<td>
-bull
-</td>
-<td>
-pull
-</td>
-<td>
-full
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ol/
-</td>
-<td>
-bowl
-</td>
-<td>
-pole/poll
-</td>
-<td>
-foal
-</td>
-<td style="color: #999999;">
-dole
-</td>
-<td>
-hole/whole
-</td>
-<td>
-coal
-</td>
-<td>
-toll
-</td>
-<td>
-goal
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ʌl/
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-dull
-</td>
-<td>
-hull
-</td>
-<td>
-cull
-</td>
-<td>
-</td>
-<td>
-gull
-</td>
-</tr>
-<tr style="border-top: 1px solid #CCCCCC;">
-<td class="lc">
-/æl/
-</td>
-<td>
-</td>
-<td>
-pal
-</td>
-<td>
-</td>
-<td>
-</td>
-<td style="color: #999999;">
-Hal
-</td>
-<td style="color: #999999;">
-Cal
-</td>
-<td>
-</td>
-<td>
-gal
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɑl/
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-doll
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɔl/
-</td>
-<td>
-ball
-</td>
-<td style="color: #999999;">
-Paul
-</td>
-<td>
-fall
-</td>
-<td>
-</td>
-<td>
-hall
-</td>
-<td>
-call
-</td>
-<td>
-tall
-</td>
-<td>
-gall
-</td>
-</tr>
-<tr style="border-top: 1px solid #CCCCCC;">
-<td class="lc">
-/ɑɪl/
-</td>
-<td>
-bile
-</td>
-<td>
-pile
-</td>
-<td>
-file
-</td>
-<td>
-dial
-</td>
-<td>
-</td>
-<td style="color: #999999;">
-Kyle
-</td>
-<td>
-tile
-</td>
-<td>
-guile
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɑʊl/
-</td>
-<td>
-bowel
-</td>
-<td>
-</td>
-<td>
-foul/fowl
-</td>
-<td>
-dowel
-</td>
-<td>
-howl
-</td>
-<td>
-</td>
-<td>
-towel
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td class="lc">
-/ɔɪl/
-</td>
-<td>
-boil
-</td>
-<td>
-</td>
-<td>
-foil
-</td>
-<td style="color: #999999;">
-Doyle
-</td>
-<td>
-</td>
-<td>
-coil
-</td>
-<td>
-toil
-</td>
-<td style="color: #999999;">
-Goyle
-</td>
-</tr>
-</tbody>
-
-</table>
-<p class="caption">
-Minimal sets of and potential keywords for prelateral vowels. Words in gray are not ideal for a variety of reasons (infrequent words, proper nouns, or inconsistent vowel assignments). Blank cells are, as far as I can tell, accidental gaps in the English lexicon.
-</p>
-<p><br></p>
-<p>As you can see, no one frame works for all vowels. The main culprits are /ʌl/ and /ɑl/ and maybe also /ʊl/ and /æl/. Let’s look at each frame individually:</p>
-<ul>
-<li><p><strong><sc>b_l</sc></strong>—It’s closest to the established <sc>b_t</sc> frame, but other than the diphthongs (which are probably least studied), none of the natural classes gets a full minimal set. In fact, from what I’ve been able to find, there are no monosyllabic English words with /#bil/, so you can’t even add extra coda material to make it work.</p></li>
-<li><p><strong><sc>p_l</sc></strong>—If the <sc>b_l</sc> frame is the goal, <sc>p_l</sc> makes for a good backup since it’s articulatorily closest. For the back vowels, it’s probably the least bad option. (If so, I prefer <sc>pole</sc> over <sc>poll</sc>.) For the front vowels, it works fine except the word <em>pell</em> isn’t exactly that common.</p></li>
-<li><p><strong><sc>f_l</sc></strong>—This one is best choice for front vowels with its four common words. Conveniently, it works for the diphthongs too. It’s a little less ideal for the back vowels because <em>foal</em> isn’t a particularly common word, and some people confuse it with <em>foul</em>.</p></li>
-<li><p><strong><sc>d_l</sc></strong>—This one works well for a lot of vowels, but only if you use a couple proper names like <em>Dale</em> and <em>Doyle</em>. In a lot varieties of American English <em>dual</em> works fine here, but not for non-American varieties. Furthermore, <em>dole</em> isn’t a very well-known word I don’t think. The benefit of looking at <sc>d_l</sc> though is that it is the only frame that contrasts /ɑl/ and /ʌl/.</p></li>
-<li><p><strong><sc>h_l</sc></strong>—It works for the front vowels, but I don’t really want to plaster <sc>hell</sc> all across my papers. Besides, <sc>who’ll</sc> isn’t ideal either because if we’re okay with contractions, we might as well include <sc>bee’ll</sc>, <sc>boo’ll</sc>, or any number of words to fit the frame. I will say though that the benefit to using <sc>h_l</sc> is that is has a nice minimal pair contrasting /ɔl/ and /ʌl/, which some varieties merge.</p></li>
-<li><p><strong><sc>k_l</sc></strong>—Most of the benefits of <sc>h_l</sc> apply to <sc>k_l</sc> but none of the broad natural classes are complete.</p></li>
-<li><p><strong><sc>t_l</sc></strong>—It’s comparable to <sc>f_l</sc>, except there’s no /ʊl/.</p></li>
-<li><p><strong><sc>g_l</sc></strong>—The benefits are similar to <sc>k_l</sc>, except there’s no /ɡil/, and I had to fudge /ɔɪ/ with <em>Goyle</em> (though Harry Potter fans may enjoy it).</p></li>
-</ul>
-<div class="no-row-height column-margin column-container"><span class="">By natural classes, I’m referring to front vowels, back vowels, low vowels, and diphthongs—environments within which mergers are most commonly reported.</span><span class="">I don’t speak hypothetically here: I’ve included <em>foal</em> in wordlists and people sometimes do mistake it for <em>foul</em>. See also <a href="http://journal-labphon.org/article/10.5334/labphon.54/">Wade (2017:7)</a> and <a href="http://repository.upenn.edu/pwpl/vol21/iss2/2/">Arnold (2015:3)</a> who explicitly mentione this problem too.</span></div><p>Several frames work pretty well, but they all have their problems. More importantly, no one frame works well for all front vowels (if you include /æl/), no one frame works for all back vowels (if you include /ʌl/), and no one frame works for the low vowels (thanks, /ɑl/). To get a complete set of labels, you’re going to have to pick three different frames—at a minimum. Such a patchwork of frames is inconsistent and confusing.</p>
-<p>So, should we ditch the minimal sets and go for unambiguous, truly Wells-style lexical sets? Yes.</p>
-</section>
-<section id="unambiguous-labels-for-prelateral-vowels" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="unambiguous-labels-for-prelateral-vowels">Unambiguous labels for prelateral vowels</h2>
-<p>My goal in all this was to select prelateral vowel keywords that are, in Wells’ words, “unmistakable no matter what accent one says them in.” So, rather than finding the optimal minimal set, I decided to choose words that were were very different from one another.</p>
-<p>To identify potential words, I would need a list of all monosyllabic English words with a prelateral vowel. Fortunately, I’ve got that (and I’ve had it for some time)!</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-List of all ~401 monosyllabic English words with a coda lateral, organized by vowel and syllable structure? Check. My favorite? Squelched.
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/861032509534031873?ref_src=twsrc%5Etfw">May 7, 2017</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>This spreadsheet is based on the CMU dictionary. I searched for all words that contained just one vowel and where that vowel was followed by an L. I then just organized them by their consonants in a spreadsheet. It’s pretty handy.</p>
-<div class="page-columns page-full"><p>With this spreadsheet, I can easily identify candidate representative words. So, loosely based on Wells’ original keywords, here were the criteria that I established for selecting a word, approximately in order of importance:</p><div class="no-row-height column-margin column-container"><span class="">I’ve outlined more general criteria for selecting a new Wells-inspired label for an allophone in a <a href="../../blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets">previous post</a>.</span></div></div>
-<ol type="1">
-<li><p>They must be monosyllabic.</p></li>
-<li><p>They must be monomorphemic.</p></li>
-<li><p>Words should not form another English word when the vowel is replaced with another (<em>i.e.</em> it should have no minimal pairs).</p></li>
-<li><p>Onsets should ideally have just one consonant. Glides are avoided and liquids are acceptable as a last resort.</p></li>
-<li><p>Codas consist of a single voiceless obstruent following the /l/. </p></li>
-<li><p>Nouns are preferred.</p></li>
-</ol>
-<div class="no-row-height column-margin column-container"><span class="">I have relaxed the coda requirement a little bit from what Wells says (1982:123):<br><span style="font-size: 0.8em;">“As far as possible the keywords have been chosen so as to end in a voiceless alveolar or dental consonant: a voiceless consonant minimizes the likelihood of diphthongal glides obscuring a basic vowel quality, while coronality (alveolar or dental place) minimizes the possible allophonic effect of the place of a following consonant. An exception here is <sc>trap</sc> for the /æ/ correspondence, where no items in /-t, -s, -θ/ are altogether suitable; another one is <sc>palm</sc>.”</span><br>I figure the presence of the lateral is enough of a buffer between the vowel and any following consonant (though phoneticians are welcome to correct me).</span></div><p>With this organized spreadsheet, applying the six criteria for each vowel class was relatively straightforward. The below table shows the list I came up with:</p>
-
-<table id="wells">
-<thead>
-<tr>
-<th>
-&nbsp;&nbsp;IPA&nbsp;&nbsp;
-</th>
-<th>
-Wells<br>Keyword
-</th>
-<th>
-Prelateral<br>Keyword
-</th>
-<th>
-&nbsp;
-</th>
-<th style="text-align:left;">
-Example words
-</th>
-</tr>
-</thead>
-<tbody class="sc">
-<tr>
-<td class="lc">
-i
-</td>
-<td>
-fleece
-</td>
-<td>
-zeal
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-feel, peel, deal, kneel, meal, seal, yield, shield
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɪ
-</td>
-<td>
-kit
-</td>
-<td>
-guilt
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-ill, pill, dill, gill, shrill, drill, kilt, quill, thrill
-</td>
-</tr>
-<tr>
-<td class="lc">
-e
-</td>
-<td>
-face
-</td>
-<td>
-flail
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-fail, tail, whale, scale, jail, trail, grail, shale, ale
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɛ
-</td>
-<td>
-dress
-</td>
-<td>
-shelf
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-fell, bell, weld, gel, smell, swell, dwell, delve, realm
-</td>
-</tr>
-<tr>
-<td class="lc">
-u
-</td>
-<td>
-goose
-</td>
-<td>
-spool
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-fool, cool, tool, ghoul, stool, school, drool, cruel, Yule
-</td>
-</tr>
-<tr>
-<td class="lc">
-ʊ
-</td>
-<td>
-foot
-</td>
-<td>
-wolf
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-full, pull, bull, wool, wolf
-</td>
-</tr>
-<tr>
-<td class="lc">
-o
-</td>
-<td>
-goat
-</td>
-<td>
-jolt
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-hole, coal, bowl, goal, cold, scold, troll, molt, gold
-</td>
-</tr>
-<tr>
-<td class="lc">
-ʌ
-</td>
-<td>
-strut
-</td>
-<td>
-mulch
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-hull, dull, gull, pulse, skull, cult, gulf, lull, sulk, sculpt
-</td>
-</tr>
-<tr>
-<td class="lc">
-æ
-</td>
-<td>
-trap
-</td>
-<td>
-talc
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-pal, gal, shall, scalp, talc, valve, Hal, Alps
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɑ
-</td>
-<td>
-lot
-</td>
-<td>
-golf
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-doll, alm, golf, qualm, psalm
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɔ
-</td>
-<td>
-thought
-</td>
-<td>
-fault
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-all, hall, fall, scald, bald, shawl, crawl, vault, false
-</td>
-</tr>
-<tr>
-<td class="lc">
-aɪ
-</td>
-<td>
-price
-</td>
-<td>
-child
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-aisle, dial, pile, tile, bile, mile, child, trial, vile, guile
-</td>
-</tr>
-<tr>
-<td class="lc">
-aʊ
-</td>
-<td>
-mouth
-</td>
-<td>
-prowl
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-foul, howl, towel, bowels, jowl, scowl, growl, owl
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɔɪ
-</td>
-<td>
-choice
-</td>
-<td>
-broil
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-oil, foil, boil, coil, toil, spoil, broil, soil, royal(?)
-</td>
-</tr>
-<tr>
-<td class="lc">
-ɚ
-</td>
-<td>
-nurse
-</td>
-<td>
-twirl
-</td>
-<td>
-</td>
-<td class="lc" style="text-align:left; font-style:italic">
-Earl, girl, curl, hurl, pearl, whirl, swirl, twirl
-</td>
-</tr>
-</tbody>
-
-</table>
-<p class="caption center">
-The prelateral keywords I propose in this post.
-</p>
-<p><br></p>
-<p>Allow me to share a few comments about each one, starting with the front vowels.</p>
-<ul>
-<li><p><strong><sc>zeal</sc></strong>—The only other word with /il/ and no minimal pairs was <em>squeal</em>, and I opted for the one with the simpler onset.</p></li>
-<li><p><strong><sc>guilt</sc></strong>—Lots of other words fit the critera, like <em>filth</em>, <em>lilt</em>, <em>milk</em>, and <em>tilt</em>, so I arbitrarily chose <em>guilt</em> as the representative word. Also, <em>milk</em> wouldn’t work because a lot of people have /ɛ/ in that word.</p></li>
-<li><p><strong><sc>flail</sc></strong>—This was an easy choice because it’s the only one with no minimal pair. I’m not a fan of the complex onset, especially with the liquid, but it’s the only option. That’s okay: since Wells used <sc>fleece</sc>, I think <sc>flail</sc> is fine.</p></li>
-<li><p><strong><sc>shelf</sc></strong>—Again, there were lots of other options: <em>belch</em>, <em>help</em>, <em>health</em>, <em>pelt</em>, <em>self</em>, <em>wealth</em>, and <em>yelp</em>. Of these, <em>shelf</em> just felt like the best choice—though <em>belch</em> would have been a great alternative!</p></li>
-</ul>
-<div class="no-row-height column-margin column-container"><span class="">If I wanted to relax the coda requirement, I really like <sc>chill</sc> as an alternative option.</span></div><p>For the back vowels, it’s especially important that minimal pairs do not exist since there are a variety of mergers that exist among prelateral back vowels, including four-way mergers.</p>
-<ul>
-<li><p><strong><sc>spool</sc></strong>—There were no words with /ul/ that didn’t form a minimal pair with other prelateral vowels. And in fact, none of the monomorphemic words had any other coda material besides /l/. Given these limitations, I chose <em>spool</em> as the representative word. It forms minimal pairs with <em>spiel</em>, <em>spill</em>, <em>spell</em>, and <em>spoil</em>, but I’m not aware of any variety of English that would merge <em>spool</em> with any of those words. Other candidates were <em>school</em> and <em>cruel</em>, but they form minimal pairs with <em>skull</em> and <em>crawl</em> and I wanted to avoid any words with other back vowels in the same frame.</p></li>
-<li><p><strong><sc>wolf</sc></strong>—There really are very few words with /ʊl/, especially monosyllabic ones. As far as I know, there are five: <em>full</em>, <em>pull</em>, <em>bull</em>, <em>wool</em>, and <em>wolf</em>. Is it coincidental that they all start with labial sounds? Not sure. Probably. Of these, <em>full</em>, <em>pull</em>, and <em>bull</em> form lots of minimal pairs with other back vowels. <em>Wool</em> has no obstruent in the coda. That leaves <em>wolf</em>. I’m pretty sure my idiolect assigns /o/ to this word, so it goes against my intuition, but Wells himself assigns /ʊ/ to <em>wolf</em> and it’s the only real option we’ve got.</p></li>
-<li><p><strong><sc>jolt</sc></strong>—There are lots of words with /ol/, but only two lack minimal pairs: <em>stroll</em> and <em>jolt</em>. Only <em>jolt</em> fits the other criteria.</p></li>
-<li><p><strong><sc>mulch</sc></strong>—A handful of words fit the criteria: <em>gulp</em>, <em>hulk</em>, <em>mulch</em>, <em>pulp</em>, <em>pulse</em>. And unless you count the name of the department store <em>Belk</em> as a word, then <em>bulk</em> also fits. Any of these work well (I’ve personally used <sc>pulp</sc> in the past), but I chose <em>mulch</em> to add a bit of variety in coda consonants to the lexical set.</p></li>
-</ul>
-<div class="no-row-height column-margin column-container"><span class="">I’m pretty sure I’ve seen <em>school</em> before but I can’t find the source.</span></div><p>With the low vowels, the number of options was limited, and I had to relax some of the rules.</p>
-<ul>
-<li><p><strong><sc>talc</sc></strong>—The only other word that fit all the criteria was <em>scalp</em>, so I chose the one with the simpler onest.</p></li>
-<li><p><strong><sc>golf</sc></strong>—Okay, this one was tricky. The CMU and searchable phonetic dictionaries I have access to didn’t have too many words with /ɑl/. Plus I merge /ɑ/ with /ɔ/ before coda laterals, so I don’t have intuition to back me up. In fact, the best list I know of is <a href="https://journals.sagepub.com/doi/abs/10.1177/0075424216634795">Dinkin 2016</a>. The word <em>golf</em> was the most common word, and though it forms a minimal pair with <em>gulf</em>, it’s probably the best option. The next best might be <em>psalm</em>, but that only works for speakers that pronounce the [l] and who don’t have <sc>palm</sc> there. Another option was <em>doll</em>, but it’s part of a large minimal set.</p></li>
-<li><p><strong><sc>fault</sc></strong>—The only two words that formed no minimal pairs, <em>sprawl</em> and <em>false</em>, aren’t ideal because they didn’t seem nouny enough. Plus, <em>sprawl</em> has has a complex onset, and seeing <sc>false</sc> in capital letters just seems like an error in computer code. The word <em>fault</em> forms a minimal pair with <em>felt</em> but fits all the other criteria, so I think it’ll do.</p></li>
-</ul>
-<div class="no-row-height column-margin column-container"><span class="">Another option is <sc>valve</sc>, and if I wanted to relax the voiceless obstruent requirement, I’d opt for that.</span></div><p>For diphthongs and pre-/ɹ/, the choices were also limited. You’ll notice that only one has a consonant in the coda, and its voiced, violating my rule 5. The reason is because <em>none</em> of the monomorphemic words with these vowels had anything else in the codas, other than <em>child</em>, <em>wild</em>, and <em>mild</em>.</p>
-<ul>
-<li><p><strong><sc>child</sc></strong>—There was only one word with no minimal pairs, <em>whilst</em>, which didn’t seem like a good fit. Though <em>child</em> has a voiced coda, it only forms a minimal pair with <em>chilled</em> so it seems pretty good otherwise.</p></li>
-<li><p><strong><sc>prowl</sc></strong>—It’s not the most common word, but it doesn’t have any minimal pairs.</p></li>
-<li><p><strong><sc>broil</sc></strong>—There were really no good options for /ɔɪl/. They all had minimal pairs with other words, so I chose a word based on the minimal pairs it did have. <em>Spoil</em> forms a set with <em>spool</em>, <em>spell</em>, <em>spill</em>, and <em>spiel</em>; <em>soil</em> forms a set with <em>sole</em>/<em>soul</em>/<em>Seoul</em>, <em>Saul</em>, <em>Sal</em>, <em>sell</em>/<em>cell</em>, <em>sale</em>/<em>sail</em>, <em>sill</em>, and <em>boil</em>, <em>toil</em>, <em>coil</em>, <em>Doyle</em>, <em>foil</em>, and <em>oil</em> have even larger minimal sets (see the table above). In comparison, <em>broil</em> doesn’t seem to bad since it forms a set with just <em>brawl</em> and <em>Braille</em>.</p></li>
-<li><p><strong><sc>twirl</sc></strong>—I’m not a big fan of the /w/, but it’s the only one that doesn’t form a minimal pair.</p></li>
-</ul>
-<p>I believe the resulting list forms a decent set of labels to refer to prelateral vowels.</p>
-<p>Using this new lexical set, we can now refer to things like the <sc>zeal</sc>-<sc>guilt</sc> merger, the <sc>flail</sc>-<sc>shelf</sc> merger, or the <sc>dress</sc>-<sc>talc</sc> merger among the front vowels. Among the back vowels, we might find the <sc>spool</sc>-<sc>wolf</sc> merger, the <sc>wolf</sc>-<sc>jolt</sc> merger, the <sc>jolt</sc>-<sc>mulch</sc> merger, or possibly, the <sc>wolf</sc>-<sc>mulch</sc> or the <sc>mulch</sc>-<sc>fault</sc> mergers. <a href="../../pages/idiolect.html">I personally have the <sc>golf</sc>-<sc>fault</sc> merger</a>, though only if the /l/ is in the coda (<em>collar</em> and <em>caller</em> are still distinct).</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>I have proposed a new set of labels akin to the Wells Lexical set for referring to prelateral vowels. The <em>ad hoc</em> labels in existing literature are inconsistent, and the attempts at using lexical sets are unsuccessful. This new set should make labels more consistent in sociolinguistic research going forward.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Lexical Sets</category>
-  <category>Methods</category>
-  <guid>https://new.joeystanley.com/blog/extending-wells-lexical-sets-to-prelateral-vowels/index.html</guid>
-  <pubDate>Fri, 27 Dec 2019 12:37:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
