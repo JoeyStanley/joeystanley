@@ -980,6 +980,95 @@ Long story short, I got accepted into the music school. Hooray! The problem was 
   <pubDate>Sat, 09 Jan 2021 07:25:00 GMT</pubDate>
 </item>
 <item>
+  <title>“Boustrophedonically”</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/boustrophedonically/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Earlier this week, I tweeted about a data visualization that I made. I said:</p>
+<blockquote class="blockquote">
+<p>Okay, I’m trying something out. I have this histogram with one very tall bar and many shorter ones. So to save space, I made that tall bar follow the edge of the plotting area boustrophedonically—my favorite word!—but I’m not sure if I like it. Thoughts?</p>
+</blockquote>
+<p>I then showed a plot that looked something like this:</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/boustrophedon.png" class="img-fluid"></p>
+<p>The data, which comes from a paper I’m working on, is difficult to visualize because the vast majority of the responses is clustered around zero while the rest is spread out a bit. I continued:</p>
+<blockquote class="blockquote">
+<p>I’m trying to show that the one bar is huge compared to the others, but at the same time I want to show the detail in the smaller bars. Data transformations haven’t seemed to work. No matter what I try I can’t seem to find an effective visualization.</p>
+</blockquote>
+<p>I got lots and lots of comments from people and people’s thoughts were all over the board. Some said it’s great; others said they didn’t like it. And there were a handful that had very strongly mixed feelings of loving it and hating it. It’s a new kind of plot, so interpretation isn’t super straightforward, but it’s funny, silly, surprising, interesting, and memorable, which is why <em>I</em> think it’s a good one.</p>
+<section id="boustrophewhat" class="level2">
+<h2 class="anchored" data-anchor-id="boustrophewhat">Boustrophewhat??</h2>
+<p>The way the tallest plot sort of goes back along the top can be perfectly described in one fantastic word: <em>boustrophedonically</em>. It’s my favorite word ever. The word has its roots in describing how an ox plows a field and can also describe how Ancient Greek was written. Nowadays, older Millennials just think of playing Snake on a brick phone. You might think it’s so obscure, so long, and so specific that no one could ever find a use for it, but I did manage to find a way to use it <em>twice</em> in a previous blog <a href="../../blog/simulating_chutes_and_ladders">post about Chutes and Ladders</a>.</p>
+<p>I first saw plots like these when reading one of Edward Tufte’s books. I don’t have them on me, but I believe it was in <a href="https://www.edwardtufte.com/tufte/books_vdqi"><em>The Visual Display of Quantitative Information</em></a>. <a href="https://twitter.com/gmarmstrong/status/1339706465926455296?s=20">Guthrie McAfee Armstrong</a> points out that that W. E. B. Du Bois used this technique in his visualizations from well over 100 years ago. I believe Tufte showed some of these plots. You can see some of those original visuals in <a href="https://t.co/A2pjBlippi?amp=1">this Medium article</a> that <a href="https://twitter.com/mjskay/status/1339574623512440833?s=20">Matthew Kay</a> pointed me to.</p>
+<p>I got lots of great suggestions from people on Twitter, so I thought I’d try out their suggestions so you can judge for yourself which one is the best. I’ll try to credit everyone who made the suggestions: this was truly a group effort here!</p>
+</section>
+<section id="the-full-height" class="level2">
+<h2 class="anchored" data-anchor-id="the-full-height">The full height</h2>
+<p><a href="https://twitter.com/JWGrieve/status/1339613750094155776?s=20">Jack Grieve</a> and <a href="https://twitter.com/jtth/status/1339711677311426561?s=20">jordan t. thevenow-harrison</a> suggested I just plot all the data on a mega <em>y</em>-axis. Well, because the first bar is so stinking huge, I’d have to make the plot <em>suuuuuper</em> tall.</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/super_tall.png" class="img-fluid"></p>
+<p>This way of visualizing data is not always bad: on March 27, 2020, the New York Times made <a href="https://www.nytimes.com/issue/todayspaper/2020/03/27/todays-new-york-times">an epic plot</a> showing unemployment numbers for that week. But for my data, I don’t know if it’s quite right. Though, see <a href="https://xkcd.com/1162/">this relevant xkcd</a> that <a href="https://twitter.com/BleddwganMiaren/status/1339613093933047808?s=20">Rodolpho Piskorski</a> delightfully reminded me of!</p>
+</section>
+<section id="log-transformed" class="level2">
+<h2 class="anchored" data-anchor-id="log-transformed">Log-transformed</h2>
+<p>When you’ve got wildly different heights like this, the first step is to do a transformation of some sort. <a href="https://twitter.com/ctdicanio/status/1339568623397040130?s=20">Christian DiCanio</a> recommended a log transformation like this:</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/log_transformed.png" class="img-fluid"></p>
+<p>While it does show all the bars at once, I just can’t fully appreciate the magnitude of the biggest one.</p>
+</section>
+<section id="split-the-y-axis" class="level2">
+<h2 class="anchored" data-anchor-id="split-the-y-axis">Split the <em>y</em>-axis</h2>
+<p>A common technique for something like this would be to split the <em>y</em>axis so that there’s a discontinuity and several people recommended this route.</p>
+<p>As Hadley Wickham mentions <a href="https://groups.google.com/g/ggplot2/c/jSrL_FnS8kc/m/MvzM_2_jiSIJ">here</a>, there’s no native way in ggplot2 to do a discontinuous <em>y</em>-axis, so I had to sort of fudge it with <a href="https://patchwork.data-imaginist.com/index.html"><code>patchwork</code></a>. Here’s what that plot might look like:</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/chopped_y.png" class="img-fluid"></p>
+<p>This method is generally frowned upon though since the amount of real estate devoted to the big plot is disproportionate to the amount of data it actually represents so it hides the magnitude of that big bar.</p>
+</section>
+<section id="pointing-arrow" class="level2">
+<h2 class="anchored" data-anchor-id="pointing-arrow">Pointing arrow</h2>
+<p>One workaround is to zoom in to the smaller bars, and just give an indicator of how tall the big one is. I just text with an arrow pointing up.</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/pointing_label.png" class="img-fluid"></p>
+<p>This was one that I’ve been considering for a while now, but again, the problem is the real estate issue and it’s difficult to fully appreciate the actual height of that plot.</p>
+</section>
+<section id="chunky-first-bar" class="level2">
+<h2 class="anchored" data-anchor-id="chunky-first-bar">Chunky first bar</h2>
+<p><a href="https://twitter.com/tjmahr/status/1339571715467337728?s=20">TJ Mahr’s</a> funny recommendation was to, instead of retaining the bar’s original length, make it wider.</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/chunky.png" class="img-fluid"></p>
+<p>Like the boustrophedon, it breaks the <em>xy</em>-coordinate system a histogram relies on, but the main strike against it is that humans aren’t good at judging areas as well as we think we are, so it only sort of does a good job at showing the size.</p>
+</section>
+<section id="plot-within-a-plot" class="level2">
+<h2 class="anchored" data-anchor-id="plot-within-a-plot">Plot within a plot</h2>
+<p>Honestly, I think the best workaround would be to take <a href="https://twitter.com/jvcasill/status/1339560493741174788?s=20">Joseph Casillas</a>, <a href="https://twitter.com/msoskuthy/status/1340083524670394369?s=20">Márton Sóskuthy</a>, <a href="https://twitter.com/TimoRoettger/status/1339593352451244041?s=20">Timo Roetger’s</a>, and <a href="https://twitter.com/mayhplumb/status/1339606411920195587?s=20">May Helena Plumb’s</a> recommendations and split the plot into two, one showing the big bar relative to the rest and the other showing the detail of the smaller ones. One way to do this is with a plot within a plot, which I did with the <code>patchwork</code> package again.</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/plot_within_plot.png" class="img-fluid"></p>
+<p>Again, probably the best recommendation if I can get that smaller plot to look decent.</p>
+</section>
+<section id="zoomed-in-plot" class="level2">
+<h2 class="anchored" data-anchor-id="zoomed-in-plot">Zoomed in plot</h2>
+<p>An alternative to doing the plot-within-a-plot is to make it clearer that there’s a zoom happening, so the relevant portion of the full-size plot is highlighted and linked to the zoomed in one. This is accomplished with <a href="https://ggforce.data-imaginist.com/reference/facet_zoom.html"><code>ggforce::facet_zoom</code></a>, as recommended by <a href="https://twitter.com/justinjhlo/status/1339473347537743873?s=20">Justin Lo</a> and <a href="https://twitter.com/sj2915/status/1339473888485498880?s=20">Sandra Jansen</a>:</p>
+<p><img src="https://new.joeystanley.com/blog/boustrophedonically/facet_zoom.png" class="img-fluid"></p>
+<p>In this case, I’m not a huge fan of the greyed portion in the upper plot, because it sort of gets in the ways of the bars in the <em>y</em>-axis.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>So, there are lots of ways to do this. Honestly, I freaking love the boustrophedon one and I’m seriously considering including it in the paper. I ran a poll and the slight majority agreed with me:</p>
+<blockquote class="twitter-tweet blockquote" data-conversation="none">
+<p lang="en" dir="ltr">
+Overall impressions?
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1339599682922680324?ref_src=twsrc%5Etfw">December 17, 2020</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I think because it’s so controversial and because people have such mixed feelings, it made for a really good discussion about the purpose behind the plot, faithfulness to the data, and overall aesthetics. Who knows I’d have so much fun rallying people together over some silly visual?</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Data Viz</category>
+  <guid>https://new.joeystanley.com/blog/boustrophedonically/index.html</guid>
+  <pubDate>Sat, 19 Dec 2020 04:51:00 GMT</pubDate>
+</item>
+<item>
   <title>New publication in the latest PADS volume</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/new-publication-in-the-latest-pads-volume/index.html</link>
@@ -1028,6 +1117,598 @@ Long story short, I got accepted into the music school. Hooray! The problem was 
   <category>West</category>
   <guid>https://new.joeystanley.com/blog/new-publication-in-the-latest-pads-volume/index.html</guid>
   <pubDate>Sat, 05 Dec 2020 04:11:00 GMT</pubDate>
+</item>
+<item>
+  <title>generations: Convert birth years to generation names</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/generations/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’m happy to announce the release of another R package, <code>generations</code>! I’ve apparently caught the creating-R-packages bug because this is my fourth one this year (<a href="../../blog/futurevisions-my-first-r-package"><code>futurevisions</code></a>, <a href="../../blog/barktools"><code>barktools</code></a>, <a href="../../blog/joeysvowels"><code>joeysvowels</code></a>, and now <code>generations</code>). This one provides some functions to easily convert years to generational cohorts (Boomer, Gen X, Millennial, Gen Z, etc.).</p>
+<p>I recently read Howe &amp; Strauss’ book, <em><a href="https://www.amazon.com/Generations-History-Americas-Future-1584/dp/0688119123">Generations: The History of America’s Future, 1584 to 2069</a></em>. While the generational theory they propose isn’t water-tight, it is intriguing. Relatedly, I’ve seen lots of linguistics studies that model age in generational cohorts. (Ideally, we’d model age as a continuous variable, of course, but sometimes there’s just not enough data to do so.) I used a categorical age variable in the models in my dissertation and in other recent studies and, while it’s not perfect, it seems to work well enough.</p>
+<p>Well, so now that I’m converting age into generational cohorts in lots of different projects, my code is starting to get a little repetitive. And in the R world, they say if you end up writing the same code a lot, might as well wrap it up into a package. This idea came to me about a week ago and this weekend I found some time to put this together.</p>
+<p>The result is <code>generations</code>. And, I’ve made it so that it doesn’t depend on any other packages, so it was fun for me to figure out how to do some things in base R that I only knew how to do in tidyverse, which was fun for me! The rest of this post is the readme page for the package. You can find more about the package at <a href="https://joeystanley.github.io/generations/">joeystanley.github.io/generations</a>.</p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>The package currently lives on GitHub, so you can install it like you would with any other package on GitHub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley/generations"</span>)</span></code></pre></div>
+</div>
+<p>You can then load it like you can with any library.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(generations)</span></code></pre></div>
+</div>
+<p>For the purposes of this tutorial, I’ll load <code>ggplot</code> and <code>dplyr</code> as well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+</div>
+</section>
+<section id="converting-years-to-generations" class="level2">
+<h2 class="anchored" data-anchor-id="converting-years-to-generations">Converting years to generations</h2>
+<p>The main function in this package is <code>generations()</code>. Given a vector of integers, it’ll return a factor of generation names. First, I’ll generate some random years of birth.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">yobs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runif</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1900</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2020</span>))</span>
+<span id="cb4-2">yobs</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1972 1932 1987 2018 1974 1979 1952 1937 1994 1980</code></pre>
+</div>
+</div>
+<p>I can now easy convert that into generations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generations</span>(yobs)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Gen X      Silent     Millennial Gen Z      Gen X      Gen X     
+ [7] Boomer     Silent     Millennial Gen X     
+Levels: Silent Boomer Gen X Millennial Gen Z</code></pre>
+</div>
+</div>
+<p>This function works on any year between 1435 and 2030. Numbers outside that range return <code>NA</code>.</p>
+<p>Note that by default, the function will return the vector as <em>factor</em>, with the levels ordered so that the oldest generation in the vector is first. To get a character vector instead, add the argument <code>as_factor = FALSE</code>.</p>
+<section id="customizing-output" class="level3">
+<h3 class="anchored" data-anchor-id="customizing-output">Customizing output</h3>
+<p>There are some tweaks you can do to adjust the output of <code>generations</code>. First, you can return longer forms of the generational names by specifying <code>full_names = TRUE</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generations</span>(yobs, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">full_names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Generation X          Silent Generation     Millennial Generation
+ [4] Generation Z          Generation X          Generation X         
+ [7] Boomer Generation     Silent Generation     Millennial Generation
+[10] Generation X         
+5 Levels: Silent Generation Boomer Generation ... Generation Z</code></pre>
+</div>
+</div>
+<p>What this does is simply add <code>"Generation"</code> to the end of each one, unless it’s <code>"Gen X"</code> (or Y, or Z), in which case it’ll expand it out to simply <code>"Generation X"</code>.</p>
+<p>You can also show the years included in each generation by adding the <code>years = TRUE</code> argument. This will add a space and, inside a pair of parentheses, the start and end years of that generation, separated by an en dash.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generations</span>(yobs, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">years =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Gen X (1964–1983)      Silent (1929–1945)     Millennial (1984–2007)
+ [4] Gen Z (2008–2030)      Gen X (1964–1983)      Gen X (1964–1983)     
+ [7] Boomer (1946–1963)     Silent (1929–1945)     Millennial (1984–2007)
+[10] Gen X (1964–1983)     
+5 Levels: Silent (1929–1945) Boomer (1946–1963) ... Gen Z (2008–2030)</code></pre>
+</div>
+</div>
+<p>The primary purpose of this is for visualizations, since not everyone is familiar with (or agrees with) the year ranges. For example, if you’ve got a bunch of people and want to visualize the distribution of when they were born, you could have very informative legends.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">many_yobs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yob =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1975</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gen =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generations</span>(yob, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">full_names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">years =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>))</span>
+<span id="cb12-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(many_yobs, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(yob, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> gen)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb12-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Set1"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/generations/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>How this additional portion is formatted can be adjusted. If rendering an en dash is troublesome for you, you can change it to something else with <code>years_range_sep</code>. You may also want to change the space between the generation name and the opening parenthesis into a newline character with <code>years_sep</code>, again for visualization purposes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">many_yobs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> many_yobs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gen =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generations</span>(yob, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">full_names =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">years =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb13-3">                           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">years_sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">years_range_sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" to "</span>))</span>
+<span id="cb13-4"></span>
+<span id="cb13-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(many_yobs, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(yob, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> gen)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb13-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb13-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Set1"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb13-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb13-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.key.height =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/generations/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If you want to get really fancy, you can make the legend keys approximate the width they take up on the <em>x</em>-axis and put better tics marks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">widths <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> many_yobs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(gen) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(yob) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(yob)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb14-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> width <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(width) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.4</span>) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># you may have to fudge this a little more</span></span>
+<span id="cb14-6"></span>
+<span id="cb14-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(many_yobs, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(yob, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> gen)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_brewer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">palette =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Set1"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1929</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1946</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1964</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1984</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2008</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2030</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">guides</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">guide_legend</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bottom"</span>, </span>
+<span id="cb14-14">                             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">keywidth =</span> widths<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>width, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">default.unit =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"inches"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/generations/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="querying-generation-data" class="level2">
+<h2 class="anchored" data-anchor-id="querying-generation-data">Querying generation data</h2>
+<p>To see a list of the generational data, you can use <code>show_generations()</code>, which will return a data frame containing the names, start years, and end years.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_generations</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             name start  end
+1           Gen Z  2008 2030
+2      Millennial  1984 2007
+3           Gen X  1964 1983
+4          Boomer  1946 1963
+5          Silent  1929 1945
+6            G.I.  1908 1928
+7            Lost  1886 1907
+8      Missionary  1865 1885
+9     Progressive  1844 1864
+10         Gilded  1822 1843
+11 Transcendental  1794 1821
+12     Compromise  1773 1793
+13     Republican  1746 1772
+14        Liberty  1727 1745
+15      Awakening  1704 1726
+16  Enlightenment  1675 1703
+17       Glorious  1649 1674
+18       Cavalier  1621 1648
+19        Puritan  1594 1620
+20  Parliamentary  1569 1593
+21    Elizabethan  1542 1568
+22       Reprisal  1517 1541
+23    Reformation  1497 1516
+24       Humanist  1459 1496
+25     Aurthurian  1435 1458</code></pre>
+</div>
+</div>
+<p>You can also get simple information. For example, if you want to know when the start or end year of a particular generation is, you can use <code>get_start()</code> or <code>get_end()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_start</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Silent"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1929</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_end</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Millennial"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2007</code></pre>
+</div>
+</div>
+<p>You can also find the names of neighboring generations with <code>get_prev_gen()</code> and <code>get_next_gen()</code>, though these were mostly created for internal purposes only rather than for you to use.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_next_gen</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Millennial"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Gen Z"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_prev_gen</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Missionary"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Progressive"</code></pre>
+</div>
+</div>
+<p>Note that if ask for something newer than Gen Z or older than Aurthurian it will return <code>NA</code>.</p>
+</section>
+<section id="customizing-generation-data" class="level2">
+<h2 class="anchored" data-anchor-id="customizing-generation-data">Customizing generation data</h2>
+<p>The data that this package uses is loaded as a hidden object when you load the package. You may modify it with the functions described in this section. These changes will affect the dataset so long as the <code>generations</code> package is loaded. You’ll have to reset the data each time to reload it.</p>
+<p>The labels and years for each generation are mostly borrowed from Howe &amp; Strauss’ Generational Theory books. However, not everyone agrees on the names and year ranges for the various generations. For this reason, the <code>generations</code> package makes it easy to modify the generations data to your liking.</p>
+<p>To rename a generation, use <code>rename_generation()</code>, with the old name first and the new name second. For example, if you want to use <em>Zoomer</em> instead of <em>Gen Z</em>, you can do so.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename_generation</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Gen Z"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Zoomer"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Gen Z has been renamed Zoomer</code></pre>
+</div>
+</div>
+<p>You’ll get a message informing you that the change has been made. If you now run <code>show_generations()</code> you’ll see that the change has been made and if you rerun <code>generations()</code>, you’ll get updated results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_generations</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             name start  end
+1          Zoomer  2008 2030
+2      Millennial  1984 2007
+3           Gen X  1964 1983
+4          Boomer  1946 1963
+5          Silent  1929 1945
+6            G.I.  1908 1928
+7            Lost  1886 1907
+8      Missionary  1865 1885
+9     Progressive  1844 1864
+10         Gilded  1822 1843
+11 Transcendental  1794 1821
+12     Compromise  1773 1793
+13     Republican  1746 1772
+14        Liberty  1727 1745
+15      Awakening  1704 1726
+16  Enlightenment  1675 1703
+17       Glorious  1649 1674
+18       Cavalier  1621 1648
+19        Puritan  1594 1620
+20  Parliamentary  1569 1593
+21    Elizabethan  1542 1568
+22       Reprisal  1517 1541
+23    Reformation  1497 1516
+24       Humanist  1459 1496
+25     Aurthurian  1435 1458</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">generations</span>(yobs)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] Gen X      Silent     Millennial Zoomer     Gen X      Gen X     
+ [7] Boomer     Silent     Millennial Gen X     
+Levels: Silent Boomer Gen X Millennial Zoomer</code></pre>
+</div>
+</div>
+<p>Because people may want to use the term <em>Zoomer</em> instead of <em>Gen Z</em>, a shortcut function, <code>use_zoomer()</code>, which is just a wrapper around <code>rename_generation("Gen Z", "Zoomer")</code>, is included in the package. The other shortcut functions are <code>use_gen_y()</code>, <code>use_13th()</code>, <code>use_baby_boom()</code> as well as their reciprocals <code>use_gen_z()</code>, <code>use_millennial()</code>, <code>use_gen_x()</code> and <code>use_boomer()</code>.</p>
+<p>You may also want to change the years. For example, many people consider 1997 as the end of the Millennial Generation. You can make this change with <code>redefine_generation()</code>. With this function, you must specify the new start and the new end year.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">redefine_generation</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Millennial"</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1983</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1997</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Gen X is now from 1964 to 1982</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Millennial is now from 1983 to 1997</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Zoomer is now from 1998 to 2030</code></pre>
+</div>
+</div>
+<p>Since changing one generation impacts adjacent generations, you’ll get a message showing you what the new ranges are for this, the previous, and the next generations.</p>
+<p>You can reset the data back to its original form with <code>reset_generations()</code>.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>That’s the package so far! I plan on adding more things in the future, primarily to handle stability issues and to include some error catching. Hopefully, if you use generational cohorts in your data, this package is useful for you.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Github</category>
+  <category>R</category>
+  <category>R Packages</category>
+  <guid>https://new.joeystanley.com/blog/generations/index.html</guid>
+  <pubDate>Mon, 19 Oct 2020 04:11:00 GMT</pubDate>
 </item>
 <item>
   <title>joeysvowels: An R package of vowel data</title>
@@ -2000,338 +2681,6 @@ font-style: inherit;">theme_bw</span>()</span></code></pre></div>
   <category>Personal</category>
   <guid>https://new.joeystanley.com/blog/I-got-a-job/index.html</guid>
   <pubDate>Fri, 03 Apr 2020 23:13:00 GMT</pubDate>
-</item>
-<item>
-  <title>futurevisions: My first R package!</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/futurevisions/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Today I released my first complete, functional, R package! It’s called futurevisions and it’s available on <a href="https://github.com/JoeyStanley/futurevisions">my github</a>. It’s just a little one that contains about 20 different color palettes. I’ve had the idea to work on it for a few months and this week, I decided to go ahead and do it! The rest of this post is the README file for that package and explains the posters the palettes were based on, installation, usage, the list of palettes, and some background.</p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The color palettes are based on NASA’s <a href="https://www.jpl.nasa.gov/visions-of-the-future/">Visions of the Future</a> poster series, which were produced through NASA’s Jet Propulsion Laboratory through the California Institute of Technology. They are retro-future-style posters depicting humans visiting other planets, moons, and exo-planets. In their words,</p>
-<blockquote class="blockquote">
-<p>Imagination is our window into the future. At NASA/JPL we strive to be bold in advancing the edge of possibility so that someday, with the help of new generations of innovators and explorers, these visions of the future can become a reality. As you look through these images of imaginative travel destinations, remember that you can be an architect of the future.</p>
-</blockquote>
-<p>The posters are available for download for free. You can get them as PDFs or as 20x30 inch TIFF files.</p>
-</section>
-<section id="demo" class="level2">
-<h2 class="anchored" data-anchor-id="demo">Demo</h2>
-<p>You can install the package through <a href="https://github.com/JoeyStanley/futurevisions">my github</a>. The library imports <code>ggplot2</code>, so if there are problems, make sure you have <code>ggplot2</code> installed already. (I’m not good at testing things so if there is trouble, let me know.)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">remotes<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"JoeyStanley/futurevisions"</span>)</span></code></pre></div>
-</div>
-<p>You can then load it like a normal R package.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(futurevisions)</span></code></pre></div>
-</div>
-<p>The main two functions are <code>futurevisions</code>, which returns a list of colors, and <code>show_palette</code>, which produces a simple image using <code>ggplot2</code> to highlight the colors. For example, here is the palette called <code>mars</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mars"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">futurevisions</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mars"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "#DB3A2F" "#EAB33A" "#275D8E" "#902A57" "#F7EBD3" "#0B0C0B"</code></pre>
-</div>
-</div>
-<p>This can be easily used within <code>ggplot2</code> using <code>scale_color_manual</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(mpg, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(cty, hwy, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(cyl))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_jitter</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scale_color_manual</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">futurevisions</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mars"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<section id="note-on-color-selection" class="level3">
-<h3 class="anchored" data-anchor-id="note-on-color-selection">Note on color selection</h3>
-<p>This is not a rigorous sampling of colors. I picked a few colors from each poster that I felt were representative. They may not necessarily be colorblind-friendly. When using these palettes in data visualization, take care to ensure that your data is not misrepresented.</p>
-</section>
-</section>
-<section id="list-of-palettes" class="level2">
-<h2 class="anchored" data-anchor-id="list-of-palettes">List of palettes</h2>
-<section id="gradient" class="level3">
-<h3 class="anchored" data-anchor-id="gradient">Gradient</h3>
-<p>These are palettes that may lend themselves better to more gradient purposes.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ceres"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"europa"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"titan"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cancri"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pso"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="diverging" class="level3">
-<h3 class="anchored" data-anchor-id="diverging">Diverging</h3>
-<p>These are palettes that may lend themselves more to highlighting deviations from a center point.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"earth"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"enceladus"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"kepler186"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"atomic_clock"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="categorical" class="level3">
-<h3 class="anchored" data-anchor-id="categorical">Categorical</h3>
-<p>These are palettes that may lend themselves more to purposes where each color is a stand-alone entity with no meaningful order.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"venus"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mars"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"jupiter"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hd"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"kepler16b"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pegasi"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"trappest"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"grand_tour"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-8.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"atomic_red"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-9.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"atomic_blue"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-10.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_palette</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"atomic_orange"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://new.joeystanley.com/blog/futurevisions/index_files/figure-html/unnamed-chunk-8-11.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-</section>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<p>A portion of the 3rd floor of the Main Library at the University of Georgia has been designed to be evocative of the 1950s when the library was first built. It has some retro-style furniture in a nice study room. It also has some of these Visions of the Future posters hanging up in the hallway. I walk down that hallway every day since the linguistics books, the <a href="https://digi.uga.edu">DigiLab</a>, the best study room on campus, and my personal carrel are all on that floor.</p>
-<p><img src="https://new.joeystanley.com/blog/futurevisions/third_floor.JPG" class="img-fluid"></p>
-<p>In fall 2019 I put together <a href="../../pages/dataviz.html">a series of workshops</a> on data visualization. <a href="../../downloads/191023-color.pdf">One of them</a> was devoted to color, and in preparations for it, I saw that people have made color palettes based on all sorts of things: <a href="https://www.designcontest.com/blog/inspiration-gallery-wes-anderson-color-palettes/">Wes Anderson movies</a>, <a href="http://alyssafrazee.com/2014/03/06/RSkittleBrewer.html">Skittles</a>, <a href="http://pokepalettes.com">Pokemon</a>, you name it. I had the idea that the posters on that floor might make for some fun color palettes. I ended up making the package in February 2020.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Data Viz</category>
-  <category>Github</category>
-  <category>R</category>
-  <category>R Packages</category>
-  <category>Side Projects</category>
-  <guid>https://new.joeystanley.com/blog/futurevisions/index.html</guid>
-  <pubDate>Tue, 11 Feb 2020 15:53:00 GMT</pubDate>
-</item>
-<item>
-  <title>Full house at my first LaTeX workshop!</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/full-house-at-my-first-latex-workshop/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Today I had the opportunity to teach LaTeX for the first time. <a href="https://twitter.com/calebcrumley">Caleb Crumley</a>, an RA for the <a href="https://digi.uga.edu">DigiLab</a> at UGA, has been working on a dissertation template in LaTeX that conforms with UGA’s formatting check. He finished it, and it’s got the stamp of approval from the Graduate School. To advertise the template, Caleb, Jonathan Crum, and I put on a three-part series to introduce the template and teach a little LaTeX as well.</p>
-<p>As always, marketing these workshops is tricky and it’s rare to get more than about a dozen attendees. But, with some persistence from the DigiLab’s coordinator, <a href="https://emilymcginn.com">Emily McGinn</a>, the Grad School agreed to advertise a little for us, and sent out the information to the approximately 6000 grad students at UGA!</p>
-<p>Within minutes, we had dozens of people registering for the workshop. After day or two, we doubled, and then tripled the registration cap! Sure enough, the DigiLab was fuller than I had ever seen it, and we decided to host repeat sessions of the three workshops as soon as the first cycle is over.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://new.joeystanley.com/blog/full-house-at-my-first-latex-workshop/latex_workshop.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">Action shot of me showing how to make a bulletted list!</figcaption>
-</figure>
-</div>
-<div class="page-columns page-full"><p>Knowing there would be so many people there, I was a little nervous prepping the workshop because I’m not as comfortable with LaTeX as I am with R. I’ve been dabbling with it for a couple year but I’ve only been using it seriously for about a year.  All things considered, I think it went well, and I enjoyed it a quite a lot.</p><div class="no-row-height column-margin column-container"><span class="">I began using it when I switched my <a href="../../blog/dissertation">dissertation</a> over from Word. It took about 20 hours to do so, but seriously, best decision ever.</span></div></div>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-This'll be my first time teaching LaTeX, but I had a lot of fun putting this workshop together with <a href="https://twitter.com/CalebCrumley?ref_src=twsrc%5Etfw"><span class="citation" data-cites="CalebCrumley">@CalebCrumley</span></a> and Jonathan Crum. The materials for today's workshop can be found at <a href="https://t.co/uyGNAq1EMe">https://t.co/uyGNAq1EMe</a> <a href="https://t.co/uhnz7sptRz">https://t.co/uhnz7sptRz</a>
-</p>
-— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1223325382218153984?ref_src=twsrc%5Etfw">January 31, 2020</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>You can see more details about the workshop series <a href="../../pages/latex">here</a>, the handout for the workshop <a href="https://github.com/JoeyStanley/LaTeX_workshops">on my github</a>, and the UGA LaTeX dissertation template that Caleb made on the DigiLab’s <a href="https://github.com/DigiUGA/UGA-Dissertation-LaTeX-Template">github</a>.</p>
-
-
-
- ]]></description>
-  <category>Github</category>
-  <category>LaTeX</category>
-  <category>Presentations</category>
-  <guid>https://new.joeystanley.com/blog/full-house-at-my-first-latex-workshop/index.html</guid>
-  <pubDate>Fri, 31 Jan 2020 20:45:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
