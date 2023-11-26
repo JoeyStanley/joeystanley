@@ -849,6 +849,684 @@ Tip
   <pubDate>Sat, 13 Feb 2021 21:16:00 GMT</pubDate>
 </item>
 <item>
+  <title>Pillai scores don’t change after normalization</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/pillai-scores-dont-change-after-normalization/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I was playing around with some data the other day and I discovered that if you calculate the pillai score on raw data you get the same result as if you calculated it on normalized data. This might be common knowledge among sociophoneticians who work with this kind of data, and now that I think about how normalization works, it makes sense. But it’s new to me so I thought I’d write about it and illustrate it.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Update (October 19, 2021)</strong> Please see my <a href="nwav49">NWAV49</a> presentation on order of operations in sociophonetic analysis. While this blog post shows that normalization doesn’t affect the overall outcome, the order that you apply other sociophonetic data processing steps can have a substantial effect on your results!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Update (November 23, 2021)</strong> Betsy Sneller and I have done some recent research on Pillai scores. Please see the summary our <a href="asa2021">ASA2021</a> poster (and the poster itself) for more information.</p>
+</div>
+</div>
+<p>Incidentally, this post is also somewhat of a tutorial on how to do a few different vowel normalization procedures and how to calculate pillai scores. I hope to do a separate tutorial on normalization, but I do have a detailed tutorial on calculating vowel overlap already, which you can view <a href="a-tutorial-in-calculating-vowel-overlap">here</a>.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(joeyr)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(joeysvowels)</span></code></pre></div>
+<section id="calculating-pillai-scores" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-pillai-scores">Calculating Pillai scores</h2>
+<p>I’ll start by loading a sample dataset. This is a simplified dataset of 10 English speakers from the state of Idaho, which comes from my <a href="https://joeystanley.github.io/joeysvowels/"><code>joeysvowels</code> package</a>. It contains F1–F4 measurements from a random sample of 10 tokens from 11 monophthongs.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">idahoans <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> joeysvowels<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span>
+<span id="cb2-3"></span>
+<span id="cb2-4"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # A tibble: 1,100 x 7</span></span>
+<span id="cb2-5"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    speaker sex    vowel    F1    F2    F3    F4</span></span>
+<span id="cb2-6"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    &lt;fct&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb2-7"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  1 01      female AA     699. 1655. 2019. 3801.</span></span>
+<span id="cb2-8"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  2 01      female AA     685. 1360. 1914. 4257.</span></span>
+<span id="cb2-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  3 01      female AA     713. 1507. 2460. 3617.</span></span>
+<span id="cb2-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  4 01      female AA     801. 1143. 1868. 2908.</span></span>
+<span id="cb2-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  5 01      female AA     757. 1258. 1772. 2778.</span></span>
+<span id="cb2-12"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  6 01      female AA     804. 1403. 2339. 4299.</span></span>
+<span id="cb2-13"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  7 01      female AA     664. 1279. 1714. 2103.</span></span>
+<span id="cb2-14"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  8 01      female AA     757. 1325. 1929. 2660.</span></span>
+<span id="cb2-15"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  9 01      female AA     730. 1578. 2297. 2963.</span></span>
+<span id="cb2-16"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## 10 01      female AA     700. 1546. 2109. 3432.</span></span>
+<span id="cb2-17"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # … with 1,090 more rows</span></span></code></pre></div>
+<p>I’ll start off by normalizing the data in three different ways.</p>
+<ol type="1">
+<li><p>First, I’ll do the Lobanov transformation which is pretty common although <a href="http://santiagobarreda.com">Santiago Barreda’s</a> forthcoming paper in LVC suggests that we really shouldn’t be using it. I can accomplish the normalization with one line of code using by applying the base R <code>scale</code> function to both the <code>F1</code> and <code>F2</code> columns <code>dplyr::across</code>. I’ll create new columns called <code>F1_lob</code> and <code>F2_lob</code>.</p></li>
+<li><p>Then, I’ll normalize using the method described in the <em>Atlas of North American English</em>. I won’t go into detail about how this normalization procedure works, but I’ve written it up as a function and made it available in my sandbox <a href="https://joeystanley.github.io/joeyr/"><code>joeyr</code> package</a>. To get this to work, I’ll first specify which columns contain the formant measurements to normalize (<code>F1</code> and <code>F2</code>). I also need to specify which column contains unique values for each vowel token; in this case, since it’s one row per token (<em>i.e.</em> this isn’t trajectory data), I can just supply the row names. I’ll then specify which column contains unique values per speaker.</p></li>
+<li><p>Finally, I’ll normalize the data using the ΔF technique described in Johnson (2020). Again, I won’t go into detail, but I wanted to try it out anyway because it’s less common and because it takes into account F3 and F4 as well. I’ve also wrapped that one up into a function in my <code>joeyr</code> package, <code>norm_deltaF</code>, and I just need to specify the formant columns to be used.</p></li>
+</ol>
+<p>So I can easily incorporate all three of these normalization procedures in just three lines of a tidyverse pipeline. Pretty cool!</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">idahoans_norm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(speaker) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(F1, F2), scale, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.names =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{col}_lob"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_anae</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hz_cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(F1, F2), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vowel_id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">row.names</span>(.), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">speaker_id =</span> speaker) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_deltaF</span>(F1, F2, F3, F4) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span>
+<span id="cb3-7"></span>
+<span id="cb3-8"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # A tibble: 1,100 x 15</span></span>
+<span id="cb3-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # Groups:   speaker [10]</span></span>
+<span id="cb3-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    speaker sex   vowel    F1    F2 F1_anae F2_anae    F3    F4 F1_deltaF</span></span>
+<span id="cb3-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb3-12"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  1 01      fema… AA     699. 1655.    714.   1690. 2019. 3801.     0.637</span></span>
+<span id="cb3-13"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  2 01      fema… AA     685. 1360.    700.   1388. 1914. 4257.     0.624</span></span>
+<span id="cb3-14"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  3 01      fema… AA     713. 1507.    728.   1539. 2460. 3617.     0.650</span></span>
+<span id="cb3-15"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  4 01      fema… AA     801. 1143.    818.   1167. 1868. 2908.     0.730</span></span>
+<span id="cb3-16"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  5 01      fema… AA     757. 1258.    772.   1284. 1772. 2778.     0.689</span></span>
+<span id="cb3-17"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  6 01      fema… AA     804. 1403.    821.   1432. 2339. 4299.     0.733</span></span>
+<span id="cb3-18"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  7 01      fema… AA     664. 1279.    678.   1306. 1714. 2103.     0.605</span></span>
+<span id="cb3-19"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  8 01      fema… AA     757. 1325.    773.   1353. 1929. 2660.     0.690</span></span>
+<span id="cb3-20"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  9 01      fema… AA     730. 1578.    746.   1611. 2297. 2963.     0.665</span></span>
+<span id="cb3-21"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## 10 01      fema… AA     700. 1546.    715.   1578. 2109. 3432.     0.638</span></span>
+<span id="cb3-22"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # … with 1,090 more rows, and 5 more variables: F2_deltaF &lt;dbl&gt;,</span></span>
+<span id="cb3-23"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## #   F3_deltaF &lt;dbl&gt;, F4_deltaF &lt;dbl&gt;, F1_lob[,1] &lt;dbl&gt;, F2_lob[,1] &lt;dbl&gt;</span></span></code></pre></div>
+<p>I’ll focus on the <em>cot-caught</em> merger here. To calculate the pillai scores then, I can use another function in <a href="https://joeystanley.github.io/joeyr/"><code>joeyr</code></a> called <code>pillai</code>. To use it, I’ll first need to only include the vowels I want run the pillai score on. I then put in the formula that I’d normally use in <code>manova()</code>. I’ll do that four times, once for the raw data and then once for each of the normalizations.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">idahoans_pillai <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> idahoans_norm <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(vowel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AA"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AO"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pillai_raw    =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pillai</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(F1,        F2)        <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> vowel),</span>
+<span id="cb4-4">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pillai_lob    =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pillai</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(F1_lob,    F2_lob)    <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> vowel),</span>
+<span id="cb4-5">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pillai_anae   =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pillai</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(F1_anae,   F2_anae)   <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> vowel),</span>
+<span id="cb4-6">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pillai_deltaF =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pillai</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cbind</span>(F1_deltaF, F2_deltaF) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span>
+<span id="cb4-8"></span>
+<span id="cb4-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # A tibble: 10 x 5</span></span>
+<span id="cb4-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    speaker pillai_raw pillai_lob pillai_anae pillai_deltaF</span></span>
+<span id="cb4-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    &lt;fct&gt;        &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
+<span id="cb4-12"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  1 01           0.592      0.592       0.592         0.592</span></span>
+<span id="cb4-13"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  2 02           0.500      0.500       0.500         0.500</span></span>
+<span id="cb4-14"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  3 03           0.763      0.763       0.763         0.763</span></span>
+<span id="cb4-15"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  4 04           0.663      0.663       0.663         0.663</span></span>
+<span id="cb4-16"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  5 05           0.557      0.557       0.557         0.557</span></span>
+<span id="cb4-17"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  6 06           0.136      0.136       0.136         0.136</span></span>
+<span id="cb4-18"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  7 07           0.412      0.412       0.412         0.412</span></span>
+<span id="cb4-19"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  8 08           0.310      0.310       0.310         0.310</span></span>
+<span id="cb4-20"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  9 09           0.173      0.173       0.173         0.173</span></span>
+<span id="cb4-21"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## 10 10           0.267      0.267       0.267         0.267</span></span></code></pre></div>
+<p>At a glance, you can see that the scores are pretty much the same for all 10 speakers across all the versions of the data. We can test this for sure using the <code>near</code> function. Technically, due to rounding errors, the numbers could be <em>very</em> slightly off from each other, so <code>near</code> checks for whether two number are—for all intents and purposes—identical.</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">idahoans_pillai <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ungroup</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sameAB =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">near</span>(pillai_raw, pillai_lob),</span>
+<span id="cb5-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sameAC =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">near</span>(pillai_raw, pillai_anae),</span>
+<span id="cb5-5">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sameAD =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">near</span>(pillai_raw, pillai_deltaF)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span>
+<span id="cb5-7"></span>
+<span id="cb5-8"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # A tibble: 10 x 8</span></span>
+<span id="cb5-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    speaker pillai_raw pillai_lob pillai_anae pillai_deltaF sameAB sameAC sameAD</span></span>
+<span id="cb5-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    &lt;fct&gt;        &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt;  &lt;lgl&gt; </span></span>
+<span id="cb5-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  1 01           0.592      0.592       0.592         0.592 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-12"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  2 02           0.500      0.500       0.500         0.500 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-13"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  3 03           0.763      0.763       0.763         0.763 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-14"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  4 04           0.663      0.663       0.663         0.663 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-15"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  5 05           0.557      0.557       0.557         0.557 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-16"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  6 06           0.136      0.136       0.136         0.136 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-17"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  7 07           0.412      0.412       0.412         0.412 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-18"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  8 08           0.310      0.310       0.310         0.310 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-19"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  9 09           0.173      0.173       0.173         0.173 TRUE   TRUE   TRUE  </span></span>
+<span id="cb5-20"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## 10 10           0.267      0.267       0.267         0.267 TRUE   TRUE   TRUE</span></span></code></pre></div>
+<p>Yeah, so it looks like they’re equal. Regardless of whether you run the pillai score on raw data, data that’s been normalized where F1 and F2 are adjusted independently (Lobanov), data that’s been normalized where F1 and F2 are treated the same (ANAE normalization), or whether F3 and F4 are also included (ΔF), the results are going to be the same.</p>
+</section>
+<section id="why-does-this-work" class="level2">
+<h2 class="anchored" data-anchor-id="why-does-this-work">Why does this work?</h2>
+<p>Okay, so we’ve established that they’re the same then. But why?</p>
+<p>Well, you may know that normalization doesn’t change the relative positions of the F1 or F2 measurements to each other. It just sort of stretches them out and recenters them. You can think of normalization as taking image of vowel plots (one for each speaker), pasting them in PowerPoint or something,<span class="sidenote">In the case of Lobanov, you actually can only adjust one side and then the other, rather than pulling on the corner, which results in some distortion.</span> and then pulling the corner of them so that they’re all the same size. You can also drag them around so that they’re on top of each other. In the case of log-scale normalization procedures (like ANAE and ΔF) that apply to F1 and F2 at the same time, you can only move them along a diagonal line going from the bottom left to the top right. For Lobanov, you’re free to reposition them any way you’d like. The point is, normalization just stretches/contracts and recenters vowel spaces rather changing individual points’ relative positions.</p>
+<p>I can kinda illustrate this by visualizing the same speaker’s data four different ways: once for the raw data and once for each normalization type. First, I’ll have to reshape it a little bit so that all the F1 values are in the same column. I can do that with <code>pivot_longer</code>. Before I do that, I’ll change the raw <code>F1</code> column to <code>F1_raw</code> so that the names all have the same template of <code>{formant}_{procedure}</code>.</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">idahoans_reshaped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> idahoans_norm <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename_with</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(., <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_raw"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(F1, F2, F3, F4)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename_with</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(., <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"norm"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"delta_F"</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ends_with</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"norm"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">starts_with</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F"</span>),</span>
+<span id="cb6-5">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".value"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"method"</span>),</span>
+<span id="cb6-6">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_pattern =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"(F</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">d)_(</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">w+)"</span>),</span>
+<span id="cb6-7">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"value"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb6-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span>
+<span id="cb6-9"></span>
+<span id="cb6-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # A tibble: 4,400 x 8</span></span>
+<span id="cb6-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # Groups:   speaker [10]</span></span>
+<span id="cb6-12"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    speaker sex    vowel method  F1[,1]   F2[,1]      F3      F4</span></span>
+<span id="cb6-13"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    &lt;fct&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb6-14"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  1 01      female AA    raw    699.    1655.    2019.   3801.  </span></span>
+<span id="cb6-15"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  2 01      female AA    anae   714.    1690.      NA      NA   </span></span>
+<span id="cb6-16"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  3 01      female AA    deltaF   0.637    1.51     1.84    3.46</span></span>
+<span id="cb6-17"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  4 01      female AA    lob      1.15    -0.341   NA      NA   </span></span>
+<span id="cb6-18"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  5 01      female AA    raw    685.    1360.    1914.   4257.  </span></span>
+<span id="cb6-19"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  6 01      female AA    anae   700.    1388.      NA      NA   </span></span>
+<span id="cb6-20"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  7 01      female AA    deltaF   0.624    1.24     1.74    3.88</span></span>
+<span id="cb6-21"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  8 01      female AA    lob      1.04    -0.906   NA      NA   </span></span>
+<span id="cb6-22"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  9 01      female AA    raw    713.    1507.    2460.   3617.  </span></span>
+<span id="cb6-23"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## 10 01      female AA    anae   728.    1539.      NA      NA   </span></span>
+<span id="cb6-24"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # … with 4,390 more rows</span></span></code></pre></div>
+<p>I’ll then pick a speaker, we’ll say speaker <code>02</code>, and just get their two low back vowels. (There will be NAs in the F3 and F4 columns because they were not involved in the Lobanov or ANAE normalizations.)</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">s02_reshaped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> idahoans_reshaped <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(speaker <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"02"</span>, </span>
+<span id="cb7-3">         vowel <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AA"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AO"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span>
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # A tibble: 80 x 8</span></span>
+<span id="cb7-7"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # Groups:   speaker [1]</span></span>
+<span id="cb7-8"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    speaker sex   vowel method  F1[,1]   F2[,1]      F3      F4</span></span>
+<span id="cb7-9"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb7-10"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  1 02      male  AA    raw    449.    1081.    2593.   3047.  </span></span>
+<span id="cb7-11"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  2 02      male  AA    anae   592.    1423.      NA      NA   </span></span>
+<span id="cb7-12"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  3 02      male  AA    deltaF   0.478    1.15     2.76    3.24</span></span>
+<span id="cb7-13"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  4 02      male  AA    lob      0.196   -0.833   NA      NA   </span></span>
+<span id="cb7-14"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  5 02      male  AA    raw    582.    1105.    2593.   3757.  </span></span>
+<span id="cb7-15"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  6 02      male  AA    anae   766.    1456.      NA      NA   </span></span>
+<span id="cb7-16"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  7 02      male  AA    deltaF   0.619    1.18     2.76    4.00</span></span>
+<span id="cb7-17"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  8 02      male  AA    lob      1.68    -0.765   NA      NA   </span></span>
+<span id="cb7-18"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">##  9 02      male  AA    raw    512.    1152.    2238.   3655.  </span></span>
+<span id="cb7-19"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## 10 02      male  AA    anae   675.    1517.      NA      NA   </span></span>
+<span id="cb7-20"><span class="do" style="color: #5E5E5E;
+background-color: null;
+font-style: italic;">## # … with 70 more rows</span></span></code></pre></div>
+<p>I can then plot those four together.</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(s02_reshaped, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_ellipse</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">level =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.67</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-6">  ggthemes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_ptol</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>method, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scales =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"free"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Four versions of speaker 02's low back vowels"</span>,</span>
+<span id="cb8-10">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"To quote Pam Beesly, </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">They're the same picture.</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<p><img width="85%" src="https://new.joeystanley.com/images/plots/pillai_normalization.png"></p>
+<p>So, as you can see, the plots are virtually identical, other than the scales of the <em>x</em>- and <em>y</em>-axes. This might not be the best illustration of what’s going on because <code>ggplot2</code> will automatically stretch and center the data, but maybe it works for you?</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>So there you have it. It doesn’t matter if you calculate pillai scores before or after normalization—at least with the three procedures used here—the results are going to be the same regardless.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>How-to Guides</category>
+  <category>Methods</category>
+  <category>Phonetics</category>
+  <category>R</category>
+  <category>Skills</category>
+  <category>Vowel Overlap</category>
+  <guid>https://new.joeystanley.com/blog/pillai-scores-dont-change-after-normalization/index.html</guid>
+  <pubDate>Sat, 06 Feb 2021 21:30:00 GMT</pubDate>
+</item>
+<item>
   <title>10 Years of Linguistics</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/ten-years-of-linguistics/index.html</link>
@@ -2644,43 +3322,6 @@ font-style: inherit;">theme_bw</span>()</span></code></pre></div>
   <category>Skills</category>
   <guid>https://new.joeystanley.com/blog/barktools/index.html</guid>
   <pubDate>Mon, 27 Apr 2020 19:45:00 GMT</pubDate>
-</item>
-<item>
-  <title>I got a job at BYU!</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/I-got-a-job/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I can’t believe I get to say this, but in June I’ll start a new job as an Assistant Professor in the Department of Linguistics at Brigham Young University!</p>
-<p>First off, I can’t believe my odds. There are so many amazingly talented grad students out there. Seriously. Several times during the past few years, I’ve seen and met some super accomplished folks, and I’m shocked they’re only grad students. Unfortunately, the academic job market is fierce and not all of them go on to get academic jobs. <em>Especially</em> this year. I’m convinced that once you get to a certain level, it mostly comes down to luck after that. I was dealt good cards this year and that’s really the only reason I get to write this right now and other people can’t.</p>
-<section id="byu-is-going-to-be-awesome" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="byu-is-going-to-be-awesome">BYU is going to be awesome!</h2>
-<p>I’m really excited for BYU for several reasons. First, it’s where I got my undergrad. I’ll be teaching in the same rooms where I myself learned linguistics. In fact, during my campus visit, my teaching demonstration was in the very room that my Intro to Linguistics course was. I’ll also be colleagues with my former professors. (Calling them by first name will take some getting used to!) The campus is beautiful and <a href="https://www.google.com/maps/@40.2484442,-111.6505925,3a,75y,76.5h,79.84t/data=!3m8!1e1!3m6!1sAF1QipOBMIwDvScaTBg5Hty8UEr2SXhGIjLXlAjzIMKG!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipOBMIwDvScaTBg5Hty8UEr2SXhGIjLXlAjzIMKG%3Dw203-h100-k-no-pi-0-ya8.229047-ro-0-fo100!7i2508!8i1254">right in the foothills of an enormous mountain</a>. The Humanities building is big and beautiful. It’ll be great to be there again.</p>
-<div class="page-columns page-full"><p>What I didn’t know as a student, but what I can really appreciate now as a future teacher, is the flexibility in teaching that BYU Linguistics offers. I’m slated to teach sociolinguistics, dialectology, phonetics &amp; phonology, and quantitative methods this year. I don’t know if too many schools could have offered me such a <em>perfect</em> assortment of courses. Plus, they’ve got several courses on the books that are specifically designed for faculty interests. I probably won’t be able to teach those for a few years, but if there’s some cool topic I want to try out, I won’t need to go through too many hoops in trying it out once.</p><div class="no-row-height column-margin column-container"><span class="">Update: By the end of my third year, I already been able to <a href="../../teaching.html">teach</a> African American English, and team-taught Linguistic Data Analysis and Sociolinguistic Fieldwork!</span></div></div>
-<p>In fact, I’ve already started some work for BYU Linguistics. I’m helping to prepare some course material to be used online during a study abroad next year. I’ll also get started a little earlier than normal (end of June) so I can teach a course this summer. It’s crazy to think that my family and I will be moving in less than three months!</p>
-<p>I’m also excited to begin research in Utah! I’ve always been interested in dialectology, especially in the American West. How many dialectologists land jobs in the heart of the geographic region that most interests them?? I have so many research questions that have to do with Utah English and Mormon English, not to mention surrounding areas like Wyoming and Idaho. To think that a few years ago I had to get a grant to collect fieldwork in Utah—now all I’ll need to do is go get groceries! I’m looking forward to collecting some data as soon as I get there.</p>
-</section>
-<section id="the-job-hunt" class="level2">
-<h2 class="anchored" data-anchor-id="the-job-hunt">The Job Hunt</h2>
-<p>I wanted to post this chart summarizing my job hunt over the past two (or three-ish) academic years. I applied to basically everything I could possibly see myself doing. I’ve heard stories of people applying to over 100 jobs. Well, for a sociolinguist, there really aren’t 100 jobs out there—this was pretty much all of them.</p>
-<p><img src="https://new.joeystanley.com/blog/I-got-a-job/job_hunt.png" class="img-fluid" style="width:85.0%"></p>
-<p>Of the 41 jobs I applied for, 26 were tenure-track, six were visiting professor positions, six were post-docs, two were lecturer positions, and one was Alt-Ac. I got 10 Skype interviews, one campus visit, and one offer. It has never crossed my mind to apply for an industry job (heck, I don’t even know <em>how</em> to!), so there aren’t any there. If things hadn’t worked out this year, I would have started down that route. I think finally did get the hang of applying for jobs towards the end, but I’m just so glad I don’t need to apply for jobs anymore. (Grants though, that’s a different story…)</p>
-<p>Again, I’m aware that I basically won the lottery this year. So many grad students won’t be able to get academic jobs—especially with COVID-19 destroying the economy right now. I can’t imagine how bummed I would have been if nothing had panned out. And it’s depressing to think that many of my grad student colleagues will have to open that crushing final rejection letter. I express my deepest sympathy for them.</p>
-</section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
-<p>Today I submitted the revisions for my dissertation to my advisor, and I anticipate submitting the final version to UGA next week. I’ve still got some loose ends to tie up with my assistantship with the Linguistic Atlas Project that I’ll work on this month. After that, it’ll be course prep, house-hunting, and (gulp!) a 28 hour drive to Provo, UT. At least the weather will be nicer there!</p>
-
-
-</section>
-
- ]]></description>
-  <category>Personal</category>
-  <guid>https://new.joeystanley.com/blog/I-got-a-job/index.html</guid>
-  <pubDate>Fri, 03 Apr 2020 23:13:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

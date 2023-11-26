@@ -1,0 +1,134 @@
+---
+layout: post
+title: "Pillai scores don't change after normalization"
+date: 2021-02-06 15:30 -0600
+categories:
+  - How-to Guides
+  - Methods
+  - Phonetics
+  - R
+  - Skills
+  - Vowel Overlap
+---
+
+I was playing around with some data the other day and I discovered that if you calculate the pillai score on raw data you get the same result as if you calculated it on normalized data. This might be common knowledge among sociophoneticians who work with this kind of data, and now that I think about how normalization works, it makes sense. But it's new to me so I thought I'd write about it and illustrate it.
+
+:::callout-note
+**Update (October 19, 2021)** Please see my [NWAV49](nwav49) presentation on order of operations in sociophonetic analysis. While this blog post shows that normalization doesn't affect the overall outcome, the order that you apply other sociophonetic data processing steps can have a substantial effect on your results!
+:::
+
+:::callout-note
+**Update (November 23, 2021)** Betsy Sneller and I have done some recent research on Pillai scores. Please see the summary our [ASA2021](asa2021) poster (and the poster itself) for more information.
+:::
+
+Incidentally, this post is also somewhat of a tutorial on how to do a few different vowel normalization procedures and how to calculate pillai scores. I hope to do a separate tutorial on normalization, but I do have a detailed tutorial on calculating vowel overlap already, which you can view [here](/blog/a-tutorial-in-calculating-vowel-overlap).
+
+
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(joeyr)
+library(joeysvowels)
+```
+
+## Calculating Pillai scores
+
+I'll start by loading a sample dataset. This is a simplified dataset of 10 English speakers from the state of Idaho, which comes from my [`joeysvowels` package](https://joeystanley.github.io/joeysvowels/). It contains F1--F4 measurements from a random sample of 10 tokens from 11 monophthongs.
+
+```{r}
+idahoans <- joeysvowels::idahoans %>%
+  print()
+```
+I'll start off by normalizing the data in three different ways. 
+
+1. First, I'll do the Lobanov transformation which is pretty common although [Santiago Barreda's](http://santiagobarreda.com) forthcoming paper in LVC suggests that we really shouldn't be using it. I can accomplish the normalization with one line of code using by applying the base R `scale` function to both  the `F1` and `F2` columns `dplyr::across`. I'll create new columns called `F1_lob` and `F2_lob`. 
+
+1. Then, I'll normalize using the method described in the *Atlas of North American English*. I won't go into detail about how this normalization procedure works, but I've written it up as a function and made it available in my sandbox [`joeyr` package](https://joeystanley.github.io/joeyr/). To get this to work, I'll first specify which columns contain the formant measurements to normalize (`F1` and `F2`). I also need to specify which column contains unique values for each vowel token; in this case, since it's one row per token (*i.e.* this isn't trajectory data), I can just supply the row names. I'll then specify which column contains unique values per speaker.
+
+1. Finally, I'll normalize the data using the ΔF technique described in Johnson (2020). Again, I won't go into detail, but I wanted to try it out anyway because it's less common and because it takes into account F3 and F4 as well. I've also wrapped that one up into a function in my `joeyr` package, `norm_deltaF`, and I just need to specify the formant columns to be used.
+
+So I can easily incorporate all three of these normalization procedures in just three lines of a tidyverse pipeline. Pretty cool!
+
+```{r}
+idahoans_norm <- idahoans %>%
+  group_by(speaker) %>%
+  mutate(across(c(F1, F2), scale, .names = "{col}_lob")) %>%
+  norm_anae(hz_cols = c(F1, F2), token_id = row_names(.), speaker_id = speaker) %>%
+  norm_deltaF(F1, F2, F3, F4) %>%
+  print()
+```
+
+I'll focus on the *cot-caught* merger here. To calculate the pillai scores then, I can use another function in [`joeyr`](https://joeystanley.github.io/joeyr/) called `pillai`. To use it, I'll first need to only include the vowels I want run the pillai score on. I then put in the formula that I'd normally use in `manova()`. I'll do that four times, once for the raw data and then once for each of the normalizations.
+
+```{r}
+idahoans_pillai <- idahoans_norm %>%
+  filter(vowel %in% c("AA", "AO")) %>%
+  summarize(pillai_raw    = pillai(cbind(F1,        F2)        ~ vowel),
+            pillai_lob    = pillai(cbind(F1_lob,    F2_lob)    ~ vowel),
+            pillai_anae   = pillai(cbind(F1_anae,   F2_anae)   ~ vowel),
+            pillai_deltaF = pillai(cbind(F1_deltaF, F2_deltaF) ~ vowel)) %>%
+  print()
+```
+
+At a glance, you can see that the scores are pretty much the same for all 10 speakers across all the versions of the data. We can test this for sure using the `dplyr::near` function. Technically, due to rounding errors, the numbers could be *very* slightly off from each other, so `near` checks for whether two number are---for all intents and purposes---identical. 
+
+```{r}
+idahoans_pillai %>%
+  ungroup() %>%
+  mutate(sameAB = near(pillai_raw, pillai_lob),
+         sameAC = near(pillai_raw, pillai_anae),
+         sameAD = near(pillai_raw, pillai_deltaF)) %>%
+  print()
+```
+
+Yeah, so it looks like they're equal. Regardless of whether you run the pillai score on raw data, data that's been normalized where F1 and F2 are adjusted independently (Lobanov), data that's been normalized where F1 and F2 are treated the same (ANAE normalization), or whether F3 and F4 are also included (ΔF), the results are going to be the same.
+
+## Why does this work?
+
+Okay, so we've established that they're the same then. But why? 
+
+Well, you may know that normalization doesn't change the relative positions of the F1 or F2 measurements to each other. It just sort of stretches them out and recenters them. You can think of normalization as taking image of vowel plots (one for each speaker), pasting them in PowerPoint or something,[In the case of Lobanov, you actually can only adjust one side and then the other, rather than pulling on the corner, which results in some distortion.]{.aside} and then pulling the corner of them so that they're all the same size. You can also drag them around so that they're on top of each other. In the case of log-scale normalization procedures (like ANAE and ΔF) that apply to F1 and F2 at the same time, you can only move them along a diagonal line going from the bottom left to the top right. For Lobanov, you're free to reposition them any way you'd like. The point is, normalization just stretches/contracts and recenters vowel spaces rather changing individual points' relative positions. 
+
+I can kinda illustrate this by visualizing the same speaker's data four different ways: once for the raw data and once for each normalization type. First, I'll have to reshape it a little bit so that all the F1 values are in the same column. I can do that with `pivot_longer`. Before I do that, I'll change the raw `F1` column to `F1_raw` so that the names all have the same template of `{formant}_{procedure}`.
+
+```{r}
+idahoans_reshaped <- idahoans_norm %>%
+  rename_with(~paste0(., "_raw"), c(F1, F2, F3, F4)) %>%
+  rename_with(~str_replace(., "norm", "delta_F"), ends_with("norm")) %>%
+  pivot_longer(cols = starts_with("F"),
+               names_to = c(".value", "method"),
+               names_pattern = c("(F\\d)_(\\w+)"),
+               values_to = "value") %>%
+  print()
+```
+
+I'll then pick a speaker, we'll say speaker `02`, and just get their two low back vowels. (There will be NAs in the F3 and F4 columns because they were not involved in the Lobanov or ANAE normalizations.)
+
+```{r}
+s02_reshaped <- idahoans_reshaped %>%
+  filter(speaker == "02", 
+         vowel %in% c("AA", "AO")) %>%
+  print()
+```
+
+I can then plot those four together. 
+
+```{r}
+ggplot(s02_reshaped, aes(F2, F1, color = vowel)) + 
+  geom_point() + 
+  stat_ellipse(level = 0.67) + 
+  scale_x_reverse() + 
+  scale_y_reverse() + 
+  ggthemes::scale_color_ptol() + 
+  facet_wrap(~method, scales = "free") + 
+  theme_minimal() + 
+  labs(title = "Four versions of speaker 02's low back vowels",
+       subtitle = "To quote Pam Beesly, \"They're the same picture.\"")
+```
+
+So, as you can see, the plots are virtually identical, other than the scales of the *x*- and *y*-axes. This might not be the best illustration of what's going on because `ggplot2` will automatically stretch and center the data, but maybe it works for you?
+
+## Conclusion
+
+So there you have it. It doesn't matter if you calculate pillai scores before or after normalization---at least with the three procedures used here---the results are going to be the same regardless. 
+
