@@ -1288,9 +1288,8 @@ font-style: inherit;">group =</span> traj_id))</span></code></pre></div>
 </div>
 </div>
 </section>
-</section>
-<section id="multiple-speakers-idahoans" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-speakers-idahoans">Multiple speakers: <code>idahoans</code></h2>
+<section id="multiple-speakers-idahoans" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-speakers-idahoans">Multiple speakers: <code>idahoans</code></h3>
 <p><code>idahoans</code> contains formant measurements from 11 individuals from the state of Idaho in the US.<span class="sidenote">These participants did consent to their data being used for teaching purposes and to be distributed to interested researchers.</span> I needed something to test out some functions that do vowel normalization and relying on my own voice wasn’t going to cut it. It’s not a full dataset: for each of the 10 speakers, there are ten tokens per canonical monophthong, randomly selected from a larger dataset. But it should be enough for illustrative purposes. Plus, when was the last time you saw acoustic data from Idaho??</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
@@ -1329,6 +1328,7 @@ font-style: inherit;">~</span>speaker)</span></code></pre></div>
 <p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
