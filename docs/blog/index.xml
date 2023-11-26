@@ -1030,6 +1030,326 @@ Long story short, I got accepted into the music school. Hooray! The problem was 
   <pubDate>Sat, 05 Dec 2020 04:11:00 GMT</pubDate>
 </item>
 <item>
+  <title>joeysvowels: An R package of vowel data</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://new.joeystanley.com/blog/joeysvowels/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’ve just released my third R package, <a href="https://joeystanley.github.io/joeysvowels/"><code>joeysvowels</code></a>. It provides a handful of datasets, some subsets of others, that contain formant measurements and other information about the vowels in my own speech. The purpose of the package is to make vowel data easily accessible for demonstrating code snippets when demonstrating how to work with sociophonetic data. There are no functions contained in <code>joeysvowels</code>; it’s a data-only package.</p>
+<p>This is my third package. My first one, <a href="https://github.com/JoeyStanley/futurevisions"><code>futurevisions</code></a>, contains a collection of color palettes. The second is <a href="https://joeystanley.github.io/barktools/"><code>barktools</code></a>, which helps you work with Barks in your sociophonetic data (and even has its own hex!). Technically, I have another package called <a href="https://joeystanley.github.io/joeyr/"><code>joeyr</code></a> that is sort of my sandbox package that I use it all the time and has useful functions for sociophonetic work but it’s not quite ready for distribution yet.</p>
+<p>Why create a data-only package? A lot of it had to with my <code>barktools</code> and <code>joeyr</code> packages. As I was developing websites for them using <code>pkgdown</code>, I wanted to create some better help files and examples. To do that, I needed real vowel data to work with. So for a while I had a couple datasets built into each of those packages. Sometimes the same dataset was included with both packages, which is fine by themselves, but since I often had both loaded in the same script, it created a small clash. I figured I should just offload the data from the two packages onto a third one, which would then be a dependency of both. Thus <code>joeysvowels</code> was born!</p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>You can install <code>joeysvowels</code> through GitHub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"joeystanley/joeysvowels"</span>)</span></code></pre></div>
+</div>
+<p>You can then load the package like normally:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(joeysvowels)</span></code></pre></div>
+</div>
+<p>I’ll load a few other packages for the purposes of this post.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyr)</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+</div>
+</section>
+<section id="contents" class="level2">
+<h2 class="anchored" data-anchor-id="contents">Contents</h2>
+<p>Currently, there are six datasets contained in <code>joeysvowels</code>. You can access them using <code>data()</code>. I’ll briefly visualize the datasets.</p>
+<section id="a-messy-dataset-darla" class="level3">
+<h3 class="anchored" data-anchor-id="a-messy-dataset-darla">A messy dataset: <code>darla</code></h3>
+<p><code>darla</code> is one that was prepared using pretty standard methods, using the DARLA web interface to automatically transcribe, force-align, and extract formants from the audio. The audio was me reading 300 prepared sentences. It’s a bit of a noisy dataset, so it’s a good example of working with real data and testing out various outlier detection functions. It is also very close to the format that FAVE exports its data, so any tutorials that use FAVE-produced spreadsheets can be followed along using <code>darla</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(darla)</span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(darla, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="cleaner-datasets-coronals-and-its-subsets" class="level3">
+<h3 class="anchored" data-anchor-id="cleaner-datasets-coronals-and-its-subsets">Cleaner datasets: <code>coronals</code> and its subsets</h3>
+<p><code>coronals</code> is a much cleaner, more controlled dataset. You can read about the methods by viewing the documentation (<code>?coronals</code>). Essentially, I read a bunch of (C)CVC(C) nonce words where the consonants were (almost) all coronal. All my vowel phonemes are represented. I aligned and extracted formants from the data myself. Four formants were extracted every 5% of the vowels’ durations, so great for demonstrating functions and visuals involving vowel trajectories.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(coronals)</span>
+<span id="cb5-2">avg_trajs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> coronals <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(vowel, percent) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(F1, F2), mean)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 273 × 4
+# Groups:   vowel [13]
+   vowel percent    F1    F2
+   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 LOT         0  454. 1616.
+ 2 LOT         5  592. 1346.
+ 3 LOT        10  648. 1283.
+ 4 LOT        15  651. 1238.
+ 5 LOT        20  661. 1178.
+ 6 LOT        25  651. 1176.
+ 7 LOT        30  636. 1152.
+ 8 LOT        35  630. 1148.
+ 9 LOT        40  633. 1153.
+10 LOT        45  625. 1158.
+# ℹ 263 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(avg_trajs, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> vowel), </span>
+<span id="cb7-3">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrow</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">angle =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">length =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.15</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"in"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"closed"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If you don’t care about trajectories but would like something clearer than <code>darla</code>, then <code>midpoints</code> what you’ll want. It’s a subset of <code>coronals</code> and contains only the midpoints from F1 and F2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(midpoints)</span>
+<span id="cb8-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(midpoints, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb8-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If you just need to demonstrate one vowel’s trajectory, check out <code>mouth</code> since it’s only the <sc>mouth</sc> (/aw/) vowel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(mouth)</span>
+<span id="cb9-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(mouth, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(percent, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> traj_id))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><code>mouth_lite</code> is a subset of <code>mouth</code> and trims away most of the columns and only contains 10 tokens.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(mouth_lite)</span>
+<span id="cb10-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(mouth_lite, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(percent, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> traj_id))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="multiple-speakers-idahoans" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-speakers-idahoans">Multiple speakers: <code>idahoans</code></h2>
+<p><code>idahoans</code> contains formant measurements from 11 individuals from the state of Idaho in the US.<span class="sidenote">These participants did consent to their data being used for teaching purposes and to be distributed to interested researchers.</span> I needed something to test out some functions that do vowel normalization and relying on my own voice wasn’t going to cut it. It’s not a full dataset: for each of the 10 speakers, there are ten tokens per canonical monophthong, randomly selected from a larger dataset. But it should be enough for illustrative purposes. Plus, when was the last time you saw acoustic data from Idaho??</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(idahoans)</span>
+<span id="cb11-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(idahoans, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>speaker)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://new.joeystanley.com/blog/joeysvowels/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>That’s it so far! Feel free to use the datasets for teaching and demos. That’s what they’re there for.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Github</category>
+  <category>Methods</category>
+  <category>Phonetics</category>
+  <category>R</category>
+  <category>R Packages</category>
+  <category>Side Projects</category>
+  <category>Teaching</category>
+  <category>West</category>
+  <guid>https://new.joeystanley.com/blog/joeysvowels/index.html</guid>
+  <pubDate>Wed, 30 Sep 2020 08:28:00 GMT</pubDate>
+</item>
+<item>
   <title>A big list of Mary-merry-marry words</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://new.joeystanley.com/blog/mary-merry-marry/index.html</link>
@@ -2012,95 +2332,6 @@ This'll be my first time teaching LaTeX, but I had a lot of fun putting this wor
   <category>Presentations</category>
   <guid>https://new.joeystanley.com/blog/full-house-at-my-first-latex-workshop/index.html</guid>
   <pubDate>Fri, 31 Jan 2020 20:45:00 GMT</pubDate>
-</item>
-<item>
-  <title>UGA Linguistics Colloquium 2020</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://new.joeystanley.com/blog/colloquium-2020/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>For the fourth time in six years, I presented some of my research at the UGA Linguistics Colloquium. I talked about some findings from my <a href="../../blog/dissertation">dissertation</a>, though I focused on just the low vowels <sc>trap</sc>, <sc>lot</sc>, and <sc>thought</sc>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/200110-colloquium.pdf">here</a></p>
-</div>
-</div>
-<section id="these-are-relatively-old-changes" class="level2">
-<h2 class="anchored" data-anchor-id="these-are-relatively-old-changes">These are relatively old changes</h2>
-<p>The gist of the talk is that <sc>trap</sc> has been gradually lowering over the course of four generations in Cowlitz County Washington, with men consistently lagging behind the women and with the first half of the trajectory doing most of the lowering. Meanwhile, <sc>lot</sc> and <sc>thought</sc> have been in a near-merged state since at least the 1930s, with no apparent conditioning by sex or generation. Considering that Cowlitz County was settled by English speakers since only the 1850s, these are relatively old changes for this area.</p>
-<p>The interesting part is that while the <em>position</em> of <sc>trap</sc> is consistently lower for the women, the <em>shape</em> of the trajectory is the same within a generation. That is, when it comes to the vowel’s dynamics, the men are keeping up with the women. It’s just that the global position of that vowel is less advanced.</p>
-<p>For me, this opens up a lot of questions about vowel trajectories. I’m curious about what kinds of social conditioning can be found in the <em>trajectory</em> of a vowel, rather than its relative position in the F1-F2 space. In fact, I’ve got some experimental work in motion to answer just that…</p>
-</section>
-<section id="interpreting-difference-smooths" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="interpreting-difference-smooths">Interpreting Difference Smooths</h2>
-<p>One thing I included in this presentation is an animation to help learn how to interpret difference smooths.<span class="sidenote-left">I’ve been meaning to include this animation in a presentation for a bit now, and with the 40 minute afforded me in this presentation, I finally had the time to do so.</span> Difference smooths are a type of plot that aid in the interpretation of GAMs and you can learn more about them in <a href="http://eprints.whiterose.ac.uk/113858/2/1703_05339v1.pdf">Mártin Sóskuthy’s tutorial on GAMs</a>. Unfortunately for those of us that fit GAMs to vowel formant data, they look awfully like vowel formant curves, so they can be tricky to interpret. I’ll probably expand this into a full blog post later on, but for now, here’s a brief explanation of (my interpretation of) difference smooths.</p>
-<p>Let’s say we have some data, a blue curve and a red curve, sampled at 11 time points. Here, these 11 data points are plotted, with lines connecting the dots.</p>
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/raw.jpg" class="img-fluid" style="width:85.0%"></p>
-<p>When you fit a generalized additive model to this data, you can get two fit lines (left, below), which is basically a smoothed version of the jagged line above. It’s as if you had sampled continuously rather than at 11 discrete timepoints. When you plot a difference smooth, you get the plot on the right (below), which is essentially one curve “minus” the other curve.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/raw_fit.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth.jpg" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>Now, it may not be completely transparent how the difference smooth relates to the two fit lines. So, to help out, the two plots below show the exact same curves, only several vertical lines have been added. On the fit lines, the vertical lines connect the two curves, with the height (and color) of the line representing the distance between them. On the right, the vertical lines connect the difference smooth and a horizontal line. The kicker: the height of the vertical lines in both plots is identical.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/raw_vlines.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth_vlines.jpg" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>If you’re like me, it still might not be clear how they connect. The following animation may help. It starts with the two curves with the vertical lines between them. Since I’m getting the <em>difference</em> between the two, I’m “subtracting” the bottom from the top. This has the effect of flattening out the bottom one to a perfectly straight, horizontal line. In order to keep the vertical lines the same height, the amount of “bend” that has to happen to the bottom line has to apply equally to the top line. The result is a new curve called the difference smooth.</p>
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/diff_smooth_anim.gif" class="img-fluid" style="width:85.0%"></p>
-<div class="page-columns page-full"><p>Once you’ve grasped that, you can then add some additional information to the plot. Typically, difference smooths come with confidence intervals, which I highlight in gray below. Wherever the confidence interval does <em>not</em> overlap with the horizontal (zero) line, the curves are interpreted as being statistically significantly different from each other.</p><div class="no-row-height column-margin column-container"><span class="">Exactly how these confidence intervals are calculated is something I’m still learning.</span></div></div>
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth_ci.jpg" class="img-fluid" style="width:85.0%"></p>
-<p>In this case, since the original red line is subtracted from the original blue one, with the confidence intervals on this difference smooth, I can say that the blue line is significantly higher than the red for some region.</p>
-<div class="page-columns page-full"><p> Finally, the plot below is the version of the difference smooths I use in this presentation, my dissertation, and anywhere else I’ve needed them so far.</p><div class="no-row-height column-margin column-container"><span class="">There are R packages that can create difference smooths (I think itsadug might be most well-known). I’m not a huge fan of the aesthetics of that plot, so I’ve created my own version using the same data, and in ggplot2. I’d like to release it in a package sometime soon so you can use them too if you’d like.</span></div></div>
-<p><img src="https://new.joeystanley.com/blog/colloquium-2020/smooth_full.jpg" class="img-fluid" style="width:85.0%"></p>
-<p>I’ve just added some additional annotation to better highlight the region of statistical significance:</p>
-<ul>
-<li><p>The center line is blue and slightly thicker in contrast with the gray, thinner lines.</p></li>
-<li><p>The horizontal axis is blue in the region of statistical significance.</p></li>
-<li><p>At the point where the confidence interval intersects 0 (the horizontal axis), I’ve added vertical dotted lines.</p></li>
-<li><p>I’ve also added the timepoint where that intersection happens. In this case, the time spans from 0 to 1, so these two lines are statistically significantly different from one another between 0.122s and 0.526s. NOTE: It’s important that you take these ranges with a grain of salt and perhaps interpret them very broadly rather than paying too much attention to the exact number.</p></li>
-</ul>
-<p>I just kinda like the look of this style of plot, so that’s the one I’ve been using.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>I’ve at least benefited from interpreting difference smooths in this way. Hopefully the attendees of my talk today (and now you!) will have slightly better understanding of them as well.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Animations</category>
-  <category>Dissertation</category>
-  <category>Pacific Northwest</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <guid>https://new.joeystanley.com/blog/colloquium-2020/index.html</guid>
-  <pubDate>Thu, 09 Jan 2020 11:20:00 GMT</pubDate>
-  <media:content url="https://new.joeystanley.com/blog/colloquium-2020/smooth_full.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
