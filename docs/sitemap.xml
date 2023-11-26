@@ -202,7 +202,11 @@
   </url>
   <url>
     <loc>https://new.joeystanley.com/index.html</loc>
+<<<<<<< HEAD
     <lastmod>2023-11-26T05:37:46.410Z</lastmod>
+=======
+    <lastmod>2023-11-26T05:40:21.286Z</lastmod>
+>>>>>>> 85789c1 (added joeysvowels blog post)
   </url>
   <url>
     <loc>https://new.joeystanley.com/blog/a-tutorial-in-calculating-vowel-overlap/index.html</loc>
