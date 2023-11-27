@@ -22,7 +22,7 @@ library(joeysvowels)
 library(joeyr)
 
 # remotes::install_github("AllanCameron/geomtextpath")
-# alternatively...
+#    alternatively...
 # install.packages("geomtextpath")
 library(geomtextpath)
 ```
