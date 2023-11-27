@@ -13,7 +13,7 @@
 
 
 /* Make everything whitesmoke background except for this stuff, which should be white still */
-:not(.callout, .callout-icon-container, .callout-title-container, .callout-body-container, .sourceCode *){
+:not(.callout, .callout-icon-container, .callout-title-container, .callout-body-container, .sourceCode *, .column-container *){
 	background: whitesmoke;
 }
 
