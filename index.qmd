@@ -1,34 +1,20 @@
 ---
-title: "Joey Stanley"
-subtitle: "Assistant Professor, Linguistics"
+title: "About Me"
 title-block-banner: false
 
-image: images/profile.jpg
+theme: default
 
-about:
-  template: solana
-  links:
-    - icon: envelope
-      text: email
-      href: mailto:joey_stanley@byu.edu
-    - icon: clouds-fill
-      text: Bluesky
-      href: https://bsky.app/profile/joeystan.bsky.social
-    - icon: twitter
-      text: twitter
-      href: https://twitter.com/joey_stan
-    - icon: github
-      text: Github
-      href: https://github.com
-    - icon: mortarboard-fill
-      text: Google Scholar
-      href: https://scholar.google.com/citations?user=61pJV_YAAAAJ&hl=en&oi=sra
+image: images/profile.jpg
+page-layout: custom
 ---
+
+::: {.grid}
+
+::: {#main}
 
 :::{.callout-important}
 As of September 20, 2023, I am in the process of migrating my website from Jekyll to Quarto. This is the new Quarto version. It is buggy, many of the links are broken, and content is missing. I will slowly add content when I have time. Please go to [joeystanley.com](joeystanley.com) for the complete version of my website.
 :::
-
 
 I’m an Assistant Professor in [Department of Linguistics](https://linguistics.byu.edu) at [Brigham Young University](https://www.byu.edu) specializing in sociophonetics, dialectology, and quantitative methods. In May 2020, I received my Ph.D in linguistics from the [Department of Linguistics](https://linguistics.uga.edu) at the [University of Georgia](https://www.uga.edu). 
 
@@ -42,19 +28,6 @@ Another strand of my research is focused on sociophonetic data analysis methods.
 
 I publish under the more grown-up-sounding version of my name, Joseph A. Stanley, but anyone who has ever met me knows I go by Joey. <!-- Recent non-linguistics books I've read were on ghost towns, typography, the Strauss–Howe generational theory, and very specific topics under the broad umbrella of "civil engineering."--> I live in Spanish Fork with my wife (Kelly) and kids (Lena, Walter, and Douglas). I enjoy running, breadmaking, succulents, and playing the organ too loudly. A description of my idiolect can be found [here](/pages/idiolect.qmd).
 
-<!--
-<center style = "font-size: 75%;">
-<img class="rounded" src="/images/photos/joey_bread.jpg" style="width: 50%;"/>
-<br/>
-A hefty ~3.5lb. loaf of white bread I made for Thanksgiving 2018.
-<br/>
-<br/>
-</center>
--->
-
-<br/>
-<br/>
-<br/>
 
 ## What am I up to right now? 
 
@@ -72,10 +45,6 @@ As of July 10 and through the end of 2023, I am…
 
 <!--🎤 Transcribing and coming up with preliminary results for a project on English in the Intermountain West.-->
 
-
-
-
-
 <!--Reading-->
 
 <!--📖 Reading Twenge (2023) *Generations: The Real Differences Between Gen Z, Millennials, Gen X, Boomers, and Silents―and What They Mean for America's Future*-->
@@ -86,3 +55,69 @@ As of July 10 and through the end of 2023, I am…
 <!--🎹 Working on an arrangement of Jurassic Park for the organ.-->
 
 👶🏻 Doing nothing but taking care of a newborn.
+
+
+:::
+
+::: {#mainAside}
+
+<img id="mainPhoto" src="/images/profile.jpg" alt="My picture">
+
+<ul id="socialMedia">
+  <li><a href="mailto:joey_stanley@byu.edu" title="email" id="email">email</a></li>
+  <li><a href="https://twitter.com/joey_stan" title="twitter" id="twitter">Twitter</a></li>
+  <li><a href="https://github.com/JoeyStanley" title="Github" id="github">Github</a></li>
+  <li><a href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&hl=en&oi=sra" title="Google Scholar" id="googleScholar">Google Scholar</a></li>
+  <li><a href="{{ root_url }}/feed.xml" id="feed">Subscribe</a></li>
+  <i class="ai ai-google-scholar-square ai-3x"></i>
+</ul>
+
+<p>Recent presentations…</p>
+<ul id="recents">
+  <li>[NWAV51](/blog/nwav51)</li>
+  <li>[SoSy](/blog/sosy5)</li>
+  <li>[LSA/ADS 2023](/blog/lsa-and-ads-2023)</li>
+</ul>
+
+<p>My most visited pages…</p>
+<ul id="recents">
+  <li>[Vowel plots in R](/blog/making-vowel-plots-in-r-part-1)</li>
+  <li>[Praat tutorial](/blog/a-tutorial-on-extracting-formants-in-praat)</li>
+  <li>[Vowel overlap](/blog/a-tutorial-in-calculating-vowel-overlap)</li>
+  <li>[R Workshops](/pages/r-workshops)</li>
+</ul>
+
+  
+  
+
+  
+  <!--
+  <p>From my latest blog post…</p>{% assign post = site.posts.first %}
+  {% assign content = post.content %}
+  <h2 class="entry-title">
+  {% if post.title %}
+  <a href="{{ root_url }}{{ post.url }}">{{ post.title }}</a>
+  {% endif %}
+  </h2>
+  <div class="entry-content">{{post.excerpt | strip_html}} <a href="{{post.url}}" title="read more" class="more">Read more</a></div>-->
+
+
+<br/>
+<br/>
+<br/>
+<div class="icon-credit">Icon credits: <img src='/images/icons/email.svg' height="10"/> 
+by <a href="https://www.flaticon.com/authors/yannick" title="Yannick">Yannick</a>,<img src='/images/icons/scholar.svg' height="10"/> by <a href="http://www.freepik.com" title="Freepik">Freepik</a>, and both <img src='/images/icons/twitter.svg' height="10"/> and <img src='/images/icons/rss.svg' height="10"/> by 
+<a href="https://www.flaticon.com/authors/elegant-themes" title="Elegant Themes">Elegant Themes</a>  from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>. All are   licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.</div>
+
+
+:::
+
+:::
+
+
+
+
+
+
+
+

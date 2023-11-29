@@ -3,21 +3,21 @@ project:
   output-dir: docs
 
 website:
-  title: "Joey Stanley"
+  title: '<span id="name">Joey Stanley</span><br/><span id="tagline">assistant professor, linguistics</span>'
   site-url: https://new.joeystanley.com
   navbar:
     left:
-      - text: "About Me"
+      - text: "About Me <em>who am I?</em>"
         file: index.qmd
-      - text: "CV"
+      - text: "CV <em>what have I done?</em>"
         file: cv.qmd
-      - text: "Research"
+      - text: "Research <em>what am I working on?</em>"
         file: research/index.qmd
-      - text: "Teaching"
+      - text: "Teaching <em>what do I teach?</em>"
         file: teaching.qmd
-      - text: "Resources"
+      - text: "Resources <em>what stuff do I use?</em>"
         file: resources.qmd
-      - text: "Blog"
+      - text: "Blog <em>what's going on?</em>"
         file: blog/index.qmd
     right:
       - icon: email
