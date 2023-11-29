@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research.html" rel="" target="">
+    <a class="nav-link" href="../../research.qmd" rel="" target="">
  <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
@@ -236,9 +236,10 @@ ul.task-list li input[type="checkbox"] {
 |  |  ├──  📄index.qmd
 |  |  ├──  🌅image2.png</code></pre>
 <p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p></li>
-<li><p>Within each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed. I remove excerpts because I only used them with my “big-link” style button. I’m replacing big-links with a standard callout box. I haven’t figured out if I can do redirects-to, which is a bummer for the GSV.</p></li>
+<li><p>Within each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed. I remove excerpts because I only used them with my “big-link” style button. I’m replacing big-links with a standard callout box. I haven’t figured out if I can do re1directs-to, which is a bummer for the GSV.</p></li>
 </ul>
-<div class="no-row-height column-margin column-container"><span class="">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div><p>TODO * Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.</p>
+<div class="no-row-height column-margin column-container"><span class="">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div><p>It took from September 10 to November 27 to transfer all my blog posts. I tried to do one a day and there are 94 of them.</p>
+<p>TODO * Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.</p>
 <ul>
 <li>Change any me-specific HTML, like <span class="sidenote"> and tables. Within sidenotes themselves, I had to do HTML rather than markdown.</span></li>
 </ul>

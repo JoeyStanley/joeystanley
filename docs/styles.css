@@ -189,3 +189,70 @@ body {
 
 
 /* code */
+
+
+
+
+
+
+
+/* ########################################## */
+/*                  CV Styles                 */
+/* ########################################## */
+
+#cv {
+	width: 75%;
+	margin: auto;
+}
+
+#updated {
+	font-size: 14px;
+	font-weight: 300;
+	clear: both;
+}
+
+#cv h2 {
+	font-variant: small-caps;
+	letter-spacing:.05em;
+	font-weight: 500;
+	margin-top: 2em;
+}
+
+#cv h3 {
+	margin-top: 2em;
+	font-style: italic;
+	font-weight: 300;
+}
+
+
+/* Add icons to the CV link types */
+a.paper:after {
+	content: url('images/icons/document.svg');
+}
+a.abstract:after {
+	content: url('images/icons/document.svg');
+}
+a.slides:after {
+	content: url('images/icons/presentation.svg');
+}
+a.poster:after {
+	content: url('images/icons/presentation.svg');
+}
+a.video:after {
+	content: url('images/icons/video.svg');
+}
+a.flyer:after {
+	content: url('images/icons/flyer.svg');
+}
+a.link:after {
+	content: url('images/icons/link.svg');
+}
+a.audio:after {
+	content: url('images/icons/audio.svg');
+}
+/* There should be a way to scale the current github.svg image, but I can't figure it out.*/
+a.github:after {
+	content: url('images/icons/github_small.svg');
+	height: 30px;
+	width: 30px;
+}

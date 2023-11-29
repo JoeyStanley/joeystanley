@@ -12,7 +12,7 @@ website:
       - text: "CV"
         file: cv.qmd
       - text: "Research"
-        file: research.qmd
+        file: research/index.qmd
       - text: "Teaching"
         file: teaching.qmd
       - text: "Resources"

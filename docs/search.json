@@ -1656,7 +1656,7 @@
     "href": "blog/website-version-3/index.html#changes",
     "title": "Website Version 3",
     "section": "Changes",
-    "text": "Changes\nHere’s a list of the changes I’ve made.\n\nEach blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:\n├──📁blog\n|  ├──📄blog post 1.md\n|  ├──📄blog post 2.md\n├──📁images\n|  ├──🌅image1.png\n|  ├──🌅image2.png\nIt’s now this:\n├──📁blog\n|  ├──📁blog post 1\n|  |  ├──  📄index.qmd\n|  |  ├──  🌅image1.png\n|  ├──📁blog post 2\n|  |  ├──  📄index.qmd\n|  |  ├──  🌅image2.png\nIt shouldn’t affect any urls to existing blog posts because the url blog/blog post 1 in the old format would go to the blog post 1.md file and in the new one it’ll go to the blog post 1 directory, which’ll display index.qmd by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work and it’ll keep the site better organized.\nWithin each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed. I remove excerpts because I only used them with my “big-link” style button. I’m replacing big-links with a standard callout box. I haven’t figured out if I can do redirects-to, which is a bummer for the GSV.\n\nBy the way, I’m stealing this way of visualizing file structure directly from TJ Mahr’s Migrating-to-Quarto page..TODO * Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.\n\nChange any me-specific HTML, like  and tables. Within sidenotes themselves, I had to do HTML rather than markdown."
+    "text": "Changes\nHere’s a list of the changes I’ve made.\n\nEach blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:\n├──📁blog\n|  ├──📄blog post 1.md\n|  ├──📄blog post 2.md\n├──📁images\n|  ├──🌅image1.png\n|  ├──🌅image2.png\nIt’s now this:\n├──📁blog\n|  ├──📁blog post 1\n|  |  ├──  📄index.qmd\n|  |  ├──  🌅image1.png\n|  ├──📁blog post 2\n|  |  ├──  📄index.qmd\n|  |  ├──  🌅image2.png\nIt shouldn’t affect any urls to existing blog posts because the url blog/blog post 1 in the old format would go to the blog post 1.md file and in the new one it’ll go to the blog post 1 directory, which’ll display index.qmd by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work and it’ll keep the site better organized.\nWithin each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed. I remove excerpts because I only used them with my “big-link” style button. I’m replacing big-links with a standard callout box. I haven’t figured out if I can do re1directs-to, which is a bummer for the GSV.\n\nBy the way, I’m stealing this way of visualizing file structure directly from TJ Mahr’s Migrating-to-Quarto page..It took from September 10 to November 27 to transfer all my blog posts. I tried to do one a day and there are 94 of them.\nTODO * Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.\n\nChange any me-specific HTML, like  and tables. Within sidenotes themselves, I had to do HTML rather than markdown."
   },
   {
     "objectID": "blog/animating_mergers/index.html",
@@ -3148,5 +3148,131 @@
     "title": "The stories behind the languages I’ve studied",
     "section": "End",
     "text": "End\nAnyway, I’ve heard people say that the more languages you know, the harder it is to define fluent. That’s certainly the case for me."
+  },
+  {
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Research",
+    "section": "",
+    "text": "This page highlights some of my research, organized thematically. I am a dialectologist, so several of my research interests are on specific regions. But intersecting these regions is where the sociolinguist in me comes out, and I try to uncover the meaning in linguistic variants—particularly the infrequent ones. And I go about these questions in these areas as a phonetician, analyzing speech production data and vowel trajectories. Finally, in nearly every study, I put on my quantitative linguist/data scientist/statistician cap when I actually do the analysis and interpretation. I think it’s a great intersection of subdisciplines within linguistics and I’m kept on my toes trying to keep up with each field."
+  },
+  {
+    "objectID": "research/index.html#utah-english",
+    "href": "research/index.html#utah-english",
+    "title": "Research",
+    "section": "Utah English",
+    "text": "Utah English\n\n\n\nMy current research focus is on language in Utah. One focus is simply on documenting what linguistic features can be found. There is a more traditional Utah accent that people are aware of. I’d like to document that as best I can before its speakers die out. But then there is a newer, contemporary Utah accent that few people are commenting on. Besides that, there is a lot to be said about people’s perceptions about Utah English, especially when religion is added to the mix. I haven’t published much on Utah English yet, but I expect it to be a central part of my research agenda for a while.\n\n\n\n\n\n\n\nCV Highlights\nJoseph A. Stanley. “Utahns sound Utahn when they avoid sounding Utahn.” The 97th Annual Meeting of the Linguistic Society of America. Denver, CO. January 6. 2023. \nJoseph A. Stanley & Lisa Morgan Johnson. “Vowels can merge because of changes in trajectory: Prelaterals in rural Utah English.” The 96th Annual Meeting of the Linguistic Society of America. Washington, D.C. January 6–9, 2022. \nJoseph A. Stanley (2019). “(thr)-Flapping in American English: Social factors and articulatory motivations.” Proceedings of the 5th Annual Linguistics Conference at UGA, 49–63.  \nJoseph A. Stanley & Kyle Vanderniet (2018). “Consonantal Variation in Utah English.” Proceedings of the 4th Annual Linguistics Conference at UGA, 50–65."
+  },
+  {
+    "objectID": "research/index.html#cowlitz-county-washington",
+    "href": "research/index.html#cowlitz-county-washington",
+    "title": "Research",
+    "section": "Cowlitz County, Washington",
+    "text": "Cowlitz County, Washington\n\n\n\nMy dissertation was on English in Cowlitz County, Washington, specifically on the front lax and low back vowels. I used that data to also write about prevelar raising and a few other things. While Washington is not my area of focus anymore, I still use the data for lots of side projects.\n\n\n\n\n\n\n\nCV Highlights\nJoseph A. Stanley. “Beyond Midpoints: Vowel Dynamics of the Low-Back-Merger Shift.” Poster presentation at the 181st Meeting of the Acoustical Society of America (ASA). Seattle, WA. November 29, 2021. \nJoseph A. Stanley (2020). “The Absence of a Religiolect among Latter-day Saints in Southwest Washington.” In Valerie Fridland, Alicia Wassink, Lauren Hall-Lew, & Tyler Kendall (eds.) Speech in the Western States Volume III: Understudied Dialects. (Publication of the American Dialect Society 105), 95–122. Durham, NC: Duke University Press. https://doi.org/10.1215/00031283-8820642. \nJoseph A. Stanley (2020). “Vowel Dynamics of the Elsewhere Shift: A Sociophonetic Analysis of English in Cowlitz County, Washington.” Ph.D Dissertation. University of Georgia, Athens, GA. \nJoseph A. Stanley (2018). “Changes in the Timber Industry as a Catastrophic Event: bag-Raising in Cowlitz County, Washington” Penn Working Papers in Linguistics, 24(2)."
+  },
+  {
+    "objectID": "research/index.html#the-south",
+    "href": "research/index.html#the-south",
+    "title": "Research",
+    "section": "The South",
+    "text": "The South\n\n\n\nHaving firmly established myself as a researcher of Western American English, I was reluctant to start doing research on the South since the amount of existing literature is vast. But, as a research assistant for the Linguistic Atlas Project for four years, I couldn’t help but begin analysis on DASS, a newly transcribed corpus of interviews from the 1970s and 1980s. Together with Peggy Renwick and the others at the Linguistic Atlas team, we’ve dug deep into the phonetics of how southerners, and more specifically Georgians, sounded a couple generations ago. You can see and interact with some of this data by going a site I made called the Gazetteer of Southern Vowels.\n\n\n\n\n\n\n\nCV Highlights\nMargaret E. L. Renwick, Joseph A. Stanley, Jon Forrest, & Lelia Glass (2023). “Boomer Peak or Gen X Cliff? from SVS to LBMS in Georgia English.” Language Variation and Change. https://doi.org/10.1017/S095439452300011X.  \nJoseph A. Stanley (2022). “A comparison of turn-of-the-century and turn-of-the-millennium speech in Georgia.” Proceedings of the 6th Annual Linguistics Conference at UGA. Linguistics Society at UGA, Athens, GA.  \nJoseph A. Stanley, Margaret E. L. Renwick, Katie Ireland Kuiper, & Rachel Miller Olsen (2021). “Back vowel dynamics and distinctions in Southern American English.” Journal of English Linguistics 49(4): 389–418. https://doi.org/10.1177/00754242211043163. \nMargaret E. L. Renwick & Joseph A. Stanley (2020). “Modeling dynamic trajectories of tense vs. lax vowels in the American South.” Journal of the Acoustical Society of America 147(1): 579–595. doi: 10.1121/10.0000549. \nRachel M. Olsen, Michael L. Olsen, Joseph A. Stanley, Margaret E. L. Renwick, & William A. Kretzschmar, Jr. (2017). “Methods for transcription and forced alignment of a legacy speech corpus.” Proceedings of Meetings on Acoustics 30, 060001; doi: http://dx.doi.org/10.1121/2.0000559."
+  },
+  {
+    "objectID": "research/index.html#methods-in-sociophonietic-data-analysis",
+    "href": "research/index.html#methods-in-sociophonietic-data-analysis",
+    "title": "Research",
+    "section": "Methods in Sociophonietic Data Analysis",
+    "text": "Methods in Sociophonietic Data Analysis\n\n\n\nI’ve become increasingly becoming preoccupied with how sociophoneticians process their data. Sometimes when I’m in the throes of data analysis, I realize that something about the analysis itself is worth exploring. I end up getting side-tracked, notice something important that I need to tell the field about, and then never get back to what it was I was originally writing about! I quite enjoy these projects but I hope I can get back to doing more sociolinguistic research.\n\n\n\n\nCV Highlights\nJoseph A. Stanley & Betsy Sneller. 2023. Sample size matters in calculating Pillai scores. Journal of the Acoustical Society of America 153(1). 54–67. https://doi.org/10.1121/10.0016757. \nJoseph A. Stanley (2022). “Interpreting the Order of Operations in Sociophonetic Analysis.” Linguistics Vanguard 8(1). 279–289. https://doi.org/10.1515/lingvan-2022-0065. \nJoseph A. Stanley (2022) “Order of Operations in Sociophonetic Analysis,” University of Pennsylvania Working Papers in Linguistics: Vol. 28: Iss. 2, Article 17. Available at: https://repository.upenn.edu/pwpl/vol28/iss2/17."
+  },
+  {
+    "objectID": "research/index.html#vowel-formant-trajectories",
+    "href": "research/index.html#vowel-formant-trajectories",
+    "title": "Research",
+    "section": "Vowel Formant Trajectories",
+    "text": "Vowel Formant Trajectories\n\n\n\nTraditional sociophonetic research analyzes vowels using a pair of measurements, usually somewhere near the midpoint of the vowel. We can get a greater understanding of vowels by extracting data at multiple timepoints per vowel. In particular, I think there could be important sociolinguistic meaning encoded in formant trajectories. Much of my recent research has gone this route, and has used generalized additive mixed-effects models to analyze the resulting data. This type of analysis yields complex results and visualizations, but I think we’re starting to get a better idea of how vowels work while uncovering exciting new research questions and possibilities.\n\n\n\n\n\n\n\nCV Highlights\nJoseph A. Stanley & Lisa Morgan Johnson. “Vowels can merge because of changes in trajectory: Prelaterals in rural Utah English.” The 96th Annual Meeting of the Linguistic Society of America. Washington, D.C. January 6–9, 2022. \nJoseph A. Stanley, Margaret E. L. Renwick, Katie Ireland Kuiper, & Rachel Miller Olsen (2021). “Back vowel dynamics and distinctions in Southern American English.” Journal of English Linguistics 49(4): 389–418. https://doi.org/10.1177/00754242211043163.\nJoseph A. Stanley. “Beyond Midpoints: Vowel Dynamics of the Low-Back-Merger Shift.” Poster presentation at the 181st Meeting of the Acoustical Society of America (ASA). Seattle, WA. November 29, 2021. \nJoseph A. Stanley (2020). “The Absence of a Religiolect among Latter-day Saints in Southwest Washington.” In Valerie Fridland, Alicia Wassink, Lauren Hall-Lew, & Tyler Kendall (eds.) Speech in the Western States Volume III: Understudied Dialects. (Publication of the American Dialect Society 105), 95–122. Durham, NC: Duke University Press. https://doi.org/10.1215/00031283-8820642.\nJoseph A. Stanley (2020). “Vowel Dynamics of the Elsewhere Shift: A Sociophonetic Analysis of English in Cowlitz County, Washington.” Ph.D Dissertation. University of Georgia, Athens, GA. \nMargaret E. L. Renwick & Joseph A. Stanley (2020). “Modeling dynamic trajectories of tense vs. lax vowels in the American South.” Journal of the Acoustical Society of America 147(1): 579–595. doi: 10.1121/10.0000549."
+  },
+  {
+    "objectID": "research/index.html#infrequent-phonological-variables",
+    "href": "research/index.html#infrequent-phonological-variables",
+    "title": "Research",
+    "section": "Infrequent Phonological Variables",
+    "text": "Infrequent Phonological Variables\n\n\n\nI’m interested in phenomena on the margins of English phonology. There are some speech patterns that are quite infrequent because the particular sequence of sounds only exists in a handful of words. For example, I’ve found phonological and regional patterns in words with /ɛɡ/ (beg, leg). I’ve also found that people in Utah have a tap in /θɹ/ clusters (three, throw) but Washingtonians don’t. Utahns also insert stops in /ls/ clusters (false, salsa). How infrequent can a variable be and still exhibit language-internal, regional, and sociolinguistic variability? Turns out, I’m discovering, pretty infrequent!\n\n\n\n\n\n\n\nCV Highlights\nJoseph A. Stanley (2022). “Regional patterns in prevelar raising.” American Speech. 97(3): 374–411. 97(3): 374–411. http://doi.org/10.1215/00031283-9308384.\nJoseph A. Stanley & Lisa Morgan Johnson. “Vowels can merge because of changes in trajectory: Prelaterals in rural Utah English.” The 96th Annual Meeting of the Linguistic Society of America. Washington, D.C. January 6–9, 2022. \nJoseph A. Stanley. “Methodological considerations in the study of infrequent phonological variables: The case of English /eɡ/ and /ɛɡ/.” Word-specific phenomena in the realization of vowel categories: Methodological and theoretical perspectives (LabPhon 17 Satellite Workshop). Vancouver, British Columbia[Online]. September, 2020.\nJoseph A. Stanley (2019). “Phonological Patterns in beg-Raising.” UGA Working Papers in Linguistics, 4, 69–91.  \nJoseph A. Stanley (2019). “(thr)-Flapping in American English: Social factors and articulatory motivations.” Proceedings of the 5th Annual Linguistics Conference at UGA, 49–63.  \nJoseph A. Stanley & Kyle Vanderniet (2018). “Consonantal Variation in Utah English.” Proceedings of the 4th Annual Linguistics Conference at UGA, 50–65."
+  },
+  {
+    "objectID": "research/index.html#mormonese",
+    "href": "research/index.html#mormonese",
+    "title": "Research",
+    "section": "“Mormonese”",
+    "text": "“Mormonese”\n\n\n\nMormons, more properly referred to as members of the Church of Jesus Christ of Latter-day Saints, were once distinct enough to be considered an ethnic group. Today, their behavior, dress, and culture are much more mainstream, but their speech patterns might not always be. I’m curious about how Mormons talk, particularly in relation to non-Mormons and ex-Mormons. I’d also like to disentangle Mormonese from Utah English, because while they must overlap, I think they’re different in subtle ways. Working at Brigham Young University will certainly give me better access to this population and I hope to soon uncover some new findings on Mormonese.\n\n\n\n\n\n\n\nCV Highlights\nJoseph A. Stanley (2020). “The Absence of a Religiolect among Latter-day Saints in Southwest Washington.” In Valerie Fridland, Alicia Wassink, Lauren Hall-Lew, & Tyler Kendall (eds.) Speech in the Western States Volume III: Understudied Dialects. (Publication of the American Dialect Society 105), 95–122. Durham, NC: Duke University Press. https://doi.org/10.1215/00031283-8820642. \n\n\nStanley, Joseph A. (2016). “When do Mormons Call Each Other by First Name?” University of Pennsylvania Working Papers in Linguistics, 22(1)."
+  },
+  {
+    "objectID": "data/index.html",
+    "href": "data/index.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "Below you will find some datasets I use for various workshops. They are all either my own data (so like, based on my voice or behavior) or are publicly available.\n\n\nA dataset of containing a bunch of information about 80 different kinds of breakfast cereal. I use this in some of my ggplot2 workshops. I got the dataset from the the one that Chris Crawford at Kaggle.com has made available but I’ve removed some of the columns to make it more manageable for a workshop. In his words, “If you like to eat cereal, do yourself a favor and avoid this dataset at all costs. After seeing these data it will never be the same for me to eat Fruity Pebbles again.”\n\n\n\nThis dataset from me reading about 300 sentences at home in my kitchen. I had it automatically transcribed, force-aligned, and formant-extracted using DARLA and I took zero effort to clean it up so it’s a little messy. Because DARLA utilizes FAVE for formant extraction, all the typical FAVE columns are there. This dataset is the one I use in a lot of my tutorials.\n\n\n\nA dataset of each menu item at McDonald’s. I use this in some of my ggplot2 workshops. The full dataset, with many more columns than what I have provided here, is available on Kaggle.com, which was ultimately scraped from the McDonald’s website. I’ve trimmed it down a little bit for the purposes of the workshop.\n\n\n\nThis is data about the atheletes, events, from the Olympic games. The dataset was downloaded from Kaggle.com, which was made available thanks to user Randi Griffin. I use this in my tidyverse workshops to illustrate joining different datasetes.\n\n\n\nThis is a collection of recordings from two projects I’ve done. The ones labeled Carol, Daniel, Kathleen, Doug, and Margaret are roughly one-minute clips from interviews I did in Washington and contain first-hand accounts of Mount St. Helens. Stephanie, Jordan, Erica, Julia, Sabrina, Rodney, and Corey are one-sentence recordings collected via Amazon Mechanical Turk from Western American English speakers. There is also one clip of my own voice in there. Each recording comes with a sentence, word, and phoneme-level transcription. These speakers have given consent for me to distribute brief recordings for educational purposes. All names are pseudonyms.\n\n\n\nThis is data about when I’ve woken up every morning for about two years. Just information I downloaded from my iPhone’s Health app. I use this in some Tidyverse workshops for simple illustrations of reading in an excel file and doing some data manipulation and joining.\n\n\n\nA small dataset with basic information about each episode of Stranger Things. I use this in my most recent ggplot2 workshops. I went to IMDb’s data download page to actually get it, and did a little bit of prep work to make it ready for the workshop.\n\n\n\nA small dataset simply listing the top 25 most common baby girl names in 2017 in the US and how many babies were given those names. Created with the help of the babynames package which contains data from the Social Security database. This is used in the ggplot2 workshop. Note that this is saved as a tab-delimited file to help practice reading in different file types.\n\n\n\nTwo very small datasets of sample acoustic measurements. They contain identical information, but one is “tall” and the other is “wide.” They’re used in my first Tidyverse workshop to illustrate reshaping dataframes."
+  },
+  {
+    "objectID": "data/index.html#cereal-.csv-or-.txt.",
+    "href": "data/index.html#cereal-.csv-or-.txt.",
+    "title": "Datasets",
+    "section": "",
+    "text": "A dataset of containing a bunch of information about 80 different kinds of breakfast cereal. I use this in some of my ggplot2 workshops. I got the dataset from the the one that Chris Crawford at Kaggle.com has made available but I’ve removed some of the columns to make it more manageable for a workshop. In his words, “If you like to eat cereal, do yourself a favor and avoid this dataset at all costs. After seeing these data it will never be the same for me to eat Fruity Pebbles again.”"
+  },
+  {
+    "objectID": "data/index.html#joeys-vowels",
+    "href": "data/index.html#joeys-vowels",
+    "title": "Datasets",
+    "section": "",
+    "text": "This dataset from me reading about 300 sentences at home in my kitchen. I had it automatically transcribed, force-aligned, and formant-extracted using DARLA and I took zero effort to clean it up so it’s a little messy. Because DARLA utilizes FAVE for formant extraction, all the typical FAVE columns are there. This dataset is the one I use in a lot of my tutorials."
+  },
+  {
+    "objectID": "data/index.html#mcdonalds-menu-items",
+    "href": "data/index.html#mcdonalds-menu-items",
+    "title": "Datasets",
+    "section": "",
+    "text": "A dataset of each menu item at McDonald’s. I use this in some of my ggplot2 workshops. The full dataset, with many more columns than what I have provided here, is available on Kaggle.com, which was ultimately scraped from the McDonald’s website. I’ve trimmed it down a little bit for the purposes of the workshop."
+  },
+  {
+    "objectID": "data/index.html#olympic-games-athletes-events-years",
+    "href": "data/index.html#olympic-games-athletes-events-years",
+    "title": "Datasets",
+    "section": "",
+    "text": "This is data about the atheletes, events, from the Olympic games. The dataset was downloaded from Kaggle.com, which was made available thanks to user Randi Griffin. I use this in my tidyverse workshops to illustrate joining different datasetes."
+  },
+  {
+    "objectID": "data/index.html#sample-audio",
+    "href": "data/index.html#sample-audio",
+    "title": "Datasets",
+    "section": "",
+    "text": "This is a collection of recordings from two projects I’ve done. The ones labeled Carol, Daniel, Kathleen, Doug, and Margaret are roughly one-minute clips from interviews I did in Washington and contain first-hand accounts of Mount St. Helens. Stephanie, Jordan, Erica, Julia, Sabrina, Rodney, and Corey are one-sentence recordings collected via Amazon Mechanical Turk from Western American English speakers. There is also one clip of my own voice in there. Each recording comes with a sentence, word, and phoneme-level transcription. These speakers have given consent for me to distribute brief recordings for educational purposes. All names are pseudonyms."
+  },
+  {
+    "objectID": "data/index.html#snoozing",
+    "href": "data/index.html#snoozing",
+    "title": "Datasets",
+    "section": "",
+    "text": "This is data about when I’ve woken up every morning for about two years. Just information I downloaded from my iPhone’s Health app. I use this in some Tidyverse workshops for simple illustrations of reading in an excel file and doing some data manipulation and joining."
+  },
+  {
+    "objectID": "data/index.html#stranger-things",
+    "href": "data/index.html#stranger-things",
+    "title": "Datasets",
+    "section": "",
+    "text": "A small dataset with basic information about each episode of Stranger Things. I use this in my most recent ggplot2 workshops. I went to IMDb’s data download page to actually get it, and did a little bit of prep work to make it ready for the workshop."
+  },
+  {
+    "objectID": "data/index.html#top-25-girl-names-in-2017",
+    "href": "data/index.html#top-25-girl-names-in-2017",
+    "title": "Datasets",
+    "section": "",
+    "text": "A small dataset simply listing the top 25 most common baby girl names in 2017 in the US and how many babies were given those names. Created with the help of the babynames package which contains data from the Social Security database. This is used in the ggplot2 workshop. Note that this is saved as a tab-delimited file to help practice reading in different file types."
+  },
+  {
+    "objectID": "data/index.html#vowels-tall-and-wide",
+    "href": "data/index.html#vowels-tall-and-wide",
+    "title": "Datasets",
+    "section": "",
+    "text": "Two very small datasets of sample acoustic measurements. They contain identical information, but one is “tall” and the other is “wide.” They’re used in my first Tidyverse workshop to illustrate reshaping dataframes."
   }
 ]
