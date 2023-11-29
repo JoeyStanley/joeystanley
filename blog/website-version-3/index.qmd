@@ -76,7 +76,10 @@ Here's a list of the changes I've made.
 
     It shouldn't affect any urls to existing blog posts because the url `blog/blog post 1` in the old format would go to the `blog post 1.md` file and in the new one it'll go to the `blog post 1` directory, which'll display `index.qmd` by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn't want those urls to break. I think this'll work *and* it'll keep the site better organized.
 
-- Within each post, I needed to update the header. I change from "tags" to "categories", from "redirect_from" to "aliases." I add a date-modified if needed. I remove excerpts because I only used them with my "big-link" style button. I'm replacing big-links with a standard callout box. I haven't figured out if I can do redirects-to, which is a bummer for the GSV.
+- Within each post, I needed to update the header. I change from "tags" to "categories", from "redirect_from" to "aliases." I add a date-modified if needed. I remove excerpts because I only used them with my "big-link" style button. I'm replacing big-links with a standard callout box. I haven't figured out if I can do re1directs-to, which is a bummer for the GSV.
+
+
+It took from September 10 to November 27 to transfer all my blog posts. I tried to do one a day and there are 94 of them.
 
 
 TODO
