@@ -3091,28 +3091,28 @@
     "href": "pages/praat-workshops.html",
     "title": "Praat Workshops",
     "section": "",
-    "text": "Lisa Lipani and I will be hosting a series of four workshops on Praat and Praat scripting during Fall 2019. This page will house the handouts and all materials for those workshops.\nNote: All workshops will be held at 3:35pm at the DigiLab (300 Main Library)\n\n\n\nSeptember 11, 2019—In this workshop, I’ll introduce the software Praat, and will how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data before using Praat. (For former students of mine, this workshop will overlap with this homework assignment.)\n\n\n\n\nSeptember 18, 2019—With some basic understanding of the software, Lisa will lead the workshop on the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script.\n\n\n\n\nOctober 2, 2019—In this workshop, you’ll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with this blog post, only you will get more detail with an in-person guide."
+    "text": "Lisa Lipani and I will be hosting a series of four workshops on Praat and Praat scripting during Fall 2019. This page will house the handouts and all materials for those workshops.\nNote: All workshops will be held at 3:35pm at the DigiLab (300 Main Library)"
   },
   {
     "objectID": "pages/praat-workshops.html#praat-basics-introduction-to-the-software",
     "href": "pages/praat-workshops.html#praat-basics-introduction-to-the-software",
     "title": "Praat Workshops",
-    "section": "",
-    "text": "September 11, 2019—In this workshop, I’ll introduce the software Praat, and will how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data before using Praat. (For former students of mine, this workshop will overlap with this homework assignment.)"
+    "section": "Praat Basics: Introduction to the software",
+    "text": "Praat Basics: Introduction to the software\nSeptember 11, 2019—In this workshop, I’ll introduce the software Praat, and will how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data before using Praat. (For former students of mine, this workshop will overlap with this homework assignment.)"
   },
   {
     "objectID": "pages/praat-workshops.html#praat-scripting-basics-loops-io-and-textgrids",
     "href": "pages/praat-workshops.html#praat-scripting-basics-loops-io-and-textgrids",
     "title": "Praat Workshops",
-    "section": "",
-    "text": "September 18, 2019—With some basic understanding of the software, Lisa will lead the workshop on the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script."
+    "section": "Praat Scripting Basics: Loops, I/O, and TextGrids",
+    "text": "Praat Scripting Basics: Loops, I/O, and TextGrids\nSeptember 18, 2019—With some basic understanding of the software, Lisa will lead the workshop on the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script."
   },
   {
     "objectID": "pages/praat-workshops.html#automatic-formant-extraction-in-praat-and-supplement",
     "href": "pages/praat-workshops.html#automatic-formant-extraction-in-praat-and-supplement",
     "title": "Praat Workshops",
-    "section": "",
-    "text": "October 2, 2019—In this workshop, you’ll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with this blog post, only you will get more detail with an in-person guide."
+    "section": "Automatic Formant Extraction in Praat (and supplement)",
+    "text": "Automatic Formant Extraction in Praat (and supplement)\nOctober 2, 2019—In this workshop, you’ll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with this blog post, only you will get more detail with an in-person guide."
   },
   {
     "objectID": "pages/gsv.html",
