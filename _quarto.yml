@@ -3,9 +3,10 @@ project:
   output-dir: docs
 
 website:
-  title: '<span id="name">Joey Stanley</span><br/><span id="tagline">assistant professor, linguistics</span>'
+  title: "Joey Stanley"
   site-url: https://new.joeystanley.com
   navbar:
+    title: '<span id="name">Joey Stanley</span><br/><span id="tagline">assistant professor, linguistics</span>'
     left:
       - text: "About Me <em>who am I?</em>"
         file: index.qmd
@@ -29,6 +30,7 @@ website:
         href: https://github.com/JoeyStanley/joeystanley_new
       - icon: scholar
       - icon: rss
+
       
 format:
   html:

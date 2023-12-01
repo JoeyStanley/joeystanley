@@ -1514,30 +1514,30 @@
   {
     "objectID": "todo.html",
     "href": "todo.html",
-    "title": "<span id=\"name\">Joey Stanley</span><br/><span id=\"tagline\">assistant professor, linguistics</span>",
+    "title": "Joey Stanley",
     "section": "",
     "text": "TODO"
   },
   {
     "objectID": "todo.html#top-level-pages",
     "href": "todo.html#top-level-pages",
-    "title": "<span id=\"name\">Joey Stanley</span><br/><span id=\"tagline\">assistant professor, linguistics</span>",
+    "title": "Joey Stanley",
     "section": "Top-level pages",
     "text": "Top-level pages\nIndex.qmd * Instead of linking to OoO and Pillai papers, link to the appropriate section in research.qmd.\nThings to add to idiolect * CURE lexical set * American Raising detail. When that’s done, go back to /ar/-raising post and link to it. * /ar/-Raising, with link to the blog post.\n404.qmd * Update it with more helpful text."
   },
   {
     "objectID": "todo.html#css-and-appearance",
     "href": "todo.html#css-and-appearance",
-    "title": "<span id=\"name\">Joey Stanley</span><br/><span id=\"tagline\">assistant professor, linguistics</span>",
+    "title": "Joey Stanley",
     "section": "CSS and appearance",
     "text": "CSS and appearance\nstyles.css * Get the links to look right * Make sure the small caps tables in all lexical sets posts look as good as they do in the original\nDissertation.qmd * Add rounded corners to the image. The CSS is “border-radius: 7pt” but I’m not sure how to add that in. * Do the same thing to the NWAV46 and NWAV47 pictures.\nAll blogs * If I don’t like the cover image on blog posts, switch it to something I do like.\nRerun Rmd handouts and stuff in quarto and have them integrated into the page itslf. See 190904 files"
   },
   {
     "objectID": "todo.html#blogs",
     "href": "todo.html#blogs",
-    "title": "<span id=\"name\">Joey Stanley</span><br/><span id=\"tagline\">assistant professor, linguistics</span>",
+    "title": "Joey Stanley",
     "section": "Blogs",
-    "text": "Blogs\nLinking to past blog posts * Make sure the Pillai tutorials work in the NWAV50 post. * Make sure post to Lexical sets works in ADS2022. * Link to Pillai paper in the normalization and pillai post\nLinking to future posts * Any time a conference paper eventually got published, put a link on the page somewhere with that published version. (Maybe the top of the page?) - Pillai scores has a bit of a thread, starting with ASA181, then NWAV50. - The Gen X–Boomer thing can be traced pretty far back. At least since my LCUGA presentation. But we first showed it more clearly in ADS2019. * In 10 years of linguistics, cite the languages I know. * In PWPL post about OoO, link to the Vanguard post, twice. * In publication announcement posts, standardize the filename. Follow the format of the prevelar paper in AmSp and put the timeline.\nFuture blog posts * That one article and my system for keeping track of my research * Tutorial about colors in the feeding Douglas plot * Showing my Praat scripts for pre- and post-processing MFA. I mention it in /blog/transcribing a sociolinguistic corpus * Retroactively do a blog post about every publication and conference. * Retroactively do a student kudos blog posts. * Retroactivly flesh out the interpreting difference smooths blog post from colloquium 2020 * Follow-up on /ar/-raising but with GAMMs. Towards the bottom of the /ar/ post, I say I don’t know GAMMs yet. * Kohler Tapes update based on more complete metadata. * Use that vowel overlap package I tweeted about one time and try out Joe Fruehwald’s package too. * Randomizing a wordlist works, but it’s not super clear. Might be better to have worked-through examples. * JBDowse (and any other big tweets) * Pillai scores according to me and Betsy (basically the supplemental material). Do this as a “part 3” and a replacement to my current pillai scores tutorials.\nUpdate images from the joeystanley theme * Testing VOT Durations * /ar/-raising * LCUGA6\nTurn Rmd handouts to incorporated quarto files: * /downloads/190821-intro_to_ggplot2.html * /downloads/190828-ggplot2_intermediate.html * /downloads/190828-ggplot2_supplement.html * /downloads/190904-ggplot2_custom_themes.html * /downloads/190904-ggplot2_theme.html"
+    "text": "Blogs\nLinking to past blog posts * Make sure the Pillai tutorials work in the NWAV50 post. * Make sure post to Lexical sets works in ADS2022. * Link to Pillai paper in the normalization and pillai post\nLinking to future posts * Any time a conference paper eventually got published, put a link on the page somewhere with that published version. (Maybe the top of the page?) - Pillai scores has a bit of a thread, starting with ASA181, then NWAV50. - The Gen X–Boomer thing can be traced pretty far back. At least since my LCUGA presentation. But we first showed it more clearly in ADS2019. * In 10 years of linguistics, cite the languages I know. * In PWPL post about OoO, link to the Vanguard post, twice. * In publication announcement posts, standardize the filename. Follow the format of the prevelar paper in AmSp and put the timeline.\nFuture blog posts * That one article and my system for keeping track of my research * Tutorial about colors in the feeding Douglas plot * Showing my Praat scripts for pre- and post-processing MFA. I mention it in /blog/transcribing a sociolinguistic corpus * Retroactively do a blog post about every publication and conference. * Retroactively do a student kudos blog posts. * Retroactivly flesh out the interpreting difference smooths blog post from colloquium 2020 * Follow-up on /ar/-raising but with GAMMs. Towards the bottom of the /ar/ post, I say I don’t know GAMMs yet. * Kohler Tapes update based on more complete metadata. * Use that vowel overlap package I tweeted about one time and try out Joe Fruehwald’s package too. * Randomizing a wordlist works, but it’s not super clear. Might be better to have worked-through examples. * JBDowse (and any other big tweets) * Pillai scores according to me and Betsy (basically the supplemental material). Do this as a “part 3” and a replacement to my current pillai scores tutorials.\nUpdate images from the joeystanley theme * Testing VOT Durations * /ar/-raising * LCUGA6\nTurn Rmd handouts to incorporated quarto files: * /downloads/190821-intro_to_ggplot2.html * /downloads/190828-ggplot2_intermediate.html * /downloads/190828-ggplot2_supplement.html * /downloads/190904-ggplot2_custom_themes.html * /downloads/190904-ggplot2_theme.html * /downloads/190911-intro_to_Praat.html * /downloads/190918-praat_scripting.html * /downloads/191002-formant_extraction.html * /downloads/191001-formant_extraction_supplement.html"
   },
   {
     "objectID": "blog/the-importance-of-twitter/index.html",
@@ -3126,42 +3126,42 @@
     "href": "pages/r-workshops.html",
     "title": "R Workshops",
     "section": "",
-    "text": "In grad school I offered workshops on a variety of topics relating to R between Fall 2017 and Spring 2020. They were held Fridays at 3:30 in the DigiLab at the UGA Main Library. Videos for some of these are available here. Below you will find materials for these workshops. I hope they are thorough enough that you can make use of them as stand-alone documents.\nThe data used in these workshops can be found at my datasets page.\nIf you are planning on attending a workshop in the near future, please see the setup instructions to help you get R and RStudio installed on your computer.\nNote: If you attended these workshops, please consider giving me some feedback with this anonymous survey so I can know how to improve.\n\n\n\nIn this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file.\n\n\n\n\nggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\n\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\n\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\n\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file.\n\n\n\n\n\nThe tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file.\n\n\n\n\nR Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here.\n\n\n\n\nShiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\nNote that the materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
+    "text": "In grad school I offered workshops on a variety of topics relating to R between Fall 2017 and Spring 2020. They were held Fridays at 3:30 in the DigiLab at the UGA Main Library. Videos for some of these are available here. Below you will find materials for these workshops. I hope they are thorough enough that you can make use of them as stand-alone documents.\nThe data used in these workshops can be found at my datasets page.\nIf you are planning on attending a workshop in the near future, please see the setup instructions to help you get R and RStudio installed on your computer."
   },
   {
     "objectID": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
     "href": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
     "title": "R Workshops",
-    "section": "",
-    "text": "In this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
+    "section": "Intro to R (Part 1 and Part 2)",
+    "text": "Intro to R (Part 1 and Part 2)\nIn this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
   },
   {
     "objectID": "pages/r-workshops.html#visualizations-with-ggplot2",
     "href": "pages/r-workshops.html#visualizations-with-ggplot2",
     "title": "R Workshops",
-    "section": "",
-    "text": "ggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\n\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\n\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\n\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+    "section": "Visualizations with ggplot2 ",
+    "text": "Visualizations with ggplot2 \nggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\nPart 1: Intro to ggplot2\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\nPart 2: Extending your ggplot2 skills\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\nSupplement to Part 2\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\nCustom Themes\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\nSupplement: A detailed look at ggplot2::theme\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
   },
   {
     "objectID": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
     "href": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
     "title": "R Workshops",
-    "section": "",
-    "text": "The tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
+    "section": "Introduction to the Tidyverse (Part 1 and Part 2)",
+    "text": "Introduction to the Tidyverse (Part 1 and Part 2)\nThe tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
   },
   {
     "objectID": "pages/r-workshops.html#an-intro-to-rmarkdown",
     "href": "pages/r-workshops.html#an-intro-to-rmarkdown",
     "title": "R Workshops",
-    "section": "",
-    "text": "R Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here."
+    "section": "An Intro to RMarkdown",
+    "text": "An Intro to RMarkdown\nR Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here."
   },
   {
     "objectID": "pages/r-workshops.html#introduction-to-shiny",
     "href": "pages/r-workshops.html#introduction-to-shiny",
     "title": "R Workshops",
-    "section": "",
-    "text": "Shiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\nNote that the materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
+    "section": "Introduction to Shiny",
+    "text": "Introduction to Shiny\nShiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\n\n\n\n\n\n\nNote\n\n\n\nThe materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
   },
   {
     "objectID": "pages/dataviz.html",
@@ -3211,5 +3211,89 @@
     "title": "Data Visualization Workshops",
     "section": "Older versions",
     "text": "Older versions\nYou may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "pages/setup.html",
+    "href": "pages/setup.html",
+    "title": "Setup Instructions",
+    "section": "",
+    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
+  },
+  {
+    "objectID": "pages/setup.html#step-1-get-r-installed",
+    "href": "pages/setup.html#step-1-get-r-installed",
+    "title": "Setup Instructions",
+    "section": "Step 1: Get R installed",
+    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n \nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
+  },
+  {
+    "objectID": "pages/setup.html#step-2-get-rstudio-installed",
+    "href": "pages/setup.html#step-2-get-rstudio-installed",
+    "title": "Setup Instructions",
+    "section": "Step 2: Get RStudio installed",
+    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
+  },
+  {
+    "objectID": "pages/setup.html#step-3-install-some-packages",
+    "href": "pages/setup.html#step-3-install-some-packages",
+    "title": "Setup Instructions",
+    "section": "Step 3: Install some packages",
+    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
+  },
+  {
+    "objectID": "pages/setup/setup.html",
+    "href": "pages/setup/setup.html",
+    "title": "Setup Instructions",
+    "section": "",
+    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
+  },
+  {
+    "objectID": "pages/setup/setup.html#step-1-get-r-installed",
+    "href": "pages/setup/setup.html#step-1-get-r-installed",
+    "title": "Setup Instructions",
+    "section": "Step 1: Get R installed",
+    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n\n\nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
+  },
+  {
+    "objectID": "pages/setup/setup.html#step-2-get-rstudio-installed",
+    "href": "pages/setup/setup.html#step-2-get-rstudio-installed",
+    "title": "Setup Instructions",
+    "section": "Step 2: Get RStudio installed",
+    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
+  },
+  {
+    "objectID": "pages/setup/setup.html#step-3-install-some-packages",
+    "href": "pages/setup/setup.html#step-3-install-some-packages",
+    "title": "Setup Instructions",
+    "section": "Step 3: Install some packages",
+    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
+  },
+  {
+    "objectID": "pages/setup/index.html",
+    "href": "pages/setup/index.html",
+    "title": "Setup Instructions",
+    "section": "",
+    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
+  },
+  {
+    "objectID": "pages/setup/index.html#step-1-get-r-installed",
+    "href": "pages/setup/index.html#step-1-get-r-installed",
+    "title": "Setup Instructions",
+    "section": "Step 1: Get R installed",
+    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n\n\nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
+  },
+  {
+    "objectID": "pages/setup/index.html#step-2-get-rstudio-installed",
+    "href": "pages/setup/index.html#step-2-get-rstudio-installed",
+    "title": "Setup Instructions",
+    "section": "Step 2: Get RStudio installed",
+    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
+  },
+  {
+    "objectID": "pages/setup/index.html#step-3-install-some-packages",
+    "href": "pages/setup/index.html#step-3-install-some-packages",
+    "title": "Setup Instructions",
+    "section": "Step 3: Install some packages",
+    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
   }
 ]

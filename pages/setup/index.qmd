@@ -1,0 +1,60 @@
+---
+layout: aside
+title: Setup Instructions
+redirect_from: 
+    - "/setup"
+---
+
+Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you're having difficulty, please come a little early and I can help you out.
+
+## Step 1: Get R installed
+
+To download R, go to [https://cran.r-project.org/mirrors.html](https://cran.r-project.org/mirrors.html). This will take you to a list of CRAN mirrors. All these lists of sites are identical, they're just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it. 
+
+![](mirrors_top.png)
+
+![](mirrors_usa.png)
+
+From there, download the package appropriate for your computer. 
+
+![](download_both.png)
+
+Mac users will be taken to a screen where they'll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software. 
+
+![](mac.png)
+
+Windows users will have a link that says "install R for the first time" which will take them to the download page. You can then install R like normal.
+
+![](windows_first_time.png)
+![](windows_download.png)
+
+I'm not entirely sure how to do it on a Linux, but I figure if you're using a Linux, you know what you're doing :)
+
+## Step 2: Get RStudio installed
+
+To download RStudio, go to [https://www.rstudio.com](https://www.rstudio.com) and click "Download" under RStudio. 
+
+![](rstudio.png)
+
+There are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system.
+
+![](rstudio_top.png)
+![](rstudio_both.png)
+
+## Step 3: Install some packages
+
+Open RStudio. In the left-hand side, type the following commands and hit enter:
+
+```
+install.packages("tidyverse")
+```
+
+![](install_packages.png)
+
+This will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including `ggplot2`, `dplyr`, `tidyr` and several others.
+
+And that's it! See you at the workshop!
+
+<br/>
+
+<div class="nolink"><a href="/pages/r-workshops">« Back to the workshops page</a><div>
