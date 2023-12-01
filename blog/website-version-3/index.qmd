@@ -35,7 +35,7 @@ I'm doing this page by page. Here's the order I took:
   - Then moved on to any conference or paper announcement. As part of that, I also transferred the associated slides, papers, and other files.
   - I then finished any non-tutorial posts. 
   - I saved the tutorials for last because they would take the most time. Fortunately, it wasn't too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.
-* Other miscellaneous pages
+* Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I've done. Thse in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!
 
 This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.
 
