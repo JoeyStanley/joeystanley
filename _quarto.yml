@@ -12,27 +12,40 @@ website:
         file: index.qmd
       - text: "CV <em>what have I done?</em>"
         file: cv.qmd
-      - text: "Research <em>what am I working on?</em>"
+      - text: "Research <em>what do I research?</em>"
         file: research/index.qmd
       - text: "Teaching <em>what do I teach?</em>"
         file: teaching.qmd
-      - text: "Resources <em>what stuff do I use?</em>"
-        file: resources.qmd
+      - text: "Idiolect <em>what do I sound like?</em>"
+        file: /pages/idiolect
       - text: "Blog <em>what's going on?</em>"
         file: blog/index.qmd
+#      - text: "Misc <em>what else is on here?</em>"
+#        menu: 
+#          - text: "Resources <em>what stuff do I use?</em>"
+#            file: resources.qmd
+#          - text: "Datasets <em>what can you use?</em>"
+#            file: data
     right:
       - icon: envelope
         href: mailto:joey_stanley@byu.edu
-      - icon: clouds
-        href: https://bsky.app/profile/joeystan.bsky.social
-      - icon: twitter
-        href: https://twitter.com/joey_stan
-      - icon: mortarboard-fill
-        href: https://scholar.google.com/citations?user=61pJV_YAAAAJ&hl=en&oi=sra
-      - icon: github
-        href: https://github.com/JoeyStanley/joeystanley_new
-      - icon: rss
-        href: joeystanley.com/feed.xml
+      - icon: list
+        menu: 
+         - icon: clouds
+           text: Bluesky
+           href: https://bsky.app/profile/joeystan.bsky.social
+         - icon: twitter
+           text: Twitter
+           href: https://twitter.com/joey_stan
+         - icon: mortarboard-fill
+           text: Google Scholar
+           href: https://scholar.google.com/citations?user=61pJV_YAAAAJ&hl=en&oi=sra
+         - icon: github
+           text: Github
+           href: https://github.com/JoeyStanley/joeystanley_new
+         - icon: rss
+           text: RSS feed
+           href: joeystanley.com/feed.xml
 
       
 format:
