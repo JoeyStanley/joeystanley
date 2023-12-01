@@ -21,15 +21,18 @@ website:
       - text: "Blog <em>what's going on?</em>"
         file: blog/index.qmd
     right:
-      - icon: email
+      - icon: envelope
+        href: mailto:joey_stanley@byu.edu
+      - icon: clouds
+        href: https://bsky.app/profile/joeystan.bsky.social
       - icon: twitter
         href: https://twitter.com/joey_stan
-      - icon: clouds-fill
-        href: https://bsky.app/profile/joeystan.bsky.social
+      - icon: mortarboard-fill
+        href: https://scholar.google.com/citations?user=61pJV_YAAAAJ&hl=en&oi=sra
       - icon: github
         href: https://github.com/JoeyStanley/joeystanley_new
-      - icon: scholar
       - icon: rss
+        href: joeystanley.com/feed.xml
 
       
 format:

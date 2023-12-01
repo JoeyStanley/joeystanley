@@ -234,46 +234,18 @@ body {
 	padding: 0;
 	border: 1px solid #555;
 	border-radius: 7pt;
-	width: 100%;
-}
-
-#socialMedia {
-	display: flex;
-	justify-content: space-around;
-	padding: 0 0 0 0;
-}
-#socialMedia a {
-	text-indent: -9000em;
-	display: inline-block;
-	width: 32px;
-	height: 32px;
-}
-#socialMedia li {
-	margin: auto;
-	list-style-type: none;
-}
-
-#email {
-	background: url(../images/icons/email.svg) no-repeat;
-}
-#github {
-	background: url(../images/icons/github.svg) no-repeat;
-}
-#twitter {
-	background: url(../images/icons/twitter.svg) no-repeat;
-}
-#googleScholar {
-	background: url(../images/icons/scholar.svg) no-repeat;
-}
-#feed {
-	background: url(../images/icons/rss.svg) no-repeat;
+	width: 275px;
 }
 
 #mainAside p {
-	font-size: 90%;
+	font-size: 100%;
 	font-style: italic;
 	text-align: center;
 	margin-top: 2em;
+}
+
+#recents {
+  padding: 0;
 }
 
 #recents > li {

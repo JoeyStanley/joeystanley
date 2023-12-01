@@ -5,7 +5,7 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>&lt;span id=&quot;name&quot;&gt;Joey Stanley&lt;/span&gt;&lt;br/&gt;&lt;span id=&quot;tagline&quot;&gt;assistant professor, linguistics&lt;/span&gt;</title>
+<title>Joey Stanley</title>
 <link>https://new.joeystanley.com/blog/index.html</link>
 <atom:link href="https://new.joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
@@ -43,7 +43,7 @@
 <li>I then finished any non-tutorial posts.</li>
 <li>I saved the tutorials for last because they would take the most time. Fortunately, it wasn’t too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.</li>
 </ul></li>
-<li>Other miscellaneous pages</li>
+<li>Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I’ve done. Thse in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!</li>
 </ul>
 <p>This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.</p>
 <p>It was kinda fun to read through some of my old posts. In some cases, I added marginalia that basically pointed out how silly I was several years ago. I don’t think many people visit those early blog posts, so no one’s going to see them anyway.</p>
@@ -100,7 +100,7 @@
 <p>There’s a trend on linguistics Twitter right now where people are sharing the ages that they started studying/learning whatever languages they know. As I thought about the ones I know, I realized that there’s a story behind each one, and like many linguists, I have a list of languages and a few-word summary of their fluency at the bottom of my CV. But the stories are much more than I’d like to explain on my CV or in a tweet. So, here are some of those stories behind the languages I’ve studied.</p>
 <section id="english" class="level2">
 <h2 class="anchored" data-anchor-id="english">English</h2>
-<p>My first and, for a long time, only language. Read more about my idiolect <a href="../../pages/idiolect.html">here</a>.</p>
+<p>My first and, for a long time, only language. Read more about my idiolect <a href="../../pages/idiolect.qmd">here</a>.</p>
 </section>
 <section id="modern-greek" class="level2">
 <h2 class="anchored" data-anchor-id="modern-greek">(Modern) Greek</h2>
@@ -198,7 +198,7 @@
 
 <p>In appendix C of my <a href="../../blog/dissertation">dissertation</a>, I listed 838 words that contain low vowels, classified as /ɑ/ or /ɔ/ according to my idiolect. I think it may be a useful resource for those who have the <em>cot-caught</em> merger, so I thought I’d pull it out and make it more available.</p>
 <p>The words that are included here are all those that came up in the course of the 54 sociolinguistic interviews I did in Washington State as part of my dissertation work. This means that there are some quirky ones included like <em>Sinterklaas</em> and <em>Jawas</em>. By nature of the naturalistic data, certain common words may be missing.</p>
-<p>Please note that, again, this reflects <em>my</em> idiolect, and may not be reflective of others’ speech, other varieties of English, or historical distributions. For more information about the phonetic realization my two vowels and some phonological peculiarities, please see my description of my <a href="../../pages/idiolect.html">idiolect</a>.</p>
+<p>Please note that, again, this reflects <em>my</em> idiolect, and may not be reflective of others’ speech, other varieties of English, or historical distributions. For more information about the phonetic realization my two vowels and some phonological peculiarities, please see my description of my <a href="../../pages/idiolect.qmd">idiolect</a>.</p>
 <p>If you find this page useful, please cite it as Appendix C of my dissertation:</p>
 <blockquote class="blockquote">
 <p>Stanley, Joseph A. (2020). <em>Vowel Dynamics of the Elsewhere Shift: A Sociophonetic Analysis of English in Cowlitz County, Washington</em>. Ph.D.&nbsp;Dissertation, University of Georgia, Athens, GA.</p>

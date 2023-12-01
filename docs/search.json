@@ -63,116 +63,81 @@
     "text": "Miscellaneous\nJust random stuff that doesn’t fit elsewhere.\n\nThe great American word mapper is an interactive tool put together by Diansheng Guo, Jack Grieve, and Andrea Nini that lets you see regional trends in how words are used on Twitter.\nCollecting, organizing, and citing scientific literature: an intro to Zotero is a great tutorial on how to use Zotero by Mark Dingemanse. Zotero is a fantastic tool for, well, collecting, organizing, and citing scientific literature and I’m not exaggerating when I say that I could not be in academics without it.\nVulgar: A Language Generator is a site that automatically creates a new conlang, based on parameters that you specify. The free web version allows you to add whatever vowels and consonants you’d like to include, and it’ll create a full language: a language name; IPA chart for vowels and consonants; phonotactics; phonological rules; and paradigms for nominal morphology, definite and indefinite articles, personal pronouns, and verb conjugations; derivational morphology; and a lexicon of over 200 words. For $19 you can download the software and get a lexicon of 2000 words, derivational words, random semantic overlaps with natural languages, and the ability to customize orthography, syllable structure, and phonological rules. In addition to just being kinda fun, this is a super useful resource for creating homework assignments for students.\nThe EMU-webApp “is a fully fledged browser-based labeling and correction tool that offers a multitude of labeling and visualization features.” I haven’t given this enough time to learn to use it properly, but it seems very helpful.\nJonhannes Haushofer’s CV of Failures. Other people have written this more elegantly than I could, but sometimes it’s nice to see that other academics fail too. You’re not going to get into all the conferences you apply for, your papers are sometimes going to be rejected, and you’re definitely not getting all the funding you apply for. I find it therapeutic to put together a CV of failures like his researcher did and to keep it updated and formatted just as would a regular CV. Don’t let impostor syndrome get in the way by thinking others haven’t failed too.\nKieran Healey’s The Plain Person’s Guide to Plain Text Social Science is an entire book on an aspect of productivity that I’ve only thought about occasionally: what kind of software should you do your work? Before you get too entrenched in your workflow, it’s good to consider what your options are.\nThisWordDoesNotExist.com is a fun site created by Thomas Dimson."
   },
   {
-    "objectID": "pages/dataviz-workshops.html",
-    "href": "pages/dataviz-workshops.html",
-    "title": "Data Visualization Workshops",
+    "objectID": "pages/r-workshops.html",
+    "href": "pages/r-workshops.html",
+    "title": "R Workshops",
     "section": "",
-    "text": "&lt;br/"
+    "text": "In grad school I offered workshops on a variety of topics relating to R between Fall 2017 and Spring 2020. They were held Fridays at 3:30 in the DigiLab at the UGA Main Library. Videos for some of these are available here. Below you will find materials for these workshops. I hope they are thorough enough that you can make use of them as stand-alone documents.\nThe data used in these workshops can be found at my datasets page.\nIf you are planning on attending a workshop in the near future, please see the setup instructions to help you get R and RStudio installed on your computer."
   },
   {
-    "objectID": "pages/dataviz-workshops.html#part-1-intro-to-ggplot2",
-    "href": "pages/dataviz-workshops.html#part-1-intro-to-ggplot2",
-    "title": "Data Visualization Workshops",
-    "section": "Part 1: Intro to ggplot2",
-    "text": "Part 1: Intro to ggplot2\nAugust 21, 2019—In Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots."
+    "objectID": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
+    "href": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
+    "title": "R Workshops",
+    "section": "Intro to R (Part 1 and Part 2)",
+    "text": "Intro to R (Part 1 and Part 2)\nIn this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
   },
   {
-    "objectID": "pages/dataviz-workshops.html#part-2-extending-your-ggplot2-skills",
-    "href": "pages/dataviz-workshops.html#part-2-extending-your-ggplot2-skills",
-    "title": "Data Visualization Workshops",
-    "section": "Part 2: Extending your ggplot2 skills",
-    "text": "Part 2: Extending your ggplot2 skills\nAugust 28, 2019—Often you’ll want to customize your plots in some way. So, in this workshop we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\nSupplement to Part 2\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots."
+    "objectID": "pages/r-workshops.html#visualizations-with-ggplot2",
+    "href": "pages/r-workshops.html#visualizations-with-ggplot2",
+    "title": "R Workshops",
+    "section": "Visualizations with ggplot2 ",
+    "text": "Visualizations with ggplot2 \nggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\nPart 1: Intro to ggplot2\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\nPart 2: Extending your ggplot2 skills\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\nSupplement to Part 2\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\nCustom Themes\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\nSupplement: A detailed look at ggplot2::theme\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
   },
   {
-    "objectID": "pages/dataviz-workshops.html#custom-themes",
-    "href": "pages/dataviz-workshops.html#custom-themes",
-    "title": "Data Visualization Workshops",
-    "section": "Custom Themes",
-    "text": "Custom Themes\nSeptember 4, 2019–Based on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\nSupplement to Part 3: A detailed look at ggplot2::theme\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!)."
+    "objectID": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
+    "href": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
+    "title": "R Workshops",
+    "section": "Introduction to the Tidyverse (Part 1 and Part 2)",
+    "text": "Introduction to the Tidyverse (Part 1 and Part 2)\nThe tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
   },
   {
-    "objectID": "pages/dataviz-workshops.html#fidelity-integrity-and-sophistication-edward-tuftes-principles-of-data-visualization",
-    "href": "pages/dataviz-workshops.html#fidelity-integrity-and-sophistication-edward-tuftes-principles-of-data-visualization",
-    "title": "Data Visualization Workshops",
-    "section": "Fidelity, integrity, and sophistication: Edward Tufte’s principles of data visualization",
-    "text": "Fidelity, integrity, and sophistication: Edward Tufte’s principles of data visualization\nOctober 16, 2019—In this workshop, I introduce a few key concepts from Edward Tufte’s book, The Visual Display of Quantitative Information such as graphical integrity, proportional ink, data-ink ratio, removing redundant material, and general graphical sophistication. Basically, the workshop could be thought of as, “How not to make awful plots.”"
+    "objectID": "pages/r-workshops.html#an-intro-to-rmarkdown",
+    "href": "pages/r-workshops.html#an-intro-to-rmarkdown",
+    "title": "R Workshops",
+    "section": "An Intro to RMarkdown",
+    "text": "An Intro to RMarkdown\nR Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here."
   },
   {
-    "objectID": "pages/dataviz-workshops.html#send-the-right-message-the-dos-and-donts-of-color-in-data-visualization",
-    "href": "pages/dataviz-workshops.html#send-the-right-message-the-dos-and-donts-of-color-in-data-visualization",
-    "title": "Data Visualization Workshops",
-    "section": "Send the right message: The dos and don’ts of COLOR in data visualization",
-    "text": "Send the right message: The dos and don’ts of COLOR in data visualization\nOctober 23, 2019—Meagan Duever, GIS Librarian at UGA will help me lead this workshop. We talk about general principles of color in data visualization, introduce a whole bunch of nice color palettes, and demonstrate how to customize your colors in ArcMap, QGIS, Excel, and R."
+    "objectID": "pages/r-workshops.html#introduction-to-shiny",
+    "href": "pages/r-workshops.html#introduction-to-shiny",
+    "title": "R Workshops",
+    "section": "Introduction to Shiny",
+    "text": "Introduction to Shiny\nShiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\n\n\n\n\n\n\nNote\n\n\n\nThe materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
   },
   {
-    "objectID": "pages/dataviz-workshops.html#older-versions",
-    "href": "pages/dataviz-workshops.html#older-versions",
-    "title": "Data Visualization Workshops",
-    "section": "Older versions",
-    "text": "Older versions\nYou may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
-  },
-  {
-    "objectID": "pages/latex.html",
-    "href": "pages/latex.html",
-    "title": "LaTeX Workshops",
+    "objectID": "pages/gsv.html",
+    "href": "pages/gsv.html",
+    "title": "GSV",
     "section": "",
-    "text": "Caleb Crumley, Jonathan Crum, and I hosted a series of three workshops on LaTeX during Spring 2020 as a way to introduce our new UGA Grad School–approved LaTeX dissertation template. This page will house some of the materials for those workshops, with links to GitHub repositories where you can find out more.\nNote: All workshops will be held at 3:35pm at the DigiLab (300 Main Library)"
+    "text": "If you are not redirected to the Gazetteer of Southern Vowels, click here."
   },
   {
-    "objectID": "pages/latex.html#intro-to-latex",
-    "href": "pages/latex.html#intro-to-latex",
-    "title": "LaTeX Workshops",
-    "section": "Intro to LaTeX",
-    "text": "Intro to LaTeX\nJanuary 31, 2020—In this workshop, I introduce some essential LaTeX skills, including basic typesetting, special characters, text formatting, document structure, internal references, lists, alignment, and white space. I also get into more typographical topics like font choice, line spacing, hyphenation and justification, and a few other things. This workshop was my most well-attended so far, with 30 registered attendees and another 55 or so on the waitlist. It was a full house!"
-  },
-  {
-    "objectID": "pages/latex.html#the-uga-latex-template",
-    "href": "pages/latex.html#the-uga-latex-template",
-    "title": "LaTeX Workshops",
-    "section": "The UGA LaTeX Template",
-    "text": "The UGA LaTeX Template\nFebruary 7, 2020—Caleb Crumley will lead this workshop and will introduce the UGA LaTeX template. This has been approved by the Graduate School. The purpose of the template is to take care of the nit-picky aspects of your document to help ensure it passes the format check so that you’re free to spend your time actually writing it. Caleb will show how to download it, toggle some of the options you may want, and show additional LaTeX skills like inserting tables and images."
-  },
-  {
-    "objectID": "pages/latex.html#advanced-topics-in-latex",
-    "href": "pages/latex.html#advanced-topics-in-latex",
-    "title": "LaTeX Workshops",
-    "section": "Advanced topics in LaTeX",
-    "text": "Advanced topics in LaTeX\nFebruary 14, 2020—Jonathan Crum will lead this workshop and will illustrate some of the more technical aspects of LaTeX for more advanced users. Some topics include custom commands, advanced font encoding, more document structure, document splitting and compiling, environments, compilers, and everyday workflow."
-  },
-  {
-    "objectID": "pages/idiolect.html",
-    "href": "pages/idiolect.html",
-    "title": "My Idiolect",
+    "objectID": "pages/setup/index.html",
+    "href": "pages/setup/index.html",
+    "title": "Setup Instructions",
     "section": "",
-    "text": "Here is a never-complete but growing description of my idiolect. I’ll add to it whenever I think of or discover new things about the way I speak English."
+    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
   },
   {
-    "objectID": "pages/idiolect.html#overview",
-    "href": "pages/idiolect.html#overview",
-    "title": "My Idiolect",
-    "section": "Overview",
-    "text": "Overview\nI don’t like it when people say they don’t have an accent, however, my pronunciation is pretty close to what I’d call standard American English. I grew up in St. Charles County, Missouri, which is a suburb of St. Louis. You can read Matt Gordon and Chris Strelluf’s work for an in-depth analysis of Missouri English. See also Dan Duncan’s research which is focuses specifically on St. Charles County for an even closer match to my speech. My mom grew up in Minnesota and my dad grew up in Upstate New York and Minnesota."
+    "objectID": "pages/setup/index.html#step-1-get-r-installed",
+    "href": "pages/setup/index.html#step-1-get-r-installed",
+    "title": "Setup Instructions",
+    "section": "Step 1: Get R installed",
+    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n\n\nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
   },
   {
-    "objectID": "pages/idiolect.html#vowels",
-    "href": "pages/idiolect.html#vowels",
-    "title": "My Idiolect",
-    "section": "Vowels",
-    "text": "Vowels\nHere is a general look at my monophthongs. These come from a recording of me reading a bunch of real and nonce words where the vowel is flanked by coronals. (You can access this dataset with my joeysvowels package.)\n\nAs far as I can tell, I don’t have really any indication of any of the chain shifts that people are studying. Even though I grew up in the St. Louis Corridor, I don’t have the Northern Cities Shift. I also don’t have the Low-Back-Merger or the Low-Back-Merger Shift.\n\nMy low back vowels\nMy lot and thought vowels are rather close phonetically but are definitely not merged. Lot is slightly fronter and unrounded while thought is slightly backer and rounded. They are very close to what Jonathan Dowse transcribes as [ɐ̞] and [ɒ̈] here.\nYou can read a fairly comprehensive list of words that I classify as lot and thought in Appendix C (pg. 209) of my dissertation, reproduced in a blog post here. On page 161, I explain that I have a clear intuition about which words are classified into which lexical set, though admittedly a few like probably, prom, mom, bronco, and pond could go either way.\nLike a lot of Americans even with the distinction, dog is thought, as are many other pre-/ɡ/ words. However, there are a few exceptions, like cog, which has an especially fronted vowel quality. Also, the name Og, as in the author Og Mandino, which is short for Augustine, bothers me because Og is clearly lot while Augustine is thought.\nPrelaterally, I have a conditioned merger, which is best described in Aaron Dinkin’s (2016) JEngL paper. (Aaron’s paper is based in Upstate New York, close to where my dad is from, so perhaps this is something I’ve gotten from him.) I have lot if the vowel is in an open syllable (and the following lateral is the onset of the following syllable), as in collar, dollar, anthropology, ollie, and trolley. In fact, I have a rather fronted vowel, fronter than my lot normally is. However, I have thought if the lateral is tautosyllabic, as in golf, dolphin, volume, and doll. Thus, words like doll & hall rhyme, while hollar & hauler and collar & caller do not. You can hear me pronounce these words in the video in this tweet.\nAs is typical of American English, the cloth lexical set is indistinguishable from my thought. Similarly, the palm set (and any “Foreign a” words; Boberg 2009) mostly fits in with my lot. Except, ironically, palm itself (as well as psalm, qualm, and alms), because of that /l/, which makes it part of thought.\nOne important phonological distinction between my lot and thought is that, even though Hayes (2009:82) says tenseness is not specified for low vowels, lot appears to be a lax vowel. Like other lax vowels, it doesn’t appear word-finally, except in marginal cases like ma and pa and in onomatopoeia (fa-la-la-la-la, haha, blah) and interjections (aha!, hurrah!). This means that some palm words like bra are reclassifed as thought. There are some exceptions though, like spa and schwa. So yes, for me, spa /spɑ/ and bra /bɹɔ/ don’t rhyme.\n\n\n/æ/ and /ɛ/ before nasals\nI raise /æ/ before nasals. Before /n/ and /m/, it’s raised, fronted, and nasalized, such that ban is definitely not the same as bat or even bad. Before /ŋ/, it’s raised even higher to the point that naive me would classify the vowel in bang as /e/. In fact, I’m not actually 100% convinced that it even is /æ/ underlyingly; I may have rephonologized it as being truly /e/.\nAs I point out on page 74 of my dissertation, there are very few words with /ɛɡ/. A nearly complete list, as far as I know, is length, lengthen, strength, strengthen, penguin, dengue, and Bengal (tiger). For what it’s worth, those vowels are the same as /æŋ/, so that bang and the first syllable of Bengal are the same for me.\n\n\nbeg-raising\nAs I explain on page 400 of my 2022 American Speech paper on prevelar raising, I raise historic /ɛɡ/ to something like [eɪɡ] such that beg, egg, leg, and Greg all rhyme with vague. It happens in open syllables like in legacy, negative, and megaphone. It occurs in some infrequent words like renege. I’ve also got it when the vowel has secondary stress, like in Winnipeg, stegosaurus, and nutmeg.\nHowever, there are a handful of exceptions, which was a major part of the reason why I did that paper in the first place. For an unclear reason to me, integrity, segregate, interregnum, and segment all have [ɛ]. I noticed that the /ɡ/ in those words are all followed by sonorants, but that’s not a guarantee blocker of raising since regulate, pregnant, and segue are raised. Interestingly, negligible is raised but negligent is not. Also, peg is raised but JPEG is not. Finally, any word with &lt;x&gt; pronounced as [ɡz] (yes, it’s voiced for me) like exit, exile, excerpt, and exigence are firmly [ɛ] and not [e].\n\n\nRosa’s Roses\nI don’t know the technical term for this, but I have two, possibly three, unstressed vowels, such that Rosa’s and roses aren’t homophonous to me. The first has [ə] while the second is what I’d transcribe as [ɨ].\nMy [ɨ] category of words is rather large and I have it in a handful of environments. Some of the distribution is predictable. I have [ɨ] in plurals (classes, offices), 3rd person singular (loses, pushes), and past tense allomorphs (waited, decided). Word-finally, it’s always [ə], as in extra, area, and data.\nIn a lot of words, I think I’m influenced by spelling. Word-initially, if it’s spelled with an &lt;a&gt;, &lt;o&gt;, &lt;u&gt; I have [ə], as in again, among, & ago, occur, opinion & obtain, and upon, unless, & until. (This spelling preference might explain why I always have [ə] word-finally because as far as I can tell &lt;a&gt; is the only letter used for unstressed word-final vowels.) However, if it’s an &lt;e&gt;, then I have [ɨ], as in expect, edition, effect, emotion, event, and exactly.\nWord-internally though, I haven’t done enough digging to see if there are any patterns and I’m not familiar with the literature so I don’t know what to look out for. I have a suspicion that if it’s next to a coronal sound, the vowel is [ɨ] and [ə] otherwise. So I have [ɨ] in student, woman, & happen but [ə] in problem, system, & item. I have [ɨ] in minute, private, & unit, but [ə] in product, democrat, develop, proposal. Interestingly, I have both vowels in advocate [ˈædvəkɨt]. But there are exceptions to these generalizations, like stomach, perfect, galaxy, miracle, and obstacle all have [ɨ]. I have [ɨ] in regime but [ə] in machine, which makes me think spelling is a stronger factor than phonological context. Without being too exhaustive, I’m inclined to think that [ɨ] is the elsewhere allophone and that [ə] is the exception.\nAs for a possible third one, I have some [ʊ]-like vowel in words like success, support, and suggest. It seems like word-initial &lt;su&gt; might be the environment, but I also get it in to. I’ll have to dig a little deeper to think of other examples.\n\n\nPrelaterals\nI have lost the ability to intuit what’s going on with my back vowels before laterals, but I’ll try to explain what I think I have. I know I merge /ʊl/ with /ol/, so that pull and pole are homophonous. However, it’s the /ʌl/ class that is really tricky for me. When it’s in a closed syllable, like in hull, dull, cull, and mulch, I’m pretty sure I at least had it merged with /ol/. However, I’ve looked at the list of words so much and I’ve thought about this enough that I pretty much know all the words that fall into this category without thinking (at least the one-syllable words) and I apparently want to unmerge them, so now you’ll be hard pressed to find me saying hull the same as hole, even in casual situations. Words like culture, result, vulnerable, multuple, and ultimately, I have no idea what I do.\nIn fact, it was this homophone that got me interested in prelaterals in the first place! There is a small town near the University of Georgia named Hull, and I had to go there for something. I thought to myself over and over as a I drove there, “Wait, is this pronounced like Hole?” I never did really figure out what I did.\nHowever, when it’s in an open syllable, like color, gullet, and sculley. The word adult fits in this category as being firmly [ʌ] rather than [o]. Though not all open syllable words are [ʌ] because like gully and mulligan I think I said as [o] when I was younger. (Not sure what I do now.) A word like sullen could go either way, even now."
+    "objectID": "pages/setup/index.html#step-2-get-rstudio-installed",
+    "href": "pages/setup/index.html#step-2-get-rstudio-installed",
+    "title": "Setup Instructions",
+    "section": "Step 2: Get RStudio installed",
+    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
   },
   {
-    "objectID": "pages/idiolect.html#some-of-my-favorite-quirks",
-    "href": "pages/idiolect.html#some-of-my-favorite-quirks",
-    "title": "My Idiolect",
-    "section": "Some of my favorite quirks",
-    "text": "Some of my favorite quirks\nHere are a list of some of my favorite things I have in my idiolect.\n\nI epenthesize a [k] in ancient, [ẽɪ̃ŋkʃɨnt]. I think what’s going on is I have [ŋ] instead of [n] in the first syllable, possibly analogous to anxious, and the [k] slips in there as I transition from the velar nasal to the post-alveolar fricative.\nbig has a bit of raising towards the end of the vowel. I’d transcribe it as [bɪi̯ɡ]. I don’t have it in any other /ɪɡ/ word, as far as I know, not even pig.\nwant is [wʌnt]. In other words wants is homophonous with once.\nI 100% say camouflague as “camel-flague”. So I have an extra /l/ in there.\nThe last syllable of kindergarten has a /d/ underlyingly rather than /t/.\nThe default way I say grandma is [ɡɹæ̃mə].\n\n ## Other things\n\nPhonological\n\n/t/ and /d/ before /ɹ/ (as in try, train, dry, and drain) are affricated to [tʃɹ] and [dʒɹ]. In other words, little kid me would spell them as “chry” and “jrain”.\nI raise /æ/ before nasals but not in other environments.\n\n\n\nLexical\n\nI pronounce the &lt;l&gt; in words like psalm, alm, palm, qualm. I also pronounce it in wolf, yolk, and folk. I know I used to insert an [ɫ] in both and local, but I don’t think I do that anymore. I do do it in only though.\nThe second syllable of caterpiller doesn’t have an /ɹ/ underlyingly: /kætəpɪlɚ/\nlair is homophonous with layer and does not rhyme with hair.\nI don’t pronounce the &lt;t&gt; in often.\nThough both my parents grew up north of the on line and therefore have lot in on, I don’t, so on is firmly thought.\nI don’t have the pin-pen merger, but I have /ɪ/ in parentheses and /ɛ/ in symmetry.\nI consistently say settler with three syllables ([sɛ.ɾl̩.ɚ]) and not two (*[sɛʔ.lɚ]), even when saying the name of the game Settlers of Catan.\nI think I say violet with two syllables, meaning it’s [ˈvɑɪ.lɨt] instead of [ˈvɑɪ.ə.lət]. However, alveolar does have a very short schwa, so it’s [æɫˈvi.ə.lɚ], which does not rhyme with velar [ˈvi.lɚ]."
-  },
-  {
-    "objectID": "pages/idiolect.html#my-kids-speech",
-    "href": "pages/idiolect.html#my-kids-speech",
-    "title": "My Idiolect",
-    "section": "My kids’ speech",
-    "text": "My kids’ speech\nSince my kids are growing up in an area different from where I grew up, they will likely acquire a different variety of English from my own. Here’s a list of things I’ve heard my 6-year-old say that is different from my own speech.\n\nkindergarten has a clear [t], i.e [kʰɨndɚɡɑɹtʰɨn] while I definitely have an underlying /d/ there.\nOccasional use of [ʔɨn] in words like Martin"
+    "objectID": "pages/setup/index.html#step-3-install-some-packages",
+    "href": "pages/setup/index.html#step-3-install-some-packages",
+    "title": "Setup Instructions",
+    "section": "Step 3: Install some packages",
+    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
   },
   {
     "objectID": "data/index.html",
@@ -3115,60 +3080,74 @@
     "text": "Automatic Formant Extraction in Praat (and supplement)\nOctober 2, 2019—In this workshop, you’ll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with this blog post, only you will get more detail with an in-person guide."
   },
   {
-    "objectID": "pages/gsv.html",
-    "href": "pages/gsv.html",
-    "title": "GSV",
+    "objectID": "pages/idiolect/index.html",
+    "href": "pages/idiolect/index.html",
+    "title": "My Idiolect",
     "section": "",
-    "text": "If you are not redirected to the Gazetteer of Southern Vowels, click here."
+    "text": "Here is a never-complete but growing description of my idiolect. I’ll add to it whenever I think of or discover new things about the way I speak English."
   },
   {
-    "objectID": "pages/r-workshops.html",
-    "href": "pages/r-workshops.html",
-    "title": "R Workshops",
+    "objectID": "pages/idiolect/index.html#overview",
+    "href": "pages/idiolect/index.html#overview",
+    "title": "My Idiolect",
+    "section": "Overview",
+    "text": "Overview\nI don’t like it when people say they don’t have an accent, however, my pronunciation is pretty close to what I’d call standard American English. I grew up in St. Charles County, Missouri, which is a suburb of St. Louis. You can read Matt Gordon and Chris Strelluf’s work for an in-depth analysis of Missouri English. See also Dan Duncan’s research which is focuses specifically on St. Charles County for an even closer match to my speech. My mom grew up in Minnesota and my dad grew up in Upstate New York and Minnesota."
+  },
+  {
+    "objectID": "pages/idiolect/index.html#vowels",
+    "href": "pages/idiolect/index.html#vowels",
+    "title": "My Idiolect",
+    "section": "Vowels",
+    "text": "Vowels\nHere is a general look at my monophthongs. These come from a recording of me reading a bunch of real and nonce words where the vowel is flanked by coronals. (You can access this dataset with my joeysvowels package.)\n\nAs far as I can tell, I don’t have really any indication of any of the chain shifts that people are studying. Even though I grew up in the St. Louis Corridor, I don’t have the Northern Cities Shift. I also don’t have the Low-Back-Merger or the Low-Back-Merger Shift.\n\nMy low back vowels\nMy lot and thought vowels are rather close phonetically but are definitely not merged. Lot is slightly fronter and unrounded while thought is slightly backer and rounded. They are very close to what Jonathan Dowse transcribes as [ɐ̞] and [ɒ̈] here.\nYou can read a fairly comprehensive list of words that I classify as lot and thought in Appendix C (pg. 209) of my dissertation, reproduced in a blog post here. On page 161, I explain that I have a clear intuition about which words are classified into which lexical set, though admittedly a few like probably, prom, mom, bronco, and pond could go either way.\nLike a lot of Americans even with the distinction, dog is thought, as are many other pre-/ɡ/ words. However, there are a few exceptions, like cog, which has an especially fronted vowel quality. Also, the name Og, as in the author Og Mandino, which is short for Augustine, bothers me because Og is clearly lot while Augustine is thought.\nPrelaterally, I have a conditioned merger, which is best described in Aaron Dinkin’s (2016) JEngL paper. (Aaron’s paper is based in Upstate New York, close to where my dad is from, so perhaps this is something I’ve gotten from him.) I have lot if the vowel is in an open syllable (and the following lateral is the onset of the following syllable), as in collar, dollar, anthropology, ollie, and trolley. In fact, I have a rather fronted vowel, fronter than my lot normally is. However, I have thought if the lateral is tautosyllabic, as in golf, dolphin, volume, and doll. Thus, words like doll & hall rhyme, while hollar & hauler and collar & caller do not. You can hear me pronounce these words in the video in this tweet.\nAs is typical of American English, the cloth lexical set is indistinguishable from my thought. Similarly, the palm set (and any “Foreign a” words; Boberg 2009) mostly fits in with my lot. Except, ironically, palm itself (as well as psalm, qualm, and alms), because of that /l/, which makes it part of thought.\nOne important phonological distinction between my lot and thought is that, even though Hayes (2009:82) says tenseness is not specified for low vowels, lot appears to be a lax vowel. Like other lax vowels, it doesn’t appear word-finally, except in marginal cases like ma and pa, onomatopoeia (fa-la-la-la-la, haha, blah), and interjections (aha!, hurrah!). This means that some palm words like bra are reclassifed as thought. There are some exceptions though, like spa and schwa. So yes, for me, spa /spɑ/ and bra /bɹɔ/ don’t rhyme.\n\n\n/æ/ and /ɛ/ before nasals\nI raise /æ/ before nasals. Before /n/ and /m/, it’s raised, fronted, and nasalized, such that ban is definitely not the same as bat or even bad. Before /ŋ/, it’s raised even higher to the point that naive me would classify the vowel in bang as /e/. In fact, I’m not actually 100% convinced that it even is /æ/ underlyingly; I may have rephonologized it as being truly /e/.\nAs I point out on page 74 of my dissertation, there are very few words with /ɛɡ/. A nearly complete list, as far as I know, is length, lengthen, strength, strengthen, penguin, dengue, and Bengal (tiger). For what it’s worth, those vowels are the same as /æŋ/, so that bang and the first syllable of Bengal are the same for me.\n\n\nbeg-raising\nAs I explain on page 400 of my 2022 American Speech paper on prevelar raising, I raise historic /ɛɡ/ to something like [eɪɡ] such that beg, egg, leg, and Greg all rhyme with vague. It happens in open syllables like in legacy, negative, and megaphone. It occurs in some infrequent words like renege. I’ve also got it when the vowel has secondary stress, like in Winnipeg, stegosaurus, and nutmeg.\nHowever, there are a handful of exceptions, which was a major part of the reason why I did that paper in the first place. For an unclear reason to me, integrity, segregate, interregnum, and segment all have [ɛ]. I noticed that the /ɡ/ in those words are all followed by sonorants, but that’s not a guarantee blocker of raising since regulate, pregnant, and segue are raised. Interestingly, negligible is raised but negligent is not. Also, peg is raised but JPEG is not. Finally, any word with &lt;x&gt; pronounced as [ɡz] (yes, it’s voiced for me) like exit, exile, excerpt, and exigence are firmly [ɛ] and not [e].\n\n\nRosa’s Roses\nI don’t know the technical term for this, but I have two, possibly three, unstressed vowels, such that Rosa’s and roses aren’t homophonous to me. The first has [ə] while the second is what I’d transcribe as [ɨ].\nMy [ɨ] category of words is rather large and I have it in a handful of environments. Some of the distribution is predictable. I have [ɨ] in plurals (classes, offices), 3rd person singular (loses, pushes), and past tense allomorphs (waited, decided). Word-finally, it’s always [ə], as in extra, area, and data.\nIn a lot of words, I think I’m influenced by spelling. Word-initially, if it’s spelled with an &lt;a&gt;, &lt;o&gt;, &lt;u&gt; I have [ə], as in again, among, & ago, occur, opinion & obtain, and upon, unless, & until. (This spelling preference might explain why I always have [ə] word-finally because as far as I can tell &lt;a&gt; is the only letter used for unstressed word-final vowels.) However, if it’s an &lt;e&gt;, then I have [ɨ], as in expect, edition, effect, emotion, event, and exactly.\nWord-internally though, I haven’t done enough digging to see if there are any patterns and I’m not familiar with the literature so I don’t know what to look out for. I have a suspicion that if it’s next to a coronal sound, the vowel is [ɨ] and [ə] otherwise. So I have [ɨ] in student, woman, & happen but [ə] in problem, system, & item. I have [ɨ] in minute, private, & unit, but [ə] in product, democrat, develop, proposal. Interestingly, I have both vowels in advocate [ˈædvəkɨt]. But there are exceptions to these generalizations, like stomach, perfect, galaxy, miracle, and obstacle all have [ɨ]. I have [ɨ] in regime but [ə] in machine, which makes me think spelling is a stronger factor than phonological context. Without being too exhaustive, I’m inclined to think that [ɨ] is the elsewhere allophone and that [ə] is the exception.\nAs for a possible third one, I have some [ʊ]-like vowel in words like success, support, and suggest. It seems like word-initial &lt;su&gt; might be the environment, but I also get it in to. I’ll have to dig a little deeper to think of other examples.\n\n\nPrelaterals\nI have lost the ability to intuit what’s going on with my back vowels before laterals, but I’ll try to explain what I think I have. I know I merge /ʊl/ with /ol/, so that pull and pole are homophonous. However, it’s the /ʌl/ class that is really tricky for me. When it’s in a closed syllable, like in hull, dull, cull, and mulch, I’m pretty sure I at least had it merged with /ol/. However, I’ve looked at the list of words so much and I’ve thought about this enough that I pretty much know all the words that fall into this category without thinking (at least the one-syllable words) and I apparently want to unmerge them, so now you’ll be hard pressed to find me saying hull the same as hole, even in casual situations. Words like culture, result, vulnerable, multuple, and ultimately, I have no idea what I do.\nIn fact, it was this homophone that got me interested in prelaterals in the first place! There is a small town near the University of Georgia named Hull, and I had to go there for something. I thought to myself over and over as a I drove there, “Wait, is this pronounced like Hole?” I never did really figure out what I did.\nHowever, when it’s in an open syllable, like color, gullet, and sculley. The word adult fits in this category as being firmly [ʌ] rather than [o]. Though not all open syllable words are [ʌ] because like gully and mulligan I think I said as [o] when I was younger. (Not sure what I do now.) A word like sullen could go either way, even now."
+  },
+  {
+    "objectID": "pages/idiolect/index.html#some-of-my-favorite-quirks",
+    "href": "pages/idiolect/index.html#some-of-my-favorite-quirks",
+    "title": "My Idiolect",
+    "section": "Some of my favorite quirks",
+    "text": "Some of my favorite quirks\nHere are a list of some of my favorite things I have in my idiolect.\n\nI epenthesize a [k] in ancient, [ẽɪ̃ŋkʃɨnt]. I think what’s going on is I have [ŋ] instead of [n] in the first syllable, possibly analogous to anxious, and the [k] slips in there as I transition from the velar nasal to the post-alveolar fricative.\nbig has a bit of raising towards the end of the vowel. I’d transcribe it as [bɪi̯ɡ]. I don’t have it in any other /ɪɡ/ word, as far as I know, not even pig.\nwant is [wʌnt]. So, wants is homophonous with once.\nI 100% say camouflague as “camel-flague”. So I have an extra /l/ in there.\nThe last syllable of kindergarten has a /d/ underlyingly rather than /t/.\nThe default way I say grandma is [ɡɹæ̃mə]."
+  },
+  {
+    "objectID": "pages/idiolect/index.html#other-things",
+    "href": "pages/idiolect/index.html#other-things",
+    "title": "My Idiolect",
+    "section": "Other things",
+    "text": "Other things\n\nPhonological\n\n/t/ and /d/ before /ɹ/ (as in try, train, dry, and drain) are affricated to [tʃɹ] and [dʒɹ]. In other words, little kid me would spell them as “chry” and “jrain”.\nI raise /æ/ before nasals but not in other environments.\n\n\n\nLexical\n\nI pronounce the &lt;l&gt; in words like psalm, alm, palm, qualm. I also pronounce it in wolf, yolk, and folk. I know I used to insert an [ɫ] in both and local, but I don’t think I do that anymore. I do do it in only though.\nThe second syllable of caterpiller doesn’t have an /ɹ/ underlyingly: /kætəpɪlɚ/\nlair is homophonous with layer and does not rhyme with hair.\nI don’t pronounce the &lt;t&gt; in often.\nThough both my parents grew up north of the on line and therefore have lot in on, I don’t, so on is firmly thought.\nI don’t have the pin-pen merger, but I have /ɪ/ in parentheses and /ɛ/ in symmetry.\nI consistently say settler with three syllables ([sɛ.ɾl̩.ɚ]) and not two (*[sɛʔ.lɚ]), even when saying the name of the game Settlers of Catan.\nI think I say violet with two syllables, meaning it’s [ˈvɑɪ.lɨt] instead of [ˈvɑɪ.ə.lət]. However, alveolar does have a very short schwa, so it’s [æɫˈvi.ə.lɚ], which does not rhyme with velar [ˈvi.lɚ]."
+  },
+  {
+    "objectID": "pages/idiolect/index.html#my-kids-speech",
+    "href": "pages/idiolect/index.html#my-kids-speech",
+    "title": "My Idiolect",
+    "section": "My kids’ speech",
+    "text": "My kids’ speech\nSince my kids are growing up in an area different from where I grew up, they will likely acquire a different variety of English from my own. Here’s a list of things I’ve heard my 6-year-old say that is different from my own speech.\n\nkindergarten has a clear [t], i.e [kʰɨndɚɡɑɹtʰɨn] while I definitely have an underlying /d/ there.\nOccasional use of [ʔɨn] in words like Martin"
+  },
+  {
+    "objectID": "pages/latex.html",
+    "href": "pages/latex.html",
+    "title": "LaTeX Workshops",
     "section": "",
-    "text": "In grad school I offered workshops on a variety of topics relating to R between Fall 2017 and Spring 2020. They were held Fridays at 3:30 in the DigiLab at the UGA Main Library. Videos for some of these are available here. Below you will find materials for these workshops. I hope they are thorough enough that you can make use of them as stand-alone documents.\nThe data used in these workshops can be found at my datasets page.\nIf you are planning on attending a workshop in the near future, please see the setup instructions to help you get R and RStudio installed on your computer."
+    "text": "Caleb Crumley, Jonathan Crum, and I hosted a series of three workshops on LaTeX during Spring 2020 as a way to introduce our new UGA Grad School–approved LaTeX dissertation template. This page will house some of the materials for those workshops, with links to GitHub repositories where you can find out more.\nNote: All workshops will be held at 3:35pm at the DigiLab (300 Main Library)"
   },
   {
-    "objectID": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
-    "href": "pages/r-workshops.html#intro-to-r-part-1-and-part-2",
-    "title": "R Workshops",
-    "section": "Intro to R (Part 1 and Part 2)",
-    "text": "Intro to R (Part 1 and Part 2)\nIn this first workshop I cover the basics of R itself. I talk about the differences between R and RStudio and I help folks get both installed and running on their computers. We create a simple “Hello, World!” script using R. Part 2 covers the basics of the R language. It is also be a very simple introduction to some core computer coding concepts like declaring variables and variable types.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in a PDF of the slides I used in Part 1 or a PDF version of Part 2’s handout. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
+    "objectID": "pages/latex.html#intro-to-latex",
+    "href": "pages/latex.html#intro-to-latex",
+    "title": "LaTeX Workshops",
+    "section": "Intro to LaTeX",
+    "text": "Intro to LaTeX\nJanuary 31, 2020—In this workshop, I introduce some essential LaTeX skills, including basic typesetting, special characters, text formatting, document structure, internal references, lists, alignment, and white space. I also get into more typographical topics like font choice, line spacing, hyphenation and justification, and a few other things. This workshop was my most well-attended so far, with 30 registered attendees and another 55 or so on the waitlist. It was a full house!"
   },
   {
-    "objectID": "pages/r-workshops.html#visualizations-with-ggplot2",
-    "href": "pages/r-workshops.html#visualizations-with-ggplot2",
-    "title": "R Workshops",
-    "section": "Visualizations with ggplot2 ",
-    "text": "Visualizations with ggplot2 \nggplot2 is a widely used package that allows for high-quality visualizations. These workshops take you from installation to pretty advanced topics.\n\nPart 1: Intro to ggplot2\nIn Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\nPart 2: Extending your ggplot2 skills\nOften you’ll want to customize your plots in some way. So, in Part 2, we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\nSupplement to Part 2\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots. This handout will vary from time to time as I add to it when I learn new things or remove sections to incorporate them into future workshops.\n\n\nCustom Themes\nBased on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\nSupplement: A detailed look at ggplot2::theme\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+    "objectID": "pages/latex.html#the-uga-latex-template",
+    "href": "pages/latex.html#the-uga-latex-template",
+    "title": "LaTeX Workshops",
+    "section": "The UGA LaTeX Template",
+    "text": "The UGA LaTeX Template\nFebruary 7, 2020—Caleb Crumley will lead this workshop and will introduce the UGA LaTeX template. This has been approved by the Graduate School. The purpose of the template is to take care of the nit-picky aspects of your document to help ensure it passes the format check so that you’re free to spend your time actually writing it. Caleb will show how to download it, toggle some of the options you may want, and show additional LaTeX skills like inserting tables and images."
   },
   {
-    "objectID": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
-    "href": "pages/r-workshops.html#introduction-to-the-tidyverse-part-1-and-part-2",
-    "title": "R Workshops",
-    "section": "Introduction to the Tidyverse (Part 1 and Part 2)",
-    "text": "Introduction to the Tidyverse (Part 1 and Part 2)\nThe tidyverse is a suite of packages that includes dplyr and tidyr which help you wrangle your data. In this two-part workshop, we learn some of the common functions in the tidyverse and compare them to base R, showing that there are multiple ways to accomplish the same task in R. Part 2 in particular looks at how to reshape and transform your data, merging it with other dataset, and other super useful and powerful tools.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: You may also be interested in PDFs for Part 1 and Part 2. An older version that combines elements of both parts can be found here as a PDF or RMarkdown file."
-  },
-  {
-    "objectID": "pages/r-workshops.html#an-intro-to-rmarkdown",
-    "href": "pages/r-workshops.html#an-intro-to-rmarkdown",
-    "title": "R Workshops",
-    "section": "An Intro to RMarkdown",
-    "text": "An Intro to RMarkdown\nR Markdown is a way to create different types of documents using R (pdfs, word files, html files). In this one-day crash course, I show how to make R Markdown files and the kinds of things they would be useful for.\n\n\n\n\n\n\nTip\n\n\n\nAdditional Materials: If you’d rather use a PDF of the workshop materials, there’s one available here."
-  },
-  {
-    "objectID": "pages/r-workshops.html#introduction-to-shiny",
-    "href": "pages/r-workshops.html#introduction-to-shiny",
-    "title": "R Workshops",
-    "section": "Introduction to Shiny",
-    "text": "Introduction to Shiny\nShiny is an R package that allows you to make your own interactive web pages. An entire semester could be devoted to Shiny and there’s a bit of a learning curve, especially if you haven’t used HTML before. This two-day workshop covers just the essentials.\n\n\n\n\n\n\nNote\n\n\n\nThe materials for this workshop include interactive shiny elements, which means I can’t host them on my own website. So instead, they’re hosted on Shiny’s free server space. But this comes with a major drawback: they’re only available for 25 user-hours a month. So, if the link above does not work for you, try again in a week or so. Sorry for the inconvenience."
-  },
-  {
-    "objectID": "pages/dataviz.html",
-    "href": "pages/dataviz.html",
-    "title": "Data Visualization Workshops",
-    "section": "",
-    "text": "In Fall of 2019, I lead a series of five workshops on data visualization. This page houses the handouts and materials for those workshops.\n \n\n\nAugust 21, 2019—In Part 1 of this workshop I cover the basic syntax and how to make some simple types of plots.\n\n\n\n\nAugust 28, 2019—Often you’ll want to customize your plots in some way. So, in this workshop we cover how to mess with properties of the plots like the axes, colors, and legends to make the plot work better for you.\n\n\nApparently I had a lot to say about how to extend your ggplot2 skills, so I ended up creating a supplement with lots of additional detail on how to modify your plots.\n\n\n\n\n\nSeptember 4, 2019–Based on a popular blog post I wrote, this workshop wraps all customization methods together and shows how to create your own themes.\n\n\nAs I was preparing for the custom themes workshop, I got a little carried away illustrating all the components of the theme function. I decided to simplify that portion of the workshop and create this separate handout that just focuses on theme. It is not yet finished, but it may be of some help to people (including myself!).\n\n\n\n\n\nOctober 16, 2019—In this workshop, I introduce a few key concepts from Edward Tufte’s book, The Visual Display of Quantitative Information such as graphical integrity, proportional ink, data-ink ratio, removing redundant material, and general graphical sophistication. Basically, the workshop could be thought of as, “How not to make awful plots.”\n\n\n\n\nOctober 23, 2019—Meagan Duever, GIS Librarian at UGA will help me lead this workshop. We talk about general principles of color in data visualization, introduce a whole bunch of nice color palettes, and demonstrate how to customize your colors in ArcMap, QGIS, Excel, and R.\n\n\n\n\nYou may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+    "objectID": "pages/latex.html#advanced-topics-in-latex",
+    "href": "pages/latex.html#advanced-topics-in-latex",
+    "title": "LaTeX Workshops",
+    "section": "Advanced topics in LaTeX",
+    "text": "Advanced topics in LaTeX\nFebruary 14, 2020—Jonathan Crum will lead this workshop and will illustrate some of the more technical aspects of LaTeX for more advanced users. Some topics include custom commands, advanced font encoding, more document structure, document splitting and compiling, environments, compilers, and everyday workflow."
   },
   {
     "objectID": "pages/dataviz.html#part-1-intro-to-ggplot2",
@@ -3211,131 +3190,5 @@
     "title": "Data Visualization Workshops",
     "section": "Older versions",
     "text": "Older versions\nYou may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
-  },
-  {
-    "objectID": "pages/setup.html",
-    "href": "pages/setup.html",
-    "title": "Setup Instructions",
-    "section": "",
-    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
-  },
-  {
-    "objectID": "pages/setup.html#step-1-get-r-installed",
-    "href": "pages/setup.html#step-1-get-r-installed",
-    "title": "Setup Instructions",
-    "section": "Step 1: Get R installed",
-    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n \nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
-  },
-  {
-    "objectID": "pages/setup.html#step-2-get-rstudio-installed",
-    "href": "pages/setup.html#step-2-get-rstudio-installed",
-    "title": "Setup Instructions",
-    "section": "Step 2: Get RStudio installed",
-    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
-  },
-  {
-    "objectID": "pages/setup.html#step-3-install-some-packages",
-    "href": "pages/setup.html#step-3-install-some-packages",
-    "title": "Setup Instructions",
-    "section": "Step 3: Install some packages",
-    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
-  },
-  {
-    "objectID": "pages/setup/setup.html",
-    "href": "pages/setup/setup.html",
-    "title": "Setup Instructions",
-    "section": "",
-    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
-  },
-  {
-    "objectID": "pages/setup/setup.html#step-1-get-r-installed",
-    "href": "pages/setup/setup.html#step-1-get-r-installed",
-    "title": "Setup Instructions",
-    "section": "Step 1: Get R installed",
-    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n\n\nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
-  },
-  {
-    "objectID": "pages/setup/setup.html#step-2-get-rstudio-installed",
-    "href": "pages/setup/setup.html#step-2-get-rstudio-installed",
-    "title": "Setup Instructions",
-    "section": "Step 2: Get RStudio installed",
-    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
-  },
-  {
-    "objectID": "pages/setup/setup.html#step-3-install-some-packages",
-    "href": "pages/setup/setup.html#step-3-install-some-packages",
-    "title": "Setup Instructions",
-    "section": "Step 3: Install some packages",
-    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
-  },
-  {
-    "objectID": "pages/setup/index.html",
-    "href": "pages/setup/index.html",
-    "title": "Setup Instructions",
-    "section": "",
-    "text": "Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you’re having difficulty, please come a little early and I can help you out."
-  },
-  {
-    "objectID": "pages/setup/index.html#step-1-get-r-installed",
-    "href": "pages/setup/index.html#step-1-get-r-installed",
-    "title": "Setup Instructions",
-    "section": "Step 1: Get R installed",
-    "text": "Step 1: Get R installed\nTo download R, go to https://cran.r-project.org/mirrors.html. This will take you to a list of CRAN mirrors. All these lists of sites are identical, they’re just hosted on various servers across the world to handle the traffic. Just pick one near your current location and click on it.\n\n\nFrom there, download the package appropriate for your computer.\n\nMac users will be taken to a screen where they’ll give you various versions to choose from. At the time of writing, the latest package is 3.6.1, so go ahead and download that one and install it like any other piece of software.\n\nWindows users will have a link that says “install R for the first time” which will take them to the download page. You can then install R like normal.\n \nI’m not entirely sure how to do it on a Linux, but I figure if you’re using a Linux, you know what you’re doing :)"
-  },
-  {
-    "objectID": "pages/setup/index.html#step-2-get-rstudio-installed",
-    "href": "pages/setup/index.html#step-2-get-rstudio-installed",
-    "title": "Setup Instructions",
-    "section": "Step 2: Get RStudio installed",
-    "text": "Step 2: Get RStudio installed\nTo download RStudio, go to https://www.rstudio.com and click “Download” under RStudio.\n\nThere are several intense versions of RStudio and we only need the free Desktop version, which is the one furthest to the left. Click the download button and then click on the link appropriate for your operating system."
-  },
-  {
-    "objectID": "pages/setup/index.html#step-3-install-some-packages",
-    "href": "pages/setup/index.html#step-3-install-some-packages",
-    "title": "Setup Instructions",
-    "section": "Step 3: Install some packages",
-    "text": "Step 3: Install some packages\nOpen RStudio. In the left-hand side, type the following commands and hit enter:\ninstall.packages(\"tidyverse\")\n\nThis will take a minute or so. This command installs a couple add-on packages that I frequently use in my workshops, including ggplot2, dplyr, tidyr and several others.\nAnd that’s it! See you at the workshop!\n\n\n« Back to the workshops page"
-  },
-  {
-    "objectID": "pages/idiolect/index.html",
-    "href": "pages/idiolect/index.html",
-    "title": "My Idiolect",
-    "section": "",
-    "text": "Here is a never-complete but growing description of my idiolect. I’ll add to it whenever I think of or discover new things about the way I speak English."
-  },
-  {
-    "objectID": "pages/idiolect/index.html#overview",
-    "href": "pages/idiolect/index.html#overview",
-    "title": "My Idiolect",
-    "section": "Overview",
-    "text": "Overview\nI don’t like it when people say they don’t have an accent, however, my pronunciation is pretty close to what I’d call standard American English. I grew up in St. Charles County, Missouri, which is a suburb of St. Louis. You can read Matt Gordon and Chris Strelluf’s work for an in-depth analysis of Missouri English. See also Dan Duncan’s research which is focuses specifically on St. Charles County for an even closer match to my speech. My mom grew up in Minnesota and my dad grew up in Upstate New York and Minnesota."
-  },
-  {
-    "objectID": "pages/idiolect/index.html#vowels",
-    "href": "pages/idiolect/index.html#vowels",
-    "title": "My Idiolect",
-    "section": "Vowels",
-    "text": "Vowels\nHere is a general look at my monophthongs. These come from a recording of me reading a bunch of real and nonce words where the vowel is flanked by coronals. (You can access this dataset with my joeysvowels package.)\n\nAs far as I can tell, I don’t have really any indication of any of the chain shifts that people are studying. Even though I grew up in the St. Louis Corridor, I don’t have the Northern Cities Shift. I also don’t have the Low-Back-Merger or the Low-Back-Merger Shift.\n\nMy low back vowels\nMy lot and thought vowels are rather close phonetically but are definitely not merged. Lot is slightly fronter and unrounded while thought is slightly backer and rounded. They are very close to what Jonathan Dowse transcribes as [ɐ̞] and [ɒ̈] here.\nYou can read a fairly comprehensive list of words that I classify as lot and thought in Appendix C (pg. 209) of my dissertation, reproduced in a blog post here. On page 161, I explain that I have a clear intuition about which words are classified into which lexical set, though admittedly a few like probably, prom, mom, bronco, and pond could go either way.\nLike a lot of Americans even with the distinction, dog is thought, as are many other pre-/ɡ/ words. However, there are a few exceptions, like cog, which has an especially fronted vowel quality. Also, the name Og, as in the author Og Mandino, which is short for Augustine, bothers me because Og is clearly lot while Augustine is thought.\nPrelaterally, I have a conditioned merger, which is best described in Aaron Dinkin’s (2016) JEngL paper. (Aaron’s paper is based in Upstate New York, close to where my dad is from, so perhaps this is something I’ve gotten from him.) I have lot if the vowel is in an open syllable (and the following lateral is the onset of the following syllable), as in collar, dollar, anthropology, ollie, and trolley. In fact, I have a rather fronted vowel, fronter than my lot normally is. However, I have thought if the lateral is tautosyllabic, as in golf, dolphin, volume, and doll. Thus, words like doll & hall rhyme, while hollar & hauler and collar & caller do not. You can hear me pronounce these words in the video in this tweet.\nAs is typical of American English, the cloth lexical set is indistinguishable from my thought. Similarly, the palm set (and any “Foreign a” words; Boberg 2009) mostly fits in with my lot. Except, ironically, palm itself (as well as psalm, qualm, and alms), because of that /l/, which makes it part of thought.\nOne important phonological distinction between my lot and thought is that, even though Hayes (2009:82) says tenseness is not specified for low vowels, lot appears to be a lax vowel. Like other lax vowels, it doesn’t appear word-finally, except in marginal cases like ma and pa, onomatopoeia (fa-la-la-la-la, haha, blah), and interjections (aha!, hurrah!). This means that some palm words like bra are reclassifed as thought. There are some exceptions though, like spa and schwa. So yes, for me, spa /spɑ/ and bra /bɹɔ/ don’t rhyme.\n\n\n/æ/ and /ɛ/ before nasals\nI raise /æ/ before nasals. Before /n/ and /m/, it’s raised, fronted, and nasalized, such that ban is definitely not the same as bat or even bad. Before /ŋ/, it’s raised even higher to the point that naive me would classify the vowel in bang as /e/. In fact, I’m not actually 100% convinced that it even is /æ/ underlyingly; I may have rephonologized it as being truly /e/.\nAs I point out on page 74 of my dissertation, there are very few words with /ɛɡ/. A nearly complete list, as far as I know, is length, lengthen, strength, strengthen, penguin, dengue, and Bengal (tiger). For what it’s worth, those vowels are the same as /æŋ/, so that bang and the first syllable of Bengal are the same for me.\n\n\nbeg-raising\nAs I explain on page 400 of my 2022 American Speech paper on prevelar raising, I raise historic /ɛɡ/ to something like [eɪɡ] such that beg, egg, leg, and Greg all rhyme with vague. It happens in open syllables like in legacy, negative, and megaphone. It occurs in some infrequent words like renege. I’ve also got it when the vowel has secondary stress, like in Winnipeg, stegosaurus, and nutmeg.\nHowever, there are a handful of exceptions, which was a major part of the reason why I did that paper in the first place. For an unclear reason to me, integrity, segregate, interregnum, and segment all have [ɛ]. I noticed that the /ɡ/ in those words are all followed by sonorants, but that’s not a guarantee blocker of raising since regulate, pregnant, and segue are raised. Interestingly, negligible is raised but negligent is not. Also, peg is raised but JPEG is not. Finally, any word with &lt;x&gt; pronounced as [ɡz] (yes, it’s voiced for me) like exit, exile, excerpt, and exigence are firmly [ɛ] and not [e].\n\n\nRosa’s Roses\nI don’t know the technical term for this, but I have two, possibly three, unstressed vowels, such that Rosa’s and roses aren’t homophonous to me. The first has [ə] while the second is what I’d transcribe as [ɨ].\nMy [ɨ] category of words is rather large and I have it in a handful of environments. Some of the distribution is predictable. I have [ɨ] in plurals (classes, offices), 3rd person singular (loses, pushes), and past tense allomorphs (waited, decided). Word-finally, it’s always [ə], as in extra, area, and data.\nIn a lot of words, I think I’m influenced by spelling. Word-initially, if it’s spelled with an &lt;a&gt;, &lt;o&gt;, &lt;u&gt; I have [ə], as in again, among, & ago, occur, opinion & obtain, and upon, unless, & until. (This spelling preference might explain why I always have [ə] word-finally because as far as I can tell &lt;a&gt; is the only letter used for unstressed word-final vowels.) However, if it’s an &lt;e&gt;, then I have [ɨ], as in expect, edition, effect, emotion, event, and exactly.\nWord-internally though, I haven’t done enough digging to see if there are any patterns and I’m not familiar with the literature so I don’t know what to look out for. I have a suspicion that if it’s next to a coronal sound, the vowel is [ɨ] and [ə] otherwise. So I have [ɨ] in student, woman, & happen but [ə] in problem, system, & item. I have [ɨ] in minute, private, & unit, but [ə] in product, democrat, develop, proposal. Interestingly, I have both vowels in advocate [ˈædvəkɨt]. But there are exceptions to these generalizations, like stomach, perfect, galaxy, miracle, and obstacle all have [ɨ]. I have [ɨ] in regime but [ə] in machine, which makes me think spelling is a stronger factor than phonological context. Without being too exhaustive, I’m inclined to think that [ɨ] is the elsewhere allophone and that [ə] is the exception.\nAs for a possible third one, I have some [ʊ]-like vowel in words like success, support, and suggest. It seems like word-initial &lt;su&gt; might be the environment, but I also get it in to. I’ll have to dig a little deeper to think of other examples.\n\n\nPrelaterals\nI have lost the ability to intuit what’s going on with my back vowels before laterals, but I’ll try to explain what I think I have. I know I merge /ʊl/ with /ol/, so that pull and pole are homophonous. However, it’s the /ʌl/ class that is really tricky for me. When it’s in a closed syllable, like in hull, dull, cull, and mulch, I’m pretty sure I at least had it merged with /ol/. However, I’ve looked at the list of words so much and I’ve thought about this enough that I pretty much know all the words that fall into this category without thinking (at least the one-syllable words) and I apparently want to unmerge them, so now you’ll be hard pressed to find me saying hull the same as hole, even in casual situations. Words like culture, result, vulnerable, multuple, and ultimately, I have no idea what I do.\nIn fact, it was this homophone that got me interested in prelaterals in the first place! There is a small town near the University of Georgia named Hull, and I had to go there for something. I thought to myself over and over as a I drove there, “Wait, is this pronounced like Hole?” I never did really figure out what I did.\nHowever, when it’s in an open syllable, like color, gullet, and sculley. The word adult fits in this category as being firmly [ʌ] rather than [o]. Though not all open syllable words are [ʌ] because like gully and mulligan I think I said as [o] when I was younger. (Not sure what I do now.) A word like sullen could go either way, even now."
-  },
-  {
-    "objectID": "pages/idiolect/index.html#some-of-my-favorite-quirks",
-    "href": "pages/idiolect/index.html#some-of-my-favorite-quirks",
-    "title": "My Idiolect",
-    "section": "Some of my favorite quirks",
-    "text": "Some of my favorite quirks\nHere are a list of some of my favorite things I have in my idiolect.\n\nI epenthesize a [k] in ancient, [ẽɪ̃ŋkʃɨnt]. I think what’s going on is I have [ŋ] instead of [n] in the first syllable, possibly analogous to anxious, and the [k] slips in there as I transition from the velar nasal to the post-alveolar fricative.\nbig has a bit of raising towards the end of the vowel. I’d transcribe it as [bɪi̯ɡ]. I don’t have it in any other /ɪɡ/ word, as far as I know, not even pig.\nwant is [wʌnt]. So, wants is homophonous with once.\nI 100% say camouflague as “camel-flague”. So I have an extra /l/ in there.\nThe last syllable of kindergarten has a /d/ underlyingly rather than /t/.\nThe default way I say grandma is [ɡɹæ̃mə]."
-  },
-  {
-    "objectID": "pages/idiolect/index.html#my-kids-speech",
-    "href": "pages/idiolect/index.html#my-kids-speech",
-    "title": "My Idiolect",
-    "section": "My kids’ speech",
-    "text": "My kids’ speech\nSince my kids are growing up in an area different from where I grew up, they will likely acquire a different variety of English from my own. Here’s a list of things I’ve heard my 6-year-old say that is different from my own speech.\n\nkindergarten has a clear [t], i.e [kʰɨndɚɡɑɹtʰɨn] while I definitely have an underlying /d/ there.\nOccasional use of [ʔɨn] in words like Martin"
-  },
-  {
-    "objectID": "pages/idiolect/index.html#other-things",
-    "href": "pages/idiolect/index.html#other-things",
-    "title": "My Idiolect",
-    "section": "Other things",
-    "text": "Other things\n\nPhonological\n\n/t/ and /d/ before /ɹ/ (as in try, train, dry, and drain) are affricated to [tʃɹ] and [dʒɹ]. In other words, little kid me would spell them as “chry” and “jrain”.\nI raise /æ/ before nasals but not in other environments.\n\n\n\nLexical\n\nI pronounce the &lt;l&gt; in words like psalm, alm, palm, qualm. I also pronounce it in wolf, yolk, and folk. I know I used to insert an [ɫ] in both and local, but I don’t think I do that anymore. I do do it in only though.\nThe second syllable of caterpiller doesn’t have an /ɹ/ underlyingly: /kætəpɪlɚ/\nlair is homophonous with layer and does not rhyme with hair.\nI don’t pronounce the &lt;t&gt; in often.\nThough both my parents grew up north of the on line and therefore have lot in on, I don’t, so on is firmly thought.\nI don’t have the pin-pen merger, but I have /ɪ/ in parentheses and /ɛ/ in symmetry.\nI consistently say settler with three syllables ([sɛ.ɾl̩.ɚ]) and not two (*[sɛʔ.lɚ]), even when saying the name of the game Settlers of Catan.\nI think I say violet with two syllables, meaning it’s [ˈvɑɪ.lɨt] instead of [ˈvɑɪ.ə.lət]. However, alveolar does have a very short schwa, so it’s [æɫˈvi.ə.lɚ], which does not rhyme with velar [ˈvi.lɚ]."
   }
 ]
