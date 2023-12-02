@@ -335,16 +335,19 @@ body {
 /* ############################################### */
 
 
-/*Hyperlinkes are black, not blue */
+/* Hyperlinkes are black, not blue
 :not(div.thumbnail) > p > a[href*="http"] {
-    color:default;
+    color:black;
 }
+*/
 
-/* Hyperlinks have the little circle thing after it.*/
-:not(div.thumbnail) > p > a[href*="http"]:after {
+/* Hyperlinks have the little circle thing after it.
+/* :not(.paper, .abstract, .slides, .poster, .video, .flyer, .link, .audio)
+:not(div.thumbnail) > p > a[href*="http"]:after,  {
     content: 'º';
     color: darkred;
 }
+*/
 
 /* Hyperlinks are not underlined */
 a {
@@ -363,19 +366,15 @@ p a:hover {
 
 
 
-
+/* ############################################### */
+/*                      CV Styles                  */
+/* ############################################### */
 
 
 
 #cv {
 	width: 75%;
 	margin: auto;
-}
-
-#updated {
-	font-size: 14px;
-	font-weight: 300;
-	clear: both;
 }
 
 #cv h2 {
@@ -419,10 +418,14 @@ a.audio:after {
 }
 /* There should be a way to scale the current github.svg image, but I can't figure it out.*/
 a.github:after {
-	content: url('/images/icons/github_small.svg');
+	content: url('/images/icons/github.svg');
 	height: 30px;
 	width: 30px;
 }
+.student {
+  color: green;
+}
+
 
 
 /* ########################################## */

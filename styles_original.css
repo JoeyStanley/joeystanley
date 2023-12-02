@@ -265,6 +265,7 @@ aside ul {
 /*                  Link Styles               */
 /* ########################################## */
 
+/*
 a {
 	line-height: inherit;
 	text-decoration: none;
@@ -276,7 +277,7 @@ a:hover {
 	color: #132A45;
 }
 
-/* In-text links */
+/* In-text links 
 p a, p a:visited {
 	color: black;
 }
@@ -291,7 +292,7 @@ p a:after {
 	color: #132A45;
 }
 
-/* Override styles */
+/* Override styles 
 .nodot:after {
 	content: '';
 	color: #376092
@@ -311,6 +312,7 @@ p a:after {
 .biglink a:hover  {
 	background-color: #132A45;
 }
+*/
 
 
 /* ########################################## */
@@ -480,16 +482,16 @@ sup {
 
 
 /* Add icons to the CV link types */
-a.paper:after {
+a.paper::after {
 	content: url('/images/icons/document.svg');
 }
 a.abstract:after {
 	content: url('/images/icons/document.svg');
 }
-a.slides:after {
+a.slides::after {
 	content: url('/images/icons/presentation.svg');
 }
-a.poster:after {
+a.poster::after {
 	content: url('/images/icons/presentation.svg');
 }
 a.video:after {

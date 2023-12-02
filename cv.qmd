@@ -1,30 +1,30 @@
 ---
 layout: cv
 title: Curriculum Vitae
-date-modified: 5/8/23
+date-modified: last-modified
 format:
   html:
     toc: true
 ---
 
-<p id="updated">Updated May 8, 2023. Download PDF <a href="/downloads/CV.pdf" target="_blank" title="open a pdf of my CV in a new window">here</a>.</p>
-
-<br/>
+:::callout
+Download PDF [here](/downloads/CV.pdf).
+:::
 
 
 ## Education
 
 **Ph.D. Linguistics**, [University of Georgia](http://www.linguistics.uga.edu/), 2020
 
-<p style = "margin-left:3em;">Dissertation: <i>Vowel Dynamics of the Elsewhere Shift: A Sociophonetic Analysis of English in Cowlitz County, Washington</i>
+<p style = "margin-left:3em;">Dissertation: *Vowel Dynamics of the Elsewhere Shift: A Sociophonetic Analysis of English in Cowlitz County, Washington*
 <a href="https://search.proquest.com/docview/2412335574/398995AF274140D8PQ/1?accountid=4488" class="link" target="_blank" title="link to this paper online"></a>
 <a href="http://joeystanley.com/downloads/200417-dissertation-revised.pdf" class="paper" target="_blank"></a></p>
 
 
 
-<p style = "margin-left:3em;">Committee: <a href="https://faculty.franklin.uga.edu/chowe/">L. Chad Howe</a> (chair), <a href="http://faculty.franklin.uga.edu/mrenwick/">Margaret E. L. Renwick</a>, <a href="https://www.english.uga.edu/directory/495/detail">William A. Kretzschmar, Jr.</a></p>
+<p style="margin-left:3em;">Committee: [L. Chad Howe](https://chadhoweuga.github.io) (chair), [Margaret E. L. Renwick](https://linguistics.uga.edu/directory/people/margaret-e-l-renwick/), [William A. Kretzschmar, Jr.](https://www.english.uga.edu/directory/people/william-kretzschmar)</p>
 
-**B.A. Linguistics**, [Brigham Young University](http://linguistics.byu.edu/), 2013
+**B.A. Linguistics**, [Brigham Young University](http://ling.byu.edu/), 2013
 
 <p style = "margin-left:3em;">Minor: Linguistics Computing</p>
 
@@ -40,8 +40,6 @@ Instructional Designer, Brigham Young University. March--May, 2020.
 
 <br/>
 
-
-
 ## Publications
 
 ### Edited Volumes
@@ -55,68 +53,59 @@ Instructional Designer, Brigham Young University. March--May, 2020.
 
 ### Refereed Articles
 
-Margaret E. L. Renwick, **Joseph A. Stanley**, Jon Forrest, & Lelia Glass (in press). "Boomer Peak or Gen X Cliff? from SVS to LBMS in Georgia English." *Language Variation and Change*. https://doi.org/10.1017/S095439452300011X.
-<a href="https://doi.org/10.1017/S095439452300011X" class="link" target="_blank" title="link to this paper online"></a>
+Margaret E. L. Renwick, **Joseph A. Stanley**, Jon Forrest, & Lelia Glass (in press). "Boomer Peak or Gen X Cliff? from SVS to LBMS in Georgia English." *Language Variation and Change*. DOI: [10.1017/S095439452300011X](https://doi.org/10.1017/S095439452300011X).
 <a href="/downloads/230724-LVC_Georgia.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
 <!--Stefano Coretta, Joseph V. Casillas, Simon Roessig, Michael Franke, Ali H. Al-Hoorie, Jalal Al-Tamimi, Najd E. Alotaibi, Mohammed K. AlShakhori, Ruth M. Altmiller, Pablo Arantes, Angeliki Athanasopoulou, Melissa M. Baese-Berk, George Bailey, Cheman Baira A Sangma, Eleonora J. Beier, Gabriela M. Benavides, Nicole Benker, Emelia P. BensonMeyer, Nina R. Benway, Grant M. Berry, Liwen Bing, Christina Bjorndahl, Mariska Bolyanatz, Aaron Braver, Violet A. Brown, Alicia M. Brown, Alejna Brugos, Erin M. Buchanan, Tanna Butlin, Andr\'{e}s Bux\'{o}-Lugo, Coline Caillol, Francesco Cangemi, Christopher Carignan, Sita Carraturo, Tiphaine Caudrelier, Eleanor Chodroff, Michelle Cohn, Johanna Cronenberg, Olivier Crouzet, Erica L. Dagar, Charlotte Dawson, Carissa A. Diantoro, Marie Dokovova, Wood Drake, Fengting Du, Margaux Dubuis, Florent Du\^{e}me, Matthew Durward, Ander Egurtzegi, Mahmoud M. Elsherif, Janina Esser, Emmanuel Ferragne, Fernanda Ferreira, Lauren K. Fink, Sara Finley, Kurtis Foster, Paul Foulkes, Rosa Franzke, Gabriel Frazer-McKee, Robert Fromont, Christina Garc\'{i}a, Jason Geller, Camille L. Grasso, Pia Greca, Martine Grice, Magdalena S. Grose-Hodge, Amelia J. Gully, Caitlin Halfacre, Westerbeek Hans, Ivy Hauser, Jen Hay, Robert Haywood, Sam Hellmuth, Allison I. Hilger, Nicole Holliday, Damar Hoogland, Yaqian Huang, Vincent Hughes, Ane Icardo Isasa, Zlatomira G. Ilchovska, Hae-Sung Jeon, Jacq Jones, M\'{a}gat N. Junges, Stephanie Kaefer, Constantijn Kaland, Matthew C. Kelley, Niamh E. Kelly, Ghada Khattab, Emiel Krahmer, Dorota Krajewska, Andreas Krug, Abhilasha A. Kumar, Anna Lander, Tomas O. Lentz, Wanyin Li, Yanyu Li, Maria Lialiou, Ronaldo M. Lima Jr., Justin J. H. Lo, Julio C\'{e}sar L\'{o}pez Otero, Bradley Mackay, Bethany MacLeod, Mel Mallard, Carol-Ann McConnellogue, George Moroz, Mridhula Murali, Ladislas Nalborczyk, Filip Nenadi\'{c},Jessica Nieder, Du\v{s}an Nikoli\'{c}, Francisco G. S. Nogueira, Heather M. Offerman, Elisa Passoni, Maud P\'{e}lissier, Scott J. Perry, Alexandra M. Pfiffner, Michael Proctor, Ryan Rhodes, Nicole Rodr\'{i}guez, Elizabeth Roepke, Jan P. R\"{o}er, Koolen Ruud, Lucia Sbacco, Rebecca Scarborough, Felix Schaeffler, Erik Schleef, Dominic Schmitz, Alexander Shiryaev, M\'{a}rton S\'{o}skuthy, Malin Spaniol, \me, Alyssa Strickler, Alessandro Tavano, Fabian Tomaschek, Benjamin V. Tucker, Rory Turnbull, Kingsley Ugwuanyi, I\~{n}igo Urrestarazu-Porta, Ruben van de Vijver, Kristin J. Van Engen, Emiel van Miltenburg, Bruce Wang, Natasha Warner, Simon Wehrle, Seth Wiener, Stephen Winters, Sidney G.-J. Wong, Anna Wood, Jane Wottawa, Chenzi Xu, Germ\'{a}n Z\'{a}rate-S\'{a}ndez, Georgia Zellou, Cong Zhang, Jian Zhu, \& Timo B. Roettger.-->
 
-Stefano Coretta, Joseph V. Casillas, [128 other authors], **Joseph A. Stanley**, [23 other authors], & Timo B. Roettger (2023). "Multidimensional Signals and Analytic Flexibility: Estimating Degrees of Freedom in Human-Speech Analyses." *Advances in Methods and Practices in Psychological Sciences* 6(3). https://doi.org/10.1177/25152459231162567.
-<a href="https://doi.org/10.1177/25152459231162567" class="link" target="_blank" title="link to this paper online"></a>
+Stefano Coretta, Joseph V. Casillas, [128 other authors], **Joseph A. Stanley**, [23 other authors], & Timo B. Roettger (2023). "Multidimensional Signals and Analytic Flexibility: Estimating Degrees of Freedom in Human-Speech Analyses." *Advances in Methods and Practices in Psychological Sciences* 6(3). DOI: [10.1177/25152459231162567](https://doi.org/10.1177/25152459231162567).
 <a href="/downloads/230724-MSA.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
- **Joseph A. Stanley** & Betsy Sneller. 2023. Sample size matters in calculating Pillai scores. *Journal of the Acoustical Society of America* 153(1). 54--67. https://doi.org/10.1121/10.0016757.
-<a href="https://asa.scitation.org/doi/pdf/10.1121/10.0016757" class="link" target="_blank" title="link to this paper online"></a>
+ **Joseph A. Stanley** & Betsy Sneller. 2023. Sample size matters in calculating Pillai scores. *Journal of the Acoustical Society of America* 153(1). 54--67. DOI: [10.1121/10.0016757](https://asa.scitation.org/doi/pdf/10.1121/10.0016757).
 <a href="/downloads/221202-Pillai-preprint.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-**Joseph A. Stanley** (2022). "Interpreting the Order of Operations in Sociophonetic Analysis." *Linguistics Vanguard* 8(1). 279--289. [https://doi.org/10.1515/lingvan-2022-0065](https://doi.org/10.1515/lingvan-2022-0065).
-<a href="https://doi.org/10.1515/lingvan-2022-0065" class="link" target="_blank" title="link to this paper online"></a>
+**Joseph A. Stanley** (2022). "Interpreting the Order of Operations in Sociophonetic Analysis." *Linguistics Vanguard* 8(1). 279--289. DOI [10.1515/lingvan-2022-0065](https://doi.org/10.1515/lingvan-2022-0065).
 <a href="/downloads/221011-OoOII-preprint.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-**Joseph A. Stanley** (2022). "Regional patterns in prevelar raising." *American Speech*. 97(3): 374--411. 97(3): 374--411. [http://doi.org/10.1215/00031283-9308384](http://doi.org/10.1215/00031283-9308384).
-<a href="http://doi.org/10.1215/00031283-9308384" class="link" target="_blank" title="link to this paper online"></a>
+**Joseph A. Stanley** (2022). "Regional patterns in prevelar raising." *American Speech*. 97(3): 374--411. 97(3): 374--411. DOI: [10.1215/00031283-9308384](http://doi.org/10.1215/00031283-9308384).
 <a href="/downloads/210409-regional_prevelar.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
 **Joseph A. Stanley** (2022). "A comparison of turn-of-the-century and turn-of-the-millennium speech in Georgia." *Proceedings of the 6th Annual Linguistics Conference at UGA.* Linguistics Society at UGA, Athens, GA. 
 <a href="https://linguistics.uga.edu/cp2019-stanley" class="link" target="_blank" title="link to this paper online"></a>
 <a href="/downloads/220119-lcuga6_proc.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-**Joseph A. Stanley**, Margaret E. L. Renwick, Katie Ireland Kuiper, & Rachel Miller Olsen (2021). "Back vowel dynamics and distinctions in Southern American English." *Journal of English Linguistics* 49(4): 389--418. [https://doi.org/10.1177/00754242211043163](https://doi.org/10.1177/00754242211043163). 
-<a href="https://doi.org/10.1177/00754242211043163" class="link" target="_blank" title="link to JEngL online"></a>
+**Joseph A. Stanley**, Margaret E. L. Renwick, Katie Ireland Kuiper, & Rachel Miller Olsen (2021). "Back vowel dynamics and distinctions in Southern American English." *Journal of English Linguistics* 49(4): 389--418. DOI: [10.1177/00754242211043163](https://doi.org/10.1177/00754242211043163). 
 
-Margaret E. L. Renwick & **Joseph A. Stanley** (2020). "Modeling dynamic trajectories of tense vs. lax vowels in the American South." *Journal of the Acoustical Society of America* 147(1): 579--595. [http://doi.org/10.1121/10.0000549]("https://asa.scitation.org/doi/10.1121/10.0000549). 
-<a href="https://asa.scitation.org/doi/10.1121/10.0000549" class="link" target="_blank" title="link to JASA online"></a>
+Margaret E. L. Renwick & **Joseph A. Stanley** (2020). "Modeling dynamic trajectories of tense vs. lax vowels in the American South." *Journal of the Acoustical Society of America* 147(1): 579--595. DOI: [10.1121/10.0000549](https://asa.scitation.org/doi/10.1121/10.0000549). 
 <!--Published online January 31, 2020-->
 
 **Joseph A. Stanley** (2019). "Phonological Patterns in <sc>beg</sc>-Raising." *UGA Working Papers in Linguistics*, 4, 69--91.
 <a href="https://ling.franklin.uga.edu/wp2019-Stanley" class="link" target="_blank" title="link to this paper online"></a>
-<a href="https://athenaeum.libs.uga.edu/bitstream/handle/10724/38626/WP2019_Stanley.pdf?sequence=2&isAllowed=y" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-
-<a href="http://linguistics.byu.edu/directory/jbn34/" title="Janis Nuckolls">Nuckolls, Janis</a>, **Joseph Stanley**, Elizabeth Nielson, & Roseanna Hopper (2016). "The Systematic Stretching and Contracting of Ideophonic Phonology in Pastaza Quichua". *International Journal of American Linguistics*, 82(1). 95--116. 
-<a href="http://dx.doi.org/10.1086/684425" class="link" target="_blank" title="link to IJAL online"></a>
+[Janis B. Nuckolls](https://hum.byu.edu/directory/janis-nuckolls), **Joseph A. Stanley**, Elizabeth Nielson, & Roseanna Hopper (2016). "The Systematic Stretching and Contracting of Ideophonic Phonology in Pastaza Quichua". *International Journal of American Linguistics*, 82(1). 95--116. DOI: [10.1086/684425](http://dx.doi.org/10.1086/684425)
 <a href="/downloads/160101-IJAL82.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
 
 ### Book Chapters 
 
-Dominic Watt, Margaret E. L. Renwick, & **Joseph A. Stanley** (forthcoming). "Regional dialects." In Christopher Strelluf (ed.) *The Routledge Handbook of Sociophonetics*. 
+Dominic Watt, Margaret E. L. Renwick, & **Joseph A. Stanley** (2023). "Sociophonetics and dialectology." In Christopher Strelluf (ed.) *The Routledge Handbook of Sociophonetics*. Routledge, London. 
 <a href="https://www.routledge.com/The-Routledge-Handbook-of-Sociophonetics/Strelluf/p/book/9780367472795" class="link" target="_blank" title="link to this book online"></a>
 
-**Joseph A. Stanley** (2020). "The Absence of a Religiolect among Latter-day Saints in Southwest Washington." In Valerie Fridland, Alicia Wassink, Lauren Hall-Lew, & Tyler Kendall (eds.) *Speech in the Western States Volume III: Understudied Dialects.* (Publication of the American Dialect Society 105), 95--122. Durham, NC: Duke University Press. https://doi.org/10.1215/00031283-8820642. 
-<a href="https://doi.org/10.1215/00031283-8820642" class="link" target="_blank" title="link to PADS online"></a>
+**Joseph A. Stanley** (2020). "The Absence of a Religiolect among Latter-day Saints in Southwest Washington." In Valerie Fridland, Alicia Wassink, Lauren Hall-Lew, & Tyler Kendall (eds.) *Speech in the Western States Volume III: Understudied Dialects.* (Publication of the American Dialect Society 105), 95--122. Durham, NC: Duke University Press. DOI: [10.1215/00031283-8820642](https://doi.org/10.1215/00031283-8820642). 
 <!-- Published online around December 4, 2020-->
 
 
 ### Other Publications
 
-(* indicates student collaborator)
+:::callout-note
+Student collaborators highlighted in <span class="student">green</span>.
+:::
 
-Johnson, Heather J.\*, Wendy Baker-Smemoe, **Joseph A. Stanley**, & Alessandro Rosborough (2023). "Ducks in the Pond: Elementary-School-Age Children's Perceptions of Standard American English, African American English, and Spanish-Accented English on Scales of Status and Solidarity." In Paris Gappmayr & Jackson Kellogg (eds.), *Proceedings of the 47th annual Boston University Conference on Language Development*, 394--407. Somerville, MA: Cascadilla Press.
+<span class="student">Johnson, Heather J.</span>, Wendy Baker-Smemoe, **Joseph A. Stanley**, & Alessandro Rosborough (2023). "Ducks in the Pond: Elementary-School-Age Children's Perceptions of Standard American English, African American English, and Spanish-Accented English on Scales of Status and Solidarity." In Paris Gappmayr & Jackson Kellogg (eds.), *Proceedings of the 47th annual Boston University Conference on Language Development*, 394--407. Somerville, MA: Cascadilla Press.
 <a href="http://www.cascadilla.com/bucld47toc.html" class="link" target="_blank" title="link to this paper online"></a>
+<a href="http://www.lingref.com/bucld/47/BUCLD47-32.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-**Joseph A. Stanley** (2022). "Order of Operations in Sociophonetic Analysis," *University of Pennsylvania Working Papers in Linguistics*: Vol. 28: Iss. 2, Article 17. Available at: https://repository.upenn.edu/pwpl/vol28/iss2/17
-<a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/" class="link" target="_blank" title="link to this paper online"></a>
+**Joseph A. Stanley** (2022). "Order of Operations in Sociophonetic Analysis," *University of Pennsylvania Working Papers in Linguistics*: Vol. 28: Iss. 2, Article 17. Available at: [https://repository.upenn.edu/pwpl/vol28/iss2/17](https://repository.upenn.edu/pwpl/vol28/iss2/17/).
 
 **Joseph A. Stanley** (2022). "Perceptual Dialectology of Utah." *Schwa: Language and Linguistics*: 26. 1--10.
 <a href="https://schwa.byu.edu/browse-issues/winter-2022" class="link" target="_blank" title="link to this paper online"></a>
@@ -126,25 +115,20 @@ Johnson, Heather J.\*, Wendy Baker-Smemoe, **Joseph A. Stanley**, & Alessandro R
 <a href="https://linguistics.uga.edu/cp2018-Stanley" class="link" target="_blank" title="link to this paper online"></a>
 <a href="https://esploro.libs.uga.edu/esploro/outputs/conferencePaper/thr-Flapping-in-American-English-Social-factors/9949315918102959/filesAndLinks?index=0" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-**Joseph A. Stanley** (2018). "Changes in the Timber Industry as a Catastrophic Event: <sc>bag</sc>-Raising in Cowlitz County, Washington" *Penn Working Papers in Linguistics*: Vol. 24: Iss. 2, Article 16. Available at: https://repository.upenn.edu/pwpl/vol24/iss2/16
-<a href="https://repository.upenn.edu/pwpl/vol24/iss2/16/" class="link" target="_blank" title="link to this paper online"></a>
+**Joseph A. Stanley** (2018). "Changes in the Timber Industry as a Catastrophic Event: <sc>bag</sc>-Raising in Cowlitz County, Washington" *Penn Working Papers in Linguistics*: Vol. 24: Iss. 2, Article 16. Available at: [https://repository.upenn.edu/pwpl/vol24/iss2/16](https://repository.upenn.edu/pwpl/vol24/iss2/16/).
 
 **Joseph A. Stanley** & [Kyle Vanderniet](https://clyguy.wixsite.com/profile) (2018). "Consonantal Variation in Utah English." *Proceedings of the 4th Annual Linguistics Conference at UGA*, 50--65. 
 <a href="https://athenaeum.libs.uga.edu/handle/10724/37876" class="link" target="_blank" title="link to this paper online"></a>
-<a href="https://athenaeum.libs.uga.edu/bitstream/handle/10724/37876/stanley-and-vanderniet.pdf?sequence=8&isAllowed=y" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-Margaret E. L. Renwick & **Joseph A. Stanley** (2017). "Static and dynamic approaches to vowel shifting in the Digital Archive of Southern Speech." *Proceedings of Meetings on Acoustics* **30**, 060003; doi: http://dx.doi.org/10.1121/2.0000582.
-<a href="http://asa.scitation.org/doi/pdf/10.1121/2.0000582" class="link" target="_blank" title="link to POMA online"></a>
+Margaret E. L. Renwick & **Joseph A. Stanley** (2017). "Static and dynamic approaches to vowel shifting in the Digital Archive of Southern Speech." *Proceedings of Meetings on Acoustics* **30**, 060003; doi: [10.1121/2.0000582](http://dx.doi.org/10.1121/2.0000582)
 
-Rachel M. Olsen, Michael L. Olsen, **Joseph A. Stanley**, Margaret E. L. Renwick, & William A. Kretzschmar, Jr. (2017). "Methods for transcription and forced alignment of a legacy speech corpus." *Proceedings of Meetings on Acoustics* **30**, 060001; doi: http://dx.doi.org/10.1121/2.0000559.
-<a href="http://asa.scitation.org/doi/abs/10.1121/2.0000559" class="link" target="_blank" title="link to POMA online"></a>
+Rachel M. Olsen, Michael L. Olsen, **Joseph A. Stanley**, Margaret E. L. Renwick, & William A. Kretzschmar, Jr. (2017). "Methods for transcription and forced alignment of a legacy speech corpus." *Proceedings of Meetings on Acoustics* **30**, 060001. doi: [10.1121/2.0000559](http://dx.doi.org/10.1121/2.0000559).
 
 **Stanley, Joseph A.** (2016). "Pacific Northwest English: Historical Overview and Current Directions". *UGA Working Papers in Linguistics*, 3. 
 <a href="http://www.linguistics.uga.edu/pacific-northwest-english-historical-overview-and-current-directions" class="link" target="_blank" title="link to this issue"></a>
 <a href="https://athenaeum.libs.uga.edu/bitstream/handle/10724/38074/WP2016_Stanley.pdf?sequence=1&isAllowed=y" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
-**Stanley, Joseph A.** (2016). "When do Mormons Call Each Other by First Name?" *Penn Working Papers in Linguistics*: Vol. 22: Iss. 1, Article 31. Available at: https://repository.upenn.edu/pwpl/vol22/iss1/31. 
-<a href="http://repository.upenn.edu/pwpl/vol22/iss1/31/" class="link" target="_blank" title="link to repository.upenn.edu/pwpl/"></a>
+**Stanley, Joseph A.** (2016). "When do Mormons Call Each Other by First Name?" *Penn Working Papers in Linguistics*: Vol. 22: Iss. 1, Article 31. Available at: [https://repository.upenn.edu/pwpl/vol22/iss1/31](http://repository.upenn.edu/pwpl/vol22/iss1/31/). 
 <a href="/downloads/160101-PWPL22.pdf" class="paper" target="_blank" title="open a pdf of this paper in a new window"></a>
 
 **Stanley, Joseph A.** (2015). "Merging Phonemes in Real Time". *Proceedings of LSUGA’s Second Interdisciplinary Conference in Linguistics* ([LSUGA2](http://www.linguistics.uga.edu/lcuga-2)), 1. 
@@ -156,24 +140,32 @@ Rachel M. Olsen, Michael L. Olsen, **Joseph A. Stanley**, Margaret E. L. Renwick
 
 ### Oral Presentations
 
-(* indicates student collaborator)
+:::callout-note
+Student collaborators highlighted in <span class="student">green</span>.
+:::
 
-Zoe Eldredge* & **Joseph A. Stanley**. "Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English." New Ways of Analyzing Variation 51. New York City. October 13--15, 2023.
+<span class="student">Zoe Eldredge</span> & **Joseph A. Stanley**. "Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English." Linguistic Society of America Annual Meeting. New York City. January 4, 2023.
 
-Kateryna Kravchenko* & **Joseph A. Stanley**. "An analysis of Ukrainians' language attitudes and ideology: A conflict-catalyzed identity shift."  New Ways of Analyzing Variation 51. New York City. October 13--15, 2023.
+<span class="student">Joshua Stevensen</span> & **Joseph A. Stanley**. "The Missionary Voice: Perceptions of an Emerging Register." Linguistic Society of America Annual Meeting. New York City. January 4, 2023.
 
-Chad Huckvale* & **Joseph A. Stanley**. "Perceptions of 'Southern' Utah English". New Ways of Analyzing Variation 51. New York City. October 13--15, 2023.
+<span class="student">Heather Johnson</span>, Wendy Baker-Smemoe, **Joseph A. Stanley**, & Alessandro Rosborough. "Children's Perceptions of Ethnic Varieties of English." Florida Psycholinguistics Meeting. Gainesville, Florida. October 21, 2023.
 
-Kateryna Kravchenko* & **Joseph A. Stanley**. "Surzhyk: Attitudes and Usage among Ukrainian People." 5th annual Sociolinguistics Symposium. Champaign, Illinois. March 2--3, 2023.
+<span class="student">Zoe Eldredge</span> & **Joseph A. Stanley**. "Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English." New Ways of Analyzing Variation 51. New York City. October 13--15, 2023.
+
+<span class="student">Kateryna Kravchenko</span> & **Joseph A. Stanley**. "An analysis of Ukrainians' language attitudes and ideology: A conflict-catalyzed identity shift." New Ways of Analyzing Variation 51. New York City. October 13--15, 2023.
+
+<span class="student">Chad Huckvale</span> & **Joseph A. Stanley**. "Perceptions of 'Southern' Utah English". New Ways of Analyzing Variation 51. New York City. October 13--15, 2023.
+
+<span class="student">Kateryna Kravchenko</span> & **Joseph A. Stanley**. "Surzhyk: Attitudes and Usage among Ukrainian People." 5th annual Sociolinguistics Symposium. Champaign, Illinois. March 2--3, 2023.
 <a href="/downloads/230302-SoSy_Surzhyk.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-**Joseph A. Stanley** & KaTrina Jackson*. "Is Idaho English really 'the Epitome of Average English'?". The American Dialect Society Annual Meeting. Denver, CO. January 6, 2023. 
+**Joseph A. Stanley** & <span class="student">KaTrina Jackson</span>. "Is Idaho English really 'the Epitome of Average English'?". The American Dialect Society Annual Meeting. Denver, CO. January 6, 2023. 
 <a href="/downloads/230106-ADS_Idaho_notes.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 **Joseph A. Stanley**. "Utahns sound Utahn when they avoid sounding Utahn." The 97th Annual Meeting of the Linguistic Society of America. Denver, CO. January 6. 2023.
 <a href="/downloads/230106-LSA_mountain.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-Heather Johnson, Wendy Baker-Smemoe, **Joseph A. Stanley**, & Alessandro Rosborough. "Ducks in the pond: Elementary-school-age children's perception of Standard American English, African American English, and Spanish-accented English on scales of status and solidarity." The 47th Boston University Conference on Language Development (BUCLD). Boston, MA. November 4, 2022.
+<span class="student">Heather Johnson</span>, Wendy Baker-Smemoe, **Joseph A. Stanley**, & Alessandro Rosborough. "Ducks in the pond: Elementary-school-age children's perception of Standard American English, African American English, and Spanish-accented English on scales of status and solidarity." The 47th Boston University Conference on Language Development (BUCLD). Boston, MA. November 4, 2022.
 
 **Joseph A. Stanley** & Betsy Sneller. "How Sample Size Impacts Pillai Scores – and What Sociophoneticians Should Do About It." New Ways of Analyzing Variation 50. San Jose, CA. October 14, 2022.
 <a href="/downloads/221014-NWAV50_pillai.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
@@ -194,11 +186,11 @@ Jon Forrest, Margaret E. L. Renwick, **Joseph A. Stanley**, & Lelia Glass. "Cons
 <a href="/downloads/220107-LSA-Prelaterals.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 **Joseph A. Stanley**. "Order of Operations in Sociophonetic Data Analysis." New Ways of Analyzing Variation 49. Online. October 19--24, 2021.
-<a ref="https://www.youtube.com/watch?v=8TEip-Fixyw" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
+<a href="https://www.youtube.com/watch?v=8TEip-Fixyw" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
 <a href="/downloads/211019-NWAV49_OoO.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 **Joseph A. Stanley** & Margaret E. L. Renwick. "100 Years of Georgia English." New Ways of Analyzing Variation 49. Online. October 19--24, 2021. 
-<a ref="https://www.youtube.com/watch?v=USF6fspxiGU" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
+<a href="https://www.youtube.com/watch?v=USF6fspxiGU" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
 <a href="/downloads/211019-NWAV49_Georgia.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 **Joseph A. Stanley**. "Methodological considerations in the study of infrequent phonological variables: The case of English /eɡ/ and /ɛɡ/." Word-specific phenomena in the realization of vowel categories: Methodological and theoretical perspectives (LabPhon 17 Satellite Workshop). <s>Vancouver, British Columbia</s>[Online]. September, 2020.
@@ -237,34 +229,34 @@ Rachel M. Olsen, **Joseph A. Stanley**, Michael Olsen, Lisa Lipani, & Margaret E
 <a href="/downloads/171006-LCUGA4-UT_abstract.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a>
 <a href="/downloads/171007-LCUGA4-UT-slides.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-**Joseph A. Stanley**. "The linguistic effects of a changing timber industry: Language change in Cowlitz County, WA." The 4th Annual Linguistics Conference at UGA ([LSUGA4](http://www.lsuga.com/conference/2017)). Athens, GA. October 6–8, 2017.
+**Joseph A. Stanley**. "The linguistic effects of a changing timber industry: Language change in Cowlitz County, WA." The 4th Annual Linguistics Conference at UGA ([LSUGA4](http://www.linguistics.uga.edu/lcuga-4)). Athens, GA. October 6–8, 2017.
 <a href="/downloads/171006-LCUGA4-WA-slides.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-Rachel Olsen, Michael Olsen, Katherine Kuiper, **Joseph A. Stanley**, [Margaret E. L. Renwick](http://faculty.franklin.uga.edu/mrenwick/), & William A. Kretzschmar, Jr. “New Perspectives on Historical Southern Speech.” Panel presented at the 2017 Integrative Research and Ideas Symposium ([IRIS](https://graduatestudents.org/)). Athens, GA. March 20, 2017.
+Rachel Olsen, Michael Olsen, Katherine Kuiper, **Joseph A. Stanley**, [Margaret E. L. Renwick](http://faculty.franklin.uga.edu/mrenwick/), & William A. Kretzschmar, Jr. “New Perspectives on Historical Southern Speech.” Panel presented at the 2017 Integrative Research and Ideas Symposium (IRIS). Athens, GA. March 20, 2017.
 
-Rachel Olsen, Michael Olsen, **Joseph A. Stanley** & [Margaret E. L. Renwick](http://faculty.franklin.uga.edu/mrenwick/). “Transcribing the Digital Archive of Southern Speech: Methods and Preliminary Analysis.” 84th Meeting of the SouthEastern Conference on Linguistics ([SECOL84](http://conf2017.secol.org">)). Charleston, SC. March 8–11, 2017.
+Rachel Olsen, Michael Olsen, **Joseph A. Stanley** & [Margaret E. L. Renwick](http://faculty.franklin.uga.edu/mrenwick/). “Transcribing the Digital Archive of Southern Speech: Methods and Preliminary Analysis.” 84th Meeting of the SouthEastern Conference on Linguistics ([SECOL84](http://conf2017.secol.org)). Charleston, SC. March 8–11, 2017.
 <a href="/downloads/170310-SECOL84b-slides.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-William A. Kretzschmar, **Joseph Stanley**, & Katherine Kuiper. “Automated Large-Scale Phonetic Analysis: DASS.” 84th Meeting of the SouthEastern Conference on Linguistics ([SECOL84](http://conf2017.secol.org">)). Charleston, SC. March 8–11, 2017.
+William A. Kretzschmar, **Joseph Stanley**, & Katherine Kuiper. “Automated Large-Scale Phonetic Analysis: DASS.” 84th Meeting of the SouthEastern Conference on Linguistics ([SECOL84](http://conf2017.secol.org)). Charleston, SC. March 8–11, 2017.
 <a href="/downloads/170310-SECOL84a-slides.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-**Joseph A. Stanley**. “V[ɛ]ry v[e]ried vowel mergers in the Pacific Northwest.” Diversity and Variation in Language ([DiVar 1](http://linguistics.emory.edu/home/conferences/divar1/index.html)). Atlanta, GA. February 10–11, 2017.
+**Joseph A. Stanley**. “V[ɛ]ry v[e]ried vowel mergers in the Pacific Northwest.” Diversity and Variation in Language (DiVar 1). Atlanta, GA. February 10–11, 2017.
 <a href="/downloads/170211-DiVar1-slides.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-**Joseph A. Stanley**. “The perception and production of two vowel mergers in Cowlitz County, Washington.” The American Dialect Society ([ADS](http://www.americandialect.org)) Annual Meeting. Austin, TX. January 5–8, 2017.
+**Joseph A. Stanley**. “The perception and production of two vowel mergers in Cowlitz County, Washington.” The American Dialect Society Annual Meeting. Austin, TX. January 5–8, 2017.
 <a href="/downloads/160813-ADS2017.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a>
 <a href="/downloads/170105-ADS-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-**Joseph A. Stanley**. "An EWP model of Quechua agreement: Further evidence against DM". The Third Annual Linguistics Conference at the University of Georgia ([LCUGA3](http://www.lsuga.com/conference/2016)). Athens, GA. October 7–9, 2016. 
+**Joseph A. Stanley**. "An EWP model of Quechua agreement: Further evidence against DM". The Third Annual Linguistics Conference at the University of Georgia ([LCUGA3](https://www.linguistics.uga.edu/lcuga-3)). Athens, GA. October 7–9, 2016.
 <a href="/downloads/161008-LCUGA3-abstract.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a>
 <a href="/downloads/161008-LCUGA3-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-**Joseph A. Stanley**. "Separate Phonemes <span style="white-space: nowrap;">/ɔr/</span> Merging? The [Cord-Card Merger](https://en.wikipedia.org/wiki/English-language_vowel_changes_before_historic_/r/#Card.E2.80.93cord_merger) in Real-Time". The Second Interdisciplinary Linguistics Conference at UGA ([LCUGA2](http://www.lsuga.com/conference)). Athens, GA. October 9–11, 2015. 
+**Joseph A. Stanley**. "Separate Phonemes /ɔr/ Merging? The Cord-Card Merger in Real-Time". The Second Interdisciplinary Linguistics Conference at UGA ([LCUGA2](https://www.linguistics.uga.edu/lcuga-2)). Athens, GA. October 9–11, 2015. 
 <a href="/downloads/151009-LSUGA2-abstract.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a>
 <a href="/downloads/151009-LSUGA2-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 <a href="https://www.youtube.com/watch?v=v3BvpMyxPv8" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
 
-**Joseph A. Stanley**. "Brother Bell’s Audience Types: Forms of Address among Latter-day Saint Young Adults". 82nd Meeting of the Southeastern Conference on Linguistics ([SECOL82](http://linguistics.chass.ncsu.edu)). Raleigh, NC. April 9–11, 2015. 
+**Joseph A. Stanley**. "Brother Bell's Audience Types: Forms of Address among Latter-day Saint Young Adults". 82nd Meeting of the Southeastern Conference on Linguistics (SECOL82). Raleigh, NC. April 9–11, 2015. 
 <a href="/downloads/150410-SECOL82-abstract.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a>
 <a href="/downloads/150410-SECOL82-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
@@ -272,18 +264,20 @@ William A. Kretzschmar, **Joseph Stanley**, & Katherine Kuiper. “Automated Lar
 <a href="/downloads/150321-PLC39-abstract.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a>
 <a href="/downloads/150321-PLC39-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-[Janis Nuckolls](https://humanities.byu.edu/janis-nuckolls/), **Joseph Stanley**, Elizabeth Nielsen, and Roseanna Hopper. "The systematic stretching and adjusting of ideophonic phonology in Pastaza Quichua". Annual Meeting of the Society for the Study of Indigenous Languages of America ([SSILA 2013](http://www.ssila.org/members/join-or-renew/)). Boston, MA. January 3–6, 2013.
+[Janis Nuckolls](https://humanities.byu.edu/janis-nuckolls/), **Joseph Stanley**, Elizabeth Nielsen, and Roseanna Hopper. "The systematic stretching and adjusting of ideophonic phonology in Pastaza Quichua". Annual Meeting of the Society for the Study of Indigenous Languages of America (SSILA 2013). Boston, MA. January 3–6, 2013.
 <a href="/downloads/130103-SSILA-abstract.pdf" class="abstract" target="_blank" title="open a pdf of the abstract to this presentation in a new window"></a> 
 
 ### Poster Presentations
 
-(* indicates student collaborator)
+:::callout-note
+Student collaborators highlighted in <span class="student">green</span>.
+:::
 
-Ammon Hunt\*, Mark Tanner, **Joseph A. Stanley**, and Jeff Parker. "Using Corpus Data to Empirically Investigate Native English Speakers' Pausing Patterns." PSLLT2023 (Pronunciation in Second Language Learning and Teaching). West Lafayette, IN. September 6--8, 2023.
+<span class="student">Ammon Hunt</span>, Mark Tanner, **Joseph A. Stanley**, and Jeff Parker. "Using Corpus Data to Empirically Investigate Native English Speakers' Pausing Patterns." Poster Presentation at PSLLT2023 (Pronunciation in Second Language Learning and Teaching). West Lafayette, IN. September 6--8, 2023.
 
 Margaret E. L. Renwick, Jon Forrest, Lelia Glass, & **Joseph A. Stanley**. "Vowel trajectories of African Americans in Georgia, USA." Poster presentation at the 183rd Meeting of the Acoustical Society of America (ASA). Nashville, TN. December 9, 2022. 
 
-**Joseph A. Stanley**, Jessica Shepherd\*, & Auna Nygaard\*. "Homogeneity and Heterogeneity in Western American English." Poster presentation at the American Dialect Society Annual Meeting. Washington, D.C. January 7, 2022.
+**Joseph A. Stanley**, <span class="student">Jessica Shepherd</span>, & <span class="student">Auna Nygaard</span>. "Homogeneity and Heterogeneity in Western American English." Poster presentation at the American Dialect Society Annual Meeting. Washington, D.C. January 7, 2022.
 <a href="/downloads/220107-ADS-MTurk.pdf" class="poster" target="_blank" title="download this poster as a PDF"></a>
 
 **Joseph A. Stanley** & [Betsy Sneller](https://betsysneller.github.io). "Sample size matters when calculating Pillai scores." Poster presentation at the 181st Meeting of the Acoustical Society of America (ASA). Seattle, WA. November 29, 2021.
@@ -301,7 +295,7 @@ William A. Kretzschmar, Jr., Margaret E. L. Renwick, **Joseph A. Stanley**, Kati
 **Joseph A. Stanley**. "The differences between and within <span style="font-variant: small-caps">beg</span> and <span style="font-variant: small-caps">bag</span>: Phonological, morphological, and lexical effects in prevelar raising." Poster presentation New Ways of Analyzing Variation 47. New York City, New York. October 18–21, 2018.
 <a href="/downloads/181019-nwav47.pdf" class="poster" target="_blank" title="download this poster as a PDF"></a>
 
-Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in the American South." Poster presentation at the 174th Meeting of the Acoustical Society of America (ASA). New Orleans, LA. December 4–8, 2017.
+<span class="student">Shawn Foster</span>, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in the American South." Poster presentation at the 174th Meeting of the Acoustical Society of America (ASA). New Orleans, LA. December 4–8, 2017.
 <a href="http://asa.scitation.org/doi/abs/10.1121/1.5014282" class="link" title="link to this presentation"></a>
 
 **Joseph A. Stanley**. "Changes in the Timber Industry as a Catalyst for Linguistic Change." Poster presentation at New Ways of Analyzing Variation 46. Madison, WI. November 2–5, 2017.
@@ -333,61 +327,58 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
     <li>Advanced Topics in LaTeX February 14.
         <a href="https://github.com/krummja/2020_LaTeX_Workshops" class="github" target="_blank" title="link to github"></a></li>
 </ul>
-<br/>
 
 *2019 Praat Scripting Workshop Series with Lisa Lipani. University of Georgia DigiLab. Athens, GA.*
 <ul style = "margin-left: 2em">
     <li>Praat Basics: Introduction to the software. September 11.
-        <a href="/downloads/190911-intro_to_Praat" class="link" target ="_blank"  title="view the handout online"></a></li>
-    <li>Praat Scripting Basics: Loops, I/O, and TextGrids. September 18.</li>
-    <li>Automatic Formant Extraction (and other acoustic measures) in Praat. October 2.</li>
+        <a href="/downloads/190911-intro_to_Praat.html" class="link" target ="_blank"  title="view the handout online"></a></li>
+    <li>Praat Scripting Basics: Loops, I/O, and TextGrids. September 18.
+        <a href="/downloads/190918-praat_scripting.html" class="link" target ="_blank"  title="view the handout online"></a></li>
+    <li>Automatic Formant Extraction (and other acoustic measures) in Praat. October 2.
+        <a href="/downloads/191002-formant_extraction.html" class="link" target ="_blank"  title="view the handout online"></a></li>
 </ul>
-<br/>
 
 *2019 Data Visualization Workshop Series. University of Georgia DigiLab. Athens, GA.*
 <ul style = "margin-left: 2em">
     <li>An intro to data visualization in R using ggplot2. August 21.
-        <a href="/downloads/190821-intro_to_ggplot2" class="link" target ="_blank"  title="view the handout online"></a></li>
+        <a href="/downloads/190821-intro_to_ggplot2.html" class="link" target ="_blank"  title="view the handout online"></a></li>
     <li>Customizing your plots to make that perfect visual. August 28.
-        <a href="/downloads/190828-ggplot2_intermediate" class="link" target ="_blank"  title="view the handout online"></a></li>
+        <a href="/downloads/190828-ggplot2_intermediate.html" class="link" target ="_blank"  title="view the handout online"></a></li>
     <li>Generalize your aesthetics using custom themes in ggplot2. September 4.
-        <a href="/downloads/190904-ggplot2_custom_themes" class="link" target ="_blank"  title="view the handout online"></a></li>
+        <a href="/downloads/190904-ggplot2_custom_themes.html" class="link" target ="_blank"  title="view the handout online"></a></li>
     <li>Fidelity, integrity, and sophistication: Edward Tufte’s principles of data visualization. October 16.</li>
-    <li>Send the right message: The dos and don’ts of color in data visualization. October 23. (with <a href = "https://twitter.com/mjduever">Meagen Duever</a>)</li>
+    <li>Send the right message: The dos and don’ts of color in data visualization. October 23. (with Meagen Duever)
+    <a href="/downloads/191023-color.pdf" class="slides" target ="_blank"  title="view the handout online"></a></li>
 </ul>
-<br/>
-
 
 *2018 R Workshop Series. University of Georgia DigiLab. Athens, GA.*
 <ul style = "margin-left: 2em">
     <li>Intro to R (Part 1). January 19.
-        <a href="/downloads/180119-intro-to-r-part1" class="link" target ="_blank"  title="view the handout online"></a> 
+        <a href="/downloads/180119-intro-to-r-part1.html" class="link" target ="_blank"  title="view the handout online"></a> 
         <a href="/downloads/180119-intro-to-r-part1.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>Intro to R (Part 2). January 26.
-        <a href="/downloads/180126-intro-to-r-part2" class="link" target ="_blank"  title="view the handout online"></a> 
+        <a href="/downloads/180126-intro-to-r-part2.html" class="link" target ="_blank"  title="view the handout online"></a> 
         <a href="/downloads/180126-intro-to-r-part2.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>Building Interactive Webpages in R: Introduction to Shiny (Part 1). February 2.
-        <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a> </li>
-            <li>Building Interactive Webpages in R: Introduction to Shiny (Part 2). February 9.
+        <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a></li>
+    <li>Building Interactive Webpages in R: Introduction to Shiny (Part 2). February 9.
         <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a> </li>
     <li>Visualizations I: Introduction to ggplot2. February 16.
-        <a href="/downloads/180216-ggplot2-part1" class="link" target ="_blank"  title="view the handout online"></a> 
+        <a href="/downloads/180216-ggplot2-part1.html" class="link" target ="_blank"  title="view the handout online"></a>
         <a href="/downloads/180216-ggplot2-part1.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>Visualizations II: Customizing plots in ggplot2. February 23.
-        <a href="/downloads/180223-ggplot2-part2" class="link" target ="_blank"  title="view the handout online"></a> 
+        <a href="/downloads/180223-ggplot2-part2.html" class="link" target ="_blank"  title="view the handout online"></a> 
         <a href="/downloads/180223-ggplot2-part2.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>Clean and tidy data: Tidyverse Part 1. March 2.
-        <a href="/downloads/180302-tidyverse_part1" class="link" target ="_blank"  title="view the handout online"></a> 
+        <a href="/downloads/180302-tidyverse_part1.html" class="link" target ="_blank"  title="view the handout online"></a> 
         <a href="/downloads/180302-tidyverse_part1.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>Transform, reshape, and modify your data: Tidyverse Part 2. March 23.
-        <a href="/downloads/180323-tidyverse_II" class="link" target ="_blank" title="view the handout online"></a> 
+        <a href="/downloads/180323-tidyverse_II.html" class="link" target ="_blank" title="view the handout online"></a> 
         <a href="/downloads/180323-tidyverse_II.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>Communicate to your audience with R Markdown. March 9.
-        <a href="/downloads/180309-rmarkdown" class="link" target ="_blank"  title="view the handout online"></a> 
+        <a href="/downloads/180309-rmarkdown.html" class="link" target ="_blank"  title="view the handout online"></a> 
         <a href="/downloads/180309-rmarkdown.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
 </ul>
-<br/>
-
 
 *2017 R Workshop Series. University of Georgia DigiLab. Athens, GA.*
 <ul style = "margin-left: 2em">
@@ -398,10 +389,9 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
         <a href="/downloads/171012-ggplot2_handout.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a>
         <a href="/downloads/170913-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a></li>
     <li>An Introduction to the Tidyverse. November 10.
-        <a href="/downloads/171110-tidyverse_handout" class="paper" target ="_blank" title="download the handout for this presentation"></a> </li>
+        <a href="/downloads/171110-tidyverse.html" class="paper" target ="_blank" title="download the handout for this presentation"></a>
+        <a href="/downloads/171110-tidyverse_handout.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
 </ul>
-<br/>
-
 
 *Professionalization Workshops*
 <ul style = "margin-left: 2em">
@@ -412,7 +402,7 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
         <a href="/downloads/200303-ling_club_talk.pdf" class="slides" target ="_blank" title="download the slides for this presentation"></a> </li>
     <li>Brand Yourself: Boosting Your Online Presence (for linguistics grad students). Workshop given by invitation by the University of Georgia Department of Linguistics. Athens, GA. March 3, 2020.
         <a href="/downloads/200303-brand-yourself_linguistics.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a> </li>
-    <li>Brand Yourself: Boosting Your Online Presence. Workshop given at the University of Georgia as a part of the <a href="http://guides.libs.uga.edu/graduate_research_workshops">Graduate Research Workshop Series</a> sponsored by UGA Libraries. Athens, GA. September 20 and 26, 2019.
+    <li>Brand Yourself: Boosting Your Online Presence. Workshop given at the University of Georgia as a part of the Graduate Research Workshop Series sponsored by UGA Libraries. Athens, GA. September 20 and 26, 2019.
         <a href="/downloads/190920-brand-yourself.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a> </li>
     <li>How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the Linguistics Society at UGA and the Linguistics Club. Athens, GA. September 11, 2019.
         <a href="/downloads/190911-poster_workshop.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a> </li>
@@ -423,9 +413,9 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
         <a href="/downloads/170413-brand-yourself.pdf" class="slides" title="download the powerpoint slides for this presentation"></a> </li>
     <li>Brand Yourself: A professionalization workshop for grad students. Workshop given at the University of Georgia DigiLab. Athens, GA. November 11, 2016. (with <a href="http://emilymcginn.com">Emily McGinn</a>)
         <a href="https://digi.uga.edu/news/brandyourself/" class="link" target="_blank" title="link to digi.uga.edu"></a>
-        <a href="/blog/brand-yourself-1/" class="link" target="_blank" title="link to digi.uga.edu"></a>
+        <a href="/blog/brand-yourself" class="link" target="_blank" title="link to digi.uga.edu"></a>
         <a href="/downloads/161111-DigiLab-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a>
-        <a href="/downloads/161111-DigiLab-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a> </li>
+        <a href="/downloads/161111-DigiLab-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a></li>
 </ul>
 <br/>
 
@@ -445,6 +435,7 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
 ### Invited Presentations 
 
 "Enriching our understanding of language change with vowel formant trajectories." Macquarie University Centre for Language Sciences (CLaS) Colloquium series. Sydney, Australia (delivered remotely). August 31, 2023.
+<a href="/downloads/230831-Macquarie.pdf" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 "Modeling Change in American English Accents." BYU Statistics Department Seminar. Brigham Young University, Provo, Utah. September 8, 2022.
 
@@ -454,7 +445,7 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
 
 "Explaining Office Hours." Panel member in a seminar called "Make a Good First Impression with Your Syllabus." Center for Teaching and Learning, Brigham Young University, Provo, Utah. February 18, 2022. 
 <a href="/downloads/220218-office_hours.pdf" class="slides" title="download the powerpoint slides for this presentation"></a> 
-<a ref="https://teachanywhere.byu.edu/training-workshops/make-a-good-first-impression-with-your-syllabus" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
+<a href="https://teachanywhere.byu.edu/training-workshops/make-a-good-first-impression-with-your-syllabus" class="video" target="_blank" title="open a youtube video of this presentation in a new window"></a>
 
 "What can vowel formant trajectories tell us about language change?" Sociolinguistics Group, University of Washington, Seattle, Washington. November 30, 2021.
 <a href="/downloads/211130-UW.pdf" class="slides" title="download the powerpoint slides for this presentation"></a> 
@@ -466,7 +457,7 @@ Shawn Foster, **Joseph A. Stanley**, & Margaret E. L. Renwick. "Vowel Mergers in
 
 Margaret E. L. Renwick & **Joseph A. Stanley**. "100 years of speech in Georgia." Workshop on Language, Technology, and Society series. Georgia Institute of Technology, Atlanta, GA (delivered remotely). November 11, 2020.
 
-"Data Visualization and Basic Statistical Modeling in R." Invited workshop for an NSF-funded "Research Experience for Undergraduates" program, helping bioanthropology students analyze osteological data from skeletons at the 7–5th c. BCE Greek colony of Himera. June 21 and 25, 2018. <a href="/pages/bones_workshop" class="link" title="view the materials for this workshop here"></a> 
+"Data Visualization and Basic Statistical Modeling in R." Invited workshop for an NSF-funded "Research Experience for Undergraduates" program, helping bioanthropology students analyze osteological data from skeletons at the 7–5th c. BCE Greek colony of Himera. June 21 and 25, 2018. <a href="/pages/bones_workshop.qmd" class="link" title="view the materials for this workshop here"></a> 
 
 "Build a better project: Starting a DH project from primary sources." Presented at the First [DigiLab](http://digi.uga.edu/digilab/) Colloquium. Athens, GA. October 6, 2016. 
 <a href="https://digi.uga.edu/news/build-a-better-project-digi-colloquium-review/" class="link" target="_blank" title="link to digi.uga.edu"></a>
@@ -474,6 +465,8 @@ Margaret E. L. Renwick & **Joseph A. Stanley**. "100 years of speech in Georgia.
 <a href="/downloads/161006-DigiLab-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a> 
 
 ### Guest Lectures
+
+"Cool sociophonetics stuff I did with the statistics and coding as a linguistics major." Guest lecturer in LING 198: Career Explorations in Linguistics. Brigham Young University, Provo, UT. October 26, 2023.
 
 "Why I'm glad I learned statistics and coding as a linguistics major." Guest lecturer in LING 198: Career Explorations in Linguistics. Brigham Young University, Provo, UT. April 3, 2023.
 
@@ -527,7 +520,7 @@ Professor's Story night. Linguistics Student Society. Provo, UT. November 19, 20
 “An EWP model of Quechua agreement: Further evidence against DM.” Presented at the Linguistic Society of the University of Georgia (LSUGA) Tiny Talks. Athens, GA. September 15, 2016. 
 <a href="/downloads/160915-TinyTalks-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
-"Southeastern Washington English: What We Know So Far". The Linguistic Society of the University of Georgia ([LSUGA](http://www.lsuga.com)) Tiny Talks. Athens, GA. February 18, 2016. 
+"Southeastern Washington English: What We Know So Far". The Linguistic Society of the University of Georgia (LSUGA) Talks. Athens, GA. February 18, 2016. 
 <a href="/downloads/160218-TinyTalks-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 "When do Mormons Call Each Other by First Name?" First Qualifying Paper defense. Program in Linguistics, Univeristy of Georgia, Athens, GA. January 29, 2016.
@@ -535,7 +528,7 @@ Professor's Story night. Linguistics Student Society. Provo, UT. November 19, 20
 "Brother Bell’s Audience Design: Forms of Address among Latter-day Saint Young Adults". University of Georgia Linguistics Colloquium. Athens, GA. February 27, 2015. 
 <a href="/downloads/150227-Colloquium-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a> 
 
-"The systematic stretching and adjusting of ideophonic phonology in Pastaza Quichua" with [Janis Nuckolls](http://linguistics.byu.edu/directory/jbn34/), Elizabeth Nielsen, and Roseanna Hopper. Presentation at the Brigham Young University Linguistics Department Brown Bag Meeting. Provo, UT. December 6, 2012.
+"The systematic stretching and adjusting of ideophonic phonology in Pastaza Quichua" with [Janis Nuckolls](https://hum.byu.edu/directory/janis-nuckolls), Elizabeth Nielsen, and Roseanna Hopper. Presentation at the Brigham Young University Linguistics Department Brown Bag Meeting. Provo, UT. December 6, 2012.
 
 <br/>
 
@@ -559,12 +552,12 @@ barktools: Functions to help when working with Barks. R package version 0.2.0. [
 
 futurevisions: Color Palettes based on Visions of the Future Poster Series. R package version 0.1.1. [http://github.com/JoeyStanley/futurevisions](http://github.com/JoeyStanley/futurevisions)
 
-joeyr: Functions for Vowel Data. R package version 0.3.5. [http://github.com/JoeyStanley/joeyr](http://github.com/JoeyStanley/joeyr)
+joeyr: Functions for Vowel Data. R package version 0.3.5. [https://joeystanley.github.io/joeyr/](https://joeystanley.github.io/joeyr/)
 
 
 ### Media
 
-Katie Cowart. ``Classic Georgia accent fading fast.'' *UGA Today*. September 7, 2023. Based on [Renwick et al. (2023)](https://doi.org/10.1017/S095439452300011X).
+Katie Cowart. "Classic Georgia accent fading fast." *UGA Today*. September 7, 2023. Based on [Renwick et al. (2023)](https://doi.org/10.1017/S095439452300011X).
 <a href="https://news.uga.edu/classic-georgia-accent-fading-fast/" class="link" title="link to this report"></a> 
 
 Justin Higginbottom. *KZMU*, based in Moab, Utah. June 28, 2022. A 3.5-minute radio clip about my research on Utah English and "Mormonese."
@@ -594,11 +587,11 @@ Guest host on *Faith Promoting Rumors* podcast. “Brother Joseph,” April 10, 
 
 African American English (LING 495R). Spring 2023.
 
-English Phonetics & Phonology (ELANG 327). Winter 2022, Winter 2023.
+English Phonetics & Phonology (ELING 327). Winter 2022, Winter 2023.
 
 Intro to Sociolinguistics (LING 452). Winter 2021 (×2).
 
-Introduction to Varieties of English (ELANG 468). Summer 2020 (focus on the British Isles), Fall 2020, Fall 2021.
+Introduction to Varieties of English (ELING 468). Summer 2020 (focus on the British Isles), Fall 2020, Fall 2021.
 
 Linguistic Data Analysis (LING 580R). Fall 2022 (with Earl Brown).
 
@@ -634,19 +627,23 @@ Basic Humanities Computing Skills (LINGC 200). Teaching Assistant for Monte Shel
 
 Kateryna Kravchenko (MA, Linguistics, *current*).
 
-Chad Huckvale (MA, Linguistics, 2023). Thesis title: *Utah English: A Perceptual Dialectology Study*
+Chad Huckvale (MA, Linguistics, 2023). Thesis title: *Utah English: A Perceptual Dialectology Study*.
+<a href="https://scholarsarchive.byu.edu/etd/10089/" class="link" target="_blank" title="link to this thesis online"></a>
 
 ### MA Thesis Committee Member
 
 Max Jensen (MA, Linguistics, *current*)
 
-Rebecca Brenkman (MA, Linguistics, 2023): *Afrikaans Taboo Words: Offensiveness Ranking and Reflections of Usage*
+Rebecca Brenkman (MA, Linguistics, 2023): *Afrikaans Taboo Words: Offensiveness Ranking and Reflections of Usage*.
 
-Ammon Hunt (MA, TESOL, 2023). Thesis title: *Pausing Patterns in American English*
+Ammon Hunt (MA, TESOL, 2023). Thesis title: *Pausing Patterns in American English*.
 
-Ying Suet Michelle Lung (MA, TESOL, 2022). Thesis title: *The Impact of Rubric Training on Students' Self-Efficacy and Self-Regulated Learning*
+Ying Suet Michelle Lung (MA, TESOL, 2022). Thesis title: *The Impact of Rubric Training on Students' Self-Efficacy and Self-Regulated Learning*.
+<a href="https://scholarsarchive.byu.edu/etd/10164/" class="link" target="_blank" title="link to this thesis online"></a>
 
-Heather Johnson (MA, Linguistics, 2022). Thesis title: *Ducks in the pond: Elementary-school-age children’s perceptions of Standard American English, African American English, and Spanish-accented English on scales of status and solidarity*
+Heather Johnson (MA, Linguistics, 2022). Thesis title: *Ducks in the pond: Elementary-school-age children's perceptions of Standard American English, African American English, and Spanish-accented English on scales of status and solidarity*.
+<a href="https://scholarsarchive.byu.edu/etd/9520/" class="link" target="_blank" title="link to this thesis online"></a>
+
 
 ### Undergraduate Honors Thesis Chair
 
@@ -676,7 +673,7 @@ BYU College of Humanities Research Funding ($3,500). "The Low-Back-Merger Shift 
 
 Summer Doctoral Research Fellowship ($3,500), awarded by the University of Georgia Graduate School. Project title: A New Method for Extracting Acoustic Measurements from Speech Audio. May–June, 2018
 
-American Dialect Society student travel grant. ADS. Salt Lake City, UT. January 2018.
+American Dialect Society student travel grant ($500). ADS. Salt Lake City, UT. January 2018.
 
 Graduate Research Award ($1000), awarded by the University of Georgia Willson Center for Humanities and Arts. Project title: “Intra-Family Language Variation in Utah County, Utah.” October 12, 2017.
 
@@ -684,17 +681,15 @@ Innovative and Interdisciplinary Research Grant ($2,500), awarded by the Univers
 
 University of Georgia Graduate School Dean’s Award ($1,250). Project title: "Linguistic Identity and the Founder Effect in Longview, Washington." January 5, 2016. 
 
-<br/>
-
 ### Research Assistantships
 
-Complex Systems and the Humanities Research Assistantship awarded by the Graduate School at the University of Georgia (\$17,664 per year). Split time between the [Linguistic Atlas Project](http://www.lap.uga.edu) and the [DigiLab](http://digi.uga.edu/digilab/), under the direction of [William A. Kretzschmar, Jr.](https://www.english.uga.edu/directory/495/detail) and [Emily McGinn](https://emilymcginn.com). 2016--2020.
+Complex Systems and the Humanities Research Assistantship awarded by the Graduate School at the University of Georgia (\$17,664 per year). Split time between the [Linguistic Atlas Project](http://www.lap.uga.edu) and the [DigiLab](http://digi.uga.edu/digilab/), under the direction of [William A. Kretzschmar, Jr.](https://www.english.uga.edu/directory/people/william-kretzschmar) and [Emily McGinn](https://emilymcginn.com). 2016--2020.
 
 University of Georgia stipend enhancement awarded by the Franklin College of Arts and Sciences. 2014--2015.
 
 University of Georgia Graduate Research Assistantship. Included work for Chad Howe, Peggy Renwick, Mi-Ran Kim, Vera Lee-Schoenfeld, and Pilar Chamorro. 2014–2016.
 
-Research Assistant for Monte Shelley, Maxwell Institute for Religious Scholarship, Brigham Young University. 2012--2013.
+Research Assistant for Monte Shelley, [Maxwell Institute for Religious Scholarship](https://mi.byu.edu), Brigham Young University. 2012--2013.
 
 Research Assistant for Janis Nuckolls. Department of Linguistics and English Language, Brigham Young University. 2012--2013.
 
@@ -765,27 +760,17 @@ Programmer for the [Maxwell Institute for Religious Scholarship](http://mi.byu.e
 
 Language Variety in the South V (2023)
 
-New Ways of Analyzing Variation 50 (2022)
+New Ways of Analyzing Variation 50--51 (2022--2023)
 
-96th--97th Annual Meetings of the Linguistic Society of America (2021--2022)
+96th--98th Annual Meetings of the Linguistic Society of America (2021--2023)
 
-[6th Linguistics Conference at UGA](http://www.linguistics.uga.edu/lcuga-6) (2019)
-
-[5th Linguistics Conference at UGA](http://www.linguistics.uga.edu/lcuga-5) (2018)
-
-[4th Linguistics Conference at UGA](http://www.linguistics.uga.edu/lcuga-4) (2017)
+4th--6th Linguistics Conferences at UGA (2017--2019)
 
 
 
 ### Conference Committees
 
-[6th Linguistics Conference at UGA (LCUGA6)](http://www.linguistics.uga.edu/lcuga-6). Social media subcommittee, webmaster, organizer of the Undergraduate Poster Session, typesetter, and miscellaneous other duties. 2019.
-
-[5th Linguistics Conference at UGA (LCUGA5)](http://www.linguistics.uga.edu/lcuga-5). Social media. 2018.
-
-[4th Linguistics Conference at UGA (LCUGA4)](http://www.linguistics.uga.edu/lcuga-4). Social media. 2017.
-
-
+4th--6th Linguistics Conferences at UGA. Social media subcommittee, webmaster, organizer of the Undergraduate Poster Session, typesetter, and miscellaneous other duties. 2017--2019.
 
 ### Other Service
 
@@ -794,7 +779,7 @@ Linguistic Atlas Project Advisory Board. 2022--
 
 Faculty liason to BYU Linguistics Department's Graduate Student Society. 2022--.
 
-Three Minute Thesis (3MT™) Competition Judge for the BYU Linguistics Department MA students. 2021, 2022.
+Three Minute Thesis (3MT™) Competition Judge (2021, 2022) and Emcee (2023) for the BYU Linguistics Department MA students.
 
 Member of the American Dialect Society New Words Committee. 2018--.
 
@@ -814,15 +799,15 @@ English-to-Portuguese simultaneous interpreter, Missionary Training Center, Prov
 
 ### Professional Affiliations
 
-Linguistic Society of America ([LSA](http://www.linguisticsociety.org)), lifetime member
+[The Linguistic Society of America](http://www.linguisticsociety.org), 2012--lifetime
 
-American Dialect Society ([ADS](http://www.americandialect.org)), lifetime memeber
+[The American Dialect Society](http://www.americandialect.org), 2016--lifetime
 
-Linguistc Society at the University of Georgia ([LSUGA](http://www.lsuga.com))
+[The Linguistcs Society at the University of Georgia](https://www.linguistics.uga.edu/lsuga), 2017--2020
 
-SouthEastern Conference on Linguistics ([SECOL](http://secol.org)) 
+[SouthEastern Conference on Linguistics](http://secol.org), 2015
 
-Society for the Study of the Indigenous Languages of the Americas ([SSILA](http://www.ssila.org))
+[Society for the Study of the Indigenous Languages of the Americas](http://www.ssila.org), 2012
 
 <br/>
 <br/>
@@ -885,6 +870,8 @@ Python,
 
 ### Fieldwork Experience
 
+Ongoing sociolinguistic fieldwork in Utah County, Utah. 2023--.
+
 Sociolinguistic fieldwork in Utah and Wasatch Counties, Utah. January, 2018.
 
 Sociolinguistic fieldwork in [Cowlitz County, Washington](https://en.wikipedia.org/wiki/Cowlitz_County,_Washington). July, 2016.
@@ -897,7 +884,7 @@ Brazil (Marília, SP; Campo Grande, MS; Cáceres, Cuiabá, and Várzea Grande, M
 <br/>
 
 
-### Languages
+### Languages (more details [here](/blog/stories-behind-the-languages-ive-studied))
 
 *Native*: English 
 
@@ -914,9 +901,8 @@ Brazil (Marília, SP; Campo Grande, MS; Cáceres, Cuiabá, and Várzea Grande, M
 <br/>
 <br/>
 
-<div class="icon-credit">
-    Icon credits:  
-    <img src='/images/icons/audio.svg' height="10"/>
+<span class="icon-credit">
+    Icon credits: <img src='/images/icons/audio.svg' height="10"/>
     <img src='/images/icons/document.svg' height="10"/> 
     <img src='/images/icons/link.svg' height="10"/>
     <img src='/images/icons/video.svg' height="10"/>
@@ -924,4 +910,4 @@ Brazil (Marília, SP; Campo Grande, MS; Cáceres, Cuiabá, and Várzea Grande, M
     <img src='/images/icons/flyer.svg' height="10"/>
     <img src='/images/icons/presentation.svg' height="10"/>
     by <a href="http://www.freepik.com" title="Freepik">Freepik</a> of <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> and are licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
-</div>
+</span>

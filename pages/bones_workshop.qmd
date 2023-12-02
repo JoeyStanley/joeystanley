@@ -1,0 +1,38 @@
+---
+layout: aside
+title: Bones Workshops
+author: Joey Stanley
+date: June 21, 2018
+redirect_from:  "/bones"
+---
+
+This page contains the handouts for the workshop for the "Research Experience for Undergraduates" site program. I am told the students spent three weeks collecting osteological data from skeletons at the 7--5th c. BCE Greek colony of Himera. The workshop took take place June 21 and 25, 2018 in the DigiLab.
+
+<br/>
+
+
+## [Part 1: Intro to R](/downloads/180621-bones1.html)
+*9:00–9:50*
+
+In this first part, we'll do an introduction to R. We'll talk about what R is, look at the differences between R and RStudio, and then get our hands dirty with actual R code. We'll see how to do some of the basics, get your data into R, and how to work with it. Most importantly, we'll see how to get help.
+
+<br/>
+
+## [Part 2: Data Visualization](/downloads/180621-bones2.html)
+*10:00–10:50*
+
+In this second portion of the workshop, we'll look at the `ggplot` package and see how to make some simple visualizations in R. We'll see how to make scatter plots, bar plots, and boxplots, as well as some variations on each. 
+
+<br/>
+
+## [Part 3: Statistical Tests](/downloads/180621-bones3.html)
+*11:00–11:50*
+
+This last part of the workshop is specifically devoted to how to run some statistics on your data. We'll look at samples of the kind of data you have and see how to run tests like the *t*-test, the Mann-Whitney test, and the Kruskall-Wallis test. Moving over to categorical data, we'll see how to do chi-squared tests and Fisher's exact test. Finally, we'll see how to do Principal Components Analysis. At every step of the way, there will be little interjections on best practices and how to make useful visualizations to help you with these.
+
+<br/>
+
+## [Bonus! Part 4: Regression](/downloads/180625-bones4.html)
+*June 25: 9:00–10:00*
+
+There were a few concepts we didn't quite have time to cover on Thursday, so in this bonus workshop we'll take a closer look at some additional statistical concepts. This handout is entirely devoted to linear regression, which is a way to analyze make predictions about your data. Specifically, we look at regression with continuous data, categorical data, and multiple regression, with tangents covering analysis of variance and stepwise variable selection.
