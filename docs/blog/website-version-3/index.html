@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
-<meta name="dcterms.date" content="2023-09-24">
+<meta name="dcterms.date" content="2023-12-02">
 
 <title>Joey Stanley - Website Version 3</title>
 <style>
@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 24, 2023</p>
+        <p class="date">December 2, 2023</p>
       </div>
     </div>
     
@@ -197,8 +197,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#what-was-wrong-with-the-old-one" id="toc-what-was-wrong-with-the-old-one" class="nav-link active" data-scroll-target="#what-was-wrong-with-the-old-one">What was wrong with the old one?</a></li>
   <li><a href="#what-does-it-take-to-migrate" id="toc-what-does-it-take-to-migrate" class="nav-link" data-scroll-target="#what-does-it-take-to-migrate">What does it take to migrate?</a></li>
-  <li><a href="#things-that-are-the-same" id="toc-things-that-are-the-same" class="nav-link" data-scroll-target="#things-that-are-the-same">Things that are the same</a></li>
+  <li><a href="#appearance" id="toc-appearance" class="nav-link" data-scroll-target="#appearance">Appearance</a></li>
   <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes">Changes</a></li>
+  <li><a href="#the-process" id="toc-the-process" class="nav-link" data-scroll-target="#the-process">The Process</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -208,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>After exactly seven years with my old website, I’ve decided to change it to what you are seeing now.</p>
+<p>After exactly seven years with my old website, I’ve decided to change it to what you are seeing now. This page serves as a bit of a summary of what I did and why. It’s not particuarlly well-organized since I added to it here and there over four months. But it might be helpful to you if you’re considering such a move.</p>
 <section id="what-was-wrong-with-the-old-one" class="level2">
 <h2 class="anchored" data-anchor-id="what-was-wrong-with-the-old-one">What was wrong with the old one?</h2>
 <p>I built my old website in September 2016. I had a research assistantship at the DigiLab at UGA, and Emily McGinn, the supervisor, suggested I find ways to increase my online presence. I learned some <a href="../../blog/making-a-website-is-fun">web design and CSS skills</a> skills and eventually made Version 1 of my website. That version was essentially the same as what I built in the tutorial I followed, so a few months later I rewrote everything from scratch and made Version 2. (Let’s be honest though, it’s still obviously heavily based on the tutorial.) Other than very minor tweaks to a few things, that’s how my website has been since then.</p>
@@ -232,19 +234,27 @@ ul.task-list li input[type="checkbox"] {
 <li>I saved the tutorials for last because they would take the most time. Fortunately, it wasn’t too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.</li>
 </ul></li>
 <li>Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I’ve done. Thse in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!</li>
+<li>Finally, I updated my Resources and CV pages. Those were mostly checking to make sure links worked (and removing dead links), and making sure all the files in my downloads folder transfered over.</li>
 </ul>
 <p>This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.</p>
 <p>It was kinda fun to read through some of my old posts. In some cases, I added marginalia that basically pointed out how silly I was several years ago. I don’t think many people visit those early blog posts, so no one’s going to see them anyway.</p>
 </section>
-<section id="things-that-are-the-same" class="level2">
-<h2 class="anchored" data-anchor-id="things-that-are-the-same">Things that are the same</h2>
-<p>I’ve tried to keep as much of the original structure of the site the same as I could. However, as I migrated, I realized that I could make things overall a bit more contained by changing the structure of associated files.</p>
+<section id="appearance" class="level2">
+<h2 class="anchored" data-anchor-id="appearance">Appearance</h2>
+<p>The biggest change is obviously the look of the site. One of the main reasons I didn’t want to switch to Quarto initially is because I didn’t want it to look like all the othe Quarto sites. But, once I started digging into the HTML, I saw how I could modify the CSS to resemble my previous site.</p>
+<p>The navigation bar at the top was the trickiest, but I’m very pleased with the results. I tried for a long time to get my name and title to across the top, but I could not figure it out. It bothered me a lot because it made the buttons not centered over the body of the site. But, my wife recommended I make it a different color. Basically, just lean into the navbar. And it worked. I <em>really</em> like how this turned out.</p>
+<p><img src="version2.png" class="img-fluid"></p>
+<p><img src="version3.png" class="img-fluid"></p>
+<p>You may have noticed too that I removed the “Resources” link and replaced it with “Idiolect.” I haven’t been updating my “Resources” page for a few years, so it was getting a little stale, and honestly a bit unwieldy. It <a href="../../resources">still exists</a>, but it’s now joined the several other pages on my site that you kinda have to know about to get to because there are no obvious links to it. (Still trying to find a place for those links.) Plus, I like my idiolect page.</p>
+<p>I’ve also moved all my socials to the top right corner. Since Quarto has a spot for those, I figured I might as well use that, rather than having them under my picture. That way they’re accessible from every webpage within the site.</p>
+<p>I also updated my profile picture since my old one was from 2019.</p>
+<p>Finally, I changed the hyperlink style back to something more standard. I used to have hyperlinks displayed in the same color as regular text, and then have a little red circle after it. I saw it on <a href="https://practicaltypography.com/web-and-email-addresses.html"><em>Butterick’s Practical Typography</em></a> and liked it. I don’t know how I feel about it anymore. It’s a simple change with CSS, and I even <a href="blog/how-i-implemented-the-links-in-this-site">blogged</a> about it when I first did it. But, I guess my preferences have changed.</p>
+<p>What I could not figure out was a link and previous on my homepage to my latest blog post. Not a big deal I suppose.</p>
 </section>
 <section id="changes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="changes">Changes</h2>
-<p>Here’s a list of the changes I’ve made.</p>
-<ul>
-<li><p>Each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:</p>
+<p>I’ve tried to keep as much of the original structure of the site the same as I could. However, as I migrated, I realized that I could make things overall a bit more contained by changing the structure of associated files. However, some things did change, but I tried my best to make sure any external links to the site did not break. Here’s a list of the changes I’ve made.</p>
+<div class="page-columns page-full"><p>The main change is that each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:</p><div class="no-row-height column-margin column-container"><span class="">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div></div>
 <pre><code>├──📁blog
 |  ├──📄blog post 1.md
 |  ├──📄blog post 2.md
@@ -259,14 +269,25 @@ ul.task-list li input[type="checkbox"] {
 |  ├──📁blog post 2
 |  |  ├──  📄index.qmd
 |  |  ├──  🌅image2.png</code></pre>
-<p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p></li>
-<li><p>Within each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed. I remove excerpts because I only used them with my “big-link” style button. I’m replacing big-links with a standard callout box. I haven’t figured out if I can do re1directs-to, which is a bummer for the GSV.</p></li>
-</ul>
-<div class="no-row-height column-margin column-container"><span class="">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div><p>It took from September 10 to November 27 to transfer all my blog posts. I tried to do one a day and there are 94 of them.</p>
-<p>TODO * Rename blog post folders to something shorter and more consistent. Put aliases to old ones and make sure they work. Make sure internal links work.</p>
+<p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p>
+</section>
+<section id="the-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-process">The Process</h2>
+<p>It took from September 10 to November 27 to transfer all my entire website. I set a reminder to do at least one page every day, and since there are over 100 webpages on this website, it took a while.</p>
+<p>As far as specific things I did to transfer each page over, here’s what I did</p>
 <ul>
-<li>Change any me-specific HTML, like <span class="sidenote"> and tables. Within sidenotes themselves, I had to do HTML rather than markdown.</span></li>
+<li>I created the file structure shown above and moved the file over to its new folder. I then renamed it from “2023-12-02-title-of-blog-post.md” to “index.qmd”, making sure to do the file extension too.</li>
+<li>Within each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed.</li>
+<li>I then had to go through and make sure the whole post looked good. For the most part, there were very few changes I needed. The only things that needed manual work was when I added HTML code directly into the markdown file to get some specific CSS. So like, side notes, or custom “buttons” for downloading files had to be updated.</li>
+<li>I haven’t figured out if I can do redirects, which is a bummer because I used those a lot.</li>
+<li>As I went through, I added sidenotes to clarify, update, or just comment on what I said a few years ago.</li>
 </ul>
+<p>As mentioned above, for some of my code-based blog posts, like tutorials, I ended up rerunning the code. This resulted in small changes here and there, but nothing that should hurt anyone.</p>
+<p>There are a few changes I’d like to do still, like rename blog post folders to something shorter and more consistent, which would mean I’ll have to carefully add aliases to the old names and make sure they all work.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>I really like the new look of the new site. I have a whole laundry list of things I’d like to do still, like cleaning up old files and whatnot. I also want to add retroactive blog posts about every conference I went to and every paper I presented, so I can always have a home for each one. I also have over a dozen ideas for future blog posts.</p>
 
 
 </section>
