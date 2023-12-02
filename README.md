@@ -1,2 +1,2 @@
 # joeystanley_new
-A draft of my website as I migrate it from Jekyll to Quarto. Found either at [new.joeystanley.com](new.joeystanley.com) or [https://joeystanley.github.io/joeystanley_new/](https://joeystanley.github.io/joeystanley_new/) because I can't figure why the new domain isn't working. 
+My website personal website. This is "Version 3" of the site, which is bulit on Quarto. During Fall 2023, I migrated from the old website (now at old.joeystanley.com) to here. 
