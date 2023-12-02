@@ -1,6 +1,7 @@
 ---
 layout: resources
 title: Resources
+date-modified: last-modified
 format:
   html:
     toc: true
@@ -8,13 +9,16 @@ format:
 
 On this page you'll find links to all sorts of stuff that I have found useful, including tutorials, books, and general reading on R and Praat, statistics, software, corpora, design, and other stuff.
 
-Note that [as of September 2022] I haven't really updated this page since about 2019, so it may not include the latest resources and some links may be dead.
+:::callout-note
+I haven't really updated this page since about 2019, so it may not include the latest resources. Some links may be dead. I've taken this page off my website's main navigation bar, but I'll keep it around in case others find it useful.
+:::
+
 
 <br/>
 
 ## My handouts, tutorials, and workshops
 
-### [R Workshops](/pages/r-workshops)
+### [R Workshops](/pages/r-workshops.qmd)
 
 This is a series of workshops on how to use R which includes a variety of topics. I have included PDFs and additional information on each installment of this series.
 
@@ -48,6 +52,7 @@ In the study of vowel overlaps, we use the Pillai score, which is an output of t
 -->
 
 <br/>
+
 ## R Resources
 
 Here is a list of resources I've found for R. I've gone through some of them and others are on my to-do list. These are in no particular order. 
@@ -56,9 +61,9 @@ Here is a list of resources I've found for R. I've gone through some of them and
 
 * The website for [Tidyverse](https://www.tidyverse.org) is a great go-to place for learning how to use `dplyr`, `tidyr`, and many other packages.
 
-* *[R for Data Science](http://r4ds.had.co.nz/index.html)* by Garrett Grolemund & Hadley Wickham is a fantastic overview of tidyverse functions. 
+* *[R for Data Science](https://r4ds.hadley.nz)* by Garrett Grolemund & Hadley Wickham is a fantastic overview of tidyverse functions. 
 
-* *[Advanced R](https://adv-r.hadley.nz)* by Hadley Wickham with the [solutions](https://bookdown.org/Tazinho/Advanced-R-Solutions/) by Malte Grosser, Henning Bumann, Peter Hurford & Robert Krzyzanowski.
+* *[Advanced R](https://adv-r.hadley.nz)* by Hadley Wickham with the [solutions](https://advanced-r-solutions.rbind.io) by Malte Grosser, Henning Bumann, Peter Hurford & Robert Krzyzanowski.
 
 * *[R Packages](http://r-pkgs.had.co.nz)* by Hadley Wickham. Also try Shannon Pileggi's tutorial called [*Your first R package in 1 hour*](https://www.pipinghotdata.com/posts/2020-10-25-your-first-r-package-in-1-hour/) to see some of these tools in action.
 
@@ -120,7 +125,8 @@ Here is a list of resources I've found for R. I've gone through some of them and
 
 * *[An Introduction to Spatial Analysis in R](http://www.seascapemodels.org/rstats/rspatial/2015/06/22/R_Spatial_course.html)* by [Chris Brown](http://www.seascapemodels.org). 
 
-* Another book with the same title, [An Introduction to Spatial Data Analysis and Statistics: A Course in R](https://www.spatial-analysis-r.org) by Antonio Paez has a [chapter 9](https://www.spatial-analysis-r.org/point-pattern-analysis-i.html) on point pattern analysis.
+<!--Dead link as of December 2023.
+* Another book with the same title, [An Introduction to Spatial Data Analysis and Statistics: A Course in R](https://www.spatial-analysis-r.org) by Antonio Paez has a [chapter 9](https://www.spatial-analysis-r.org/point-pattern-analysis-i.html) on point pattern analysis.-->
 
 * *[Spatial Data Science](https://keen-swartz-3146c4.netlify.com)* by [Edzer Pebesma](https://www.uni-muenster.de/Geoinformatics/en/institute/staff/index.php/119/Edzer_Pebesma) and [Roger Bivand](https://www.nhh.no/en/employees/faculty/roger-bivand/).
 
@@ -136,7 +142,7 @@ Here is a list of resources I've found for R. I've gone through some of them and
 
 * I get all my shape files from the [National Historical Geographic Information System (NHGIS) website](https://www.nhgis.org). 
 
-* And because I haven't quite gotten the hang of it yet in R, I do all my mapmaking using the [QGIS](https://qgis.org/en/site/), the open-source, Mac-friendly, and free alternative to [ArcGIS](https://www.arcgis.com/index.html). Shout-out to [@mjduever](https://twitter.com/mjduever) of UGA Libraries for teaching me everything I know about GIS.
+* And because I haven't quite gotten the hang of it yet in R, I do all my mapmaking using the [QGIS](https://qgis.org/en/site/), the open-source, Mac-friendly, and free alternative to [ArcGIS](https://www.arcgis.com/index.html). Shout-out to [Meagan Duever](https://mjduever.github.io) of UGA Libraries for teaching me everything I know about GIS.
 
 ### Working with Census Data
 
@@ -172,7 +178,7 @@ Here is a list of resources I've found for R. I've gone through some of them and
 
 * [*A ggplot2 grammar guide*](https://evamaerey.github.io/ggplot2_grammar_guide/about) by Gina Reynolds is a great online resource for figuring out ggplot2 works!
 
-* [*Data Visualization: A Practical Introduction*](http://socviz.co) by [Kieran Healy](kieranhealy.org). I haven't had the time to look through it, but this books looks quite good. It covers data prep, basic plots, visualizing statistical models, maps, and a whole bunch of other stuff. 
+* [*Data Visualization: A Practical Introduction*](http://socviz.co) by [Kieran Healy](http://www.kieranhealy.org). I haven't had the time to look through it, but this books looks quite good. It covers data prep, basic plots, visualizing statistical models, maps, and a whole bunch of other stuff. 
 
 * [*Fundamentals of Data Visualization*](https://serialmentor.com/dataviz/) by [Claus O. Wilke](https://integrativebio.utexas.edu/component/cobalt/item/7-integrative-biology/237-wilke-claus-o?Itemid=1224) is "meant as a guide to making visualizations that accurately reflect the data, tell a story, and look professional." 
 
@@ -200,7 +206,7 @@ I've given a workshop on colors in data visualization, which you can view [here]
 
 #### Prepackaged color palettes
 
-* A monster compilation of color palettes in R can be found at [Emil Hvitfeldt's](https://www.hvitfeldt.me/blog/) [Github](https://github.com/EmilHvitfeldt/r-color-palettes).
+* A monster compilation of color palettes in R can be found at Emil Hvitfeldt's [Github](https://github.com/EmilHvitfeldt/r-color-palettes).
 
 * The [`scico`](https://www.data-imaginist.com/2018/scico-and-the-colour-conundrum/) package has a bunch of colorblind-safe, perceptually uniform, ggplot2-friendly color palettes for use in visuals. Very cool.
 
@@ -220,9 +226,10 @@ I've given a workshop on colors in data visualization, which you can view [here]
 
     * [`wesanderson`](https://github.com/karthik/wesanderson) is based on [this Tumbler post](https://wesandersonpalettes.tumblr.com) that has color palettes based on Wes Anderson movies.
 
-    * [@CINEMAPALETTES](https://twitter.com/CINEMAPALETTES) on Twitter has color palettes based on movie stills.
+    <!--Account no longer exists (as od December 2023)
+    * [@CINEMAPALETTES](https://twitter.com/CINEMAPALETTES) on Twitter has color palettes based on movie stills.-->
 
-    * [`dutchmasters`](github.com/EdwinTh/dutchmasters): Instead of coming up with your own colors, why not use ones created by Dutch painters? This is an R package by [Edwin Thoen](https://github.com/EdwinTh). 
+    * [`dutchmasters`](http://www.github.com/EdwinTh/dutchmasters): Instead of coming up with your own colors, why not use ones created by Dutch painters? This is an R package by [Edwin Thoen](https://github.com/EdwinTh). 
 
     * [`PrettyCols`](https://nrennie.rbind.io/blog/2022-09-02-introducing-prettycols/) by Nicola Rennie.
 
@@ -281,7 +288,7 @@ I've given a workshop on colors in data visualization, which you can view [here]
 
 * Plotting special characters or unique fonts can be tricky. [Yixuan Qiu](https://statr.me)'s tutorial *[showtext: Using Fonts More Easily in R Graphs](https://cran.rstudio.com/web/packages/showtext/vignettes/introduction.html)* can help you with that.
 
-* [George Bailey's](http://www-users.york.ac.uk/~gb1055/) excelent workshop materials for visualizing vowel formant data can be found [here](http://www-users.york.ac.uk/~gb1055/sociophonetics_workshop/index.html).
+* [George Bailey's](http://www-users.york.ac.uk/~gb1055/) excellent workshop materials for visualizing vowel formant data can be found [here](http://www-users.york.ac.uk/~gb1055/sociophonetics_workshop/index.html).
 
 * Not sure what kind of data visualization you should use, try [*From Data to Viz*](https://www.data-to-viz.com) to help you find the most appropriate plot for your data.
 
@@ -305,13 +312,14 @@ I've given a workshop on colors in data visualization, which you can view [here]
 
 ### Linear mixed-effects models
 
-* [Bodo Winter's](http://www.bodowinter.com/index.html) [mixed-effects modeling tutorials](http://www.bodowinter.com/tutorials.html) are the best resource I've found on using these in linguistics research. It's a two-part tutorial, so be sure to look through both of them. 
+* [Bodo Winter's](http://www.bodowinter.com/index.html) [mixed-effects modeling tutorials](http://arxiv.org/pdf/1308.5499.pdf) are the best resource I've found on using these in linguistics research. It's a two-part tutorial, so be sure to look through both of them. 
 
 * [Mixed-Effects Regression Models in Linguistics](https://www.springer.com/us/book/9783319698281), edited by Dirk Speelman, Kris Heylen, & Dirk Geeraerts and published by Springer is an entire book on mixed-effects models, specifically for linguists. 
 
 * [Michael Clark's](https://m-clark.github.io) post called [Shrinkage in Mixed Effects Models](https://m-clark.github.io/posts/2019-05-14-shrinkage-in-mixed-models/) has some beautiful illustrations that demonstrate shirnkage. In fact, he has written [a much larger document](https://m-clark.github.io/mixed-models-with-R/) explaining what mixed-effects models and how to run them in R.
 
-* *[Mixed Modeling as a Foreign Language](http://thestudyofthehousehold.com/2018/02/28/2018-02-28-formulae-are-a-lot-like-french-slang/)*, a blog post by Andrew McDonald, first off is a good explanation of what mixed modeling is all about. But more importantly, it makes the point that "if you only partly understand the words you are using, you *will* humiliate yourself eventually." In other words, it's important to know what you're doing when you use statistics, and if you don't, maybe you should reconsider before you do something wrong.
+<!--No longer exists (as of December 2023)
+* *[Mixed Modeling as a Foreign Language](http://thestudyofthehousehold.com/2018/02/28/2018-02-28-formulae-are-a-lot-like-french-slang/)*, a blog post by Andrew McDonald, first off is a good explanation of what mixed modeling is all about. But more importantly, it makes the point that "if you only partly understand the words you are using, you *will* humiliate yourself eventually." In other words, it's important to know what you're doing when you use statistics, and if you don't, maybe you should reconsider before you do something wrong.-->
 
 * *[Reference Collection to push back against “Common Statistical Myths”](https://discourse.datamethods.org/t/reference-collection-to-push-back-against-common-statistical-myths/1787)* is a crowdsourced compilation (managed by Andrew Althouse) of articles that may be used to argue against some common statistical myths or no-nos.
 
@@ -320,7 +328,7 @@ I've given a workshop on colors in data visualization, which you can view [here]
 
 * Stefano Coretta's brief blog post, [On Random Effects](https://stefanocoretta.github.io/post/2021-03-15-on-random-effects/) helps explain what a random effect even is. 
 
-* Not sure how to actually run a linear mixed effects model? Try this PDF of (Standard Operating Procedures For Using Mixed-Effects Models)[http://decision-lab.org/wp-content/uploads/2020/07/SOP_Mixed_Models_D2P2_v1_0_0.pdf].
+* Not sure how to actually run a linear mixed effects model? Try this PDF of [Standard Operating Procedures For Using Mixed-Effects Models](http://decision-lab.org/wp-content/uploads/2020/07/SOP_Mixed_Models_D2P2_v1_0_0.pdf).
 
 ### GAM(M)s
 
@@ -346,7 +354,8 @@ My dissertation makes heavy use of generalized additive mixed-effects models (GA
 
     * *[tidymv: Tidy Model Visualisation](https://github.com/stefanocoretta/tidymv)* is an R package by [Stefano Coretta](https://stefanocoretta.github.io) that lets you visualize GAMMs using tidyverse-friendly code.
 
-* Since model objects can get huge, you might want to try [Joyce Cahoon's](https://jcahoon.netlify.com/#about) [butcher](https://jcahoon.netlify.com/post/2019/08/08/model-butcher/) package to reduce the size of those giant objects. 
+<!--Broken as of December 2023
+* Since model objects can get huge, you might want to try [Joyce Cahoon's](https://jcahoon.netlify.com/#about) [butcher](https://jcahoon.netlify.com/post/2019/08/08/model-butcher/) package to reduce the size of those giant objects. -->
 
 ### Other Models
 
@@ -370,13 +379,14 @@ I have not yet learned about Bayesian stats, but here are some resources I've co
 
 ### Statistics for Linguists
 
-* [Sky Onnossen](https://onosson.github.io) has made available the materials from his [*Workshop for Statistics for Linguists*](https://github.com/onosson/UM_Workshop) at the University of Manitoba in December 2019.
+<!-- broken as of December 2023
+* [Sky Onnossen](https://onosson.github.io) has made available the materials from his [*Workshop for Statistics for Linguists*](https://github.com/onosson/UM_Workshop) at the University of Manitoba in December 2019.-->
 
-* [Bodo Winter's](http://www.bodowinter.com/index.html) [mixed-effects modeling tutorials](http://www.bodowinter.com/tutorials.html) are the best resource I've found on using linear mixed-effects models in linguistics research.
+* [Bodo Winter's](http://www.bodowinter.com/index.html) [mixed-effects modeling tutorials](http://arxiv.org/pdf/1308.5499.pdf) are the best resource I've found on using linear mixed-effects models in linguistics research.
 
 * *[Generalised Additive Mixed Models for Dynamic Analysis in Linguistics: A Practical Introduction](https://arxiv.org/pdf/1703.05339.pdf)* by Márton Sóskuthy is the best resource I've found on using generalized additive mixed-effects models in linguistics research.
 
-* Santiago Barreda's [Bayesian multilevel models for repeated-measures data: A conceptual and practical introduction in R](https://santiagobarreda.github.io/stats-class/index.html) is an entire course on Bayesian stats geared towards linguists.
+* Santiago Barreda and Noah Silbert's [Bayesian multilevel models for repeated-measures data: A conceptual and practical introduction in R](https://santiagobarreda.github.io/bmmrmd/) is an entire course on Bayesian stats geared towards linguists.
 
 * Morgan Sonderegger's book [*Regression modeling for linguistic data*](https://osf.io/pnumg/) is a working draft of intermediate book on statistical analysis for language scientists.
 
@@ -384,7 +394,7 @@ I have not yet learned about Bayesian stats, but here are some resources I've co
 
 ### Miscelleny
 
-* This workshop, *[Dimension reduction with R](http://rpubs.com/Saskia/520216)*, by [Saskia Freytag](https://twitter.com/trashystats) shows different methods for dimension reduction, weighs their pros and cons, and includes examples and visuals of their applications. Pretty useful.
+* This workshop, *[Dimension reduction with R](http://rpubs.com/Saskia/520216)*, by Saskia Freytag shows different methods for dimension reduction, weighs their pros and cons, and includes examples and visuals of their applications. Pretty useful.
 
 * If you use statistical modeling in your research, the [`report`](https://github.com/easystats/report/blob/master/README.md) package is a useful tool to convert your model into human-readable prose. 
 
@@ -394,7 +404,7 @@ I have not yet learned about Bayesian stats, but here are some resources I've co
 
 * This [blog post](https://www.alexcookson.com/post/2020-11-19-applying-pca-to-fictional-character-personalities/) by Alex Cookson does a cool job at explaining PCA while also including some super cool visuals. 
 
-* This [blog post](https://joshualoftus.com/posts/2020-11-23-least-squares-as-springs/) by Joshua Loftus visualizes least squares as springs. Makes a lot of sense to me! 
+* This [blog post](https://joshualoftus.com/posts/2020-11-23-least-squares-as-springs/least-squares-as-springs.html) by Joshua Loftus visualizes least squares as springs. Makes a lot of sense to me! 
 
 * If you've come up with an outlier detection algorithm, try following Sevvandi Kandanaarachchi's [*Testing an Outlier Detection Method*](https://sevvandi.netlify.app/post/2021-02-06-how-to-test-an-outlier-detection-method/) to see if it works.
 
@@ -410,18 +420,20 @@ I have not yet learned about Bayesian stats, but here are some resources I've co
 
 * *[SpeCT - The Speech Corpus Toolkit for Praat](https://lennes.github.io/spect/)* is a collection of well-documented Praat scripts written by [Mietta Lennes](http://orcid.org/0000-0003-4735-3017). I often find my way to this page when I need help for a specific task in Praat and incorporate some of the code in these scripts into my own.
 
-* [University of Washington Phonetics Lab](https://depts.washington.edu/phonlab/resources.htm) has a bunch of tutorials and scripts.
+<!-- broken link as of December 2023 
+* [University of Washington Phonetics Lab](https://depts.washington.edu/phonlab/resources.htm) has a bunch of tutorials and scripts.-->
 
 * [Michelle Cohn](https://michelledcohn.com) has written and posted a bunch of very useful [Praat scripts](https://michelledcohn.com/praat-scripts-2/) that you can download and use.
 
-* A YouTube channel called [ListenLab](https://www.youtube.com/playlist?list=PL6niCBwOhjHga4bCS83VJ2uKzQ8ZjEVeG&app=desktop) by Watt Winn that has a bunch of video tutorials on how to do stuff in Praat.
+* A YouTube channel called [ListenLab](https://www.youtube.com/playlist?list=PL6niCBwOhjHga4bCS83VJ2uKzQ8ZjEVeG&app=desktop) by Matt Winn that has a bunch of video tutorials on how to do stuff in Praat.
 
 * Another YouTube channel called [Intro to Speech Acoustics](https://www.youtube.com/playlist?app=desktop&list=PL6niCBwOhjHhQFfl88fQfdLgiD7QaShBo) that may be useful to students of acoustics, phonetics, etc.
 
-* And I've written a [tutorial](/blog/a-tutorial-on-extracting-foramnts-in-praat) on writing a script for basic automatic formant extraction. 
+* And I've written a [tutorial](/blog/a-tutorial-on-extracting-formants-in-praat) on writing a script for basic automatic formant extraction. 
 
 
 <br/>
+
 ## Working with audio
 
 There are three main steps for processing audio: transcription, forced alignment, and formant extraction. 
@@ -446,7 +458,7 @@ I've got a lot of audio that I need to process, so a crucial part of all that is
 
 * [FAVE](https://github.com/JoFrhwld/FAVE) is probably the most well-known forced aligner. It's open source and you can download it on your own computer from [Joe Fruehwald's Github page](https://github.com/JoFrhwld). Or if you'd prefer, you can UPenn's their [web interface](http://fave.ling.upenn.edu) instead.
 
-* [Prosodylab-Aligner](http://prosodylab.org/tools/aligner/) is, according to their website, "a set of Python and shell scripts for performing automated alignment of text to audio of speech using Hidden Markov Models." This is a software available through McGill University that actually allows you to train your own acoustic model (*e.g.* on a non-English audio corpus). I haven't used it yet, but if I ever need to process non-English audio, this'll be my go-to. 
+* [Prosodylab-Aligner](http://www.prosodylab.org/lab/software.html) is, according to their website, "a set of Python and shell scripts for performing automated alignment of text to audio of speech using Hidden Markov Models." This is a software available through McGill University that actually allows you to train your own acoustic model (*e.g.* on a non-English audio corpus). I haven't used it yet, but if I ever need to process non-English audio, this'll be my go-to. 
 
 * [SPPAS](http://www.sppas.org/index.html) is a software package with several functions including forced alignment in several languages. Of the aligners you can download to your computer, this might be one of the easier ones to use. 
 
@@ -462,7 +474,7 @@ I've got a lot of audio that I need to process, so a crucial part of all that is
 
 * [PolyglotDB](https://github.com/MontrealCorpusTools/PolyglotDB) works well with large, force-aligned corpora. 
 
-* If you want to do write a script yourself, I've written a [tutorial](/blog/a-tutorial-on-extracting-foramnts-in-praat) on writing a script for basic automatic formant extraction. 
+* If you want to do write a script yourself, I've written a [tutorial](/blog/a-tutorial-on-extracting-formants-in-praat) on writing a script for basic automatic formant extraction. 
 
 <br/>
 
@@ -501,7 +513,8 @@ For whatever reason, sometimes it's nice to uses data that already exists rather
 
 * Jonathan Dowse's [IPA Charts with Audio](https://jbdowse.com/ipa/) includes basically any possible combination of co-articulatations, regardless of whether they're actually attested in human language.
 
-* [IPA Phonetics](https://itunes.apple.com/us/app/ipa-phonetics/id869642260?mt=8) is an iPhone app has what they call an "elaborated" IPA chart with lots of extra places and manners of articulation, complete with audio clips of all the sounds. You can play a game where it'll play a sound and you can guess what you heard. It's just fun to see things like a voiced uvular fricative (ɢʁ) or a dentolabial fricative [θ̼] on an IPA chart. Credits to University of Victoria linguistics and John Esling's "Phonetic Notation" (chapter 18 of the Handbook of Phonetic Sciences, 2nd ed.).
+<!--
+* [IPA Phonetics](https://itunes.apple.com/us/app/ipa-phonetics/id869642260?mt=8) is an iPhone app has what they call an "elaborated" IPA chart with lots of extra places and manners of articulation, complete with audio clips of all the sounds. You can play a game where it'll play a sound and you can guess what you heard. It's just fun to see things like a voiced uvular fricative (ɢʁ) or a dentolabial fricative [θ̼] on an IPA chart. Credits to University of Victoria linguistics and John Esling's "Phonetic Notation" (chapter 18 of the Handbook of Phonetic Sciences, 2nd ed.).-->
 
 * [Pink Trombone](http://dood.al/pinktrombone/) is an interesting site that has a interactive simulator of the vocal tract. You can click around and make different vowels and consonants. Pretty fun resource for teaching how speech works.
 
@@ -521,7 +534,7 @@ I designed this website more or less from scratch, so I can appreciate the work 
 
 ### CSS
 
-* If you enjoy the work of Edward Tufte and would like to incorporate some of his design principles into your website, you'll be interested in Tufte CSS by [Dave Liepmann](https://www.daveliepmann.com). If you're interested in your RMarkdown files rendering in a Tufte-style (like [this](https://bookdown.org/yihui/bookdown-demo3/2-intro.html)), there are ways to do that too, which you can read in [chapter 3 of *bookdown*](https://bookdown.org/yihui/bookdown/html.html#tufte-style) by Yihui Xie or [chapter 6 of *R Markdown*](https://rstudio.github.io/tufte/), by Yihui Xie, J. J. Allaire, and Garrett Grolemund (*cf.* [this](https://rstudio.github.io/tufte/)).
+* If you enjoy the work of Edward Tufte and would like to incorporate some of his design principles into your website, you'll be interested in Tufte CSS by [Dave Liepmann](https://www.daveliepmann.com). If you're interested in your RMarkdown files rendering in a Tufte-style (like [this](https://bookdown.org/yihui/bookdown-demo3/2-intro.html)), there are ways to do that too, which you can read in [chapter 3 of *bookdown*](https://bookdown.org/yihui/bookdown/html.html#tufte-style) by Yihui Xie or [chapter 6 of *R Markdown*](https://rstudio.github.io/tufte/), by Yihui Xie, J. J. Allaire, and Garrett Grolemund.
 
 
 <br/>
@@ -534,7 +547,8 @@ Occasionally, I'll see posts with really good and insightful tips on how to be a
 
 * [Advice to a young scholar](https://kensycooperrider.com/blog/advice-to-a-young-scholar) by Kensy Kooperrider.
 
-* [Here's](https://sites.google.com/a/colorado.edu/joshuaraclaw/resources) a page with a Q&A and lots of links to pages about what it's like going into grad school in linguistics, written by [Joshua Raclaw](https://sites.google.com/a/colorado.edu/joshuaraclaw/home).
+<!--
+* [Here's](https://sites.google.com/a/colorado.edu/joshuaraclaw/resources) a page with a Q&A and lots of links to pages about what it's like going into grad school in linguistics, written by [Joshua Raclaw](https://sites.google.com/a/colorado.edu/joshuaraclaw/home).-->
 
 * [*Twitter for Scientists*](https://t4scientists.com) by [Daniel S. Quintana](https://www.dsquintana.com) has all insider tips and recommendations for how to use Twitter as an academic. 
 
@@ -570,8 +584,14 @@ Just random stuff that doesn't fit elsewhere.
 
 * [The EMU-webApp](https://ips-lmu.github.io/EMU-webApp/) "is a fully fledged browser-based labeling and correction tool that offers a multitude of labeling and visualization features." I haven't given this enough time to learn to use it properly, but it seems very helpful.
 
-* [Jonhannes Haushofer's CV of Failures](https://www.princeton.edu/~joha/Johannes_Haushofer_CV_of_Failures.pdf). Other people have written this more elegantly than I could, but sometimes it's nice to see that other academics fail too. You're not going to get into all the conferences you apply for, your papers are sometimes going to be rejected, and you're definitely not getting all the funding you apply for. I find it therapeutic to put together a CV of failures like his researcher did and to keep it updated and formatted just as would a regular CV. Don't let impostor syndrome get in the way by thinking others haven't failed too.
+* [Jonhannes Haushofer's CV of Failures](https://haushofer.ne.su.se/Johannes_Haushofer_CV_of_Failures.pdf). Other people have written this more elegantly than I could, but sometimes it's nice to see that other academics fail too. You're not going to get into all the conferences you apply for, your papers are sometimes going to be rejected, and you're definitely not getting all the funding you apply for. I find it therapeutic to put together a CV of failures like his researcher did and to keep it updated and formatted just as would a regular CV. Don't let impostor syndrome get in the way by thinking others haven't failed too.
 
 * Kieran Healey's *[The Plain Person’s Guide to Plain Text Social Science](http://plain-text.co)* is an entire book on an aspect of productivity that I've only thought about occasionally: what kind of software should you do your work? Before you get too entrenched in your workflow, it's good to consider what your options are. 
 
 * [ThisWordDoesNotExist.com](https://www.thisworddoesnotexist.com) is a fun site created by [Thomas Dimson](https://www.thomasdimson.com). 
+
+* Niche for fellow Mormons, but this post by "Ziff" called ["Church President Probabilities, Changes with the Death of One Q15 Member"](https://zelophehadsdaughters.com/2023/10/25/church-president-probabilities-changes-with-the-death-of-one-q15-member/) is a really in-depth analysis that predicts who the next president of the church will be. 
+
+* [XKCD's color survey](https://blog.xkcd.com/2010/05/03/color-survey-results/) is always fascinating to me. He displayed a random color and asked people to name it. People could retake the survey as much as they wanted. Hundreds of thousands of responses later, and he came up with a really cool crowd-sourced visualization of how English speakers categorize colors. 
+
+* FiveThirtyEight's ["The Ultimate Halloween Candy Power Ranking"](https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/). They took a couple dozen Halloween candys, displayed images of two of them at random, and asked people which they'd rather have. Many, many responses later, and they have a nice ranking of people's favorite candy. 
