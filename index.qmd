@@ -12,8 +12,8 @@ page-layout: custom
 
 ::: {#main}
 
-:::{.callout-note}
-Between September 20 and December 2, 2023, I migrated my website from Jekyll to Quarto. This is the new Quarto version. It may still be buggy (especially on mobile), some of the links may be broken, and some content may missing. Please check out to [joeystanley.com](joeystanley.com) for the complete version of my website.
+:::callout-note
+Between September 20 and December 2, 2023, I migrated my website from Jekyll to Quarto. This is the new Quarto version. I have made efforts to ensure that all content transferred over, links did not break, and that it looks okay, but there may still be lingering issues, which I will continue fixing over the next few weeks and months. The old site will be available at [old.joeystanley.com](https://old.joeystanley.com), but it will no longer be maintained or updated. I will remove this message on January 1, 2024.
 :::
 
 I’m an Assistant Professor in [Department of Linguistics](https://linguistics.byu.edu) at [Brigham Young University](https://www.byu.edu) specializing in sociophonetics, dialectology, and quantitative methods. In May 2020, I received my Ph.D in linguistics from the [Department of Linguistics](https://linguistics.uga.edu) at the [University of Georgia](https://www.uga.edu). 
