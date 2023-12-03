@@ -27,8 +27,7 @@ In a nutshell, I found a couple interesting things going on in a small town in W
 
 *Catastrophic events*—One of the interesting findings was using regression with breakpoint as a way to model catastrophic change. I'm refining this methodology right now, but it does seem to work for modeling language change in time.
 
-![](nwav46_in_action.jpg)
-
+<img class="rounded" src="nwav46_in_action.jpg">
 <center>
 (Photo credits I believe go to [Maciej Baranowski](https://www.research.manchester.ac.uk/portal/maciej.baranowski.html))
 </center>

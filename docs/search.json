@@ -746,7 +746,7 @@
     "href": "blog/dissertation/index.html",
     "title": "Dissertation",
     "section": "",
-    "text": "I’m happy to report that I successfully defended my dissertation today! The defense was held in the DigiLab (300 Main Library). The study itself is called “Vowel Dynamics of the Elsewhere Shift: A sociophonetic analysis of English in Cowlitz County, Washington.”\n\n\n\nMe with my committee: Chad Howe, Peggy Renwick, and Bill Kretzschmar (Skyping in).\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can download my dissertation here!\n\n\nThe version linked above is a revision that I’ve made after correcting some small typos. Click here to view the official, submitted version."
+    "text": "I’m happy to report that I successfully defended my dissertation today! The defense was held in the DigiLab (300 Main Library). The study itself is called “Vowel Dynamics of the Elsewhere Shift: A sociophonetic analysis of English in Cowlitz County, Washington.”\n Me with my committee: Chad Howe, Peggy Renwick, and Bill Kretzschmar (Skyping in).\n\n\n\n\n\n\nTip\n\n\n\nYou can download my dissertation here!\n\n\nThe version linked above is a revision that I’ve made after correcting some small typos. Click here to view the official, submitted version."
   },
   {
     "objectID": "blog/ads-and-lsa-2022/index.html",
@@ -1775,14 +1775,14 @@
     "href": "todo.html#top-level-pages",
     "title": "Joey Stanley",
     "section": "Top-level pages",
-    "text": "Top-level pages\nIndex.qmd * Instead of linking to OoO and Pillai papers, link to the appropriate section in research.qmd.\nThings to add to idiolect * CURE lexical set * American Raising detail. When that’s done, go back to /ar/-raising post and link to it. * /ar/-Raising, with link to the blog post. * The video from this tweet: https://twitter.com/joey_stan/status/1440022805039353856?s=20&t=RLBVBLgh7rnp0TMTUqnObg\n404.qmd * Update it with more helpful text."
+    "text": "Top-level pages\nIndex.qmd * Instead of linking to OoO and Pillai papers, link to the appropriate section in research.qmd.\nThings to add to idiolect * CURE lexical set * American Raising detail. When that’s done, go back to /ar/-raising post and link to it. * /ar/-Raising, with link to the blog post. * The video from this tweet: https://twitter.com/joey_stan/status/1440022805039353856?s=20&t=RLBVBLgh7rnp0TMTUqnObg"
   },
   {
     "objectID": "todo.html#css-and-appearance",
     "href": "todo.html#css-and-appearance",
     "title": "Joey Stanley",
     "section": "CSS and appearance",
-    "text": "CSS and appearance\nstyles.css * Get the links to look right * Make sure the small caps tables in all lexical sets posts look as good as they do in the original\nDissertation.qmd * Add rounded corners to the image. The CSS is “border-radius: 7pt” but I’m not sure how to add that in. * Do the same thing to the NWAV46 and NWAV47 pictures.\nAll blogs * If I don’t like the cover image on blog posts, switch it to something I do like."
+    "text": "CSS and appearance\nstyles.css * Make sure the small caps tables in all lexical sets posts look as good as they do in the original (I’ll have to rewrite the tables in raw HTML with my custom CSS classes)\nDissertation.qmd * Add rounded corners to the image. The CSS is “border-radius: 7pt” but I’m not sure how to add that in. * Do the same thing to the NWAV46 and NWAV47 pictures.\nAll blogs * If I don’t like the cover image on blog posts, switch it to something I do like."
   },
   {
     "objectID": "todo.html#blogs",
