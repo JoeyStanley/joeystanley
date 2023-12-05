@@ -5,6 +5,7 @@ project:
 website:
   title: "Joey Stanley"
   site-url: https://joeystanley.com
+  google-analytics: "350348361"
   navbar:
     title: '<span id="name">Joey Stanley</span><br/><span id="tagline">assistant professor, linguistics</span>'
     left:
