@@ -367,7 +367,7 @@ Note
 # ℹ 1 more variable: fake_speaker &lt;chr&gt;</code></pre>
 </div>
 </div>
-<p>For this tutorial, I’ll focus on <a href="../../pages/idiolect.qmd">my</a> low back merger (a.k.a. the <em>cot-caught</em> merger or the <sc>lot</sc>-<sc>thought</sc> merger). Now, my intuition tells me that <sc>lot</sc> (= “AA”) and <sc>thought</sc> (= “AO”) are quite distinct, though I have noticed myself using a backed vowel for some <sc>lot</sc> words in conversation. I’m definitely merged before tautosyllabic /l/, so that <em>doll</em> and <em>hall</em> rhyme, but definitely not before intervocalic /l/ (so <em>collar</em> and <em>caller</em> are quite distinct). So I’ll exclude tokens before /l/ for clarity. I’ll also exclude tokens before /ɹ/ because words in the <span class="smallcaps">north</span> and <span class="smallcaps">force</span> lexical sets are transcribed with AO in this data and I’m not particularly concerned about that environment. Finally, I’ll exclude the word <em>on</em> because it was only real stopword included in this sample.</p>
+<p>For this tutorial, I’ll focus on <a href="../../pages/my-cot-caught-distribution">my low back merger</a> (a.k.a. the <em>cot-caught</em> merger or the <sc>lot</sc>-<sc>thought</sc> merger). Now, my intuition tells me that <sc>lot</sc> (= “AA”) and <sc>thought</sc> (= “AO”) are quite distinct, though I have noticed myself using a backed vowel for some <sc>lot</sc> words in conversation. I’m definitely merged before tautosyllabic /l/, so that <em>doll</em> and <em>hall</em> rhyme, but definitely not before intervocalic /l/ (so <em>collar</em> and <em>caller</em> are quite distinct). So I’ll exclude tokens before /l/ for clarity. I’ll also exclude tokens before /ɹ/ because words in the <span class="smallcaps">north</span> and <span class="smallcaps">force</span> lexical sets are transcribed with AO in this data and I’m not particularly concerned about that environment. Finally, I’ll exclude the word <em>on</em> because it was only real stopword included in this sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"AO"</span>), </span>
@@ -616,14 +616,14 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>joey_pillai <span class="ot">&lt;-</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> joey)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>joey_pillai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1140663</code></pre>
+<pre><code>[1] 0.2352627</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>stanley_pillai <span class="ot">&lt;-</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> stanley)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>stanley_pillai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.370974</code></pre>
+<pre><code>[1] 0.2208865</code></pre>
 </div>
 </div>
 <p>Okay, so that’s cool and it might work if you have a very small number of speakers (like less than five). But if you have a dozen or several dozen or more, this is not the most elegant way of doing things. There’s lots of repetition, it’s unwieldy, and all that copy and pasting code is error-prone.</p>
@@ -661,8 +661,8 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <pre><code># A tibble: 2 × 2
   fake_speaker low_back_pillai
   &lt;chr&gt;                  &lt;dbl&gt;
-1 Joey                   0.114
-2 Stanley                0.371</code></pre>
+1 Joey                   0.235
+2 Stanley                0.221</code></pre>
 </div>
 </div>
 <div class="page-columns page-full"><p> Cool! So in just a couple lines of code, I was able to calculate the Pillai score for each “speaker” in my dataset. If you’ve got many more speakers in your data, you’ll be able to do the same thing with each one of them with the exact same amount of code.</p><div class="no-row-height column-margin column-container"><span class="">To see another use of <code>group_by</code> and then <code>summarize</code>, look at how I use it to calculate average formant trajectories per vowel <a href="../../blog/making-vowel-plots-in-r-part-2">here</a>.</span></div></div>
@@ -826,8 +826,8 @@ AO 0.8067602 0.9998692</code></pre>
 <pre><code># A tibble: 2 × 2
   fake_speaker low_back_bhatt
   &lt;chr&gt;                 &lt;dbl&gt;
-1 Joey                  0.861
-2 Stanley               0.718</code></pre>
+1 Joey                  0.810
+2 Stanley               0.818</code></pre>
 </div>
 </div>
 <p>Hooray! So, again, this will probably work fine for most people. But, if you find that the function is crashing, go on to the next blog post to see how you can make it more robust to errors.</p>
@@ -841,8 +841,8 @@ AO 0.8067602 0.9998692</code></pre>
 <pre><code># A tibble: 2 × 3
   fake_speaker low_back_pillai low_back_bhatt
   &lt;chr&gt;                  &lt;dbl&gt;          &lt;dbl&gt;
-1 Joey                   0.114          0.861
-2 Stanley                0.371          0.718</code></pre>
+1 Joey                   0.235          0.810
+2 Stanley                0.221          0.818</code></pre>
 </div>
 </div>
 <p>So that’s handy. That might save you some time trying to do them separately and merging the tables together.</p>
