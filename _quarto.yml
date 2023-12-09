@@ -12,7 +12,7 @@ website:
       - text: "About Me <em>who am I?</em>"
         file: index.qmd
       - text: "CV <em>what have I done?</em>"
-        file: cv.qmd
+        file: cv/index.qmd
       - text: "Research <em>what do I research?</em>"
         file: research/index.qmd
       - text: "Teaching <em>what do I teach?</em>"
