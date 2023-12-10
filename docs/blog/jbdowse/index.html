@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2023-12-10">
+
+<title>Joey Stanley - Visualizing Jonathan Dowse’s Vowels</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=350348361"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '350348361', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About Me <em>who am I?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv/index.html" rel="" target="">
+ <span class="menu-text">CV <em>what have I done?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/index.html" rel="" target="">
+ <span class="menu-text">Research <em>what do I research?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html" rel="" target="">
+ <span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/idiolect" rel="" target="">
+ <span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+      <i class="bi bi-list" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
+        <li>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds" role="img">
+</i> 
+ <span class="dropdown-text">Bluesky</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="dropdown-text">Twitter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra" rel="" target=""><i class="bi bi-mortarboard-fill" role="img">
+</i> 
+ <span class="dropdown-text">Google Scholar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml" rel="" target=""><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">RSS feed</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Visualizing Jonathan Dowse’s Vowels</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Phonetics</div>
+                <div class="quarto-category">Side Projects</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 10, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dowses-ipa-charts" id="toc-dowses-ipa-charts" class="nav-link active" data-scroll-target="#dowses-ipa-charts">Dowse’s IPA charts</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
+  <li><a href="#plotting-midpoints" id="toc-plotting-midpoints" class="nav-link" data-scroll-target="#plotting-midpoints">Plotting midpoints</a></li>
+  <li><a href="#plotting-trajectories" id="toc-plotting-trajectories" class="nav-link" data-scroll-target="#plotting-trajectories">Plotting trajectories</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+<p>I’ve seen interactive IPA charts where a single person produces all the sounds. But a couple years ago, I was teaching a Phonetics &amp; Phonology course, and I stumbled upon <a href="https://jbdowse.com/ipa/">Jonathan Dowse’s IPA extended chart with audio</a>. In this post, I take his vowels and map their formants.</p>
+<p>Note that I tweeted about this on Frburary 7, 2022. I don’t know what the future of X holds, so I thought I’d make this a more perminant home for this plot.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+<a href="https://t.co/r8eoN8Oq2K">https://t.co/r8eoN8Oq2K</a> has a cool extended IPA chart with audio. So I took formants from the audio and made this. <a href="https://t.co/cMxnSWWpR8">pic.twitter.com/cMxnSWWpR8</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1490806512112918533?ref_src=twsrc%5Etfw">February 7, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<section id="dowses-ipa-charts" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="dowses-ipa-charts">Dowse’s IPA charts</h2>
+<p>Dowse’s IPA chart is the most detailed one I’ve ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he’s got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with “rarer” manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It’s pretty intersting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each.</p>
+<p>Look, I don’t know enough about phonetics to say whether these are all accurately produced, but it’s impressive that Dowse, who does not appear to have much formal training in lingusitics, can produce all these sounds.</p>
+<p>Today’s post is not about the consonants though; it’s about the vowels. His vowel chart is equally extensive. He contrasts five front-to-back distinctions and seven height distinctions, with rounded and unrounded versions of each one. He also has an entirely separate chart showing nasalized versions of all of these.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="vowels_screenshot.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption margin-caption">Jonathan Dowse’s vowel chart</figcaption>
+</figure>
+</div>
+<p>I <em>do</em> know enough about phonetics to be able to look at these vowels. I was curious about how these 70 vowel qualities mapped to the acoustic space. I wanted to see whether these distinctions were all equidistant and whether their distribution in the acoustic space matched this rectangular tabular layout in the chart.</p>
+</section>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">Data Processing</h2>
+<p>The first step was to download the audio, which I did by just clicking on each one and downloading them one at a time. I then processed them using <a href="https://github.com/santiagobarreda/FastTrack">FastTrack</a>. This produces in a spreadsheet for each vowel produced, with measurements and bandwidths for the first three formants (plus some other measurements) every few milliseconds. Here’s an example from the high front vowel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(santoku)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>high_front <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./csvs/high_front.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is more information than I need, especially since Dowse tries to say the vowels as monophthongally as he can. But we can take a look at the trajectories in just a sec.&nbsp;</p>
+<p>So, I want to plot the midpoints of all vowels at once. Since each is stored in a separate spreadsheet, I’ll use <code>Sys.glob</code> to get the paths to all those spreadsheets and <code>map</code> the <code>read_csv</code> function onto all of those paths. Since the vowel quality is stored in the filename itself (i.e., “high_front.csv”), I’ll strip away the path and the extension to leave just that filename and use it as the name of the vowel itself. Finally, I’ll take all those spreadsheets and combine them into one big one with <code>bind_rows</code> and <code>unnest</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vowels_raw <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">vowel =</span> <span class="fu">Sys.glob</span>(<span class="st">"./csvs/*.csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">map</span>(vowel, read_csv, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">vowel =</span> <span class="fu">str_remove_all</span>(vowel, <span class="st">"./csvs/"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">vowel =</span> <span class="fu">str_remove_all</span>(vowel, <span class="st">".csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14,772 × 13
+   vowel        time    f1    b1    f2    b2    f3    b3   f1p   f2p   f3p    f0
+   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 high-mid_… 0.0252  478.  90    918. 122.  2683.  324   423   863. 2696.  107 
+ 2 high-mid_… 0.0272  476.  77.7  917. 100.  2689.  303.  423.  863. 2696.  107.
+ 3 high-mid_… 0.0292  470.  71    914.  82.7 2695.  291.  424.  863. 2697.  107.
+ 4 high-mid_… 0.0312  460.  72.9  908.  77.5 2692.  308.  424.  863. 2698.  107.
+ 5 high-mid_… 0.0332  451.  78.9  901.  86.2 2680.  337.  425   864. 2700.  107.
+ 6 high-mid_… 0.0352  450   79    895.  96.9 2675.  336.  426.  864. 2701.  106.
+ 7 high-mid_… 0.0372  453.  74.6  891.  97.4 2685.  308.  427.  865. 2703.  106.
+ 8 high-mid_… 0.0392  452.  73.7  887.  92.3 2703.  284.  428.  865. 2705.  106.
+ 9 high-mid_… 0.0412  448.  81.5  880   94.6 2723.  280.  429.  866  2708.  106.
+10 high-mid_… 0.0432  446.  89.6  873. 104.  2740.  284.  431.  867. 2710.  106 
+# ℹ 14,762 more rows
+# ℹ 1 more variable: intensity &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>This results in a spreadsheet with 14,772 rows, each representing a set of formant measurements at a particular point in time across all 70 recordings. Kind of a lot of data, considering it’s only 70 vowels, but that’s the kind of resolution FastTrack can give you.</p>
+<p>Okay, so for the purposes of the plot, I need to create a spreadsheet that is just the metadata about the vowel itself. In Step 1, I take that monster dataframe and just keep the name of the vowel (i.e.&nbsp;“high-mid_back-unrounded”) and only keep unique values. I then split that name up into its three parts (<code>height</code>, <code>backness</code>, and <code>rounded</code>) using <code>separate</code>. In Step 2, I then modify each one of those a little bit. I turn <code>rounded</code> into a boolean instead of a string. Then I turn <code>height</code> and <code>backness</code> into factors and set what order they should be in. Finally, I create a <code>marked</code> column to indicate whether a front vowel is rounded or a back vowel is unrounded—I felt like this might be handy to create a visual of the unmarked vowels. For Step 3, I add the IPA symbols to it. There’s no shortcut: I just had to put the symbols in one at a time based on what the chart showed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>vowels_meta <span class="ot">&lt;-</span> vowels_raw <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: split the vowel name up</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(vowel, <span class="fu">c</span>(<span class="st">"height"</span>, <span class="st">"backness"</span>, <span class="st">"rounded"</span>), <span class="at">sep =</span> <span class="st">"_"</span>, <span class="at">fill =</span> <span class="st">"right"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: modify those attributes</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rounded  =</span> <span class="fu">case_when</span>(rounded <span class="sc">==</span> <span class="st">"rounded"</span> <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">is.na</span>(rounded) <span class="sc">~</span> <span class="cn">FALSE</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">height   =</span> <span class="fu">factor</span>(height,   <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"high"</span>, <span class="st">"near-high"</span>, <span class="st">"high-mid"</span>, <span class="st">"mid"</span>, <span class="st">"low-mid"</span>, <span class="st">"near-low"</span>, <span class="st">"low"</span>)),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">backness =</span> <span class="fu">factor</span>(backness, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"front"</span>, <span class="st">"near-front"</span>, <span class="st">"central"</span>, <span class="st">"near-back"</span>, <span class="st">"back"</span>)),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">marked =</span> <span class="fu">case_when</span>(backness <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"near-back"</span>, <span class="st">"back"</span>) <span class="sc">&amp;</span> <span class="sc">!</span>rounded <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                            backness <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"front"</span>, <span class="st">"near-front"</span>, <span class="st">"central"</span>) <span class="sc">&amp;</span> rounded <span class="sc">~</span>  <span class="cn">TRUE</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 3: add IPA</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(height, backness, rounded) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ipa =</span> <span class="fu">c</span>(<span class="st">"i"</span>, <span class="st">"y"</span>, <span class="st">"ï"</span>, <span class="st">"ÿ"</span>, <span class="st">"ɨ"</span>, <span class="st">"u̶"</span>, <span class="st">"ɯ̈"</span>, <span class="st">"ü"</span>, <span class="st">"ɯ"</span>, <span class="st">"u"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"i̞"</span>, <span class="st">"y̙̞"</span>, <span class="st">"ɪ"</span>, <span class="st">"ʏ"</span>, <span class="st">"ɪ̈"</span>, <span class="st">"ʊ̈"</span>, <span class="st">"ɯ̽"</span>, <span class="st">"ʊ"</span>, <span class="st">"ɯ̞"</span>, <span class="st">"u̞"</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"e"</span>, <span class="st">"ø"</span>, <span class="st">"ë"</span>, <span class="st">"ø̈"</span>, <span class="st">"ɘ"</span>, <span class="st">"ɵ"</span>, <span class="st">"ɤ̈"</span>, <span class="st">"ö"</span>, <span class="st">"ɤ"</span>, <span class="st">"o"</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"e̞"</span>, <span class="st">"ø̞"</span>, <span class="st">"ë̞"</span>, <span class="st">"ø̞̈"</span>, <span class="st">"ə"</span>, <span class="st">"ɵ̘"</span>, <span class="st">"ɤ̞̈"</span>, <span class="st">"ö̞"</span>, <span class="st">"ɤ̞"</span>, <span class="st">"o̞"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ɛ"</span>, <span class="st">"œ"</span>, <span class="st">"ɛ̈"</span>, <span class="st">"œ̈"</span>, <span class="st">"ɜ"</span>, <span class="st">"ɞ"</span>, <span class="st">"ʌ̈"</span>, <span class="st">"ɔ̈"</span>, <span class="st">"ʌ"</span>, <span class="st">"ɔ"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"æ"</span>, <span class="st">"œ̞"</span>, <span class="st">"æ̈"</span>, <span class="st">"ɶ̽"</span>, <span class="st">"ɐ"</span>, <span class="st">"ɞ̞"</span>, <span class="st">"ɑ̽"</span>, <span class="st">"ɒ̽"</span>, <span class="st">"ʌ̞"</span>, <span class="st">"ɔ̞"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"a"</span>, <span class="st">"ɶ"</span>, <span class="st">"ä"</span>, <span class="st">"ɶ̈"</span>, <span class="st">"ɐ̞"</span>, <span class="st">"ɐ̞̹"</span>, <span class="st">"ɑ̈"</span>, <span class="st">"ɒ̈"</span>, <span class="st">"ɑ"</span>, <span class="st">"ɒ"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 70 × 6
+   vowel                   height backness   rounded marked ipa  
+   &lt;chr&gt;                   &lt;fct&gt;  &lt;fct&gt;      &lt;lgl&gt;   &lt;lgl&gt;  &lt;chr&gt;
+ 1 high_front              high   front      FALSE   FALSE  i    
+ 2 high_front_rounded      high   front      TRUE    TRUE   y    
+ 3 high_near-front         high   near-front FALSE   FALSE  ï    
+ 4 high_near-front_rounded high   near-front TRUE    TRUE   ÿ    
+ 5 high_central            high   central    FALSE   FALSE  ɨ    
+ 6 high_central_rounded    high   central    TRUE    TRUE   u̶    
+ 7 high_near-back          high   near-back  FALSE   TRUE   ɯ̈    
+ 8 high_near-back_rounded  high   near-back  TRUE    FALSE  ü    
+ 9 high_back               high   back       FALSE   TRUE   ɯ    
+10 high_back_rounded       high   back       TRUE    FALSE  u    
+# ℹ 60 more rows</code></pre>
+</div>
+</div>
+<p>Okay, so now I have a dataframe that has the name of the vowel from the filename, and then some metadata about that vowel.</p>
+<p>Now let’s go back and process that acoustic data. I start by taking the raw data and just keeping the formants. Having like 170 timepoints for each vowel is fine, but when visualizing such data, the odds of getting a wonky one are higher and it’ll ruin the whole plot. Here’s [i]. You can see that most of the formants are pretty stable. But towards the beginning and end, things get weird and they distract from the good data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(high_front, <span class="fu">aes</span>(f2, f1, <span class="at">color =</span> time)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>What I’ll do then is take all this high resolution temporal data and make it lower resolution. What I found works is to bin the times into about 10 bins and then take the median within each one. I’ll do this by first normalizing the time so that the onset starts at t = 0. That new version of <code>time</code> is now <code>time_diff</code>. I’ll then normalize the time by converting it into percent duration, so that the onset is at 0 and the offset is at 1, with the midpoint at 0.5. That is now in <code>percent</code>. This makes it easier to then slice the data into 10 parts using the <code>santoku::kiru</code> function. For each of those 10 chunks, I can then get the median F1, F2, and F3 measurements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>high_front_summarized <span class="ot">&lt;-</span> high_front <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_diff =</span> time <span class="sc">-</span> <span class="fu">min</span>(time),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">percent =</span> time_diff <span class="sc">/</span> <span class="fu">max</span>(time_diff),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">time_cut =</span> <span class="fu">kiru</span>(percent,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">c</span>(f1, f2, f3), median), <span class="at">.by =</span> <span class="fu">c</span>(time_cut)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   time_cut    f1    f2    f3
+   &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 1         231. 2343. 3324.
+ 2 2         225. 2383. 3275.
+ 3 3         216. 2371. 3239.
+ 4 4         214. 2385  3227.
+ 5 5         216. 2389. 3230.
+ 6 6         216. 2371  3204.
+ 7 7         217. 2376. 3215.
+ 8 8         217. 2371. 3218.
+ 9 9         220. 2364  3241.
+10 10        222. 2344. 3191.</code></pre>
+</div>
+</div>
+<p>I can plot this new lower-resolution version of the data, and you can see it’s much tighter because the extreme outliers were lost. I’ll add the original data in gray to provide some context.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(high_front_summarized, <span class="fu">aes</span>(f2, f1)) <span class="sc">+</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">data =</span> high_front, <span class="at">color =</span> <span class="st">"gray80"</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay great. So, that worked for one vowel. Let’s do that for all vowels. The code is the same, except I’m grouping things by vowel. This results in <code>trajs</code> dataframe (for “trajectories”). We’ll look at that in just a second.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>trajs <span class="ot">&lt;-</span> vowels_raw <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(vowel, time, f1, f2, f3) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time_diff =</span> time <span class="sc">-</span> <span class="fu">min</span>(time),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">percent =</span> time_diff <span class="sc">/</span> <span class="fu">max</span>(time_diff),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">time_cut =</span> <span class="fu">kiru</span>(percent,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">c</span>(f1, f2, f3), median), <span class="at">.by =</span> <span class="fu">c</span>(vowel, time_cut)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 700 × 5
+   vowel         time_cut    f1    f2    f3
+   &lt;chr&gt;         &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 high-mid_back 1         448.  872. 2745.
+ 2 high-mid_back 2         431.  835. 2747 
+ 3 high-mid_back 3         422.  873. 2803.
+ 4 high-mid_back 4         422.  874  2834.
+ 5 high-mid_back 5         426.  842. 2789.
+ 6 high-mid_back 6         416.  844. 2838.
+ 7 high-mid_back 7         427.  854. 2914.
+ 8 high-mid_back 8         430.  903. 2874.
+ 9 high-mid_back 9         404.  966. 3011.
+10 high-mid_back 10        967. 1639. 3047 
+# ℹ 690 more rows</code></pre>
+</div>
+</div>
+<p>For now, let’s look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I’ll assume that’s the case for all the vowels. So I’ll take the middle few bins and take the median measurment for each one. That’ll give me a new <code>midpoints</code> dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>midpoints <span class="ot">&lt;-</span> trajs <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the middle few bins and find the median</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time_cut <span class="sc">%in%</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">c</span>(f1, f2, f3), median), <span class="at">.by =</span> vowel) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the vowel metadata back in.</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(vowels_meta, <span class="at">by =</span> <span class="st">"vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 70 × 9
+   vowel                     f1    f2    f3 height backness rounded marked ipa  
+   &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;    &lt;lgl&gt;   &lt;lgl&gt;  &lt;chr&gt;
+ 1 high-mid_back           422.  854. 2834. high-… back     FALSE   TRUE   ɤ    
+ 2 high-mid_back_rounded   408.  522. 2583. high-… back     TRUE    FALSE  o    
+ 3 high-mid_central        414. 1670. 2316. high-… central  FALSE   FALSE  ɘ    
+ 4 high-mid_central_roun…  420.  979. 2322. high-… central  TRUE    TRUE   ɵ    
+ 5 high-mid_front          416. 2237. 2911. high-… front    FALSE   FALSE  e    
+ 6 high-mid_front_rounded  346. 2050. 2596. high-… front    TRUE    TRUE   ø    
+ 7 high-mid_near-back      478. 1189. 2550. high-… near-ba… FALSE   TRUE   ɤ̈    
+ 8 high-mid_near-back_ro…  413.  728. 2516. high-… near-ba… TRUE    FALSE  ö    
+ 9 high-mid_near-front     420. 1940  2476. high-… near-fr… FALSE   FALSE  ë    
+10 high-mid_near-front_r…  403. 1680. 2219. high-… near-fr… TRUE    TRUE   ø̈    
+# ℹ 60 more rows</code></pre>
+</div>
+</div>
+<p>Okay, we now have a spreadsheet with reasonably good midpoint measurements for each vowel.</p>
+</section>
+<section id="plotting-midpoints" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-midpoints">Plotting midpoints</h2>
+<p>It’s now time to plot it! Here’s just a raw look at the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midpoints, <span class="fu">aes</span>(f2, f1)) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa), <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_color_ptol</span>() <span class="sc">+</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"F2"</span>, <span class="at">y =</span> <span class="st">"F1"</span>) <span class="sc">+</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so interesting already because we can see that the overall shape is a trapezoid still and not a square. We can see that the lower back portion of the vowel space is a bit denser than, say, the high front. And there’s a bit of a gap in the mid-to-high central portion.</p>
+<p>Let’s zhuzh this plot up a bit. I’ll color the vowels by height. Within each height, I’ll connect rounded vowels with a dotted line and unrounded vowels with a solid line. To do that, I’ll create a new column that has a unique value for vowel height before I pass it into <code>ggplot</code>. I’ll color rounded vowels in gray. Finally, I’ll add some annotations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(line_id, height, rounded, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1, <span class="at">color =</span> height, <span class="at">shape =</span> backness)) <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> line_id, <span class="at">linetype =</span> rounded)) <span class="sc">+</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa, <span class="at">fill =</span> rounded), <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"white"</span>, <span class="st">"gray90"</span>)) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_color_ptol</span>() <span class="sc">+</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Acoustic measurements from jbdowse.com/ipa/"</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"F2"</span>, <span class="at">y =</span> <span class="st">"F1"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">caption =</span> <span class="st">'Along the front-to-back dimension, the vowels are "front", "near-front", "central", "near-back", and "back."</span><span class="sc">\n</span><span class="st">Lines connect vowels of the same height and rounding. Dotted lines connect rounded vowels.'</span>,) <span class="sc">+</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, now we’re starting to see some things! So, it looks like rounded vowels are pretty consistently further back than their unrounded counterparts. In some cases, drastically so (see [ɯ] compared to [u]). F2 is pretty level across most of the higher vowels. Among the low vowels, the further back they were the higher they were. Here we can better see the clustering in the low back portion of the vowel space. This also gives some nice context for the <a href="https://doi.org/10.2307/411713">Moulton (1968:464)</a>, who says that the fieldworkers for the <em>Linguistic Atlas of New England</em> were “hopelessly and humanly incompetent at transcribing phonetically the low and back vowels they heard from their informants” (cited in <a href="https://read.dukeupress.edu/pads/issue/95/1">Johnson 2010:32</a>). Given a spot in the low back portion of the vowel space, there are lots of ways to transcribe it that would come pretty darn close.</p>
+<p>Let’s pause and just make sure we’re on the same page when it comes to mapping acoustics to perception. I’m not saying that Dowse was wrong. I don’t make this plot just to point and laugh and say, “wow, he sure did a terrible job!” I haven’t sat sound and like measured out my perception or anything, but the vowels sound more or less equidistant from each other to me. So, what this really shows is that there’s a pretty stark difference between what is perceptually equidistant and what is acoustically equidistant. Perhaps what this is showing is that we can actually hear small distances between vowels in the low back space more than in the high front space. Or perhaps Dowse was a little too ambitious at creating an artificially inflated number of low back distinctions and that we should stick with the trapezoidal shape that the IPA chart has. I don’t know. But I’m sure there’s some interesting paper from the 70s or something that has been written about this.</p>
+<p>Let’s clean the vowel chart up a little bit by removing the rounded front vowels and the unrounded back vowels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>midpoints <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(line_id, height, rounded, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>marked) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1, <span class="at">color =</span> height, <span class="at">shape =</span> backness)) <span class="sc">+</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> line_id, <span class="at">linetype =</span> rounded)) <span class="sc">+</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> ipa), <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    ggthemes<span class="sc">::</span><span class="fu">scale_color_ptol</span>() <span class="sc">+</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so this is a little bit sparser I don’t know if there’s any new insight here, other than the middle of the vowel space really opens up quite a bit.</p>
+</section>
+<section id="plotting-trajectories" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-trajectories">Plotting trajectories</h2>
+<p>Since we have trajectory data, let’s plot some of those. I’ll have to reshape the data so that all the formant data shows up into a single column. I’ll use <code>pivot_longer</code> to do that, which you can read more about how it’s helpful for such vowel data <a href="../../blog/reshaping-vowel-formant-data-with-tidyr">here</a>. If we just look at the high front data, we can see what that looks like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>high_front <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(f1, f2, f3), <span class="at">names_to =</span> <span class="st">"formant"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, hz, <span class="at">color =</span> formant, <span class="at">group =</span> formant)) <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>That wonky data we saw in the F1-F2 plot makes sense now. Let’s look at the summarized data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>high_front_summarized <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(f1, f2, f3), <span class="at">names_to =</span> <span class="st">"formant"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time_cut, hz, <span class="at">color =</span> formant, <span class="at">group =</span> formant)) <span class="sc">+</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so that’s cleaner.</p>
+<p>Let’s plot all the vowels then in this spectrogram-like plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>trajs <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(f1, f2, f3), <span class="at">names_to =</span> <span class="st">"formant"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(traj_id, vowel, formant, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time_cut, hz, <span class="at">color =</span> formant, <span class="at">group =</span> traj_id)) <span class="sc">+</span> </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nothing too surprising here. We’ve got a lot of lines that are relatively stable. Towards the ends, most formants shift a little bit. Not sure why. A few others have some movement in other places. But, you’ve got to appreciate Dowse’s ability to hold a monophthong.</p>
+<p>We can view this in a traditional F1-F2 plot. Here I’ve filtered out the edges because they had a lot of really wonky measurements, so this shows between 20% into the duration of the vowel and 70% into the duration of the vowel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>trajs <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(vowels_meta, <span class="at">by =</span> <span class="st">"vowel"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time_cut <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(f2, f1, <span class="at">color =</span> height)) <span class="sc">+</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> vowel), <span class="at">arrow =</span> joeyr<span class="sc">::</span><span class="fu">joey_arrow</span>()) <span class="sc">+</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_ptol</span>() <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Trajectories from jbdowse.com/ipa/"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"F2"</span>, <span class="at">y =</span> <span class="st">"F1"</span>) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Overall, you can see that Dowse does a good job at holding a monophthong. The higher vowels are generally pretty monophthongal. The lower the vowel, the more back-gliding it is. Low vowels appear to be less stable in height.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>When I found Dowse’s vowel chart, I wanted to see what the acoustics were. I think it’s pretty enlightening to see how acoustic differences perceptual distances map onto perceptual distances and vice versa.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

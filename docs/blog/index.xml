@@ -10,7 +10,1352 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Sun, 03 Dec 2023 04:12:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 09 Dec 2023 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Visualizing Jonathan Dowse’s Vowels</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/jbdowse/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I’ve seen interactive IPA charts where a single person produces all the sounds. But a couple years ago, I was teaching a Phonetics &amp; Phonology course, and I stumbled upon <a href="https://jbdowse.com/ipa/">Jonathan Dowse’s IPA extended chart with audio</a>. In this post, I take his vowels and map their formants.</p>
+<p>Note that I tweeted about this on Frburary 7, 2022. I don’t know what the future of X holds, so I thought I’d make this a more perminant home for this plot.</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+<a href="https://t.co/r8eoN8Oq2K">https://t.co/r8eoN8Oq2K</a> has a cool extended IPA chart with audio. So I took formants from the audio and made this. <a href="https://t.co/cMxnSWWpR8">pic.twitter.com/cMxnSWWpR8</a>
+</p>
+— Joey Stanley (<span class="citation" data-cites="joey_stan">@joey_stan</span>) <a href="https://twitter.com/joey_stan/status/1490806512112918533?ref_src=twsrc%5Etfw">February 7, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<section id="dowses-ipa-charts" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="dowses-ipa-charts">Dowse’s IPA charts</h2>
+<p>Dowse’s IPA chart is the most detailed one I’ve ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he’s got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with “rarer” manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It’s pretty intersting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each.</p>
+<p>Look, I don’t know enough about phonetics to say whether these are all accurately produced, but it’s impressive that Dowse, who does not appear to have much formal training in lingusitics, can produce all these sounds.</p>
+<p>Today’s post is not about the consonants though; it’s about the vowels. His vowel chart is equally extensive. He contrasts five front-to-back distinctions and seven height distinctions, with rounded and unrounded versions of each one. He also has an entirely separate chart showing nasalized versions of all of these.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://joeystanley.com/blog/jbdowse/vowels_screenshot.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption class="figure-caption margin-caption">Jonathan Dowse’s vowel chart</figcaption>
+</figure>
+</div>
+<p>I <em>do</em> know enough about phonetics to be able to look at these vowels. I was curious about how these 70 vowel qualities mapped to the acoustic space. I wanted to see whether these distinctions were all equidistant and whether their distribution in the acoustic space matched this rectangular tabular layout in the chart.</p>
+</section>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">Data Processing</h2>
+<p>The first step was to download the audio, which I did by just clicking on each one and downloading them one at a time. I then processed them using <a href="https://github.com/santiagobarreda/FastTrack">FastTrack</a>. This produces in a spreadsheet for each vowel produced, with measurements and bandwidths for the first three formants (plus some other measurements) every few milliseconds. Here’s an example from the high front vowel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(santoku)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">high_front <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./csvs/high_front.csv"</span>)</span></code></pre></div>
+</div>
+<p>This is more information than I need, especially since Dowse tries to say the vowels as monophthongally as he can. But we can take a look at the trajectories in just a sec.&nbsp;</p>
+<p>So, I want to plot the midpoints of all vowels at once. Since each is stored in a separate spreadsheet, I’ll use <code>Sys.glob</code> to get the paths to all those spreadsheets and <code>map</code> the <code>read_csv</code> function onto all of those paths. Since the vowel quality is stored in the filename itself (i.e., “high_front.csv”), I’ll strip away the path and the extension to leave just that filename and use it as the name of the vowel itself. Finally, I’ll take all those spreadsheets and combine them into one big one with <code>bind_rows</code> and <code>unnest</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">vowels_raw <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vowel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Sys.glob</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./csvs/*.csv"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(vowel, read_csv, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_col_types =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>),</span>
+<span id="cb2-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vowel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove_all</span>(vowel, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"./csvs/"</span>),</span>
+<span id="cb2-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vowel =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove_all</span>(vowel, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".csv"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">bind_rows</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(data) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 14,772 × 13
+   vowel        time    f1    b1    f2    b2    f3    b3   f1p   f2p   f3p    f0
+   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 high-mid_… 0.0252  478.  90    918. 122.  2683.  324   423   863. 2696.  107 
+ 2 high-mid_… 0.0272  476.  77.7  917. 100.  2689.  303.  423.  863. 2696.  107.
+ 3 high-mid_… 0.0292  470.  71    914.  82.7 2695.  291.  424.  863. 2697.  107.
+ 4 high-mid_… 0.0312  460.  72.9  908.  77.5 2692.  308.  424.  863. 2698.  107.
+ 5 high-mid_… 0.0332  451.  78.9  901.  86.2 2680.  337.  425   864. 2700.  107.
+ 6 high-mid_… 0.0352  450   79    895.  96.9 2675.  336.  426.  864. 2701.  106.
+ 7 high-mid_… 0.0372  453.  74.6  891.  97.4 2685.  308.  427.  865. 2703.  106.
+ 8 high-mid_… 0.0392  452.  73.7  887.  92.3 2703.  284.  428.  865. 2705.  106.
+ 9 high-mid_… 0.0412  448.  81.5  880   94.6 2723.  280.  429.  866  2708.  106.
+10 high-mid_… 0.0432  446.  89.6  873. 104.  2740.  284.  431.  867. 2710.  106 
+# ℹ 14,762 more rows
+# ℹ 1 more variable: intensity &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>This results in a spreadsheet with 14,772 rows, each representing a set of formant measurements at a particular point in time across all 70 recordings. Kind of a lot of data, considering it’s only 70 vowels, but that’s the kind of resolution FastTrack can give you.</p>
+<p>Okay, so for the purposes of the plot, I need to create a spreadsheet that is just the metadata about the vowel itself. In Step 1, I take that monster dataframe and just keep the name of the vowel (i.e.&nbsp;“high-mid_back-unrounded”) and only keep unique values. I then split that name up into its three parts (<code>height</code>, <code>backness</code>, and <code>rounded</code>) using <code>separate</code>. In Step 2, I then modify each one of those a little bit. I turn <code>rounded</code> into a boolean instead of a string. Then I turn <code>height</code> and <code>backness</code> into factors and set what order they should be in. Finally, I create a <code>marked</code> column to indicate whether a front vowel is rounded or a back vowel is unrounded—I felt like this might be handy to create a visual of the unmarked vowels. For Step 3, I add the IPA symbols to it. There’s no shortcut: I just had to put the symbols in one at a time based on what the chart showed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">vowels_meta <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> vowels_raw <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-2">  </span>
+<span id="cb4-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 1: split the vowel name up</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>(vowel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">separate</span>(vowel, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"height"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"backness"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rounded"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sep =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"right"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">remove =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-6">  </span>
+<span id="cb4-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 2: modify those attributes</span></span>
+<span id="cb4-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rounded  =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(rounded <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rounded"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb4-9">                             <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(rounded) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>),</span>
+<span id="cb4-10">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height   =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(height,   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"high"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"near-high"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"high-mid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"low-mid"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"near-low"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"low"</span>)),</span>
+<span id="cb4-11">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">backness =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(backness, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">levels =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"front"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"near-front"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"central"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"near-back"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"back"</span>)),</span>
+<span id="cb4-12">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">marked =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(backness <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"near-back"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"back"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>rounded <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb4-13">                            backness <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"front"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"near-front"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"central"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> rounded <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb4-14">                            <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-15">  </span>
+<span id="cb4-16">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 3: add IPA</span></span>
+<span id="cb4-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(height, backness, rounded) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-18">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ipa =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"i"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ï"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ÿ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɨ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"u̶"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɯ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ü"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɯ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"u"</span>,</span>
+<span id="cb4-19">                   <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"i̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y̙̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɪ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʏ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɪ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʊ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɯ̽"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʊ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɯ̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"u̞"</span>,</span>
+<span id="cb4-20">                   <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"e"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ø"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ë"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ø̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɘ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɵ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɤ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ö"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɤ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"o"</span>,</span>
+<span id="cb4-21">                   <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"e̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ø̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ë̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ø̞̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ə"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɵ̘"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɤ̞̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ö̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɤ̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"o̞"</span>,</span>
+<span id="cb4-22">                   <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɛ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"œ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɛ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"œ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɜ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɞ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʌ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɔ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʌ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɔ"</span>,</span>
+<span id="cb4-23">                   <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"æ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"œ̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"æ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɶ̽"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɐ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɞ̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɑ̽"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɒ̽"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʌ̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɔ̞"</span>,</span>
+<span id="cb4-24">                   <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɶ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ä"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɶ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɐ̞"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɐ̞̹"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɑ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɒ̈"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɑ"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ɒ"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb4-25"></span>
+<span id="cb4-26">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 70 × 6
+   vowel                   height backness   rounded marked ipa  
+   &lt;chr&gt;                   &lt;fct&gt;  &lt;fct&gt;      &lt;lgl&gt;   &lt;lgl&gt;  &lt;chr&gt;
+ 1 high_front              high   front      FALSE   FALSE  i    
+ 2 high_front_rounded      high   front      TRUE    TRUE   y    
+ 3 high_near-front         high   near-front FALSE   FALSE  ï    
+ 4 high_near-front_rounded high   near-front TRUE    TRUE   ÿ    
+ 5 high_central            high   central    FALSE   FALSE  ɨ    
+ 6 high_central_rounded    high   central    TRUE    TRUE   u̶    
+ 7 high_near-back          high   near-back  FALSE   TRUE   ɯ̈    
+ 8 high_near-back_rounded  high   near-back  TRUE    FALSE  ü    
+ 9 high_back               high   back       FALSE   TRUE   ɯ    
+10 high_back_rounded       high   back       TRUE    FALSE  u    
+# ℹ 60 more rows</code></pre>
+</div>
+</div>
+<p>Okay, so now I have a dataframe that has the name of the vowel from the filename, and then some metadata about that vowel.</p>
+<p>Now let’s go back and process that acoustic data. I start by taking the raw data and just keeping the formants. Having like 170 timepoints for each vowel is fine, but when visualizing such data, the odds of getting a wonky one are higher and it’ll ruin the whole plot. Here’s [i]. You can see that most of the formants are pretty stable. But towards the beginning and end, things get weird and they distract from the good data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(high_front, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(f2, f1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> time)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>What I’ll do then is take all this high resolution temporal data and make it lower resolution. What I found works is to bin the times into about 10 bins and then take the median within each one. I’ll do this by first normalizing the time so that the onset starts at t = 0. That new version of <code>time</code> is now <code>time_diff</code>. I’ll then normalize the time by converting it into percent duration, so that the onset is at 0 and the offset is at 1, with the midpoint at 0.5. That is now in <code>percent</code>. This makes it easier to then slice the data into 10 parts using the <code>santoku::kiru</code> function. For each of those 10 chunks, I can then get the median F1, F2, and F3 measurements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">high_front_summarized <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> high_front <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time_diff =</span> time <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(time),</span>
+<span id="cb7-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">percent =</span> time_diff <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(time_diff),</span>
+<span id="cb7-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time_cut =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kiru</span>(percent,</span>
+<span id="cb7-5">                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>),</span>
+<span id="cb7-6">                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(f1, f2, f3), median), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(time_cut)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   time_cut    f1    f2    f3
+   &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 1         231. 2343. 3324.
+ 2 2         225. 2383. 3275.
+ 3 3         216. 2371. 3239.
+ 4 4         214. 2385  3227.
+ 5 5         216. 2389. 3230.
+ 6 6         216. 2371  3204.
+ 7 7         217. 2376. 3215.
+ 8 8         217. 2371. 3218.
+ 9 9         220. 2364  3241.
+10 10        222. 2344. 3191.</code></pre>
+</div>
+</div>
+<p>I can plot this new lower-resolution version of the data, and you can see it’s much tighter because the extreme outliers were lost. I’ll add the original data in gray to provide some context.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(high_front_summarized, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(f2, f1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> high_front, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray80"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb9-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay great. So, that worked for one vowel. Let’s do that for all vowels. The code is the same, except I’m grouping things by vowel. This results in <code>trajs</code> dataframe (for “trajectories”). We’ll look at that in just a second.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">trajs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> vowels_raw <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(vowel, time, f1, f2, f3) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time_diff =</span> time <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(time),</span>
+<span id="cb10-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">percent =</span> time_diff <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(time_diff),</span>
+<span id="cb10-5">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">time_cut =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kiru</span>(percent,</span>
+<span id="cb10-6">                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>),</span>
+<span id="cb10-7">                         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>),</span>
+<span id="cb10-8">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> vowel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(f1, f2, f3), median), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(vowel, time_cut)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb10-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 700 × 5
+   vowel         time_cut    f1    f2    f3
+   &lt;chr&gt;         &lt;fct&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 high-mid_back 1         448.  872. 2745.
+ 2 high-mid_back 2         431.  835. 2747 
+ 3 high-mid_back 3         422.  873. 2803.
+ 4 high-mid_back 4         422.  874  2834.
+ 5 high-mid_back 5         426.  842. 2789.
+ 6 high-mid_back 6         416.  844. 2838.
+ 7 high-mid_back 7         427.  854. 2914.
+ 8 high-mid_back 8         430.  903. 2874.
+ 9 high-mid_back 9         404.  966. 3011.
+10 high-mid_back 10        967. 1639. 3047 
+# ℹ 690 more rows</code></pre>
+</div>
+</div>
+<p>For now, let’s look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I’ll assume that’s the case for all the vowels. So I’ll take the middle few bins and take the median measurment for each one. That’ll give me a new <code>midpoints</code> dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">midpoints <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> trajs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-2">  </span>
+<span id="cb12-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Get the middle few bins and find the median</span></span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(time_cut <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(f1, f2, f3), median), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> vowel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-6">  </span>
+<span id="cb12-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add the vowel metadata back in.</span></span>
+<span id="cb12-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(vowels_meta, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vowel"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb12-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 70 × 9
+   vowel                     f1    f2    f3 height backness rounded marked ipa  
+   &lt;chr&gt;                  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;    &lt;lgl&gt;   &lt;lgl&gt;  &lt;chr&gt;
+ 1 high-mid_back           422.  854. 2834. high-… back     FALSE   TRUE   ɤ    
+ 2 high-mid_back_rounded   408.  522. 2583. high-… back     TRUE    FALSE  o    
+ 3 high-mid_central        414. 1670. 2316. high-… central  FALSE   FALSE  ɘ    
+ 4 high-mid_central_roun…  420.  979. 2322. high-… central  TRUE    TRUE   ɵ    
+ 5 high-mid_front          416. 2237. 2911. high-… front    FALSE   FALSE  e    
+ 6 high-mid_front_rounded  346. 2050. 2596. high-… front    TRUE    TRUE   ø    
+ 7 high-mid_near-back      478. 1189. 2550. high-… near-ba… FALSE   TRUE   ɤ̈    
+ 8 high-mid_near-back_ro…  413.  728. 2516. high-… near-ba… TRUE    FALSE  ö    
+ 9 high-mid_near-front     420. 1940  2476. high-… near-fr… FALSE   FALSE  ë    
+10 high-mid_near-front_r…  403. 1680. 2219. high-… near-fr… TRUE    TRUE   ø̈    
+# ℹ 60 more rows</code></pre>
+</div>
+</div>
+<p>Okay, we now have a spreadsheet with reasonably good midpoint measurements for each vowel.</p>
+</section>
+<section id="plotting-midpoints" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-midpoints">Plotting midpoints</h2>
+<p>It’s now time to plot it! Here’s just a raw look at the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(midpoints, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(f2, f1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_text</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> ipa), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-5">    ggthemes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_ptol</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F2"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F1"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb14-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so interesting already because we can see that the overall shape is a trapezoid still and not a square. We can see that the lower back portion of the vowel space is a bit denser than, say, the high front. And there’s a bit of a gap in the mid-to-high central portion.</p>
+<p>Let’s zhuzh this plot up a bit. I’ll color the vowels by height. Within each height, I’ll connect rounded vowels with a dotted line and unrounded vowels with a solid line. To do that, I’ll create a new column that has a unique value for vowel height before I pass it into <code>ggplot</code>. I’ll color rounded vowels in gray. Finally, I’ll add some annotations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">midpoints <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb15-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unite</span>(line_id, height, rounded, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">remove =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb15-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(f2, f1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> height, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> backness)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> line_id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> rounded)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_label</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> ipa, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> rounded), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gray90"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-9">    ggthemes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_ptol</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Acoustic measurements from jbdowse.com/ipa/"</span>,</span>
+<span id="cb15-11">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F2"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F1"</span>,</span>
+<span id="cb15-12">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Along the front-to-back dimension, the vowels are "front", "near-front", "central", "near-back", and "back."</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Lines connect vowels of the same height and rounding. Dotted lines connect rounded vowels.'</span>,) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-13">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, now we’re starting to see some things! So, it looks like rounded vowels are pretty consistently further back than their unrounded counterparts. In some cases, drastically so (see [ɯ] compared to [u]). F2 is pretty level across most of the higher vowels. Among the low vowels, the further back they were the higher they were. Here we can better see the clustering in the low back portion of the vowel space. This also gives some nice context for the <a href="https://doi.org/10.2307/411713">Moulton (1968:464)</a>, who says that the fieldworkers for the <em>Linguistic Atlas of New England</em> were “hopelessly and humanly incompetent at transcribing phonetically the low and back vowels they heard from their informants” (cited in <a href="https://read.dukeupress.edu/pads/issue/95/1">Johnson 2010:32</a>). Given a spot in the low back portion of the vowel space, there are lots of ways to transcribe it that would come pretty darn close.</p>
+<p>Let’s pause and just make sure we’re on the same page when it comes to mapping acoustics to perception. I’m not saying that Dowse was wrong. I don’t make this plot just to point and laugh and say, “wow, he sure did a terrible job!” I haven’t sat sound and like measured out my perception or anything, but the vowels sound more or less equidistant from each other to me. So, what this really shows is that there’s a pretty stark difference between what is perceptually equidistant and what is acoustically equidistant. Perhaps what this is showing is that we can actually hear small distances between vowels in the low back space more than in the high front space. Or perhaps Dowse was a little too ambitious at creating an artificially inflated number of low back distinctions and that we should stick with the trapezoidal shape that the IPA chart has. I don’t know. But I’m sure there’s some interesting paper from the 70s or something that has been written about this.</p>
+<p>Let’s clean the vowel charat up a little bit by removing the rounded front vowels and the unrounded back vowels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">midpoints <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb16-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unite</span>(line_id, height, rounded, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">remove =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb16-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>marked) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb16-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(f2, f1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> height, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> backness)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> line_id, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linetype =</span> rounded)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_label</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> ipa), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-9">    ggthemes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_ptol</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so this is a little bit sparser I don’t know if there’s any new insight here, other than the middle of the vowel space really opens up quite a bit.</p>
+</section>
+<section id="plotting-trajectories" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-trajectories">Plotting trajectories</h2>
+<p>Since we have trajectory data, let’s plot some of those. I’ll have to reshape the data so that all the formant data shows up into a single column. I’ll use <code>pivot_longer</code> to do that, which you can read more about how it’s helpful for such vowel data <a href="../../blog/reshaping-vowel-formant-data-with-tidyr">here</a>. If we just look at the high front data, we can see what that looks like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">high_front <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb17-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(f1, f2, f3), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"formant"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hz"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb17-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(time, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> formant)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>That wonky data we saw in the F1-F2 plot makes sense now. Let’s look at the summarized data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">high_front_summarized <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb18-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(f1, f2, f3), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"formant"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hz"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb18-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(time_cut, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> formant)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb18-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb18-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb18-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb18-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so that’s cleaner.</p>
+<p>Let’s plot all the vowels then in this spectrogram-like plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">trajs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(f1, f2, f3), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"formant"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hz"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb19-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unite</span>(traj_id, vowel, formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">remove =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb19-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(time_cut, hz, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> formant, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> traj_id)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb19-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb19-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_path</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb19-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb19-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nothing too surprising here. We’ve got a lot of lines that are relatively stable. Towards the ends, most formants shift a little bit. Not sure why. A few others have some movement in other places. But, you’ve got to appreciate Dowse’s ability to hold a monophthong.</p>
+<p>We can view this in a traditional F1-F2 plot. Here I’ve filtered out the edges because they had a lot of really wonky measurements, so this shows between 20% into the duration of the vowel and 70% into the duration of the vowel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">trajs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb20-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">left_join</span>(vowels_meta, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vowel"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb20-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(time_cut <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb20-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(f2, f1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> height)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb20-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> vowel), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> joeyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">joey_arrow</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb20-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb20-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb20-8">  ggthemes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_ptol</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb20-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Trajectories from jbdowse.com/ipa/"</span>,</span>
+<span id="cb20-10">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F2"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"F1"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb20-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Overall, you can see that Dowse does a good job at holding a monophthong. The higher vowels are generally pretty monophthongal. The lower the vowel, the more back-gliding it is. Low vowels appear to be less stable in height.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>When I found Dowse’s vowel chart, I wanted to see what the acoustics were. I think it’s pretty enlightening to see how acoustic differences perceptual distances map onto perceptual distances and vice versa.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>phonetics</category>
+  <guid>https://joeystanley.com/blog/jbdowse/index.html</guid>
+  <pubDate>Sat, 09 Dec 2023 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Website Version 3</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -950,11 +2295,11 @@ Warning
 <li><p>Remove “good” but otherwise uninteresting data.</p>
 <p>Finally, here is where you should subset your data to focus on just the stuff you’re interested. So, get rid of vowels or allophones you don’t want, stopwords, unstressed vowels, etc. Importantly though, it is only at this point in the pipeline that you should toss vowel trajectories! If you never extracted them in the first place, or just ignored those columns in FAVE’s output, then you’re excluding trajectory data as step 1 and that has an impact on your results!</p></li>
 </ol>
-<p>For now, these steps are based more on logic and theory (and I appreciate the input from Rich Ross and Thomas Kettig for helping me out with that)! I have a manuscript at the moment that dives more into these steps and provides some more quantitative justification for them. Stay tuned!</p>
+<p>For now, these steps are based more on logic and theory (and I appreciate the input from Rich Ross and Thomas Kettig for helping me out with that)! <a href="../../blog/new-publication-in-linguistics-vanguard">My publication in <em>Linguistics Vanguard</em></a> dives more into these steps and provides some more quantitative justification for them.</p>
 </section>
 <section id="my-soapbox" class="level2">
 <h2 class="anchored" data-anchor-id="my-soapbox">My Soapbox</h2>
-<p>Finally, towards the end, I do get a little preachy. First, I recommend that Order of Operations be explained in detail in methods sections so that we can evaluate them better. In fact, it was only after I submitted this paper that I found <a href="https://linkinghub.elsevier.com/retrieve/pii/S0095447021000711">Brand, Hay, Clark, Watson, &amp; Sóskuthy’s (2021) paper</a> that does exactly what I want to see! That’s exactly the kind of transparency that we need. Of course, at this point, it’s hard to interpret what effect one order has upon the data as opposed to another order, though, again, stay tuned for my manuscript which does exactly that!</p>
+<p>Finally, towards the end, I do get a little preachy. First, I recommend that Order of Operations be explained in detail in methods sections so that we can evaluate them better. In fact, it was only after I submitted this paper that I found <a href="https://linkinghub.elsevier.com/retrieve/pii/S0095447021000711">Brand, Hay, Clark, Watson, &amp; Sóskuthy’s (2021) paper</a> that does exactly what I want to see! That’s exactly the kind of transparency that we need. Of course, at this point, it’s hard to interpret what effect one order has upon the data as opposed to another order, though, again, <a href="../../blog/new-publication-in-linguistics-vanguard">my publication in <em>Linguistics Vanguard</em></a> tries to unpack that a little bit.</p>
 <p>I then say that quantitative linguists should be more mindful of how the data is being processed. I basically subtweet some methods that I’m not particularly fond of (Lobanov transformations, ANAE “benchmarks”) without calling them out specifically. I also subtweet a reviewer for a different paper who said to me that I shouldn’t use New Technique X and should instead use Old Technique Y for comparability with previous studies, even though recent research has shown that Old Technique Y is flawed and New Technique X is better. Anyway, so if those paragraphs sound cryptic, now you know some background.</p>
 <p>Finally, I encourage quantitatively-minded linguists to continue writing methods papers. Whether it be developing a new technique or comparing existing techniques against each other, all that stuff is good for the field.</p>
 <p>Anyway, I took the opportunity in this non-peer-reviewed methods paper to stand on my soapbox a little bit and talk about some of my views on the current state of quantitative linguistics. And I stand by what I wrote in the paper.</p>
@@ -8589,121 +9934,6 @@ Tip
   <category>Personal</category>
   <guid>https://joeystanley.com/blog/365-papers-update/index.html</guid>
   <pubDate>Tue, 31 Aug 2021 15:03:00 GMT</pubDate>
-</item>
-<item>
-  <title>Kohler Tapes (Update)</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/kohler-tapes-update/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>In <a href="../../blog/kohler-tapes">February</a>, I acquired a goldmine of data that I can use for linguistic analysis. Here’s an update on that project, now that I have some more solid numbers.</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update/kohler_tapes2.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">(560 of 751 tapes!)</figcaption>
-</figure>
-</div>
-<section id="cataloguing" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="cataloguing">Cataloguing</h2>
-<p>Soon after getting the tapes, I had to organize them in some way. Since I don’t really know what I’m doing, I reached out to a few people I know who have worked with collections comparable in size to ask for their advice. (I also had to ask some Gen Xers how to handle and store cassette tapes because, well, I’ve never done that before 🤷🏻‍♂️).</p>
-<div class="page-columns page-full"><p>So, over the course of a couple months, I took the tapes home in batches of fifty or so and cataloged them. By this, I mean that I labeled each with a sequential identifier and took photos of all sides of the tape, its case (if it had one), and any other slips of paper it came with.</p><div class="no-row-height column-margin column-container"><span class="">Thanks, Charlie, for that tip!</span></div></div>
-<p>While I was there, I wrote down whatever information was written on the outside of the tape. Things like the student’s name, the interviewee’s name, the date of the interview, their age, and the relationship between the two people (grandparent, great-grandparent, etc.). It looks like most of the tapes were done between 1986 and 1999. The ones from the 80s weren’t documented as consistently and I think Mr.&nbsp;Kohler caught on to that and asked his students to do a better job because the ones in the 90s were much more well-documented.</p>
-<p>There are a couple really fun gems for me as I went through the names. First, I went to Heber in 2018 to collect some audio data myself. I talked to several older people then. As it turns out, some of these tapes contain recorded interviews with some of the people I talked to! Again, it’s a small town, so not a complete surprise, but it’s still pretty cool. Also, my sister-in-law has family from Heber, and sure enough, the collection contains interviews with about 10 of her distant relatives (great-grand-uncle, etc.). I’m sure I’ll discover some other gems as I dig deeper into this collection.</p>
-</section>
-<section id="digitizing" class="level2">
-<h2 class="anchored" data-anchor-id="digitizing">Digitizing</h2>
-<p>Thanks to a great tip from my colleague Chris Rogers, I found out that the <a href="https://hlr.byu.edu">Humanities Learning Resource Center</a> in my building can digitize tapes. So I dropped everything and talked to them. Not only can they do it, but they said they do it for free! Wow!</p>
-<p>So, I dropped off a box of tapes for them and two weeks later the files magically appeared in my Box drive! So I went and collected them, dropped off another several dozen and repeat the process over and over. It was a good morning when I woke up to the notification from Box saying that another 100 files were ready to download.</p>
-<p>I want to just pause and do a huge shout-out to the student employees who processed all this audio! They had to hear the whir of the digitizing machine going for 8–9 hours days for 86 straight work days. Not to mention get up and flip the tape over or insert a new tape every 30–60 minutes, trim the audio, and upload the file. As someone who can’t stand unnecessary white noise or interruptions, that sounds like awful work to me. I’m sure if I had had to do it myself, it’d take me three or four times as long to get it all done and I wouldn’t be a happy camper.</p>
-</section>
-<section id="file-structure" class="level2">
-<h2 class="anchored" data-anchor-id="file-structure">File Structure</h2>
-<p>Something that I haven’t yet figured out though is the best way to store all this. When I worked with the Linguistic Atlas Project, it was simple: one speaker per file. Most interviews were longer and were recorded on multiple reels, so a single speaker may be on as many as ten or so files, but it was otherwise pretty well-organized.</p>
-<p>This collection though is a hot mess. Here’s a list of the kinds of things I’m working with:</p>
-<ul>
-<li><p>Many students did the cleanest route and interviewed one person and turned in one tape. Great.</p></li>
-<li><p>However, some students went overboard and turned in multiple (as many as five!) tapes for a single interview. I welcome more data, so that’s not too bad.</p></li>
-<li><p>To complicate things, sometimes the same person was interviewed by different students on different years. One person was interviewed six different times!</p></li>
-<li><p>Sometimes, if the first interview wasn’t long enough, a student would conduct another interview with a different person. So there are two interviews and two different people on a single tape.</p></li>
-<li><p>The messier route was if a student interviewed two grandparents at the same time. So the husband and wife would alternate back and forth. So one interview, but two people. This will be the trickiest to process.</p></li>
-<li><p>And, of course, there are a few cases where multiple joint interviews are tagged on to each other, and this collection of interviews was spread across multiple tapes. Ugh.</p></li>
-</ul>
-<p>Currently, my file structure is one-folder-per-tape, but as I get my hands dirty, I’m realizing I need to switch to a one-folder-per-person structure.</p>
-<p>And of course, all this necessarily will need to come with multiple spreadsheets and some minor databasing to keep track of it all. Currently, I’ve got a spreadsheet for tapes, a spreadsheet for sides of tapes, and a spreadsheet for individuals. It’s not as clean as a single spreadsheet but it works.</p>
-</section>
-<section id="some-numbers" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="some-numbers">Some numbers</h2>
-<p>So now that they’ve all been cataloged and digitized, I can give some more concrete numbers than I did in my previous blog post.</p>
-<section id="number-of-tapes-751" class="level3">
-<h3 class="anchored" data-anchor-id="number-of-tapes-751">Number of tapes: 751</h3>
-<p>My estimate before was 600–700, so it’s a little more than I expected (which is great!)</p>
-</section>
-<section id="hours-of-audio-631" class="level3">
-<h3 class="anchored" data-anchor-id="hours-of-audio-631">Hours of audio: 631</h3>
-<p>I know that some of that is music (some students taped over mix tapes) so the number may go down as I listen to it all. I anticipated “only” 467 hours of audio at first, so this is 33% more than what I originally thought.</p>
-<p>▼ I tried to estimate how much I’d end up with before they were all done, and it looks like by around 200 tapes or so I had a pretty good idea. The blue line is the predicted number and the black lines are some error. The pink line shows the true total.</p>
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update/estimated_audio.jpg" class="img-fluid"></p>
-</section>
-<section id="minutes-per-tape-51.7-on-average." class="level3">
-<h3 class="anchored" data-anchor-id="minutes-per-tape-51.7-on-average.">Minutes per tape: 51.7 (on average).</h3>
-<p>My estimate in February was 40 minutes, so not only did I end up with more tapes than I expected, but they were 30% longer than I expected. I think the assignment was to have 30 minutes, but I didn’t expect so many students to go that much longer.</p>
-<p>▼ Here’s the distribution of how many minutes of audio were on each tape (both sides). I’m pretty sure the peaks at 30, 65, and 95 or so reflect how much audio a cassette tape can hold.</p>
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update/audio_per_tape.jpg" class="img-fluid"></p>
-</section>
-<section id="digitizing-pace-8.46-tapes-a-day-on-average" class="level3">
-<h3 class="anchored" data-anchor-id="digitizing-pace-8.46-tapes-a-day-on-average">Digitizing pace: 8.46 tapes a day (on average)</h3>
-<p>Since digitization happens in real-time, that means these students had this going for like nine hours a day. It took them 86 work days to do it all.</p>
-<p>▼ Based on the creation date of the files, here’s how much work they did per day. They worked Monday through Saturday every week. You can see that after the semester ended in April it was slightly less consistent. Sometimes I wasn’t on campus the day they finished a box so they had to wait a day or two to get the next batch.</p>
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update/digitization.jpg" class="img-fluid"></p>
-</section>
-<section id="number-of-people-806" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="number-of-people-806">Number of people: 806</h3>
-<p>That’s just interviewees. If you add the 667 students, that’s 1473 total people. My guess is that that number will go down a small amount as I clean up the metadata. I’ve already had to change “Mr.&nbsp;Norman” and “Mrs.&nbsp;Norman” to their full names once I listened to them. Correcting any typos may change the number too if people were interviewed multiple times. I mentioned this in <a href="../../blogs/kohler-tapes">my last blog post</a>, but Heber only had a few thousand people living in it at the time, so this is decent proportion of the total population of Heber. And if you just focus on the age group that this collection represents, that proportion goes up quite a bit!</p>
-<p>There are a fair number of common family names like Jones, Smith, Johnson, McDonald, Thompson, Anderson, Davis of course. But there are also a lot of names like Giles, Bethers, Jensen, Web, Allred, Broadhead, Casper, Duke, Probst, and Young, which I presume are local families.</p>
-<div class="page-columns page-full"><p>I will say right now that some of the students’ speech has some pretty distinctive linguistic features. These would be people born between about 1972 and 1987, or Gen Xers and early Millennials,  who grew up in Heber. Unfortunately, I won’t have enough data from them to do much of an analysis.</p><div class="no-row-height column-margin column-container"><span class="">Geriatric Millennials?</span></div></div>
-</section>
-<section id="interview-years-19862001" class="level3">
-<h3 class="anchored" data-anchor-id="interview-years-19862001">Interview years: 1986–2001</h3>
-<p>That’s at least based on the 418 tapes where the interview date was written on the outside. Almost all were in April or May of each year. I suppose if I really wanted to I could track down some old yearbooks and find when the students were in 8th grade and get an exact year. I may find this information in the audio, but I haven’t listened to all of them yet. I may also be able to deduce it from people’s ages and birth years if they mention them.</p>
-<p>▼ Notice there are many more in the 90s. I think it’s a sampling bias though. My guess is that later on in the project, the students received more explicit instructions to write that information than the students in the 1980s did.</p>
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update/interview_years.jpg" class="img-fluid"></p>
-</section>
-<section id="birth-years-19051953" class="level3">
-<h3 class="anchored" data-anchor-id="birth-years-19051953">Birth Years: 1905–1953</h3>
-<p>Again, that’s at least based on the 28 tapes I’ve listened to. This information was not written on the outside of the tape, so I can only get it in the audio itself. If they don’t say it explicitly, I can usually get enough information about the person to look up census records and get a confirmed date.</p>
-<p>▼ Here’s the spread of confirmed birth years. They’re color-coded by generation cohort in case that’s meaningful to you. I estimated everyone would be born between 1900 and 1940, so that was pretty close being right.</p>
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update/birth_years.jpg" class="img-fluid"></p>
-</section>
-<section id="places-of-birth-mostly-wasatch-county" class="level3">
-<h3 class="anchored" data-anchor-id="places-of-birth-mostly-wasatch-county">Places of birth: mostly Wasatch County</h3>
-<p>Once again, that’s based on the 28 tapes so far. Wasatch County includes Heber, Charleston, Daniel, and Walsburg. Keep in mind these interviews took place in Heber, the county seat of Wasatch County.</p>
-<p>▼ Several other places in Utah are represented so far too. 14 unique cities in just 28 tapes. Only one person so far was born outside of Utah. <img src="https://joeystanley.com/blog/kohler-tapes-update/birth_places.jpg" class="img-fluid" style="width:85.0%"></p>
-</section>
-</section>
-<section id="looking-ahead" class="level2">
-<h2 class="anchored" data-anchor-id="looking-ahead">Looking Ahead</h2>
-<p>I won’t rehash what I wrote in my earlier blog post, but now that I have some more solid numbers, I can have better estimate for what I need to get this project done.</p>
-<p>With 631 hours of audio and a rough estimate of 10 hours of work for every hour of audio, that’s 6,310 hours of manual labor needed to transcribe this all. Again, that’s about 35% more than I anticipated in February. At $15 per hour of work, that’s $94,650 in student wages.</p>
-<p>If I can get some more stellar RAs like I had this semester, who worked 10 hours a week, that’s 631 student-weeks. At 15 weeks a semester, that’s 42 student-semesters of work. If I want this done in two years, that’ll take an average of 14 RAs each semester, including summers. Anyone who has worked with transcribers knows that retention is not great, so I’ll most certainly need more than 14 student helpers and they’ll most certainly not last two years.</p>
-<p>This doesn’t even include my pipe dream of getting some grad student workers to form a core group of researchers. They’d help with supervising and training the transcribers, quality control, other aspects of the data processing (force-aligning, formant-extraction, file management), and analysis.</p>
-<p>Am I already looking at external grants? Yes, yes I am. And am I already looking at different types of transcription software, methods, speech-to-text programs, and other things to speed this up and/or make it less costly? Yes, yes I am.</p>
-</section>
-<section id="immediate-plans" class="level2">
-<h2 class="anchored" data-anchor-id="immediate-plans">Immediate Plans</h2>
-<p>My first task though is to get as many of the gaps in my metadata spreadsheet filled as quickly as possible. I only know the birth years and places for 28 of the 806 people. I’d like to get a much more complete picture of what this collection is like before I start prioritizing which tapes to transcribe first. Sometimes this information is near the start of the interview but sometimes it’s not. Not quite sure how to get that information without just listening to all of them.</p>
-<p>Fortunately, I got a grant from the <a href="https://reddcenter.byu.edu">Redd Center for Western Studies</a> to go towards this project. It’s about the right amount needed to process enough data for a preliminary linguistic analysis. So I hope to get the ball rolling on some transcriptions and metadata extraction. Stay tuned for the first results at a conference near you!</p>
-
-
-</section>
-
- ]]></description>
-  <category>Research</category>
-  <category>Utah</category>
-  <guid>https://joeystanley.com/blog/kohler-tapes-update/index.html</guid>
-  <pubDate>Wed, 16 Jun 2021 17:24:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,272 @@
+---
+layout: post
+title:  "Visualizing Jonathan Dowse's Vowels"
+date:   2023-12-10
+categories:
+  - Phonetics
+  - Side Projects
+---
+
+I've seen interactive IPA charts where a single person produces all the sounds. But a couple years ago, I was teaching a Phonetics & Phonology course, and I stumbled upon [Jonathan Dowse's IPA extended chart with audio](https://jbdowse.com/ipa/). In this post, I take his vowels and map their formants. 
+
+Note that I tweeted about this on Frburary 7, 2022. I don't know what the future of X holds, so I thought I'd make this a more perminant home for this plot. 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://t.co/r8eoN8Oq2K">https://t.co/r8eoN8Oq2K</a> has a cool extended IPA chart with audio. So I took formants from the audio and made this. <a href="https://t.co/cMxnSWWpR8">pic.twitter.com/cMxnSWWpR8</a></p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1490806512112918533?ref_src=twsrc%5Etfw">February 7, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Dowse's IPA charts
+
+Dowse's IPA chart is the most detailed one I've ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he's got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with "rarer" manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It's pretty intersting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each. 
+
+Look, I don't know enough about phonetics to say whether these are all accurately produced, but it's impressive that Dowse, who does not appear to have much formal training in lingusitics, can produce all these sounds. 
+
+Today's post is not about the consonants though; it's about the vowels. His vowel chart is equally extensive. He contrasts five front-to-back distinctions and seven height distinctions, with rounded and unrounded versions of each one. He also has an entirely separate chart showing nasalized versions of all of these.
+
+![Jonathan Dowse's vowel chart](vowels_screenshot.png){width=70%}
+
+
+I *do* know enough about phonetics to be able to look at these vowels. I was curious about how these 70 vowel qualities mapped to the acoustic space. I wanted to see whether these distinctions were all equidistant and whether their distribution in the acoustic space matched this rectangular tabular layout in the chart.
+
+## Data Processing
+
+The first step was to download the audio, which I did by just clicking on each one and downloading them one at a time. I then processed them using [FastTrack](https://github.com/santiagobarreda/FastTrack). This produces in a spreadsheet for each vowel produced, with measurements and bandwidths for the first three formants (plus some other measurements) every few milliseconds. Here's an example from the high front vowel.
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(santoku)
+
+high_front <- read_csv("./csvs/high_front.csv")
+```
+
+This is more information than I need, especially since Dowse tries to say the vowels as monophthongally as he can. But we can take a look at the trajectories in just a sec. 
+
+So, I want to plot the midpoints of all vowels at once. Since each is stored in a separate spreadsheet, I'll use `Sys.glob` to get the paths to all those spreadsheets and `map` the `read_csv` function onto all of those paths. Since the vowel quality is stored in the filename itself (i.e., "high_front.csv"), I'll strip away the path and the extension to leave just that filename and use it as the name of the vowel itself. Finally, I'll take all those spreadsheets and combine them into one big one with `bind_rows` and `unnest`. 
+
+```{r}
+vowels_raw <- tibble(vowel = Sys.glob("./csvs/*.csv")) %>%
+  mutate(data = map(vowel, read_csv, show_col_types = FALSE),
+         vowel = str_remove_all(vowel, "./csvs/"),
+         vowel = str_remove_all(vowel, ".csv")) %>%
+  bind_rows() %>%
+  unnest(data) %>%
+  print()
+```
+
+This results in a spreadsheet with 14,772 rows, each representing a set of formant measurements at a particular point in time across all 70 recordings. Kind of a lot of data, considering it's only 70 vowels, but that's the kind of resolution FastTrack can give you.
+
+Okay, so for the purposes of the plot, I need to create a spreadsheet that is just the metadata about the vowel itself. In Step 1, I take that monster dataframe and just keep the name of the vowel (i.e. "high-mid_back-unrounded") and only keep unique values. I then split that name up into its three parts (`height`, `backness`, and `rounded`) using `separate`. In Step 2, I then modify each one of those a little bit. I turn `rounded` into a boolean instead of a string. Then I turn `height` and `backness` into factors and set what order they should be in. Finally, I create a `marked` column to indicate whether a front vowel is rounded or a back vowel is unrounded---I felt like this might be handy to create a visual of the unmarked vowels. For Step 3, I add the IPA symbols to it. There's no shortcut: I just had to put the symbols in one at a time based on what the chart showed. 
+
+```{r}
+vowels_meta <- vowels_raw %>%
+  
+  # Step 1: split the vowel name up
+  distinct(vowel) %>%
+  separate(vowel, c("height", "backness", "rounded"), sep = "_", fill = "right", remove = FALSE) %>%
+  
+  # Step 2: modify those attributes
+  mutate(rounded  = case_when(rounded == "rounded" ~ TRUE,
+                             is.na(rounded) ~ FALSE),
+         height   = factor(height,   levels = c("high", "near-high", "high-mid", "mid", "low-mid", "near-low", "low")),
+         backness = factor(backness, levels = c("front", "near-front", "central", "near-back", "back")),
+         marked = case_when(backness %in% c("near-back", "back") & !rounded ~ TRUE,
+                            backness %in% c("front", "near-front", "central") & rounded ~  TRUE,
+                            TRUE ~ FALSE)) %>%
+  
+  # Step 3: add IPA
+  arrange(height, backness, rounded) %>%
+    mutate(ipa = c("i", "y", "ï", "ÿ", "ɨ", "u̶", "ɯ̈", "ü", "ɯ", "u",
+                   "i̞", "y̙̞", "ɪ", "ʏ", "ɪ̈", "ʊ̈", "ɯ̽", "ʊ", "ɯ̞", "u̞",
+                   "e", "ø", "ë", "ø̈", "ɘ", "ɵ", "ɤ̈", "ö", "ɤ", "o",
+                   "e̞", "ø̞", "ë̞", "ø̞̈", "ə", "ɵ̘", "ɤ̞̈", "ö̞", "ɤ̞", "o̞",
+                   "ɛ", "œ", "ɛ̈", "œ̈", "ɜ", "ɞ", "ʌ̈", "ɔ̈", "ʌ", "ɔ",
+                   "æ", "œ̞", "æ̈", "ɶ̽", "ɐ", "ɞ̞", "ɑ̽", "ɒ̽", "ʌ̞", "ɔ̞",
+                   "a", "ɶ", "ä", "ɶ̈", "ɐ̞", "ɐ̞̹", "ɑ̈", "ɒ̈", "ɑ", "ɒ")) %>%
+
+  print()
+```
+
+Okay, so now I have a dataframe that has the name of the vowel from the filename, and then some metadata about that vowel.
+
+Now let's go back and process that acoustic data. I start by taking the raw data and just keeping the formants. Having like 170 timepoints for each vowel is fine, but when visualizing such data, the odds of getting a wonky one are higher and it'll ruin the whole plot. Here's [i]. You can see that most of the formants are pretty stable. But towards the beginning and end, things get weird and they distract from the good data. 
+
+```{r}
+ggplot(high_front, aes(f2, f1, color = time)) + 
+  geom_path() + 
+  scale_x_reverse() + 
+  scale_y_reverse() +
+  theme_minimal()
+```
+
+What I'll do then is take all this high resolution temporal data and make it lower resolution. What I found works is to bin the times into about 10 bins and then take the median within each one. I'll do this by first normalizing the time so that the onset starts at t = 0. That new version of `time` is now `time_diff`. I'll then normalize the time by converting it into percent duration, so that the onset is at 0 and the offset is at 1, with the midpoint at 0.5. That is now in `percent`. This makes it easier to then slice the data into 10 parts using the `santoku::kiru` function. For each of those 10 chunks, I can then get the median F1, F2, and F3 measurements. 
+
+```{r}
+high_front_summarized <- high_front %>%
+  mutate(time_diff = time - min(time),
+         percent = time_diff / max(time_diff),
+         time_cut = kiru(percent,
+                         breaks = seq(0, 1, 0.1),
+                         labels = 1:10)) %>%
+  summarize(across(c(f1, f2, f3), median), .by = c(time_cut)) %>%
+  print()
+```
+
+I can plot this new lower-resolution version of the data, and you can see it's much tighter because the extreme outliers were lost. I'll add the original data in gray to provide some context. 
+
+```{r}
+ggplot(high_front_summarized, aes(f2, f1)) + 
+  geom_path(data = high_front, color = "gray80") +
+  geom_path() + 
+  scale_x_reverse() + 
+  scale_y_reverse() +
+  theme_minimal()
+```
+
+Okay great. So, that worked for one vowel. Let's do that for all vowels. The code is the same, except I'm grouping things by vowel. This results in `trajs` dataframe (for "trajectories"). We'll look at that in just a second. 
+
+```{r}
+trajs <- vowels_raw %>%
+  select(vowel, time, f1, f2, f3) %>%
+  mutate(time_diff = time - min(time),
+         percent = time_diff / max(time_diff),
+         time_cut = kiru(percent,
+                         breaks = seq(0, 1, 0.1),
+                         labels = 1:10),
+         .by = vowel) %>%
+  summarize(across(c(f1, f2, f3), median), .by = c(vowel, time_cut)) %>%
+  print()
+```
+
+For now, let's look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I'll assume that's the case for all the vowels. So I'll take the middle few bins and take the median measurment for each one. That'll give me a new `midpoints` dataset. 
+
+```{r}
+midpoints <- trajs %>%
+  
+  # Get the middle few bins and find the median
+  filter(time_cut %in% 3:7) %>%
+  summarize(across(c(f1, f2, f3), median), .by = vowel) %>%
+  
+  # Add the vowel metadata back in.
+  left_join(vowels_meta, by = "vowel") %>%
+  print()
+```
+
+Okay, we now have a spreadsheet with reasonably good midpoint measurements for each vowel. 
+
+## Plotting midpoints
+
+It's now time to plot it! Here's just a raw look at the data.
+
+```{r}
+ggplot(midpoints, aes(f2, f1)) + 
+    geom_text(aes(label = ipa), size = 5) +
+    scale_x_reverse() + 
+    scale_y_reverse() + 
+    ggthemes::scale_color_ptol() + 
+    labs(x = "F2", y = "F1") + 
+    theme_minimal()
+```
+
+Okay, so interesting already because we can see that the overall shape is a trapezoid still and not a square. We can see that the lower back portion of the vowel space is a bit denser than, say, the high front. And there's a bit of a gap in the mid-to-high central portion. 
+
+Let's zhuzh this plot up a bit. I'll color the vowels by height. Within each height, I'll connect rounded vowels with a dotted line and unrounded vowels with a solid line. To do that, I'll create a new column that has a unique value for vowel height before I pass it into `ggplot`. I'll color rounded vowels in gray. Finally, I'll add some annotations.
+
+```{r}
+midpoints %>%
+    unite(line_id, height, rounded, remove = FALSE) %>%
+    ggplot(aes(f2, f1, color = height, shape = backness)) + 
+    geom_line(aes(group = line_id, linetype = rounded)) + 
+    geom_label(aes(label = ipa, fill = rounded), size = 5) +
+    scale_fill_manual(values = c("white", "gray90")) +
+    scale_x_reverse() + 
+    scale_y_reverse() + 
+    ggthemes::scale_color_ptol() + 
+    labs(title = "Acoustic measurements from jbdowse.com/ipa/",
+         x = "F2", y = "F1",
+         caption = 'Along the front-to-back dimension, the vowels are "front", "near-front", "central", "near-back", and "back."\nLines connect vowels of the same height and rounding. Dotted lines connect rounded vowels.',) + 
+    theme_minimal()
+```
+
+Okay, now we're starting to see some things! So, it looks like rounded vowels are pretty consistently further back than their unrounded counterparts. In some cases, drastically so (see [ɯ] compared to [u]). F2 is pretty level across most of the higher vowels. Among the low vowels, the further back they were the higher they were. Here we can better see the clustering in the low back portion of the vowel space. This also gives some nice context for the [Moulton (1968:464)](https://doi.org/10.2307/411713), who says that the fieldworkers for the *Linguistic Atlas of New England* were "hopelessly and humanly incompetent at transcribing phonetically the low and back vowels they heard from their informants" (cited in [Johnson 2010:32](https://read.dukeupress.edu/pads/issue/95/1)). Given a spot in the low back portion of the vowel space, there are lots of ways to transcribe it that would come pretty darn close. 
+
+Let's pause and just make sure we're on the same page when it comes to mapping acoustics to perception. I'm not saying that Dowse was wrong. I don't make this plot just to point and laugh and say, "wow, he sure did a terrible job!" I haven't sat sound and like measured out my perception or anything, but the vowels sound more or less equidistant from each other to me. So, what this really shows is that there's a pretty stark difference between what is perceptually equidistant and what is acoustically equidistant. Perhaps what this is showing is that we can actually hear small distances between vowels in the low back space more than in the high front space. Or perhaps Dowse was a little too ambitious at creating an artificially inflated number of low back distinctions and that we should stick with the trapezoidal shape that the IPA chart has. I don't know. But I'm sure there's some interesting paper from the 70s or something that has been written about this. 
+
+Let's clean the vowel chart up a little bit by removing the rounded front vowels and the unrounded back vowels. 
+
+```{r}
+midpoints %>%
+    unite(line_id, height, rounded, remove = FALSE) %>%
+    filter(!marked) %>%
+    ggplot(aes(f2, f1, color = height, shape = backness)) + 
+    geom_line(aes(group = line_id, linetype = rounded)) + 
+    geom_label(aes(label = ipa), size = 5) +
+    scale_x_reverse() + 
+    scale_y_reverse() + 
+    ggthemes::scale_color_ptol() + 
+    theme_minimal()
+```
+
+Okay, so this is a little bit sparser I don't know if there's any new insight here, other than the middle of the vowel space really opens up quite a bit. 
+
+## Plotting trajectories
+
+Since we have trajectory data, let's plot some of those. I'll have to reshape the data so that all the formant data shows up into a single column. I'll use `pivot_longer` to do that, which you can read more about how it's helpful for such vowel data [here](/blog/reshaping-vowel-formant-data-with-tidyr). If we just look at the high front data, we can see what that looks like.
+
+```{r}
+high_front %>%
+  pivot_longer(cols = c(f1, f2, f3), names_to = "formant", values_to = "hz") %>% 
+  ggplot(aes(time, hz, color = formant, group = formant)) + 
+  geom_point() + 
+  geom_path() + 
+  theme_minimal() + 
+  theme(legend.position = "none")
+```
+
+That wonky data we saw in the F1-F2 plot makes sense now. Let's look at the summarized data. 
+
+```{r}
+high_front_summarized %>%
+  pivot_longer(cols = c(f1, f2, f3), names_to = "formant", values_to = "hz") %>% 
+  ggplot(aes(time_cut, hz, color = formant, group = formant)) + 
+  geom_point() + 
+  geom_path() + 
+  theme_minimal() + 
+  theme(legend.position = "none")
+```
+
+Okay, so that's cleaner. 
+
+Let's plot all the vowels then in this spectrogram-like plot.
+
+```{r}
+trajs %>%
+  pivot_longer(cols = c(f1, f2, f3), names_to = "formant", values_to = "hz") %>% 
+  unite(traj_id, vowel, formant, remove = FALSE) %>%
+  ggplot(aes(time_cut, hz, color = formant, group = traj_id)) + 
+  geom_point() + 
+  geom_path() + 
+  theme_minimal() + 
+  theme(legend.position = "none")
+```
+
+Nothing too surprising here. We've got a lot of lines that are relatively stable. Towards the ends, most formants shift a little bit. Not sure why. A few others have some movement in other places. But, you've got to appreciate Dowse's ability to hold a monophthong.
+
+We can view this in a traditional F1-F2 plot. Here I've filtered out the edges because they had a lot of really wonky measurements, so this shows between 20% into the duration of the vowel and 70% into the duration of the vowel.
+
+```{r}
+trajs %>%
+  left_join(vowels_meta, by = "vowel") %>%
+  filter(time_cut %in% c(2:7)) %>%
+  ggplot(aes(f2, f1, color = height)) + 
+  geom_line(aes(group = vowel), arrow = joeyr::joey_arrow()) + 
+  scale_x_reverse() +
+  scale_y_reverse() +
+  ggthemes::scale_color_ptol() +
+  labs(title = "Trajectories from jbdowse.com/ipa/",
+       x = "F2", y = "F1") +
+  theme_minimal()
+```
+
+Overall, you can see that Dowse does a good job at holding a monophthong. The higher vowels are generally pretty monophthongal. The lower the vowel, the more back-gliding it is. Low vowels appear to be less stable in height. 
+
+## Conclusion
+
+When I found Dowse's vowel chart, I wanted to see what the acoustics were. I think it's pretty enlightening to see how acoustic differences perceptual distances map onto perceptual distances and vice versa. 
