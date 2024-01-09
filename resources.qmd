@@ -392,6 +392,8 @@ I have not yet learned about Bayesian stats, but here are some resources I've co
 
 * Have you used Varbrul or at least read a paper that has? You'll know that there's some terminology that is unique to that method. Josef Fruehwald's [video](https://www.youtube.com/watch?v=GTRLk2qKPy8) helps translate Varbrul to more contemporary terms.
 
+* Jassamyn Shertz's [class notes for LIN318: Talking Numbers](https://t.co/HxineoXWsm). An incredible and detailed free resource for statistics for linguists in R.
+
 ### Miscelleny
 
 * This workshop, *[Dimension reduction with R](http://rpubs.com/Saskia/520216)*, by Saskia Freytag shows different methods for dimension reduction, weighs their pros and cons, and includes examples and visuals of their applications. Pretty useful.
