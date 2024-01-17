@@ -215,7 +215,7 @@ I've given a workshop on colors in data visualization, which you can view [here]
 * Paul Tol has come up with some [additional color themes](https://personal.sron.nl/~pault/), which you can access with `scale_color_ptol` in the [`ggthemes`](https://www.rdocumentation.org/packages/ggthemes/versions/3.5.0) package.
 
 <!--Jan 17, 2024-->
-* [oklch-smooth](https://www.s-ings.com/scratchpad/oklch-smooth/), by Cédric Scherer, is "a smooth, full spectrum sRGB colour palette for data visualization."
+* [oklch-smooth](https://www.s-ings.com/scratchpad/oklch-smooth/), by Stephen Hutchings, is "a smooth, full spectrum sRGB color palette for data visualization."
 
 * There is no shortage of color palettes. Here are a handful of ones I've seen and liked for one reason or another:
 
