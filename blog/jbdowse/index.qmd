@@ -9,15 +9,15 @@ categories:
 
 I've seen interactive IPA charts where a single person produces all the sounds. But a couple years ago, I was teaching a Phonetics & Phonology course, and I stumbled upon [Jonathan Dowse's IPA extended chart with audio](https://jbdowse.com/ipa/). In this post, I take his vowels and map their formants. 
 
-Note that I tweeted about this on Frburary 7, 2022. I don't know what the future of X holds, so I thought I'd make this a more perminant home for this plot. 
+Note that I tweeted about this on February 7, 2022. I don't know what the future of X holds, so I thought I'd make this a more permanent home for this plot. 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://t.co/r8eoN8Oq2K">https://t.co/r8eoN8Oq2K</a> has a cool extended IPA chart with audio. So I took formants from the audio and made this. <a href="https://t.co/cMxnSWWpR8">pic.twitter.com/cMxnSWWpR8</a></p>&mdash; Joey Stanley (@joey_stan) <a href="https://twitter.com/joey_stan/status/1490806512112918533?ref_src=twsrc%5Etfw">February 7, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Dowse's IPA charts
 
-Dowse's IPA chart is the most detailed one I've ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he's got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with "rarer" manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It's pretty intersting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each. 
+Dowse's IPA chart is the most detailed one I've ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he's got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with "rarer" manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It's pretty interesting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each. 
 
-Look, I don't know enough about phonetics to say whether these are all accurately produced, but it's impressive that Dowse, who does not appear to have much formal training in lingusitics, can produce all these sounds. 
+Look, I don't know enough about phonetics to say whether these are all accurately produced, but it's impressive that Dowse, who does not appear to have much formal training in linguistics, can produce all these sounds. 
 
 Today's post is not about the consonants though; it's about the vowels. His vowel chart is equally extensive. He contrasts five front-to-back distinctions and seven height distinctions, with rounded and unrounded versions of each one. He also has an entirely separate chart showing nasalized versions of all of these.
 
@@ -135,7 +135,7 @@ trajs <- vowels_raw %>%
   print()
 ```
 
-For now, let's look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I'll assume that's the case for all the vowels. So I'll take the middle few bins and take the median measurment for each one. That'll give me a new `midpoints` dataset. 
+For now, let's look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I'll assume that's the case for all the vowels. So I'll take the middle few bins and take the median measurement for each one. That'll give me a new `midpoints` dataset. 
 
 ```{r}
 midpoints <- trajs %>%

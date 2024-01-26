@@ -254,7 +254,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 <p>I’ve seen interactive IPA charts where a single person produces all the sounds. But a couple years ago, I was teaching a Phonetics &amp; Phonology course, and I stumbled upon <a href="https://jbdowse.com/ipa/">Jonathan Dowse’s IPA extended chart with audio</a>. In this post, I take his vowels and map their formants.</p>
-<p>Note that I tweeted about this on Frburary 7, 2022. I don’t know what the future of X holds, so I thought I’d make this a more perminant home for this plot.</p>
+<p>Note that I tweeted about this on February 7, 2022. I don’t know what the future of X holds, so I thought I’d make this a more permanent home for this plot.</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
 <a href="https://t.co/r8eoN8Oq2K">https://t.co/r8eoN8Oq2K</a> has a cool extended IPA chart with audio. So I took formants from the audio and made this. <a href="https://t.co/cMxnSWWpR8">pic.twitter.com/cMxnSWWpR8</a>
@@ -264,8 +264,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <section id="dowses-ipa-charts" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="dowses-ipa-charts">Dowse’s IPA charts</h2>
-<p>Dowse’s IPA chart is the most detailed one I’ve ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he’s got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with “rarer” manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It’s pretty intersting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each.</p>
-<p>Look, I don’t know enough about phonetics to say whether these are all accurately produced, but it’s impressive that Dowse, who does not appear to have much formal training in lingusitics, can produce all these sounds.</p>
+<p>Dowse’s IPA chart is the most detailed one I’ve ever seen. The consonants include many more places of articulation not normally found on the IPA chart, like linguolabial, alveolo-palatal, rounded velar, low uvular, and aryepiglottal. For each one, he uses all the manners that are physically possible, including ones like aspirated stop, affricate, taps, and trills. And for each manner and place, he has voiced and voiceless variants. Not only is the chart itself interesting to look through with all the diacritics and stuff, but he’s got recordings of each consonant in different contexts: [C], [Ca], [aC], and [aCa]. Pretty cool. Further down, he has a whole nother table with “rarer” manners, including lateral fricatives, lateral flaps, fricative trills, implosive, and different kinds of ejectives. It’s pretty interesting to listen to them. He also has a whole table of clicks at eight places of articulation, six manners, and velar and uvular variants of each.</p>
+<p>Look, I don’t know enough about phonetics to say whether these are all accurately produced, but it’s impressive that Dowse, who does not appear to have much formal training in linguistics, can produce all these sounds.</p>
 <p>Today’s post is not about the consonants though; it’s about the vowels. His vowel chart is equally extensive. He contrasts five front-to-back distinctions and seven height distinctions, with rounded and unrounded versions of each one. He also has an entirely separate chart showing nasalized versions of all of these.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
@@ -437,7 +437,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 # ℹ 690 more rows</code></pre>
 </div>
 </div>
-<p>For now, let’s look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I’ll assume that’s the case for all the vowels. So I’ll take the middle few bins and take the median measurment for each one. That’ll give me a new <code>midpoints</code> dataset.</p>
+<p>For now, let’s look at the midpoints. You may have noticed in the high front plot above that the middle 50% or so of the vowel was indeed quite monophthongal with very little formant change. I’ll assume that’s the case for all the vowels. So I’ll take the middle few bins and take the median measurement for each one. That’ll give me a new <code>midpoints</code> dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>midpoints <span class="ot">&lt;-</span> trajs <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  </span>
