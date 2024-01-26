@@ -35,6 +35,7 @@ library(tidyverse)
 library(santoku)
 
 high_front <- read_csv("./csvs/high_front.csv")
+knitr::kable(high_front)
 ```
 
 This is more information than I need, especially since Dowse tries to say the vowels as monophthongally as he can. But we can take a look at the trajectories in just a sec. 
