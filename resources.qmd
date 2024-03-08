@@ -152,6 +152,17 @@ Here is a list of resources I've found for R. I've gone through some of them and
 
 * The [tidycensus](https://walkerke.github.io/tidycensus/) package by [Kyle Walker](http://personal.tcu.edu/kylewalker/) looks really slick and makes it easy to work with census data within the Tidyverse framework. This blog post, *[Burden of roof: revisiting housing costs with tidycensus](https://austinwehrwein.com/data-visualization/housing/)*, by [Austin Wehrwein](https://austinwehrwein.com) is a walkthrough of a real-world application with tidycensus.
 
+### Working with audio in R
+
+This category includes anything that deals with audio. These are things that I mostly do in Praat or some other software, but someone has figured out how to do it in R.
+
+<!-- March 8, 2024-->
+* [praatpicture](https://github.com/rpuggaardrode/praatpicture) by Rasmus Puggaard-Rode lets you make Praat Picture style plots of acoustic data.
+
+<!-- March 8, 2024-->
+* [audio.whisper](https://github.com/bnosac/audio.whisper) is an R package that lets you interact with OpenAI's Whisper. 
+
+
 ### Miscelleny
 
 * [gt](https://gt.rstudio.com/index.html) or, the "Grammar of Tables," the is basically the ggplot2 but for tables. 
