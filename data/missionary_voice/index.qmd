@@ -1,0 +1,24 @@
+---
+title: "Missionary Voice Files"
+author: "Joey Stanley"
+page-layout: full
+resources:
+  "*.mp3"
+---
+
+These recordings accompany a forthcoming publication in Proceedings of the Linguistic Society Annual meeting. Here is Table 2 but augmented with the recordings themselves. You can download all eight recordings in a zip file [here](missionary_voice.zip).  
+
+| speaker | gender | status | %* | transcription | audio |
+|:-------:|:------:|:------:|:------------:|:--------------|:-----:|
+| 8 | male | missionary | 94% | I have an adopted grandma who passed away recently due to cancer. | <audio src="08_male_missionary.mp3" controls preload></audio> |
+| 13 | male | student | 89% | …uh and that happened, and she was so helpful. Um, at one point, somebody sent me a text… | <audio src="13_male_student.mp3" controls preload></audio> |
+| 14 | male | student | 27% | …cuz, t- in my mind the option was, well, if things really get that bad, w- if you’d- | <audio src="14_male_student.mp3" controls preload></audio> |
+| 12 | male | student | 24% | …play a different position, I’d say no. I’ll play the position I want to. | <audio src="12_male_student.mp3" controls preload></audio> |
+| 18 | female | student | 84% | …has been founded on. It’s kinda this staple. What we, what we first view as stability and then can move forward I- | <audio src="18_female_student.mp3" controls preload></audio> |
+| 5 | female | missionary | 75% | My first time I ever went on a night dive. You look to your side and you reach your arm out you have no idea what’s there cuz it’s pitch black. | <audio src="05_female_missionary.mp3" controls preload></audio> |
+| 2 | female | missionary | 25% | I was slightly disappointed but it wasn’t like the end of the world, so I kinda just forgot about it. | <audio src="02_female_missionary.mp3" controls preload></audio> |
+| 17 | female | student | 5% | And everybody’s, like, presentations, so you ha- just have to be careful with… be, a- be aware and be educated in them. | <audio src="17_female_student.mp3" controls preload></audio> |
+
+: {tbl-colwidths="[1,1,1,1,20,1]"}
+
+\* This column refers to the percentage of listeners who thought this speaker was a missionary.
