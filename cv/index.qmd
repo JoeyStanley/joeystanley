@@ -1,6 +1,8 @@
 ---
 layout: cv
-title: Curriculum Vitae
+title: Joseph A. Stanley
+subtitle: Curriculum Vitae
+date: last-modified
 date-modified: last-modified
 format:
   html:
@@ -14,12 +16,22 @@ format:
       - right=1.3in
       - top=1in
       - bottom=1.25in
+pagetitle: Curriculum Vitae
+author-meta: Joey Stanley
 ---
 
 <!--
 :::callout
 Download PDF [here](/downloads/CV.pdf).
 :::
+-->
+
+<!--
+\begin{tabular}{L{0.3\linewidth} C{0.4\linewidth} R{0.3\linewidth}}
+    4059 JFSB & \multirow{2}{*}{\huge\textsc{Joseph A. Stanley}} & (801) 422-9168\\
+    Brigham Young University &  & joey\_stanley@byu.edu\\
+    Provo, Utah 84602 & orcid.org/0000-0002-9185-0048 & joeystanley.com\\
+
 -->
 
 
