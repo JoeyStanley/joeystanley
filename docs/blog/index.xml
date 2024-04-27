@@ -10,7 +10,112 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 06 Jan 2024 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 26 Apr 2024 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Kohler Tapes (Update #2)</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/kohler-tapes-update2/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../posts/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../posts/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
+<section id="progress-since-2021" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="progress-since-2021">Progress since 2021</h2>
+<p>At the end of my previous update, I mentioned that I had gotten a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a>. That provided just enough funds to hire an RA to help with metadata extraction. As I’ve mentioned already, a great many of the tapes start off with the student interviewer staying their name and the date, and then they ask basic demographic questions about their interviewee. It’s important that I know as much of the metadata about these interviewees as I can so that I can prioritize which tapes I should process first.</p>
+<p>So, my RA listened to the first five or so minutes of each tape and wrote down as much metadata as they could. They then looked up that person on <a href="https://www.familysearch.org/en/united-states/">FamilySearch</a>, a genealogical database. If they could find the person, they could then flesh out the rest of their basic metadata as well as get tons of other information like places they’ve lived and their family ancestry. Not all interviews had good metadata and not all tapes had much information written on the outside, but between those two sources, my RA was able to get full metadata for 505 of 751 people (67%), which is pretty good if you ask me. I can now give updated version of figures I had in my last update that summarized a little bit more about these people.</p>
+<div class="cell">
+
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_569fe545061b1dedc05950079c71c138">
+
+</div>
+<div class="cell">
+
+</div>
+<section id="gender-split-56-44" class="level3">
+<h3 class="anchored" data-anchor-id="gender-split-56-44">Gender split: 56%-44%</h3>
+<div class="cell">
+
+</div>
+<p>Only male and female genders are reported. There are 448 women (56%) and 346 men (44%).</p>
+</section>
+<section id="birth-years-18921953" class="level3">
+<h3 class="anchored" data-anchor-id="birth-years-18921953">Birth Years: 1892–1953</h3>
+<p>I have birth years for 527 people. They range from 1892 to 1953, with both the median and average birth year being 1919. Previously, I only went back to 1905, so this extends that range a little bit. Here’s an updated plot showing the distribution of birth years.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="624"></p>
+</div>
+</div>
+<p>This is a pretty satisfying bell curve if you ask me. It makes sense that we’d see a distribution like that: these people were grandparents (or around that age) of the eighth grade interviewees between 1986 and 2001. I predicted early on before seeing this metadata that most people would be born between 1900 and 1940. That turned out to be pretty spot on. In fact, a full 69% of people are in the GI generation, which is 1908–1928, and there are only five Baby Boomers. So, this is pretty cool because these people are primarily the current oldest generation’s parents. Unfortunately, it means I won’t be able to look at much change over time using just this collection, but it’ll provide a nice point of comparison for other data.</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="place-of-birth-still-primarily-wasatch-county" class="level3">
+<h3 class="anchored" data-anchor-id="place-of-birth-still-primarily-wasatch-county">Place of Birth: Still primarily Wasatch County</h3>
+<p>In my previous post, which was based on just 28 people, I found that people were mostly from Wasatch County. That makes sense since the interviews took place in Heber, the seat of Wasatch County. But, with more complete metadata, I see that there are many, many more places represented.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="624"></p>
+</div>
+</div>
+<p>47% of the people are from Wasatch County, and 22% of the total are from Heber. Interestingly, the second-most common category was people born outside of Utah. Salt Lake County is next (most of those are from Salt Lake City proper), which makes sense since it’s the most populus county and is pretty nearby. Utah County (most of those are from Provo) is next, and is just down Provo Canyon and is on the other side of Mount Timpanogos. Summit County (primarily folks from Park City), is just north of Wasatch County and is next.</p>
+<div class="cell">
+
+</div>
+<p>I mentioned last time that I suspect a significant proportion of Heber is represented in this collection. The 1940 Census had 2,748 people. I have data from 128 of them. That’s only 4.6% of them. BUT, that’s not any 128 people, that’s 128 <em>young</em> people. If I had more census-data-hacking skills, I’d give more specific details about the proportion of Heber by age group, but it’s probably a decent proportion.</p>
+<p>Combing through the specific birth places, there were three people born in ghost towns!</p>
+<ul>
+<li>One person was born in <a href="https://en.wikipedia.org/wiki/Bingham_Canyon,_Utah">Bingham Canyon</a>, which is a town that once existed in southwest Salt Lake County. It not only no longer exists, but the land it was built on is literally gone. It has been completely devoured by <a href="https://en.wikipedia.org/wiki/Bingham_Canyon_Mine">Bingham Canyon Mine</a>.</li>
+<li>One person was born in <a href="https://en.wikipedia.org/wiki/Victor,_Utah">Victor, Emory County</a>. This town only existed from 1910 and 1920. According to Wikipedia, it was founded when a nearby dam broke and residents of the nearby town of Desert Lake relocated to more fertile area. Turns out it wasn’t a great place, so they abandoned it.</li>
+<li>One person was born in <a href="https://en.wikipedia.org/wiki/Rockport,_Utah">Rockport, Summit County</a>, a town that was inhabited for nearly a century before the Rockpoint Reservoir was created and now covers almost the whole site.</li>
+<li>I guess the opposite case is the person born in <a href="https://en.wikipedia.org/wiki/Vineyard,_Utah">Vineyard</a>. As of the 2010 Census, there were just 139 people who lived in this town close to Provo. Since 2012 though, the town has exploded into since then to over 100 times that size. The area has been called Vineyard since 1899 and one person was born there in 1914.</li>
+</ul>
+<p>I don’t know what to do dialectologically for people born in ghost towns, especially that person from a town that only existed for 10 years. But it’s kinda fun to think about what the variety there was like or what it could have been like.</p>
+</section>
+<section id="what-to-do-with-this-information" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="what-to-do-with-this-information">What to do with this information?</h3>
+<p>Okay, so that’s where things have been for about two years, thanks to the hard work of an RA. With this information, I have a better idea of the nature of this collection.</p>
+<p>One of the main reasons I wanted this complete picture of the demographics is so that I could start to narrow down which tapes I should transcribe first. There are 751 tapes and limited resources, so I don’t want to just start transcribing them randomly. Since the collection is so large, I have the luxury of picking out a nice sample to start with. For example, I could select a relatively homogeneous group and go with people from Heber born within a five year range. Or, I could choose two people from each county and get a wide sample of Utah.</p>
+<p>I think my priority for now will be to compare Heber to Wallsburg. Heber is the seat of Wasatch County and while it has grown a lot since the 2002 Olympics, it historically has been a small town. But, Wallsburg is a smaller nearby, tucked away two mountains outside of Heber Valley.</p>
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/heber_to_wallsburg.png" class="img-fluid" width="400"></p>
+<div class="page-columns page-full"><p>Why Wallsburg? Well, when I did fieldwork in Heber in 2018, I heard that Wallsburgers were made fun of in school for being the country bumpkins or whatever. And when I introduced myself as a linguist studying Wasatch County, it seems like everyone in Heber I talked to said I needed to go down to Wallsburg (“That’s where the <em>real</em> Utah accent is!”) So I went down there, knocked a few doors asking to interview people, and eventually found a nice older woman who had lived there most of her life. Sure enough, pretty much every feature of Utah English I was studying she had to the max. So, if she’s representative of her town, there may really be linguistic differences between Heber and Wallsburg!</p><div class="no-row-height column-margin column-container"><span class="">You can hear some of her speech <a href="https://joeystanley.com/blog/idaho-montana-wyoming-and-utah-english-survey-results/index.html#thr">here</a>!</span></div></div>
+<p>Anyway, I’ve already got a list of the first dozen or so tapes I’d like to get transcribed. It’s 12 women born between 1908 and 1927 with six from Wallsburg and six from Heber. It should be a nice comparison and a good first look at what this collection has to offer. (Stay tuned ADS 2025!)</p>
+</section>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>Okay, so that’s where I’ve been sitting on for about a year or so. But, staring down the barrel of hundreds of hours of audio is daunting, and I never really made much progress on this project since then. However, recently, I met a student who has connections to Heber and was interested in working on the collection. So, I applied for a the Annaley Naegle Redd Assistantship from <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a> (the same folks that funded my earlier RA) to fund them for a few semesters. And I found out today that I will be awarded the grant! Hooray!</p>
+<p>As I mentioned in my last post, to transcribe all of these tapes manually, I estimated it would take about $100,000 and 14 student workers two years of time. My grant is certainly not that much! BUT, I don’t think I’ll need that much anymore!</p>
+<p>The main bottleneck in sociolinguistic data processing is transcription. Once something is transcribed, we can then send it through forced alignment and formant extraction without much problem. But automatic transcribers haven’t been good enough for sociolinguists’ needs. But, just in the past year, some interesting possibilities have opened up thanks to AI. In particular, OpenAI’s Whisper program is accessible via an R package. I’ve played around with it on some of these tapes and the result is pretty good.</p>
+<p>So, this semester I’ve been working on a fully automated pipeline that takes raw audio, transcribes it at the utterance-level with Whsiper, converts the output to a Praat TextGrid, sends that to the Montreal Forced Aligner, sends that output to FastTrack, and then spits out a spreadsheet of formant measurements. It takes a few scripts between each step to massage the output into a format that the next step likes, but I got a proof-of-concept working. From raw audio to vowel plot, it takes about 10 minutes.</p>
+<p>Assuming I can get it all working well, I won’t need $100,000 to have manual transcriptions. Instead, I can have students send the files down this pipeline and check the automatic transcription instead. This means they can work through tapes faster and process more data in far less time. So, with this grant, if everything goes well, I’ll be able to process a significant chunk of the Kohler Tapes!</p>
+<p>So that’s it for now. Stay tuned for more updates and soon enough you’ll see some actual linguistic results at conferences and in publications!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>Utah</category>
+  <guid>https://joeystanley.com/blog/kohler-tapes-update2/index.html</guid>
+  <pubDate>Fri, 26 Apr 2024 06:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Research Pipeline</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -12629,103 +12734,6 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
   <category>Skills</category>
   <guid>https://joeystanley.com/blog/geomtextpath/index.html</guid>
   <pubDate>Sat, 18 Dec 2021 02:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>ASA181</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/asa181/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m in Seattle at the 181st Meeting of the Acoustical Society of America right now! This is my first in-person conference since October 2019, so it’s great to be here. I presented two posters today, which you can read about and download below.</p>
-<p><br></p>
-<section id="beyond-midpoints-vowel-dynamics-of-the-low-back-merger-shift" class="level2">
-<h2 class="anchored" data-anchor-id="beyond-midpoints-vowel-dynamics-of-the-low-back-merger-shift">Beyond Midpoints: Vowel Dynamics of the Low-Back-Merger Shift</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/211129-ASA2021-trajs.pdf">here</a>!</p>
-</div>
-</div>
-<p>For some reason, I hadn’t yet presented any of my dissertation findings at a conference, not even while I was working on them or writing them up. Anyway, I’m happy to finally present some of my results at a conference. The purpose of this paper is to describe changes in vowel trajectory that accompany changes in midpoints. The Low-Back-Merger Shift is a now-widespread shift across much of North America. My data from Washington shows it pretty clearly across generations. But when I take a wide-angle lens at the vowel trajectories, I found that there was much more to the story than just a global lowering/centralizing of the front lax vowels.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/asa181/asa2021_trajs.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>There were perhaps three patterns I noticed when I modeled vowel trajectories. First is that the trajectory length was different between them. The low vowel /æ/ was much longer, then /ɛ/, and then /ɪ/. There’s also a general U-shaped pattern. Finally, the “angle” of this U-shaped was more towards the “left” for /æ/, more towards the right for /ɪ/, and in the middle for /ɛ/. These descriptions are consistent across generations and between the two geneders modeled, so it may say more about American English articulation than anything sociolinguistic.</p>
-<p>Perhaps more interestingly though was <em>how</em> these trajectories changed—within the parameters just described—across generations. Older people’s vowels traversed through much more of the F2 space than younger generations did. The result is that the older people’s vowels look more like a shallow U-shape while the younger people’s is more of V-shape or even a “bounce” straight up and down in the F1-F2 vowel space. The fact that this was consistent across all three front lax vowels and between the genders suggests some interesting sociolinguistic change.</p>
-<p>At this point, this is largely descriptive work. I don’t know how perceptible these differences are and I’m not even sure if everything I just described is statistically significant. It’ll take additional work to confirm both of these. Trajectories are often ignored because they’re chalked up articulatory causes; are we comfortable saying that trajectories are 100% phonetic and 0% sociolinguistic? (Meanwhile, if I may be a bit snarky, are the arbitrary single-point measurements that are typically analyzed magically sociolinguistically important?) I think people can exploit trajectories for sociolinguistic purposes. I just don’t know how or to what extent yet.</p>
-<p><br></p>
-</section>
-<section id="sample-size-matters-when-calculating-pillai-scores" class="level2">
-<h2 class="anchored" data-anchor-id="sample-size-matters-when-calculating-pillai-scores">Sample size matters when calculating Pillai scores</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/211129-ASA2021_pillai.pdf">here</a>!</p>
-</div>
-</div>
-<p>I’m very excited about this Pillai scores paper with a new colleague, <a href="https://betsysneller.github.io">Betsy Sneller</a>! The background for this papers is that a while ago I was analyzing some <em>cot-caught</em> merger data I had collected. I noticed that, without exception, I got higher pillai scores in wordlists than I did in conversational data. I thought I had stumbled upon some interesting style shifting! But it was <em>too</em> clean of a pattern, so I did some digging and found that it’s likely because of the sample size between the two subsets. I had less data from the wordlists than I did from the conversation. I hypothesized then that less data leads to higher Pillai scores.</p>
-<section id="methods-and-experiements" class="level3">
-<h3 class="anchored" data-anchor-id="methods-and-experiements">Methods and Experiements</h3>
-<p>So in this paper, we test this hypothesis specifically by running a bunch of simulations. We started with a single bivariate normal distribution. We then randomly drew 5 numbers from that distribution and called it “group 1.” We then drew another 5 numbers from the <em>exact same distribution</em> and called it “group 2.” The fact that they’re drawn from the same underlying distribution represents a true underlying vowel merger. We then calculated the Pillai score of those two groups. We repeated with these group sizes 1000 times. Then we drew 6 tokens from each group 100 times and calcualted Pillai scores. Then 7. And all the way up to 100.</p>
-<p>As seen in the main figure in the poster (slightly modified below), the results were clear: the larger the sample sizes, the lower the Pillai scores were. In theory, the Pillai scores should all be around zero since they’re from the same distribution. But with small samples sizes (&lt;10) observations per group, we very often got pretty high Pillai scores—scores that some researchers have considered to be distinct. It took around 30 observations per group to reliably (meaning 95% of the time) get the Pillai score under the somewhat conservative threshold of 0.1. It took 60 observations per group to get Pillai scores reliably below 0.05. This was concerning to us because few sociophonetic studies have sample sizes that large!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/asa181/asa2021_equal.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>We were also concerned about unequal sample sizes betwen groups. So we reran the experiment, except the group sizes weren’t the same size. Each group could be anywhere from 5 to 100 observations, and we ran all 9000 or so combinations. The results were surprising to us—unequal group sizes doesn’t matter at all. The only thing that mattered was the total sample size. You can see this in the figure in the top right of the poster (or below): as you go from bottom-left to top-right, the average log Pillai score<span class="sidenote">We used log(pillai) because it worked better for this visual and for the math.</span> goes from high to low. But the fact that there is no pattern from the top-left to the bottom-right diagonal means that unequal sizes don’t matter.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/asa181/asa2021_unequal.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-<p>In other words, if Group A has 25 observations and Group B has 5, the Pillai score will average around 0.07. That’s the same as if you had two groups of 15. If Group A has 25 observations and Group B has 100, the Pillai score will average around 0.01. That’s the same as if you had two groups of 62.</p>
-</section>
-<section id="implications" class="level3">
-<h3 class="anchored" data-anchor-id="implications">Implications</h3>
-<p>We can think of a <em>lot</em> of implications for these findings. For one, mergers are probably underreported and splits/distinctions are probably overreported. This is because many sociophonetic studies run Pillai scores on somewhat smaller samples.</p>
-<p>Because of sample size differences, comparison across studies is difficult. A study that collects lots of data per person will likely report lower Pillai scores than a study that is based on fewer observations per person.</p>
-<p>Going back to the main impetus for this paper, comparison <em>within</em> studies is difficult. Since more careful speech styles typically elicit fewer observations, <strong>reading tasks will have higher Pillai scores than conversational data</strong>. To a naive researcher, this will be interpreted as style differences, when it is really just a reflection of the underlying math! This is such an important point and you can count on hearing more from me and Betsy about this in later venues.</p>
-<p>Finally, one way to overcome the sample size difference is to look at the <em>p</em>-value that comes out the MANOVA test that the Pillai score came from. These <em>p</em>-values do seem to be reported in more phonetics-oriented papers, but for some reason they’re not in sociophonetics papers. So rather than us coming up with arbitrary and ad hoc thresholds for what a merged Pillai score should be, let’s us the <em>p</em>-value instead. Not reporting this <em>p</em>-value, to me at least, is kinda like reporting a <em>t</em>-statistic or <em>F</em>-ratio but without the accompanying <em>p</em>-value.</p>
-<p>As a final note, and this is more of an after-thought for us, I wonder if it would be more helpful to report log(pillai) rather than raw pillai scores. Since Pillai ranges from 1 (completely distinct) to 0 (complete overlap), log Pillai would range from 0 (completely distinct) to negative infinity (complete overlap). In practical terms, it would mostly be betwen 0 and around –4 (the latter corresponding to a raw Pillai score of about 0.01). We’ll probably talk more about this in other venues so stay tuned for that.</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Dissertation</category>
-  <category>Methods</category>
-  <category>Pacific Northwest</category>
-  <category>Phonetics</category>
-  <category>Presentations</category>
-  <category>R</category>
-  <category>Research</category>
-  <category>Simulations</category>
-  <category>Statistics</category>
-  <category>Vowel Overlap</category>
-  <guid>https://joeystanley.com/blog/asa181/index.html</guid>
-  <pubDate>Mon, 29 Nov 2021 06:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
