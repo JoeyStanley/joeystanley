@@ -53,6 +53,7 @@ format:
   html:
     theme: cosmo
     css: styles.css
+    header-includes: <link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css"/>
 
 editor: source
 

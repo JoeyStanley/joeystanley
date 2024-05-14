@@ -59,9 +59,13 @@ nav *, h1, h2, h3, footer p {
 	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
 }
 body {
-  font: 110% 'Iowan Old Style', 'PT Serif', 'Palatino', 'Times New Roman', serif;
+  font-family: 'iowanoldst-bt', 'Courier', 'Palatino', 'Times New Roman', serif;
+  font-size: 110%;
 }
-
+@font-face {
+  font-family: 'iowanoldst-bt';
+  src: url("_includes/iowanoldst-bt/bitstream-iowan-old-style-bt-586c36a8d7712.ttf");
+}
 
 
 
