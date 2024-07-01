@@ -393,9 +393,13 @@ p a:hover {
 }
 
 #cv h3 {
-	margin-top: 2em;
+	margin-top: 3rem;
 	font-style: italic;
 	font-weight: 300;
+}
+
+span.me {
+  color: var(--joeyblue);
 }
 
 
