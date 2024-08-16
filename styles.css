@@ -402,6 +402,10 @@ span.me {
   color: var(--joeyblue);
 }
 
+span.courses {
+  font-size: 0.66em;
+}
+
 
 /* Add icons to the CV link types */
 a.paper:after {
