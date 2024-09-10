@@ -399,7 +399,7 @@ p a:hover {
 }
 
 span.me {
-  color: var(--joeyblue);
+  font-weight: 600;
 }
 
 span.courses {
