@@ -10,7 +10,43 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Thu, 16 May 2024 15:12:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 12 Sep 2024 15:00:00 GMT</lastBuildDate>
+<item>
+  <title>AACL 2024</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/aacl2024/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Today, some collaborative work between Brett Hashimoto, me, and Jack Grieve is being presented at the <a href="https://sites.google.com/view/aacl-2024/home?authuser=0">American Association for Corpus Linguistics Conference</a> at the University of Oregon.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/240913-AACL_YouTube.pdf">here</a>!</p>
+</div>
+</div>
+<p>We use the Corpus of North American Spoken English (CoNASE; Coats 2019, 2023), which has YouTube transcriptions of over 300,000 geotagged regional and local government videos from across the US and Canada. It represents over 150,000 hours of spoken language and 1.2 billion words of text. We follow Grieve’s (2016) methods and extract information from 135 grammatical alternation variables. We then ran spatial stats to identify areas where those alternations cluster together. Basically, we’re using YouTube to identify regional grammatical variation. Our presentation today could only show a few of the over 200 maps that we’ve generated and here’s just one of my favorites.</p>
+<p><img src="https://joeystanley.com/blog/aacl2024/slide10.png" class="img-fluid"></p>
+<p>We’re just getting started in our analysis of this unbelievably big and rich dataset. Stay tuned for many more additional findings in future presentations!</p>
+
+
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <guid>https://joeystanley.com/blog/aacl2024/index.html</guid>
+  <pubDate>Thu, 12 Sep 2024 15:00:00 GMT</pubDate>
+</item>
 <item>
   <title>New publication on Missionary Voice in Proceedings of the Linguistic Society of America</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -11775,107 +11811,6 @@ font-style: inherit;">10</span>)</span></code></pre></div>
   <category>Vowel Overlap</category>
   <guid>https://joeystanley.com/blog/animating_formant_trajectories/index.html</guid>
   <pubDate>Thu, 13 Jan 2022 20:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>ADS and LSA 2022</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/ads-and-lsa-2022/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I’m attending the Annual Meeting of the Linguistic Society of America and the American Dialect Society and I’ve got three presentations to tell you about! Please find links, summaries, and images from these presentations below!</p>
-<section id="perspectives-on-georgia-vowels-from-legacy-to-synchrony" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="perspectives-on-georgia-vowels-from-legacy-to-synchrony">Perspectives on Georgia Vowels: From Legacy to Synchrony</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/220106-ADS-Georgia.pdf">here</a>!</p>
-</div>
-</div>
-<div class="page-columns page-full"><p>On Thursday afternoon, Peggy Renwick, Jon Forrest, Lelia Glass, and I kicked off the ADS sessions with our presentation on English in Georgia. The four of us have been collaborating for about a year, pooling together datasets and sharing resources, on a project focusing on English in Georgia. This is our first talk showcasing some of our findings. Our results are largely descriptive at this point. Here are the main plots we used (in a fun dark mode!) split up by generation, gender, and ethnicity:</p><div class="no-row-height column-margin column-container"><span class="">For those of you that were there, this was the one that was horribly Zoombombed!</span></div></div>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/ADS2022-white_older.png" class="img-fluid"></p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/ADS2022-white_younger.png" class="img-fluid"></p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/ADS2022-black.png" class="img-fluid"></p>
-<p>Turns out pretty vowel changes if you give it 100 years. We’re just excited to see acoustic data from such a large span of time analyzed together.</p>
-<p><br></p>
-</section>
-<section id="homogeneity-and-heterogeneity-in-western-american-english" class="level2">
-<h2 class="anchored" data-anchor-id="homogeneity-and-heterogeneity-in-western-american-english">Homogeneity and Heterogeneity in Western American English</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/220107-ADS-MTurk.pdf">here</a>!</p>
-</div>
-</div>
-<p>At the ADS poster session on Friday, I presented a poster with two students, Jessica Shepherd and Auna Nygaard. As a bit of background, in <em>Speech in the Western States: Volume 2</em>, Fridland et al (2012:172) point out that pretty much every study of the front lax vowels in the Western US has been based on independent, isolated studies. Because each research collects and processes data their own way, it’s difficult to disentangle differences that may be due to region and differences that may be due to methodological choices. They say that “clearly, collecting the same type of data from all sites would be optimal in allowing us the most reliable cross-region assessment.”</p>
-<p>This project is a direct response to that call. When I was a grad student I recruited people via Amazon Mechanical Turk to a bunch of recordings of people reading sentences and wordlists. In total, 212 people completed the task, scattered all across the Western US. This poster describes the first results from this project. As it turns out, our findings match the West’s description as exhibiting both “homogeneity and heterogeneity” (Fridland et al.&nbsp;2012:172). We find homogeneity in that most people have the LBMS to some degree and that education level and region weren’t statistically significant predictors. However, there’s a wide range of variation for the LBMS and <sc>ban</sc>-raising, with younger people and sometimes women appearing to lead both of these sound changes. Here are some sample plots from four representative speakers.</p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/ADS2022-mturk_samples.png" class="img-fluid"></p>
-<p>And here’s an overall look at the vowel space in our dataset, with some additional allophones we don’t analyze here.</p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/ADS2022-mturk_overall.png" class="img-fluid"></p>
-<p>We look forward to digging into this dataset a little bit more in the future!</p>
-<p><br></p>
-</section>
-<section id="vowels-can-merge-because-of-changes-in-trajectory-prelaterals-in-rural-utah-english" class="level2">
-<h2 class="anchored" data-anchor-id="vowels-can-merge-because-of-changes-in-trajectory-prelaterals-in-rural-utah-english">Vowels can merge because of changes in trajectory: Prelaterals in rural Utah English</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/220107-LSA-Prelaterals.pdf">here</a>!</p>
-</div>
-</div>
-<p>Finally, on Friday afternoon, Lisa Johnson and I talked about vowel trajectories and what they can tell us about vowel merger. We look at prelaterals in rural Utah and find that, on the surface, they look like mergers by approximation. However, when we looked at the trajectories (with the help of some pretty cool animations!), it seems like the lateral gradually increases its influence on the vowel so that the merger happens “leftward,” from the coda to the onset. In this example, we have <sc>zeal</sc> and <sc>guilt</sc>, representing /il/ (<em>feel</em>, <em>deal</em>, <em>meal</em>) and /ɪl/ (<em>fill</em>, <em>dill</em>, <em>mill</em>), <a href="../../blog/extending-wells-lexical-sets-to-prelateral-vowels">respectively.</a></p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/lsa2022_ZEAL-GUILT.gif" class="img-fluid"></p>
-<p><br></p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/lsa2022_FLAIL-SHELF.gif" class="img-fluid"></p>
-<p><br></p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/lsa2022_JOLT-MULCH.gif" class="img-fluid"></p>
-<p><br></p>
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2022/lsa2022_WOLF-MULCH.gif" class="img-fluid"></p>
-<p>This was a pretty consistent pattern across all the pairs of prelateral vowels we looked at. We suspect that we might find this among other conditioned and vowel shifts, like prevelar raising, the <sc>mary-merry-marry</sc> merger, and post-coronal /u/-fronting. The point is, we think trajectories should be considered more when looking at vowel mergers because even among these supposed monophthongs, trajectories really illuminated how that merger happened.</p>
-<p><br></p>
-
-
-</section>
-
- ]]></description>
-  <category>Animations</category>
-  <category>Conferences</category>
-  <category>Data Viz</category>
-  <category>MTurk</category>
-  <category>Phonetics</category>
-  <category>Presentations</category>
-  <category>R</category>
-  <category>Research</category>
-  <category>South</category>
-  <category>Students</category>
-  <category>Utah</category>
-  <category>Vowel Overlap</category>
-  <category>West</category>
-  <guid>https://joeystanley.com/blog/ads-and-lsa-2022/index.html</guid>
-  <pubDate>Sun, 02 Jan 2022 12:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
