@@ -3554,5 +3554,12 @@
     "title": "AACL 2024",
     "section": "",
     "text": "Today, some collaborative work between Brett Hashimoto, me, and Jack Grieve is being presented at the American Association for Corpus Linguistics Conference at the University of Oregon.\n\n\n\n\n\n\nTip\n\n\n\nDownload the slides here!\n\n\nWe use the Corpus of North American Spoken English (CoNASE; Coats 2019, 2023), which has YouTube transcriptions of over 300,000 geotagged regional and local government videos from across the US and Canada. It represents over 150,000 hours of spoken language and 1.2 billion words of text. We follow Grieve’s (2016) methods and extract information from 135 grammatical alternation variables. We then ran spatial stats to identify areas where those alternations cluster together. Basically, we’re using YouTube to identify regional grammatical variation. Our presentation today could only show a few of the over 200 maps that we’ve generated and here’s just one of my favorites.\n\nWe’re just getting started in our analysis of this unbelievably big and rich dataset. Stay tuned for many more additional findings in future presentations!"
+  },
+  {
+    "objectID": "blog/swearing/index.html",
+    "href": "blog/swearing/index.html",
+    "title": "BYU Students’ Evaluations of Swear Words",
+    "section": "",
+    "text": "This year, I’ve been participating in Chris Rogers’ Langauge Science and Exploration Group. This month, we talked about slang, taboo, and subversive language. For my mini-project, a few of us conducted an informal survey about swear words and other taboo terms. The survey had a list of about 30 words of varying degrees of severity. I then asked them to indicate the inappropriateness of each word, from “completely” to “not at all”. I tallied up the responses and put them in order from overall most inappropriate to least. We sent it out to people in the BYU community and to other members of the Church of Jesus Christ of Latter-day Saints.\nHere are the results:\n\nThere’s a lot to dissect here, and I won’t overanalyze it too much because it’s so informal and based on a small sample size. But, what I will say is that it’s interesting how high words the words Jesus and god are ranked—this is something that is likely unique to the BYU community and would not be found in too many other places!"
   }
 ]
