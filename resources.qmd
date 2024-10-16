@@ -191,7 +191,7 @@ This category includes anything that deals with audio. These are things that I m
 
 * [*Data Visualization: A Practical Introduction*](http://socviz.co) by [Kieran Healy](http://www.kieranhealy.org). I haven't had the time to look through it, but this books looks quite good. It covers data prep, basic plots, visualizing statistical models, maps, and a whole bunch of other stuff. 
 
-* [*Fundamentals of Data Visualization*](https://serialmentor.com/dataviz/) by [Claus O. Wilke](https://integrativebio.utexas.edu/component/cobalt/item/7-integrative-biology/237-wilke-claus-o?Itemid=1224) is "meant as a guide to making visualizations that accurately reflect the data, tell a story, and look professional." 
+* [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) by [Claus O. Wilke](https://integrativebio.utexas.edu/component/cobalt/item/7-integrative-biology/237-wilke-claus-o?Itemid=1224) is "meant as a guide to making visualizations that accurately reflect the data, tell a story, and look professional." 
 
 * *[Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com)* by [Carson Sievert](https://cpsievert.me) is another free online book on data visualization in in R. This has a good focus on interactivity since it involves [plotly](https://plot.ly) and [Shiny](https://shiny.rstudio.com).
 
