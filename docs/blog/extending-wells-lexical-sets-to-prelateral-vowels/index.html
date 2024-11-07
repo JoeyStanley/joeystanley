@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
 <meta name="dcterms.date" content="2019-12-27">
 
-<title>Joey Stanley - Extending Wells’ Lexical Set to Prelateral Vowels</title>
+<title>Extending Wells’ Lexical Set to Prelateral Vowels – Joey Stanley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -70,6 +77,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '350348361', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -78,89 +86,89 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">About Me <em>who am I?</em></span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv/index.html" rel="" target="">
- <span class="menu-text">CV <em>what have I done?</em></span></a>
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/index.html" rel="" target="">
- <span class="menu-text">Research <em>what do I research?</em></span></a>
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html" rel="" target="">
- <span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/idiolect" rel="" target="">
- <span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog/index.html" rel="" target="">
- <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:joey_stanley@byu.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-list" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
         <li>
-    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds" role="img">
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social"><i class="bi bi-clouds" role="img">
 </i> 
  <span class="dropdown-text">Bluesky</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
 </i> 
  <span class="dropdown-text">Twitter</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra" rel="" target=""><i class="bi bi-mortarboard-fill" role="img">
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
 </i> 
  <span class="dropdown-text">Google Scholar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
 </i> 
  <span class="dropdown-text">Github</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../joeystanley.com/feed.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
 </i> 
  <span class="dropdown-text">RSS feed</span></a>
   </li>  
     </ul>
   </li>
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -219,10 +227,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
+
 <p>At some point in the past few years, I’ve analyzed pretty much every English vowel before laterals. They’re pretty cool because they’re understudied, they’re somewhat infrequent, and they’re involved in a lot of different mergers in different parts of the country. When referring to these prelateral vowels, several labels have been used in the past, but none do the job quite right. So, I think prelaterals should get a standardized set of Wells-style labels, like prerhotics have. The problem is figuring out what they should be. In this post, I explain why existing labels aren’t great and then propose a complete set of new labels for prelateral vowels.</p>
 <p>To cut to the chase, this table—particularly the column labeled “Prelateral Keyword”—shows the labels I’ve come up with:</p>
 <center>
-
 <table id="wells">
 <thead>
 <tr>
@@ -485,7 +493,6 @@ Earl, girl, curl, hurl, pearl, whirl, swirl, twirl
 </td>
 </tr>
 </tbody>
-
 </table>
 <p class="caption center">
 A standard set of prelateral keywords.
@@ -506,9 +513,8 @@ A standard set of prelateral keywords.
 </section>
 <section id="existing-prelateral-labels" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="existing-prelateral-labels">Existing Prelateral Labels</h2>
-<div class="page-columns page-full"><p>Of the research I’ve seen on prelateral vowels, if labels are given to them, they usually take the form of a minimal pair or set (or as close to one as possible). Some of the more common labels include <sc>pool</sc>, <sc>pull</sc>, and <sc>pole</sc> for back vowels, or <sc>feel</sc>, <sc>fill</sc>, <sc>fail</sc>, and <sc>fell</sc> for front vowels. I’ve used them myself, actually.</p><div class="no-row-height column-margin column-container"><span class="">See, for example, <a href="https://repository.upenn.edu/dissertations/AAI9965448/">Bowie (2000)</a>, <a href="https://doi.org/10.1515/9783110175325">Thomas (2004)</a>, and <a href="https://doi.org/10.1515/9783110175325">Tillery &amp; Bailey (2004)</a>.</span></div></div>
-<div class="page-columns page-full"><p>To my knowledge, the only attempt at standardizing prelateral labels was by <a href="https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2">Thomas &amp; Yeager-Dror (2009)</a>. In their table, reproduced below, they list the labels they use in that volume. In addition to standardizing other allophones’ labels, prelateral vowels get an entire column, and a nearly complete set of labels.</p><div class="no-row-height column-margin column-container"><span class="">I presented an abbreviated version of this table already in a <a href="../../blog/why-do-people-use-bat-instead-of-trap">previous post</a> since it’s what popularized the <sc>b_t</sc> frame.</span></div></div>
-
+<div class="page-columns page-full"><p>Of the research I’ve seen on prelateral vowels, if labels are given to them, they usually take the form of a minimal pair or set (or as close to one as possible). Some of the more common labels include <sc>pool</sc>, <sc>pull</sc>, and <sc>pole</sc> for back vowels, or <sc>feel</sc>, <sc>fill</sc>, <sc>fail</sc>, and <sc>fell</sc> for front vowels. I’ve used them myself, actually.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">See, for example, <a href="https://repository.upenn.edu/dissertations/AAI9965448/">Bowie (2000)</a>, <a href="https://doi.org/10.1515/9783110175325">Thomas (2004)</a>, and <a href="https://doi.org/10.1515/9783110175325">Tillery &amp; Bailey (2004)</a>.</span></div></div>
+<div class="page-columns page-full"><p>To my knowledge, the only attempt at standardizing prelateral labels was by <a href="https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2">Thomas &amp; Yeager-Dror (2009)</a>. In their table, reproduced below, they list the labels they use in that volume. In addition to standardizing other allophones’ labels, prelateral vowels get an entire column, and a nearly complete set of labels.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I presented an abbreviated version of this table already in a <a href="../../blog/why-do-people-use-bat-instead-of-trap">previous post</a> since it’s what popularized the <sc>b_t</sc> frame.</span></div></div>
 <table id="wells">
 <thead>
 <tr>
@@ -768,7 +774,6 @@ bird
 </td>
 </tr>
 </tbody>
-
 </table>
 <p class="caption center">
 The lexical set, including prelateral and other allophonic expansions, from <a href="https://www.dukeupress.edu/african-american-english-speakers-and-their-participation-in-local-sound-changes-2">Thomas &amp; Yeager-Dror (2009:6)</a>.
@@ -794,7 +799,6 @@ My Hot Take
 <h2 class="anchored" data-anchor-id="why-a-minimal-set-wont-work-for-prelaterals">Why a minimal set won’t work for prelaterals</h2>
 <p>Let’s entertain the idea of using a minimal set to unite all prelateral vowels. We’ve got <sc>f_l</sc> for front vowels and <sc>p_l</sc> for some of the back vowels. Can we find one frame that works for <em>all</em> vowels?</p>
 <p>No.&nbsp;The following table, which is grouped approximately by natural class, lists the frames that have the most words and would therefore be the best candidates for new labels:</p>
-
 <table id="wells">
 <thead class="sc">
 <tr>
@@ -1204,7 +1208,6 @@ Goyle
 </td>
 </tr>
 </tbody>
-
 </table>
 <p class="caption">
 Minimal sets of and potential keywords for prelateral vowels. Words in gray are not ideal for a variety of reasons (infrequent words, proper nouns, or inconsistent vowel assignments). Blank cells are, as far as I can tell, accidental gaps in the English lexicon.
@@ -1221,7 +1224,7 @@ Minimal sets of and potential keywords for prelateral vowels. Words in gray are 
 <li><p><strong><sc>t_l</sc></strong>—It’s comparable to <sc>f_l</sc>, except there’s no /ʊl/.</p></li>
 <li><p><strong><sc>g_l</sc></strong>—The benefits are similar to <sc>k_l</sc>, except there’s no /ɡil/, and I had to fudge /ɔɪ/ with <em>Goyle</em> (though Harry Potter fans may enjoy it).</p></li>
 </ul>
-<div class="no-row-height column-margin column-container"><span class="">By natural classes, I’m referring to front vowels, back vowels, low vowels, and diphthongs—environments within which mergers are most commonly reported.</span><span class="">I don’t speak hypothetically here: I’ve included <em>foal</em> in wordlists and people sometimes do mistake it for <em>foul</em>. See also <a href="http://journal-labphon.org/article/10.5334/labphon.54/">Wade (2017:7)</a> and <a href="http://repository.upenn.edu/pwpl/vol21/iss2/2/">Arnold (2015:3)</a> who explicitly mentione this problem too.</span></div><p>Several frames work pretty well, but they all have their problems. More importantly, no one frame works well for all front vowels (if you include /æl/), no one frame works for all back vowels (if you include /ʌl/), and no one frame works for the low vowels (thanks, /ɑl/). To get a complete set of labels, you’re going to have to pick three different frames—at a minimum. Such a patchwork of frames is inconsistent and confusing.</p>
+<div class="no-row-height column-margin column-container"><span class="margin-aside">By natural classes, I’m referring to front vowels, back vowels, low vowels, and diphthongs—environments within which mergers are most commonly reported.</span><span class="margin-aside">I don’t speak hypothetically here: I’ve included <em>foal</em> in wordlists and people sometimes do mistake it for <em>foul</em>. See also <a href="http://journal-labphon.org/article/10.5334/labphon.54/">Wade (2017:7)</a> and <a href="http://repository.upenn.edu/pwpl/vol21/iss2/2/">Arnold (2015:3)</a> who explicitly mentione this problem too.</span></div><p>Several frames work pretty well, but they all have their problems. More importantly, no one frame works well for all front vowels (if you include /æl/), no one frame works for all back vowels (if you include /ʌl/), and no one frame works for the low vowels (thanks, /ɑl/). To get a complete set of labels, you’re going to have to pick three different frames—at a minimum. Such a patchwork of frames is inconsistent and confusing.</p>
 <p>So, should we ditch the minimal sets and go for unambiguous, truly Wells-style lexical sets? Yes.</p>
 </section>
 <section id="unambiguous-labels-for-prelateral-vowels" class="level2 page-columns page-full">
@@ -1236,7 +1239,7 @@ List of all ~401 monosyllabic English words with a coda lateral, organized by vo
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>This spreadsheet is based on the CMU dictionary. I searched for all words that contained just one vowel and where that vowel was followed by an L. I then just organized them by their consonants in a spreadsheet. It’s pretty handy.</p>
-<div class="page-columns page-full"><p>With this spreadsheet, I can easily identify candidate representative words. So, loosely based on Wells’ original keywords, here were the criteria that I established for selecting a word, approximately in order of importance:</p><div class="no-row-height column-margin column-container"><span class="">I’ve outlined more general criteria for selecting a new Wells-inspired label for an allophone in a <a href="../../blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets">previous post</a>.</span></div></div>
+<div class="page-columns page-full"><p>With this spreadsheet, I can easily identify candidate representative words. So, loosely based on Wells’ original keywords, here were the criteria that I established for selecting a word, approximately in order of importance:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I’ve outlined more general criteria for selecting a new Wells-inspired label for an allophone in a <a href="../../blog/thoughts-on-allophonic-extensions-to-wells-lexical-sets">previous post</a>.</span></div></div>
 <ol type="1">
 <li><p>They must be monosyllabic.</p></li>
 <li><p>They must be monomorphemic.</p></li>
@@ -1245,8 +1248,7 @@ List of all ~401 monosyllabic English words with a coda lateral, organized by vo
 <li><p>Codas consist of a single voiceless obstruent following the /l/. </p></li>
 <li><p>Nouns are preferred.</p></li>
 </ol>
-<div class="no-row-height column-margin column-container"><span class="">I have relaxed the coda requirement a little bit from what Wells says (1982:123):<br><span style="font-size: 0.8em;">“As far as possible the keywords have been chosen so as to end in a voiceless alveolar or dental consonant: a voiceless consonant minimizes the likelihood of diphthongal glides obscuring a basic vowel quality, while coronality (alveolar or dental place) minimizes the possible allophonic effect of the place of a following consonant. An exception here is <sc>trap</sc> for the /æ/ correspondence, where no items in /-t, -s, -θ/ are altogether suitable; another one is <sc>palm</sc>.”</span><br>I figure the presence of the lateral is enough of a buffer between the vowel and any following consonant (though phoneticians are welcome to correct me).</span></div><p>With this organized spreadsheet, applying the six criteria for each vowel class was relatively straightforward. The below table shows the list I came up with:</p>
-
+<div class="no-row-height column-margin column-container"><span class="margin-aside">I have relaxed the coda requirement a little bit from what Wells says (1982:123):<br><span style="font-size: 0.8em;">“As far as possible the keywords have been chosen so as to end in a voiceless alveolar or dental consonant: a voiceless consonant minimizes the likelihood of diphthongal glides obscuring a basic vowel quality, while coronality (alveolar or dental place) minimizes the possible allophonic effect of the place of a following consonant. An exception here is <sc>trap</sc> for the /æ/ correspondence, where no items in /-t, -s, -θ/ are altogether suitable; another one is <sc>palm</sc>.”</span><br>I figure the presence of the lateral is enough of a buffer between the vowel and any following consonant (though phoneticians are welcome to correct me).</span></div><p>With this organized spreadsheet, applying the six criteria for each vowel class was relatively straightforward. The below table shows the list I came up with:</p>
 <table id="wells">
 <thead>
 <tr>
@@ -1509,7 +1511,6 @@ Earl, girl, curl, hurl, pearl, whirl, swirl, twirl
 </td>
 </tr>
 </tbody>
-
 </table>
 <p class="caption center">
 The prelateral keywords I propose in this post.
@@ -1522,20 +1523,20 @@ The prelateral keywords I propose in this post.
 <li><p><strong><sc>flail</sc></strong>—This was an easy choice because it’s the only one with no minimal pair. I’m not a fan of the complex onset, especially with the liquid, but it’s the only option. That’s okay: since Wells used <sc>fleece</sc>, I think <sc>flail</sc> is fine.</p></li>
 <li><p><strong><sc>shelf</sc></strong>—Again, there were lots of other options: <em>belch</em>, <em>help</em>, <em>health</em>, <em>pelt</em>, <em>self</em>, <em>wealth</em>, and <em>yelp</em>. Of these, <em>shelf</em> just felt like the best choice—though <em>belch</em> would have been a great alternative!</p></li>
 </ul>
-<div class="no-row-height column-margin column-container"><span class="">If I wanted to relax the coda requirement, I really like <sc>chill</sc> as an alternative option.</span></div><p>For the back vowels, it’s especially important that minimal pairs do not exist since there are a variety of mergers that exist among prelateral back vowels, including four-way mergers.</p>
+<div class="no-row-height column-margin column-container"><span class="margin-aside">If I wanted to relax the coda requirement, I really like <sc>chill</sc> as an alternative option.</span></div><p>For the back vowels, it’s especially important that minimal pairs do not exist since there are a variety of mergers that exist among prelateral back vowels, including four-way mergers.</p>
 <ul>
 <li><p><strong><sc>spool</sc></strong>—There were no words with /ul/ that didn’t form a minimal pair with other prelateral vowels. And in fact, none of the monomorphemic words had any other coda material besides /l/. Given these limitations, I chose <em>spool</em> as the representative word. It forms minimal pairs with <em>spiel</em>, <em>spill</em>, <em>spell</em>, and <em>spoil</em>, but I’m not aware of any variety of English that would merge <em>spool</em> with any of those words. Other candidates were <em>school</em> and <em>cruel</em>, but they form minimal pairs with <em>skull</em> and <em>crawl</em> and I wanted to avoid any words with other back vowels in the same frame.</p></li>
 <li><p><strong><sc>wolf</sc></strong>—There really are very few words with /ʊl/, especially monosyllabic ones. As far as I know, there are five: <em>full</em>, <em>pull</em>, <em>bull</em>, <em>wool</em>, and <em>wolf</em>. Is it coincidental that they all start with labial sounds? Not sure. Probably. Of these, <em>full</em>, <em>pull</em>, and <em>bull</em> form lots of minimal pairs with other back vowels. <em>Wool</em> has no obstruent in the coda. That leaves <em>wolf</em>. I’m pretty sure my idiolect assigns /o/ to this word, so it goes against my intuition, but Wells himself assigns /ʊ/ to <em>wolf</em> and it’s the only real option we’ve got.</p></li>
 <li><p><strong><sc>jolt</sc></strong>—There are lots of words with /ol/, but only two lack minimal pairs: <em>stroll</em> and <em>jolt</em>. Only <em>jolt</em> fits the other criteria.</p></li>
 <li><p><strong><sc>mulch</sc></strong>—A handful of words fit the criteria: <em>gulp</em>, <em>hulk</em>, <em>mulch</em>, <em>pulp</em>, <em>pulse</em>. And unless you count the name of the department store <em>Belk</em> as a word, then <em>bulk</em> also fits. Any of these work well (I’ve personally used <sc>pulp</sc> in the past), but I chose <em>mulch</em> to add a bit of variety in coda consonants to the lexical set.</p></li>
 </ul>
-<div class="no-row-height column-margin column-container"><span class="">I’m pretty sure I’ve seen <em>school</em> before but I can’t find the source.</span></div><p>With the low vowels, the number of options was limited, and I had to relax some of the rules.</p>
+<div class="no-row-height column-margin column-container"><span class="margin-aside">I’m pretty sure I’ve seen <em>school</em> before but I can’t find the source.</span></div><p>With the low vowels, the number of options was limited, and I had to relax some of the rules.</p>
 <ul>
 <li><p><strong><sc>talc</sc></strong>—The only other word that fit all the criteria was <em>scalp</em>, so I chose the one with the simpler onest.</p></li>
 <li><p><strong><sc>golf</sc></strong>—Okay, this one was tricky. The CMU and searchable phonetic dictionaries I have access to didn’t have too many words with /ɑl/. Plus I merge /ɑ/ with /ɔ/ before coda laterals, so I don’t have intuition to back me up. In fact, the best list I know of is <a href="https://journals.sagepub.com/doi/abs/10.1177/0075424216634795">Dinkin 2016</a>. The word <em>golf</em> was the most common word, and though it forms a minimal pair with <em>gulf</em>, it’s probably the best option. The next best might be <em>psalm</em>, but that only works for speakers that pronounce the [l] and who don’t have <sc>palm</sc> there. Another option was <em>doll</em>, but it’s part of a large minimal set.</p></li>
 <li><p><strong><sc>fault</sc></strong>—The only two words that formed no minimal pairs, <em>sprawl</em> and <em>false</em>, aren’t ideal because they didn’t seem nouny enough. Plus, <em>sprawl</em> has has a complex onset, and seeing <sc>false</sc> in capital letters just seems like an error in computer code. The word <em>fault</em> forms a minimal pair with <em>felt</em> but fits all the other criteria, so I think it’ll do.</p></li>
 </ul>
-<div class="no-row-height column-margin column-container"><span class="">Another option is <sc>valve</sc>, and if I wanted to relax the voiceless obstruent requirement, I’d opt for that.</span></div><p>For diphthongs and pre-/ɹ/, the choices were also limited. You’ll notice that only one has a consonant in the coda, and its voiced, violating my rule 5. The reason is because <em>none</em> of the monomorphemic words with these vowels had anything else in the codas, other than <em>child</em>, <em>wild</em>, and <em>mild</em>.</p>
+<div class="no-row-height column-margin column-container"><span class="margin-aside">Another option is <sc>valve</sc>, and if I wanted to relax the voiceless obstruent requirement, I’d opt for that.</span></div><p>For diphthongs and pre-/ɹ/, the choices were also limited. You’ll notice that only one has a consonant in the coda, and its voiced, violating my rule 5. The reason is because <em>none</em> of the monomorphemic words with these vowels had anything else in the codas, other than <em>child</em>, <em>wild</em>, and <em>mild</em>.</p>
 <ul>
 <li><p><strong><sc>child</sc></strong>—There was only one word with no minimal pairs, <em>whilst</em>, which didn’t seem like a good fit. Though <em>child</em> has a voiced coda, it only forms a minimal pair with <em>chilled</em> so it seems pretty good otherwise.</p></li>
 <li><p><strong><sc>prowl</sc></strong>—It’s not the most common word, but it doesn’t have any minimal pairs.</p></li>
@@ -1588,18 +1589,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1631,11 +1621,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1645,8 +1674,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1658,7 +1696,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1702,6 +1863,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1727,6 +1889,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1787,6 +1975,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
