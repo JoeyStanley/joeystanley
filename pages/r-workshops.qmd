@@ -1,9 +1,9 @@
 ---
 layout: aside
 title: R Workshops
-redirect_from: 
-    - "/r2018"
-    - "/r"
+aliases: 
+  - "/r2018"
+  - "/r"
 ---
 
 In grad school I offered workshops on a variety of topics relating to R between Fall 2017 and Spring 2020. They were held Fridays at 3:30 in the DigiLab at the UGA Main Library. Videos for some of these are available [here](https://digilabuga.github.io/Resources/VideoTutorials.html). Below you will find materials for these workshops. I hope they are thorough enough that you can make use of them as stand-alone documents. 

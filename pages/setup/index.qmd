@@ -1,8 +1,8 @@
 ---
 layout: aside
 title: Setup Instructions
-redirect_from: 
-    - "/setup"
+aliases: 
+ - "/setup"
 ---
 
 Thanks for your interest in one of my workshops. Please follow the steps below to get R and RStudio installed to your computer before the workshop starts. If you're having difficulty, please come a little early and I can help you out.
