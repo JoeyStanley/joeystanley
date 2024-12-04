@@ -32,8 +32,8 @@ website:
         href: mailto:joey_stanley@byu.edu
       - icon: list
         menu: 
-         - icon: clouds
-           text: Bluesky
+           # https://github.com/quarto-dev/quarto-cli/discussions/7640
+         - text: "{{< fa brands bluesky >}} Bluesky"
            href: https://bsky.app/profile/joeystan.bsky.social
          - icon: twitter
            text: Twitter
