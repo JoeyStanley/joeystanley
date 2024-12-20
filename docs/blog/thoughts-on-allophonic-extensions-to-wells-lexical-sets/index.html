@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
 <meta name="dcterms.date" content="2019-12-18">
 
-<title>Joey Stanley - Thoughts on Allophonic Extensions to Wells’ Lexical Sets</title>
+<title>Thoughts on Allophonic Extensions to Wells’ Lexical Sets – Joey Stanley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,13 +41,21 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -70,6 +79,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '350348361', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -78,89 +88,88 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">About Me <em>who am I?</em></span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv/index.html" rel="" target="">
- <span class="menu-text">CV <em>what have I done?</em></span></a>
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/index.html" rel="" target="">
- <span class="menu-text">Research <em>what do I research?</em></span></a>
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html" rel="" target="">
- <span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/idiolect" rel="" target="">
- <span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog/index.html" rel="" target="">
- <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:joey_stanley@byu.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-list" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
         <li>
-    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds" role="img">
-</i> 
- <span class="dropdown-text">Bluesky</span></a>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystanley.com">
+ <span class="dropdown-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> Bluesky</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
 </i> 
  <span class="dropdown-text">Twitter</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra" rel="" target=""><i class="bi bi-mortarboard-fill" role="img">
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
 </i> 
  <span class="dropdown-text">Google Scholar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
 </i> 
  <span class="dropdown-text">Github</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../joeystanley.com/feed.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
 </i> 
  <span class="dropdown-text">RSS feed</span></a>
   </li>  
     </ul>
   </li>
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -222,11 +231,11 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
+
 <p>In a previous post called <a href="../../blog/why-do-people-use-bat-instead-of-trap">“Why do people use <sc>bat</sc> instead of <sc>trap</sc>”</a>, I wrote a little bit about the Wells Lexical sets (<sc>fleece</sc>, <sc>trap</sc>, <sc>thought</sc>, etc.), a competing set (<sc>beet</sc>, <sc>bat</sc>, <sc>bought</sc>, etc.), and why I think Wells’ original labels are better. In this post, I continue my musings on Wells’ inspired labels for lexical sets, only this time I focus on those used for specific allophones of vowels (<sc>ban</sc>, <sc>pin</sc>, <sc>toot</sc>, etc.). I point out several issues that have arisen over the years and offer some solutions that may make future papers more consistent and less confusing.</p>
 <section id="the-need-for-labels-for-allophones" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-need-for-labels-for-allophones">The need for labels for allophones</h2>
-<div class="page-columns page-full"><p>As explained <a href="../../blog/why-do-people-use-bat-instead-of-trap">previously</a>, John C. Wells came up with some labels as a shorthand to refer to words “which tend to share the same vowel, and to the vowel which they share.” These labels, traditionally notated in <sc>small capitals</sc>, are carefully selected words that don’t form minimal pairs with another words so that there is no confusion as to which vowel is being referred to when spoken.</p><div class="no-row-height column-margin column-container"><span class="">John C. Wells. 1982. <em>Accents of English: Vol 1</em>. p.&nbsp;xviii.</span></div></div>
-
+<div class="page-columns page-full"><p>As explained <a href="../../blog/why-do-people-use-bat-instead-of-trap">previously</a>, John C. Wells came up with some labels as a shorthand to refer to words “which tend to share the same vowel, and to the vowel which they share.” These labels, traditionally notated in <sc>small capitals</sc>, are carefully selected words that don’t form minimal pairs with another words so that there is no confusion as to which vowel is being referred to when spoken.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">John C. Wells. 1982. <em>Accents of English: Vol 1</em>. p.&nbsp;xviii.</span></div></div>
 <table id="wells">
 <thead style="text-align: left;">
 <tr>
@@ -657,7 +666,6 @@ poor, tourist, pure, plural, jury…
 </td>
 </tr>
 </tbody>
-
 </table>
 <p class="caption center">
 Wells’ original lexical sets. From Wells (1982:xviii–xix).
@@ -671,7 +679,7 @@ Wells’ original lexical sets. From Wells (1982:xviii–xix).
 <p>Proposing a lexical set for the vowel classes in English (and select allophones) may be somewhat straightforward (Wells said later he created his over the course of a weekend). However, when trying to do the same for English <em>allophones</em>, there are a number of issues that have come up: competing labels, variety-specific labels, and keeping track of modifications to Wells’ original labels. Let’s consider each of these problems.</p>
 <section id="competing-standards" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="competing-standards">Competing standards</h3>
-<div class="page-columns page-full"><p>We see a recurring problem when scientists study some new thing: we don’t know what to call it. And when independent research is happening in parallel on that new thing, multiple terms are introduced, each with perfectly good and justifiable reasoning. This is what has happened with labels for allophones in the study of English sociolinguistics.</p><div class="no-row-height column-margin column-container"><span class="">Another example is the California Vowel Shift a.k.a. Canadian Vowel Shift a.k.a. Elsewhere Shift a.k.a. Western Vowel Pattern a.k.a. Low-Back-Merger Shift a.k.a. Short Front Vowel Shift a.k.a. Third Dialect Shift etc.</span></div></div>
+<div class="page-columns page-full"><p>We see a recurring problem when scientists study some new thing: we don’t know what to call it. And when independent research is happening in parallel on that new thing, multiple terms are introduced, each with perfectly good and justifiable reasoning. This is what has happened with labels for allophones in the study of English sociolinguistics.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Another example is the California Vowel Shift a.k.a. Canadian Vowel Shift a.k.a. Elsewhere Shift a.k.a. Western Vowel Pattern a.k.a. Low-Back-Merger Shift a.k.a. Short Front Vowel Shift a.k.a. Third Dialect Shift etc.</span></div></div>
 <p>As an example, let’s look at the <sc>kit</sc> and <sc>dress</sc> vowels before nasals. I have not studied the <em>pin-pen</em> merger with very much depth, but three labels I have seen are <sc>pin</sc> &amp; <sc>pen</sc>, <sc>bin</sc> &amp; <sc>ben</sc>, and <sc>kin</sc> &amp; <sc>den</sc>. Without careful reading, it wouldn’t be immediately clear that each of these pairs refers to the exact same allophones. So why so many different labels?</p>
 <p>Well, each one is perfectly justified. First, because the phenomena is most often called the <em>pin-pen</em> merger, it would make sense to just refer to the two classes of words as <sc>pin</sc> and <sc>pen</sc>. Alternatively, some people use <sc>bin</sc> and <sc>ben</sc> because they most closely resemble the <sc>b_t</sc> frame, so that <sc>bit</sc>, <sc>bet</sc>, <sc>bin</sc>, and <sc>ben</sc> can be used alongside each other. Similarly, <sc>kin</sc> and <sc>den</sc> were used because they have the same onset as Wells’ <sc>kit</sc> and <sc>dress</sc> labels. All are perfectly reasonable explanations—which is unfortunate because I think that’s why these competing standards are perpetuated.</p>
 <!--Another good one to look into is TOOT, TOO, and maybe other ones.-->
@@ -681,10 +689,10 @@ Wells’ original lexical sets. From Wells (1982:xviii–xix).
 <section id="not-all-varieties-need-all-labels" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="not-all-varieties-need-all-labels">Not all varieties need all labels</h3>
 <p>Another issue that arises when creating extensions to the Wells’ Lexical sets is that they’re often specific to some varieties. The original labels were designed to be used for studying both American and British varieties of English. This mostly works since they more or less have the same vowel inventory. The problem is not all allophones are relevant to all varieties of English.</p>
-<div class="page-columns page-full"><p>Take, for example, Wells’ <sc>force</sc> and <sc>north</sc> labels for pre-rhotic allophones. If you’re like me, you may not have previously realized that words like <em>four</em>, <em>porch</em>, and <em>sport</em> are not in the same lexical set as <em>short</em>, <em>scorch</em>, and <em>born</em>. The first set, <sc>force</sc>, historically contained /oɹ/ and the second, <sc>north</sc>, historically had /ɔɹ/. Most varieties of North American English merge them today, though in a few places like St.&nbsp;Louis, Utah, and Texas you might hear <sc>north</sc> with a lower vowel, often merged with <sc>start</sc>. The point is, for most varieties of North American English, it doesn’t make sense to distinguish <sc>force</sc> and <sc>north</sc> because they’ve long since merged.</p><div class="no-row-height column-margin column-container"><span class="">Growing up near St.&nbsp;Louis, I heard that you’re a true St.&nbsp;Louisian if you call Interstate 44 “highway <em>farty-far</em>”. But this is not actually how they’d say it: <em>four</em> is part of <sc>force</sc> but <em>forty</em> has <sc>north</sc>, so a true St.&nbsp;Louisian would actually say it like <em>farty-four</em>. Since I grew up in the suburbs, I don’t have this in my speech, but if you want to hear an authentic St.&nbsp;Louis pronunciation of that number, listen to Phyllis Smith in season 8 episode 21 of <em>The Office</em>.</span></div></div>
+<div class="page-columns page-full"><p>Take, for example, Wells’ <sc>force</sc> and <sc>north</sc> labels for pre-rhotic allophones. If you’re like me, you may not have previously realized that words like <em>four</em>, <em>porch</em>, and <em>sport</em> are not in the same lexical set as <em>short</em>, <em>scorch</em>, and <em>born</em>. The first set, <sc>force</sc>, historically contained /oɹ/ and the second, <sc>north</sc>, historically had /ɔɹ/. Most varieties of North American English merge them today, though in a few places like St.&nbsp;Louis, Utah, and Texas you might hear <sc>north</sc> with a lower vowel, often merged with <sc>start</sc>. The point is, for most varieties of North American English, it doesn’t make sense to distinguish <sc>force</sc> and <sc>north</sc> because they’ve long since merged.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Growing up near St.&nbsp;Louis, I heard that you’re a true St.&nbsp;Louisian if you call Interstate 44 “highway <em>farty-far</em>”. But this is not actually how they’d say it: <em>four</em> is part of <sc>force</sc> but <em>forty</em> has <sc>north</sc>, so a true St.&nbsp;Louisian would actually say it like <em>farty-four</em>. Since I grew up in the suburbs, I don’t have this in my speech, but if you want to hear an authentic St.&nbsp;Louis pronunciation of that number, listen to Phyllis Smith in season 8 episode 21 of <em>The Office</em>.</span></div></div>
 <p>As a more extreme example, an increasing number of varieties of English have collapsed <sc>lot</sc>, <sc>thought</sc>, <sc>cloth</sc>, and <sc>palm</sc> down to just a single low back vowel. When studying such varieties, there is clearly no need for all four labels.</p>
 <p>On the other hand, phonemic splits have necessitated more specific labels. At least one has been encoded into Wells’ original labels: the <a href="https://en.wikipedia.org/wiki/Trap-bath_split"><sc>trap</sc>-<sc>bath</sc> split</a>. However, in Philadelphia and other areas, <a href="https://en.wikipedia.org/wiki//æ/_raising#Phonemic_/æ/_raising_systems">the short-<em>a</em> split</a> divides <sc>trap</sc> another way into “tense” and “lax” realizations, sometimes labeled <sc>bad</sc> and <sc>bat</sc>, respectively. Other varieties have other splits: <a href="https://www.rebeccaluriestarr.com">Rebecca Starr</a> has recently reported on the apparently arbitrary lexical split of <sc>dress</sc> in Singapore English, a phenomena she calls the <sc>next-text</sc> split. Not all varieties need to worry about these splits, so these labels are only relevant to certain varieties of English.</p>
-<div class="page-columns page-full"><p>If you look through studies on other World Englishes, particularly the <em>Varieties of English</em> volumes,  you’ll see lots and lots of ad hoc, variety-specific labels. One that I read recently was in relation to Southern American English is the <sc>dance</sc> class, which contains “words in which RP shows [ɑː] before a nasal/obstruent cluster.” Some varieties of Southern American English realize this vowel as /æ̱ɛ/ which is distinct from the <sc>hand</sc> (/æ/ before nasals) class that is realized as a triphthongal /æɛæ/. To my knowledge, not all varieties of English will need to distinguish <sc>dance</sc> from <sc>hand</sc> (or <sc>ban</sc> or <sc>tan</sc> or whatever you want to call it), but for this variety it’s important.</p><div class="no-row-height column-margin column-container"><span class=""><a href="https://www.degruyter.com/view/product/534272">Edgar Schneider, ed.&nbsp;2005. <i>Varieties of English</i> (4 volumes)</a> and <a href="https://www.degruyter.com/viewbooktoc/product/36453">Bernd Kortmann, et al., eds.&nbsp;2008. <i>A Handbook of Varieties of English</i> (2 volumes).</a></span><span class=""><a href="https://doi.org/10.1515/9783110175325.1.300">Erik R. Thomas. 2005. “Rural Southern White Accents.”</a></span></div></div>
+<div class="page-columns page-full"><p>If you look through studies on other World Englishes, particularly the <em>Varieties of English</em> volumes,  you’ll see lots and lots of ad hoc, variety-specific labels. One that I read recently was in relation to Southern American English is the <sc>dance</sc> class, which contains “words in which RP shows [ɑː] before a nasal/obstruent cluster.” Some varieties of Southern American English realize this vowel as /æ̱ɛ/ which is distinct from the <sc>hand</sc> (/æ/ before nasals) class that is realized as a triphthongal /æɛæ/. To my knowledge, not all varieties of English will need to distinguish <sc>dance</sc> from <sc>hand</sc> (or <sc>ban</sc> or <sc>tan</sc> or whatever you want to call it), but for this variety it’s important.</p><div class="no-row-height column-margin column-container"><span class="margin-aside"><a href="https://www.degruyter.com/view/product/534272">Edgar Schneider, ed.&nbsp;2005. <i>Varieties of English</i> (4 volumes)</a> and <a href="https://www.degruyter.com/viewbooktoc/product/36453">Bernd Kortmann, et al., eds.&nbsp;2008. <i>A Handbook of Varieties of English</i> (2 volumes).</a></span><span class="margin-aside"><a href="https://doi.org/10.1515/9783110175325.1.300">Erik R. Thomas. 2005. “Rural Southern White Accents.”</a></span></div></div>
 <p>Overall, it becomes difficult to standardize these labels. In future varieties of English, we will most certainly see allophonic/morphological/lexical splits that we could not have anticipated. So even if someone were to canonize a large set of extensions to Wells’ lexical sets, they’d become outdated as language change continues its merry way. Furthermore, not all varieties and not all speakers classify words into the same lexical sets, so a strict definition wouldn’t be uniform across all dialects anyway.</p>
 <p>In the end, I think defining <em>ad hoc</em> labels is fine. However, I feel that they should be more rigorously defined to facilitate comparison across studies.</p>
 </section>
@@ -694,7 +702,7 @@ Wells’ original lexical sets. From Wells (1982:xviii–xix).
 <p>For example, in the South, glide reduction in <sc>price</sc> is partially conditioned by phonological environment. Therefore, researchers have proposed the labels <sc>prize</sc> and <sc>pry</sc> to refer to /aɪ/ before voiced sounds and /aɪ/ word-finally, while the original <sc>price</sc> is narrowed to just /aɪ/ before voiceless sounds. It makes for a tidy set within that study (<sc>price</sc>, <sc>prize</sc>, and <sc>pry</sc>) but is there a more cross-dialect-friendly way?</p>
 <p>The problem is that we now have two different meanings of Wells’ original <sc>price</sc> label. In its original sense, <sc>price</sc> referred to /aɪ/ in all environments; in this new sense, <sc>price</sc> only refers to prevoiceless /aɪ/. In other words, some allophones of /aɪ/ have been carved out of the full <sc>price</sc> lexical set, leaving a smaller, modified <sc>price</sc> behind. The result is that when a researcher refers to <sc>price</sc>, it is not clear whether they are referring to the phoneme /aɪ/ or the pre-voiceless allophone of /aɪ/.</p>
 <p>This failure to create a new label for the elsewhere allophone can lead to confusing labels. One study I’ve read used the labels <sc>bag</sc> for /æɡ/, <sc>bang</sc> for /æŋ/, and <sc>ban</sc> for /æn/ or /æm/. Those are mostly fine. However, confusingly, the label <sc>bat2</sc> was used to refer to the elsewhere allophone of /æ/ (i.e.&nbsp;before all obstruents except /ɡ/). So in a single paper, the label <sc>bat</sc> was used to refer to the entire vowel category, and <sc>bat2</sc> was used for preobstruent /æ/. There was nothing wrong with the study itself, but I think the transcription system could have been better.</p>
-<div class="page-columns page-full"><p>My recommendation is that, if allophones are to be referred to by a non-canonical label, the elsewhere allophone should also get a new one. The canonical label can then be reserved for the entire vowel phoneme. In my <a href="../../blog/dissertation">dissertation</a>, I used a set of labels for allophones of /æ/ (<sc>bag</sc>, <sc>bang</sc>, <sc>ban</sc>, and <sc>bat</sc>), but collectively I refer to the entire vowel class as <sc>trap</sc>. In <a href="../../blog/ads-and-lsa-2020">an upcoming LSA presentation</a>, I’ll refer to post-coronal /u/ as <sc>toot</sc> and non-post-coronal /u/ as <sc>boot</sc>, with <sc>goose</sc> being the umbrella term for both allophones. It is not a perfect solution, but I think using the Wells set for entire phoneme and using standardized sets for allophones makes intuitive sense. At the very least, <sc>bat2</sc> (as well as <sc>bet2</sc> and <sc>bit2</sc>) should not be used.</p><div class="no-row-height column-margin column-container"><span class="">I acknolwedge that this now creates confusion for those who are used <sc>boot</sc> as synonymous with <sc>goose</sc>, because my <sc>boot</sc> refers to a more restricted set of words than others’ <sc>boot</sc>. But I think it strikes a nice balance between the Wells and <sc>b_t</sc> labels.</span></div></div>
+<div class="page-columns page-full"><p>My recommendation is that, if allophones are to be referred to by a non-canonical label, the elsewhere allophone should also get a new one. The canonical label can then be reserved for the entire vowel phoneme. In my <a href="../../blog/dissertation">dissertation</a>, I used a set of labels for allophones of /æ/ (<sc>bag</sc>, <sc>bang</sc>, <sc>ban</sc>, and <sc>bat</sc>), but collectively I refer to the entire vowel class as <sc>trap</sc>. In <a href="../../blog/ads-and-lsa-2020">an upcoming LSA presentation</a>, I’ll refer to post-coronal /u/ as <sc>toot</sc> and non-post-coronal /u/ as <sc>boot</sc>, with <sc>goose</sc> being the umbrella term for both allophones. It is not a perfect solution, but I think using the Wells set for entire phoneme and using standardized sets for allophones makes intuitive sense. At the very least, <sc>bat2</sc> (as well as <sc>bet2</sc> and <sc>bit2</sc>) should not be used.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I acknolwedge that this now creates confusion for those who are used <sc>boot</sc> as synonymous with <sc>goose</sc>, because my <sc>boot</sc> refers to a more restricted set of words than others’ <sc>boot</sc>. But I think it strikes a nice balance between the Wells and <sc>b_t</sc> labels.</span></div></div>
 </section>
 </section>
 <section id="recommendations" class="level2">
@@ -746,18 +754,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -789,11 +786,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -803,8 +839,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -816,7 +861,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -860,6 +1028,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -885,6 +1054,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -945,6 +1140,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

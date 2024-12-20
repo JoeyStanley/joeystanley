@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
 <meta name="dcterms.date" content="2019-02-07">
 
-<title>Joey Stanley - Vowel overlap in R: More advanced topics</title>
+<title>Vowel overlap in R: More advanced topics – Joey Stanley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -75,13 +75,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,6 +113,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '350348361', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -112,89 +122,88 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">About Me <em>who am I?</em></span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv/index.html" rel="" target="">
- <span class="menu-text">CV <em>what have I done?</em></span></a>
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/index.html" rel="" target="">
- <span class="menu-text">Research <em>what do I research?</em></span></a>
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html" rel="" target="">
- <span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/idiolect" rel="" target="">
- <span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog/index.html" rel="" target="">
- <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:joey_stanley@byu.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-list" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
         <li>
-    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds" role="img">
-</i> 
- <span class="dropdown-text">Bluesky</span></a>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystanley.com">
+ <span class="dropdown-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> Bluesky</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
 </i> 
  <span class="dropdown-text">Twitter</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra" rel="" target=""><i class="bi bi-mortarboard-fill" role="img">
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
 </i> 
  <span class="dropdown-text">Google Scholar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
 </i> 
  <span class="dropdown-text">Github</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../joeystanley.com/feed.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
 </i> 
  <span class="dropdown-text">RSS feed</span></a>
   </li>  
     </ul>
   </li>
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -267,6 +276,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
+
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -297,9 +307,6 @@ Note
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vowel, word, dur, F1.<span class="fl">50.</span>, F2.<span class="fl">50.</span>, fol_seg, plt_manner, plt_place, plt_voice) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">F1 =</span> F1.<span class="fl">50.</span>, <span class="at">F2 =</span> F2.<span class="fl">50.</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fake_speaker =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Joey"</span>, <span class="st">"Stanley"</span>), <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
@@ -362,7 +369,11 @@ Note
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="cell">
@@ -391,7 +402,11 @@ Note
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, so now we’re ready to calculate Pillai scores to those new pairs. Because we’ve created the <code>pillai</code> function, we can relatively easily apply it to each of these datasets.</p>
@@ -476,10 +491,10 @@ Note
 </section>
 <section id="the-select-clash-and-bhattacharyyas-affinity" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-select-clash-and-bhattacharyyas-affinity">The <code>select</code> clash and Bhattacharyya’s Affinity</h2>
-<div class="page-columns page-full"><p> Okay, in Part 1, I talked about the library needed to run Bhattacharyya’s Affinity, <code>adehabitatHR</code>. However, it always seemed to be the case that my tidyverse code, particularly the <code>select</code> function always broke in scripts that used this package. It was super annoying and for the longest time I couldn’t figure out why.</p><div class="no-row-height column-margin column-container"><span class="">In Dan Johnson’s <a href="https://danielezrajohnson.shinyapps.io/nwav_44/">NWAV presentation</a> where he introduces Bhattacharyya’s Affinity, he installs and loads an additional package <code>sp</code> so that the <code>SpatialPointsData-Frame</code> function can be used. This is technically not necessary to do explicitly, because <code>sp</code> is a dependency of <code>adehabitatHR</code>, meaning when you install and load <code>adehabitatHR</code> you also are bringing <code>sp</code> along too.</span></div></div>
+<div class="page-columns page-full"><p> Okay, in Part 1, I talked about the library needed to run Bhattacharyya’s Affinity, <code>adehabitatHR</code>. However, it always seemed to be the case that my tidyverse code, particularly the <code>select</code> function always broke in scripts that used this package. It was super annoying and for the longest time I couldn’t figure out why.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">In Dan Johnson’s <a href="https://danielezrajohnson.shinyapps.io/nwav_44/">NWAV presentation</a> where he introduces Bhattacharyya’s Affinity, he installs and loads an additional package <code>sp</code> so that the <code>SpatialPointsData-Frame</code> function can be used. This is technically not necessary to do explicitly, because <code>sp</code> is a dependency of <code>adehabitatHR</code>, meaning when you install and load <code>adehabitatHR</code> you also are bringing <code>sp</code> along too.</span></div></div>
 <p>As it turns out, when you load the <code>adehabitatHR</code> package, it also loads the <code>MASS</code> package. Unfortunately for us, there’s a function in <code>MASS</code> called <code>select</code>. Well, <code>dplyr</code> also has a <code>select</code> function. Having two <code>select</code> functions at the same time creates a clash. So, R chooses the one that was loaded most recently, which is <code>MASS</code> (via <code>adehabitatHR</code>).</p>
 <p>You can actually see this in a warning when you load <code>adehabitatHR</code> if <code>dplyr</code> (via <code>tidyverse</code>) is already installed:</p>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">To replicate the messages and output in this section you’ll have to restart R and load the packages again from scratch in this order. To do that, go to Session→Restart R.</span></div></div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">To replicate the messages and output in this section you’ll have to restart R and load the packages again from scratch in this order. To do that, go to Session→Restart R.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span>
@@ -530,7 +545,7 @@ Note
 <p>I’ll start with the <code>bhatt</code> function because it’s a little more straightforward. Then we’ll get into some slightly more confusing stuff with <code>pillai</code>.</p>
 <section id="making-bhatt-more-robust" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="making-bhatt-more-robust">Making <code>bhatt</code> more robust</h3>
-<div class="page-columns page-full"><p>I’ve noticed when running Bhattacharyya’s affinity on my data that it tends to crash if certain conditions aren’t met. For example, the calculation requires at least five observations from each vowel class to work. So, let’s say I wanted to look at the <em>pull-pole</em> merger (that is, the merger of <sc>foot</sc> and <sc>goat</sc> before laterals). We can create the dataset the same way as before</p><div class="no-row-height column-margin column-container"><span class="">I <em>think</em> I have this merger, but I’m really not sure. I thought studying it in my data would help my own intuitions, but now I’m always hyperaware of the relatively small group of relevant words. But I digress…</span></div></div>
+<div class="page-columns page-full"><p>I’ve noticed when running Bhattacharyya’s affinity on my data that it tends to crash if certain conditions aren’t met. For example, the calculation requires at least five observations from each vowel class to work. So, let’s say I wanted to look at the <em>pull-pole</em> merger (that is, the merger of <sc>foot</sc> and <sc>goat</sc> before laterals). We can create the dataset the same way as before</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I <em>think</em> I have this merger, but I’m really not sure. I thought studying it in my data would help my own intuitions, but now I’m always hyperaware of the relatively small group of relevant words. But I digress…</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pull_pole <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"UH"</span>, <span class="st">"OW"</span>), fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"L"</span>)) <span class="sc">%&gt;%</span></span>
@@ -794,7 +809,7 @@ Residuals 49                                       </code></pre>
 <p>At this point, we’re done; I won’t be playing around with the functions anymore. Instead, in this last section, I’ll look at some fun tricks when using them and how to reshape the output to be more useful for you. Again, parts of this section get a little tedious and use some tricksy R stuff.</p>
 <section id="combining-functions" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="combining-functions">Combining functions</h3>
-<div class="page-columns page-full"><p> Sometimes, it’s a little bit silly to have both the <code>pillai2</code> function and the <code>bhatt</code> function when they’re mostly similar. So, we can actually combine them into one function, if that makes sense to you. We’ll create a new function called <code>overlap</code>. The first part is the same as both of the other functions.</p><div class="no-row-height column-margin column-container"><span class="">This section only works if you want to use <code>pillai2</code>. If you want to be flexible in the MANOVA formula, you’re stuck with <code>pillai</code> and you can’t really combine them like this.</span></div></div>
+<div class="page-columns page-full"><p> Sometimes, it’s a little bit silly to have both the <code>pillai2</code> function and the <code>bhatt</code> function when they’re mostly similar. So, we can actually combine them into one function, if that makes sense to you. We’ll create a new function called <code>overlap</code>. The first part is the same as both of the other functions.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">This section only works if you want to use <code>pillai2</code>. If you want to be flexible in the MANOVA formula, you’re stuck with <code>pillai</code> and you can’t really combine them like this.</span></div></div>
 <p>The difference is I create a new argument called <code>method</code> and by default it’s <code>"pillai"</code>. I then do an <code>if</code> statement that basically does different things depending on what is in that <code>method</code> argument. If it’s <code>"pillai"</code>, then it’ll return the Pillai score. If it’s <code>"BA"</code> it’ll do the Bhattacharyya’s Affinity. If it’s something else, it’ll give a little warning message saying that it was an improper method and will return <code>NA</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>overlap <span class="ot">&lt;-</span> <span class="cf">function</span>(F1, F2, vowel, <span class="at">method =</span> <span class="st">"pillai"</span>) {</span>
@@ -865,7 +880,7 @@ Residuals 49                                       </code></pre>
 8 pull pole  Stanley      NA     NA     </code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p> If I were to put together an R package with these functions, I’d do something like that. It’s easiest to maintain while still being user-friendly.</p><div class="no-row-height column-margin column-container"><span class="">Incidentally, if you want to help me create an R package with all this stuff, let’s talk.</span></div></div>
+<div class="page-columns page-full"><p> If I were to put together an R package with these functions, I’d do something like that. It’s easiest to maintain while still being user-friendly.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Incidentally, if you want to help me create an R package with all this stuff, let’s talk.</span></div></div>
 </section>
 </section>
 <section id="reshape-and-visualize" class="level2 page-columns page-full">
@@ -931,10 +946,14 @@ Residuals 49                                       </code></pre>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">color =</span> <span class="st">"gray75"</span>) <span class="sc">+</span> </span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="page-columns page-full"><p>But you may need to rearrange your data in a different way. For example, you may want just one speaker per row and each vowel pair in its own column. Fortunately, the <code>tidyr</code> package has a really handy function called <code>spread</code> that’ll do this. There are two arguments to <code>spread</code>:</p><div class="no-row-height column-margin column-container"><span class="">I explain this <code>spread</code> function in a little more detail in my second <a href="making-vowel-plots-in-r-part-2">tutorial</a> on plotting formant data.</span></div></div>
+</div>
+<div class="page-columns page-full"><p>But you may need to rearrange your data in a different way. For example, you may want just one speaker per row and each vowel pair in its own column. Fortunately, the <code>tidyr</code> package has a really handy function called <code>spread</code> that’ll do this. There are two arguments to <code>spread</code>:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I explain this <code>spread</code> function in a little more detail in my second <a href="making-vowel-plots-in-r-part-2">tutorial</a> on plotting formant data.</span></div></div>
 <ol type="1">
 <li><p>The name of the column whose values you want to spread out into their own columns. In our case, the <code>vowel_pair</code> column contains the four different pairs.</p></li>
 <li><p>The name of the existing columns whose values you want to be contained in the new columns. In our case, the <code>pillai</code> column contains all those numbers and we want those numbers to fill the cells of the new columns being created.</p></li>
@@ -960,12 +979,16 @@ Residuals 49                                       </code></pre>
 </div>
 </div>
 <p>Now, with our data reshaped in this way, we could do a scatterplot to see the correlation between two mergers:</p>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">There are ticks around <code>low back</code> and <code>pin pen</code> because those are the column names themselves and when you refer to column names that have spaces in them you have to surround them with ticks. These show up in the plot itself, but you can fix that with <a href="https://ggplot2.tidyverse.org/reference/labs.html"><code>labs</code></a>.</span></div></div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">There are ticks around <code>low back</code> and <code>pin pen</code> because those are the column names themselves and when you refer to column names that have spaces in them you have to surround them with ticks. These show up in the plot itself, but you can fix that with <a href="https://ggplot2.tidyverse.org/reference/labs.html"><code>labs</code></a>.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pillai_table_wide, <span class="fu">aes</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span>, <span class="st">`</span><span class="at">pin pen</span><span class="st">`</span>)) <span class="sc">+</span> </span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Because I’ve randomly split by data up, there’s really no pattern, but if you suspect a correlation between mergers in your dataset, this plot might be more informative for you.</p>
@@ -1000,7 +1023,11 @@ Residuals 49                                       </code></pre>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"gray50"</span>) <span class="sc">+</span> </span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>So this is kind of cool. For the low back merger, the distribution is tight and there’s not a lot going on. For the other two, they’re more spread out. We don’t see too many points straying too far from the line, so there’s not a lot of concern here. Maybe because it’s just a bunch of random samples of my own data it’s not particularly enlightening. Perhaps if you try this on your own data, you might find some interesting differences between the two measurements, which will require some digging.</p>
@@ -1048,18 +1075,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1091,11 +1107,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1105,8 +1160,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1118,7 +1182,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1162,6 +1349,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1187,6 +1375,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1247,6 +1461,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

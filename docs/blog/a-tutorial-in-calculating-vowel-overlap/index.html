@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
 <meta name="dcterms.date" content="2019-02-07">
 
-<title>Joey Stanley - A tutorial in measuring vowel overlap in R</title>
+<title>A tutorial in measuring vowel overlap in R – Joey Stanley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -75,13 +75,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,6 +113,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '350348361', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -112,89 +122,88 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">About Me <em>who am I?</em></span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv/index.html" rel="" target="">
- <span class="menu-text">CV <em>what have I done?</em></span></a>
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/index.html" rel="" target="">
- <span class="menu-text">Research <em>what do I research?</em></span></a>
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html" rel="" target="">
- <span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/idiolect" rel="" target="">
- <span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog/index.html" rel="" target="">
- <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:joey_stanley@byu.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-list" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
         <li>
-    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds" role="img">
-</i> 
- <span class="dropdown-text">Bluesky</span></a>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystanley.com">
+ <span class="dropdown-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> Bluesky</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
 </i> 
  <span class="dropdown-text">Twitter</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra" rel="" target=""><i class="bi bi-mortarboard-fill" role="img">
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
 </i> 
  <span class="dropdown-text">Google Scholar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
 </i> 
  <span class="dropdown-text">Github</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../joeystanley.com/feed.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
 </i> 
  <span class="dropdown-text">RSS feed</span></a>
   </li>  
     </ul>
   </li>
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -274,6 +283,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
+
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -337,9 +347,6 @@ Note
 #   pre_word_trans &lt;chr&gt;, word_trans &lt;chr&gt;, fol_word_trans &lt;chr&gt;, …</code></pre>
 </div>
 </div>
-<div class="cell">
-
-</div>
 <p>Now, I’d like to simplify this dataset a little bit.</p>
 <ol type="1">
 <li><p>I’ll just focus on stressed vowels, so I’ll remove unstressed vowels with <code>filter</code>.</p></li>
@@ -393,7 +400,11 @@ Note
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>So now that we have the data ready to go, let’s look at that Pillai score.</p>
@@ -490,18 +501,22 @@ Residuals  54
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p> Now the problem here is that we get a Pillai score for each one. How do we interpret this? To be honest, I’ve never encountered this before in my research. But, I <em>think</em> the way this is interpreted is that the Pillai score for the vowel is a measure of overlap between the two vowels after all the other variables have been controlled for. In my case, it’s a little higher—0.14 instead of 0.12—when environmental effects are considered, which I guess makes sense.</p><div class="no-row-height column-margin column-container"><span class="">What’s weird here is that the <em>p</em>-values don’t really correlate with the Pillai score, so the variable that’s that has the most separation is the one without statistical significance. This is another problem when interpreting <em>p</em>-values in conjunction with Pillai scores. [Update (November 23, 2021): this is likely the result of sample size differences. See my note in section 2.1.1 and link to more recent research on this topic.]</span></div></div>
+<div class="page-columns page-full"><p> Now the problem here is that we get a Pillai score for each one. How do we interpret this? To be honest, I’ve never encountered this before in my research. But, I <em>think</em> the way this is interpreted is that the Pillai score for the vowel is a measure of overlap between the two vowels after all the other variables have been controlled for. In my case, it’s a little higher—0.14 instead of 0.12—when environmental effects are considered, which I guess makes sense.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">What’s weird here is that the <em>p</em>-values don’t really correlate with the Pillai score, so the variable that’s that has the most separation is the one without statistical significance. This is another problem when interpreting <em>p</em>-values in conjunction with Pillai scores. [Update (November 23, 2021): this is likely the result of sample size differences. See my note in section 2.1.1 and link to more recent research on this topic.]</span></div></div>
 <p>For the other variables, they each have their own Pillai scores. So like the <code>plt_manner</code> Pillai score would be a measure of overlap between the various manners of articulation, after the vowel class has been accounted for. To me, that seems a little high considering what the data looks like when it’s colored by voicing of the following segment using the information returned from FAVE.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(low_back, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> plt_voice, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="page-columns page-full"><p> To me, 0.10 actually seems a little high still, but maybe that one token of a word-final vowel (<em>draw</em>) is throwing everything off.</p><div class="no-row-height column-margin column-container"><span class="">I reran it without that one token and the Pillai score didn’t really change.</span></div></div>
-<div class="page-columns page-full"><p>For simplicity, I’d say let’s stick with interpreting the Pillai score for the vowel. </p><div class="no-row-height column-margin column-container"><span class="">Update (November 23, 2021): Again, this is likely the result of sample size differences. See my note in section 2.1.1 and link to more recent research on this topic.</span></div></div>
+</div>
+<div class="page-columns page-full"><p> To me, 0.10 actually seems a little high still, but maybe that one token of a word-final vowel (<em>draw</em>) is throwing everything off.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I reran it without that one token and the Pillai score didn’t really change.</span></div></div>
+<div class="page-columns page-full"><p>For simplicity, I’d say let’s stick with interpreting the Pillai score for the vowel. </p><div class="no-row-height column-margin column-container"><span class="margin-aside">Update (November 23, 2021): Again, this is likely the result of sample size differences. See my note in section 2.1.1 and link to more recent research on this topic.</span></div></div>
 </section>
 <section id="extracting-that-pillai-score" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-that-pillai-score">Extracting that Pillai score</h3>
@@ -665,14 +680,14 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 2 Stanley                0.221</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p> Cool! So in just a couple lines of code, I was able to calculate the Pillai score for each “speaker” in my dataset. If you’ve got many more speakers in your data, you’ll be able to do the same thing with each one of them with the exact same amount of code.</p><div class="no-row-height column-margin column-container"><span class="">To see another use of <code>group_by</code> and then <code>summarize</code>, look at how I use it to calculate average formant trajectories per vowel <a href="../../blog/making-vowel-plots-in-r-part-2">here</a>.</span></div></div>
+<div class="page-columns page-full"><p> Cool! So in just a couple lines of code, I was able to calculate the Pillai score for each “speaker” in my dataset. If you’ve got many more speakers in your data, you’ll be able to do the same thing with each one of them with the exact same amount of code.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">To see another use of <code>group_by</code> and then <code>summarize</code>, look at how I use it to calculate average formant trajectories per vowel <a href="../../blog/making-vowel-plots-in-r-part-2">here</a>.</span></div></div>
 <p>So that’s it for the Pillai score. Hopefully this section of the tutorial will help you get those numbers in your own dataset. For most people this will be adequate and you can get great results. If it starts to crash on you and give you weird error messages, check out <a href="../../blog/vowel-overlap-in-r-advanced-topics">Part 2</a> of this tutorial where we look at how to make the function more robust.</p>
 </section>
 </section>
 <section id="bhattacharyyas-affinity" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="bhattacharyyas-affinity">Bhattacharyya’s Affinity</h2>
-<div class="page-columns page-full"><p>So the Pillai score is pretty mainstream and most people that want to measure vowel overlap use it. However, recently, there have been a few people using this thing called Bhattacharyya’s Affinity. This measurement also dates back quite a ways to when Anil Kumar Bhattachayya published a paper called “On a measure of divergence between two statistical populations defined by their probability distributions” in the <em>Bulletin of the Calcutta Mathematical Society</em> in 1943. One non-linguistic application of this measure was in <a href="https://doi.org/10.2193/0022-541X(2005)69%5B1346:QHOTIO%5D2.0.CO;2">Fieberg &amp; Kochanny (2005)</a> who use it to measure the overlap in the the home range of some deer in Minnesota.</p><div class="no-row-height column-margin column-container"><span class="">I can’t find this 1943 paper online, but I can find a <a href="https://www.jstor.org/stable/25047882?seq=1#metadata_info_tab_contents">1946 paper</a> that looks similar</span></div></div>
-<div class="page-columns page-full"><p>As far as I know, Bhattacharyya’s Affinity in linguistics was first brought up Dan Johnson  in his <a href="https://danielezrajohnson.shinyapps.io/nwav_44/">NWAV presentation</a> in 2015. He explained that it can handle the things that Pillai doesn’t do so well like nested, crossed, skewed, or unequal distributions. His presentation even includes an a overlap simulator where you can play with this yourself (so be sure to follow that link!)</p><div class="no-row-height column-margin column-container"><span class="">It should be noted that <a href="https://lilac.msu.edu/betsy-sneller/">Betsy Sneller</a> was very much involved in developing the ideas presented in this talk as well.</span></div></div>
+<div class="page-columns page-full"><p>So the Pillai score is pretty mainstream and most people that want to measure vowel overlap use it. However, recently, there have been a few people using this thing called Bhattacharyya’s Affinity. This measurement also dates back quite a ways to when Anil Kumar Bhattachayya published a paper called “On a measure of divergence between two statistical populations defined by their probability distributions” in the <em>Bulletin of the Calcutta Mathematical Society</em> in 1943. One non-linguistic application of this measure was in <a href="https://doi.org/10.2193/0022-541X(2005)69%5B1346:QHOTIO%5D2.0.CO;2">Fieberg &amp; Kochanny (2005)</a> who use it to measure the overlap in the the home range of some deer in Minnesota.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I can’t find this 1943 paper online, but I can find a <a href="https://www.jstor.org/stable/25047882?seq=1#metadata_info_tab_contents">1946 paper</a> that looks similar</span></div></div>
+<div class="page-columns page-full"><p>As far as I know, Bhattacharyya’s Affinity in linguistics was first brought up Dan Johnson  in his <a href="https://danielezrajohnson.shinyapps.io/nwav_44/">NWAV presentation</a> in 2015. He explained that it can handle the things that Pillai doesn’t do so well like nested, crossed, skewed, or unequal distributions. His presentation even includes an a overlap simulator where you can play with this yourself (so be sure to follow that link!)</p><div class="no-row-height column-margin column-container"><span class="margin-aside">It should be noted that <a href="https://lilac.msu.edu/betsy-sneller/">Betsy Sneller</a> was very much involved in developing the ideas presented in this talk as well.</span></div></div>
 <p>Since then, I’ve seen it in several other studies. Paul Warren <a href="https://doi.org/10.1017/S0025100317000329">(2018)</a> used it to look at mergers in New Zealand vowels. Chris Strelluf uses it in his <a href="https://read.dukeupress.edu/pads/issue/103/1">2018</a> volume in the <em>Publications of the American Dialect Society</em> to measure the low-back merger and the <em>pin-pen</em> merger (among other things) and Strelluf used it in a <a href="https://doi.org/10.1017/S0954394516000144">2016 LCV article</a> to look at overlap in prelateral back vowels. Together with Peggy Renwick, I used it to measure the <em>cord-card</em> merger in an individual over 40 years at LabPhon in <a href="../../downloads/160714-LabPhon15-poster.pdf">2017</a>.</p>
 <p>Bhattacharyya’s Affinity shares some similarities with the Pillai score, but there are also some differences. It too, measures the overlap between two distributions on a scale from 0 to 1. But this time, 1 means complete overlap and 0 means complete separation. However, Bhattacharyya’s Affinity can actaully reach 0 and 1 if there is indeed separation or overlap, unlike the Pillai score. Here’s what these values might look like:</p>
 <p><img src="bhatt_example.png" class="img-fluid"></p>
@@ -681,7 +696,7 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <section id="calculating-bhattacharyyas-affinity" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="calculating-bhattacharyyas-affinity">Calculating Bhattacharyya’s Affinity</h3>
 <p>To get Bhattacharyya’s Affinity you’ll need to install and download an additional R package, <code>adehabitatHR</code> (plus its dependencies), to get this measurement. If you haven’t installed the package already, you’ll need to with <code>install.packages</code>.</p>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">If you run into problems with the <code>select</code> function in your scripts after loading <code>adehabitatHR</code>, see <a href="../../blog/vowel-overlap-in-r-advanced-topics">Part 2</a> for an explanation and solution.</span></div></div>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you run into problems with the <code>select</code> function in your scripts after loading <code>adehabitatHR</code>, see <a href="../../blog/vowel-overlap-in-r-advanced-topics">Part 2</a> for an explanation and solution.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("adehabitatHR")</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -744,7 +759,7 @@ AA 0.9998734 0.8067602
 AO 0.8067602 0.9998692</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>So now we have a matrix of Bhattacharyya’s Affinities! So the way you read this is to choose a row and a column and find the cell where the two intersect. That cell contains the Bhattacharyya’s Affinity for those two vowels. So for “AA” and “AA”—identical vowels—it’s 0.9998, which is basically 1. That’s what we’d expect, right? But we’re not interested in those cells, we’re interested in the cells for “AA” and “AO”. Here, you can see that they’re about 0.80.</p><div class="no-row-height column-margin column-container"><span class="">If you look closely, the top left and the bottom right cells are slightly different. I’m not sure why, but that difference is so small it shouldn’t matter.</span></div></div>
+<div class="page-columns page-full"><p>So now we have a matrix of Bhattacharyya’s Affinities! So the way you read this is to choose a row and a column and find the cell where the two intersect. That cell contains the Bhattacharyya’s Affinity for those two vowels. So for “AA” and “AA”—identical vowels—it’s 0.9998, which is basically 1. That’s what we’d expect, right? But we’re not interested in those cells, we’re interested in the cells for “AA” and “AO”. Here, you can see that they’re about 0.80.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you look closely, the top left and the bottom right cells are slightly different. I’m not sure why, but that difference is so small it shouldn’t matter.</span></div></div>
 <p>We can extract just this number by pulling just the first row of the second column like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -786,7 +801,7 @@ AO 0.8067602 0.9998692</code></pre>
 <h3 class="anchored" data-anchor-id="writing-a-function-1">Writing a function</h3>
 <p>Now, if you’re like me, you might find that doing it this way is a bit cumbersome. It’s bad enough with just one pair for one speaker. If I needed to do this for many pairs of vowels and/or for many speakers, it would get insane. So, just like with the Pillai scores, let’s wrap all this up into a nice and neat function so that we can apply it to however many groups we want with ease.</p>
 <p>So the goal for this function is to be as similar to the Pillai one as possible. It’s not going to have identical syntax because of the functions you need to run them (<code>manova</code> verses <code>kerneloverlap</code>), but we can at least come close.</p>
-<div class="page-columns page-full"><p> I’ll go ahead and name the function <code>bhatt</code>. The key ingredients we need for calculating it are the <code>F1</code>, <code>F2</code>, and <code>vowel</code> columns. So as arguments, we’ll have those.</p><div class="no-row-height column-margin column-container"><span class="">These argument names are arbitrary so instead of <code>F1</code>, <code>F2</code>, and <code>vowel</code>, you could do <code>dog</code>, <code>fish</code>, and <code>emu</code> and it’ll work fine. However, it’s useful to keep the argument names informative. But keep in mind that they don’t have to match the column names in your dataframe.</span></div></div>
+<div class="page-columns page-full"><p> I’ll go ahead and name the function <code>bhatt</code>. The key ingredients we need for calculating it are the <code>F1</code>, <code>F2</code>, and <code>vowel</code> columns. So as arguments, we’ll have those.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">These argument names are arbitrary so instead of <code>F1</code>, <code>F2</code>, and <code>vowel</code>, you could do <code>dog</code>, <code>fish</code>, and <code>emu</code> and it’ll work fine. However, it’s useful to keep the argument names informative. But keep in mind that they don’t have to match the column names in your dataframe.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is just the template</span></span>
@@ -892,18 +907,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -935,11 +939,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -949,8 +992,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -962,7 +1014,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1006,6 +1181,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1031,6 +1207,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1091,6 +1293,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

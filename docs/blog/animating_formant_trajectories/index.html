@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
 <meta name="dcterms.date" content="2022-01-13">
 
-<title>Joey Stanley - Animating Formant Trajectories</title>
+<title>Animating Formant Trajectories – Joey Stanley</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -75,13 +75,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,6 +113,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '350348361', { 'anonymize_ip': true});
 </script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -112,89 +122,88 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">About Me <em>who am I?</em></span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv/index.html" rel="" target="">
- <span class="menu-text">CV <em>what have I done?</em></span></a>
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../research/index.html" rel="" target="">
- <span class="menu-text">Research <em>what do I research?</em></span></a>
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html" rel="" target="">
- <span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pages/idiolect" rel="" target="">
- <span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog/index.html" rel="" target="">
- <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:joey_stanley@byu.edu" rel="" target=""><i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-list" role="img">
 </i> 
  <span class="menu-text"></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
         <li>
-    <a class="dropdown-item" href="https://bsky.app/profile/joeystan.bsky.social" rel="" target=""><i class="bi bi-clouds" role="img">
-</i> 
- <span class="dropdown-text">Bluesky</span></a>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystanley.com">
+ <span class="dropdown-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> Bluesky</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://twitter.com/joey_stan" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
 </i> 
  <span class="dropdown-text">Twitter</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra" rel="" target=""><i class="bi bi-mortarboard-fill" role="img">
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
 </i> 
  <span class="dropdown-text">Google Scholar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
 </i> 
  <span class="dropdown-text">Github</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../joeystanley.com/feed.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
 </i> 
  <span class="dropdown-text">RSS feed</span></a>
   </li>  
     </ul>
   </li>
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -263,6 +272,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
+
 <p>Last week, I <a href="../../blog/ads_and_lsa_2022">presented</a> some work that Lisa Johnson and I have been working on. We discussed ways that vowel formant trajectories can help us learn more about vowel mergers. What seemed to get the most attention though were the data visuals that I created for the talk.</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
@@ -273,7 +283,7 @@ Just when I thought I couldn’t be more impressed with <a href="https://twitter
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>Here’s what that image looks like up close:</p>
 <p><img src="plot23_anim_final.gif" class="img-fluid"></p>
-<div class="page-columns page-full"><p>My friend Andrew Bray recommended I do a tutorial on how to do them:</p><div class="no-row-height column-margin column-container"><span class="">Thanks for the idea, Andrew!</span></div></div>
+<div class="page-columns page-full"><p>My friend Andrew Bray recommended I do a tutorial on how to do them:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Thanks for the idea, Andrew!</span></div></div>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
 After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="citation" data-cites="joey_stan">@joey_stan</span></a> teaches us all how to do it, trajectory gifs need to become the norm. <a href="https://twitter.com/hashtag/LSA2022?src=hash&amp;ref_src=twsrc%5Etfw">#LSA2022</a>
@@ -315,7 +325,7 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 # ℹ 8,399 more rows</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>This data has already been processed a little bit. Formants were extracted using FastTrack, and from there I did a bit of cleaning and normalization and whatnot. For simplicity in this blog post, I’ll only work with the allophones  ZEAL and GUILT (which are /il/ and /ɪl/, respectively). To make it possible to run the GAMM, I’ll then convert charactater vectors to factors, and I’ll add the <code>start_event</code> column. For more information on prepping for GAMMs, see Sóskuthy (2017).</p><div class="no-row-height column-margin column-container"><span class="">See <a href="../../posts/extending-wells-lexical-sets-to-prelateral-vowels">this blog post</a> where I introduce these Wells-inspired labels for prelateral vowels.</span></div></div>
+<div class="page-columns page-full"><p>This data has already been processed a little bit. Formants were extracted using FastTrack, and from there I did a bit of cleaning and normalization and whatnot. For simplicity in this blog post, I’ll only work with the allophones  ZEAL and GUILT (which are /il/ and /ɪl/, respectively). To make it possible to run the GAMM, I’ll then convert charactater vectors to factors, and I’ll add the <code>start_event</code> column. For more information on prepping for GAMMs, see Sóskuthy (2017).</p><div class="no-row-height column-margin column-container"><span class="margin-aside">See <a href="../../posts/extending-wells-lexical-sets-to-prelateral-vowels">this blog post</a> where I introduce these Wells-inspired labels for prelateral vowels.</span></div></div>
 </section>
 <section id="fit-the-gamms" class="level2">
 <h2 class="anchored" data-anchor-id="fit-the-gamms">Fit the GAMMs</h2>
@@ -378,7 +388,7 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 </section>
 <section id="basic-plots" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="basic-plots">Basic plots</h2>
-<div class="page-columns page-full"><p>Okay, now we’re ready for some visuals. As a sanity check, let’s plot this data in the F1-F2 space. That means I’ll quickly have to reshape the data so that F1 and F2 are in separate columns. I’ll use the predicted measurements from 1920 for this plot.</p><div class="no-row-height column-margin column-container"><span class="">See <a href="../../blog/reshaping-vowel-formant-data-with-tidyr">this blog post</a> on all about using <code>pivot_wider</code> on vowel data.</span></div></div>
+<div class="page-columns page-full"><p>Okay, now we’re ready for some visuals. As a sanity check, let’s plot this data in the F1-F2 space. That means I’ll quickly have to reshape the data so that F1 and F2 are in separate columns. I’ll use the predicted measurements from 1920 for this plot.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">See <a href="../../blog/reshaping-vowel-formant-data-with-tidyr">this blog post</a> on all about using <code>pivot_wider</code> on vowel data.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>preds <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> <span class="fu">c</span>(hz_norm, CI)) <span class="sc">%&gt;%</span></span>
@@ -389,7 +399,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, looks decent enough. Let’s plot that same data but in a way that imitates a spectrogram. I’ll facet it by formant so that F1 and F2 have equal space in the plot.</p>
@@ -401,7 +415,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>formant, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span> </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, now that we’ve got the basic gist of the plot, we’re ready to make it a nicer!</p>
@@ -416,7 +434,7 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 </li>
 <li>I’ll change the <em>x</em>-axis ticks so that they line up with values that are more meaningful (what is halfway between 0.5 and 0.25?) with <code>scale_y_continuous</code>.</li>
 </ul>
-<div class="no-row-height column-margin column-container"><span class="">Pretty sure the first time I saw these themes was in <a href="https://jofrhwld.github.io/papers/edinbr_gamm/#(38)">this presentation</a> that Joe Fruehwald gave.</span></div><div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">From here on out I’ll only put comments in the code where code has changed. Or to divide major sections of code.</span></div></div>
+<div class="no-row-height column-margin column-container"><span class="margin-aside">Pretty sure the first time I saw these themes was in <a href="https://jofrhwld.github.io/papers/edinbr_gamm/#(38)">this presentation</a> that Joe Fruehwald gave.</span></div><div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">From here on out I’ll only put comments in the code where code has changed. Or to divide major sections of code.</span></div></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>preds <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(yob <span class="sc">==</span> <span class="dv">1920</span>) <span class="sc">%&gt;%</span></span>
@@ -430,7 +448,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span> </span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Already, that version of the plot looks a lot crisper than the earlier one.</p>
@@ -452,7 +474,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span> </span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, so that’s not pretty. Let’s make it lighter. I’ll set the color of these bands intervals to be <code>"gray75"</code> which is kinda like a shade of gray three-quarters of the way from black to white. I always forget this when I make plots, but this is done with the <code>fill</code> argument rather than the <code>color</code> argument.</p>
@@ -470,7 +496,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span> </span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>OKay that almost works, but when the two overlap the red on is on top. So, I’ll set the alpha level (= transparency) to be 0.5 so that we can see overlapping areas a little better.</p>
@@ -488,7 +518,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span> </span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>There we go, now we can see the bands. The problem I have now is that I don’t really want the edges of the ribbons to be colored—I’d rather they just be gray. If you look at the code, the <code>color = allophone</code> argument is in the main <code>ggplot</code> function, which means it’ll apply to all layers in the plot where relevant (here, <code>geom_ribbon</code> and <code>geom_path</code>). Instead, I only want it to apply to one layer, <code>geom_path</code>. So I’ll just move it to that function instead.</p>
@@ -506,7 +540,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span> </span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Well great, what happened here? The ribbons are now really faded or something. As it turns out, when <code>geom_ribbon</code> was inheriting the <code>color = allophone</code> argument, that was what kept the two ribbons distinct from each other. Now, there’s nothing in the <code>geom_ribbon</code> function or its inherited aesthetics from <code>ggplot</code> that is distinguishing ZEAL from GUILT. I don’t want to put color back in. So instead, I’ll put <code>group = allophone</code>. That’ll tell it to group things by allophone. I’ll go ahead and put that in the main <code>ggplot</code> call because it won’t affect <code>geom_path</code>.</p>
@@ -524,7 +562,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span> </span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, so now we’ve got some decent-looking ribbons.</p>
@@ -611,7 +653,7 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 # ℹ 1 more variable: is_significant &lt;lgl&gt;</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>At this point, we can now just revert the shape, and we’re ready to plot.  Reverting the shape with <code>pivot_longer</code> isn’t trivial, because it uses some regex and a special trick with <code>".value"</code> that lets you split the resulting column into two. I encourage you to look at a previous blog post of mine about reshaping data.</p><div class="no-row-height column-margin column-container"><span class="">I again encourage you to look at <a href="../../blog/reshaping-vowel-formant-data-with-tidyr">this blog post</a> on all about using <code>pivot_wider</code> on vowel data.</span></div></div>
+<div class="page-columns page-full"><p>At this point, we can now just revert the shape, and we’re ready to plot.  Reverting the shape with <code>pivot_longer</code> isn’t trivial, because it uses some regex and a special trick with <code>".value"</code> that lets you split the resulting column into two. I encourage you to look at a previous blog post of mine about reshaping data.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I again encourage you to look at <a href="../../blog/reshaping-vowel-formant-data-with-tidyr">this blog post</a> on all about using <code>pivot_wider</code> on vowel data.</span></div></div>
 <p>I’ll incorporate this new information by changing the color of the lines to map to the <code>is_significant</code> column. I’ll also add the size aesthetic and map it to <code>is_significant</code> too. Finally, I’ll control the size by adding <code>scale_size_manual</code>. I’ll purposely exaggerate the difference so we can make sure they’re doing what we want.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>preds <span class="sc">%&gt;%</span></span>
@@ -640,7 +682,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span></span>
 <span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Well shoot. What’s wrong with this plot? I see two things. First, while the significance was accurately detected for F1, it was not for F2 for some reason. The second problem is that we’ve got color for significance rather than by allophone. Let’s fix both of these, starting with the first.</p>
@@ -701,7 +747,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span></span>
 <span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Success! The plot is still bad, but it at least has correctly detected regions of significance for both F1 ad F2. Now we need to figure out how to fix the colors.</p>
@@ -750,7 +800,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span></span>
 <span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hooray! It looks like it works. Now what we’ll do is set the colors ourselves. Because I’m adding gray to the mix, I can’t use <code>scale_color_ptol</code> anymore and I’ll have to use <code>scale_color_discrete</code> and tell it the colors I want manually. I’ll use <code>ptol_pal()</code> to access those same blue and red colors though and then I’ll add gray as a third option.</p>
@@ -789,7 +843,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span></span>
 <span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hey, we’re looking pretty good! The plot is really starting to come together!</p>
@@ -985,7 +1043,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"frequency (normalized)"</span>) <span class="sc">+</span></span>
 <span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay! We’re looking pretty good now. We’ve got a nice looking plot.</p>
@@ -1044,7 +1106,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That at least takes care of removing the legend. But now we need to figure out how to annotate the plot.</p>
@@ -1115,7 +1181,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>But that doesn’t look too great and are in fact misleading. A better solution would be to put the upper one above the line and the lower one below it. Fortunately, we already know which line is higher because we got the <code>ZEAL_is_higher</code> already figured out. So, with another <code>case_when</code> statement, we can get a higher position for the top one and a lower position for the bottom one. Here’s</p>
@@ -1154,7 +1224,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>There we go. That’s a little bit better. For good measure, I’m going to also color the text using the same color assigned to the allophones. My first time doing this, I made the mistake of using the <code>allophone_plus_sig</code> column just like the lines. The problem is now I had gray labels, which is not what I wanted.</p>
@@ -1173,7 +1247,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Instead, I should color it using just plain <code>allophone</code>. That way ZEAL is always blue and GUILT is always red, regardless of the significance of the vowel at the onset.</p>
@@ -1192,7 +1270,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, now that we’ve got a decent looking plot (at least least it matches the plot I used in my presentation), we can start to work on animating it!</p>
@@ -1257,7 +1339,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>A mess. But that’s fine. We could also make a version of the plot where there’s one panel per birth year.</p>
@@ -1276,7 +1362,11 @@ After <a href="https://twitter.com/joey_stan?ref_src=twsrc%5Etfw"><span class="c
 <span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
 <span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="1920"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="1920"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>So here’s all the information at once. What we need to do now is animate across those birth years. It literally takes one line of code to do this: <code>transition_time(yob)</code>. I’ll save the plot into an object called <code>a</code>. I’ll then take that <code>a</code> object and animate it with <code>animate</code>. I’ll specificy the height, width, and resolution. This line of code may take a minute or so. Finally, I’ll export the plot with <code>anim_save</code>, which lets me specify the path and the frames per second.</p>
@@ -1429,18 +1519,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1472,11 +1551,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1486,8 +1604,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1499,7 +1626,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1543,6 +1793,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1568,6 +1819,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1628,6 +1905,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

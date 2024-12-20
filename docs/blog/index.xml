@@ -306,64 +306,43 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
 
 
 
+
 <p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../posts/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../posts/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
 <section id="progress-since-2021" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="progress-since-2021">Progress since 2021</h2>
 <p>At the end of my previous update, I mentioned that I had gotten a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a>. That provided just enough funds to hire an RA to help with metadata extraction. As I’ve mentioned already, a great many of the tapes start off with the student interviewer staying their name and the date, and then they ask basic demographic questions about their interviewee. It’s important that I know as much of the metadata about these interviewees as I can so that I can prioritize which tapes I should process first.</p>
 <p>So, my RA listened to the first five or so minutes of each tape and wrote down as much metadata as they could. They then looked up that person on <a href="https://www.familysearch.org/en/united-states/">FamilySearch</a>, a genealogical database. If they could find the person, they could then flesh out the rest of their basic metadata as well as get tons of other information like places they’ve lived and their family ancestry. Not all interviews had good metadata and not all tapes had much information written on the outside, but between those two sources, my RA was able to get full metadata for 505 of 751 people (67%), which is pretty good if you ask me. I can now give updated version of figures I had in my last update that summarized a little bit more about these people.</p>
-<div class="cell">
-
-</div>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_569fe545061b1dedc05950079c71c138">
-
-</div>
-<div class="cell">
-
-</div>
 <section id="gender-split-56-44" class="level3">
 <h3 class="anchored" data-anchor-id="gender-split-56-44">Gender split: 56%-44%</h3>
-<div class="cell">
-
-</div>
 <p>Only male and female genders are reported. There are 448 women (56%) and 346 men (44%).</p>
 </section>
 <section id="birth-years-18921953" class="level3">
 <h3 class="anchored" data-anchor-id="birth-years-18921953">Birth Years: 1892–1953</h3>
 <p>I have birth years for 527 people. They range from 1892 to 1953, with both the median and average birth year being 1919. Previously, I only went back to 1905, so this extends that range a little bit. Here’s an updated plot showing the distribution of birth years.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="624"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is a pretty satisfying bell curve if you ask me. It makes sense that we’d see a distribution like that: these people were grandparents (or around that age) of the eighth grade interviewees between 1986 and 2001. I predicted early on before seeing this metadata that most people would be born between 1900 and 1940. That turned out to be pretty spot on. In fact, a full 69% of people are in the GI generation, which is 1908–1928, and there are only five Baby Boomers. So, this is pretty cool because these people are primarily the current oldest generation’s parents. Unfortunately, it means I won’t be able to look at much change over time using just this collection, but it’ll provide a nice point of comparison for other data.</p>
-<div class="cell">
-
-</div>
 </section>
 <section id="place-of-birth-still-primarily-wasatch-county" class="level3">
 <h3 class="anchored" data-anchor-id="place-of-birth-still-primarily-wasatch-county">Place of Birth: Still primarily Wasatch County</h3>
 <p>In my previous post, which was based on just 28 people, I found that people were mostly from Wasatch County. That makes sense since the interviews took place in Heber, the seat of Wasatch County. But, with more complete metadata, I see that there are many, many more places represented.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="624"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>47% of the people are from Wasatch County, and 22% of the total are from Heber. Interestingly, the second-most common category was people born outside of Utah. Salt Lake County is next (most of those are from Salt Lake City proper), which makes sense since it’s the most populus county and is pretty nearby. Utah County (most of those are from Provo) is next, and is just down Provo Canyon and is on the other side of Mount Timpanogos. Summit County (primarily folks from Park City), is just north of Wasatch County and is next.</p>
-<div class="cell">
-
-</div>
 <p>I mentioned last time that I suspect a significant proportion of Heber is represented in this collection. The 1940 Census had 2,748 people. I have data from 128 of them. That’s only 4.6% of them. BUT, that’s not any 128 people, that’s 128 <em>young</em> people. If I had more census-data-hacking skills, I’d give more specific details about the proportion of Heber by age group, but it’s probably a decent proportion.</p>
 <p>Combing through the specific birth places, there were three people born in ghost towns!</p>
 <ul>
@@ -380,7 +359,7 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
 <p>One of the main reasons I wanted this complete picture of the demographics is so that I could start to narrow down which tapes I should transcribe first. There are 751 tapes and limited resources, so I don’t want to just start transcribing them randomly. Since the collection is so large, I have the luxury of picking out a nice sample to start with. For example, I could select a relatively homogeneous group and go with people from Heber born within a five year range. Or, I could choose two people from each county and get a wide sample of Utah.</p>
 <p>I think my priority for now will be to compare Heber to Wallsburg. Heber is the seat of Wasatch County and while it has grown a lot since the 2002 Olympics, it historically has been a small town. But, Wallsburg is a smaller nearby, tucked away two mountains outside of Heber Valley.</p>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update2/heber_to_wallsburg.png" class="img-fluid" width="400"></p>
-<div class="page-columns page-full"><p>Why Wallsburg? Well, when I did fieldwork in Heber in 2018, I heard that Wallsburgers were made fun of in school for being the country bumpkins or whatever. And when I introduced myself as a linguist studying Wasatch County, it seems like everyone in Heber I talked to said I needed to go down to Wallsburg (“That’s where the <em>real</em> Utah accent is!”) So I went down there, knocked a few doors asking to interview people, and eventually found a nice older woman who had lived there most of her life. Sure enough, pretty much every feature of Utah English I was studying she had to the max. So, if she’s representative of her town, there may really be linguistic differences between Heber and Wallsburg!</p><div class="no-row-height column-margin column-container"><span class="">You can hear some of her speech <a href="https://joeystanley.com/blog/idaho-montana-wyoming-and-utah-english-survey-results/index.html#thr">here</a>!</span></div></div>
+<div class="page-columns page-full"><p>Why Wallsburg? Well, when I did fieldwork in Heber in 2018, I heard that Wallsburgers were made fun of in school for being the country bumpkins or whatever. And when I introduced myself as a linguist studying Wasatch County, it seems like everyone in Heber I talked to said I needed to go down to Wallsburg (“That’s where the <em>real</em> Utah accent is!”) So I went down there, knocked a few doors asking to interview people, and eventually found a nice older woman who had lived there most of her life. Sure enough, pretty much every feature of Utah English I was studying she had to the max. So, if she’s representative of her town, there may really be linguistic differences between Heber and Wallsburg!</p><div class="no-row-height column-margin column-container"><span class="margin-aside">You can hear some of her speech <a href="https://joeystanley.com/blog/idaho-montana-wyoming-and-utah-english-survey-results/index.html#thr">here</a>!</span></div></div>
 <p>Anyway, I’ve already got a list of the first dozen or so tapes I’d like to get transcribed. It’s 12 women born between 1908 and 1927 with six from Wallsburg and six from Heber. It should be a nice comparison and a good first look at what this collection has to offer. (Stay tuned ADS 2025!)</p>
 </section>
 </section>
@@ -433,6 +412,7 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
 
 
 
+
 <p>As of this week, I am now halfway through my fourth year of working at Brigham Young University. I successfully passed my third-year review earlier this year, and I’m starting to think about tenure, or what BYU calls tenure, “Continuing Faculty Status” (CFS). I thought I’d take some time and write about the process I use for keeping track of my research and publications to help me stay on track towards tenure.</p>
 <section id="the-need-for-a-system" class="level2">
 <h2 class="anchored" data-anchor-id="the-need-for-a-system">The need for a system</h2>
@@ -470,14 +450,17 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
 <p>On a master document, I have a list of my current projects, what their point value is, and the date of the last milestone. I also have an overview of what happend that month (with dates), how I did on my goals from last month, and my goals for the next month, with anticipated changes in point values.</p>
 <p><img src="https://joeystanley.com/blog/research-pipeline/master_log.png" class="img-fluid"></p>
 <p>I then add to two spreadsheets that show my progress over time. This first one shows the history of the points for each project. This one is kinda cool because it shows what projects were in what stages at any month during the past three years. It also shows that some projects take a long time and others are shorter. They’re in order by publication date, so I move them up and down as needed. You can see that I actually have five categories of goals: minimum (6), goal (10), stretch (14), “reach for the stars” (20), and bonus. Also, this spreadsheet is extremely useful for annual interviews with my department chair because I can see at a glance which papers got published or presented at conferences and when. You can also see I’m currently sitting on <em>lots</em> of 4-pointers—papers that have been presented at conferences but not yet written up an submitted. Guess what I’ll be doing in 2024!</p>
-<div class="page-columns page-full"><p> <img src="https://joeystanley.com/blog/research-pipeline/spreadsheet.png" class="img-fluid"></p><div class="no-row-height column-margin column-container"><span class="">Why, yes, I do like conditional formatting, why do you ask?</span></div></div>
+<div class="page-columns page-full"><p> <img src="https://joeystanley.com/blog/research-pipeline/spreadsheet.png" class="img-fluid"></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Why, yes, I do like conditional formatting, why do you ask?</span></div></div>
 <p>Also, this spreadsheet makes it easy to see which projects are stagnating. My rule of thumb is that if a project has been at the same stage for 12 months, then I move it to my graveyard. No sense in worrying about it anymore. Of course, this is done on a case-by-case basis, but it’s a good guideline for me. If I do abandon a project, I move its row in the spreadsheet down past the bottom of what is shown above in case I need to revive it. I also remove it from the master document I showed above and I stop updating it’s individual log.</p>
 <p>The other spreadsheet is focused on my points. Here I can see my pace and whether I’m on track to reach my goal or if I’m falling behind. As I said before, I’m only three points away from hitting my stretch goal. I still have 25 points to go to hit my “reaching for the stars” goal. On the right side of the spreadsheet, I have columns for each point progression (going from 7 to 6, 6 to 5, etc.). Reading the columns from top to bottom makes it easy to see when papers were published.</p>
 <p><img src="https://joeystanley.com/blog/research-pipeline/spreadsheet_points.png" class="img-fluid"></p>
 <p>As if those monthly reminders weren’t enough, I also print out papers for every one of my projects in progress and put them on my wall, with a brightly-colored post-it note showing the point value. Right now, only my first-authored projects get their own paper (because it was taking up too my room on my whiteboard), so I have a separate category for work co-authored with students, and other collaborations that I only play a minor role on. Here’s what my wall looks like.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2," data-layout-nrow="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <p><img src="https://joeystanley.com/blog/research-pipeline/wall_context.png" class="img-fluid"> <br></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -524,6 +507,7 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
 
 
 
+
 <p>This week I’m in New York City at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here.</p>
 <section id="lsa-talk-missionary-voice" class="level2">
 <h2 class="anchored" data-anchor-id="lsa-talk-missionary-voice">LSA talk “Missionary Voice”</h2>
@@ -551,7 +535,7 @@ Tip
 </section>
 <section id="lsa-talk-on-park-city-english" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="lsa-talk-on-park-city-english">LSA talk on Park City English</h2>
-<div class="page-columns page-full"><p>Immediately after that talk in the same session, I presented a talk called “Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English.” This is largely the work of the first author, Zoe Eldredge, who conducted this study as part of directed research with me, but who could not make it because of health issues.</p><div class="no-row-height column-margin column-container"><span class="">Yes, the two talks I gave were in the same session and were similar in many ways, so it felt like giving a plenary a little bit!</span></div></div>
+<div class="page-columns page-full"><p>Immediately after that talk in the same session, I presented a talk called “Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English.” This is largely the work of the first author, Zoe Eldredge, who conducted this study as part of directed research with me, but who could not make it because of health issues.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Yes, the two talks I gave were in the same session and were similar in many ways, so it felt like giving a plenary a little bit!</span></div></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -593,7 +577,7 @@ Tip
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="https://joeystanley.com/blog/ads-and-lsa-2024/ads_panel_group_photo.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption margin-caption">Here’s all of us that are a part of the PADS volume! Peggy Renwick, Sabriya Fisher, Jon Forrest, Monica Nesbitt, Katie Carmichael, and me.</figcaption>
+<figcaption class="margin-caption">Here’s all of us that are a part of the PADS volume! Peggy Renwick, Sabriya Fisher, Jon Forrest, Monica Nesbitt, Katie Carmichael, and me.</figcaption>
 </figure>
 </div>
 
@@ -618,6 +602,7 @@ Tip
 
 
 
+
 <p>I’ve seen interactive IPA charts where a single person produces all the sounds. But a couple years ago, I was teaching a Phonetics &amp; Phonology course, and I stumbled upon <a href="https://jbdowse.com/ipa/">Jonathan Dowse’s IPA extended chart with audio</a>. In this post, I take his vowels and map their formants.</p>
 <p>Note that I tweeted about this on February 7, 2022. I don’t know what the future of X holds, so I thought I’d make this a more permanent home for this plot.</p>
 <blockquote class="twitter-tweet blockquote">
@@ -635,7 +620,7 @@ Tip
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="https://joeystanley.com/blog/jbdowse/vowels_screenshot.png" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption class="figure-caption margin-caption">Jonathan Dowse’s vowel chart</figcaption>
+<figcaption class="margin-caption">Jonathan Dowse’s vowel chart</figcaption>
 </figure>
 </div>
 <p>I <em>do</em> know enough about phonetics to be able to look at these vowels. I was curious about how these 70 vowel qualities mapped to the acoustic space. I wanted to see whether these distinctions were all equidistant and whether their distribution in the acoustic space matched this rectangular tabular layout in the chart.</p>
@@ -3849,7 +3834,11 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>What I’ll do then is take all this high resolution temporal data and make it lower resolution. What I found works is to bin the times into about 10 bins and then take the median within each one. I’ll do this by first normalizing the time so that the onset starts at t = 0. That new version of <code>time</code> is now <code>time_diff</code>. I’ll then normalize the time by converting it into percent duration, so that the onset is at 0 and the offset is at 1, with the midpoint at 0.5. That is now in <code>percent</code>. This makes it easier to then slice the data into 10 parts using the <code>santoku::kiru</code> function. For each of those 10 chunks, I can then get the median F1, F2, and F3 measurements.</p>
@@ -3973,7 +3962,11 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay great. So, that worked for one vowel. Let’s do that for all vowels. The code is the same, except I’m grouping things by vowel. This results in <code>trajs</code> dataframe (for “trajectories”). We’ll look at that in just a second.</p>
@@ -4195,7 +4188,11 @@ font-style: inherit;">+</span> </span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, so interesting already because we can see that the overall shape is a trapezoid still and not a square. We can see that the lower back portion of the vowel space is a bit denser than, say, the high front. And there’s a bit of a gap in the mid-to-high central portion.</p>
@@ -4311,7 +4308,11 @@ font-style: inherit;">+</span> </span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, now we’re starting to see some things! So, it looks like rounded vowels are pretty consistently further back than their unrounded counterparts. In some cases, drastically so (see [ɯ] compared to [u]). F2 is pretty level across most of the higher vowels. Among the low vowels, the further back they were the higher they were. Here we can better see the clustering in the low back portion of the vowel space. This also gives some nice context for the <a href="https://doi.org/10.2307/411713">Moulton (1968:464)</a>, who says that the fieldworkers for the <em>Linguistic Atlas of New England</em> were “hopelessly and humanly incompetent at transcribing phonetically the low and back vowels they heard from their informants” (cited in <a href="https://read.dukeupress.edu/pads/issue/95/1">Johnson 2010:32</a>). Given a spot in the low back portion of the vowel space, there are lots of ways to transcribe it that would come pretty darn close.</p>
@@ -4393,7 +4394,11 @@ font-style: inherit;">+</span> </span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, so this is a little bit sparser I don’t know if there’s any new insight here, other than the middle of the vowel space really opens up quite a bit.</p>
@@ -4456,7 +4461,11 @@ font-style: inherit;">legend.position =</span> <span class="st" style="color: #2
 background-color: null;
 font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That wonky data we saw in the F1-F2 plot makes sense now. Let’s look at the summarized data.</p>
@@ -4515,7 +4524,11 @@ font-style: inherit;">legend.position =</span> <span class="st" style="color: #2
 background-color: null;
 font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Okay, so that’s cleaner.</p>
@@ -4584,7 +4597,11 @@ font-style: inherit;">legend.position =</span> <span class="st" style="color: #2
 background-color: null;
 font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Nothing too surprising here. We’ve got a lot of lines that are relatively stable. Towards the ends, most formants shift a little bit. Not sure why. A few others have some movement in other places. But, you’ve got to appreciate Dowse’s ability to hold a monophthong.</p>
@@ -4680,7 +4697,11 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
-<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/jbdowse/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Overall, you can see that Dowse does a good job at holding a monophthong. The higher vowels are generally pretty monophthongal. The lower the vowel, the more back-gliding it is. Low vowels appear to be less stable in height.</p>
@@ -4703,6 +4724,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://joeystanley.com/blog/website-version-3/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -4751,7 +4773,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <section id="changes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="changes">Changes</h2>
 <p>I’ve tried to keep as much of the original structure of the site the same as I could. However, as I migrated, I realized that I could make things overall a bit more contained by changing the structure of associated files. However, some things did change, but I tried my best to make sure any external links to the site did not break. Here’s a list of the changes I’ve made.</p>
-<div class="page-columns page-full"><p>The main change is that each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:</p><div class="no-row-height column-margin column-container"><span class="">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div></div>
+<div class="page-columns page-full"><p>The main change is that each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div></div>
 <pre><code>├──📁blog
 |  ├──📄blog post 1.md
 |  ├──📄blog post 2.md
@@ -4975,6 +4997,7 @@ Tip
 
 
 
+
 <p>In appendix C of my <a href="../../blog/dissertation">dissertation</a>, I listed 838 words that contain low vowels, classified as /ɑ/ or /ɔ/ according to my idiolect. I think it may be a useful resource for those who have the <em>cot-caught</em> merger, so I thought I’d pull it out and make it more available.</p>
 <p>The words that are included here are all those that came up in the course of the 54 sociolinguistic interviews I did in Washington State as part of my dissertation work. This means that there are some quirky ones included like <em>Sinterklaas</em> and <em>Jawas</em>. By nature of the naturalistic data, certain common words may be missing.</p>
 <p>Please note that, again, this reflects <em>my</em> idiolect, and may not be reflective of others’ speech, other varieties of English, or historical distributions. For more information about the phonetic realization my two vowels and some phonological peculiarities, please see my description of my <a href="../../pages/idiolect">idiolect</a>.</p>
@@ -5053,6 +5076,7 @@ Tip
 
 
 
+
 <p>Today, I’m in Champaign, Illinois at the 5th Sociolinguistics Symposium (SoSy) at the University of Illinois Urbana-Champaign. I’m with a student of mine, Katya Kravchenko, and we’re here presenting her research project, “Surzhyk: Attitudes and Usage among Ukrainian People.” You can view the slides <a href="../../downloads/230302-SoSy_Surzhyk.pdf">here</a>.</p>
 <p>Throughout my sociolinguistics course last semester, Katya regularly kept us updated on fascinating things going on with language attitudes and ideologies among Ukrainians since the Russian invasion of Ukraine in February 2022. I think pretty much every Ukrainian speaks Russian, but not all speak Ukrainian. Even President Zelenskyy isn’t a native Ukrainian speaker and reportedly hired a tutor to help him achieve full command of the language.</p>
 <p>Attitudes towards Russian have changed dramatically in the past year though. Before, TV shows would put Ukrainians subtitles if someone speaks Russian. Now, they remove the Russian audio entirely and dub it over with Ukrainian. (This what happened on the Ukrainian version of the show, “The Bachelor”.) Sometimes, there’s a disclaimer at the start of the show saying apologetically that it was filmed before February 2022 and that they apologize for the Russian. There’s a grassroots effort (I wish I had the website, but I can’t find it now) to replace Russian borrowings into Ukrainian with pure Ukrainian words. This is done either by coining neologisms, or by going back to and older form of Ukrainian and finding words that, for whatever reason, didn’t make their way into modern Ukrainian. Basically, many Ukrainians are vowing to never speak Russian again.</p>
@@ -5079,8 +5103,9 @@ Tip
 
 
 
+
 <p>Last week, I was at the LSA/ADS conferences in Denver, and it occurred to me that ten years ago this week is when I decided I wanted to be an academic.</p>
-<div class="page-columns page-full"><p>In the summer of 2011, I went on a study abroad to Ecuador with my now-colleague Janis Nuckolls. It was a fantastic experience and really got me excited about linguistics. Afterwards, me and two other students started meeting with her as a research group. Over the next year we met weekly as we worked on the phonology of Kichwa ideophones, research that would eventually lead to <a href="https://www.journals.uchicago.edu/doi/10.1086/684425">our 2016 publication in IJAL</a>.</p><div class="no-row-height column-margin column-container"><span class="">That paper may forever be my most cited publication, which is weird because it’s not at all what I do for research now!</span></div></div>
+<div class="page-columns page-full"><p>In the summer of 2011, I went on a study abroad to Ecuador with my now-colleague Janis Nuckolls. It was a fantastic experience and really got me excited about linguistics. Afterwards, me and two other students started meeting with her as a research group. Over the next year we met weekly as we worked on the phonology of Kichwa ideophones, research that would eventually lead to <a href="https://www.journals.uchicago.edu/doi/10.1086/684425">our 2016 publication in IJAL</a>.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">That paper may forever be my most cited publication, which is weird because it’s not at all what I do for research now!</span></div></div>
 <p>We got the point where Janis was ready to submit the research to a conference. So, we wrote up the abstract and submitted it to the SSILA conference, which meets concurrently with LSA, ADS, and a few other sister societies. And we got in!</p>
 <p>At first, I wasn’t planning on going. I was engaged and the conference was less than two weeks after my wedding. I decided last minute that I really should go though. My wife helped me pick out some conference clothes (I still wear the green shirt I got then as a homage to my first conference!), I managed to get some funds from the department, and after a red-eye flight that included layovers in Denver and Philadelphia, I made it to Boston.</p>
 <p>Our presentation was in the very first session on that Thursday, and I remember being pretty nervous as I read my section. I didn’t look up from my script once. But because the talk was over with soon after arriving to the conference, I was able to spend the the next two days wandering around attending whatever talks looked interesting.</p>
@@ -5111,6 +5136,7 @@ Tip
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://joeystanley.com/blog/ads-and-lsa-2023/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -5156,6 +5182,7 @@ Tip
 
 
 
+
 <p>I’m happy to announce that <a href="https://doi.org/10.1515/lingvan-2022-0065">a paper of mine has been published</a> in <em>Linguistics Vanguard</em>. It’s called “Interpreting the order of operations in sociophonetic analysis” and it’s a direct follow-up to a <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/">paper</a> I wrote for the <em>Penn Working Papers in Linguistics</em> a couple months ago. While the <em>PWPL</em> paper showed that Order of Operations (OoO) matters, that we should be talking about it more, and that we should do our best to interpret others’ OoOs, it didn’t give any help as to <em>how</em> to interpret them. The main contribution for this follow-up paper then is to 1) arm researchers with knowledge of how to interpret order of operations and 2) justify the order I recommended in the <em>PWPL</em> paper.</p>
 <section id="summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
@@ -5169,7 +5196,7 @@ Tip
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="https://joeystanley.com/blog/new-publication-in-linguistics-vanguard/recommended_OoO.png" class="img-fluid figure-img" style="width:25.0%"></p>
-<figcaption class="figure-caption margin-caption">My recommended Order of Operations. Sorry the figure is so tall. And yes, I use PowerPoint for all my non-data visualizations :)</figcaption>
+<figcaption class="margin-caption">My recommended Order of Operations. Sorry the figure is so tall. And yes, I use PowerPoint for all my non-data visualizations :)</figcaption>
 </figure>
 </div>
 <p>Many of the orders produced identical results. This was mostly the result of various subsetting functions removing different groups of unwanted data, such as unstressed vowels, presonorants, stopwords, and vowel trajectories. This makes sense because, as I say in the paper,</p>
@@ -5204,6 +5231,7 @@ Tip
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://joeystanley.com/blog/prevelar-raising-american-speech/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -5278,6 +5306,7 @@ Okay, I'm trying something out. I have this histogram with one very tall bar and
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://joeystanley.com/blog/nwav50/</link>
   <description><![CDATA[ 
+
 
 
 

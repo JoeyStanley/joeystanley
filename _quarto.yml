@@ -34,7 +34,7 @@ website:
         menu: 
            # https://github.com/quarto-dev/quarto-cli/discussions/7640
          - text: "{{< fa brands bluesky >}} Bluesky"
-           href: https://bsky.app/profile/joeystan.bsky.social
+           href: https://bsky.app/profile/joeystanley.com
          - icon: twitter
            text: Twitter
            href: https://twitter.com/joey_stan
