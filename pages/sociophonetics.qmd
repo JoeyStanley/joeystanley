@@ -1,0 +1,14 @@
+---
+layout: aside
+title: "L590R: Sociophonetics"
+author: "Joey Stanley"
+date: 2024-12-16 09:04:00 -0600
+date-modified: last-modified
+aliases: 
+    - "/sociophonetics"
+---
+
+This page houses the tutorials for L590R Sociophonetics. The ultimate goal is for interested students to go from zero coding experience to being able to create a good vowel plot. 
+
+<!-- https://github.com/quarto-dev/quarto-cli/discussions/3505 Looks like I can't really make a book within my main webpage. So I'd have to do something like sociophonetics.joeystanley.com, which I don't mind. Andrew Heiss' coureses are also a great example of what a full version would look like.-->
+
