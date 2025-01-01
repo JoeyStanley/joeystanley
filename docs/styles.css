@@ -133,13 +133,32 @@ body {
 
 /* Navbar Stuff */
 
+/* testing narrow screen stuff
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+*/
+
+
 #quarto-header {
   border-bottom: 2px solid var(--joeyblue)
 }
 
+
+
 .navbar, .navbar * {
   background: var(--joeyblue);
 }
+
+/* THIS IS IN FLUX for narrower screen
+.navbar-container {
+  display: flex;
+  flex-flow: row wrap;
+  color: red;
+}
+*/
 
 /* My name */
 .navbar-title {
@@ -155,6 +174,7 @@ body {
 
 
 /* Container holding the nav bar items*/
+
 .me-auto {
   margin: auto;
   width: 800px;
@@ -163,7 +183,9 @@ body {
   flex-direction: row;
   justify-content: left;
   align-items: center;
+
 }
+
 
 .me-auto .nav-item {
 }
@@ -196,12 +218,24 @@ body {
 	color: var(--joeyblue);
 }
 
-/* The little taglines at the end of the top-level navbar buttons */
+/* The little taglines at the end of the top-level navbar buttons. 
+Hide them if the screen is too narrow. */
 .menu-text em {
   background-color: whitesmoke;
   font-size: 0.5em;
   display: block;
 }
+@media (max-width: 800px) {
+  .menu-text em {
+      display: none;
+  }
+}
+
+.navbar-toggler-icon {
+  background-color: green;
+  content: "TEST";
+}
+
 
 /* The dropdown menu items */
 .me-auto .dropdown-menu {
