@@ -4,6 +4,7 @@ author: "Joey Stanley"
 date: "2024-04-26"
 output: html_document
 categories:
+  - Kohler Tapes
   - Research
   - Utah
 ---
@@ -12,7 +13,7 @@ categories:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-In 2021, I acquired a huge collection of cassette tapes I've called the Kohler tapes. In my [first blog](/posts/kohler-tapes) post about it, I geeked out about how much data I had collected. A few months later, I gave an [update](/posts/kohler-tapes-update) since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I'm excited to give a second update with the news that I've just gotten a grant to cover the costs of processing all these tapes!
+In 2021, I acquired a huge collection of cassette tapes I've called the Kohler tapes. In my [first blog](/blog/kohler-tapes) post about it, I geeked out about how much data I had collected. A few months later, I gave an [update](/blog/kohler-tapes-update) since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I'm excited to give a second update with the news that I've just gotten a grant to cover the costs of processing all these tapes!
 
 ## Progress since 2021
 
