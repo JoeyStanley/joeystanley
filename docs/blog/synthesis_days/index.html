@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2024-01-09">
+
+<title>Synthesis Days – Joey Stanley</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=350348361"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '350348361', { 'anonymize_ip': true});
+</script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-list" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
+        <li>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystanley.com">
+ <span class="dropdown-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> Bluesky</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="dropdown-text">Twitter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
+</i> 
+ <span class="dropdown-text">Google Scholar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">RSS feed</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Synthesis Days</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Teaching</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 9, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#issues-with-past-iterations-of-the-course" id="toc-issues-with-past-iterations-of-the-course" class="nav-link active" data-scroll-target="#issues-with-past-iterations-of-the-course">Issues with past iterations of the course</a></li>
+  <li><a href="#the-synthesis-days" id="toc-the-synthesis-days" class="nav-link" data-scroll-target="#the-synthesis-days">The synthesis days</a>
+  <ul class="collapse">
+  <li><a href="#the-synthesis-paper" id="toc-the-synthesis-paper" class="nav-link" data-scroll-target="#the-synthesis-paper">The synthesis paper</a></li>
+  <li><a href="#the-synthesis-presentation" id="toc-the-synthesis-presentation" class="nav-link" data-scroll-target="#the-synthesis-presentation">The synthesis presentation</a></li>
+  <li><a href="#the-synthesis-discussion" id="toc-the-synthesis-discussion" class="nav-link" data-scroll-target="#the-synthesis-discussion">The synthesis discussion</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>I don’t often post just about teaching, but I thought I’d report on something I tried this past semester. I had some issues with how I taught sociolinguistics in the past, so I came up with “synthesis days” to solve some of them. I think it worked and it might be useful for you too.</p>
+<section id="issues-with-past-iterations-of-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="issues-with-past-iterations-of-the-course">Issues with past iterations of the course</h2>
+<p>While prepping to teach sociolinguistics again, I thought back on things I didn’t like about how I’ve taught it in the past. For one, it was one of my first courses I taught, so the slides were a bit amateurish, so they just needed to be spruced up a little bit. (I guess that says something about how I’ve grown as a teacher or whatever.)</p>
+<p>But one main issue was that my version of the course was a holdover from covid-era teaching. The first time I taught it, it was a single 75-minute lecture taught twice a week. One section came in on Tuesday and the other came in Thursday. On students’ off-days, they did some online content I prepared for them. It worked for that early 2021 semester. I later taught it as a stand-alone graduate level course (as opposed to a cross-listed one) where I split that 75-minute lecture into two 50-minute lectures and then we discussed articles on Fridays. But now that I was teaching it as a regular Monday-Wednesday-Friday 50-minute course, I needed to make some changes beyond just continuing the stretch out what was once just a single lecture.</p>
+<p>Meanwhile, I had some issues with how assessment happened. I had weekly open-book quizzes, weekly mini-projects for homework assignments, a midterm and final, and a final project. It was a lot, and I just didn’t feel like those quizzes and tests were good assessment tools.</p>
+<p>Finally, one big issue I had was that the course was too modular. The topics didn’t build upon each other as much as I’d like and each week was more or less independent of the other. This means that a student could miss two weeks of class and then jump right in without feeling behind, and I don’t think that should be the case.</p>
+<p>So, I went for a long walk and had a conversation with ChatGPT to help brainstorm some ideas. While many of its ideas were no good, it did spark an idea of my own. I decided to try adding “Synthesis Days” to the course.</p>
+</section>
+<section id="the-synthesis-days" class="level2">
+<h2 class="anchored" data-anchor-id="the-synthesis-days">The synthesis days</h2>
+<p>The course was already broken up into four broad units: situated language, language variation, language attitudes, and the life cycle of language. You can see the syllabus <a href="../../downloads/250103-L452_syllabus.pdf">here</a>. So, at the end of each unit, I dedicated an entire lecture to synthesizing what we had just discussed for the past 2–3 weeks. Theses synthesis days consisted of three main components: a paper, a presentation, and a discussion.</p>
+<section id="the-synthesis-paper" class="level3">
+<h3 class="anchored" data-anchor-id="the-synthesis-paper">The synthesis paper</h3>
+<p>Each student had to write a synthesis paper for the unit. I emphasized that this was a <em>synthesis</em>, not a summary, so if they just wrote a paper that regurgitates the various topics from that unit one paragraph at a time, they would not get a good grade. You can read the prompt <a href="../../downloads/250103_L452_synthesis_prompt.pdf">here</a>, but I emphasized that I wanted them to draw connections between topics in the unit and to see how they relate to each other. I encouraged them to incorporate examples from class as well as add their own. They needed to cover every lecture topic from that unit without dwelling too much on any one too much, which means if they were gone at any point during the unit, they’d have to play catch-up. I didn’t give them a page/word limit, but I said I’d be hard to do a good job in less than 500 words. I graded them holistically out of ten.</p>
+<p>Unlike other assignments, these synthesis papers were due when class started on the synthesis days. I wanted to see how students did without getting ideas from others in the presentation or discussion.</p>
+<p>I will say that students expressed how difficult it was to do these papers. Sure enough, the first unit’s synthesis papers averaged an 8.3. They often lost points for not incorporating all the topics, not having a clear narrative throughout, being too much of a summary, and not discussing the bigger picture. But, I gave detailed feedback, and the average scores went up to 9.1, then a 9.7, and then a 10.0 (yes, they all did excellent the last time!). So, it was really cool to see them grow and finally learn how to write these. However, they took a long time to grade, and these were on top of regular weekly assignments, so that was tricky for me to stay caught up.</p>
+<p>I think being able to do a synthesis like this is a good skill for other areas of writing. In fact, when I graded their final papers, I found myself giving the same kind of feedback in their lit reviews as I did on the synthesis papers (don’t dwell on one paper too much, no narrative, avoid the one-citation-per-paragraph summary, discuss the bigger picture). Next time I teach the course, I’ll have to explicitly make the connection for them that the skills needed in these syntheses should be applied to lit reviews.</p>
+<p>Overall, I liked the synthesis papers and I plan on doing them again next year. I’ll just need to make sure I can grade them on time!</p>
+</section>
+<section id="the-synthesis-presentation" class="level3">
+<h3 class="anchored" data-anchor-id="the-synthesis-presentation">The synthesis presentation</h3>
+<p>So what do we do on the synthesis day? Instead of me giving a lecture, I thought it’d be good to see students present. So, this year I had 20 students and four units, so I randomly assigned them into groups of five and randomly assigned each group to each unit. Groups were then asked each one to prepare a 20-minute synthesis lecture for their assigned unit. So on each synthesis day, we saw one group presentation. Those who presented for that unit were exempt from turning in a paper. The presentations should have been similar in style to the papers: a synthesis rather than a summary, covering all topics equally, and incorporating new and old examples.</p>
+<p>The presentations were mostly okay, but I realized this is a difficult thing to do well as a group. What I mostly saw was five students each giving good stand-alone presentations back-to-back. They were less unified in their delivery than I was hoping and there was usually not much of a larger narrative or arc that permeated through the entire thing.</p>
+<p>This was my first time ever doing group work and I’m not sure if I’ll keep it for next time. They were hard for the students, difficult to grade, and I’m not sure what pedagogical purpose they served.</p>
+</section>
+<section id="the-synthesis-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="the-synthesis-discussion">The synthesis discussion</h3>
+<p>For the remainder of the 50-minute lecture, we broke out into small groups and discussed the unit. I asked presenters to end their lecture with a handful of questions to stimulate some discussion topics. I then distributed the five presenters among the rest of the class so they could kind of lead the discussions. I jumped from group to group, contributing ideas here and there and just listening to what they were saying.</p>
+<p>I was pleasantly surprised at how well these discussions went. Pretty much everyone stayed on-track as far as I could tell. People had good ideas and it was good to see them come out in those discussions. Everyone had the synthesis fresh on their minds because they all either gave a presentation or turned in a paper, so everyone was prepared. But it was good to see people telling personal stories and how the topics from the unit give them a different perspective on what happened. I heard a few students say they enjoyed this as an end-cap to the unit as well.</p>
+<p>I’ll definitely try to do discussions again next year. My one issue is that because they were not graded, I noticed attendance was lower on the synthesis days. I’ll have to find a way to encourage students to be there.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>I liked these synthesis days and will probably do them again next time I teach the course. I’ll have to tweak a few things, but overall I thought it was really good.</p>
+<p>I will say that one major thing about adding four synthesis lectures is that I had to account for four non-contentful lecture days. I also took the last two weeks of the course (so, the five days after Thanksgiving) and made those final presentation days. So in total, there were nine non-lecture days. Keep in mind that my first iteration of the course had just fifteen 75-minute lectures, so it’s not like there were nine lectures that were just cut out entirely. But it did mean I had to be careful about covering everything I wanted in only about 35 lecture days. But, I thought keeping the units tight and more integrated was good for me as a teacher and for the students.</p>
+<p>So, overall, I think these synthesis days solved many of my issues: the course was far less modular, there were more useful assessments than quizzes and exams, and the lectures were better organized and updated with fresh content.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
