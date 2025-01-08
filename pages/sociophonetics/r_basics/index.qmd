@@ -1,14 +1,19 @@
 ---
 title: "R Basics"
 author: "Joey Stanley"
+date: "9/4/2017"
+date-modified: last-modified
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 
+:::{.callout-note}
+This is Part 2 of a [series on sociophonetic data analysis](/pages/sociophonetics). [Part 1](/pages/sociophonetics/getting_started) covered how to install R and R Studio.
+:::
 
-
-
-# R Basics
 
 Open RStudio and create a new script by going to `File > New File > R Script`. This will open what looks like a text editor in the top left portion of your RStudio screen. This looks like a text editor because that's actually all it is. R scripts are just text files with nothing fancy about them. When you save them, instead of .txt they'll get a .R appendix, which lets your computer know to run it as an R script. 
 
@@ -19,6 +24,7 @@ Obligatorily, any tutorial on R has to show you that R can be a calculator. In y
 ```{r, eval=FALSE}
 2+2
 ```
+
 With your cursor still on this line, hit command+enter (or for Windows, ctrl+enter), which is the keyboard shortcut for "execute this line". In the bottom left quadrant of RStudio, you'll now see a new line, in blue `>2+2` and then, in black, the output `[1] 4`. 
 
 ```{r, echo=FALSE}
@@ -34,7 +40,7 @@ You can do other arithmetic in R as well:
 ```
 Not too shabby. But this is boring. Let's move on to bigger and better things.
 
-## Variables
+### Variables
 
 You can create *variables* to store data. Variables have arbitrary names, so you can call them whatever you want. To create a variable, provide it's name (in this case `six`), then the assignment operator `<-`, and some value. (Mac users: a keyboard shortcut for the assignment operator is option+dash.) Let's create a variable called `six` and give it the value of `6`.
 
@@ -99,7 +105,7 @@ fibs[c(1,5,10)]
 
 These lists are really important, because when it comes time to read in your own spreadsheets into R, each column will be treated as a list just like this one. We'll get to that in a sec.
 
-## Arithmatic Functions
+### Arithmatic Functions
 
 This is great and all. We can do more though. Here, let's look at what are called *functions*. These are commands that take one or more *arguments*. The function takes these arguments, works its magic under the hood, and returns some value. For example, the `sqrt` function takes the square root of some number.
 
@@ -115,17 +121,17 @@ mean(fibs)
 range(fibs, -4, sqrt(16), six)
 ```
 
-You should get very comfortable running functions and getting all the syntax right like keeping track of your parentheses, commas, and spelling. The idea that you run functions, and on functions within functions, is super common in R. You don't have to memorize all the functions that R has, and in fact, you'll probably never use them. You're probably wondering what all the functions in R even are and how you're supposed to know about them. Google. There is tons of documentation for R online, and you'll hopefully be able to find your answer very quickly. 
+You should get very comfortable running functions and getting all the syntax right like keeping track of your parentheses, commas, capitalization (a big one for new coders!), and spelling. The idea that you run functions, and on functions within functions, is super common in R. You don't have to memorize all the functions that R has, and in fact, you'll probably never use them. You're probably wondering what all the functions in R even are and how you're supposed to know about them. Google. There is tons of documentation for R online, and you'll hopefully be able to find your answer very quickly. 
 
-# Getting data into R
+## Getting data into R
 
 At this point, a lot of R tutorials start you off with working with generating data within R itself. While this is an important skill to learn eventually, what's most relevant to you right now is getting your own data into R. 
 
-I'm going to assume you have your own spreadsheet somewhere saved on your computer. Ideally, each row represents one *observation* and each column is a variable of that observation. For example, if you had a spreadsheet that had the area, population, and capital of each of the 50 states, you'll have 50 rows and 4 columns (one for each of the variables and the fourth for the state name). Presumably, your data is clean and tidy, meaning that dates and numbers are formatted the same, capitalization is standardized, and everything is consistent. I could go on for a long time about the importance of making your data clean, but suffice it to say that it's paramount for proper analysis in R.
+I'm going to assume you have your own spreadsheet somewhere saved on your computer. Ideally, each row represents one *observation* and each column is a variable of that observation. For example, if you had a spreadsheet that had the area, population, and capital of each of the 50 states, you'll have 50 rows and 4 columns (one for each of the variables and the fourth for the state name). Presumably, your data is clean and tidy, meaning that dates and numbers are formatted the same, capitalization is standardized, and everything is consistent. I could go on for a long time about the importance of making your data clean, but suffice it to say that it's paramount for proper analysis in R. For now, you can go to [this tutorial](https://r4ds.had.co.nz/tidy-data.html) on what is meant by clean and tidy data. 
 
 The functions for reading in data in R depend on what kind of file you have. The most common options are `.csv`, `.txt`, and an Excel file. Let's look at each one of those.
 
-## .csv files
+### .csv files
 
 If your file has *comma-separated values*  (it ends with .csv), that's the easiest way to go. You can use `read.csv`, and as the only argument, put the full *path* to the file you want to read in, in quotation marks. For example, I've got a file on my Desktop called  `menu.csv`. This file contains all the menu items at McDonald's with complete nutrition information and is available for free at [Kaggle.com](https://www.kaggle.com/mcdonalds/nutrition-facts). To read this file in, the function would be this:
 
@@ -143,7 +149,11 @@ Note that Mac users should use single forward slashes while Windows users have t
 
 To execute this command, I would put my cursor anywhere on the line, and either click the Run button on the top left of the R script, or preferably, use the keyboard shortcut `command+return` for Macs or `control+enter` for Windows.
 
-When you do this, you'll start to see the contents of your file displayed in your R console (the bottom left portion of the RStudio screen). Hooray! You just read your data into R! 
+When you do this, you'll start to see the contents of your file displayed in your R console (the bottom left portion of the RStudio screen). 
+
+![](flooded_console.png)
+
+Hooray! You just read your data into R! 
 
 Unfortunately, all it did was read it in and forget it. Computers do *exactly* as they're told. What you didn't tell R was to *remember* the contents of the file. So, let's create a new variable called `menu` and save the contents of the `menu.csv` file into that variable.
 
@@ -153,13 +163,13 @@ menu <- read.csv("C:\\Users\\joeystanley\\Desktop\\menu.txt") # for Windows
 ```
 
 ```{r, echo=FALSE}
-menu <- read.csv("http://joeystanley.com/downloads/menu.csv")
+menu <- read.csv("http://joeystanley.com/data/menu.csv")
 menu$Item <- stringr::str_sub(menu$Item, 1, 24)
 ```
 
 Okay, so now we have a new `menu` object that has the full contents of my file. Before we move on to working with that file, let's see how to read in files that are in other formats.
 
-## .txt files
+### .txt files
 
 If your file is a *tab-delimited* file (it ends with .txt), then you can use `read.table` instead. As an additional argument (which is separated from the path name with a comma), you may need to specify that the cells of your table are separated by tabs. To do this, add the `sep="\t"` argument (`\t` is "computer-talk" for a tab). Also, your file may have a header, meaning the first row of your file might contain the names of the columns. By default, `read.csv` assumes this, but for `read.table` you'll need to make that explicit so R knows what to do with them. You can add this using the `header=TRUE` argument. So the final command might look like this.
 
@@ -168,11 +178,11 @@ menu <- read.table("/Users/joeystanley/Desktop/menu.csv", sep="\t", header=TRUE)
 menu <- read.table("C:\\Users\\joeystanley\\Desktop\\menu.txt", sep="\t", header=TRUE) # for Windows
 ```
 
-## Excel files
+### Excel files
 
-If you data is in an Excel file, there are ways to get it into R. For now, the easiest solution is to simply save it as a `.csv` file and read it in that way. In November, when we talk about the `tidyverse`, we'll look at how to read in data from Excel.
+If you data is in an Excel file, there are ways to get it into R. For now, the easiest solution is to simply save it as a `.csv` file and read it in that way. In a later tutorial, when we talk about the `tidyverse`, we'll look at how to read in data from Excel.
 
-## Don't like typing path names?
+### Don't like typing path names?
 
 There is one other way to read in data that doesn't involve typing those long path names. You can use the `file.choose` command instead. When you do this, a window will open up and you'll be able to find your file and click on it just like you were opening any other file.
 
@@ -182,11 +192,11 @@ menu <- file.choose()
 
 I don't like this option mostly because it just takes too many clicks. Every time I want to run this line of code, it takes 5 or so clicks to get the file I want. This gets really tedious. It's worth the time to just type (or copy and paste!) the path name to the file one time, and with a single keystroke you can load it in nearly instantaneously the exact same way every time.
 
-# Working with your data
+## Working with your data
 
 Okay, so your data is in R. Now we need to be able to view it to make sure it's all there, and also be able to extract portions of it.
 
-## Displaying your data
+### Displaying your data
 
 The easiest way to display your data is to simply type the name of the variable itself. However, depending on the size of your data frame, this could get huge. I've truncated mine, particularly the description so it would fit on this page, but yours might be different.
 
@@ -212,18 +222,17 @@ tail(menu)
 
 
 
-## Extracting portions of your data
+### Extracting portions of your data
 
 Before, when we had several numbers saved into a single variable, we called it a *vector*. Now, we have an entire spreadsheet saved into the `menu` variable. Each column in your data frame is treated as a vector, and each row of that column is an element in that list. We call this type of variable a *dataframe*. 
 
 You can think of a vector as a one-dimensional variable and a data frame as a two-dimensional variable. To access an element of a vector, you type one number in the square brackets (`fibs[1]`). Because a data frame is two-dimensional, you'll have to send two numbers, separated by a comma: the first for the row number and the second for the column number.
 
 ```{r}
-head(menu) # The head() function displays the first few rows of a dataframe.
 menu[4,2]
 ```
 
-The line `[1] Sausage McMuffin with Egg` shows the content of the element you just extracted. The `260 Levels: 1% Low Fat Milk...` just shows that there are 260 different items in that column and it goes ahead and list them in alphabetical order for you. You can ignore that for now.
+The line `[1] Sausage McMuffin with Eg` shows the content of the element you just extracted. 
 
 So that's how you would extract a single cell in your spreadsheet. You can extract an entire row by leaving off the column number. 
 
@@ -249,13 +258,13 @@ menu$Item
 head(menu$Item, n=10)
 ```
 
-## Filtering your data
+### Filtering your data
 
 We can also perform queries on your data so that we can filter your data in whatever way we want. We can view entire portions of the data frame just as easily in Excel as we can in R, so why bother with R in the first place? 
 
 In Excel it's certainly possible to filter your data. But it gets a little cumbersome if you have multiple filters on at once. Or if you have to switch back and forth between two or more different filters, you have to do a lot of clicking. With R, it's a little bit easier. 
 
-### Tangent: Logical Operators
+#### Tangent: Logical Operators
 To use filters, I'll have to introduce a couple ways to *evaluate* data. What a filter does is it looks at your data, and decides whether certain rows meet certain conditions. If we start simple, and take our `fibs` vector, we can see how many of those numbers are greater than 10.
 
 ```{r}
@@ -287,7 +296,7 @@ fibs == 1
 fibs != 34
 ```
 
-### Back to the data
+#### Back to the data
 We can use the same kind of thing to subset your data. For example, if we want to find all menu items that have 150 calories or less, we can do so like this.
 
 ```{r}
@@ -321,11 +330,11 @@ menu[menu$Calories <= 150 &  # Anything with 150 calories or less
 
 We can apply other filters using other techniques as well. Let's say your getting food for your uncle Bob who, let's just say he doesn't have the best eating habits. For example, if you wanted to see which menu items have bacon in them and what coke products they offer. 
 
-### Tangent: Packages
+#### Tangent: Packages
 
 To do this, we're going to have to install a *package*. R packages are bundles of code that other people have written and made available for others to download. These usually contain several additional functions that plain ol' R can't handle very easily. The task we need to do is to check whether the menu item contains a specific word. This is called *pattern matching*. The best way I know of to handle this kind of task is to use `str_detect` function that's in the `stringr` library. 
 
-By the way, `stringr` is one of several packages that together comprise what's called the `tidyverse` and is written by Hadley Wickham. On November 11, 2017, I'll be doing a workshop specifically on `tidyverse`.
+By the way, `stringr` is one of several packages that together comprise what's called the `tidyverse` and is written by Hadley Wickham. We'll get to `tidyverse` in a later tutorial.
 
 To download `stringr`, we first have to install it. We can do this with `install.packages`.
 
@@ -341,7 +350,7 @@ library(stringr)
 
 Now, we have at our disposal a whole bunch of new functions specifically geared towards working with strings. Pretty cool.
 
-### Back to the data
+#### Back to the data
 
 Now that we have `str_detect` function, we can now filter our `menu` data frame and just show the items that have bacon in them. What the `str_detect` function does is it takes two arguments: the vector you want to filter, and some text (called a *string* in computer-speak) that you want to search for. The function by itself produces a long list of `TRUE`s and `FALSE`es, just like we saw before with the logical operators. 
 
@@ -350,19 +359,14 @@ str_detect(menu$Item, "Bacon")
 ```
 
 So when we incorporate that into the subsetting, we can get the list we want.
+
 ```{r}
 menu[str_detect(menu$Item, "Bacon"),]
 ```
 
-We can filter this further and get only the items that have bacon *or* chicken by supplying a list of strings rather than just one.
+You could go on forever with ways to subset your data. Here, I've shown just a couple ways to do some pretty useful things. 
 
-```{r}
-menu[str_detect(menu$Item, c("Bacon", "Chicken")),]
-```
-
-You could go on forever with way to subset your data. Here, I've shown just a couple ways to do some pretty useful things. 
-
-# Basic Visualizations
+## Basic Visualizations
 
 The purpose of this workshop is to get you started with R, so we don't have time to cover all the ins and outs of visualizations in R. For now, it might be good to get you started with a couple visualization and to introduce a package called `ggplot2`. This package is written by the same programmer who did `stringr` and `tidyverse`, Hadley Wickham, and is very popular among R users.
 
@@ -401,27 +405,25 @@ Finally, let's build a plot that shows the relationship between fat and sugar. L
 ```{r}
 ggplot(data=menu, mapping=aes(x=Sugars, y=Fat, color=Category)) + 
     geom_point()
-    
 ```
 
 Here, we see that items generally have a lot of fat or a lot of sugar, but not both (there's nothing at the top right quadrant of the plot). There is some correlation between them though: as item have more fat they generally have more sugar, and vice versa.
 
 In fact, we can even add a layer to this so we can add lines through the data to see the general trend per category. We can do this by adding `geom_smooth(method="lm", fill=NA)` to the function as a new layer.
 
-```{r}
+```{r, message = FALSE}
 ggplot(data=menu, mapping=aes(x=Sugars, y=Fat, color=Category)) + 
     geom_point() + 
     geom_smooth(method="lm", fill=NA)
-    
 ```
 
 Now we can see that Smoothies & Shakes and Coffee & Tea have the most sugar generally and that the more they have, the more fat they have as well. 
 
-# Where to go for help
+## Where to go for help
 
-## In-R Help
+### In-R Help
 
-R offers some good resources to help you learn about its functions. For example, if you put a question mark `?` before a function name, on the lower right quadrant of RStudio, some help will pop up.
+R offers some good resources to help you learn about its functions. For example, if you put a question mark `?` before a function name, on the lower left quadrant of RStudio, some help will pop up.
 
 ```{r, eval=FALSE}
 ?sqrt
@@ -437,41 +439,33 @@ You can also precede a function name with two question marks `??` to search all 
 
 This is useful if you know there's some sort of R function but you don't remember what package it's in. So if you get some code with the function `str_detect` in it but you forgot to load the `stringr` package, you can search for it using this double question mark and it'll tell you which ones to load.
 
-## Books and websites
+### Books and websites
 
 Because R is so widely used, there are tons of resources out there. Here, I list just a few sites and books that I have found useful on a variety of topics.
 
-* [*An Introduction to R*](https://cran.r-project.org/doc/manuals/R-intro.pdf) by Venables, Smith, and the R Core Team (2017). This is a 99-page PDF that introduces R and some basic skills on how to use it. This version is only a few months old and it a thorough resource for beginners.
+* [*An Introduction to R*](https://cran.r-project.org/doc/manuals/R-intro.pdf) by Venables, Smith, and the R Core Team. This is a 99-page PDF that introduces R and some basic skills on how to use it. It gets updated regularly as R updates.
 
 * This [*R Cookbook*](http://www.cookbook-r.com) site is great and has helped me a lot.
 
 * The [`tidyverse`](http://www.tidyverse.org) website is the launchpad for learning to use the `tidyverse` package.
 
-* The publishing company Springer has a series called [Use R!](https://link.springer.com/search?facet-series=%226991%22&facet-content-type=%22Book%22) that has over 50 volumes in it. Many of them cover general skills like `ggplot2` or Shiny, but others are geared towards specific field like business, ecology, biostatistics, and general statistical procedures. The ones that might be most useful for beginners include *A Beginner's Guide to R* and *R Through Excel*. These books are all available as free PDFs to download through UGA's library
+* The publishing company Springer has a series called [Use R!](https://link.springer.com/search?facet-series=%226991%22&facet-content-type=%22Book%22) that has over 50 volumes in it. Many of them cover general skills like `ggplot2` or Shiny, but others are geared towards specific field like business, ecology, biostatistics, and general statistical procedures. The ones that might be most useful for beginners include *A Beginner's Guide to R* and *R Through Excel*. These books are all available as free PDFs.
 
 There are a lot of resources just on `ggplot2` specifically:
 
 * The [*R Graphics Cookbook*](https://www.amazon.com/dp/1449316956/ref=as_li_ss_tl?&linkCode=sl1&tag=ggplot2-20&linkId=4daa45d4fbd0a187163a6ff9d56d986e), and its accompanying [website](http://www.cookbook-r.com/Graphs/) has helped me a ton for learning how to use `ggplot2`. It has great, clear examples on how to do stuff.
 
-* Hadley Wickham, the creator of `ggplot2`, has some presentations available online [here](http://ggplot2.org/resources/2007-past-present-future.pdf) and [here](http://ggplot2.org/resources/2007-vanderbilt.pdf).
-
 * The [`ggplot2`](http://ggplot2.tidyverse.org) website is is a good launching pad for other places to find help.
 
-* The book [`ggplot2`: *Elegant Graphics for Data Analysis*](https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) by Wickham is available for purchase, or, if you're a UGA student, available as a free download through the library's website. 
-
-* [Lynda.com](https://www.lynda.com), which is free for UGA students, has some great help for learning R. 
+* The book [`ggplot2`: *Elegant Graphics for Data Analysis*](https://ggplot2-book.org) by Wickham, Navarro, and Pedersen is a free online book that gives the ins and outs of ggplot2.
 
 Your first stop really should just be google though, which will often take you to StackOverflow, YouTube, or other websites. 
 
-# Conclusions
+## Conclusions
 
-The goal for this workshop was to expose you to the kinds of things that are possible with R, to give you some exposure to a few R concepts, and to point you in the right direction to learn more. As a review, we covered the following ideas:
+The goal for this tutorial was to expose you to the kinds of things that are possible with R, to give you some exposure to a few R concepts, and to point you in the right direction to learn more. As a review, we covered the following ideas:
 
-* What R is and how it compares to some alternatives
-
-* The difference between R and RStudio.
-
-* Basic R skill: Installing R and RStudio, variables, functions, getting data into R
+* Basic R skills: Installing R and RStudio, variables, functions, getting data into R
 
 * Displaying your data, extracting portions of it, and filtering, with tangents that covered logical operators and packages.
 
@@ -481,6 +475,14 @@ The goal for this workshop was to expose you to the kinds of things that are pos
 
 This workshop is not enough to be a game-changer for you: you'll have to take the initiative to learn more on your own. But hopefully it has got you curious enough to make you want to learn more about R.
 
+
+:::{.callout-tip title="Additional Materials"}
+You may also be interested in [a PDF of the slides I used](/downloads/180119-intro-to-r-part1.pdf) when I first taught this material as an in-person workshop. An older version that includes additional content can be found here as a [PDF](/downloads/170912-intro-to-r-handout.pdf) or an [html](/downloads/170913-intro_to_R.html) file.
+:::
+
+:::{.callout-note}
+This page is largely the same as the second part of [this tutorial](/downloads/180119-intro-to-r-part1.html) from 2017. The only changes are some slight edits here and there and updates to reflect software changes in the past seven years.
+:::
 
 
 

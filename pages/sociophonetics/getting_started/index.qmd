@@ -95,11 +95,11 @@ They way you execute functions in RStudio is to put your curser on a line in you
 
 In the next tutorial, we'll start working with the R programming language itself. 
 
-<br/>
 
-<br/>
-
+:::{.callout-tip title="Additional Materials"}
+You may also be interested in [a PDF of the slides I used](/downloads/180119-intro-to-r-part1.pdf) when I first taught this material as an in-person workshop. An older version that includes additional content can be found here as a [PDF](/downloads/170912-intro-to-r-handout.pdf) or an [html](/downloads/170913-intro_to_R.html) file.
+:::
 
 :::{.callout-note}
-This page is largely the same as the first part of [this tutorial](/downloads/180119-intro-to-r-part1.html) from 2018. The only changes are some slight edits here and there and updates to reflect software changes in the past seven years.
+This page is largely the same as the first part of [this tutorial](/downloads/180119-intro-to-r-part1.html) from 2017. The only changes are some slight edits here and there and updates to reflect software changes in the past seven years.
 :::

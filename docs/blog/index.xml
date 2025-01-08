@@ -10,7 +10,64 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Fri, 03 Jan 2025 12:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 09 Jan 2025 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>LSA and ADS 2025</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/ads-and-lsa-2025/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This week I’m in Philadelphia at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here, I officially started two new service positions, and I got an award! It was a busy conference for me!</p>
+<section id="saturday-mornings-ads-talk-on-georgia-prelaterals" class="level2">
+<h2 class="anchored" data-anchor-id="saturday-mornings-ads-talk-on-georgia-prelaterals">Saturday morning’s ADS talk on Georgia Prelaterals</h2>
+<p>More info coming soon…</p>
+</section>
+<section id="saturday-afternons-ads-poster-on-utah-english" class="level2">
+<h2 class="anchored" data-anchor-id="saturday-afternons-ads-poster-on-utah-english">Saturday afternon’s ADS poster on Utah English</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/250111-ADS2025_Kohler.pdf">here</a>!</p>
+</div>
+</div>
+<p>On Saturday afternoon, I presented with my student, Hallie Davidson, a poster called “Variation in Early 20th Century Utah English.” This is the first time I’ve presented results from a collection of oral narratives I acquired called the “Kohler Tapes.” I’ve written blog posts about <a href="../../blog/kohler-tapes">how I acquired the tapes</a>, <a href="../../blog/kohler-tapes-update">the process of digitizing them</a>, and <a href="../../blog/kohler-tapes-update2">a summary of the metadata</a>, so I won’t repeat that here. But, because Hallie has been working on transcribing these tapes, we finally have some really preliminary linguistic results to present. They’re just impressionistic right now, nothing really conclusive, but we show that there’s a lot of variation in this collection. We’re excitedly working on some developments that involve training an AI model on this data so we can get the rest transcribed and we look forward to doing acoustic analysis soon!</p>
+</section>
+<section id="sunday-mornings-lsa-talk-source-separation" class="level2">
+<h2 class="anchored" data-anchor-id="sunday-mornings-lsa-talk-source-separation">Sunday morning’s LSA talk source separation</h2>
+<p>More info coming soon…</p>
+</section>
+<section id="other-things" class="level2">
+<h2 class="anchored" data-anchor-id="other-things">Other Things</h2>
+<p>At the ADS Business Meeting, I was voted a member of the American Dialect Society Executive Committee! I replace Alicia Wassink, who was just voted President-Elect of the Linguistic Society of America. I’m excited to serve with Jessi Grieser, Nicole Rosen, and Paul Reed.</p>
+<p>At that same meeting, I was also voted a Kurath Fund Trustee, which is a position within the Linguistic Atlas Project. I’ll serve with Jennifer Cramer and Dennis Preston.</p>
+<p>Finally, at the ADS Breakfast on Saturday morning, I received the 9t Audrey Duckert Memorial Travel Award to attend these ADS meetings.</p>
+<p>I’m so humbled to be considered for these positions and award! Thank you to all those who were involved!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Kohler Tapes</category>
+  <category>Methods</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <category>Students</category>
+  <category>Utah</category>
+  <guid>https://joeystanley.com/blog/ads-and-lsa-2025/</guid>
+  <pubDate>Thu, 09 Jan 2025 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Synthesis Days</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -460,63 +517,6 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
   <category>Side Projects</category>
   <guid>https://joeystanley.com/blog/swearing/</guid>
   <pubDate>Fri, 08 Mar 2024 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>LSA and ADS 2025</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/ads-and-lsa-2025/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week I’m in Philadelphia at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here, I officially started two new service positions, and I got an award! It was a busy conference for me!</p>
-<section id="saturday-mornings-ads-talk-on-georgia-prelaterals" class="level2">
-<h2 class="anchored" data-anchor-id="saturday-mornings-ads-talk-on-georgia-prelaterals">Saturday morning’s ADS talk on Georgia Prelaterals</h2>
-<p>More info coming soon…</p>
-</section>
-<section id="saturday-afternons-ads-poster-on-utah-english" class="level2">
-<h2 class="anchored" data-anchor-id="saturday-afternons-ads-poster-on-utah-english">Saturday afternon’s ADS poster on Utah English</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/250111-ADS2025_Kohler.pdf">here</a>!</p>
-</div>
-</div>
-<p>On Saturday afternoon, I presented with my student, Hallie Davidson, a poster called “Variation in Early 20th Century Utah English.” This is the first time I’ve presented results from a collection of oral narratives I acquired called the “Kohler Tapes.” I go into detail here about how I got it, some preliminary summaries of metadata</p>
-</section>
-<section id="sunday-mornings-lsa-talk-source-separation" class="level2">
-<h2 class="anchored" data-anchor-id="sunday-mornings-lsa-talk-source-separation">Sunday morning’s LSA talk source separation</h2>
-<p>More info coming soon…</p>
-</section>
-<section id="other-things" class="level2">
-<h2 class="anchored" data-anchor-id="other-things">Other Things</h2>
-<p>At the ADS Business Meeting, I was voted a member of the American Dialect Society Executive Committee! I replace Alicia Wassink, who was just voted President-Elect of the Linguistic Society of America. I’m excited to serve with Jessi Grieser, Nicole Rosen, and Paul Reed.</p>
-<p>At that same meeting, I was also voted a Kurath Fund Trustee, which is a position within the Linguistic Atlas Project. I’ll serve with Jennifer Cramer and Dennis Preston.</p>
-<p>Finally, at the ADS Breakfast on Saturday morning, I received the 9t Audrey Duckert Memorial Travel Award to attend these ADS meetings.</p>
-<p>I’m so humbled to be considered for these positions and award! Thank you to all those who were involved!</p>
-
-
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Kohler Tapes</category>
-  <category>Methods</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>Students</category>
-  <category>Utah</category>
-  <guid>https://joeystanley.com/blog/ads-and-lsa-2025/</guid>
-  <pubDate>Tue, 09 Jan 2024 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Research Pipeline</title>
