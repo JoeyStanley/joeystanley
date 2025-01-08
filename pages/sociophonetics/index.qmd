@@ -11,13 +11,101 @@ aliases:
 This page houses the tutorials for L590R Sociophonetics. The ultimate goal is for interested students to go from zero coding experience to being able to create a good vowel plot. 
 
 
-## Week 1: [Getting started with R and RStudio](/pages/sociophonetics/getting_started)
+<!-- https://github.com/quarto-dev/quarto-cli/discussions/3505 Looks like I can't really make a book within my main webpage. So I'd have to do something like sociophonetics.joeystanley.com, which I don't mind. Andrew Heiss' coureses are also a great example of what a full version would look like.-->
+
+## Series 1: Getting to a basic vowel plot
+
+In this series, we'll go from zero coding experience to creating a basic vowel plot in R. 
+
+### Week 1: [Getting started with R and RStudio](/pages/sociophonetics/getting_started)
 
 This tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won't need to do any coding. 
 
-## Week 2: [R Basics](/pages/sociophonetics/r_basics)
+### Week 2: [R Basics](/pages/sociophonetics/r_basics)
 
 This week, you'll get your hands dirty with R. You'll learn the basics of a few commands, how to get data into R, some basic visuals, and where to go for help.
 
-<!-- https://github.com/quarto-dev/quarto-cli/discussions/3505 Looks like I can't really make a book within my main webpage. So I'd have to do something like sociophonetics.joeystanley.com, which I don't mind. Andrew Heiss' coureses are also a great example of what a full version would look like.-->
+### Week 4: Tidyverse
 
+Learn about an entire ecosystem of additional R packages that makes analysis and processing easier.
+
+### Week 5: ggplot2
+
+Learn the basics of plotting using ggplot2.
+
+### Week 6: F1-F2 plots
+
+Learn how to make a basic scatter plot of vowel formants
+
+### Week 7: Plotting vowel trajectories
+
+Learn how to work with vowel trajectories and the two main ways you can plot those. 
+
+## Series 2: Collecting Phonetic Data
+
+In this series, we'll go back to the beginning stages of the data collection process. We'll see transcription, forced-alignment, and formant extraction---basically all the skills you need to go from raw audio to a spreadsheet of usable formants.
+
+### DARLA
+
+Do the complete pipeline from start to finish.
+
+### Whisper
+
+Automatically transcribe your audio with AI.
+
+### MFA
+
+Align utterance-level transcriptions to audio to create phoneme-level transcriptions.
+
+### Basic Praat
+
+Learn the basics of Praat and Praat scripting
+
+### Extracting vowel formants with Praat
+
+Learn how to extract vowel formants using a Praat script.
+
+### FastTrack
+
+Extract vowel formant measurements.
+
+### New-Fave
+
+Extract vowel formant measurements using the lattest algorithms.
+
+
+## Series 3: Data processing
+
+In this series, we'll look at the middle stage of data processing: going from a raw spreadsheet of formant measurements to cleaned up versions suitable for statistical analysis and data visualization.
+
+### Coding allophones
+
+Not all allophones of a phoneme should be treated the same. Learn how to split your data up into various allophones so they can be handled individually. 
+
+### Outliers
+
+Learn various ways to detect and handle outliers and extreme measurements. 
+
+### Normalizing
+
+Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples.
+
+### Order of operaions
+
+Learn how the order of these processing steps can affect your data and what the recommended order should be. 
+
+## Series 4: Data visualization
+
+In this series, we'll just focus on making good plots. We'll look at aesthetics and what makes for a good plot. We'll also explore additional ways of visualizing data. 
+
+### Color
+
+Learn to use color appropriately. 
+
+### Themes and aesthetics
+
+Learn to make your plot look nice and how to consistently apply that look across all your plots. 
+
+### Animations
+
+Learn to make really cool animations of vowel data!

@@ -182,8 +182,38 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#week-1-getting-started-with-r-and-rstudio" id="toc-week-1-getting-started-with-r-and-rstudio" class="nav-link active" data-scroll-target="#week-1-getting-started-with-r-and-rstudio">Week 1: Getting started with R and RStudio</a></li>
+  <li><a href="#series-1-getting-to-a-basic-vowel-plot" id="toc-series-1-getting-to-a-basic-vowel-plot" class="nav-link active" data-scroll-target="#series-1-getting-to-a-basic-vowel-plot">Series 1: Getting to a basic vowel plot</a>
+  <ul class="collapse">
+  <li><a href="#week-1-getting-started-with-r-and-rstudio" id="toc-week-1-getting-started-with-r-and-rstudio" class="nav-link" data-scroll-target="#week-1-getting-started-with-r-and-rstudio">Week 1: Getting started with R and RStudio</a></li>
   <li><a href="#week-2-r-basics" id="toc-week-2-r-basics" class="nav-link" data-scroll-target="#week-2-r-basics">Week 2: R Basics</a></li>
+  <li><a href="#week-4-tidyverse" id="toc-week-4-tidyverse" class="nav-link" data-scroll-target="#week-4-tidyverse">Week 4: Tidyverse</a></li>
+  <li><a href="#week-5-ggplot2" id="toc-week-5-ggplot2" class="nav-link" data-scroll-target="#week-5-ggplot2">Week 5: ggplot2</a></li>
+  <li><a href="#week-6-f1-f2-plots" id="toc-week-6-f1-f2-plots" class="nav-link" data-scroll-target="#week-6-f1-f2-plots">Week 6: F1-F2 plots</a></li>
+  <li><a href="#week-7-plotting-vowel-trajectories" id="toc-week-7-plotting-vowel-trajectories" class="nav-link" data-scroll-target="#week-7-plotting-vowel-trajectories">Week 7: Plotting vowel trajectories</a></li>
+  </ul></li>
+  <li><a href="#series-2-collecting-phonetic-data" id="toc-series-2-collecting-phonetic-data" class="nav-link" data-scroll-target="#series-2-collecting-phonetic-data">Series 2: Collecting Phonetic Data</a>
+  <ul class="collapse">
+  <li><a href="#darla" id="toc-darla" class="nav-link" data-scroll-target="#darla">DARLA</a></li>
+  <li><a href="#whisper" id="toc-whisper" class="nav-link" data-scroll-target="#whisper">Whisper</a></li>
+  <li><a href="#mfa" id="toc-mfa" class="nav-link" data-scroll-target="#mfa">MFA</a></li>
+  <li><a href="#basic-praat" id="toc-basic-praat" class="nav-link" data-scroll-target="#basic-praat">Basic Praat</a></li>
+  <li><a href="#extracting-vowel-formants-with-praat" id="toc-extracting-vowel-formants-with-praat" class="nav-link" data-scroll-target="#extracting-vowel-formants-with-praat">Extracting vowel formants with Praat</a></li>
+  <li><a href="#fasttrack" id="toc-fasttrack" class="nav-link" data-scroll-target="#fasttrack">FastTrack</a></li>
+  <li><a href="#new-fave" id="toc-new-fave" class="nav-link" data-scroll-target="#new-fave">New-Fave</a></li>
+  </ul></li>
+  <li><a href="#series-3-data-processing" id="toc-series-3-data-processing" class="nav-link" data-scroll-target="#series-3-data-processing">Series 3: Data processing</a>
+  <ul class="collapse">
+  <li><a href="#coding-allophones" id="toc-coding-allophones" class="nav-link" data-scroll-target="#coding-allophones">Coding allophones</a></li>
+  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers">Outliers</a></li>
+  <li><a href="#normalizing" id="toc-normalizing" class="nav-link" data-scroll-target="#normalizing">Normalizing</a></li>
+  <li><a href="#order-of-operaions" id="toc-order-of-operaions" class="nav-link" data-scroll-target="#order-of-operaions">Order of operaions</a></li>
+  </ul></li>
+  <li><a href="#series-4-data-visualization" id="toc-series-4-data-visualization" class="nav-link" data-scroll-target="#series-4-data-visualization">Series 4: Data visualization</a>
+  <ul class="collapse">
+  <li><a href="#color" id="toc-color" class="nav-link" data-scroll-target="#color">Color</a></li>
+  <li><a href="#themes-and-aesthetics" id="toc-themes-and-aesthetics" class="nav-link" data-scroll-target="#themes-and-aesthetics">Themes and aesthetics</a></li>
+  <li><a href="#animations" id="toc-animations" class="nav-link" data-scroll-target="#animations">Animations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -228,16 +258,104 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 <p>This page houses the tutorials for L590R Sociophonetics. The ultimate goal is for interested students to go from zero coding experience to being able to create a good vowel plot.</p>
-<section id="week-1-getting-started-with-r-and-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="week-1-getting-started-with-r-and-rstudio">Week 1: <a href="../../pages/sociophonetics/getting_started">Getting started with R and RStudio</a></h2>
+<!-- https://github.com/quarto-dev/quarto-cli/discussions/3505 Looks like I can't really make a book within my main webpage. So I'd have to do something like sociophonetics.joeystanley.com, which I don't mind. Andrew Heiss' coureses are also a great example of what a full version would look like.-->
+<section id="series-1-getting-to-a-basic-vowel-plot" class="level2">
+<h2 class="anchored" data-anchor-id="series-1-getting-to-a-basic-vowel-plot">Series 1: Getting to a basic vowel plot</h2>
+<p>In this series, we’ll go from zero coding experience to creating a basic vowel plot in R.</p>
+<section id="week-1-getting-started-with-r-and-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="week-1-getting-started-with-r-and-rstudio">Week 1: <a href="../../pages/sociophonetics/getting_started">Getting started with R and RStudio</a></h3>
 <p>This tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won’t need to do any coding.</p>
 </section>
-<section id="week-2-r-basics" class="level2">
-<h2 class="anchored" data-anchor-id="week-2-r-basics">Week 2: <a href="../../pages/sociophonetics/r_basics">R Basics</a></h2>
+<section id="week-2-r-basics" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-r-basics">Week 2: <a href="../../pages/sociophonetics/r_basics">R Basics</a></h3>
 <p>This week, you’ll get your hands dirty with R. You’ll learn the basics of a few commands, how to get data into R, some basic visuals, and where to go for help.</p>
-<!-- https://github.com/quarto-dev/quarto-cli/discussions/3505 Looks like I can't really make a book within my main webpage. So I'd have to do something like sociophonetics.joeystanley.com, which I don't mind. Andrew Heiss' coureses are also a great example of what a full version would look like.-->
+</section>
+<section id="week-4-tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="week-4-tidyverse">Week 4: Tidyverse</h3>
+<p>Learn about an entire ecosystem of additional R packages that makes analysis and processing easier.</p>
+</section>
+<section id="week-5-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="week-5-ggplot2">Week 5: ggplot2</h3>
+<p>Learn the basics of plotting using ggplot2.</p>
+</section>
+<section id="week-6-f1-f2-plots" class="level3">
+<h3 class="anchored" data-anchor-id="week-6-f1-f2-plots">Week 6: F1-F2 plots</h3>
+<p>Learn how to make a basic scatter plot of vowel formants</p>
+</section>
+<section id="week-7-plotting-vowel-trajectories" class="level3">
+<h3 class="anchored" data-anchor-id="week-7-plotting-vowel-trajectories">Week 7: Plotting vowel trajectories</h3>
+<p>Learn how to work with vowel trajectories and the two main ways you can plot those.</p>
+</section>
+</section>
+<section id="series-2-collecting-phonetic-data" class="level2">
+<h2 class="anchored" data-anchor-id="series-2-collecting-phonetic-data">Series 2: Collecting Phonetic Data</h2>
+<p>In this series, we’ll go back to the beginning stages of the data collection process. We’ll see transcription, forced-alignment, and formant extraction—basically all the skills you need to go from raw audio to a spreadsheet of usable formants.</p>
+<section id="darla" class="level3">
+<h3 class="anchored" data-anchor-id="darla">DARLA</h3>
+<p>Do the complete pipeline from start to finish.</p>
+</section>
+<section id="whisper" class="level3">
+<h3 class="anchored" data-anchor-id="whisper">Whisper</h3>
+<p>Automatically transcribe your audio with AI.</p>
+</section>
+<section id="mfa" class="level3">
+<h3 class="anchored" data-anchor-id="mfa">MFA</h3>
+<p>Align utterance-level transcriptions to audio to create phoneme-level transcriptions.</p>
+</section>
+<section id="basic-praat" class="level3">
+<h3 class="anchored" data-anchor-id="basic-praat">Basic Praat</h3>
+<p>Learn the basics of Praat and Praat scripting</p>
+</section>
+<section id="extracting-vowel-formants-with-praat" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-vowel-formants-with-praat">Extracting vowel formants with Praat</h3>
+<p>Learn how to extract vowel formants using a Praat script.</p>
+</section>
+<section id="fasttrack" class="level3">
+<h3 class="anchored" data-anchor-id="fasttrack">FastTrack</h3>
+<p>Extract vowel formant measurements.</p>
+</section>
+<section id="new-fave" class="level3">
+<h3 class="anchored" data-anchor-id="new-fave">New-Fave</h3>
+<p>Extract vowel formant measurements using the lattest algorithms.</p>
+</section>
+</section>
+<section id="series-3-data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="series-3-data-processing">Series 3: Data processing</h2>
+<p>In this series, we’ll look at the middle stage of data processing: going from a raw spreadsheet of formant measurements to cleaned up versions suitable for statistical analysis and data visualization.</p>
+<section id="coding-allophones" class="level3">
+<h3 class="anchored" data-anchor-id="coding-allophones">Coding allophones</h3>
+<p>Not all allophones of a phoneme should be treated the same. Learn how to split your data up into various allophones so they can be handled individually.</p>
+</section>
+<section id="outliers" class="level3">
+<h3 class="anchored" data-anchor-id="outliers">Outliers</h3>
+<p>Learn various ways to detect and handle outliers and extreme measurements.</p>
+</section>
+<section id="normalizing" class="level3">
+<h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
+<p>Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples.</p>
+</section>
+<section id="order-of-operaions" class="level3">
+<h3 class="anchored" data-anchor-id="order-of-operaions">Order of operaions</h3>
+<p>Learn how the order of these processing steps can affect your data and what the recommended order should be.</p>
+</section>
+</section>
+<section id="series-4-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="series-4-data-visualization">Series 4: Data visualization</h2>
+<p>In this series, we’ll just focus on making good plots. We’ll look at aesthetics and what makes for a good plot. We’ll also explore additional ways of visualizing data.</p>
+<section id="color" class="level3">
+<h3 class="anchored" data-anchor-id="color">Color</h3>
+<p>Learn to use color appropriately.</p>
+</section>
+<section id="themes-and-aesthetics" class="level3">
+<h3 class="anchored" data-anchor-id="themes-and-aesthetics">Themes and aesthetics</h3>
+<p>Learn to make your plot look nice and how to consistently apply that look across all your plots.</p>
+</section>
+<section id="animations" class="level3">
+<h3 class="anchored" data-anchor-id="animations">Animations</h3>
+<p>Learn to make really cool animations of vowel data!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

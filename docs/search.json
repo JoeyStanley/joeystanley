@@ -3946,5 +3946,33 @@
     "title": "R Basics",
     "section": "Conclusions",
     "text": "Conclusions\nThe goal for this tutorial was to expose you to the kinds of things that are possible with R, to give you some exposure to a few R concepts, and to point you in the right direction to learn more. As a review, we covered the following ideas:\n\nBasic R skills: Installing R and RStudio, variables, functions, getting data into R\nDisplaying your data, extracting portions of it, and filtering, with tangents that covered logical operators and packages.\nBasic visualizations which introduced ggplot2.\nWhere to find help.\n\nThis workshop is not enough to be a game-changer for you: you’ll have to take the initiative to learn more on your own. But hopefully it has got you curious enough to make you want to learn more about R.\n\n\n\n\n\n\nAdditional Materials\n\n\n\nYou may also be interested in a PDF of the slides I used when I first taught this material as an in-person workshop. An older version that includes additional content can be found here as a PDF or an html file.\n\n\n\n\n\n\n\n\nNote\n\n\n\nThis page is largely the same as the second part of this tutorial from 2017. The only changes are some slight edits here and there and updates to reflect software changes in the past seven years."
+  },
+  {
+    "objectID": "pages/sociophonetics/index.html#series-1-getting-to-a-basic-vowel-plot",
+    "href": "pages/sociophonetics/index.html#series-1-getting-to-a-basic-vowel-plot",
+    "title": "L590R: Sociophonetics",
+    "section": "Series 1: Getting to a basic vowel plot",
+    "text": "Series 1: Getting to a basic vowel plot\nIn this series, we’ll go from zero coding experience to creating a basic vowel plot in R.\n\nWeek 1: Getting started with R and RStudio\nThis tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won’t need to do any coding.\n\n\nWeek 2: R Basics\nThis week, you’ll get your hands dirty with R. You’ll learn the basics of a few commands, how to get data into R, some basic visuals, and where to go for help.\n\n\nWeek 4: Tidyverse\nLearn about an entire ecosystem of additional R packages that makes analysis and processing easier.\n\n\nWeek 5: ggplot2\nLearn the basics of plotting using ggplot2.\n\n\nWeek 6: F1-F2 plots\nLearn how to make a basic scatter plot of vowel formants\n\n\nWeek 7: Plotting vowel trajectories\nLearn how to work with vowel trajectories and the two main ways you can plot those."
+  },
+  {
+    "objectID": "pages/sociophonetics/index.html#series-2-collecting-phonetic-data",
+    "href": "pages/sociophonetics/index.html#series-2-collecting-phonetic-data",
+    "title": "L590R: Sociophonetics",
+    "section": "Series 2: Collecting Phonetic Data",
+    "text": "Series 2: Collecting Phonetic Data\nIn this series, we’ll go back to the beginning stages of the data collection process. We’ll see transcription, forced-alignment, and formant extraction—basically all the skills you need to go from raw audio to a spreadsheet of usable formants.\n\nDARLA\nDo the complete pipeline from start to finish.\n\n\nWhisper\nAutomatically transcribe your audio with AI.\n\n\nMFA\nAlign utterance-level transcriptions to audio to create phoneme-level transcriptions.\n\n\nBasic Praat\nLearn the basics of Praat and Praat scripting\n\n\nExtracting vowel formants with Praat\nLearn how to extract vowel formants using a Praat script.\n\n\nFastTrack\nExtract vowel formant measurements.\n\n\nNew-Fave\nExtract vowel formant measurements using the lattest algorithms."
+  },
+  {
+    "objectID": "pages/sociophonetics/index.html#series-3-data-processing",
+    "href": "pages/sociophonetics/index.html#series-3-data-processing",
+    "title": "L590R: Sociophonetics",
+    "section": "Series 3: Data processing",
+    "text": "Series 3: Data processing\nIn this series, we’ll look at the middle stage of data processing: going from a raw spreadsheet of formant measurements to cleaned up versions suitable for statistical analysis and data visualization.\n\nCoding allophones\nNot all allophones of a phoneme should be treated the same. Learn how to split your data up into various allophones so they can be handled individually.\n\n\nOutliers\nLearn various ways to detect and handle outliers and extreme measurements.\n\n\nNormalizing\nEvery vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples.\n\n\nOrder of operaions\nLearn how the order of these processing steps can affect your data and what the recommended order should be."
+  },
+  {
+    "objectID": "pages/sociophonetics/index.html#series-4-data-visualization",
+    "href": "pages/sociophonetics/index.html#series-4-data-visualization",
+    "title": "L590R: Sociophonetics",
+    "section": "Series 4: Data visualization",
+    "text": "Series 4: Data visualization\nIn this series, we’ll just focus on making good plots. We’ll look at aesthetics and what makes for a good plot. We’ll also explore additional ways of visualizing data.\n\nColor\nLearn to use color appropriately.\n\n\nThemes and aesthetics\nLearn to make your plot look nice and how to consistently apply that look across all your plots.\n\n\nAnimations\nLearn to make really cool animations of vowel data!"
   }
 ]
