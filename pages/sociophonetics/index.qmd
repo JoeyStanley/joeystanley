@@ -17,29 +17,31 @@ This page houses the tutorials for L590R Sociophonetics. The ultimate goal is fo
 
 In this series, we'll go from zero coding experience to creating a basic vowel plot in R. 
 
-### Week 1: [Getting started with R and RStudio](/pages/sociophonetics/getting_started)
+### [Getting started with R and RStudio](/pages/sociophonetics/getting_started)
 
 This tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won't need to do any coding. 
 
-### Week 2: [R Basics](/pages/sociophonetics/r_basics)
+As a supplement, you can look at [this tutorial](https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html) by Michael Hunt Gardner. It overlaps with mine a bit, but it's nice to get a slid foundation. 
 
-This week, you'll get your hands dirty with R. You'll learn the basics of a few commands, how to get data into R, some basic visuals, and where to go for help.
+### [R Basics](/pages/sociophonetics/r_basics)
 
-### Week 4: Tidyverse
+This week, you'll get your hands dirty with R. You'll learn the basics of a few commands, how to get data into R, some basic visuals, and where to go for help. If you're stuck on getting data into R, please see [this dedicated tutorial](https://lingmethodshub.github.io/content/R/lvc_r/020_lvcr.html) on that by Michael Hunt Gardner. [Another one of his](https://lingmethodshub.github.io/content/R/lvc_r/030_lvcr.html) overlaps with mine, but you can work through it for additional reinforcement.  
 
-Learn about an entire ecosystem of additional R packages that makes analysis and processing easier.
+### Tidyverse
 
-### Week 5: ggplot2
+Learn about an entire ecosystem of additional R packages that makes analysis and processing easier. This will based on [Part 1](/downloads/180302-tidyverse_part1.html) and [Part 2](downloads/180323-tidyverse_II.html) of a previous workshop. Michael Hunt Gardner has [a nice tutorial](https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html) that is similar. [This blog post](https://joeystanley.com/blog/reshaping-vowel-formant-data-with-tidyr/) has some specific guidance that is relevant for vowel data.
 
-Learn the basics of plotting using ggplot2.
+### ggplot2
 
-### Week 6: F1-F2 plots
+Learn the basics of plotting using ggplot2. This will be based on [Part 1](/downloads/190821-intro_to_ggplot2.html) and [Part 2](/downloads/190828-ggplot2_intermediate.html) (and [supplement](/190828-ggplot2_supplement.html)) of a previous workshop. 
 
-Learn how to make a basic scatter plot of vowel formants
+### F1-F2 plots
 
-### Week 7: Plotting vowel trajectories
+Learn how to make a basic scatter plot of vowel formants. [This tutorial](https://lingmethodshub.github.io/content/R/vowel-plots-tutorial/) is what you'll need to know.
 
-Learn how to work with vowel trajectories and the two main ways you can plot those. 
+### Plotting vowel trajectories
+
+Learn how to work with vowel trajectories and the two main ways you can plot those. I have my own tutorial and [this](https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/) is another good one. 
 
 ## Series 2: Collecting Phonetic Data
 
@@ -55,15 +57,15 @@ Automatically transcribe your audio with AI.
 
 ### MFA
 
-Align utterance-level transcriptions to audio to create phoneme-level transcriptions.
+Align utterance-level transcriptions to audio to create phoneme-level transcriptions. You can start with [Eleanor Chodroff's tutorial](https://lingmethodshub.github.io/content/tools/mfa/mfa-tutorial/) but I'll probably fill it in with more specifics. 
 
 ### Basic Praat
 
-Learn the basics of Praat and Praat scripting
+Learn the basics of Praat and Praat scripting. Based on [this workshop](/downloads/190911-intro_to_Praat.html) on Praat generally and [this one](/downloads/190918-praat_scripting.html) one Praat scripting.
 
 ### Extracting vowel formants with Praat
 
-Learn how to extract vowel formants using a Praat script.
+Learn how to extract vowel formants using a Praat script. Based on [this tutorial](/191002-formant_extraction.html) and [supplement](/downloads/191001-formant_extraction_supplement.html).
 
 ### FastTrack
 
@@ -88,11 +90,11 @@ Learn various ways to detect and handle outliers and extreme measurements.
 
 ### Normalizing
 
-Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples.
+Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. 
 
 ### Order of operaions
 
-Learn how the order of these processing steps can affect your data and what the recommended order should be. 
+Learn how the order of these processing steps can affect your data and what the recommended order should be. I'll probably mention [this](/blog/pillai-scores-dont-change-after-normalization/). 
 
 ## Series 4: Data visualization
 
@@ -100,12 +102,26 @@ In this series, we'll just focus on making good plots. We'll look at aesthetics 
 
 ### Color
 
-Learn to use color appropriately. 
+Learn to use color appropriately. Based on [this](/downloads/191023-color.pdf) workshop.
 
 ### Themes and aesthetics
 
-Learn to make your plot look nice and how to consistently apply that look across all your plots. 
+Learn to make your plot look nice and how to consistently apply that look across all your plots. Based on [this early blog post](/downloads/190904-ggplot2_custom_themes.html) and [supplement](/downloads/190904-ggplot2_theme.html) as well as [this](/downloads/191016-Tufte.pdf) general data visualization workshop. 
+
+### Other kinds of plots
+
+[Curved text]/blog/geomtextpath/).
 
 ### Animations
 
-Learn to make really cool animations of vowel data!
+Learn to make really cool animations of vowel data! A sneak peek of animations can be found in [this blog post](/blog/animating_formant_trajectories/) and on 3D vowel plots in [this blog post](/blog/3d-vowel-plots-with-rayshader/)
+
+## Additional analysis
+
+### Measuring vowel overlap
+
+My tutorial on Pillai scores and Bhattacharyya's Affinity [Part 1](/blog/a-tutorial-in-calculating-vowel-overlap/) and [Part 2](/blog/vowel-overlap-in-r-advanced-topics/). 
+
+### Statistical analysis
+
+I defer to Michael Gardner's suite of statistics tutorials on the Ling Methods Hub, starting with [this one](https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html). 
