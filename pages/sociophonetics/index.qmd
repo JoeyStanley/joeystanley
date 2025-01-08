@@ -10,5 +10,14 @@ aliases:
 
 This page houses the tutorials for L590R Sociophonetics. The ultimate goal is for interested students to go from zero coding experience to being able to create a good vowel plot. 
 
+
+## Week 1: [Getting started with R and RStudio](/pages/sociophonetics/getting_started)
+
+This tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won't need to do any coding. 
+
+## Week 2: [R Basics](/pages/sociophonetics/r_basics)
+
+In progress…
+
 <!-- https://github.com/quarto-dev/quarto-cli/discussions/3505 Looks like I can't really make a book within my main webpage. So I'd have to do something like sociophonetics.joeystanley.com, which I don't mind. Andrew Heiss' coureses are also a great example of what a full version would look like.-->
 

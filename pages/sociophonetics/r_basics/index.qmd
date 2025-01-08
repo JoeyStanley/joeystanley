@@ -1,0 +1,595 @@
+---
+title: "R Basics"
+author: "Joey Stanley"
+---
+
+
+
+
+
+
+# R Basics
+
+Open RStudio and create a new script by going to `File > New File > R Script`. This will open what looks like a text editor in the top left portion of your RStudio screen. This looks like a text editor because that's actually all it is. R scripts are just text files with nothing fancy about them. When you save them, instead of .txt they'll get a .R appendix, which lets your computer know to run it as an R script. 
+
+## R as a calculator
+
+Obligatorily, any tutorial on R has to show you that R can be a calculator. In your R script, type the following:
+
+```{r, eval=FALSE}
+2+2
+```
+With your cursor still on this line, hit command+enter (or for Windows, ctrl+enter), which is the keyboard shortcut for "execute this line". In the bottom left quadrant of RStudio, you'll now see a new line, in blue `>2+2` and then, in black, the output `[1] 4`. 
+
+```{r, echo=FALSE}
+2+2
+```
+
+You've just executed your first R command! You can think of the bottom left quadrant, the *console*, as the actual R portion of RStudio. The script above it is just a placeholder for the various commands. When you want to run a command, RStudio will send it down to the console and execute it. Once it does that, the next line in the console will be the output, which in this case is `4`. The `[1]` before it just tells you that the output is actually a list that is one unit long. No need to worry about that right now.
+
+You can do other arithmetic in R as well:
+
+```{r}
+10*(5-2)/3+1
+```
+Not too shabby. But this is boring. Let's move on to bigger and better things.
+
+## Variables
+
+You can create *variables* to store data. Variables have arbitrary names, so you can call them whatever you want. To create a variable, provide it's name (in this case `six`), then the assignment operator `<-`, and some value. (Mac users: a keyboard shortcut for the assignment operator is option+dash.) Let's create a variable called `six` and give it the value of `6`.
+
+```{r}
+six <- 6
+```
+
+Okay great. Now what we can do is use this `six` variable as if it were any other number. 
+
+```{r}
+six + 3
+six * 2
+1 / six
+```
+
+Just to show the names really are arbitrary, you can use whatever names you want and it'll still work.
+
+```{r}
+blue <- 4
+six + blue
+```
+
+```{r}
+seven <- 8
+dog <- -5
+blue * seven + dog
+```
+It's probably not a good idea to use these kinds of variable names—and in general it's good practice to give brief but descriptive variable names—but it goes to show you can use whatever names you want.
+
+You can store multiple numbers in a single variable using the `c()` command, which stands for "combine". Let's create a new variable called `fibs` and have it contain the first several numbers of the Fibonacci sequence.
+
+```{r}
+fibs <- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144)
+```
+
+Technically this list of numbers is called a *vector* in R, specially, a *double vector*. This doesn't mean that there's anything repeated or doubled: "double" is a term used in computer science to essentially mean number. What we have is a vector of numbers. What's cool about these is that you can treat it like a single number, and it'll run the command on each element of the vector.
+
+```{r}
+2 + fibs
+six * fibs
+```
+
+You can display the entire contents of the vector by simply typing the name of the variable.
+
+```{r}
+fibs
+```
+
+But if you want to access a single item in that list, type the variable name and in square brackets immediately after the variable name, type what the which element you'd like to access. For example, here's how you would access the first, fifth, and tenth elements of the list
+
+```{r}
+fibs[1]
+fibs[5]
+fibs[10]
+```
+
+You can even pass in a list of numbers! If you want to see all three of these elements of the list at once, just wrap them up in the `c` function and put that in place of the number.
+
+```{r}
+fibs[c(1,5,10)]
+```
+
+These lists are really important, because when it comes time to read in your own spreadsheets into R, each column will be treated as a list just like this one. We'll get to that in a sec.
+
+## Arithmatic Functions
+
+This is great and all. We can do more though. Here, let's look at what are called *functions*. These are commands that take one or more *arguments*. The function takes these arguments, works its magic under the hood, and returns some value. For example, the `sqrt` function takes the square root of some number.
+
+```{r}
+sqrt(16)
+```
+
+Note that the functions are case sensitive, and the arguments go in parentheses. If there are multiple arguments, they are separated by commas. Some other functions include `sum`, `mean`, and `range`. You can pass variables as arguments, and you can even nest functions.
+
+```{r}
+sum(six, 3, dog)
+mean(fibs)
+range(fibs, -4, sqrt(16), six)
+```
+
+You should get very comfortable running functions and getting all the syntax right like keeping track of your parentheses, commas, and spelling. The idea that you run functions, and on functions within functions, is super common in R. You don't have to memorize all the functions that R has, and in fact, you'll probably never use them. You're probably wondering what all the functions in R even are and how you're supposed to know about them. Google. There is tons of documentation for R online, and you'll hopefully be able to find your answer very quickly. 
+
+# Getting data into R
+
+At this point, a lot of R tutorials start you off with working with generating data within R itself. While this is an important skill to learn eventually, what's most relevant to you right now is getting your own data into R. 
+
+I'm going to assume you have your own spreadsheet somewhere saved on your computer. Ideally, each row represents one *observation* and each column is a variable of that observation. For example, if you had a spreadsheet that had the area, population, and capital of each of the 50 states, you'll have 50 rows and 4 columns (one for each of the variables and the fourth for the state name). Presumably, your data is clean and tidy, meaning that dates and numbers are formatted the same, capitalization is standardized, and everything is consistent. I could go on for a long time about the importance of making your data clean, but suffice it to say that it's paramount for proper analysis in R.
+
+The functions for reading in data in R depend on what kind of file you have. The most common options are `.csv`, `.txt`, and an Excel file. Let's look at each one of those.
+
+## .csv files
+
+If your file has *comma-separated values*  (it ends with .csv), that's the easiest way to go. You can use `read.csv`, and as the only argument, put the full *path* to the file you want to read in, in quotation marks. For example, I've got a file on my Desktop called  `menu.csv`. This file contains all the menu items at McDonald's with complete nutrition information and is available for free at [Kaggle.com](https://www.kaggle.com/mcdonalds/nutrition-facts). To read this file in, the function would be this:
+
+```{r, eval=FALSE}
+read.csv("/Users/joeystanley/Desktop/menu.csv")
+```
+
+If I were on a Windows, it might be something like this:
+
+```{r, eval=FALSE}
+read.csv("C:\\Users\\joeystanley\\Desktop\\menu.txt")
+```
+
+Note that Mac users should use single forward slashes while Windows users have to use double back slashes. 
+
+To execute this command, I would put my cursor anywhere on the line, and either click the Run button on the top left of the R script, or preferably, use the keyboard shortcut `command+return` for Macs or `control+enter` for Windows.
+
+When you do this, you'll start to see the contents of your file displayed in your R console (the bottom left portion of the RStudio screen). Hooray! You just read your data into R! 
+
+Unfortunately, all it did was read it in and forget it. Computers do *exactly* as they're told. What you didn't tell R was to *remember* the contents of the file. So, let's create a new variable called `menu` and save the contents of the `menu.csv` file into that variable.
+
+```{r, eval=FALSE}
+menu <- read.csv("/Users/joeystanley/Desktop/menu.csv") # for Macs
+menu <- read.csv("C:\\Users\\joeystanley\\Desktop\\menu.txt") # for Windows
+```
+
+```{r, echo=FALSE}
+menu <- read.csv("http://joeystanley.com/downloads/menu.csv")
+menu$Item <- stringr::str_sub(menu$Item, 1, 24)
+```
+
+Okay, so now we have a new `menu` object that has the full contents of my file. Before we move on to working with that file, let's see how to read in files that are in other formats.
+
+## .txt files
+
+If your file is a *tab-delimited* file (it ends with .txt), then you can use `read.table` instead. As an additional argument (which is separated from the path name with a comma), you may need to specify that the cells of your table are separated by tabs. To do this, add the `sep="\t"` argument (`\t` is "computer-talk" for a tab). Also, your file may have a header, meaning the first row of your file might contain the names of the columns. By default, `read.csv` assumes this, but for `read.table` you'll need to make that explicit so R knows what to do with them. You can add this using the `header=TRUE` argument. So the final command might look like this.
+
+```{r, eval=FALSE}
+menu <- read.table("/Users/joeystanley/Desktop/menu.csv", sep="\t", header=TRUE) # for Macs
+menu <- read.table("C:\\Users\\joeystanley\\Desktop\\menu.txt", sep="\t", header=TRUE) # for Windows
+```
+
+## Excel files
+
+If you data is in an Excel file, there are ways to get it into R. For now, the easiest solution is to simply save it as a `.csv` file and read it in that way. In November, when we talk about the `tidyverse`, we'll look at how to read in data from Excel.
+
+## Don't like typing path names?
+
+There is one other way to read in data that doesn't involve typing those long path names. You can use the `file.choose` command instead. When you do this, a window will open up and you'll be able to find your file and click on it just like you were opening any other file.
+
+```{r, eval=FALSE}
+menu <- file.choose()
+```
+
+I don't like this option mostly because it just takes too many clicks. Every time I want to run this line of code, it takes 5 or so clicks to get the file I want. This gets really tedious. It's worth the time to just type (or copy and paste!) the path name to the file one time, and with a single keystroke you can load it in nearly instantaneously the exact same way every time.
+
+# Working with your data
+
+Okay, so your data is in R. Now we need to be able to view it to make sure it's all there, and also be able to extract portions of it.
+
+## Displaying your data
+
+The easiest way to display your data is to simply type the name of the variable itself. However, depending on the size of your data frame, this could get huge. I've truncated mine, particularly the description so it would fit on this page, but yours might be different.
+
+```{r, eval=FALSE}
+menu
+```
+```{r, echo=FALSE}
+head(menu, n=20)
+```
+
+This may spill over onto multiple lines. That's only because my screen isn't wide enough to display the full row. An alternative that is easier for scrolling, is to use the `View` function (yes, that's a capital *V*). This opens up a new tab in RStudio, and you'll be able to view your data like you would a normal spreadsheet. 
+
+```{r, eval=FALSE}
+View(menu) # Not run here because we're not in RStudio.
+```
+
+You can also just display portions of your data using `head` and `tail`, which, respectively, show the first and last couple of rows.
+
+```{r}
+head(menu)
+tail(menu)
+```
+
+
+
+## Extracting portions of your data
+
+Before, when we had several numbers saved into a single variable, we called it a *vector*. Now, we have an entire spreadsheet saved into the `menu` variable. Each column in your data frame is treated as a vector, and each row of that column is an element in that list. We call this type of variable a *dataframe*. 
+
+You can think of a vector as a one-dimensional variable and a data frame as a two-dimensional variable. To access an element of a vector, you type one number in the square brackets (`fibs[1]`). Because a data frame is two-dimensional, you'll have to send two numbers, separated by a comma: the first for the row number and the second for the column number.
+
+```{r}
+head(menu) # The head() function displays the first few rows of a dataframe.
+menu[4,2]
+```
+
+The line `[1] Sausage McMuffin with Egg` shows the content of the element you just extracted. The `260 Levels: 1% Low Fat Milk...` just shows that there are 260 different items in that column and it goes ahead and list them in alphabetical order for you. You can ignore that for now.
+
+So that's how you would extract a single cell in your spreadsheet. You can extract an entire row by leaving off the column number. 
+
+```{r}
+menu[3,]
+```
+
+Notice how the output shows the column names along the top as well as the row number on the left side. You can extract an entire column by leaving off the row number. (I've truncated my list for display purposes: yours will be a lot longer.)
+
+```{r, eval=FALSE}
+menu[,2]
+```
+```{r, echo=FALSE}
+head(menu[,2], n=10)
+```
+
+As an alternative to extracting an entire column, it's easier to refer to the column by its name (`Item`) rather than its number (`2`). This is especially true if you have many columns in your spreadsheet and you don't feel like counting all of them. You can refer tho the column using the dollar sign `$`, which is placed between the variable name and the column name.
+
+```{r, eval=FALSE}
+menu$Item
+```
+```{r, echo=FALSE}
+head(menu$Item, n=10)
+```
+
+## Filtering your data
+
+We can also perform queries on your data so that we can filter your data in whatever way we want. We can view entire portions of the data frame just as easily in Excel as we can in R, so why bother with R in the first place? 
+
+In Excel it's certainly possible to filter your data. But it gets a little cumbersome if you have multiple filters on at once. Or if you have to switch back and forth between two or more different filters, you have to do a lot of clicking. With R, it's a little bit easier. 
+
+### Tangent: Logical Operators
+To use filters, I'll have to introduce a couple ways to *evaluate* data. What a filter does is it looks at your data, and decides whether certain rows meet certain conditions. If we start simple, and take our `fibs` vector, we can see how many of those numbers are greater than 10.
+
+```{r}
+fibs
+fibs > 10
+```
+
+Here, the first 7 items in our list are `FALSE`, meaning they are not greater than 10. The last 6 are `TRUE`, so they are greater than 10. Similar to greater than, which uses the rightward-pointing angled bracket, we can use the following in similar ways:
+
+* `>` means "greater than"
+
+* `<` means "less than"
+
+* `>=' means "greater than or equal to"
+
+* `<=` means "less than or equal to"
+
+* `==` means "equal to". Note here that you need *two* equals signs, and not just one.
+
+* `!=` means "not equal to"
+
+Here are some examples.
+```{r}
+fibs > 10
+fibs < 20
+fibs >= 55
+fibs <= 13
+fibs == 1
+fibs != 34
+```
+
+### Back to the data
+We can use the same kind of thing to subset your data. For example, if we want to find all menu items that have 150 calories or less, we can do so like this.
+
+```{r}
+menu[menu$Calories <= 150,]
+```
+
+Let's break this down. First, we have the `menu[]` template like we've been doing before to display portions of the `menu` variable. Next, if you look carefully, we have some stuff, followed by a comma, and then nothing: `menu[...,]`. This is exactly like what we did before where we extracted an entire row and displayed all columns. Only this time, instead of a row number, we're giving a true/false statement. We're referring to just the `Calories` column in the data frame, like we did before. Since each column in a data frame is a vector, we can treat it like we did with `fibs` above and find which of the elements meet the qualification. So, we're finding all rows such that the `Calories` column of that row is less than or equal to 150.
+
+That's still a decent number of menu items, but if you look closely, they're mostly diet versions of sodas. We can apply another filter to the data and remove anything where the `Category` is `"Beverages"`. To do that, all we need to do is put an ampersand `&` after the filter but before the comma, and just type another filter.
+
+```{r}
+menu[menu$Calories <= 150 & menu$Category != "Beverages",]
+```
+
+Looks like that got rid of the sodas and juices, but we probably want to get rid of the coffee and tea as well if we really just want to display foods. We can add a third filter just as we added the second filter.
+
+```{r}
+menu[menu$Calories <= 150 & 
+         menu$Category != "Beverages" & 
+         menu$Category != "Coffee & Tea",]
+```
+
+Note that I spread the command onto multiple lines. To me, it's easier to read. R is not the most English-like language, so the more you can make it easier to read, the better you'll be when you come back to this code tomorrow. In fact, you can start to add comments to your code, using the `#` symbol:
+
+```{r, eval=FALSE}
+# Filter out all the unhealthy stuff.
+menu[menu$Calories <= 150 &  # Anything with 150 calories or less
+         menu$Category != "Beverages" &  # not including soda and juice
+         menu$Category != "Coffee & Tea",] # not including coffee and tea
+```
+
+We can apply other filters using other techniques as well. Let's say your getting food for your uncle Bob who, let's just say he doesn't have the best eating habits. For example, if you wanted to see which menu items have bacon in them and what coke products they offer. 
+
+### Tangent: Packages
+
+To do this, we're going to have to install a *package*. R packages are bundles of code that other people have written and made available for others to download. These usually contain several additional functions that plain ol' R can't handle very easily. The task we need to do is to check whether the menu item contains a specific word. This is called *pattern matching*. The best way I know of to handle this kind of task is to use `str_detect` function that's in the `stringr` library. 
+
+By the way, `stringr` is one of several packages that together comprise what's called the `tidyverse` and is written by Hadley Wickham. On November 11, 2017, I'll be doing a workshop specifically on `tidyverse`.
+
+To download `stringr`, we first have to install it. We can do this with `install.packages`.
+
+```{r, eval=FALSE}
+install.packages("stringr")
+```
+
+That'll run some code in your R Console and will take a few seconds to install. You'll need the internet for this too since we're downloading stuff. Once it's done, the code is installed to your computer, but you need to make it explicitly available for R to use in this session. To do that, use the `library` function (with the package name *not* in quotes).
+
+```{r}
+library(stringr)
+```
+
+Now, we have at our disposal a whole bunch of new functions specifically geared towards working with strings. Pretty cool.
+
+### Back to the data
+
+Now that we have `str_detect` function, we can now filter our `menu` data frame and just show the items that have bacon in them. What the `str_detect` function does is it takes two arguments: the vector you want to filter, and some text (called a *string* in computer-speak) that you want to search for. The function by itself produces a long list of `TRUE`s and `FALSE`es, just like we saw before with the logical operators. 
+
+```{r}
+str_detect(menu$Item, "Bacon")
+```
+
+So when we incorporate that into the subsetting, we can get the list we want.
+```{r}
+menu[str_detect(menu$Item, "Bacon"),]
+```
+
+We can filter this further and get only the items that have bacon *or* chicken by supplying a list of strings rather than just one.
+
+```{r}
+menu[str_detect(menu$Item, c("Bacon", "Chicken")),]
+```
+
+You could go on forever with way to subset your data. Here, I've shown just a couple ways to do some pretty useful things. 
+
+# Basic Visualizations
+
+The purpose of this workshop is to get you started with R, so we don't have time to cover all the ins and outs of visualizations in R. For now, it might be good to get you started with a couple visualization and to introduce a package called `ggplot2`. This package is written by the same programmer who did `stringr` and `tidyverse`, Hadley Wickham, and is very popular among R users.
+
+Let's get started by installing and loading `ggplot2`.
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+library(ggplot2)
+```
+```{r, echo=FALSE}
+library(ggplot2)
+```
+
+From here, we can run a series of commands to build a plot layer-by-layer. 
+
+First, let's just create a barplot that shows how many menu items in each category we have. To do this, we use the main `ggplot` function, where the first argument is the data frame we want to plot. The second argument in `ggplot` is `mapping` which takes list of various aesthetics, all wrapped up in the `aes` function. In our bar plot, we want each category to be its own bar going across the x axis. For fun, let's fill in the bars with one color per category. We then close that function, put a plus sign, and then do the `geom_bar` function. Doing two functions separated by a plus allows us to build the plot layer by layer. Here's the final result.
+
+```{r}
+ggplot(data=menu, mapping=aes(x=Category, fill=Category)) + 
+    geom_bar()
+```
+
+Not bad! The biggest problem with this plot as is is that the names overlap along the bottom. We can change that as well as literally anything else on this plot (colors, order, x- and y-axis labels, the overall theme) later. 
+
+We start to do a more statistical approach and see the distribution of Fat per category. This is like what we had before but with two changes. First, we now need a `y` variable in the `aes` function. The `x` variable tells you what goes along the x-axis, and the `y` variable is what's along the y-axis, which in this case is `Fat`. We also use `geom_boxplot` instead of `geom_bar`.
+
+```{r}
+ggplot(data=menu, mapping=aes(x=Category, y=Fat, fill=Category)) + 
+    geom_boxplot()
+```
+
+Here, we can see that breakfast items generally have the most fat, followed by Beef & Pork, and Chicken & Fish. Beverages have the least amount. 
+
+Finally, let's build a plot that shows the relationship between fat and sugar. Let's build a scatterplot. Along the x-axis, let's put `Sugars` and along the y-axis we'll do `Fat`. Here, instead of `fill=Category`, we'll put `color=Category` (`color` and `fill` are similar, but some plots look better with one instead of the other). Finally, we'll use `geom_point` this time to do a scatterplot. 
+
+```{r}
+ggplot(data=menu, mapping=aes(x=Sugars, y=Fat, color=Category)) + 
+    geom_point()
+    
+```
+
+Here, we see that items generally have a lot of fat or a lot of sugar, but not both (there's nothing at the top right quadrant of the plot). There is some correlation between them though: as item have more fat they generally have more sugar, and vice versa.
+
+In fact, we can even add a layer to this so we can add lines through the data to see the general trend per category. We can do this by adding `geom_smooth(method="lm", fill=NA)` to the function as a new layer.
+
+```{r}
+ggplot(data=menu, mapping=aes(x=Sugars, y=Fat, color=Category)) + 
+    geom_point() + 
+    geom_smooth(method="lm", fill=NA)
+    
+```
+
+Now we can see that Smoothies & Shakes and Coffee & Tea have the most sugar generally and that the more they have, the more fat they have as well. 
+
+# Where to go for help
+
+## In-R Help
+
+R offers some good resources to help you learn about its functions. For example, if you put a question mark `?` before a function name, on the lower right quadrant of RStudio, some help will pop up.
+
+```{r, eval=FALSE}
+?sqrt
+```
+
+These give documentation about how to use the function, what arguments it takes, and some example code. Usually, I scroll down to the example code and can find what I need there. It takes some experience to understand what the help pages do to be honest, but they eventually get to be very useful.
+
+You can also precede a function name with two question marks `??` to search all of your installed packages for it.
+
+```{r, eval=FALSE}
+??str_detect
+```
+
+This is useful if you know there's some sort of R function but you don't remember what package it's in. So if you get some code with the function `str_detect` in it but you forgot to load the `stringr` package, you can search for it using this double question mark and it'll tell you which ones to load.
+
+## Books and websites
+
+Because R is so widely used, there are tons of resources out there. Here, I list just a few sites and books that I have found useful on a variety of topics.
+
+* [*An Introduction to R*](https://cran.r-project.org/doc/manuals/R-intro.pdf) by Venables, Smith, and the R Core Team (2017). This is a 99-page PDF that introduces R and some basic skills on how to use it. This version is only a few months old and it a thorough resource for beginners.
+
+* This [*R Cookbook*](http://www.cookbook-r.com) site is great and has helped me a lot.
+
+* The [`tidyverse`](http://www.tidyverse.org) website is the launchpad for learning to use the `tidyverse` package.
+
+* The publishing company Springer has a series called [Use R!](https://link.springer.com/search?facet-series=%226991%22&facet-content-type=%22Book%22) that has over 50 volumes in it. Many of them cover general skills like `ggplot2` or Shiny, but others are geared towards specific field like business, ecology, biostatistics, and general statistical procedures. The ones that might be most useful for beginners include *A Beginner's Guide to R* and *R Through Excel*. These books are all available as free PDFs to download through UGA's library
+
+There are a lot of resources just on `ggplot2` specifically:
+
+* The [*R Graphics Cookbook*](https://www.amazon.com/dp/1449316956/ref=as_li_ss_tl?&linkCode=sl1&tag=ggplot2-20&linkId=4daa45d4fbd0a187163a6ff9d56d986e), and its accompanying [website](http://www.cookbook-r.com/Graphs/) has helped me a ton for learning how to use `ggplot2`. It has great, clear examples on how to do stuff.
+
+* Hadley Wickham, the creator of `ggplot2`, has some presentations available online [here](http://ggplot2.org/resources/2007-past-present-future.pdf) and [here](http://ggplot2.org/resources/2007-vanderbilt.pdf).
+
+* The [`ggplot2`](http://ggplot2.tidyverse.org) website is is a good launching pad for other places to find help.
+
+* The book [`ggplot2`: *Elegant Graphics for Data Analysis*](https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403) by Wickham is available for purchase, or, if you're a UGA student, available as a free download through the library's website. 
+
+* [Lynda.com](https://www.lynda.com), which is free for UGA students, has some great help for learning R. 
+
+Your first stop really should just be google though, which will often take you to StackOverflow, YouTube, or other websites. 
+
+# Conclusions
+
+The goal for this workshop was to expose you to the kinds of things that are possible with R, to give you some exposure to a few R concepts, and to point you in the right direction to learn more. As a review, we covered the following ideas:
+
+* What R is and how it compares to some alternatives
+
+* The difference between R and RStudio.
+
+* Basic R skill: Installing R and RStudio, variables, functions, getting data into R
+
+* Displaying your data, extracting portions of it, and filtering, with tangents that covered logical operators and packages.
+
+* Basic visualizations which introduced `ggplot2`.
+
+* Where to find help.
+
+This workshop is not enough to be a game-changer for you: you'll have to take the initiative to learn more on your own. But hopefully it has got you curious enough to make you want to learn more about R.
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+## Sequences of numbers
+
+What if you wanted to create a sequence of numbers from 1 to 5 and store that in a variable? No problem. Not too much work.
+
+```{r}
+first_five <- c(1, 2, 3, 4, 5)
+```
+
+If you wanted to go to 10, no big deal. What if you wanted to go to 100? That's a lot of typing. Not only that, but it's prone to error. For this reason, you can just use a colon (`:`) to do a sequence of integers. You can start and end with whatever numbers you want.
+
+```{r}
+1:5
+13:28
+1:100
+```
+
+You can also use the `seq` function to create more customized sequences. This function, like many others, takes several arguments, some of which are optional. Each argument has a name too, so we can use that name to specify what numbers we're writing belong to which argument.
+
+```{r}
+seq(from=1, to=20, by=2)
+```
+
+This command creates a sequence of numbers, starting with 1 and going until 20, incrementing number by 2. You can set these numbers to whatever you want and save the whole thing into a variable.
+
+```{r}
+fifths <- seq(from=-1, to=1, by=0.2)
+fifths + blue
+```
+
+Another handy function to be aware of is `rep`. This repeats a sequence some number of times. The `times` argument makes it so the entire sequence is repeated as a block that many times. The `each` argument repeats each inividual element within the sequence that number of times. And of course, you can put both arguments there if you want.
+
+```{r}
+rep(1:5, times=2)
+rep(1:5, each=3)
+rep(1:5, times=2, each=3)
+```
+
+## `TRUE` and `FALSE`
+
+With these numbers, you can test whether they fit certain specifications. These *operators* are like what you'd see in math class:
+
+* `>` means "greater than"
+
+* `<` means "less than"
+
+* `>=' means "greater than or equal to"
+
+* `<=` means "less than or equal to"
+
+* `==` means "equal to". Note here that you need *two* equals signs, and not just one.
+
+* `!=` means "not equal to"
+
+In its simplest sense, we can use operators to compre just two numbers. When you run the command, it will return one of two values, `TRUE` or `FALSE`.
+
+```{r}
+5 < 10
+```
+
+This isn't super useful right now, but it can be if you evaluate a whole list at once.
+
+```{r}
+first_five == 3
+```
+
+Here we get the same number of `TRUE`/`FALSE` statements as the vector we evaluated. Basically, we asked it which of the elements is equal to `3`. These two values, `TRUE` and `FALSE` are special cases. They're always in capitals and they're in blue when you type them in RStudio. A vector of these values is called a *logical vector*.
+
+The operators are also useful for checking things.
+
+```{r}
+sum(fibs) > 200
+seven == 7
+mean(fifths) != 0
+```
+
+Later, we'll see what to do with this information.
+
+# Working with text
+
+Numbers are important, but they're not everything. You'll probably be dealing with text at some point in your data analysis so it's a good idea to learn to work with it. 
+
+So far, we've seen two kinds of vectors: double and logical. R treats text in one of two ways: as a *character vector* or as a *factor*. There are some technicalities with each of these that I won't get into in this tutorial, but be aware that both do exist. By default, R treats text as character vectors and if you want a factor you'll have to explicitly tell it to do so. 
+
+We can create a character vector using the same `c` function, with each element separated by commas. The difference is that each element should be in quotes. In RStudio, the words turn green when they're in quotes.
+
+```{r}
+basic_colors <- c("yellow", "blue", "green", "red", "orange", "purple", "brown", "black", "pink", "gray")
+
+```
+
+
+
+
+Generally, the rule of thumb is that if there's a finite number of possible options, *especially in the context of your dataset*, then you should treat it as a factor. Let's use US census data as an example. State of birth is a good case for being a factor. There's only so many options, and even if the group you're looking at doesn't represent all 50 states, it might be noteworthy to know you're missing Delaware or something. 
+
+On the other hand, someone's name is probably better thought of as a character. There are nearly unlimited names out there and it's usually not important if you don't have an Ebenezer, Dirk, or Irene in your dataset. With that said, if you're doing a study on the effects of people's names on their personality and you've got 10 Ashleys, 10 Johns, and 10 Parkers, in that case name would be a factor.
+
+
+
+-->
