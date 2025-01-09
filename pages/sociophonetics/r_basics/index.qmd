@@ -123,6 +123,97 @@ range(fibs, -4, sqrt(16), six)
 
 You should get very comfortable running functions and getting all the syntax right like keeping track of your parentheses, commas, capitalization (a big one for new coders!), and spelling. The idea that you run functions, and on functions within functions, is super common in R. You don't have to memorize all the functions that R has, and in fact, you'll probably never use them. You're probably wondering what all the functions in R even are and how you're supposed to know about them. Google. There is tons of documentation for R online, and you'll hopefully be able to find your answer very quickly. 
 
+### Sequences of numbers
+
+What if you wanted to create a sequence of numbers from 1 to 5 and store that in a variable? No problem. Not too much work.
+
+```{r}
+first_five <- c(1, 2, 3, 4, 5)
+```
+
+If you wanted to go to 10, no big deal. What if you wanted to go to 100? That's a lot of typing. Not only that, but it's prone to error. For this reason, you can just use a colon (`:`) to do a sequence of integers. You can start and end with whatever numbers you want.
+
+```{r}
+1:5
+13:28
+1:100
+```
+
+You can also use the `seq` function to create sequences beyond consecutive integers. This function, like many others, takes several arguments, some of which are optional. Each argument has a name too, so we can use that name to specify what numbers we're writing belong to which argument.
+
+```{r}
+seq(from=1, to=20, by=2)
+```
+
+This command creates a sequence of numbers, starting with 1 and going until 20, incrementing by 2. You can set these numbers to whatever you want and save the whole thing into a variable.
+
+```{r}
+fifths <- seq(from=-1, to=1, by=0.2)
+fifths + blue
+```
+
+Another handy function to be aware of is `rep`. This repeats a sequence some number of times. The `times` argument makes it so the entire sequence is repeated as a block that many times. The `each` argument repeats each inividual element within the sequence that number of times. And of course, you can put both arguments there if you want.
+
+```{r}
+rep(1:5, times=2)
+rep(1:5, each=3)
+rep(1:5, times=2, each=3)
+```
+
+### `TRUE` and `FALSE`
+
+With these numbers, you can test whether they fit certain specifications. These *operators* are like what you'd see in math class:
+
+* `>` means "greater than"
+
+* `<` means "less than"
+
+* `>=' means "greater than or equal to"
+
+* `<=` means "less than or equal to"
+
+* `==` means "equal to". Note here that you need *two* equals signs, and not just one.
+
+* `!=` means "not equal to"
+
+In its simplest sense, we can use operators to compare just two numbers. When you run the command, it will return one of two values, `TRUE` or `FALSE`.
+
+```{r}
+5 < 10
+```
+
+This isn't super useful right now, but it can be if you evaluate a whole list at once.
+
+```{r}
+first_five == 3
+```
+
+Here we get the same number of `TRUE`/`FALSE` statements as the vector we evaluated. Basically, we asked it which of the elements is equal to `3`. These two values, `TRUE` and `FALSE` are special cases. They're always in capitals and they're in blue when you type them in RStudio. A vector of these values is called a *logical vector*.
+
+For what it's worth, you can wrap that whole thing into the `which` function and get which nth elements in the original vector satisfy the evaluation. So, with `first_five == 3`, I get two `FALSE`s, a `TRUE`, and two `FALSE`s. With which(first_five == 3)`, the result is `3`, meaning the third element in that vector is the one that is equal to three.
+
+```{r}
+which(first_five == 3)
+```
+
+To see that again, I can see which elements of the Fibonacci sequence are less than 10. 
+
+```{r}
+which(fibs < 10)
+```
+
+Here, I see that the 1st through 7th elements of that list are the ones that are less than 10. It's a little confusing because we're sending in numbers and getting numbers back, except the numbers we get back refer to the nth elements instead of the actual numbers in the Fibonacci sequence. So you'll just have to remember that that's how `which` works.
+
+The operators are also useful for checking things.
+
+```{r}
+sum(fibs) > 200
+seven == 7
+mean(fifths) != 0
+```
+
+Later, we'll see what to do with this information.
+
 ## Getting data into R
 
 At this point, a lot of R tutorials start you off with working with generating data within R itself. While this is an important skill to learn eventually, what's most relevant to you right now is getting your own data into R. 
@@ -267,47 +358,28 @@ head(menu$Item, n=10)
 We can also perform queries on your data so that we can filter your data in whatever way we want. We can view entire portions of the data frame just as easily in Excel as we can in R, so why bother with R in the first place? 
 
 In Excel it's certainly possible to filter your data. But it gets a little cumbersome if you have multiple filters on at once. Or if you have to switch back and forth between two or more different filters, you have to do a lot of clicking. With R, it's a little bit easier. 
-
-#### Tangent: Logical Operators
-To use filters, I'll have to introduce a couple ways to *evaluate* data. What a filter does is it looks at your data, and decides whether certain rows meet certain conditions. If we start simple, and take our `fibs` vector, we can see how many of those numbers are greater than 10.
+To use filters, we'll have to use those operators that we looked at earlier. Remember how we can evaluate a whole vector of numbers and see which ones meet certain conditions? For example, we can see which numbers in our Fibonacci sequence is less than ten.
 
 ```{r}
-fibs
-fibs > 10
+fibs < 10
 ```
 
-Here, the first 7 items in our list are `FALSE`, meaning they are not greater than 10. The last 6 are `TRUE`, so they are greater than 10. Similar to greater than, which uses the rightward-pointing angled bracket, we can use the following in similar ways:
+We can use the same kind of thing to subset your data. Since each column of your data is a vector, we can use the same syntax, only instead of `fibs`, we'll call the name of the column we're interested in. Here I can see rows contain menu items have 150 calories or less.
 
-* `>` means "greater than"
-
-* `<` means "less than"
-
-* `>=' means "greater than or equal to"
-
-* `<=` means "less than or equal to"
-
-* `==` means "equal to". Note here that you need *two* equals signs, and not just one.
-
-* `!=` means "not equal to"
-
-Here are some examples.
 ```{r}
-fibs > 10
-fibs < 20
-fibs >= 55
-fibs <= 13
-fibs == 1
-fibs != 34
+menu$Calories <= 150
 ```
 
-#### Back to the data
-We can use the same kind of thing to subset your data. For example, if we want to find all menu items that have 150 calories or less, we can do so like this.
+Right now, all those `TRUEs` and `FALSE` are not particularly helpful for the you, but they are helpful for R. We can embed that into a bit of code we've already seen to do a the filter. The way I do that is by using the same syntax we used above to get just one row, only instead of a single number, we'll put that entire vector of `TRUE`s and `FALSE`s. 
 
 ```{r}
+# Here's just one row
+menu[4,]
+# Now, swap out the 4 for the evaluation statement: menu$Calories <= 150
 menu[menu$Calories <= 150,]
 ```
 
-Let's break this down. First, we have the `menu[]` template like we've been doing before to display portions of the `menu` variable. Next, if you look carefully, we have some stuff, followed by a comma, and then nothing: `menu[...,]`. This is exactly like what we did before where we extracted an entire row and displayed all columns. Only this time, instead of a row number, we're giving a true/false statement. We're referring to just the `Calories` column in the data frame, like we did before. Since each column in a data frame is a vector, we can treat it like we did with `fibs` above and find which of the elements meet the qualification. So, we're finding all rows such that the `Calories` column of that row is less than or equal to 150.
+Let's break this down. First, we have the `menu[]` template like we've been doing before to display portions of the `menu` variable. Next, if you look carefully, we have some stuff, followed by a comma, and then nothing: `menu[...,]`. This is exactly like what we did before where we extracted an entire row and displayed all columns. Only this time, instead of a row number, we're giving a true/false statement. We're referring to just the `Calories` column in the data frame, like we did before. Since each column in a data frame is a vector, we can treat it like we did with `fibs` above and find which of the elements meet the qualification. So, we're finding all rows such that the `Calories` column of that row is less than or equal to 150. It may seem confusing at first that you have to type the name of the dataset twice: `menu[menu$...,]`, but that's just how it is. When we get to tidyverse, we'll see a different syntax that you might like better.
 
 That's still a decent number of menu items, but if you look closely, they're mostly diet versions of sodas. We can apply another filter to the data and remove anything where the `Category` is `"Beverages"`. To do that, all we need to do is put an ampersand `&` after the filter but before the comma, and just type another filter.
 
@@ -503,82 +575,6 @@ This page is largely the same as the second part of [this tutorial](/downloads/1
 
 <!--
 
-## Sequences of numbers
-
-What if you wanted to create a sequence of numbers from 1 to 5 and store that in a variable? No problem. Not too much work.
-
-```{r}
-first_five <- c(1, 2, 3, 4, 5)
-```
-
-If you wanted to go to 10, no big deal. What if you wanted to go to 100? That's a lot of typing. Not only that, but it's prone to error. For this reason, you can just use a colon (`:`) to do a sequence of integers. You can start and end with whatever numbers you want.
-
-```{r}
-1:5
-13:28
-1:100
-```
-
-You can also use the `seq` function to create more customized sequences. This function, like many others, takes several arguments, some of which are optional. Each argument has a name too, so we can use that name to specify what numbers we're writing belong to which argument.
-
-```{r}
-seq(from=1, to=20, by=2)
-```
-
-This command creates a sequence of numbers, starting with 1 and going until 20, incrementing number by 2. You can set these numbers to whatever you want and save the whole thing into a variable.
-
-```{r}
-fifths <- seq(from=-1, to=1, by=0.2)
-fifths + blue
-```
-
-Another handy function to be aware of is `rep`. This repeats a sequence some number of times. The `times` argument makes it so the entire sequence is repeated as a block that many times. The `each` argument repeats each inividual element within the sequence that number of times. And of course, you can put both arguments there if you want.
-
-```{r}
-rep(1:5, times=2)
-rep(1:5, each=3)
-rep(1:5, times=2, each=3)
-```
-
-## `TRUE` and `FALSE`
-
-With these numbers, you can test whether they fit certain specifications. These *operators* are like what you'd see in math class:
-
-* `>` means "greater than"
-
-* `<` means "less than"
-
-* `>=' means "greater than or equal to"
-
-* `<=` means "less than or equal to"
-
-* `==` means "equal to". Note here that you need *two* equals signs, and not just one.
-
-* `!=` means "not equal to"
-
-In its simplest sense, we can use operators to compre just two numbers. When you run the command, it will return one of two values, `TRUE` or `FALSE`.
-
-```{r}
-5 < 10
-```
-
-This isn't super useful right now, but it can be if you evaluate a whole list at once.
-
-```{r}
-first_five == 3
-```
-
-Here we get the same number of `TRUE`/`FALSE` statements as the vector we evaluated. Basically, we asked it which of the elements is equal to `3`. These two values, `TRUE` and `FALSE` are special cases. They're always in capitals and they're in blue when you type them in RStudio. A vector of these values is called a *logical vector*.
-
-The operators are also useful for checking things.
-
-```{r}
-sum(fibs) > 200
-seven == 7
-mean(fifths) != 0
-```
-
-Later, we'll see what to do with this information.
 
 # Working with text
 
@@ -594,12 +590,9 @@ basic_colors <- c("yellow", "blue", "green", "red", "orange", "purple", "brown",
 ```
 
 
-
-
 Generally, the rule of thumb is that if there's a finite number of possible options, *especially in the context of your dataset*, then you should treat it as a factor. Let's use US census data as an example. State of birth is a good case for being a factor. There's only so many options, and even if the group you're looking at doesn't represent all 50 states, it might be noteworthy to know you're missing Delaware or something. 
 
 On the other hand, someone's name is probably better thought of as a character. There are nearly unlimited names out there and it's usually not important if you don't have an Ebenezer, Dirk, or Irene in your dataset. With that said, if you're doing a study on the effects of people's names on their personality and you've got 10 Ashleys, 10 Johns, and 10 Parkers, in that case name would be a factor.
-
 
 
 -->
