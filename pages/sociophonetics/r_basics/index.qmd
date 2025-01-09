@@ -163,11 +163,15 @@ menu <- read.csv("C:\\Users\\joeystanley\\Desktop\\menu.txt") # for Windows
 ```
 
 ```{r, echo=FALSE}
-menu <- read.csv("http://joeystanley.com/data/menu.csv")
+menu <- read.csv("../../../data/menu.csv")
 menu$Item <- stringr::str_sub(menu$Item, 1, 24)
 ```
 
 Okay, so now we have a new `menu` object that has the full contents of my file. Before we move on to working with that file, let's see how to read in files that are in other formats.
+
+:::{.callout-tip title="Your Turn!"} 
+If you already have a dataset that contains some vowel formant data, try reading that in now! You should follow along this tutorial with the example data, but then you should try it again on your own data as additional practice.  
+:::
 
 ### .txt files
 
@@ -418,6 +422,10 @@ ggplot(data=menu, mapping=aes(x=Sugars, y=Fat, color=Category)) +
 ```
 
 Now we can see that Smoothies & Shakes and Coffee & Tea have the most sugar generally and that the more they have, the more fat they have as well. 
+
+:::{.callout-tip title="Your Turn"} 
+If you have some data of your own, try making a scatter plot! Remember that F2 goes on the *x*-axis and F1 goes on the *y*-axis. We'll get to more vowel plots later, but it might be fun to at least get one started. 
+:::
 
 ## Where to go for help
 
