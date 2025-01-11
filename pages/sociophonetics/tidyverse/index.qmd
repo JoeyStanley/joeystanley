@@ -9,19 +9,19 @@ date-modified: last-modified
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Introduction
+:::{.callout-note}
+This is Part 3 of a [series on sociophonetic data analysis](/pages/sociophonetics).
+:::
 
-Working with data can be super frustrating. I've been there. In fact, this tweet from a little over a year ago, only hints at the frustration I was feeling at the time. 
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">In any given project, I think I spend more time trying to figure out how to reshape, melt, and cast my data than anything else.</p>&mdash; Joey Stanley (@joey_stan) <a href="https://x.com/joey_stan/status/799076461013516291">November 17, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-Here, I make reference to specific functions (`reshape`, `melt` and `cast`) and I'm pretty sure I had spent 6–8 hours working on transforming my data to work in some visualization. I don't even think I ended up getting it done in the end, and I found a really clunky, alternative solution. 
+## Introduction
 
-Since then, I've learned a lot of about a set of packages called "the tidyverse." More importantly, I read the online book, *R for Data Science* written by Garrett Grolemund and Hadley Wickham (freely available at [http://r4ds.had.co.nz](http://r4ds.had.co.nz)) that explains how to use these packages and the functions within them. This has completely changed how I work in R and allows me to do some really power data transformation with ease. 
+Working with data can be super frustrating. I recall a time in grad school when I spent something like 6--8 hours to get my data transformed into the format I wanted, and that was using a super clunky workaround. Soon after that, I learned about a set of packages called "the tidyverse." More importantly, I read the online book, *R for Data Science* written by Garrett Grolemund and Hadley Wickham (freely available at [http://r4ds.had.co.nz](http://r4ds.had.co.nz)) that explains how to use these packages and the functions within them. This has completely changed how I work in R and allows me to do some really power data transformation with ease. 
 
 In the next section, I discuss a little bit about what the tidyverse is, but if you want to get to the good stuff, feel free to skip it.
 
-## What is the tidyverse?
+### What is the tidyverse?
 
 According to its website ([tidyverse.org](http://tidyverse.org)), "The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying philosophy and common APIs." Let's break that down.
 
@@ -33,7 +33,7 @@ According to its website ([tidyverse.org](http://tidyverse.org)), "The tidyverse
 
 1. *They are opinionated*—The primary author of many authors these packages, Hadley Wickham, is very open about how they are created, and says that this is just *one* way to work with data in R. You're certainly welcome to work with your data another way, but using the tidyverse is not the only solution: it's just one opinion of how it should be best done.
 
-There's a ridiculous amount to cover with this suite. Just `ggplot2` alone would take a hundred workshops to cover everything. The possibilities are nearly endless and I obviously can't teach you everything in just a two 1-hour workshops. To give you an idea of what functions in the tidyverse can do, here's a brief summary of *some* of its packages (all written by Hadley Wickham with addition authors in parentheses):
+There's a ridiculous amount to cover when teaching the tidyverse. Just `ggplot2` alone would take dozens of workshops to cover everything. The possibilities are nearly endless and I obviously can't teach you everything in just a short online tutorial. To give you an idea of what functions in the tidyverse can do, here's a brief summary of *some* of its packages (all written by Hadley Wickham with addition authors in parentheses):
 
 1. `ggplot2` is a very popular suite for visualizing data. Unlike other visualizations you might do, `ggplot2` allows for pretty much infinite customization in your plots, which is really handy if you have nit-picky details you want to control.
 
@@ -49,7 +49,7 @@ There's a ridiculous amount to cover with this suite. Just `ggplot2` alone would
 
 There are many other packages that are part of the tidyverse that handle more specific tasks like working with particular data types. There are also ones that are more for the R programmer and can help you publish your R scripts into your own libraries. For now, I'll stick with just the basics, but be aware that there is much, *much* more. 
 
-## Installation
+### Installation
 
 Just like any other R package, installing `tidyverse` is straightforward.
 
@@ -57,7 +57,7 @@ Just like any other R package, installing `tidyverse` is straightforward.
 install.packages("tidyverse")
 ```
 
-You only need to run this once and then it's on your computer. However, even if you already have `tidyverse` installed, it might be a good idea to re-install it because it has had some recent updates. I'll be working with the latest version of the package, which is version 1.2.1 (November 11, 2017). 
+You only need to run this once and then it's on your computer.
 
 As always, installing it doesn't make it automatically available to R though, so you'll need to explicitly tell R you'll be working with the package, using the `library` function.
 
@@ -65,17 +65,17 @@ As always, installing it doesn't make it automatically available to R though, so
 library(tidyverse)
 ```
 
-The colorful messages just let you know what other packages are being loaded at the same time (there should be 8), and what versions. Alternatively, you can read in these packages individually and everything will be fine, but by loading `tidyverse` you can take care of those all in one step.
+The colorful messages just let you know what other packages are being loaded at the same time (there should be nine: `dplyr`, `forcats`, `ggplot2`, `lubridate`, `purrr`, `readr`, `stringr`, `tibble`, and `tidyr`), and what versions. Alternatively, you can read in these packages individually and everything will be fine, but by loading `tidyverse` you can take care of those all in one step.
 
 You may also see some conflicts. What this says is that there are functions called `filter` and `lag` in both the `dplyr` and `stats` package (`stats` comes preinstalled with R and is automatically loaded because it contains a lot of useful functions). Normally, functions from add-on libraries will be "masked by" the base functions, meaning the new one won't be used. However, here, `tidyverse` has done the opposite, and the `filter()` function in `dplyr` is overriding the one in `stats`. 
 
 So without further ado, let's see how we can get data in and out of R.
 
-# Getting data in and out of R
+## Getting data in and out of R
 
-Unless you plan on generating your own data, you'll need to get your data into R, usually as one of the first things you do. There are several ways we can do this, and the function you use will depend on what kind of file you're reading in. Here, I've broken it down into .csv, .txt, and .xlsx files. For this section I'll be drawing from Chapter 11 "Data Import" from *R for Data Science*, which can be read here: [http://r4ds.had.co.nz/data-import.html](http://r4ds.had.co.nz/data-import.html).
+Unless you plan on generating your own data, you'll need to get your data into R, usually as one of the first things you do. We've already seen how to get your data in in [a previous tutorial](/pages/r_basics), but there is a tidyverse way of doing it that's very similar. There are several ways we can do this, and the function you use will depend on what kind of file you're reading in. Here, I've broken it down into .csv, .txt, and .xlsx files. For this section I'll be drawing from Chapter 11 "Data Import" from *R for Data Science*, which can be read here: [http://r4ds.had.co.nz/data-import.html](http://r4ds.had.co.nz/data-import.html).
 
-## Reading in a .csv file
+### Reading in a .csv file
 
 If you've read data into R before, you've probably used the standard `read.csv` function (which has a period (`.`) in the function name). This one works just fine and you can get by perfectly well with it. However, tidyverse's `read_csv` (with an underscore), has some additional perks that the standard function doesn't come with. To show the first one, let's go ahead and read in some data. If you have something on your computer, feel free to load it in like this. (Obviously, this code won't work on your computer: you'll have to change the path to some directory where you have data.)
 
@@ -87,11 +87,22 @@ my_data <- read_csv("/Users/joeystanley/Desktop/path/to/data/menu.csv")
 my_data <- read_csv("C:\\Users\\joeystanley\\Desktop\\path\\to\\data\\menu.csv")
 ```
 
+If your data is in the same folder as the script you're working with, you can just type the name of the file.
+
+```{r, eval = FALSE}
+my_data <- read_csv("menu.csv")
+```
+
 If you don't have anything ready, feel free to use this sample data. We'll start with one one we used in the first ggplot2 workshop, the McDonald's data. It is available for free at [Kaggle.com](https://www.kaggle.com/mcdonalds/nutrition-facts), where you can get complete nutritional information. I've got a subset of this data on my website, so you can just read in this file directly from there into R by typing in the URL.
 
-```{r}
+```{r, eval = FALSE}
 menu <- read_csv("http://joeystanley.com/data/menu.csv")
 ```
+
+```{r, echo = FALSE}
+menu <- read_csv("../../../data/menu.csv")
+```
+
 
 The first perk of `read_csv` is that it gives you some output showing you how it parsed each column of your spreadsheet. As we learned in the first ggplot2 workshop, not all data should be treated the same. Numbers are very different from text, and R (as well as you) should be aware of what data types are contained in your file so that it (and you) can work with it the best way possible. There are some heuristics that determine how `read_csv` parses your data which we won't get into here, but it's nice to see what the final result was just to make sure that numbers get treated as numbers, text as text, etc. Later in this workshop we'll see one way to change it in case the function got something wrong.
 
@@ -122,7 +133,7 @@ menu$Item <- str_sub(menu$Item, 1, 24)
 head(menu)
 ```
 
-## Reading in an Excel file
+### Reading in an Excel file
 
 In the Intro to R Workshop, I said that it's possible to load Excel files directly into R. Before learning how to do this, I did a lot of work in Excel, but then I would have to save it as a .csv, which just involved so many steps of clicking "Save As...", switching to .csv, and then Excel would give me all these warning messages saying I'll lose formatting. Even then, I could only save one sheet at a time *and* I had two different identical datasets saved to my computer. It just just such a hassle. 
 
@@ -142,7 +153,7 @@ The syntax of `read_excel` is very similar to `read_csv`, which is a trend you'l
 snooze <- read_excel("/Users/joeystanley/Desktop/snoozing.xlsx")
 ```
 ```{r, echo=FALSE, warning = FALSE}
-snooze <- read_excel("/Users/joeystanley/Desktop/github/joeystanley/data/snoozing.xlsx")
+snooze <- read_excel("../../../data/snoozing.xlsx")
 ```
 
 This file contains some fake data I created on how sleeping patterns. We'll get to it later in the workshop. The crucial thing now is that it's an Excel file and it can be read in directly into R which is pretty cool. 
@@ -153,20 +164,20 @@ blank <- read_excel("/Users/joeystanley/Desktop/snoozing.xlsx",
                        sheet="blank")
 ```
 ```{r, echo=FALSE, warning = FALSE}
-blank <- read_excel("/Users/joeystanley/Google Drive/R Series/171110-tidyverse/snoozing.xlsx")
+blank <- read_excel("../../../data/snoozing.xlsx")
 ```
 
 The perks of using `read_excel` are essentially the same as using `read_csv`: your data is saved as a tibble and it's much faster. 
 
 There is *much* more that you can do with reading data into R, not only with just those two functions, but with many other specialized functions in `readr` and `readxl`, including those for reading in specific data formats. For example, you can specify column names or column types as you read it in so you don't have to change them later. I'll let you explore those on your own. 
 
-### Your turn! {.tabset}
+#### Your turn! {.tabset}
 
-#### The challenge
+##### The challenge
 
 Look at the help for `read_excel` (by running the command `?read_excel`) and explore some of the other arguments you can add to the function.
 
-#### The solution
+##### The solution
 
 Some of the arguments you can add to the function include the following. Note that many of these also apply to `read_csv`.
 
@@ -174,7 +185,7 @@ Some of the arguments you can add to the function include the following. Note th
 
 1. `col_types` is a way to make sure R gets the data type for each column correct from the start. This might be good if there are lots of factors in your data, or if R consistently gets a column wrong, or if you're just tired of the message when reading data in. For example, if you wanted to make sure the `Category` column `menu` data was a factor and not a character, you could do this:
 
-    ```{r}
+    ```{r, eval = FALSE}
         read_csv("http://joeystanley.com/data/menu.csv", 
                  col_types = cols(Category = col_factor(levels = NULL)))
     ```
@@ -185,19 +196,19 @@ Some of the arguments you can add to the function include the following. Note th
 
 There are others, but these are the ones I've used recently.
 
-## Reading in a .txt file
+### Reading in a .txt file
 
 Even though they're probably the simplest type, .txt files are a little bit trickier to work with. All the .txt files have been "tab-delimited", meaning that it was essentially a spreadsheet but instead of commas separating each cell, there were tabs. This filetype is actually useful because if some of your columns contain commas (city + state, sentences, etc.), using a tab makes sure those commas don't separate columns unexpectedly. 
 
 The function for this is `read_delim`. It looks very similar to `read_csv` and `read_excel`, except you need to specify the `delim` argument. If the file is separated by tabs, you can use `"\t"` for that, which is "computer talk" for a tab character. The cereal data, which we used in the second ggplot2 data, is also stored on my website as a tab-delimited file. This is another dataset made available through [Kaggle.com](http://kaggle.com) that contain nutritional information of 80 different kinds of cereal.
 
-```{r}
+```{r, eval = FALSE}
 cereal <- read_delim("http://joeystanley.com/data/cereal.txt", delim = "\t")
 ```
 
 Note that you may have gotten that long message about what kinds of columns were read in. This is a nice case where using the `col_types` argument would be good because we actually have two changes to make. And if you specify just one column, the message goes away for the rest of them.
 
-```{r}
+```{r, eval = FALSE}
 cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.txt", 
            delim = "\t",
            col_types = cols(
@@ -206,7 +217,17 @@ cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.
            ))
 ```
 
-## Saving R data to your computer
+```{r, echo = FALSE}
+cereal <- read_delim("../../../data/cereal.txt", 
+           delim = "\t",
+           col_types = cols(
+               type = col_factor(levels = NULL),
+               mfr  = col_factor(levels = NULL)
+           ))
+```
+
+
+### Saving R data to your computer
 
 So we've covered how to get data into R, it might be useful to look at how to get data *out* of R. Often you'll make all sorts of changes to your data and it would be nice to save that so you don't have to do that all over again. Or sometimes there will be useful output or transformations of your data that are super useful to hold on to for later.
 
@@ -224,15 +245,15 @@ write_delim(snooze, "/Users/joeystanley/Desktop/snooze.txt", delim = "\t")
 
 I don't know of a way to create Excel files in R. They are actually quite a bit more complicated because they have to store information about all sorts of stuff like potential colors, borders, fonts, etc. I'm sure someone has created a package to do that, but you're on your own for figuring out how.
 
-### Your turn!
+#### Your turn!
 
 Try reading in a dataset of your own into R. Check the file time and use the appropriate command. You may use any additional arguments as you see fit. Make sure that everything looks good when you `View` your data.
 
-# The `select` function
+## The `select` function
 
 Whenever I read data into R, the very next step is always to process the data a little further. Out-of-the-box, it's never exactly how I want it. We saw some of this processing with the `col_types` argument in the `read_*` family of functions. In this section, we'll look at how to reorder or remove columns using the `select` function.
 
-## Reorder columns
+### Reorder columns
 
 You would think that reorder columns in R would be straightforward. But, as far as I'm aware, it's not easy using regular R functions. Let's take our McDonald's data. 
 
@@ -262,7 +283,7 @@ select(menu, Item, Category, Oz, Sugars, Calories, Fat) %>% head()
 
 This is admittedly a bit more typing, but I think the clarity is worth it. With `select`, all you do is first type the name of the dataset you want to work with, and then just start listing columns, separated by commas. This overcomes all the problems with the base R way: you don't have to sit and count a bunch of columns anymore (referring to names is easier than numbers), it's clear what this does, and if you get a random new column in the middle, you still end up with the colum order you want.
 
-## Tangent: `%>%` ("the pipe")
+### Tangent: `%>%` ("the pipe")
 
 One of the handier things about the tidyverse is this cool function called "the pipe" (`%>%`). This is a way to rewrite your functions so that they're a little bit easier and they focus more on what the functions are doing. 
 
@@ -321,7 +342,7 @@ menu <- read_csv("http://joeystanley.com/data/menu.csv") %>%
 ```
 
 ```{r, echo = FALSE, message = FALSE}
-menu <- read_csv("http://joeystanley.com/data/menu.csv") %>%
+menu <- read_csv("../../../data/menu.csv") %>%
     select(Item, Category, Oz, Sugars, Calories, Fat) %>%
     mutate(Item = str_sub(Item, 1, 24)) %>%
     print()
@@ -333,7 +354,7 @@ Another handy thing is that since it's all being treated as one giant line of co
 
 Being able to do a whole bunch of stuff at once like this is really nice also because then you don't have to keep track of multiple versions of the same data. You don't need a `menu` and a `menu_reordered` or a `menu_clean` object: you can just do it all at once and skip the intermediate steps. Pretty handy. I would highly recommend getting used to the pipe because it will save you a lot of hassle. 
 
-## Removing columns
+### Removing columns
 
 Sometimes the data you read in has too many columns and you just want to get rid of them to make things easier. In base R, the way I learned how to remove a column was to set it equal to null:
 
@@ -367,7 +388,7 @@ menu %>%
 
 However, doing this is potentially troublesome for you down the road. If you decide you need that column you want at a later date, it's not immediately obvious where it went. This is why you should comment your code to explain *why* things are written the way they are.
 
-## Additional `select` tricks
+### Additional `select` tricks
 
 If you have only a few columns, it's not too big of a deal to type them all out. But if you have many, it can get tedious, especially if you only need to make a couple changes. Fortunately, `select` has a way to specify multiple columns at once, analgous with how some R syntax works. In R, you can use a colon `:` to specify a range of things.
 
@@ -391,13 +412,13 @@ menu %>%
 
 So the `select` function can do a lot. It's probably just as easy as base R, but it might be a little bit clearer for you or another person to understand the code being used. 
 
-### You turn! {.tabset}
+#### You turn! {.tabset}
 
-#### The challenge
+##### The challenge
 
 Read in one of your own datasets and play around with the `select` function. If you don't have one ready, try working with the `cereal` dataset. Try putting the columns in a more logical order or removing ones you don't need.
 
-#### The solution
+##### The solution
 
 With the `cereal` data, there are some columns I don't need all the time or that I don't understand what they're for. I can use `select` to remove them and then reorder things.
 
@@ -408,11 +429,11 @@ cereal %>%
 ```
 
 
-# The `mutate` function
+## The `mutate` function
 
 Another super common function that I use is `mutate`, which is in the `dplyr` package. This function can both create new columns and modify existing ones. Let's see how it's done.
 
-## Creating new columns
+### Creating new columns
 
 The `cereal` data we have is good because it lists a lot of nutritional information that you might find on the box. However, it doesn't show any calculations of this data. Let's say we want to see what the sugariest cereal is. Let's make a quick tangent and look at the `arrange` function. Using `arrange`, we can sort our data (alphabetically or numerically) based on the values in some column. By default, it'll put them from lowest to highest, but if we put a minus sign before the column name, it'll sort it from highest to lowest.
 
@@ -437,15 +458,15 @@ cereal %>%
 
 Now this paints a different picture. Now the top five sugariest cereals *per cup* are all different (except for Smacks!). So now, next time you pour yourself some Raisin Bran—a supposedly healthy cereal—keep in mind that you're eating a whopping 20 grams of sugar per cup. 
 
-### Your turn! {.tabset}
+#### Your turn! {.tabset}
 
-#### The challenge
+##### The challenge
 
 1. Before moving on, just make sure that you fully understand all five lines in the code block above. We're starting to get to the point where our blocks of code are getting long, and if you just gloss over them, it won't be clear what each function doing every step of the way.
 
 1. Pick a different nutritional fact about the cereal and see if you can find any differences when you sort the table by that fact by serving as opposed to by cup.
 
-#### The solution
+##### The solution
 
 I decided to go with sodium. Maybe you're on a low-sodium diet and want to know which cereals to avoid. Here are the cereals with the most sodium per serving.
 
@@ -470,7 +491,7 @@ cereal %>%
 
 So unless you're careful about serving size, you should definitely avoid All-Bran and Grape-Nuts if you're watching your sodium.
 
-## Modifying columns
+### Modifying columns
 
 We can also use `mutate` to modify existing columns. A big reason to modify something is if it's in the wrong data type. For example, if you are reading data about a sports team and you have a column with the jersey number, R will read that in as a numeric value when it really should be treated as a categorical variable. (Player 20 is not inherently twice as big or twice as good as player 10!) In R there are actually several more data types than just "categorical" or "numeric." Unfortunately, we don't have time in this workshops to cover the details of all of them. 
 
@@ -567,9 +588,9 @@ cereal_renamed %>%
 
 The function does exactly what we expect. It creates a "new" column called `mfr` that takes the old `mfr` column and sorts the factors in order of frequency. Pretty slick. 
 
-### Your turn! {.tabset}
+#### Your turn! {.tabset}
 
-#### The challenge
+##### The challenge
 
 Part of the reason for why the pipe is so useful is that we don't have to make all these intermediate dataframes that are all similar to each other and only differ slightly. In the ggplot2 workshops, we had `cereal`, `cereal_renamed`, and `cereal_ordered`. With the pipe and `mutate`, we can do all the cleaning in one step, straight from reading the data in. So, your challenge is to do the following in one block of piped functions:
 
@@ -583,7 +604,7 @@ Part of the reason for why the pipe is so useful is that we don't have to make a
 
 Then take that data and create a bar plot. It should look identical to the above plot.
 
-#### The solution
+##### The solution
 
 Below you'll find the entire block that accomplishes this task. Note that you're perfectly welcome to have two separate `mutate` functions in the same piped block. However, you can also put multiple changes within the same mutate function—you just need to put a comma between them.
 
@@ -597,7 +618,7 @@ sample_data %>%
 
 Note that doing it this way, you can refer to columns you've just created/modified and it'll work the way you want them to. So, in the block below, I only have one `mutate` function that takes care of the recoding and the releveling. 
 
-```{r}
+```{r, eval = FALSE}
 # Read it in as a tab-delineated file
 cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.txt", 
            delim = "\t",
@@ -620,17 +641,46 @@ cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.
     
     # Print it out.
     print()
+```
 
+
+```{r, echo = FALSE}
+# Read it in as a tab-delineated file
+cereal <- read_delim("../../../data/cereal.txt", 
+           delim = "\t",
+           # Make sure the column types are correct.
+           col_types = cols(
+               type = col_factor(levels = NULL),
+               mfr  = col_factor(levels = NULL)
+           )) %>%
+    # Spell the manufacturers out instead of the abbreviations.
+    mutate(mfr = fct_recode(mfr,
+                         "Kellogg's" = "K",
+                         "General Mills" = "G",
+                         "Post" = "P",
+                         "Quaker Oats" = "Q",
+                         "Ralston Purina" = "R",
+                         "Nabisco" = "N"),
+           
+           # ...and put them in order of frequency.
+           mfr = fct_infreq(mfr)) %>%
+    
+    # Print it out.
+    print()
+```
+
+
+```{r, echo = FALSE}
 # Plot it
 ggplot(cereal, aes(mfr)) +
         geom_bar()
 ```
 
-# Miscellaneous functions
+## Miscellaneous functions
 
 In this last section, we'll take a look at a couple other functions that you might find to be useful: `filter` and `rename`. 
 
-## The `filter` function
+### The `filter` function
 
 Sometimes you don't want to work with your entire data frame and you just want to see a subset. Base R has a function called `subset` that actually works quite well. The `dplyr` package also has one, `filter`, that accomplishes the same thing. For consistency's sake, we'll continue with the tidyverse version. 
 
@@ -713,7 +763,7 @@ cereal %>%
 
 So the filter is powerful. I use it all the time to make various subsets of my data. It does exactly what I want it to do, and while you may have to type a couple symbols you don't normally do, the syntax is easy to pick up.
 
-## Changing column names
+### Changing column names
 
 The final thing I'd like to show for this workshop is how to rename columns. There are lots of reasons for why you might want to do this. In the ggplot2 workshop, we saw how to do this on the fly within a block of `ggplot` code, but sometimes you want to make it a permanent change to your data. Using the tools you have now, you might be tempted to simply create a new column that's a copy of the old one.
 
@@ -762,9 +812,9 @@ cereal %>%
 I don't really use this very often because I like to make the renaming explicit, but it's a nice shortcut if you need it.
 
 
-### Your turn! {.tabset}
+#### Your turn! {.tabset}
 
-#### The challenge
+##### The challenge
 
 Try doing the following steps all as one series of piped functions. There's no strict order that they need to apply so you're free to organize the code in a way that makes sense to you.
 
@@ -784,11 +834,11 @@ Try doing the following steps all as one series of piped functions. There's no s
 
 1. Only display cereals where the rating is higher than the average. (Hint: you may need the `mean()` function.)
 
-#### The solution
+##### The solution
 
 Here is my complete block of code. I've explained by process underneath.
 
-```{r}
+```{r, eval = FALSE}
 # Read it in as a tab-delineated file
 cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.txt", 
            delim = "\t",
@@ -819,7 +869,43 @@ cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.
     # Sort the rows in order of sugars
     arrange(-sugar_per_cup) %>%
     print(n = 5)
+```
 
+
+```{r, echo = FALSE}
+cereal <- read_delim("../../../data/cereal.txt", 
+           delim = "\t",
+           # Make sure the column types are correct.
+           col_types = cols(
+               type = col_factor(levels = NULL),
+               mfr  = col_factor(levels = NULL)
+           )) %>%
+    # Rename manufacturer
+    rename(manufacturer = mfr) %>%
+    
+    # Only show those that are better than average rating.
+    filter(rating > mean(rating)) %>%
+
+    # create the sugar_per_cup variable
+    mutate(sugar_per_cup = sugars / cups,
+           # Recode the manufacturers
+           manufacturer = fct_recode(manufacturer,
+                            "Kellogg's" = "K",
+                            "General Mills" = "G",
+                            "Post" = "P",
+                            "Quaker Oats" = "Q",
+                            "Ralston Purina" = "R",
+                            "Nabisco" = "N"),
+           # Put the manufacturers in order of frequency. 
+           manufacturer = fct_infreq(manufacturer)) %>%
+    
+    # Sort the rows in order of sugars
+    arrange(-sugar_per_cup) %>%
+    print(n = 5)
+```
+
+
+```{r}
 # Plot it
 ggplot(cereal, aes(manufacturer)) +
         geom_bar()
@@ -831,7 +917,7 @@ I then filter the data to only show those with a higher-than-average rating. The
 
 The second reason is that it comes early, specifically, before sorting the manufacturer levels frequency, is that the order of the manufacturers does in fact change after we've applied the filter. If you compare this to the following very similar block that has been modified so that the filter comes last, you'll see that the bars are in a different order, namely the original order of how many brands of cereal there are per company.
 
-```{r}
+```{r, eval = FALSE}
 # Read it in as a tab-delineated file
 cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.txt", 
            delim = "\t",
@@ -863,7 +949,45 @@ cereal <- read_delim("/Users/joeystanley/Desktop/github/joeystanley/data/cereal.
     filter(rating > mean(rating)) %>%
 
     print()
+```
 
+
+```{r, echo = FALSE}
+# Read it in as a tab-delineated file
+cereal <- read_delim("../../../data/cereal.txt", 
+           delim = "\t",
+           # Make sure the column types are correct.
+           col_types = cols(
+               type = col_factor(levels = NULL),
+               mfr  = col_factor(levels = NULL)
+           )) %>%
+    # Rename manufacturer
+    rename(manufacturer = mfr) %>%
+    
+    # create the sugar_per_cup variable
+    mutate(sugar_per_cup = sugars / cups,
+           # Recode the manufacturers
+           manufacturer = fct_recode(manufacturer,
+                            "Kellogg's" = "K",
+                            "General Mills" = "G",
+                            "Post" = "P",
+                            "Quaker Oats" = "Q",
+                            "Ralston Purina" = "R",
+                            "Nabisco" = "N"),
+           # Put the manufacturers in order of frequency. 
+           manufacturer = fct_infreq(manufacturer)) %>%
+    
+    # Sort the rows in order of sugars
+    arrange(-sugar_per_cup) %>%
+    
+     # Only show those that are better than average rating.
+    filter(rating > mean(rating)) %>%
+
+    print()
+```
+
+
+```{r}
 # Plot it
 ggplot(cereal, aes(manufacturer)) +
         geom_bar()
@@ -871,8 +995,21 @@ ggplot(cereal, aes(manufacturer)) +
 
 (Incidentally, we learn a lot about Nabisco and General Mills through this: Nabisco has relatively few kinds of cereal, but they tend to be rated pretty high, while General Mills has a lot that get generally lower ratings.)
 
-# Final remarks
+## Final remarks
 
 This workshops has covered a *lot* of material. But, it's clear that the tidyverse offers a lot for you. You can manipulate and clean your data all you want, often in a single block of code. The code is easier to type and it's easier for you to read later on when you come back to it. 
 
 In a future tidyverse workshop, we'll cover even more powerful functions like how to merge tables together, perform functions on groups of data (such as only showing the top three cereals for each manufacturer), and reshaping your data from "tall" to "wide" format. But for now, I hope what you've learned here will be useful for you and your data.
+
+
+
+
+
+
+:::{.callout-tip title="Additional Materials"}
+You may also be interested in [a PDF of the slides I used](/downloads/180119-intro-to-r-part1.pdf) when I first taught this material as an in-person workshop. An older version that includes additional content can be found here as a [PDF](/downloads/170912-intro-to-r-handout.pdf) or an [html](/downloads/170913-intro_to_R.html) file.
+:::
+
+:::{.callout-note}
+This page is largely the same as the second part of [this tutorial](/downloads/180119-intro-to-r-part1.html) from 2017. The only changes are some slight edits here and there and updates to reflect software changes in the past seven years.
+:::
