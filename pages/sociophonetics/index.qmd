@@ -29,7 +29,7 @@ This week, you'll get your hands dirty with R. You'll learn the basics of a few 
 
 ### Tidyverse
 
-Learn about an entire ecosystem of additional R packages that makes analysis and processing easier. This will based on [Part 1](/downloads/180302-tidyverse_part1.html) and [Part 2](downloads/180323-tidyverse_II.html) of a previous workshop. Michael Hunt Gardner has [a nice tutorial](https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html) that is similar. [This blog post](https://joeystanley.com/blog/reshaping-vowel-formant-data-with-tidyr/) has some specific guidance that is relevant for vowel data.
+Learn about an entire ecosystem of additional R packages that makes analysis and processing easier. This will based on [Part 1](/downloads/180302-tidyverse_part1.html) and [Part 2](/downloads/180323-tidyverse_II.html) of a previous workshop. Michael Hunt Gardner has [a nice tutorial](https://lingmethodshub.github.io/content/R/lvc_r/050_lvcr.html) that is similar. Fair warning that the code for the last part of my Part II tutorial is a little out of date, so you should switch to [this blog post](https://joeystanley.com/blog/reshaping-vowel-formant-data-with-tidyr/) for the updated code. That post also has some specific guidance that is relevant for vowel data.
 
 ### ggplot2
 
