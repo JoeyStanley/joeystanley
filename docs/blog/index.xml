@@ -24,7 +24,20 @@
 <p>This week I’m in Philadelphia at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here, I officially started two new service positions, and I got an award! It was a busy conference for me!</p>
 <section id="saturday-mornings-ads-talk-on-georgia-prelaterals" class="level2">
 <h2 class="anchored" data-anchor-id="saturday-mornings-ads-talk-on-georgia-prelaterals">Saturday morning’s ADS talk on Georgia Prelaterals</h2>
-<p>More info coming soon…</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/250111-ADS2025_GAPrelats.pdf">here</a>!</p>
+</div>
+</div>
+<p>On Saturday morning at the ADS session, Peggy Renwick presented research on behalf of our research term on prelateral front vowels and how they’ve changed over time in Georgia. The talk is called “Complementary pre-lateral mergers across ethnicities and generations in Georgia.” Overall, we find that the various prelateral mergers peaked and reversed at different times for Black and White speakers, and for the two <em>feel-fill</em> and <em>fail-fell</em> pairs.</p>
 </section>
 <section id="saturday-afternons-ads-poster-on-utah-english" class="level2">
 <h2 class="anchored" data-anchor-id="saturday-afternons-ads-poster-on-utah-english">Saturday afternon’s ADS poster on Utah English</h2>
@@ -45,13 +58,28 @@ Tip
 </section>
 <section id="sunday-mornings-lsa-talk-source-separation" class="level2">
 <h2 class="anchored" data-anchor-id="sunday-mornings-lsa-talk-source-separation">Sunday morning’s LSA talk source separation</h2>
-<p>More info coming soon…</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/250112-LSA2025_SourceSeparation.pdf">here</a>!</p>
+</div>
+</div>
+<p>On Sunday morning, my final presentation was with Lisa Morgan Johnson (who presented with me) and Earl Kjar Brown. We were interested in source separation, which is where you separate overlapping audio into different tracks, one per speaker. We wanted to see if current algorithms produced reliable enough data for sociophonetic analysis. We took two recordings and processed them using typical methods and called that output the ground truth. We than synthetically overlapped the audio to create a cacophonous overlapping recording. We then tried three source separate models and processed the resulting audio files and compared them to the baseline.</p>
+<p>We’re cautiously optemisitic about the results. There were some differences here and there, but on the whole the output formant measurements were pretty similar. However, we did notice that while the <em>mean</em> formants per vowel per speaker were similar, at the indidual token level, there were larger differences.</p>
+<p>Anyway, we hope this will spark some interest in source separation and maybe help people recover audio that was previously unanalyzable!</p>
 </section>
 <section id="other-things" class="level2">
 <h2 class="anchored" data-anchor-id="other-things">Other Things</h2>
-<p>At the ADS Business Meeting, I was voted a member of the American Dialect Society Executive Committee! I replace Alicia Wassink, who was just voted President-Elect of the Linguistic Society of America. I’m excited to serve with Jessi Grieser, Nicole Rosen, and Paul Reed.</p>
+<p>At the ADS Business Meeting, I was voted a member of the American Dialect Society Executive Committee! I replace Alicia Wassink, who was just voted President-Elect of the Linguistic Society of America.</p>
 <p>At that same meeting, I was also voted a Kurath Fund Trustee, which is a position within the Linguistic Atlas Project. I’ll serve with Jennifer Cramer and Dennis Preston.</p>
-<p>Finally, at the ADS Breakfast on Saturday morning, I received the 9t Audrey Duckert Memorial Travel Award to attend these ADS meetings.</p>
+<p>Finally, at the ADS Breakfast on Saturday morning, I received the 9th Audrey Duckert Memorial Travel Award to attend these ADS meetings.</p>
 <p>I’m so humbled to be considered for these positions and award! Thank you to all those who were involved!</p>
 
 
@@ -151,10 +179,10 @@ Note
 <p>Dear all,</p>
 <p>It is with a heavy heart that I inform you that Bill Labov—the linguist behind the fourth floor study and Martha’s Vineyard Island study and the founder of variationist sociolinguistics—passed away yesterday at the ripe age of 97 at his home with his wife by his side.</p>
 <p>Looking through this semester, I mentioned Labov at least nine times. He introduced attention to speech, the observer’s paradox, and the vernacular principle to linguistics and created the sociolinguistic interview. With his dissertation in New York, he introduced the idea of systematic variation or, as he puts it, ordered heterogeneity. He was the one to point out the gender paradox. He popularized Herzog’s and Garde’s principles in the study of language change (and coined those terms). He supervised the creation of the Penn Neighborhood Corpus and supervised students’ sociolinguistic interviews around Philadelphia for decades. That corpus now serves as an invaluable resource for tracking phonetic change over time. Looking back, I’m surprised that’s all I’ve said about him, because there are so many other important ideas he’s introduced to the field.</p>
-<p>He was a prolific writer and extremely involved in the field. He founded <em>Language in Society</em> in 1972, which has since become a premiere venue for sociolinguistics research. He also founded another extremely influential journal, <em>Language Variation and Change</em> and edited it for a long time. He was a former president of the Linguistic Society of America and the American Dialect Society. He has numerous books, many of which are foundational in sociolinguistics. His last one, <em>Conversations with Strangers</em>, which he wrote with his wife, was published just last year, contains stories about the awesome things he’s learned from people in the 1000+ sociolinguistic interviews he conducted. (If you’ve ever done a sociolinguistic interview, you’ll find that <em>everyone</em> has a cool story.) I happened to buy that book recently, so that’ll be what I read this evening.</p>
+<p>He was a prolific writer and extremely involved in the field. He founded <em>Language in Society</em> in 1972, which has since become a premiere venue for sociolinguistics research. He also founded another extremely influential journal, <em>Language Variation and Change</em> and edited it for a long time. He was a former president of the Linguistic Society of America and the American Dialect Society. He has numerous books, many of which are foundational in sociolinguistics. His last one, <em>Conversations with Strangers</em>, which he wrote with his wife, was published just last year and contains stories about the awesome things he’s learned from people in the 1000+ sociolinguistic interviews he conducted. (If you’ve ever done a sociolinguistic interview, you’ll find that <em>everyone</em> has a cool story.) I happened to buy that book recently, so that’ll be what I read this evening.</p>
 <p>He mentored <a href="https://academictree.org/linguistics/tree.php?pid=24968&amp;fbclid=IwZXh0bgNhZW0CMTAAAR0k0VUZutEQngweBenpabuZMw8o4-hQ_XY4Auu60uAV9q8clumQyUNAsfI_aem_a9n9R6rxPmVLJOnGmS7X2A">countless</a> students at the University of Pennsylvania, many of whom have gone on to be their own giants in sociolinguistics. Among those whose ideas I’ve brought into class include Penny Eckert (she did the Jocks vs.&nbsp;Burnouts study and is the founder of 3rd Wave Sociolinguistics and brought ideas like indexicality to sociolinguistics), John Rickford (leading figure on African American English and proponent of the Creole Origins Hypothesis of African American English), John Baugh (housing discrimination), Anne Charity-Hudley (educational linguistics and linguistic activism). Many of them have then gone to mentor other giants in sociolinguistics. I can trace my academic lineage to Labov through Penny Eckert and can call him my academic great-great-grandfather.</p>
 <p>While entire <a href="https://www.bloomsbury.com/us/labov-a-guide-for-the-perplexed-9781441158529/">books</a> and <a href="https://www.oxfordbibliographies.com/display/document/obo-9780199772810/obo-9780199772810-0195.xml">annotated bibliographies</a> have been written about his scholarly work, perhaps his bigger contribution to the world is in social activism and the pursuit of linguistic justice. He not only coined the “Principle of Error Correction” and the “Principle of Debt Incurred” as nice ideas, but he lived them too: he was an early researcher of African American English and, 30 years later, testified at a senate hearing on the legitimacy of African American English in the wake of the Oakland Ebonics Controversy. He was a champion for the underdog, marginalized communities, and children and did countless acts of uncompensated work in the community, far beyond what is expected from a professor.</p>
-<p>All who knew him personally describe him so positively. He regularly cites older scholars, lesser-known researchers, and students’ work in his own and he acknowledges that many of the ideas we attribute to him actually came from someone else. He was humble in his contributions and was so happy to hear of someone proving him wrong. He was his students’ loudest cheerleader and saw the potential in them before they did themselves. He attended their extra-curricular activities and weddings, and met their friends and families. He is the kind of mentor I try to be like. <a href="https://jofrhwld.github.io/blog/posts/2024/12/2024-12-17_in-remembrance/">Here</a> is a very nice tribute by Joe Fruehwald that I think captures the kinds of things I’ve heard from his students. <a href="https://languagelog.ldc.upenn.edu/nll/?p=67399">This post in Language Log</a> also shares these sentiments. If you look up other linguists on social media right now, you’ll see numerous other similar tributes. As for me, he attended my very first conference presentation in 2015 where I talked about address forms among Latter-day Saints (which shows that even he was willing to listen to students’ work) and while I did have the opportunity to see him speak at various conferences, unfortunately, I never had a chance to meet him. So all I know about him I learned from a distance and through others’ accounts; I can’t even imagine how awesome it would have been like to take classes from him.</p>
+<p>All who knew him personally describe him so positively. He regularly cites older scholars, lesser-known researchers, and students in his own and he acknowledges that many of the ideas we attribute to him actually came from someone else. He was humble in his contributions and was so happy to hear of someone proving him wrong. He was his students’ loudest cheerleader and saw the potential in them before they did themselves. He attended their extra-curricular activities and weddings, and met their friends and families. He is the kind of mentor I try to be like. <a href="https://jofrhwld.github.io/blog/posts/2024/12/2024-12-17_in-remembrance/">Here</a> is a very nice tribute by Joe Fruehwald that I think captures the kinds of things I’ve heard from his students. <a href="https://languagelog.ldc.upenn.edu/nll/?p=67399">This post in Language Log</a> also shares these sentiments. If you look up other linguists on social media right now, you’ll see numerous other similar tributes. As for me, he attended my very first conference presentation in 2015 where I talked about address forms among Latter-day Saints (which shows that even he was willing to listen to students’ work) and while I did have the opportunity to see him speak at various conferences, unfortunately, I never had a chance to meet him. So all I know about him I learned from a distance and through others’ accounts; I can’t even imagine how awesome it would have been like to take classes from him.</p>
 <p>Bill Labov is the reason I became a sociolinguist. I remember learning about the fourth floor study in my intro to linguistics course and thought it was one of the most fascinating studies ever. Since then, I have read so much of his work and it has been the foundation of my own research. The first time I went to New York City, I didn’t care to see the Statue of Liberty, One World Trade Center, Rockefeller Plaza, or Central Park. No, I did a pilgrimage to Saks, Macy’s, and the building where S. Klein was located and got workers to say “fourth floor” there. I encourage you to read Labov’s own account of <a href="https://www.ling.upenn.edu/~wlabov/HowIgot.html">how he got into linguistics</a>. Interestingly, he was a chemist for over a decade before beginning linguistics in his 30s, which just goes to show the value that late bloomers, non-traditional students, and people with unique backgrounds have on academia. He was a giant of a person and the best linguist of our generation.</p>
 <p>Anyway, I’ll look forward to grading your final papers today. Thanks for a great semester.</p>
 <p>Joey</p>
@@ -165,6 +193,72 @@ Note
   <category>Personal</category>
   <guid>https://joeystanley.com/blog/labov/</guid>
   <pubDate>Wed, 18 Dec 2024 15:54:00 GMT</pubDate>
+</item>
+<item>
+  <title>A new publication in Linguistics Vanguard!</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/source_separation/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Together with my co-authors, Lisa Morgan Johnson and Earl Kjar Brown, I’m happy to announce <a href="https://www.degruyter.com/document/doi/10.1515/lingvan-2024-0152/html">a new publication in <em>Linguistics Vanguard</em></a>!</p>
+<section id="a-brief-summary" class="level2">
+<h2 class="anchored" data-anchor-id="a-brief-summary">A “Brief” Summary</h2>
+<p>The problem that sociophoneticians face when working with interview data—particularly recordings not originally intended for linguistic analysis like older oral narratives—is overlapping speech. When two people talk at the same time, it is usually impossible to get reliable formant measurements automatically. My impression is that that data is somehow tagged or detected as overlapping speech and is excluded. When you’re working with shorter recordings that don’t have a lot of data to begin with, it would be nice to recover that data.</p>
+<p>So, we introduce source separation. It’s an algorithm that takes in a single audio file containing speech from multiple speakers, and split it up into different audio files, one for each speaker. It detects when each speaker is talking (aka <em>diarization</em>) and then uses fancy models to separate the speakers from each other. In theory, this is a great way to recover data that would have otherwise been excluded.</p>
+<p>The purpose of this paper then is to see whether such source separation models can feasibly be incorporated into a sociophonetic pipeline. In other words, is the output of a source separation model reliable enough that we can trust the formant measurements that come from the separated audio?</p>
+<p>We decided to stress test the method. We took some audio I collected in grad school of two speakers, a man and a woman from Georgia. On separate occasions, they both read 300 sentences in a sound booth. We then overlayed that audio to create a very cacophonous audio file of the two of them talking at the same time for 30 minutes.</p>
+<p>We then used three source separation models to separate the two speakers: Libri2, Whamr, and WSJ02. This created six new audio files, one for each speaker and for each model. Combine those with the two original audio files, and we had eight.</p>
+<p>For each of the eight files, we sent them through a typical sociophonetic pipeline. First, the originals were manually transcribed at the utterance-level and we used those transcriptions for the their respective derived source-separated audio. We then sent the audio and transcriptions through DARLA to have them force-aligned with MFA and formant-extracted with FAVE. We then followed the same order of operations to process them. In the end, we had four versions of spreadsheets of formant measurements for each speaker’s audio recording. We could then compare them to each other.</p>
+<p>First, while coming through the audio, we noticed that two of the models did a pretty good job. But one, the WSJ02 didn’t. We don’t really recommend that one.</p>
+<p>Looking through the vowel plots, we’re surprised at how good they were, especially compared to the original. In these vowel plots (the female is on the left and the male is on the right), all four panels look pretty similar for the most part, and they all look like the top left panel which has the original audio.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://joeystanley.com/blog/source_separation/female.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://joeystanley.com/blog/source_separation/male.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>However, when we ran statistical tests on the formant data and compared them to the original, there were some statistically significant differences. But thy varied depending on the vowel, the model, and the speaker. In this plot, red dots are statistically significant differences. But there are many gray dots, meaning the difference between the source-separated audio and the original was not significant much of the time.</p>
+<p><img src="https://joeystanley.com/blog/source_separation/pairwise_comparisons.png" class="img-fluid"></p>
+<p>Then when we zero in on specific comparison and then draw lines connecting points that came from the same observation in the two recordings, we see a fair number of differences. So, while the means may be comparable, the values from any one observation may not be close to the original. Thi sis a similar finding to what Strelluf &amp; Gordon report in <a href="https://rowman.com/ISBN/9781498597265/The-Origins-of-Missouri-English-A-Historical-Sociophonetic-Analysis">their book on historical sociophonetics</a>.</p>
+<p><img src="https://joeystanley.com/blog/source_separation/boxplot_comparisons.png" class="img-fluid"></p>
+<p>So, we are cautiously optimistic about this. If you only model vowel means, you can probably feel comfortable doing so on source-separated data. But if you want to look at individual tokens, maybe not. Fortunately, most audio will not be as overlapped as this, so the effect will be smaller. Although, for dyads of speakers with similar sounding voices, it might not be as good.</p>
+<p>We end with some recommendations, which I repeat here:</p>
+<ul>
+<li><p>Experiment with different models to find the one that is most suitable. In this rapidly developing field, models improve over time and new options emerge. So, rather than clinging to one that works, continuously explore potentially better tools.</p></li>
+<li><p>Split audio at natural breaks rather than equal intervals. This can be done manually or using a script.</p></li>
+<li><p>Listen to the output to ensure clean separation.</p></li>
+<li><p>Transcribe based on the source-separated audio or ensure that existing transcriptions still match the new audio before conducting acoustic analysis.</p></li>
+<li><p>Treat formant estimates at the token level with caution. To be safe, only do analyses on vowel summaries like averages.</p></li>
+<li><p>Carefully document and report all methodological choices and human interventions.</p></li>
+</ul>
+</section>
+<section id="backstory" class="level2">
+<h2 class="anchored" data-anchor-id="backstory">Backstory</h2>
+<p>I enjoy learning about papers’ back stories, so here is ours.</p>
+<p>May 7, 2024, Lisa and I were talking about this and pitched the idea to Earl. Earl is the one who knows how to implement this stuff, so he worked on it that month and on May 21st, he basically did a proof of concept and said “I think we may have a paper!” In June, we fine-tuned the methods and prepared the audio. We had big plans to do a more robust study with different gender dyads and audio qualities, but we figured for this proof of concept paper, we’d keep it simple. (We may submit a bigger version to <em>JASA</em> still.) By the end of June, we basically had the results we needed, so we submitted an abstract to LSA.</p>
+<p>Soon after the abstract was submitted, I figured we might as well write-up the paper. On July 17, I said let’s try and submit to <em>Linguistics Vanguard</em>. For the next week or so, we had a really nice asynchronous collaboration going as we each chipped away at the various parts of the paper we contributed to. (I did the vowel analysis, Lisa did the qualitative analysis, and Earl actual Python scripting). On July 26th, we submitted it!</p>
+<p>On October 9th, we got a provisional accept and some useful reviewer comments. Bad timing for us because Lisa and I were about to head to NWAV .But on November 19, we returned the manuscript at 11:54am and at 7:01pm it was officially accepted! Quickest turn-around time ever! We submitted the final version on November 20th, got proofs on January 5th, we presented it at LSA on January 12th, and it was published online on January 29th.</p>
+<p>So from inception (May 7) to paper submission (June 26) was 11 weeks. And from original submission to publication (January 29) was 26 weeks. Not too shabby.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>Publications</category>
+  <guid>https://joeystanley.com/blog/source_separation/</guid>
+  <pubDate>Wed, 11 Dec 2024 15:12:00 GMT</pubDate>
 </item>
 <item>
   <title>A new volume in the Publications of the American Dialect Society series!</title>
@@ -5287,59 +5381,6 @@ Tip
   <category>West</category>
   <guid>https://joeystanley.com/blog/ads-and-lsa-2023/</guid>
   <pubDate>Fri, 06 Jan 2023 12:30:00 GMT</pubDate>
-</item>
-<item>
-  <title>New publication in Linguistics Vanguard</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/new-publication-in-linguistics-vanguard/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I’m happy to announce that <a href="https://doi.org/10.1515/lingvan-2022-0065">a paper of mine has been published</a> in <em>Linguistics Vanguard</em>. It’s called “Interpreting the order of operations in sociophonetic analysis” and it’s a direct follow-up to a <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/">paper</a> I wrote for the <em>Penn Working Papers in Linguistics</em> a couple months ago. While the <em>PWPL</em> paper showed that Order of Operations (OoO) matters, that we should be talking about it more, and that we should do our best to interpret others’ OoOs, it didn’t give any help as to <em>how</em> to interpret them. The main contribution for this follow-up paper then is to 1) arm researchers with knowledge of how to interpret order of operations and 2) justify the order I recommended in the <em>PWPL</em> paper.</p>
-<section id="summary" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>To reiterate <a href="../../blog/new-publication-in-pwpl">what I said</a> when the <em>PWPL</em> paper came out, the idea for this paper got started when I was in the throes of data analysis and I noticed that reordering some of the processing steps resulted in different changes. I did a systematic study of OoO, presented it at <a href="../../blog/nwav49">NWAV49 in 2021</a>, and published those results in <em>PWPL</em>. But it occurred to me that even if we all become diligent and report the OoO we used in our papers, we don’t really have the knowledge of how we’re supposed to interpret those orders. As I put it in the paper,</p>
-<blockquote class="blockquote">
-<p>[I]t does little good if researchers are not familiar with how the order affects the overall results. A detailed methods section may explain that normalization happened before outliers were removed, but it is not currently clear what effect that order had on the results. How should a reader evaluate the results of one study that normalized the data before removing outliers against another study that transposed those two steps? This paper addresses this gap and explores in more detail the effect that some orderings are likely to have on the results of a study.</p>
-</blockquote>
-<p>Perhaps phrase another way, what specifically <em>is</em> the effect of normalizing before removing outliers compared to removing outliers before normalizing? Do formants go up, down, or something more complicated? As I mention in footnote 1, this knowledge can be used as “cheat codes” to manipulate your data the way you want. Hopefully reviewers can spot this kind of hacking!</p>
-<p>Anyway, so when I analyzed the same data 5040 times but with different orders of operation, I ended up with 5040 hypothetical analyses of the same dataset. Obviously, it didn’t make sense to consider every single one. So instead, I concentrated my efforts on 1) finding orders that produced identical results and 2) seeing what happens when I swapped two steps in the recommended OoO I have in the <em>PWPL</em> paper.</p>
-<p>Here’s that recommended order (Figure 1):</p>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://joeystanley.com/blog/new-publication-in-linguistics-vanguard/recommended_OoO.png" class="img-fluid figure-img" style="width:25.0%"></p>
-<figcaption class="margin-caption">My recommended Order of Operations. Sorry the figure is so tall. And yes, I use PowerPoint for all my non-data visualizations :)</figcaption>
-</figure>
-</div>
-<p>Many of the orders produced identical results. This was mostly the result of various subsetting functions removing different groups of unwanted data, such as unstressed vowels, presonorants, stopwords, and vowel trajectories. This makes sense because, as I say in the paper,</p>
-<blockquote class="blockquote">
-<p>The set of observations that are excluded in these steps is fixed: regardless of the normalization procedure, whether outliers have been removed, or how the vowels are classified, the exact same set of observations will be excluded each time.</p>
-</blockquote>
-<p>These functions are all similar in that they remove data that is not needed or wanted for the current analysis, but is otherwise good. This similarity is visualized by clumping them together within a single block. I argue that because this is good data, it should only be removed at the very end of the pipeline, even after normalization.</p>
-<p>So then I go and explore each pair of steps in my recommended order. Allophones should be classified before removing outliers because it just makes sense to do so. Also, failing to do so will make Pillai scores go up because you artificially draw two vowel classes together. Outliers should be removed before normalization because you don’t want outliers to mess up the normalization.</p>
-<p>The trickiest part of the paper to understand is section 6 and Figure 4. I use it to show the interaction between normalization and subsetting. I recommend normalizing first. If you subset first and then normalize, the data is altered in kind of a weird way, especially if you’re doing Lobanov normalization. In the end I conclude that it’s better to normalize first with this justification:</p>
-<blockquote class="blockquote">
-<p>One may argue that subsetting should happen before normalization so that comparisons across studies are more meaningful. It is true that a study that collects interview data will exclude many more tokens than another study that only elicits wordlist data. An argument can be made that by subsetting before normalization, what remains from the interview study more closely matches what is even collected in the wordlist study, and therefore the effect of normalization is more comparable between the two. However, a follow-up study of the interview data that happens to focus on something that was previously excluded, like vowel trajectories, will end up with a different input into the normalization step than the first study. There will be a difference between the normalized data in the first study and the normalized data in the second study. In other words, a single token of [æ] will have different normalized F1–F2 measurements between the two studies. This makes no sense since the token has not changed whatsoever.</p>
-</blockquote>
-<p>However, I acknowledge that if speakers have markedly different sample sizes, normalization will affect them in different ways. I think this is more indicative of an imperfect normalization procedure than anything else. We just haven’t yet found a method that perfectly models the human ear. There is room to explore normalization procedures that perform better or worse when speakers’ datasets are not particularly comparable.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Anyway, I encourage you to read the paper. I enjoyed writing it. And now that I’ve closed up that loose end, maybe I can now go back to doing actual sociolinguistic research!</p>
-
-
-</section>
-
- ]]></description>
-  <category>Methods</category>
-  <category>Research</category>
-  <category>Publications</category>
-  <category>Vowel Overlap</category>
-  <guid>https://joeystanley.com/blog/new-publication-in-linguistics-vanguard/</guid>
-  <pubDate>Wed, 14 Dec 2022 15:12:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
