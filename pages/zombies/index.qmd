@@ -1,0 +1,21 @@
+---
+layout: aside
+author: Joey Stanley
+date: "1/30/2025"
+date-modified: last-modified
+title: Zombie Chant
+---
+
+Every time I teach basic phonetics/phonology, I give students [this assignment](/downloads/250130_PraatHW.pdf). It's a good assignment that walks them through making recordings and TextGrids in Praat and teaches them that sounds are not as discrete as you might think.
+
+But as a funny thing each year, I use a Praat script to take all the audio recordings, edit them so they're the same length, and then concatenate them. The result is some zombie/cult-sounding chant of this very basic sentence. I think it's hilarious, so you get to enjoy it too.
+
+| year | students | recording |
+|----------|----------|-----------| 
+| 2017 | 26 | <audio src="2017Fall.wav"   controls preload></audio> |
+| 2019 | 19 | <audio src="2019Spring.wav" controls preload></audio> |
+| 2024 | 10 | <audio src="2024Winter.wav" controls preload></audio> |
+| 2025 | 16 | <audio src="2025Winter.wav" controls preload></audio> |
+| All  | 76 | <audio src="all_2025.wav"   controls preload></audio> |
+
+Anyway, it's stupid but I love it.
