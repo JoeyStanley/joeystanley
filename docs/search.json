@@ -1677,7 +1677,7 @@
     "href": "index.html#what-am-i-up-to-right-now",
     "title": "About Me",
     "section": "What am I up to right now?",
-    "text": "What am I up to right now?\nAs of January 21, 2025, I am…\n\n\nTeaching three courses: Sounds of Language, Applied Phonetics, and Research Design.\n\n\n\n\n\n\n🎤 Collecting some lab data on prelateral vowels in American English.\n📼 Processing a few interviews from my Kohler Tapes collection and, with the help of someone much smarter than me, training a model to transcribe the rest for me.\n\n\n\n\n\n📖 Trying to read more fiction. I’m currently rereading Mistborn: The Final Empire.\n\n\n\n🧶 About a quarter of the way through knitting a new scarf for myself."
+    "text": "What am I up to right now?\nAs of February 3, 2025, I am…\n\n\nTeaching three courses: Sounds of Language, Applied Phonetics, and Research Design.\n\n\n\n\n\n\n🎤 Collecting some lab data on prelateral vowels in American English.\n📼 Processing a few interviews from my Kohler Tapes collection and, with the help of someone much smarter than me, training a model to transcribe the rest for me.\n\n\n\n\n\n📖 Trying to read more fiction. I’m currently rereading Mistborn: The Final Empire.\n\n\n\n🧶 About three quarters of the way through knitting a new scarf for myself."
   },
   {
     "objectID": "research/index.html",
@@ -4163,5 +4163,12 @@
     "title": "A new publication in Linguistics Vanguard!",
     "section": "Backstory",
     "text": "Backstory\nI enjoy learning about papers’ back stories, so here is ours.\nMay 7, 2024, Lisa and I were talking about this and pitched the idea to Earl. Earl is the one who knows how to implement this stuff, so he worked on it that month and on May 21st, he basically did a proof of concept and said “I think we may have a paper!” In June, we fine-tuned the methods and prepared the audio. We had big plans to do a more robust study with different gender dyads and audio qualities, but we figured for this proof of concept paper, we’d keep it simple. (We may submit a bigger version to JASA still.) By the end of June, we basically had the results we needed, so we submitted an abstract to LSA.\nSoon after the abstract was submitted, I figured we might as well write-up the paper. On July 17, I said let’s try and submit to Linguistics Vanguard. For the next week or so, we had a really nice asynchronous collaboration going as we each chipped away at the various parts of the paper we contributed to. (I did the vowel analysis, Lisa did the qualitative analysis, and Earl actual Python scripting). On July 26th, we submitted it!\nOn October 9th, we got a provisional accept and some useful reviewer comments. Bad timing for us because Lisa and I were about to head to NWAV. But on November 19, we returned the manuscript at 11:54am and at 7:01pm it was officially accepted! Quickest turn-around time ever! We submitted the final version on November 20th, got proofs on January 5th, we presented it at LSA on January 12th, and it was published online on January 29th.\nSo from inception (May 7) to paper submission (June 26) was 11 weeks. And from original submission to publication (January 29) was 26 weeks. Not too shabby."
+  },
+  {
+    "objectID": "pages/zombies/index.html",
+    "href": "pages/zombies/index.html",
+    "title": "Zombie Chant",
+    "section": "",
+    "text": "Every time I teach basic phonetics/phonology, I give students this assignment. It’s a good assignment that walks them through making recordings and TextGrids in Praat and teaches them that sounds are not as discrete as you might think.\nBut as a funny thing each year, I use a Praat script to take all the audio recordings, edit them so they’re the same length, and then concatenate them. The result is some zombie/cult-sounding chant of this very basic sentence. I think it’s hilarious, so you get to enjoy it too.\n\n\n\nyear\nstudents\nrecording\n\n\n\n\n2017\n26\n\n\n\n2019\n19\n\n\n\n2024\n10\n\n\n\n2025\n16\n\n\n\nAll\n76\n\n\n\n\nAnyway, it’s stupid but I love it."
   }
 ]
