@@ -1,0 +1,241 @@
+---
+layout: post
+title: A tutorial on using DARLA
+date: 2025-02-13 01:20:00 -0400
+date-modified: last-modified
+number-sections: true
+reference-location: margin
+categories:
+  - How-to Guides
+---
+
+This brief tutorial focuses on DARLA, an online tool to facilitate automatic processing phonetic data, specifically for English vowels. I'll walk you through the most common use cases, based on my experience using DARLA and what I've seen students do. There is more to DARLA than what I can show here, and I encourage you to explore its full capabilities once you've mastered the basics.^[This tutorial comes about a decade later than it should have. I hope it can still be of use to new linguistics students.]
+
+::: {.callout-note}
+I am not affiliated with the folks who created or maintain DARLA, but I have been using DARLA since soon after its release in 2015. In grad school, I processed many hundreds of files of all kinds, lengths, and qualities. I hope what I present here is not incorrect information.
+:::
+
+## What is DARLA?
+
+DARLA is a website that has various sociophonetic data processing tools installed and set up in a pipeline so that you can submit your files and have it go through various steps to get clean output in the end. The various tools it uses are either difficult to install for an average person or are no longer available for download. And even if you do have them on your computer, getting the output of one to feed nicely into the next is sometimes not a trivial task. DARLA does all the hard work of setting up the assembly line for you so that you don't have to.
+
+DARLA's ultimate goal is to provide you a spreadsheet of acoustic measurements. Specifically, vowel formant measurements at multiple points along the duration of the vowel, for every vowel in your audio. Because some of the software that it uses are based on English, it only works on English data. And while some people have had success using DARLA for other varieties of English, it is really trained only on American English. 
+
+There are three main processing steps that need to happen to go from raw audio to a spreadsheet of formant measurements. 
+
+First is transcription. We need to have a sentence- or utterance-level transcription of the audio, with timestamps, in regular English orthography. The timestamps are important. If you think about the closed captioning in a movie, it needs to know when to start showing a particular sentence and when to stop showing it. I don't know how these things work, but I suspect there's a file somewhere under-the-hood of a DVD or streaming service that has a transcription file similar to what we need to have that has the sentence, the start time and the end time. Unlike closed captioning though, our transcription needs to be in a Praat TextGrid format (see @sec-preparing_textgrids for more details). However, the transcription is done, it will help in DARLA's ultimate goal of knowing the start and end points of each vowel in the audio. 
+
+Next, is *forced-alignment*. Using a software called the Montreal Forced Aligner (or MFA).^[Created by Michael McAuliffe, Michaela Socolof, Sarah Mihuc, Michael Wagner, and Morgan Sonderegger in 2017.] ^[You can [install MFA yourself](https://montreal-forced-aligner.readthedocs.io/en/latest/), but it's not straightfoward.] This takes a sentence-level transcription and ultimately converts it to a word- and phoneme-level transcription. The way it does this is it'll first lookup every word in the transcription in some sort of pronunciation dictionary. DARLA uses the [CMU Dict](http://darla.dartmouth.edu/cmudict).^[Also available [here](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)] It'll then convert your transcription into this quasi-IPA transcription called ARPABET (see the bottom of [this page](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)). The MFA then goes through its acoustic model, which knows what each speech sound is supposed to look/sound like in an audio file. For each utterance, it then does the best job it can at matching the audio to the string of speech sounds it's expecting to find. It's a somewhat complicated process, but you don't need to fully understand it. The point is, at the end of forced alignment, MFA (and therefore DARLA) will provide you a version of your transcription that has every word and every phoneme aligned with start and end times. 
+
+Finally, we have *formant extraction*. DARLA uses a software called FAVE, which is not longer available anywhere else, to do this step. What FAVE does is it goes through the phoneme-level transcription that MFA provides, and looks at each vowel. For each one, it'll extract a whole bunch of acoustic measurements and save them into a spreadsheet. In the end FAVE (and therefore DARLA) will provide you with that spreadsheet, which you can use for whatever you want, including processing in Excel or some statistical software. 
+
+You can do all these steps yourself manually if you'd like, but that'd take forever. You can also install these pieces of software yourself and do it completely offline if you'd like too, but it takes a bit of computer know-how to get that going. Or, you can upload your files to DARLA and with a few clicks, have it do the hard work of sending it through those three processing steps. 
+
+So, the main pipeline is transcription → forced alignment (with MFA) → formant extraction (with FAVE). You can choose to do all three steps, just the last two, or just the last one. And with transcription and forced alignment, it offers a few options on how to do it.
+
+### How this tutorial will work
+
+What do you need in order to use DARLA? Well, it depends on how much automatic work you want to do. For the rest of this tutorial, it'll be a bit of a choose-your-own-adventure book. 
+
+* If all you have is an audio file and you want DARLA to do transcription, forced alignment, and formant extraction, go to @sec-completely_automated.
+
+* If you have a transcription of your audio, and want to do forced alignment and formant extraction, go to @sec-semiautomated. 
+
+* If you have a force-aligned transcription of your audio already and all you need to do is run FAVE to get formants, go to @sec-faveonly.
+
+Once you've selected the right option, many of the options are the same, so I've included @sec-further_instructions, which has further instructions that apply regardless of what method you choose. If you run into trouble, see @sec-troubleshooting. 
+
+## Completely Automated Vowel Extraction {#sec-completely_automated}
+
+If you've got an audio file and are excited to get some basic results, you can send it through DARLA's [completely automatic pipeline](http://darla.dartmouth.edu/cave). This will automatically transcribe your data using one of two speech recognition systems, and then send it off for further processing. 
+
+### DARLA's in-house transcription system
+
+The first of the two methods is DARLA's [in-house speech recognition system](http://darla.dartmouth.edu/uploadasr). You'll be presented with this interface, which is typical of all DARLA's interfaces:
+
+![](automated_inhouse.png)
+
+First, it'll ask you to upload a sound recording. They recommend audio files at least two minutes long, but it will run on slightly shorter files, although I don't know what kind of effect that has on the output. As for the next thre questions about filters, see @sec-filtering. Once you've filled out that page and hit "submit", you can jump to @sec-speaker_information.
+
+Regarding DARLA's in-house transcription, [they say](http://darla.dartmouth.edu/about#) that it's not a particularly good model and really only captures the stressed vowel. It's a model based on 400 hours of speech, but compared to contemporary speech-to-text methods, it's falls short. They say in [their write-up](https://aclanthology.org/N15-3015.pdf) that it has a 42% word-error rate and a 9% stressed vowel error rate once you've filtered out some of the bad measurements. If all you're interested in are average positions of vowel categories, you're probably okay trying it out, but for anything beyond that and I would start to think about getting a transcription.
+
+::: {.callout-tip title="My Recommendation"} 
+Only use DARLA's in-house speech recognition system if you want to get a very rough look at some vowel formants. Don't rely on it for any serious analysis of vowels.
+:::
+
+### Bed Word {#sec-bedword}
+
+The other option for completely automated transcription in DARLA is to [use a third-party software called Bed Word](http://darla.dartmouth.edu/bedword). This is a relatively new option (around 2023) and works on more than just English.
+
+::: {.callout-note title="Some backstory; feel free to skip" collapse="true"} 
+Bed Word is the brainchild of Marcus Ma, a then-undergraduate at Georgia Tech. He noticed that there are decent speech-to-text systems out there, but linguists hardly use them because the output they return is in a format that's not particularly easy for linguists to work with, especially for subsequent acoustic analysis. So, with the help of Lelia Glass (a linguist at Georgia Tech) and Jim Stanford (the person who maintains DARLA), Ma took the Deepgram model and incorporated it into a pipeline that gives a Praat TextGrid instead of some other format. I had the opportunity to meet Ma and try out Bed Word before it went live and I was impressed with how good it was!
+
+This is not the first time linguists have incorporated third-party transcription models into linguistic analysis pipelines. DARLA used to have another option that involved sending the audio through YouTube's closed captioning service. And in 2018, linguists at the University of Washington (Alicia Wassink, Rob Squizzero, Campion Fellin, and David Nichols) introduced [CLOx](https://clox.ling.washington.edu/#/), which involved using Microsoft's speech-to-text system. These let users leverage the power of models created by companies with far more money and resources than what linguists have, but in sort of a backdoor sort of way. The difference here is that Bed Word is incorporated into DARLA, and the output can be sent on to subsequent processing steps all in one go, which makes it even more convenient.
+:::
+
+Because Bed Word uses a third-party software, there's a small bit of work involved when getting started fo the first time. DARLA gives some instructions on how to do this, which will involve creating an account through [Deepgram](https://developers.deepgram.com/docs/introduction). Using Deepgram (and therefore Bed Word) is technically [not free](https://deepgram.com/pricing), but at the time of writing in February 2025, you get $200 of free credit, which is far more than what you'd need if you're a casual user of DARLA. So, you shouldn't have to worry about paying for this service.
+
+If you select this option, you'll see a screen that looks like this:
+
+![](bedword.png)
+
+There are more options than the in-house transcription. I honestly don't use Bed Word too much, so I can't offer additional insight into these options other than what DARLA has on that webpage. I encourage you to read through the explanations carefully. The main one you'll want to pay attention to is the last one. If your data is in English and you want to get formant measurements and a vowel chart, check this box so DARLA will send your files down the rest of the pipeline. 
+
+Once you've filled out the entire page and hit "submit", see @sec-speaker_information for what to next.
+
+::: {.callout-tip title="My Recommendation"}
+Bed Word is pretty good. If you plan on processing multiple files with DARLA, and you don't have other feasible options for transcribing your audio, it's worth it to get your Deepgram account set up and to use it for transcription. 
+:::
+
+
+
+
+
+## Semi-Automated Alignment and Extraction {#sec-semiautomated}
+
+Automated transcription is great, but it introduces errors and uncertainty into your analysis. If you have the time and resources to do so, it is better to provide DARLA a transcription of the audio. There are several ways to do this.
+
+* You could transcribe your audio manually using [Praat](https://www.fon.hum.uva.nl/praat/), [ELAN](https://archive.mpi.nl/tla/elan), or some other software. This is very time consuming but it is likely the best option if you are concerned about accuracy. It's a bit of a rite of passage for some linguists ([here are my thoughts](/blog/transcribing-a-sociolinguistic-corpus) when I finished transcribing my dissertation data) and there's no better way to really get to know your data than to listen and trascribe every second of it. If you're doing just one audio file, manual transcription shouldn't take too long.
+
+* If you don't have the time or resources to do a full manual transcription, you can try correcting an automatic transcription. There are *tons* of free or paid transcription services and software that you could use, including [Bed Word via DARLA](@sec-bedword). The problem though is that the output might not be in a format that can be processed by phonetic software like DARLA (i.e. a Praat TextGrid). And if the automatic transcription is not very good, you might spend just as much time correcting as you would have just transcribing it yourself.
+
+Regardless of how you get your transcriptions, in order to use the semi-automated option in DARLA, you'll need a transcription of your audio file. The format of that transcription will determine which option you use.
+
+### A TextGrid transcription
+
+Probably the most typical way of using DARLA is to provide it with a transcription in the form of a Praat TextGrid.^[It is beyond the scope of this tutorial to explain what a TextGrid is or how to prepare one. I do however have a [Praat basics tutorial](/downloads/190911-intro_to_Praat.html), which includes how to create TextGrids.] This is the method recommended by DARLA. Here are the instructions that DARLA provides when prepping your TextGrid. 
+
+![](textgrid_option.png)
+I also have some tips on how to prepare your TextGrid in @sec-preparing_textgrids, including a screenshot of what a properly prepared TextGrid looks like.
+
+Once you're prepared your TextGrid using DARLA's instructions and you've gone through my tips, you're ready to go. Here's the screen you'll see:
+
+![](textgrid_interface.png)
+
+You just need to upload your audio and your transcription file. For the filtering options see @sec-filtering. Once you hit submit, see @sec-speaker_information. 
+
+:::{.callout-tip title="My Recommendation"}
+I agree that this is the best way to use DARLA. It takes time to get the transcriptions you need, but the output is usually very clean.
+:::
+
+### A plaintext file
+
+The alternative to using a TextGrid is to upload your transcription as a "plaintext" file. If you're not even sure what this means, here's what that would look like:
+
+![](plaintext_example.png)
+
+It's not pretty, but it works. It's basically like a TextGrid transcription but without any timestamps. You might get this if you use a third-party transcription service that does not have linguistic data processing in mind. 
+
+DARLA has some instructions on how to prepare for this method, which involves removing extraneous noise from the audio file itself:
+
+![](plaintext_option.png)
+
+The last tip references the "smart replace" option (or something simliar) that a lot of word processors have. See @sec-preparing_textgrids, specifically the part about curly quotes, to get a little more clarification on what that means.
+
+The interface for this looks simliar to what was seen with the TextGrid transcriptions. Simply upload your audio and transcription file, see @sec-filtering for what to do about the filtering options, and see @sec-speaker_information for what to do once you hit the "submit" button.
+
+I don't recommend this option for a few reasons. DARLA has to work harder to get an accurate transcription. With a sentence- or utterance-level transcription, DARLA only needs to scan a few seconds of speech and match up a few dozen speech sounds to the audio. With a transcription like this without timestamps, DARLA has to scan the entire audio file and look through hundreds or thousands of speech sounds to match them up. It's far more prone to error this way, even on pristine audio. 
+
+Another reason I don't recommend it is because extraneous noise and speech errors complicate things. DARLA recommends you remove things like loud breaths and other voices. You also need to remove things like false starts or stutters, unless you want to put them in the transcriptions. And since we're used to tuning those things out, you're likely going to miss some. To me, this takes a lot of work---perhaps as much as just doing a transcription---and is still prone to error. One single "um" that you forgot to transcribe might throw off the entire transcription. It also means you're not longer working with the original audio, which makes reproducibility difficult.
+
+:::{.callout-tip title="My Recommendation"}
+I can't think of a good reason to use this option unless the transcription file you're provided is in this format. Even then, I would try to create a Praat TextGrid with what I have to make processing less error-prone.
+:::
+
+
+## FAVE only {#sec-faveonly}
+
+The last option for DARLA is to just have it extract formant measurements, given an already force-aligned TextGrid. You might need to do this if you have MFA installed on your computer already and just need to run FAVE. Or perhaps you took the MFA output that DARLA provides and made some corrections and want to get an updated spreadsheet of formant measrurements based on those updates. 
+
+This option is the last of the "semi-automated" options and the interface looks basically the same as all the others we've seen so far. Once again, see @sec-filtering for more detail on the filtering options. Once you hit submit, see @sec-speaker_information.
+
+You should know that DARLA has a tool to help [look at the quality of transcriptions](http://darla.dartmouth.edu/asreval). In all my years of using DARLA, I've actually never used this feature. It may be helpful for you if you need to compare two different transcriptions.
+
+
+## Further instructions {#sec-further_instructions}
+
+The sections below apply to multiple DARLA options, so I've put them here instead of integrated with the above walkthroughs so that I don't have to repeat myself too much. You should have been linked to these sections already if you're doing a walkthrough.
+
+### The filtering options {#sec-filtering}
+
+In pretty much every uploading interface in DARLA, you'll be presented with three filtering options: stop-words, unstressed vowels, and bandwidths:
+
+![](filtering.png)
+
+Let's go through each of these:
+
+* **stop-words**: This refers to the most common words in English. There are numerous lists of stopwords, so there's no hard-and-fast rule for what is considered a stopword and what is not. [DARLA's list](http://darla.dartmouth.edu/stopwords) is relatively small. The reason why you'd want to remove stopwords is because they tend to be phonetically reduced. Because they're so common, we tend not to say them with full vowel qualities as we might with other words. Some researchers are not interested in that kind of phonetic reduction, so they often remove stopwords from analysis because it arguably gets in the way of the patterns they hope to find. 
+
+* **unstressed vowels**: In English, unstressed vowels tend to be schwa-like or (depending on the speaker and the word) perhaps higher. Many sociophoneticians are not interested in unstressed vowels and instead focus on the vowel quality of stressed vowels. So, you can filter those out so you don't have to worry about them. Note that this makes the overall size of the file you get back from DARLA considerably smaller. 
+
+* **bandwidths**: This is a way to measure the quality of audio at the moment the vowel formant measurements are taken. Without getting into the nitty-gritty of it, a larger bandwidth just means that the sound quality is probably not great, which means the formant estimation will be less reliable. [Marinaccino, Shapp, & Singler (2021)](https://www.youtube.com/watch?v=fh7GPtzx5D8) is the only study I've seen that analyzes bandwidths directly, and they find that checking this box gives you a little less data but overall doesn't affect the results all that much. Of course, it depends highly on the audio quality: this will filter out many more vowels from digitized cassette tapes than from audio recorded in a sound booth.
+
+For what it's worth, these filtering options are not an original feature of DARLA, but I'm glad they're there.^[I'm pretty sure they were added was because my team at the University of Georgia requested the option to opt out of those filters so that we could have greater flexibility in how we filter our data.] I personally  *uncheck* all of those boxes so that I can be in control of the filters. For example, I use a different set of stopwords than what DARLA uses.^[I personally like the one called "marimo" from [the stopwords R package](https://cran.r-project.org/web/packages/stopwords/readme/README.html).]
+
+::: {.callout-tip title="My Recommendation"}
+If you are just getting started with sociophonetic analysis, say "yes" to all three of those filters. 
+
+If you are competent at sociophonetic data analysis, say "no" to all three of those filters.
+:::
+
+Whether you use those filters is up to you. I turn them all off and I advise my students to do the same.
+
+
+### Enter Speaker Information {#sec-speaker_information}
+
+Once you've filled out all the information on the form and hit the "submit" button, you'll have to wait a minute or longer for your files to upload. If you're working with large, uncompressed .wav files, it might take several minutes, depending on your internet connection. If you're working with shorter .mp3 files, it might be only a few seconds. Don't close the webpage just yet! You'll need to wait until it's fully uploaded, and only then will a couple new menu options appear that will prompt you to give the Speaker ID and their "Voice Type."
+
+![](enter_speaker_information.png)
+
+The Speaker ID is just whatever ID you use to refer to that speaker in your own records. If you're doing just a one-off analysis of your speech or something, just put your name. If it's part of a larger project, you can use the unique identifier (UT001-Joey or whatever). 
+
+For the Voice Type, this determines a setting in the acoustic analysis. Typically, you'd use the "Low" option for men or taller people, and the "High" option for women and shorter people. But it's not an exact science, so if your data comes out looking messier than you expect, try resubmitting it with the other option and see if it works better.
+
+Once you've hit "submit" this second time, you're good to go. You are now free to close that window and you should get an email confirmation saying the process has started. See @sec-output for more detail on what you do once DARLA has started processing your files.
+
+
+## Troubleshooting {#sec-troubleshooting}
+
+### Preparing TextGrids {#sec-preparing_textgrids}
+
+I have prepared hundreds of files for DARLA, so I've seen what works and what doesn't Here are a few tips you should keep in mind when preparing your TextGrids to reduce the likelihood of DARLA crashing or otherwise being unable to process your file.
+
+* Make sure the tier you want to be transcribed by DARLA is called "sentence".
+
+* Don't use digits in the transcription. So, type "nine" instead of "9". This applies to dates and years too. For years, this is actually important because DARLA won't know whether "2017" is "twenty-seventeen" or "two thousand seventeen." It might be unnatural to type those out, but it makes for a more accurate transcription and it'll prevent some errors when processing it with DARLA.
+
+* Don't use curly quotes and apostrophes. To understand what I mean by that, I'll need to get into some typographical detail, but it's important. Every time you type the apostrophe or double-quote character, there's a possibility that it'll convert into a curly quote character. Here is a straight apostrophe (  `'` ) and double quote ( `"` ) and here is a curly apostrophe ( ‘ ) or ( ’ ) and a curly double quote ( “ ) and ( ” )^[For more information about quotes, see [Butterick's Practical Typography](https://practicaltypography.com/straight-and-curly-quotes.html).]. Not all software does this conversion automatically---Praat and ELAN do not---but if you're copying text over from Microsoft Word or some other program, it's likely that there are curly quotes in there. The reason all this matter is *DARLA will crash if it encounters a curly quote character*! So you'll need to learn to spot them and change them back to straight quotes before uploading it to DARLA.
+
+* Avoid very short intervals. 
+
+* Avoid including sharp intakes of breath in a transcribed interval. DARLA may think it's an [h] sound which could mess up the rest of that interval. So, even if it's mid-sentence, end an interval before the breath and start a new one after it. (In general, the way to exclude something from being analyzed in DARLA is to simply put it in an empty interval.)
+
+Here is an example of what a TextGrid prepared for DARLA looks like:
+
+:::{.column-screen}
+![](textgrid_example.png)
+:::
+
+Here, you can see I have just one tier and it's called "sentence". You can add more tiers if you want (and you probably should if you want to transcribe additional people, make a note of extraneous noise, or have other annotations). Notice that the number is spelled out. And notice at the very end a loud sound (it was the interviewer saying something like "mm" as some verbal feedback). To have DARLA ignore it, I just left that interval blank.
+
+
+
+## DARLA's output {#sec-output}
+
+If everything goes well, you should get two emails from DARLA. The first comes a few moments after you've submitted your files. It is just a confirmation to let you know that the processing has started. The second comes a few minutes later (perhaps up to 20 minutes) and contains five files for you. Let's look at those individually.
+
+* **formants.csv**: this is the whole reason you used DARLA. It contains all the formant measurements for the entire file. Unfortunately, it's out of the scope of this tutorial to go through that file in depth, but I hope to have a separate tutorial on that soon.
+
+* **formants.fornorm.tsv**: this is the same data as in formants.csv, but it's formatted in a specific way so that it can be read in by an online tool called [NORM](http://lingtools.uoregon.edu/norm/). That site is used for normalizing vowel formant data. If you're not sure what that means or how to use NORM that's okay---it's a bit of an outdated tool nowadays anyway. I usually do nothing with that file.
+
+* some sort of **.TextGrid** file: this is the word- and phoneme-level transcription provided by MFA. 
+
+* **transcription.txt**: This contains just the text of the transcription file. This is useful in case you want to create a text corpus of your audio files. This file can easily be read into a program like [AntConc](https://www.laurenceanthony.net/software/antconc/). 
+
+* **plot.pdf**: A basic vowel plot of your data. I have some issues with this plot because it's often a bit misleading. All vowels are averaged across the entire dataset to get these points, but the problem is it includes things like prerhotic and prenasal allophones which can throw everything off. If you don't have any other data processing skills, this plot is the best you've got. (Stay tuned for an online tool I've created to help with creating interactive vowel plots based on DARLA data for people who don't have coding skills!) 
+
+Once you've got those files, you're good! Save them in a place that makes sense, probably in the same folder with the audio and original transcription or maybe in a separate subfolder called "DARLA."
+
+## Conclusion
+
+As far as where to go from here, well, that's the next step in sociophonetic data processing! If you want to learn to make your own vowel plots, I have [a tutorial](https://joeystanley.com/blog/making-vowel-plots-in-r-part-1/) that walks you through how to do so, and it's even based on a DARLA-generated spreadsheet! For all other data processing, try to find books, websites, or advisors who can help you go from there.
