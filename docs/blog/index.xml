@@ -10,7 +10,327 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Thu, 09 Jan 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 13 Feb 2025 05:20:00 GMT</lastBuildDate>
+<item>
+  <title>A tutorial on using DARLA</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/darla/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This brief tutorial focuses on DARLA, an online tool to facilitate automatic processing phonetic data, specifically for English vowels. I’ll walk you through the most common use cases, based on my experience using DARLA and what I’ve seen students do. There is more to DARLA than what I can show here, and I encourage you to explore its full capabilities once you’ve mastered the basics.<sup>1</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This tutorial comes about a decade later than it should have. I hope it can still be of use to new linguistics students.</p></div></div><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I am not affiliated with the folks who created or maintain DARLA, but I have been using DARLA since soon after its release in 2015. In grad school, I processed many hundreds of files of all kinds, lengths, and qualities. I hope what I present here is not incorrect information.</p>
+</div>
+</div>
+<section id="what-is-darla" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="what-is-darla"><span class="header-section-number">1</span> What is DARLA?</h2>
+<p>DARLA is a website that has various sociophonetic data processing tools installed and set up in a pipeline so that you can submit your files and have it go through various steps to get clean output in the end. The various tools it uses are either difficult to install for an average person or are no longer available for download. And even if you do have them on your computer, getting the output of one to feed nicely into the next is sometimes not a trivial task. DARLA does all the hard work of setting up the assembly line for you so that you don’t have to.</p>
+<p>DARLA’s ultimate goal is to provide you a spreadsheet of acoustic measurements. Specifically, vowel formant measurements at multiple points along the duration of the vowel, for every vowel in your audio. Because some of the software that it uses are based on English, it only works on English data. And while some people have had success using DARLA for other varieties of English, it is really trained only on American English.</p>
+<p>There are three main processing steps that need to happen to go from raw audio to a spreadsheet of formant measurements.</p>
+<p>First is transcription. We need to have a sentence- or utterance-level transcription of the audio, with timestamps, in regular English orthography. The timestamps are important. If you think about the closed captioning in a movie, it needs to know when to start showing a particular sentence and when to stop showing it. I don’t know how these things work, but I suspect there’s a file somewhere under-the-hood of a DVD or streaming service that has a transcription file similar to what we need to have that has the sentence, the start time and the end time. Unlike closed captioning though, our transcription needs to be in a Praat TextGrid format (see Section&nbsp;6.1 for more details). However, the transcription is done, it will help in DARLA’s ultimate goal of knowing the start and end points of each vowel in the audio.</p>
+<p>Next, is <em>forced-alignment</em>. Using a software called the Montreal Forced Aligner (or MFA).<sup>2</sup> <sup>3</sup> This takes a sentence-level transcription and ultimately converts it to a word- and phoneme-level transcription. The way it does this is it’ll first lookup every word in the transcription in some sort of pronunciation dictionary. DARLA uses the <a href="http://darla.dartmouth.edu/cmudict">CMU Dict</a>.<sup>4</sup> It’ll then convert your transcription into this quasi-IPA transcription called ARPABET (see the bottom of <a href="http://www.speech.cs.cmu.edu/cgi-bin/cmudict">this page</a>). The MFA then goes through its acoustic model, which knows what each speech sound is supposed to look/sound like in an audio file. For each utterance, it then does the best job it can at matching the audio to the string of speech sounds it’s expecting to find. It’s a somewhat complicated process, but you don’t need to fully understand it. The point is, at the end of forced alignment, MFA (and therefore DARLA) will provide you a version of your transcription that has every word and every phoneme aligned with start and end times.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Created by Michael McAuliffe, Michaela Socolof, Sarah Mihuc, Michael Wagner, and Morgan Sonderegger in 2017.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;You can <a href="https://montreal-forced-aligner.readthedocs.io/en/latest/">install MFA yourself</a>, but it’s not straightfoward.</p></div><div id="fn4"><p><sup>4</sup>&nbsp;Also available <a href="http://www.speech.cs.cmu.edu/cgi-bin/cmudict">here</a></p></div></div><p>Finally, we have <em>formant extraction</em>. DARLA uses a software called FAVE, which is not longer available anywhere else, to do this step. What FAVE does is it goes through the phoneme-level transcription that MFA provides, and looks at each vowel. For each one, it’ll extract a whole bunch of acoustic measurements and save them into a spreadsheet. In the end FAVE (and therefore DARLA) will provide you with that spreadsheet, which you can use for whatever you want, including processing in Excel or some statistical software.</p>
+<p>You can do all these steps yourself manually if you’d like, but that’d take forever. You can also install these pieces of software yourself and do it completely offline if you’d like too, but it takes a bit of computer know-how to get that going. Or, you can upload your files to DARLA and with a few clicks, have it do the hard work of sending it through those three processing steps.</p>
+<p>So, the main pipeline is transcription → forced alignment (with MFA) → formant extraction (with FAVE). You can choose to do all three steps, just the last two, or just the last one. And with transcription and forced alignment, it offers a few options on how to do it.</p>
+<section id="how-this-tutorial-will-work" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="how-this-tutorial-will-work"><span class="header-section-number">1.1</span> How this tutorial will work</h3>
+<p>What do you need in order to use DARLA? Well, it depends on how much automatic work you want to do. For the rest of this tutorial, it’ll be a bit of a choose-your-own-adventure book.</p>
+<ul>
+<li><p>If all you have is an audio file and you want DARLA to do transcription, forced alignment, and formant extraction, go to Section&nbsp;2.</p></li>
+<li><p>If you have a transcription of your audio, and want to do forced alignment and formant extraction, go to Section&nbsp;3.</p></li>
+<li><p>If you have a force-aligned transcription of your audio already and all you need to do is run FAVE to get formants, go to Section&nbsp;4.</p></li>
+</ul>
+<p>Once you’ve selected the right option, many of the options are the same, so I’ve included Section&nbsp;5, which has further instructions that apply regardless of what method you choose. If you run into trouble, see Section&nbsp;6.</p>
+</section>
+</section>
+<section id="sec-completely_automated" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="sec-completely_automated"><span class="header-section-number">2</span> Completely Automated Vowel Extraction</h2>
+<p>If you’ve got an audio file and are excited to get some basic results, you can send it through DARLA’s <a href="http://darla.dartmouth.edu/cave">completely automatic pipeline</a>. This will automatically transcribe your data using one of two speech recognition systems, and then send it off for further processing.</p>
+<section id="darlas-in-house-transcription-system" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="darlas-in-house-transcription-system"><span class="header-section-number">2.1</span> DARLA’s in-house transcription system</h3>
+<p>The first of the two methods is DARLA’s <a href="http://darla.dartmouth.edu/uploadasr">in-house speech recognition system</a>. You’ll be presented with this interface, which is typical of all DARLA’s interfaces:</p>
+<p><img src="https://joeystanley.com/blog/darla/automated_inhouse.png" class="img-fluid"></p>
+<p>First, it’ll ask you to upload a sound recording. They recommend audio files at least two minutes long, but it will run on slightly shorter files, although I don’t know what kind of effect that has on the output. As for the next thre questions about filters, see Section&nbsp;5.1. Once you’ve filled out that page and hit “submit”, you can jump to Section&nbsp;5.2.</p>
+<p>Regarding DARLA’s in-house transcription, <a href="http://darla.dartmouth.edu/about#">they say</a> that it’s not a particularly good model and really only captures the stressed vowel. It’s a model based on 400 hours of speech, but compared to contemporary speech-to-text methods, it’s falls short. They say in <a href="https://aclanthology.org/N15-3015.pdf">their write-up</a> that it has a 42% word-error rate and a 9% stressed vowel error rate once you’ve filtered out some of the bad measurements. If all you’re interested in are average positions of vowel categories, you’re probably okay trying it out, but for anything beyond that and I would start to think about getting a transcription.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="My Recommendation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+My Recommendation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Only use DARLA’s in-house speech recognition system if you want to get a very rough look at some vowel formants. Don’t rely on it for any serious analysis of vowels.</p>
+</div>
+</div>
+</section>
+<section id="sec-bedword" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="sec-bedword"><span class="header-section-number">2.2</span> Bed Word</h3>
+<p>The other option for completely automated transcription in DARLA is to <a href="http://darla.dartmouth.edu/bedword">use a third-party software called Bed Word</a>. This is a relatively new option (around 2023) and works on more than just English.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Some backstory; feel free to skip">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Some backstory; feel free to skip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Bed Word is the brainchild of Marcus Ma, a then-undergraduate at Georgia Tech. He noticed that there are decent speech-to-text systems out there, but linguists hardly use them because the output they return is in a format that’s not particularly easy for linguists to work with, especially for subsequent acoustic analysis. So, with the help of Lelia Glass (a linguist at Georgia Tech) and Jim Stanford (the person who maintains DARLA), Ma took the Deepgram model and incorporated it into a pipeline that gives a Praat TextGrid instead of some other format. I had the opportunity to meet Ma and try out Bed Word before it went live and I was impressed with how good it was!</p>
+<p>This is not the first time linguists have incorporated third-party transcription models into linguistic analysis pipelines. DARLA used to have another option that involved sending the audio through YouTube’s closed captioning service. And in 2018, linguists at the University of Washington (Alicia Wassink, Rob Squizzero, Campion Fellin, and David Nichols) introduced <a href="https://clox.ling.washington.edu/#/">CLOx</a>, which involved using Microsoft’s speech-to-text system. These let users leverage the power of models created by companies with far more money and resources than what linguists have, but in sort of a backdoor sort of way. The difference here is that Bed Word is incorporated into DARLA, and the output can be sent on to subsequent processing steps all in one go, which makes it even more convenient.</p>
+</div>
+</div>
+</div>
+<p>Because Bed Word uses a third-party software, there’s a small bit of work involved when getting started fo the first time. DARLA gives some instructions on how to do this, which will involve creating an account through <a href="https://developers.deepgram.com/docs/introduction">Deepgram</a>. Using Deepgram (and therefore Bed Word) is technically <a href="https://deepgram.com/pricing">not free</a>, but at the time of writing in February 2025, you get $200 of free credit, which is far more than what you’d need if you’re a casual user of DARLA. So, you shouldn’t have to worry about paying for this service.</p>
+<p>If you select this option, you’ll see a screen that looks like this:</p>
+<p><img src="https://joeystanley.com/blog/darla/bedword.png" class="img-fluid"></p>
+<p>There are more options than the in-house transcription. I honestly don’t use Bed Word too much, so I can’t offer additional insight into these options other than what DARLA has on that webpage. I encourage you to read through the explanations carefully. The main one you’ll want to pay attention to is the last one. If your data is in English and you want to get formant measurements and a vowel chart, check this box so DARLA will send your files down the rest of the pipeline.</p>
+<p>Once you’ve filled out the entire page and hit “submit”, see Section&nbsp;5.2 for what to next.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="My Recommendation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+My Recommendation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bed Word is pretty good. If you plan on processing multiple files with DARLA, and you don’t have other feasible options for transcribing your audio, it’s worth it to get your Deepgram account set up and to use it for transcription.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-semiautomated" class="level2 page-columns page-full" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="sec-semiautomated"><span class="header-section-number">3</span> Semi-Automated Alignment and Extraction</h2>
+<p>Automated transcription is great, but it introduces errors and uncertainty into your analysis. If you have the time and resources to do so, it is better to provide DARLA a transcription of the audio. There are several ways to do this.</p>
+<ul>
+<li><p>You could transcribe your audio manually using <a href="https://www.fon.hum.uva.nl/praat/">Praat</a>, <a href="https://archive.mpi.nl/tla/elan">ELAN</a>, or some other software. This is very time consuming but it is likely the best option if you are concerned about accuracy. It’s a bit of a rite of passage for some linguists (<a href="../../blog/transcribing-a-sociolinguistic-corpus">here are my thoughts</a> when I finished transcribing my dissertation data) and there’s no better way to really get to know your data than to listen and trascribe every second of it. If you’re doing just one audio file, manual transcription shouldn’t take too long.</p></li>
+<li><p>If you don’t have the time or resources to do a full manual transcription, you can try correcting an automatic transcription. There are <em>tons</em> of free or paid transcription services and software that you could use, including <a href="@sec-bedword">Bed Word via DARLA</a>. The problem though is that the output might not be in a format that can be processed by phonetic software like DARLA (i.e.&nbsp;a Praat TextGrid). And if the automatic transcription is not very good, you might spend just as much time correcting as you would have just transcribing it yourself.</p></li>
+</ul>
+<p>Regardless of how you get your transcriptions, in order to use the semi-automated option in DARLA, you’ll need a transcription of your audio file. The format of that transcription will determine which option you use.</p>
+<section id="a-textgrid-transcription" class="level3 page-columns page-full" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="a-textgrid-transcription"><span class="header-section-number">3.1</span> A TextGrid transcription</h3>
+<p>Probably the most typical way of using DARLA is to provide it with a transcription in the form of a Praat TextGrid.<sup>5</sup> This is the method recommended by DARLA. Here are the instructions that DARLA provides when prepping your TextGrid.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;It is beyond the scope of this tutorial to explain what a TextGrid is or how to prepare one. I do however have a <a href="../../downloads/190911-intro_to_Praat.html">Praat basics tutorial</a>, which includes how to create TextGrids.</p></div></div><p><img src="https://joeystanley.com/blog/darla/textgrid_option.png" class="img-fluid"> I also have some tips on how to prepare your TextGrid in Section&nbsp;6.1, including a screenshot of what a properly prepared TextGrid looks like.</p>
+<p>Once you’re prepared your TextGrid using DARLA’s instructions and you’ve gone through my tips, you’re ready to go. Here’s the screen you’ll see:</p>
+<p><img src="https://joeystanley.com/blog/darla/textgrid_interface.png" class="img-fluid"></p>
+<p>You just need to upload your audio and your transcription file. For the filtering options see Section&nbsp;5.1. Once you hit submit, see Section&nbsp;5.2.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="My Recommendation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+My Recommendation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I agree that this is the best way to use DARLA. It takes time to get the transcriptions you need, but the output is usually very clean.</p>
+</div>
+</div>
+</section>
+<section id="a-plaintext-file" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="a-plaintext-file"><span class="header-section-number">3.2</span> A plaintext file</h3>
+<p>The alternative to using a TextGrid is to upload your transcription as a “plaintext” file. If you’re not even sure what this means, here’s what that would look like:</p>
+<p><img src="https://joeystanley.com/blog/darla/plaintext_example.png" class="img-fluid"></p>
+<p>It’s not pretty, but it works. It’s basically like a TextGrid transcription but without any timestamps. You might get this if you use a third-party transcription service that does not have linguistic data processing in mind.</p>
+<p>DARLA has some instructions on how to prepare for this method, which involves removing extraneous noise from the audio file itself:</p>
+<p><img src="https://joeystanley.com/blog/darla/plaintext_option.png" class="img-fluid"></p>
+<p>The last tip references the “smart replace” option (or something simliar) that a lot of word processors have. See Section&nbsp;6.1, specifically the part about curly quotes, to get a little more clarification on what that means.</p>
+<p>The interface for this looks simliar to what was seen with the TextGrid transcriptions. Simply upload your audio and transcription file, see Section&nbsp;5.1 for what to do about the filtering options, and see Section&nbsp;5.2 for what to do once you hit the “submit” button.</p>
+<p>I don’t recommend this option for a few reasons. DARLA has to work harder to get an accurate transcription. With a sentence- or utterance-level transcription, DARLA only needs to scan a few seconds of speech and match up a few dozen speech sounds to the audio. With a transcription like this without timestamps, DARLA has to scan the entire audio file and look through hundreds or thousands of speech sounds to match them up. It’s far more prone to error this way, even on pristine audio.</p>
+<p>Another reason I don’t recommend it is because extraneous noise and speech errors complicate things. DARLA recommends you remove things like loud breaths and other voices. You also need to remove things like false starts or stutters, unless you want to put them in the transcriptions. And since we’re used to tuning those things out, you’re likely going to miss some. To me, this takes a lot of work—perhaps as much as just doing a transcription—and is still prone to error. One single “um” that you forgot to transcribe might throw off the entire transcription. It also means you’re not longer working with the original audio, which makes reproducibility difficult.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="My Recommendation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+My Recommendation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I can’t think of a good reason to use this option unless the transcription file you’re provided is in this format. Even then, I would try to create a Praat TextGrid with what I have to make processing less error-prone.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-faveonly" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="sec-faveonly"><span class="header-section-number">4</span> FAVE only</h2>
+<p>The last option for DARLA is to just have it extract formant measurements, given an already force-aligned TextGrid. You might need to do this if you have MFA installed on your computer already and just need to run FAVE. Or perhaps you took the MFA output that DARLA provides and made some corrections and want to get an updated spreadsheet of formant measrurements based on those updates.</p>
+<p>This option is the last of the “semi-automated” options and the interface looks basically the same as all the others we’ve seen so far. Once again, see Section&nbsp;5.1 for more detail on the filtering options. Once you hit submit, see Section&nbsp;5.2.</p>
+<p>You should know that DARLA has a tool to help <a href="http://darla.dartmouth.edu/asreval">look at the quality of transcriptions</a>. In all my years of using DARLA, I’ve actually never used this feature. It may be helpful for you if you need to compare two different transcriptions.</p>
+</section>
+<section id="sec-further_instructions" class="level2 page-columns page-full" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="sec-further_instructions"><span class="header-section-number">5</span> Further instructions</h2>
+<p>The sections below apply to multiple DARLA options, so I’ve put them here instead of integrated with the above walkthroughs so that I don’t have to repeat myself too much. You should have been linked to these sections already if you’re doing a walkthrough.</p>
+<section id="sec-filtering" class="level3 page-columns page-full" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="sec-filtering"><span class="header-section-number">5.1</span> The filtering options</h3>
+<p>In pretty much every uploading interface in DARLA, you’ll be presented with three filtering options: stop-words, unstressed vowels, and bandwidths:</p>
+<p><img src="https://joeystanley.com/blog/darla/filtering.png" class="img-fluid"></p>
+<p>Let’s go through each of these:</p>
+<ul>
+<li><p><strong>stop-words</strong>: This refers to the most common words in English. There are numerous lists of stopwords, so there’s no hard-and-fast rule for what is considered a stopword and what is not. <a href="http://darla.dartmouth.edu/stopwords">DARLA’s list</a> is relatively small. The reason why you’d want to remove stopwords is because they tend to be phonetically reduced. Because they’re so common, we tend not to say them with full vowel qualities as we might with other words. Some researchers are not interested in that kind of phonetic reduction, so they often remove stopwords from analysis because it arguably gets in the way of the patterns they hope to find.</p></li>
+<li><p><strong>unstressed vowels</strong>: In English, unstressed vowels tend to be schwa-like or (depending on the speaker and the word) perhaps higher. Many sociophoneticians are not interested in unstressed vowels and instead focus on the vowel quality of stressed vowels. So, you can filter those out so you don’t have to worry about them. Note that this makes the overall size of the file you get back from DARLA considerably smaller.</p></li>
+<li><p><strong>bandwidths</strong>: This is a way to measure the quality of audio at the moment the vowel formant measurements are taken. Without getting into the nitty-gritty of it, a larger bandwidth just means that the sound quality is probably not great, which means the formant estimation will be less reliable. <a href="https://www.youtube.com/watch?v=fh7GPtzx5D8">Marinaccino, Shapp, &amp; Singler (2021)</a> is the only study I’ve seen that analyzes bandwidths directly, and they find that checking this box gives you a little less data but overall doesn’t affect the results all that much. Of course, it depends highly on the audio quality: this will filter out many more vowels from digitized cassette tapes than from audio recorded in a sound booth.</p></li>
+</ul>
+<p>For what it’s worth, these filtering options are not an original feature of DARLA, but I’m glad they’re there.<sup>6</sup> I personally <em>uncheck</em> all of those boxes so that I can be in control of the filters. For example, I use a different set of stopwords than what DARLA uses.<sup>7</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;I’m pretty sure they were added was because my team at the University of Georgia requested the option to opt out of those filters so that we could have greater flexibility in how we filter our data.</p></div><div id="fn7"><p><sup>7</sup>&nbsp;I personally like the one called “marimo” from <a href="https://cran.r-project.org/web/packages/stopwords/readme/README.html">the stopwords R package</a>.</p></div></div><div class="callout callout-style-default callout-tip callout-titled" title="My Recommendation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+My Recommendation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are just getting started with sociophonetic analysis, say “yes” to all three of those filters.</p>
+<p>If you are competent at sociophonetic data analysis, say “no” to all three of those filters.</p>
+</div>
+</div>
+<p>Whether you use those filters is up to you. I turn them all off and I advise my students to do the same.</p>
+</section>
+<section id="sec-speaker_information" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="sec-speaker_information"><span class="header-section-number">5.2</span> Enter Speaker Information</h3>
+<p>Once you’ve filled out all the information on the form and hit the “submit” button, you’ll have to wait a minute or longer for your files to upload. If you’re working with large, uncompressed .wav files, it might take several minutes, depending on your internet connection. If you’re working with shorter .mp3 files, it might be only a few seconds. Don’t close the webpage just yet! You’ll need to wait until it’s fully uploaded, and only then will a couple new menu options appear that will prompt you to give the Speaker ID and their “Voice Type.”</p>
+<p><img src="https://joeystanley.com/blog/darla/enter_speaker_information.png" class="img-fluid"></p>
+<p>The Speaker ID is just whatever ID you use to refer to that speaker in your own records. If you’re doing just a one-off analysis of your speech or something, just put your name. If it’s part of a larger project, you can use the unique identifier (UT001-Joey or whatever).</p>
+<p>For the Voice Type, this determines a setting in the acoustic analysis. Typically, you’d use the “Low” option for men or taller people, and the “High” option for women and shorter people. But it’s not an exact science, so if your data comes out looking messier than you expect, try resubmitting it with the other option and see if it works better.</p>
+<p>Once you’ve hit “submit” this second time, you’re good to go. You are now free to close that window and you should get an email confirmation saying the process has started. See Section&nbsp;7 for more detail on what you do once DARLA has started processing your files.</p>
+</section>
+</section>
+<section id="sec-troubleshooting" class="level2 page-columns page-full" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="sec-troubleshooting"><span class="header-section-number">6</span> Troubleshooting</h2>
+<section id="sec-preparing_textgrids" class="level3 page-columns page-full" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="sec-preparing_textgrids"><span class="header-section-number">6.1</span> Preparing TextGrids</h3>
+<p>I have prepared hundreds of files for DARLA, so I’ve seen what works and what doesn’t Here are a few tips you should keep in mind when preparing your TextGrids to reduce the likelihood of DARLA crashing or otherwise being unable to process your file.</p>
+<ul>
+<li><p>Make sure the tier you want to be transcribed by DARLA is called “sentence”.</p></li>
+<li><p>Don’t use digits in the transcription. So, type “nine” instead of “9”. This applies to dates and years too. For years, this is actually important because DARLA won’t know whether “2017” is “twenty-seventeen” or “two thousand seventeen.” It might be unnatural to type those out, but it makes for a more accurate transcription and it’ll prevent some errors when processing it with DARLA.</p></li>
+<li><p>Don’t use curly quotes and apostrophes. To understand what I mean by that, I’ll need to get into some typographical detail, but it’s important. Every time you type the apostrophe or double-quote character, there’s a possibility that it’ll convert into a curly quote character. Here is a straight apostrophe ( <code>'</code> ) and double quote ( <code>"</code> ) and here is a curly apostrophe ( ‘ ) or ( ’ ) and a curly double quote ( “ ) and ( ” )<sup>8</sup>. Not all software does this conversion automatically—Praat and ELAN do not—but if you’re copying text over from Microsoft Word or some other program, it’s likely that there are curly quotes in there. The reason all this matter is <em>DARLA will crash if it encounters a curly quote character</em>! So you’ll need to learn to spot them and change them back to straight quotes before uploading it to DARLA.</p></li>
+<li><p>Avoid very short intervals.</p></li>
+<li><p>Avoid including sharp intakes of breath in a transcribed interval. DARLA may think it’s an [h] sound which could mess up the rest of that interval. So, even if it’s mid-sentence, end an interval before the breath and start a new one after it. (In general, the way to exclude something from being analyzed in DARLA is to simply put it in an empty interval.)</p></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;For more information about quotes, see <a href="https://practicaltypography.com/straight-and-curly-quotes.html">Butterick’s Practical Typography</a>.</p></div></div><p>Here is an example of what a TextGrid prepared for DARLA looks like:</p>
+<div class="column-screen">
+<p><img src="https://joeystanley.com/blog/darla/textgrid_example.png" class="img-fluid"></p>
+</div>
+<p>Here, you can see I have just one tier and it’s called “sentence”. You can add more tiers if you want (and you probably should if you want to transcribe additional people, make a note of extraneous noise, or have other annotations). Notice that the number is spelled out. And notice at the very end a loud sound (it was the interviewer saying something like “mm” as some verbal feedback). To have DARLA ignore it, I just left that interval blank.</p>
+</section>
+</section>
+<section id="sec-output" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="sec-output"><span class="header-section-number">7</span> DARLA’s output</h2>
+<p>If everything goes well, you should get two emails from DARLA. The first comes a few moments after you’ve submitted your files. It is just a confirmation to let you know that the processing has started. The second comes a few minutes later (perhaps up to 20 minutes) and contains five files for you. Let’s look at those individually.</p>
+<ul>
+<li><p><strong>formants.csv</strong>: this is the whole reason you used DARLA. It contains all the formant measurements for the entire file. Unfortunately, it’s out of the scope of this tutorial to go through that file in depth, but I hope to have a separate tutorial on that soon.</p></li>
+<li><p><strong>formants.fornorm.tsv</strong>: this is the same data as in formants.csv, but it’s formatted in a specific way so that it can be read in by an online tool called <a href="http://lingtools.uoregon.edu/norm/">NORM</a>. That site is used for normalizing vowel formant data. If you’re not sure what that means or how to use NORM that’s okay—it’s a bit of an outdated tool nowadays anyway. I usually do nothing with that file.</p></li>
+<li><p>some sort of <strong>.TextGrid</strong> file: this is the word- and phoneme-level transcription provided by MFA.</p></li>
+<li><p><strong>transcription.txt</strong>: This contains just the text of the transcription file. This is useful in case you want to create a text corpus of your audio files. This file can easily be read into a program like <a href="https://www.laurenceanthony.net/software/antconc/">AntConc</a>.</p></li>
+<li><p><strong>plot.pdf</strong>: A basic vowel plot of your data. I have some issues with this plot because it’s often a bit misleading. All vowels are averaged across the entire dataset to get these points, but the problem is it includes things like prerhotic and prenasal allophones which can throw everything off. If you don’t have any other data processing skills, this plot is the best you’ve got. (Stay tuned for an online tool I’ve created to help with creating interactive vowel plots based on DARLA data for people who don’t have coding skills!)</p></li>
+</ul>
+<p>Once you’ve got those files, you’re good! Save them in a place that makes sense, probably in the same folder with the audio and original transcription or maybe in a separate subfolder called “DARLA.”</p>
+</section>
+<section id="conclusion" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8</span> Conclusion</h2>
+<p>As far as where to go from here, well, that’s the next step in sociophonetic data processing! If you want to learn to make your own vowel plots, I have <a href="https://joeystanley.com/blog/making-vowel-plots-in-r-part-1/">a tutorial</a> that walks you through how to do so, and it’s even based on a DARLA-generated spreadsheet! For all other data processing, try to find books, websites, or advisors who can help you go from there.</p>
+
+
+</section>
+
+
+ ]]></description>
+  <category>How-to Guides</category>
+  <guid>https://joeystanley.com/blog/darla/</guid>
+  <pubDate>Thu, 13 Feb 2025 05:20:00 GMT</pubDate>
+</item>
+<item>
+  <title>A new publication in Linguistics Vanguard!</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/source_separation/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Together with my co-authors, Lisa Morgan Johnson and Earl Kjar Brown, I’m happy to announce <a href="https://www.degruyter.com/document/doi/10.1515/lingvan-2024-0152/html">a new publication in <em>Linguistics Vanguard</em></a>!</p>
+<section id="a-brief-summary" class="level2">
+<h2 class="anchored" data-anchor-id="a-brief-summary">A “Brief” Summary</h2>
+<p>The problem that sociophoneticians face when working with interview data—particularly recordings not originally intended for linguistic analysis like older oral narratives—is overlapping speech. When two people talk at the same time, it is usually impossible to get reliable formant measurements automatically. My impression is that that data is somehow tagged or detected as overlapping speech and is excluded. When you’re working with shorter recordings that don’t have a lot of data to begin with, it would be nice to recover that data.</p>
+<p>So, we introduce source separation. It’s an algorithm that takes in a single audio file containing speech from multiple speakers, and split it up into different audio files, one for each speaker. It detects when each speaker is talking (aka <em>diarization</em>) and then uses fancy models to separate the speakers from each other. In theory, this is a great way to recover data that would have otherwise been excluded.</p>
+<p>The purpose of this paper then is to see whether such source separation models can feasibly be incorporated into a sociophonetic pipeline. In other words, is the output of a source separation model reliable enough that we can trust the formant measurements that come from the separated audio?</p>
+<p>We decided to stress test the method. We took some audio I collected in grad school of two speakers, a man and a woman from Georgia. On separate occasions, they both read 300 sentences in a sound booth. We then overlayed that audio to create a very cacophonous audio file of the two of them talking at the same time for 30 minutes.</p>
+<p>We then used three source separation models to separate the two speakers: Libri2, Whamr, and WSJ02. This created six new audio files, one for each speaker and for each model. Combine those with the two original audio files, and we had eight.</p>
+<p>For each of the eight files, we sent them through a typical sociophonetic pipeline. First, the originals were manually transcribed at the utterance-level and we used those transcriptions for the their respective derived source-separated audio. We then sent the audio and transcriptions through DARLA to have them force-aligned with MFA and formant-extracted with FAVE. We then followed the same order of operations to process them. In the end, we had four versions of spreadsheets of formant measurements for each speaker’s audio recording. We could then compare them to each other.</p>
+<p>First, while coming through the audio, we noticed that two of the models did a pretty good job. But one, the WSJ02 didn’t. We don’t really recommend that one.</p>
+<p>Looking through the vowel plots, we’re surprised at how good they were, especially compared to the original. In these vowel plots (the female is on the left and the male is on the right), all four panels look pretty similar for the most part, and they all look like the top left panel which has the original audio.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://joeystanley.com/blog/source_separation/female.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://joeystanley.com/blog/source_separation/male.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>However, when we ran statistical tests on the formant data and compared them to the original, there were some statistically significant differences. But thy varied depending on the vowel, the model, and the speaker. In this plot, red dots are statistically significant differences. But there are many gray dots, meaning the difference between the source-separated audio and the original was not significant much of the time.</p>
+<p><img src="https://joeystanley.com/blog/source_separation/pairwise_comparisons.png" class="img-fluid"></p>
+<p>Then when we zero in on specific comparison and then draw lines connecting points that came from the same observation in the two recordings, we see a fair number of differences. So, while the means may be comparable, the values from any one observation may not be close to the original. Thi sis a similar finding to what Strelluf &amp; Gordon report in <a href="https://rowman.com/ISBN/9781498597265/The-Origins-of-Missouri-English-A-Historical-Sociophonetic-Analysis">their book on historical sociophonetics</a>.</p>
+<p><img src="https://joeystanley.com/blog/source_separation/boxplot_comparisons.png" class="img-fluid"></p>
+<p>So, we are cautiously optimistic about this. If you only model vowel means, you can probably feel comfortable doing so on source-separated data. But if you want to look at individual tokens, maybe not. Fortunately, most audio will not be as overlapped as this, so the effect will be smaller. Although, for dyads of speakers with similar sounding voices, it might not be as good.</p>
+<p>We end with some recommendations, which I repeat here:</p>
+<ul>
+<li><p>Experiment with different models to find the one that is most suitable. In this rapidly developing field, models improve over time and new options emerge. So, rather than clinging to one that works, continuously explore potentially better tools.</p></li>
+<li><p>Split audio at natural breaks rather than equal intervals. This can be done manually or using a script.</p></li>
+<li><p>Listen to the output to ensure clean separation.</p></li>
+<li><p>Transcribe based on the source-separated audio or ensure that existing transcriptions still match the new audio before conducting acoustic analysis.</p></li>
+<li><p>Treat formant estimates at the token level with caution. To be safe, only do analyses on vowel summaries like averages.</p></li>
+<li><p>Carefully document and report all methodological choices and human interventions.</p></li>
+</ul>
+</section>
+<section id="backstory" class="level2">
+<h2 class="anchored" data-anchor-id="backstory">Backstory</h2>
+<p>I enjoy learning about papers’ back stories, so here is ours.</p>
+<p>May 7, 2024, Lisa and I were talking about this and pitched the idea to Earl. Earl is the one who knows how to implement this stuff, so he worked on it that month and on May 21st, he basically did a proof of concept and said “I think we may have a paper!” In June, we fine-tuned the methods and prepared the audio. We had big plans to do a more robust study with different gender dyads and audio qualities, but we figured for this proof of concept paper, we’d keep it simple. (We may submit a bigger version to <em>JASA</em> still.) By the end of June, we basically had the results we needed, so we submitted an abstract to LSA.</p>
+<p>Soon after the abstract was submitted, I figured we might as well write-up the paper. On July 17, I said let’s try and submit to <em>Linguistics Vanguard</em>. For the next week or so, we had a really nice asynchronous collaboration going as we each chipped away at the various parts of the paper we contributed to. (I did the vowel analysis, Lisa did the qualitative analysis, and Earl actual Python scripting). On July 26th, we submitted it!</p>
+<p>On October 9th, we got a provisional accept and some useful reviewer comments. Bad timing for us because Lisa and I were about to head to NWAV. But on November 19, we returned the manuscript at 11:54am and at 7:01pm it was officially accepted! Quickest turn-around time ever! We submitted the final version on November 20th, got proofs on January 5th, we presented it at LSA on January 12th, and it was published online on January 29th.</p>
+<p>So from inception (May 7) to paper submission (June 26) was 11 weeks. And from original submission to publication (January 29) was 26 weeks. Not too shabby.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Methods</category>
+  <category>Phonetics</category>
+  <category>Research</category>
+  <category>Publications</category>
+  <guid>https://joeystanley.com/blog/source_separation/</guid>
+  <pubDate>Wed, 29 Jan 2025 15:12:00 GMT</pubDate>
+</item>
 <item>
   <title>LSA and ADS 2025</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -193,72 +513,6 @@ Note
   <category>Personal</category>
   <guid>https://joeystanley.com/blog/labov/</guid>
   <pubDate>Wed, 18 Dec 2024 15:54:00 GMT</pubDate>
-</item>
-<item>
-  <title>A new publication in Linguistics Vanguard!</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/source_separation/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Together with my co-authors, Lisa Morgan Johnson and Earl Kjar Brown, I’m happy to announce <a href="https://www.degruyter.com/document/doi/10.1515/lingvan-2024-0152/html">a new publication in <em>Linguistics Vanguard</em></a>!</p>
-<section id="a-brief-summary" class="level2">
-<h2 class="anchored" data-anchor-id="a-brief-summary">A “Brief” Summary</h2>
-<p>The problem that sociophoneticians face when working with interview data—particularly recordings not originally intended for linguistic analysis like older oral narratives—is overlapping speech. When two people talk at the same time, it is usually impossible to get reliable formant measurements automatically. My impression is that that data is somehow tagged or detected as overlapping speech and is excluded. When you’re working with shorter recordings that don’t have a lot of data to begin with, it would be nice to recover that data.</p>
-<p>So, we introduce source separation. It’s an algorithm that takes in a single audio file containing speech from multiple speakers, and split it up into different audio files, one for each speaker. It detects when each speaker is talking (aka <em>diarization</em>) and then uses fancy models to separate the speakers from each other. In theory, this is a great way to recover data that would have otherwise been excluded.</p>
-<p>The purpose of this paper then is to see whether such source separation models can feasibly be incorporated into a sociophonetic pipeline. In other words, is the output of a source separation model reliable enough that we can trust the formant measurements that come from the separated audio?</p>
-<p>We decided to stress test the method. We took some audio I collected in grad school of two speakers, a man and a woman from Georgia. On separate occasions, they both read 300 sentences in a sound booth. We then overlayed that audio to create a very cacophonous audio file of the two of them talking at the same time for 30 minutes.</p>
-<p>We then used three source separation models to separate the two speakers: Libri2, Whamr, and WSJ02. This created six new audio files, one for each speaker and for each model. Combine those with the two original audio files, and we had eight.</p>
-<p>For each of the eight files, we sent them through a typical sociophonetic pipeline. First, the originals were manually transcribed at the utterance-level and we used those transcriptions for the their respective derived source-separated audio. We then sent the audio and transcriptions through DARLA to have them force-aligned with MFA and formant-extracted with FAVE. We then followed the same order of operations to process them. In the end, we had four versions of spreadsheets of formant measurements for each speaker’s audio recording. We could then compare them to each other.</p>
-<p>First, while coming through the audio, we noticed that two of the models did a pretty good job. But one, the WSJ02 didn’t. We don’t really recommend that one.</p>
-<p>Looking through the vowel plots, we’re surprised at how good they were, especially compared to the original. In these vowel plots (the female is on the left and the male is on the right), all four panels look pretty similar for the most part, and they all look like the top left panel which has the original audio.</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://joeystanley.com/blog/source_separation/female.png" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://joeystanley.com/blog/source_separation/male.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>However, when we ran statistical tests on the formant data and compared them to the original, there were some statistically significant differences. But thy varied depending on the vowel, the model, and the speaker. In this plot, red dots are statistically significant differences. But there are many gray dots, meaning the difference between the source-separated audio and the original was not significant much of the time.</p>
-<p><img src="https://joeystanley.com/blog/source_separation/pairwise_comparisons.png" class="img-fluid"></p>
-<p>Then when we zero in on specific comparison and then draw lines connecting points that came from the same observation in the two recordings, we see a fair number of differences. So, while the means may be comparable, the values from any one observation may not be close to the original. Thi sis a similar finding to what Strelluf &amp; Gordon report in <a href="https://rowman.com/ISBN/9781498597265/The-Origins-of-Missouri-English-A-Historical-Sociophonetic-Analysis">their book on historical sociophonetics</a>.</p>
-<p><img src="https://joeystanley.com/blog/source_separation/boxplot_comparisons.png" class="img-fluid"></p>
-<p>So, we are cautiously optimistic about this. If you only model vowel means, you can probably feel comfortable doing so on source-separated data. But if you want to look at individual tokens, maybe not. Fortunately, most audio will not be as overlapped as this, so the effect will be smaller. Although, for dyads of speakers with similar sounding voices, it might not be as good.</p>
-<p>We end with some recommendations, which I repeat here:</p>
-<ul>
-<li><p>Experiment with different models to find the one that is most suitable. In this rapidly developing field, models improve over time and new options emerge. So, rather than clinging to one that works, continuously explore potentially better tools.</p></li>
-<li><p>Split audio at natural breaks rather than equal intervals. This can be done manually or using a script.</p></li>
-<li><p>Listen to the output to ensure clean separation.</p></li>
-<li><p>Transcribe based on the source-separated audio or ensure that existing transcriptions still match the new audio before conducting acoustic analysis.</p></li>
-<li><p>Treat formant estimates at the token level with caution. To be safe, only do analyses on vowel summaries like averages.</p></li>
-<li><p>Carefully document and report all methodological choices and human interventions.</p></li>
-</ul>
-</section>
-<section id="backstory" class="level2">
-<h2 class="anchored" data-anchor-id="backstory">Backstory</h2>
-<p>I enjoy learning about papers’ back stories, so here is ours.</p>
-<p>May 7, 2024, Lisa and I were talking about this and pitched the idea to Earl. Earl is the one who knows how to implement this stuff, so he worked on it that month and on May 21st, he basically did a proof of concept and said “I think we may have a paper!” In June, we fine-tuned the methods and prepared the audio. We had big plans to do a more robust study with different gender dyads and audio qualities, but we figured for this proof of concept paper, we’d keep it simple. (We may submit a bigger version to <em>JASA</em> still.) By the end of June, we basically had the results we needed, so we submitted an abstract to LSA.</p>
-<p>Soon after the abstract was submitted, I figured we might as well write-up the paper. On July 17, I said let’s try and submit to <em>Linguistics Vanguard</em>. For the next week or so, we had a really nice asynchronous collaboration going as we each chipped away at the various parts of the paper we contributed to. (I did the vowel analysis, Lisa did the qualitative analysis, and Earl actual Python scripting). On July 26th, we submitted it!</p>
-<p>On October 9th, we got a provisional accept and some useful reviewer comments. Bad timing for us because Lisa and I were about to head to NWAV .But on November 19, we returned the manuscript at 11:54am and at 7:01pm it was officially accepted! Quickest turn-around time ever! We submitted the final version on November 20th, got proofs on January 5th, we presented it at LSA on January 12th, and it was published online on January 29th.</p>
-<p>So from inception (May 7) to paper submission (June 26) was 11 weeks. And from original submission to publication (January 29) was 26 weeks. Not too shabby.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Research</category>
-  <category>Publications</category>
-  <guid>https://joeystanley.com/blog/source_separation/</guid>
-  <pubDate>Wed, 11 Dec 2024 15:12:00 GMT</pubDate>
 </item>
 <item>
   <title>A new volume in the Publications of the American Dialect Society series!</title>
@@ -5339,48 +5593,6 @@ Tip
   <category>Personal</category>
   <guid>https://joeystanley.com/blog/ten-years-of-conferences/</guid>
   <pubDate>Thu, 12 Jan 2023 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>LSA and ADS 2023</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/ads-and-lsa-2023/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week I’m in Denver at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave two talks, which you can download here:</p>
-<section id="lsa-talk-on-mountain-in-utah" class="level2">
-<h2 class="anchored" data-anchor-id="lsa-talk-on-mountain-in-utah">LSA talk on <em>mountain</em> in Utah</h2>
-<p>My first talk is called “Utahns sound Utahn when they avoid sounding Utahn.” Basically, I find that Utahns say <em>moun</em>[tʰɨn] more than other people do because they avoid the stigma assigned to the glottal stop in the local realization, <em>moun</em>[ʔɨn], and that has since spread to the nationwide standard <em>moun</em>[ʔn̩]. I’ve been very eager to talk about these ideas for a while so I hope you find them as interesting as I do.</p>
-<ul>
-<li><a href="../../downloads/230106-LSA_mountain.pptx">Here</a> is the actual powerpoint file. In the notes for each slide you’ll see the actual script I read from. And since the audio is embedded into the file, if you enter presentation mode and mouse over a quote, you’ll hear the actual audio.</li>
-<li>In case you don’t need all that and you just want a PDF, <a href="../../downloads/230106-LSA_mountain.pdf">here’s</a> that instead.</li>
-</ul>
-<p>If you want to read a little more about this topic, please see my <a href="../../blog/idaho-montana-wyoming-and-utah-english-survey-results">blog post</a> from a few months ago with some preliminary results.</p>
-</section>
-<section id="ads-talk-on-idaho-english" class="level2">
-<h2 class="anchored" data-anchor-id="ads-talk-on-idaho-english">ADS talk on Idaho English</h2>
-<p>My other talk, “Is Idaho English really ‘the epitome of Average English’?”, was in collaboration with KaTrina Jackson, who unfortunately couldn’t be there to help present. The quote in the title comes from Dennis Preston’s 1989 book where he found that people didn’t think anything of Idaho English. We examine data on Idaho English and show that it lacks stigmatized linguistic features from Utah, but also innovative features like the LBMS. It does have features that are floating under the radar though. In the end we, conclude that Idaho English does appear to be the epitome of average English.</p>
-<ul>
-<li><a href="../../downloads/230106-ADS_Idaho_notes.pdf">Here’s</a> a version that has the slides and the full script that I read from, in case you want to get all the nitty-gritty detail.</li>
-<li><a href="../../downloads/230106-ADS_Idaho.pdf">Here</a> is a PDF of the slides themselves, in case you just want that instead.</li>
-</ul>
-<p>Please see my <a href="../../blog/idaho-montana-wyoming-and-utah-english-survey-results">blog post</a> from a few months ago which goes into a little more detail than what I had time to talk about here.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>Students</category>
-  <category>Utah</category>
-  <category>West</category>
-  <guid>https://joeystanley.com/blog/ads-and-lsa-2023/</guid>
-  <pubDate>Fri, 06 Jan 2023 12:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

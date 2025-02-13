@@ -2,10 +2,11 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/darla/index.html",
+      "/blog/source_separation/index.html",
       "/blog/ads-and-lsa-2025/index.html",
       "/blog/synthesis_days/index.html",
       "/blog/labov/index.html",
-      "/blog/source_separation/index.html",
       "/blog/PADS109/index.html",
       "/blog/nwav52/index.html",
       "/blog/aacl2024/index.html",
