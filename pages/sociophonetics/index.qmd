@@ -47,9 +47,9 @@ Learn how to work with vowel trajectories and the two main ways you can plot tho
 
 In this series, we'll go back to the beginning stages of the data collection process. We'll see transcription, forced-alignment, and formant extraction---basically all the skills you need to go from raw audio to a spreadsheet of usable formants.
 
-### DARLA
+### [DARLA](/blog/darla)
 
-Do the complete pipeline from start to finish.
+This tutorial will show you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. 
 
 ### Whisper
 
