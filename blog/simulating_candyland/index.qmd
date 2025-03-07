@@ -1,0 +1,390 @@
+---
+layout: post
+title:  "Simulating Candyland"
+date:   2025-03-04 16:47:00 -0400
+date-modified: last-modified
+reference-location: margin
+categories:
+  - Side Projects
+  - Simulations
+draft: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+
+# library(ggplot2)
+# theme_candyland <- theme_minimal() + 
+#   theme_bw(base_size = 12, base_family = "Avenir") %+replace% 
+#   theme(panel.background = element_blank(), 
+#         # plot.background = element_rect(fill = "gray96", colour = NA), 
+#         legend.background = element_rect(fill = "transparent", colour = NA), 
+#         legend.key = element_rect(fill = "transparent", colour = NA))
+# theme_set(theme_candyland)
+```
+
+About six years ago, I did a blog post about how I [simulated Chutes and Ladders](/blog/simulating_chutes_and_ladders) after playing it countless times with my child. Recently, I've been playing tons of Candyland with my next child. The games are kinda similar and they take zero skill, which means they're perfect for little kiddos. It also means I can simulate them pretty easily. 
+
+I'm going to base the game off the board that I've been playing with, which we got at a thrift store.
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+```
+
+
+## The simulation
+
+### Setting up the game
+
+The first step in simulating Candyland is to set up the board. There's no real easy way to do that, so I just went through and hard-coded the tiles and colors. I've got a simple dataframe with a column for the tile number, the color of the tile, and if there's anything special about it. In my original spreadsheet, if there was nothing special about the tile, I left it blank, but because of issues with `NA`s down the road, I've replaced those blank cells with `"none"`. Here's what that looks like:
+
+```{r}
+board <- read_csv("candyland_data.csv", show_col_types = FALSE) |> 
+  mutate(special = replace_na(special, "none")) |> 
+  print()
+```
+
+Now that we've got the board, we need to get the cards. This one is actually straightforward enough that I can create it on the fly. First, I'll create the seven candy cards. I'm not sure if these are the official names, but that's what we call them in my house.
+
+```{r}
+candy_cards <- c("cupcake", "ice cream cone", "gummy star", "gingerbread man", "lollipop", "popsicle", "chocolate truffle")
+```
+
+There are six "single-color" cards four "double-color" cards for each color. So, I've first created a function that takes in a color name and creates those ten cards as a vector.
+
+```{r}
+create_one_color_card <- function(.color) {
+  c(rep(paste0("double ", .color), 4), rep(paste0("single ", .color), 6))
+}
+create_one_color_card("red")
+```
+
+
+So now, I can use that those to generate the full deck of 67 cards. 
+
+```{r}
+cards <- c(create_one_color_card("red"),
+           create_one_color_card("purple"),
+           create_one_color_card("yellow"),
+           create_one_color_card("blue"),
+           create_one_color_card("orange"),
+           create_one_color_card("green"),
+           candy_cards)
+sample(cards)
+```
+
+So, with the board and cards set up, let's start simulating some games. Note that because there is virtually zero interaction between the players, I'm just going to simulate single-player games. 
+
+## Explaining the simulation
+
+In this section, I'll explain the mechanics of the simulation. If you're not interested in that and just want to get to the results, feel free to skip to [the results section](@sec-results. The mechanics are similar to the [Chutes and Ladders](/blog/simulating-chutes-and-ladders) simulation.
+
+### Preliminaries
+
+First, I want to allocate space for a full game. First, I'll create a tibble called `turns` that has as many rows as twice the number of cards in the deck. After doing some simulations, I've found that, very rarely, a single player can get through all the cards and will need to shuffle them. I haven't yet run into a simulation where a second shuffle is needed, though I suppose it could theoretically go on forever I think. 
+
+I'll then simulate shuffling the cards by randomly sorting the cards with `sample(cards, replace = FALSE)`. And I'll string---not shuffle---two decks together in case we have a really long game. I'll do that by just doing that `sample(...)` two times and strung together with `c()`. 
+
+As additional columns in this tibble, I'll create empty columns for the start time number, the end tile number, whether that tile was a shortcut or not. Those will be populated as the game happens.
+
+```{r}
+n_cards <- length(cards)
+turns <- tibble(turn_num = 1:(n_cards*2),
+                start    = NA,
+                card  = c(sample(cards, replace = FALSE), sample(cards, replace = FALSE)),
+                shortcut = NA,
+                end      = NA)
+```
+
+
+### Setting up the loop
+
+
+Now that we've got the cards shuffled and ready to go for this game, let's start the turns. Since I don't know how many iterations I'll need, I'll set up a `while` loop that goes until I tell it to stop.^[There might be a more elegant way using `for` loop. Maybe my R looping skills aren't where they need to be, but I just couldn't figure out how to get it to exit the loop the way I wanted to and return the dataframe. I've hacked a bit of a solution by incrementing `i` each iteration. I miss Perl's `last` function which made it so that it would exit the loop at the end of the current iteration, not necessarily right at that moment like R's `break` function does. The `keep_playing` variable simulates that.] Here's what the barebones loop looks like:
+
+```{r, eval = FALSE}
+# Loop until the game is over
+i <- 1
+keep_playing <- TRUE
+while(keep_playing) {
+  
+  # put the game here
+  
+}
+```
+
+Of course, this is going to run forever beause we haven't put in any for it to stop. So I'll increment `i` each iteration and end the loop after `n_cards*2` iterations.
+
+```{r, eval = FALSE}
+# Loop until the game is over
+i <- 1
+keep_playing <- TRUE
+while(keep_playing) {
+  
+  n_cards <- length(cards)
+  turns <- turns <- tibble(turn_num = 1:(n_cards*2),
+                start    = NA,
+                card  = c(sample(cards, replace = FALSE), sample(cards, replace = FALSE)),
+                shortcut = NA,
+                end      = NA)
+  
+  if (i >= (n_cards*2)) {
+    keep_playing <- FALSE
+  } else {
+    i <- i + 1
+  }
+  
+}
+```
+
+
+Okay, so we're now looping through code enough times to go through the game. Now let's start to add some content to that game.
+
+### Start at tile zero
+
+First, I need to get the start tile. On the first turn, the start tile is zero. Let's add that. Here's what that code looks like:
+
+```{r, eval = FALSE}
+if (i == 1) {
+  turns$start[[i]] <- 0
+}
+```
+
+
+Here, I've added a conditional that checks what iteration number we're on. If we're on the first one, then go ahead and declare the start tile for this iteraction to be zero. Here's that code in context:
+
+```{r}
+i <- 1
+keep_playing <- TRUE
+while(keep_playing) {
+  
+  n_cards <- length(cards)
+  turns <- turns <- tibble(turn_num = 1:(n_cards*2),
+                start    = NA,
+                card  = c(sample(cards, replace = FALSE), sample(cards, replace = FALSE)),
+                shortcut = NA,
+                end      = NA)
+  
+  # Get the start tile
+  if (i == 1) {
+    turns$start[[i]] <- 0
+  }
+  
+  
+  if (i >= (n_cards*2)) {
+    keep_playing <- FALSE
+  } else {
+    i <- i + 1
+  }
+  
+}
+```
+
+Later on, we'll add code saying that the start tile for all other turns is the end tile of the previous turn, but because we haven't added any code yet for the end tiles, it won't do us any good yet. So, to avoid issues with `NA`s, I'll skip that for now.
+
+### Adding candy cards
+
+What we do need to do though is "draw a card" and figure out how many tiles we need to advance. Keep in mind that the cards are already there for us, so we don't need to randomly sample from the deck or anything. We just need to take the info that's already there and use it to figure out where to end up.
+
+First, let's account for the candy cards. These are easy: regardless of what your start tile is, your end tile will always be the same. The code that I'll add looks like this:
+
+```{r}
+if (turns$card[[i]] %in% candy_cards) {
+  turns$end[[i]] <- board[board$special == turns$card[[i]],]$tile
+}
+```
+
+So here, I'm checking to see if the name of the card that has been assigned for this turn matches the one of the candy cards I have saved in the `candy_cards` vector I declared earlier. If there's a match, then I'll basically look up the tile of that candy card in my `board` dataframe---that's the one I manually created in a separate file. It searches for the name of the candy, and fetches the tile number for it. That number is then assigned to this turn's end tile. Here's that code in context:
+
+```{r}
+i <- 1
+keep_playing <- TRUE
+while(keep_playing) {
+  
+  n_cards <- length(cards)
+  turns <- turns <- tibble(turn_num = 1:(n_cards*2),
+                start    = NA,
+                card  = c(sample(cards, replace = FALSE), sample(cards, replace = FALSE)),
+                shortcut = NA,
+                end      = NA)
+  
+  # Get the start tile
+  if (i == 1) {
+    turns$start[[i]] <- 0
+  }
+  
+  # If it's a candy card, go straight there.
+  if (turns$card[[i]] %in% candy_cards) {
+  turns$end[[i]] <- board[board$special == turns$card[[i]],]$tile
+}
+  
+  if (i >= (n_cards*2)) {
+    keep_playing <- FALSE
+  } else {
+    i <- i + 1
+  }
+  
+}
+```
+
+
+
+
+```{r, eval = FALSE}
+set.seed(250304)
+simulate_game <- function(game_num = 0) {
+  
+  # Declare space for the full game.
+  n_cards <- length(cards)
+  turns <- tibble(turn_num = 1:(n_cards*2),
+                  start    = NA,
+                  card  = c(sample(cards, replace = FALSE), sample(cards, replace = FALSE)),
+                  shortcut = NA,
+                  end      = NA)
+  
+  # Loop until the game is over
+  i <- 1
+  keep_playing <- TRUE
+  while(keep_playing) {
+
+    # Step 1: Start at zero
+    if (i == 1) {
+      turns$start[[i]] <- 0
+
+    # Otherwise, start where the last turn ended.
+    } else {
+      turns$start[[i]] <- turns$end[[i - 1]]
+    }
+
+    # Step 2: This is where the game actually happens.
+    # If it's a candy card, go straight there.
+    if (turns$card[[i]] %in% candy_cards) {
+      turns$end[[i]] <- board[board$special == turns$card[[i]],]$tile
+      
+    # If it's not, find the next colors.
+    } else {
+      card_color  <- str_extract(turns$card[[i]], "\\w+\\Z")
+      card_amount <- str_extract(turns$card[[i]], "\\A\\w+")
+
+      # move to the next spot
+      eligible_spots <- board |>
+        filter(tile > turns$start[[i]],
+               color == card_color) |>
+        pull(tile)
+      n_eligible_spots <- length(eligible_spots)
+      
+      if (n_eligible_spots >= 2 & card_amount == "single") {
+        turns$end[[i]] <- eligible_spots[[1]]
+      } else if (n_eligible_spots >= 2 & card_amount == "double") {
+        turns$end[[i]] <- eligible_spots[[2]]
+      } else if (n_eligible_spots == 1 & card_amount == "single") {
+        turns$end[[i]] <- eligible_spots[[1]]
+      } else {
+        turns$end[[i]] <- 133
+      }
+    }
+    
+    # Do the shortcuts.
+    if (turns$end[[i]] == 4) {
+      turns$end[[i]] <- 60
+      turns$shortcut[[i]] <- "peppermint pass"
+    } else if (turns$end[[i]] == 29) {
+      turns$end[[i]] <- 41
+      turns$shortcut[[i]] <- "gummy pass"
+    }
+  
+    # Step 4: Check if it's game over.
+    # run out of cards
+    if (i >= c(n_cards*2)) {
+      keep_playing <- FALSE
+    # win
+    } else if (turns$end[[i]] >= max(board$tile)) {
+      keep_playing <- FALSE
+    } else {
+      i <- i + 1
+    }
+  }
+
+  turns %>%
+    filter(turn_num <= i) %>%
+    return()
+}
+simulate_game()
+```
+
+
+
+## Now simulate lots of games!
+
+```{r, eval = FALSE}
+# Takes 1.8 minutes for 10K simulations.
+start_time <- Sys.time()
+set.seed(250304)
+games <- tibble(game_num = 1:10000) |>
+  mutate(game = map(game_num, simulate_game)) |>
+  unnest(cols = c(game))
+Sys.time() - start_time
+beepr::beep()
+```
+
+
+## Results {#sec-results}
+
+Now that we have the simulation done, let's take a look at the results!
+
+
+```{r, eval = FALSE}
+games_summary <- games %>%
+  summarize(turns = max(turn_num),
+            n_candies = sum(card %in% candy_cards),
+            n_singles = sum(str_detect(card, "single")),
+            n_doubles = sum(str_detect(card, "double")),
+            n_shortcuts = sum(!is.na(shortcut)),
+            .by = game_num) |> 
+  print()
+summary(games_summary)
+```
+
+First, let's look at the number of turns 
+
+```{r, eval = FALSE}
+ggplot(games_summary, aes(turns)) + 
+  geom_histogram(binwidth = 1)
+```
+
+
+```{r, eval = FALSE}
+ggplot(games_summary, aes(n_shortcuts)) + 
+  geom_histogram(binwidth = 1)
+
+ggplot(games_summary, aes(n_candies)) + 
+  geom_histogram(binwidth = 1)
+
+ggplot(games_summary, aes(n_singles)) + 
+  geom_histogram(binwidth = 1)
+
+ggplot(games_summary, aes(n_doubles)) + 
+  geom_histogram(binwidth = 1)
+
+games |> 
+  filter(card %in% candy_cards) |> 
+  mutate(diff = end - start) |> 
+  ggplot(aes(diff)) + 
+  geom_histogram(binwidth = 1)
+
+games |> 
+  filter(end != 133) |> 
+  ggplot(aes(end)) + 
+  geom_histogram(binwidth = 1)
+```
+
+
+```{r, eval = FALSE}
+games |> 
+  add_count(name = "n_turns", .by = game_num) |> 
+  filter(n_turns == max(n_turns))
+```
+
+
+
+

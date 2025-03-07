@@ -1,0 +1,337 @@
+---
+title: "Sandbox"
+author: "Joey Stanley"
+date: "2022-09-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+board <- read_excel("candyland_data.xlsx", sheet = 1) |> 
+  mutate(special = replace_na(special, "none")) |> 
+  print()
+```
+
+```{r}
+create_one_color_card <- function(.color) {
+  c(rep(paste0("double ", .color), 4), rep(paste0("single ", .color), 6))
+}
+candy_cards <- c("cupcake", "ice cream cone", "gummy star", "gingerbread man", "lollipop", "popsicle", "chocolate truffle")
+create_cards <- function() {
+  tibble(card = c(create_one_color_card("red"),
+                  create_one_color_card("purple"),
+                  create_one_color_card("yellow"),
+                  create_one_color_card("blue"),
+                  create_one_color_card("orange"),
+                  create_one_color_card("green"),
+                  candy_cards)) |> 
+    rowid_to_column("card_id")
+}
+cards <- create_cards()
+```
+
+
+## Just copy over from chutes and ladders
+
+```{r}
+set.seed(250304)
+simulate_game <- function(game_num = 0) {
+  
+  cards <- create_cards()
+  
+  
+  # Declare space for the full game.
+  n_cards <- nrow(cards)
+  turns <- tibble(turn_num = 1:(n_cards*2),
+                  start    = NA,
+                  card_id  = c(sample(1:n_cards, n_cards, replace = FALSE), sample(1:n_cards, n_cards, replace = FALSE)),
+                  shortcut = NA,
+                  end      = NA) |> 
+    # Get the card names
+    left_join(cards, by = "card_id")
+  
+  # Loop until the game is over
+  i <- 1
+  keep_playing <- TRUE
+  while(keep_playing) {
+
+    # Step 1: Start at zero
+    if (i == 1) {
+      turns$start[[i]] <- 0
+
+    # Otherwise, start where the last turn ended.
+    } else {
+      turns$start[[i]] <- turns$end[[i - 1]]
+    }
+
+    # Step 2: This is where the game actually happens.
+    # If it's a candy card, go straight there.
+    if (turns$card[[i]] %in% candy_cards) {
+      turns$end[[i]] <- board[board$special == turns$card[[i]],]$tile
+      
+    # If it's not, find the next colors.
+    } else {
+      card_color  <- str_extract(turns$card[[i]], "\\w+\\Z")
+      card_amount <- str_extract(turns$card[[i]], "\\A\\w+")
+
+      # move to the next spot
+      eligible_spots <- board |>
+        filter(tile > turns$start[[i]],
+               color == card_color) |>
+        pull(tile)
+      n_eligible_spots <- length(eligible_spots)
+      
+      if (n_eligible_spots >= 2 & card_amount == "single") {
+        turns$end[[i]] <- eligible_spots[[1]]
+      } else if (n_eligible_spots >= 2 & card_amount == "double") {
+        turns$end[[i]] <- eligible_spots[[2]]
+      } else if (n_eligible_spots == 1 & card_amount == "single") {
+        turns$end[[i]] <- eligible_spots[[1]]
+      } else {
+        turns$end[[i]] <- 133
+      }
+    }
+    
+    # Do the shortcuts.
+    if (turns$end[[i]] == 4) {
+      turns$end[[i]] <- 60
+      turns$shortcut[[i]] <- "peppermint pass"
+    } else if (turns$end[[i]] == 29) {
+      turns$end[[i]] <- 41
+      turns$shortcut[[i]] <- "gummy pass"
+    }
+  
+    # Step 4: Check if it's game over.
+    # run out of cards
+    if (i >= c(n_cards*2)) {
+      keep_playing <- FALSE
+    # win
+    } else if (turns$end[[i]] >= max(board$tile)) {
+      keep_playing <- FALSE
+    } else {
+      i <- i + 1
+    }
+  }
+
+  turns %>%
+    filter(turn_num <= i) %>%
+    return()
+}
+simulate_game()
+```
+
+## Now simulate lots of games!
+
+```{r}
+# Takes 1.8 minutes for 10K simulations.
+start_time <- Sys.time()
+set.seed(250304)
+games <- tibble(game_num = 1:10000) |>
+  mutate(game = map(game_num, simulate_game)) |>
+  unnest(cols = c(game))
+Sys.time() - start_time
+beepr::beep()
+```
+
+
+## Results
+
+Now that we have the simulation done, let's take a look at the results!
+
+
+```{r}
+games_summary <- games %>%
+  summarize(turns = max(turn_num),
+            n_candies = sum(card %in% candy_cards),
+            n_singles = sum(str_detect(card, "single")),
+            n_doubles = sum(str_detect(card, "double")),
+            n_shortcuts = sum(!is.na(shortcut)),
+            .by = game_num) |> 
+  print()
+summary(games_summary)
+```
+
+First, let's look at the number of turns 
+
+```{r}
+ggplot(games_summary, aes(turns)) + 
+  geom_histogram(binwidth = 1)
+```
+
+
+```{r}
+ggplot(games_summary, aes(n_shortcuts)) + 
+  geom_histogram(binwidth = 1)
+
+ggplot(games_summary, aes(n_candies)) + 
+  geom_histogram(binwidth = 1)
+
+ggplot(games_summary, aes(n_singles)) + 
+  geom_histogram(binwidth = 1)
+
+ggplot(games_summary, aes(n_doubles)) + 
+  geom_histogram(binwidth = 1)
+
+games |> 
+  filter(card %in% candy_cards) |> 
+  mutate(diff = end - start) |> 
+  ggplot(aes(diff)) + 
+  geom_histogram(binwidth = 1)
+
+games |> 
+  filter(end != 133) |> 
+  ggplot(aes(end)) + 
+  geom_histogram(binwidth = 1)
+```
+
+
+```{r}
+games |> 
+  add_count(name = "n_turns", .by = game_num) |> 
+  filter(n_turns == max(n_turns))
+```
+
+
+
+
+
+## Visualize the board
+
+```{r}
+add_turn <- function(df, .n, direction) {
+ before_turn <- df %>% filter(row_number() < .n)
+ pivot_point <- df %>% filter(row_number() == .n)
+ after_turn  <- df %>% filter(row_number() > .n)
+ 
+ pivot_x <- pivot_point %>% pull(x)
+ pivot_y <- pivot_point %>% pull(y)
+ 
+ if (direction == "left_north") {
+   after_turn <- after_turn %>%
+     mutate(y = y + (x - pivot_x),
+            x = pivot_x)
+ } else if (direction == "left_west") {
+   after_turn <- after_turn %>%
+     mutate(x = pivot_x - (y - pivot_y),
+            y = pivot_x + 1)
+ } else if (direction == "right_north") {
+   after_turn <- after_turn %>% 
+     mutate(y = y + (pivot_x - x),
+            x = pivot_x)
+ } else if (direction == "right_east") {
+   after_turn <- after_turn %>%
+     mutate(x = x + (y - pivot_y),
+            y = pivot_y)
+ }
+ bind_rows(before_turn, pivot_point, after_turn)
+}
+
+layout <- candyland %>%
+  mutate(x = 1:nrow(.),
+         y = 1) %>%
+  add_turn(16, "left_north") %>%
+  # add_turn(8, "left_west") %>%
+  # add_turn(11, "right_north") %>%
+  # add_turn(14, "right_east") %>%
+  print()
+```
+
+
+```{r}
+ggplot(layout, aes(x, y, color = color)) + 
+  # geom_point(shape = "square") + 
+  geom_text(aes(label = tile)) + 
+  scale_color_identity() + 
+  coord_fixed()
+```
+
+
+
+
+
+## Sandbox
+
+Can I do a for loop and just `exit`?
+
+```{r}
+set.seed(250304)
+simulate_game <- function(game_num = 0) {
+
+  # Declare space for the full game.
+  n_cards <- length(cards)
+  turns <- tibble(turn_num = 1:(n_cards*2),
+                  start    = NA,
+                  card  = c(sample(cards, replace = FALSE), sample(cards, replace = FALSE)),
+                  shortcut = NA,
+                  end      = NA)
+  
+  # Loop until the game is over
+  for (i in 1:nrow(turns)) {
+
+    # Step 1: Start at zero
+    if (i == 1) {
+      turns$start[[i]] <- 0
+
+    # Otherwise, start where the last turn ended.
+    } else {
+      turns$start[[i]] <- turns$end[[i - 1]]
+    }
+
+    # Step 2: This is where the game actually happens.
+    # If it's a candy card, go straight there.
+    if (turns$card[[i]] %in% candy_cards) {
+      turns$end[[i]] <- board[board$special == turns$card[[i]],]$tile
+      
+    # If it's not, find the next colors.
+    } else {
+      card_color  <- str_extract(turns$card[[i]], "\\w+\\Z")
+      card_amount <- str_extract(turns$card[[i]], "\\A\\w+")
+
+      # move to the next spot
+      eligible_spots <- board |>
+        filter(tile > turns$start[[i]],
+               color == card_color) |>
+        pull(tile)
+      n_eligible_spots <- length(eligible_spots)
+      
+      if (n_eligible_spots >= 2 & card_amount == "single") {
+        turns$end[[i]] <- eligible_spots[[1]]
+      } else if (n_eligible_spots >= 2 & card_amount == "double") {
+        turns$end[[i]] <- eligible_spots[[2]]
+      } else if (n_eligible_spots == 1 & card_amount == "single") {
+        turns$end[[i]] <- eligible_spots[[1]]
+      } else {
+        turns$end[[i]] <- 133
+      }
+    }
+    
+    # Do the shortcuts.
+    if (turns$end[[i]] == 4) {
+      turns$end[[i]] <- 60
+      turns$shortcut[[i]] <- "peppermint pass"
+    } else if (turns$end[[i]] == 29) {
+      turns$end[[i]] <- 41
+      turns$shortcut[[i]] <- "gummy pass"
+    }
+  
+    cat(turns$end[[i]], " ")
+    
+    # Step 4: Check if it's game over.
+    if (i >= c(n_cards*2)) {
+      keep_playing <- TRUE
+    } else if (turns$end[[i]] >= max(board$tile)) {
+      keep_playing <- TRUE
+    }
+  }
+}
+simulate_game() |> 
+  print()
+```
