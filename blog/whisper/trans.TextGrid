@@ -1,0 +1,94 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0.0
+xmax = 300.0
+tiers? <exists>
+size = 1
+item []:
+    item[1]:
+        class = "IntervalTier"
+        name = "sentence"
+        xmin = 0.0
+        xmax = 300.0
+        intervals: size = 20
+        intervals [1]
+            xmin = 0.0
+            xmax = 3.5
+            text = " - Where were you and what happened when Mount St. Helens?"
+        intervals [2]
+            xmin = 3.5
+            xmax = 5.58
+            text = " - Oh, that was a Sunday morning."
+        intervals [3]
+            xmin = 5.58
+            xmax = 11.58
+            text = " And I remember, well there were months leading up to this."
+        intervals [4]
+            xmin = 11.58
+            xmax = 13.88
+            text = " We didn't know what was gonna be happening up there."
+        intervals [5]
+            xmin = 13.88
+            xmax = 17.6
+            text = " Following the news and all the scientists and all that."
+        intervals [6]
+            xmin = 17.6
+            xmax = 21.86
+            text = " Anyway, so we knew something was going to happen."
+        intervals [7]
+            xmin = 21.86
+            xmax = 23.12
+            text = " We just didn't know when."
+        intervals [8]
+            xmin = 23.12
+            xmax = 24.34
+            text = " And it was a Sunday morning."
+        intervals [9]
+            xmin = 24.34
+            xmax = 25.82
+            text = " It was like 8.30 in the morning"
+        intervals [10]
+            xmin = 25.82
+            xmax = 28.66
+            text = " and I think we had church at 11 or something."
+        intervals [11]
+            xmin = 28.66
+            xmax = 31.22
+            text = " So it was kind of a, the kids were all really little."
+        intervals [12]
+            xmin = 31.22
+            xmax = 32.72
+            text = " We only had three at the time."
+        intervals [13]
+            xmin = 32.72
+            xmax = 36.36
+            text = " The kids were really little."
+        intervals [14]
+            xmin = 36.36
+            xmax = 37.86
+            text = " We had kind of slept in that morning."
+        intervals [15]
+            xmin = 37.86
+            xmax = 41.2
+            text = " Kind of taken a slow pace, getting ready for church."
+        intervals [16]
+            xmin = 41.2
+            xmax = 45.38
+            text = " And my dad, who lived about 10 miles north of here"
+        intervals [17]
+            xmin = 45.38
+            xmax = 49.42
+            text = " and had a view, he couldn't actually see it"
+        intervals [18]
+            xmin = 49.42
+            xmax = 52.98
+            text = " but he could see the plume come up, called us."
+        intervals [19]
+            xmin = 52.98
+            xmax = 55.72
+            text = """ And he said, """"The mountain just blew."""""""
+        intervals [20]
+            xmin = 55.72
+            xmax = 300.0
+            text = ""

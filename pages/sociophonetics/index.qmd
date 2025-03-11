@@ -49,11 +49,11 @@ In this series, we'll go back to the beginning stages of the data collection pro
 
 ### [DARLA](/blog/darla)
 
-This tutorial will show you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. 
+This tutorial shows you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. Unlike most tutorials here, this is done entirely through an online interface, so you won't need to know R or any other programming. 
 
-### Whisper
+### [Whisper](/blog/whisper)
 
-Automatically transcribe your audio with AI.
+This tutorial shows you how to use Whisper to automatically transcribe your audio using AI right within R. For now, the tutorial is basic and is not suited for processing lots of files at once, but if you need to work with just a few files, this might be of use to you.
 
 ### MFA
 
