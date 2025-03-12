@@ -7,7 +7,6 @@ number-sections: true
 reference-location: margin
 categories:
   - How-to Guides
-draft: TRUE
 ---
 
 ```{r setup, include=FALSE}
@@ -79,16 +78,9 @@ The first thing you need to do is convert the audio to a 16-bit WAV file. This i
 I have a file named `02-Carol.wav` that I'm going to use for this tutorial.^[You can get this and other sample audio [here](/data.] It's a 1-minute snippet from a sociolinguistic interview I did as part of my dissertation in Washington where she talks about what it was like living near Mount St. Helens when it erupted in 1980. The file is already in the right format, but I'll run the code anyway just to be sure.
 
 ```{r, eval = FALSE}
-av_audio_convert("02-Carol.wav", output = "02-Carol.wav_16bit.wav", format = "wav", sample_rate = 16000)
-```
+av_audio_convert("02-Carol.wav", output = "02-Carol.wav_16bit.wav", 
+                 format = "wav", sample_rate = 16000)
 
-::: {.callout-note}
-Note that putting just the filename (i.e. `"02-Carol.wav"`) assumes that the file is in the same folder as the script that you're running this code from. If your file lives somewhere else on your computer, you'll need to provide a full path (e.g. `"/Users/joeystan/Desktop/dissertation/audio/02-Carol/02-Carol.wav`) or a relative path (e.g. `"../audio/02-Carol.wav"`). 
-
-The same applies to the output. By just providing a filename, it'll create the file in the same folder as the script. If you want it to be saved somewhere else, you'll need to provide a full or relative path.
-:::
-
-```{r, eval = FALSE}
 #  Output #0, wav, to '/Users/joeystan/GitHub/joeystanley/blog/whisper/02-Carol.wav_16bit.wav':
 #   Metadata:
 #     ISFT            : Lavf60.3.100
@@ -96,6 +88,12 @@ The same applies to the output. By just providing a filename, it'll create the f
 # Adding audio frame 1305 at timestamp 55.57sec - audio stream completed!
 # [1] "/Users/joeystan/GitHub/joeystanley/blog/whisper/02-Carol.wav_16bit.wav"
 ```
+
+::: {.callout-note}
+Note that putting just the filename (i.e. `"02-Carol.wav"`) assumes that the file is in the same folder as the script that you're running this code from. If your file lives somewhere else on your computer, you'll need to provide a full path (e.g. `"/Users/joeystan/Desktop/dissertation/audio/02-Carol/02-Carol.wav`) or a relative path (e.g. `"../audio/02-Carol.wav"`). 
+
+The same applies to the output. By just providing a filename, it'll create the file in the same folder as the script. If you want it to be saved somewhere else, you'll need to provide a full or relative path.
+:::
 
 I've now created a new file called `02-Carol.wav_16bit.wav`. That one should be ready to process. We'll now use the `predict` function in `audio.whisper` to actually run Whisper on that newly created audio file. There are four arguments here. 
 
@@ -107,7 +105,8 @@ I've now created a new file called `02-Carol.wav_16bit.wav`. That one should be 
 We'll run that function and save that transcription to an object called `trans`.
 
 ```{r, cache = TRUE}
-trans <- predict(model, newdata = "02-Carol.wav_16bit.wav", language = "en", n_threads = 12)
+trans <- predict(model, newdata = "02-Carol.wav_16bit.wav", 
+                 language = "en", n_threads = 12)
 ```
 
 Technically, you're done using Whisper! Hooray! Here's the transcription:
