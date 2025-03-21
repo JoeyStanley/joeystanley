@@ -171,7 +171,7 @@ if (i == 1) {
 ```
 
 
-Here, I've added a conditional that checks what iteration number we're on. If we're on the first one, then go ahead and declare the start tile for this iteraction to be zero. Here's that code in context:
+Here, I've added a conditional that checks what iteration number we're on. If we're on the first one, then go ahead and declare the start tile for this iteration to be zero. Here's that code in context:
 
 ```{r}
 turns <- setup_turns()
@@ -1013,7 +1013,7 @@ tenthousand_draws |>
   theme_minimal(base_size = 14, base_family = "Avenir") 
 ```
 
-One candy card (the Gummy Star) is well within the expected range. The Popsicle is on the edge of the distribution, but still a plausible value. But the Cupcake was so far away from the expected value. The *z*-score was 5.688 and the *p*-value is about 0.0000001. So the odds of getting these cards as infrequently as we did, assuming they're evenly probable, is quite small. I have no explanation for why that is, but I think it's an intriguing finding here. It's also intriguing that the Ice Cream Cone and the Lollipop are consistently drawn at around the same rate, and far lower than expcted.
+One candy card (the Gummy Star) is well within the expected range. The Popsicle is on the edge of the distribution, but still a plausible value. But the Cupcake was so far away from the expected value. The *z*-score was 5.688 and the *p*-value is about 0.0000001. So the odds of getting these cards as infrequently as we did, assuming they're evenly probable, is quite small. I have no explanation for why that is, but I think it's an intriguing finding here. It's also intriguing that the Ice Cream Cone and the Lollipop are consistently drawn at around the same rate, and far lower than expected.
 
 ```{r, eval = FALSE, echo = FALSE}
 tenthousand_draws |> 

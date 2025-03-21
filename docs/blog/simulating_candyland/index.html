@@ -398,29 +398,29 @@ Tip
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>           candy_cards)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(cards)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "ice cream cone"    "single blue"       "single orange"    
- [4] "single red"        "single blue"       "single red"       
- [7] "double yellow"     "cupcake"           "single blue"      
-[10] "double purple"     "single red"        "double green"     
-[13] "single yellow"     "gingerbread man"   "popsicle"         
-[16] "double blue"       "single green"      "single orange"    
-[19] "double green"      "double purple"     "single purple"    
-[22] "single purple"     "double red"        "single blue"      
-[25] "double purple"     "single orange"     "single blue"      
-[28] "single purple"     "lollipop"          "single orange"    
-[31] "single green"      "double orange"     "single red"       
-[34] "single purple"     "double blue"       "double orange"    
-[37] "double yellow"     "single purple"     "single yellow"    
-[40] "single yellow"     "single orange"     "double purple"    
-[43] "single yellow"     "double blue"       "single purple"    
-[46] "double blue"       "double yellow"     "double yellow"    
-[49] "single yellow"     "single green"      "single green"     
-[52] "single green"      "single yellow"     "double green"     
-[55] "single orange"     "chocolate truffle" "double red"       
-[58] "single red"        "single red"        "double red"       
-[61] "single green"      "double orange"     "double green"     
-[64] "double orange"     "double red"        "gummy star"       
-[67] "single blue"      </code></pre>
+<pre><code> [1] "single red"        "popsicle"          "single purple"    
+ [4] "single purple"     "single green"      "single yellow"    
+ [7] "gingerbread man"   "double blue"       "single orange"    
+[10] "single blue"       "single red"        "double orange"    
+[13] "single yellow"     "double yellow"     "single green"     
+[16] "single green"      "single red"        "single orange"    
+[19] "single red"        "single green"      "double blue"      
+[22] "single green"      "double orange"     "single purple"    
+[25] "double yellow"     "single blue"       "single orange"    
+[28] "double purple"     "double yellow"     "single green"     
+[31] "double red"        "lollipop"          "single purple"    
+[34] "single purple"     "single red"        "ice cream cone"   
+[37] "double purple"     "single purple"     "double green"     
+[40] "double yellow"     "double red"        "single blue"      
+[43] "single yellow"     "double red"        "single blue"      
+[46] "single blue"       "single orange"     "single red"       
+[49] "double blue"       "double red"        "single yellow"    
+[52] "double orange"     "cupcake"           "gummy star"       
+[55] "single orange"     "single yellow"     "chocolate truffle"
+[58] "double blue"       "single orange"     "double green"     
+[61] "double green"      "double purple"     "double purple"    
+[64] "double orange"     "double green"      "single blue"      
+[67] "single yellow"    </code></pre>
 </div>
 </div>
 <p>So, with the board and cards set up, let’s start simulating some games. Note that because there is virtually zero interaction between the players, I’m just going to simulate single-player games.</p>
@@ -499,7 +499,7 @@ Tip
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  turns<span class="sc">$</span>start[[i]] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here, I’ve added a conditional that checks what iteration number we’re on. If we’re on the first one, then go ahead and declare the start tile for this iteraction to be zero. Here’s that code in context:</p>
+<p>Here, I’ve added a conditional that checks what iteration number we’re on. If we’re on the first one, then go ahead and declare the start tile for this iteration to be zero. Here’s that code in context:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>turns <span class="ot">&lt;-</span> <span class="fu">setup_turns</span>()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -523,18 +523,18 @@ Tip
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>turns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
-   turn_num start card           shortcut end  
-      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;lgl&gt;    &lt;lgl&gt;
- 1        1     0 ice cream cone NA       NA   
- 2        2    NA double orange  NA       NA   
- 3        3    NA single red     NA       NA   
- 4        4    NA single blue    NA       NA   
- 5        5    NA double green   NA       NA   
- 6        6    NA double purple  NA       NA   
- 7        7    NA single purple  NA       NA   
- 8        8    NA double green   NA       NA   
- 9        9    NA lollipop       NA       NA   
-10       10    NA single green   NA       NA   
+   turn_num start card          shortcut end  
+      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;lgl&gt;    &lt;lgl&gt;
+ 1        1     0 single red    NA       NA   
+ 2        2    NA double orange NA       NA   
+ 3        3    NA double red    NA       NA   
+ 4        4    NA lollipop      NA       NA   
+ 5        5    NA double purple NA       NA   
+ 6        6    NA single green  NA       NA   
+ 7        7    NA double green  NA       NA   
+ 8        8    NA double orange NA       NA   
+ 9        9    NA single yellow NA       NA   
+10       10    NA single yellow NA       NA   
 # ℹ 124 more rows</code></pre>
 </div>
 </div>
@@ -577,18 +577,18 @@ Tip
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>turns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
-   turn_num start card          shortcut   end
-      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;lgl&gt;    &lt;dbl&gt;
- 1        1     0 single orange NA          NA
- 2        2    NA single yellow NA          NA
- 3        3    NA single yellow NA          NA
- 4        4    NA single purple NA          NA
- 5        5    NA single purple NA          NA
- 6        6    NA double blue   NA          NA
- 7        7    NA single red    NA          NA
- 8        8    NA single green  NA          NA
- 9        9    NA single green  NA          NA
-10       10    NA single blue   NA          NA
+   turn_num start card           shortcut   end
+      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;lgl&gt;    &lt;dbl&gt;
+ 1        1     0 double yellow  NA          NA
+ 2        2    NA double red     NA          NA
+ 3        3    NA ice cream cone NA          20
+ 4        4    NA single yellow  NA          NA
+ 5        5    NA double yellow  NA          NA
+ 6        6    NA double purple  NA          NA
+ 7        7    NA single green   NA          NA
+ 8        8    NA single red     NA          NA
+ 9        9    NA single orange  NA          NA
+10       10    NA double yellow  NA          NA
 # ℹ 124 more rows</code></pre>
 </div>
 </div>
@@ -1421,7 +1421,7 @@ Note
 </div>
 </div>
 </div>
-<p>One candy card (the Gummy Star) is well within the expected range. The Popsicle is on the edge of the distribution, but still a plausible value. But the Cupcake was so far away from the expected value. The <em>z</em>-score was 5.688 and the <em>p</em>-value is about 0.0000001. So the odds of getting these cards as infrequently as we did, assuming they’re evenly probable, is quite small. I have no explanation for why that is, but I think it’s an intriguing finding here. It’s also intriguing that the Ice Cream Cone and the Lollipop are consistently drawn at around the same rate, and far lower than expcted.</p>
+<p>One candy card (the Gummy Star) is well within the expected range. The Popsicle is on the edge of the distribution, but still a plausible value. But the Cupcake was so far away from the expected value. The <em>z</em>-score was 5.688 and the <em>p</em>-value is about 0.0000001. So the odds of getting these cards as infrequently as we did, assuming they’re evenly probable, is quite small. I have no explanation for why that is, but I think it’s an intriguing finding here. It’s also intriguing that the Ice Cream Cone and the Lollipop are consistently drawn at around the same rate, and far lower than expected.</p>
 <p>Finally, when I did this whole thing again based on a different random seed, I got strikingly similar results. There’s something here and I’m not sure what it is!</p>
 </section>
 <section id="sec-gains_and_losses" class="level3 page-columns page-full" data-number="3.6">
