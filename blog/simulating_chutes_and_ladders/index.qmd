@@ -25,6 +25,9 @@ theme_set(theme_chutes_and_ladders)
 
 We tried teaching our little almost-three-year-old *Chutes and Ladders* today. She wasn't very good at counting tiles. But, as I was sitting there climbing up and sliding down over and over, I wondered what the average number of turns it would take to finish the game. So I decided to take a stab at simulating the game. So here's a post on a simple simulation of *Chutes and Ladders*  that demonstrates absolutely nothing about linguistics and instead shows off some R skills.
 
+::: {.callout-tip}
+Click [here](/blog/simulating_candyland) to see a post about simulating Candyland.
+:::
 
 ```{r, message = FALSE}
 library(tidyverse)
