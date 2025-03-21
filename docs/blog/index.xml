@@ -12,10 +12,370 @@
 <generator>quarto-1.5.57</generator>
 <lastBuildDate>Tue, 11 Mar 2025 09:55:00 GMT</lastBuildDate>
 <item>
-  <title></title>
+  <title>Automated Transcription in R using Whisper</title>
   <dc:creator>Joey Stanley</dc:creator>
   <link>https://joeystanley.com/blog/whisper/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In this tutorial, I’ll walk you through how to use OpenAI’s Whisper model to automatically transcribe your audio completely within R. We’ll do so using the <a href="https://github.com/bnosac/audio.whisper"><code>audio.whisper</code></a> pacakge.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <a href="https://github.com/bnosac/audio.whisper">R package</a> for Whisper is only available through a third-party company called <a href="http://www.bnosac.be">BNOSAC</a>, rather than through OpenAI itself. From what I can tell, it is more limited in its capabilities than <a href="https://github.com/openai/whisper">OpenAI’s own Python package</a>. Since I have never really learned Python programming, I’ll stick with R.</p>
+</div>
+</div>
+<section id="preliminaries" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">1</span> Preliminaries</h2>
+<p>The first step is to install <a href="https://github.com/bnosac/audio.whisper"><code>audio.whisper</code></a>. Since it’s not available through R’s official repository for R packages, we won’t be able to just use <code>install.packages</code> like normal. Instead, we’ll use the <code>install_github</code> function, which is available in a package called <code>devtools</code>. <sup>1</sup> You’ll need to specify the path <code>"bnosac/audio.whisper"</code>, which let’s R know <a href="https://github.com/bnosac/audio.whisper">where on GitHub</a> the package is located. We add <code>ref = "0.3.3"</code> as an argument to the installation function to ensure that we’re getting the latest <em>stable</em> version of the package. Without it, you’ll get the latest <em>development</em> version which may be buggy and not work for you.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;If you don’t have <code>devtools</code> already, you can install it the normal way: <code>install.packages("devtools")</code>.</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">devtools<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bnosac/audio.whisper"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ref =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"0.3.3"</span>)</span></code></pre></div>
+</div>
+<p>Now that you’ve got the R package installed, you’ll need to actually download the Whisper model to your computer, so that Whisper can function completely offline. There are different sizes of the model, ranging from tiny to <code>large-v3</code>. The smaller ones will get transcription done quicker and take up less room on your computer, but they may not be as accurate. The larger models will take longer to do and will take up more room on your computer, but they will be more accurate. On my computer (a 2023 MacBook Pro), I’ve only been able to get the “small” model to work. Anything larger fails on my computer, possibly because of a lack of processing power. I have transcribed lab quality speech with pretty good results using the small model. A student of mine compared the output to the medium model and found it to be raelly not that much improved over the small model, even though it took more than twice as long. So, for my purposes (and possibly yours too), the small model may be all you need.</p>
+<p>Here are the options and the code for each one. We’ll load it using the function <code>whisper</code> and save the output to an object called <code>model</code>. We’ll call that object later on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(audio.whisper)</span>
+<span id="cb2-2">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tiny"</span>)</span>
+<span id="cb2-3">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"base"</span>)</span>
+<span id="cb2-4">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"small"</span>)</span>
+<span id="cb2-5">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"medium"</span>)</span>
+<span id="cb2-6">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"large-v1"</span>)</span>
+<span id="cb2-7">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"large-v2"</span>)</span>
+<span id="cb2-8">model <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"large-v3"</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>whisper_init_from_file: loading model from '/Users/joeystan/Library/CloudStorage/Box-Box/KohlerTapes/scripts/ggml-small.bin'
+whisper_model_load: loading model
+whisper_model_load: n_vocab       = 51865
+whisper_model_load: n_audio_ctx   = 1500
+whisper_model_load: n_audio_state = 768
+whisper_model_load: n_audio_head  = 12
+whisper_model_load: n_audio_layer = 12
+whisper_model_load: n_text_ctx    = 448
+whisper_model_load: n_text_state  = 768
+whisper_model_load: n_text_head   = 12
+whisper_model_load: n_text_layer  = 12
+whisper_model_load: n_mels        = 80
+whisper_model_load: f16           = 1
+whisper_model_load: type          = 3
+whisper_model_load: mem required  =  603.00 MB (+   16.00 MB per decoder)
+whisper_model_load: kv self size  =   15.75 MB
+whisper_model_load: kv cross size =   52.73 MB
+whisper_model_load: adding 1608 extra tokens
+whisper_model_load: model ctx     =  464.56 MB
+whisper_model_load: model size    =  464.44 MB</code></pre>
+</div>
+</div>
+<p>I’ll pick the small model for this tutorial. When you load one, it’ll download the file to your computer in the same folder as where your script is located. You should see a file called <code>ggml-small.bin</code> or something.<sup>2</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;If you have whisper installed already somwhere for another project, there’s no need to install it a second time for this specific project. Feel free to provide a pathname to that file instead of <code>"small"</code> and it’ll load it from there.</p></div></div><p>We’re also going to need to install the <code>av</code> package. This is just for working with audio files and converting them into a format that <code>audio.whisper</code> likes. You can install it the normal way.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"av"</span>)</span></code></pre></div>
+</div>
+<p>We’ll then load it, as well as <code>tidyverse</code>, and we’ll be ready to go.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(av)</span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+</div>
+</section>
+<section id="using-whisper" class="level2 page-columns page-full" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="using-whisper"><span class="header-section-number">2</span> Using Whisper</h2>
+<p>Using Whisper really only takes a few lines of code. So if you’re interested in just a one-off use, then you’re in luck. I’ll first show the bare minimum you’ll need to use Whisper. However, be aware that the output isn’t in a particularly useful format, so you’ll likely need to convert it to a TextGrid, which we can do right here as well. And of course, wrapping it all into a function can help if you need to process multiple files.</p>
+<p>The first thing you need to do is convert the audio to a 16-bit WAV file. This is a constraint imposed by <code>audio.whisper</code> (and maybe Whisper itself, I don’t know). We can do this with the <code>av_audio_convert</code> function in the <code>av</code> package. This function takes four arguments:</p>
+<ul>
+<li>the pathname to the audio you want to convert</li>
+<li>the pathname to the output you want to convert</li>
+<li>the format you want to convert the audio to</li>
+<li>the sample rate you want to convert the audio to.</li>
+</ul>
+<p>I have a file named <code>02-Carol.wav</code> that I’m going to use for this tutorial.<sup>3</sup> It’s a 1-minute snippet from a sociolinguistic interview I did as part of my dissertation in Washington where she talks about what it was like living near Mount St.&nbsp;Helens when it erupted in 1980. The file is already in the right format, but I’ll run the code anyway just to be sure.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;You can get this and other sample audio [here](/data.</p></div></div><div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">av_audio_convert</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"02-Carol.wav"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">output =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"02-Carol.wav_16bit.wav"</span>, </span>
+<span id="cb6-2">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">format =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"wav"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sample_rate =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16000</span>)</span>
+<span id="cb6-3"></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#  Output #0, wav, to '/Users/joeystan/GitHub/joeystanley/blog/whisper/02-Carol.wav_16bit.wav':</span></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   Metadata:</span></span>
+<span id="cb6-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#     ISFT            : Lavf60.3.100</span></span>
+<span id="cb6-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#   Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 16000 Hz, mono, s16, 256 kb/s</span></span>
+<span id="cb6-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Adding audio frame 1305 at timestamp 55.57sec - audio stream completed!</span></span>
+<span id="cb6-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># [1] "/Users/joeystan/GitHub/joeystanley/blog/whisper/02-Carol.wav_16bit.wav"</span></span></code></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that putting just the filename (i.e.&nbsp;<code>"02-Carol.wav"</code>) assumes that the file is in the same folder as the script that you’re running this code from. If your file lives somewhere else on your computer, you’ll need to provide a full path (e.g.&nbsp;<code>"/Users/joeystan/Desktop/dissertation/audio/02-Carol/02-Carol.wav</code>) or a relative path (e.g.&nbsp;<code>"../audio/02-Carol.wav"</code>).</p>
+<p>The same applies to the output. By just providing a filename, it’ll create the file in the same folder as the script. If you want it to be saved somewhere else, you’ll need to provide a full or relative path.</p>
+</div>
+</div>
+<p>I’ve now created a new file called <code>02-Carol.wav_16bit.wav</code>. That one should be ready to process. We’ll now use the <code>predict</code> function in <code>audio.whisper</code> to actually run Whisper on that newly created audio file. There are four arguments here.</p>
+<ul>
+<li>first, <code>model</code>, or the name of the object you created when you loaded the model above</li>
+<li><code>newdate</code>: the path to the 16-bit WAV file you want to process</li>
+<li><code>language</code>: the language of the audio being transcribed</li>
+<li><code>n_threads</code>: the number of cores in your computer you want to devote towards the task. This is not optional, but since many computers nowadays have mutliple cores, you can speed up the task by having the function run in parallel across multiple cores. You can check how many cores you have by running <code>parallel::detectCores()</code> after installing the <code>parallel</code> package. Mine has 12.</li>
+</ul>
+<p>We’ll run that function and save that transcription to an object called <code>trans</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">trans <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">predict</span>(model, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">newdata =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"02-Carol.wav_16bit.wav"</span>, </span>
+<span id="cb7-2">                 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">language =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"en"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_threads =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Processing 02-Carol.wav_16bit.wav (889065 samples, 55.5666 sec), lang = en, translate = 0, timestamps = 0
+
+[00:00:00.000 --&gt; 00:00:03.500]   - Where were you and what happened when Mount St. Helens?
+[00:00:03.500 --&gt; 00:00:05.580]   - Oh, that was a Sunday morning.
+[00:00:05.580 --&gt; 00:00:11.580]   And I remember, well there were months leading up to this.
+[00:00:11.580 --&gt; 00:00:13.880]   We didn't know what was gonna be happening up there.
+[00:00:13.880 --&gt; 00:00:17.600]   Following the news and all the scientists and all that.
+[00:00:17.600 --&gt; 00:00:21.860]   Anyway, so we knew something was going to happen.
+[00:00:21.860 --&gt; 00:00:23.120]   We just didn't know when.
+[00:00:23.120 --&gt; 00:00:24.340]   And it was a Sunday morning.
+[00:00:24.340 --&gt; 00:00:25.820]   It was like 8.30 in the morning
+[00:00:25.820 --&gt; 00:00:28.660]   and I think we had church at 11 or something.
+[00:00:28.660 --&gt; 00:00:31.220]   So it was kind of a, the kids were all really little.
+[00:00:31.220 --&gt; 00:00:32.720]   We only had three at the time.
+[00:00:32.720 --&gt; 00:00:36.360]   The kids were really little.
+[00:00:36.360 --&gt; 00:00:37.860]   We had kind of slept in that morning.
+[00:00:37.860 --&gt; 00:00:41.200]   Kind of taken a slow pace, getting ready for church.
+[00:00:41.200 --&gt; 00:00:45.380]   And my dad, who lived about 10 miles north of here
+[00:00:45.380 --&gt; 00:00:49.420]   and had a view, he couldn't actually see it
+[00:00:49.420 --&gt; 00:00:52.980]   but he could see the plume come up, called us.
+[00:00:52.980 --&gt; 00:00:55.720]   And he said, "The mountain just blew."</code></pre>
+</div>
+</div>
+<p>Technically, you’re done using Whisper! Hooray! Here’s the transcription:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">trans<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>data</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   segment         from           to
+1        1 00:00:00.000 00:00:03.500
+2        2 00:00:03.500 00:00:05.580
+3        3 00:00:05.580 00:00:11.580
+4        4 00:00:11.580 00:00:13.880
+5        5 00:00:13.880 00:00:17.600
+6        6 00:00:17.600 00:00:21.860
+7        7 00:00:21.860 00:00:23.120
+8        8 00:00:23.120 00:00:24.340
+9        9 00:00:24.340 00:00:25.820
+10      10 00:00:25.820 00:00:28.660
+11      11 00:00:28.660 00:00:31.220
+12      12 00:00:31.220 00:00:32.720
+13      13 00:00:32.720 00:00:36.360
+14      14 00:00:36.360 00:00:37.860
+15      15 00:00:37.860 00:00:41.200
+16      16 00:00:41.200 00:00:45.380
+17      17 00:00:45.380 00:00:49.420
+18      18 00:00:49.420 00:00:52.980
+19      19 00:00:52.980 00:00:55.720
+                                                          text
+1    - Where were you and what happened when Mount St. Helens?
+2                             - Oh, that was a Sunday morning.
+3   And I remember, well there were months leading up to this.
+4         We didn't know what was gonna be happening up there.
+5      Following the news and all the scientists and all that.
+6            Anyway, so we knew something was going to happen.
+7                                    We just didn't know when.
+8                                 And it was a Sunday morning.
+9                              It was like 8.30 in the morning
+10               and I think we had church at 11 or something.
+11       So it was kind of a, the kids were all really little.
+12                              We only had three at the time.
+13                                The kids were really little.
+14                       We had kind of slept in that morning.
+15        Kind of taken a slow pace, getting ready for church.
+16          And my dad, who lived about 10 miles north of here
+17                 and had a view, he couldn't actually see it
+18              but he could see the plume come up, called us.
+19                      And he said, "The mountain just blew."</code></pre>
+</div>
+</div>
+<p>Okay, but now we need to get it into a format that’s actually useful. Right now it’s saved basically as a data frame (<code>trans$data</code>). Unfortunately, if you want to do subsequent processing, like forced alignment or extracting acoustic measurements, you’ll need to convert this output into a different format.</p>
+</section>
+<section id="using-elan-to-convert-to-a-praat-textgrid" class="level2 page-columns page-full" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="using-elan-to-convert-to-a-praat-textgrid"><span class="header-section-number">3</span> Using ELAN to convert to a Praat TextGrid</h2>
+<p>If you’re just doing a small number of files, the easiest way to go would probably be to open this file in ELAN and from there export it into a Praat TextGrid. Let’s walk through that.</p>
+<p>First, let’s export the file. Normally, I like doing a comma-separated value (.csv) file, but because Whisper automatically punctuates the transcription, which includes commas, it throws off how .csv files are stored. Instead, I’ll export it as a .txt file, and separate columns with tabs, which are coded in R as <code>\t</code>. I’ll do this using <code>write_delim</code>, which is part of <code>tidyverse</code>. There are three arguments:</p>
+<ul>
+<li>The file you want to export. That’s <code>trans$data</code>.</li>
+<li>The name and path of the file you want to create.</li>
+<li><code>delim = "\t"</code>, which tells R to put tabs between columns.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_delim</span>(trans<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>data, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"trans.txt"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delim =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+</div>
+<p>The result is a new file that looks something like this:</p>
+<p><img src="https://joeystanley.com/blog/whisper/trans_screenshot.png" class="img-fluid"></p>
+<p>OKay, so now we need to jump over to the ELAN software. ELAN is an annotation tool for audio and video and is used by linguists all over the world. You can download it <a href="https://archive.mpi.nl/tla/elan/download">here</a>. I’m not going to explain much more because it’s pretty tangential to what this tutorial is about. All you need to know is that it’s great and that it can convert one transcription format to another, a fact we’ll take advantage of now.</p>
+<p>Let’s open up ELAN. Here’s what the window looks like when you first open it.</p>
+<p><img src="https://joeystanley.com/blog/whisper/elan_basic.png" class="img-fluid"></p>
+<p>Go to File &gt; Import &gt; CSV/Tab-delimited Text File and open the new <code>trans.txt</code> file (or whatever you called it) that you just created. You’ll then be presented with a window that will give you some options for how ELAN should read the file in. Here’s what you’ll need to do:</p>
+<ul>
+<li>Towards the bottom of the file, specify that the delimiter is a Tab. That’ll change how the rest of the window looks.</li>
+<li>In the middle of the window (in the “Import options” portion), uncheck the box under 1. That corresponds to the first column of the exported dataframe which is just sequentially numbering the intervals. Not super useful to us.</li>
+<li>For column 2, change it to “Begin Time”. This corresponds to the start of each interval.</li>
+<li>For column 3, change it to “End Time”. This corresponds to the end of each interval.</li>
+<li>For column 4, change it to “Annotation”. This corresponds to the actual transcription.</li>
+</ul>
+<p><img src="https://joeystanley.com/blog/whisper/elan_settings.png" class="img-fluid"></p>
+<p>Once you’ve done that, the transcription should be loaded like this:</p>
+<p><img src="https://joeystanley.com/blog/whisper/elan_loaded.png" class="img-fluid"></p>
+<p>We don’t really need to do anything in ELAN other than one small change. Currently, the tier is called “Tier-0”, which you can see in red text towards the bottom left of the window. Let’s change that to something more meaningful to us. Go to Tier &gt; Change Tier Attributes…. In the center of the new window that pops up, change the tier name to whatever you want, then hit “Change”. I’ll change it to “sentence” so that if I want to send it off to <a href="http://darla.dartmouth.edu">DARLA</a> (see tutorial <a href="../../blog/darla/">here</a>), I can do so without any other changes.</p>
+<p><img src="https://joeystanley.com/blog/whisper/elan_changetiername.png" class="img-fluid"></p>
+<p>Now you can simply export it into a Praat TextGrid. Go to File &gt; Export As &gt; Praat TextGrid…. You can use the default settings that show up in that export window, navigate to a location that is convenient for you, give it a name (be sure it has <code>.TextGrid</code> at the end of the filename), and save it with UTF-8 encoding.</p>
+<p>Congrats! You now have a Praat TextGrid of an automatically generated transcription using Whisper.</p>
+<p><img src="https://joeystanley.com/blog/whisper/elan_praat.png" class="img-fluid"></p>
+<p>Now, there are a few things you need to be aware of. First, Whisper is going to assume that there’s only one speaker. If there are multiple speakers in your audio, you’ll need to modify the TextGrid and separate those out. It’s out of the scope of this tutorial to show how to do that, but you can look at <a href="https://joeystanley.com/downloads/190911-intro_to_Praat.html">my tutorial on Praat</a> for some basic, general advice on how to work with TextGrids. You’ll have to just listen to the audio and move any speech from, say, the interviewer, to a new tier.</p>
+<p>The other thing that you should be aware of is that for some reason the TextGrid goes for five minutes, even if the audio is not that long. In my case, the audio is only about a minute, but you’ll notice that the TextGrid goes to 300 seconds. That bug must have been introduced in ELAN because it’s not part of the Whisper output. I don’t think it’ll harm anything, but it’s just something to be aware of.<sup>4</sup></p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;There may be an easy fix to that, but I rarely use ELAN so I don’t know it well enough to say!</p></div></div><p>Finally, very occasionally, Whisper may introduce a bug in the timing of the intervals such that the end time of one interval is later than the start time of the next interval. I’m not sure why that happens. Praat seems to be able to handle it most of the time, but sometimes it causes Praat to crash. If that happens to you, you’ll need to carefully check <code>trans.txt</code> and make sure each interval’s start time is identical to the previous interval’s end time. If you spot any errors, you can fix them manually.</p>
+</section>
+<section id="conclusion" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4</span> Conclusion</h2>
+<p>Hopefully with this brief tutorial, you’re able to start to automatically transcribe your own audio files.</p>
+<p>In the future, I’ll expand this post to show how you can do all the Whisper stuff in a more automated way. This will include writing a function that converts the output into a TextGrid right in R so that you don’t have to go through ELAN for every file. All you’ll need to do is provide the name of the audio file and it’ll load it it, create the 16-bit WAV file, do the transcription, and export the TextGrid all at once. You can then start to loop over many files at once. But that tutorial will have to wait until I have a little more time.</p>
+
+
+</section>
+
+
+ ]]></description>
   <category>How-to Guides</category>
   <guid>https://joeystanley.com/blog/whisper/</guid>
   <pubDate>Tue, 11 Mar 2025 09:55:00 GMT</pubDate>
@@ -48,16 +408,6 @@
   <category>Students</category>
   <guid>https://joeystanley.com/blog/missionary-voice-video/</guid>
   <pubDate>Fri, 07 Mar 2025 12:03:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/simulating_candyland/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <category>Side Projects</category>
-  <category>Simulations</category>
-  <guid>https://joeystanley.com/blog/simulating_candyland/</guid>
-  <pubDate>Tue, 04 Mar 2025 20:47:00 GMT</pubDate>
 </item>
 <item>
   <title>A tutorial on using DARLA</title>
@@ -5560,6 +5910,85 @@ Tip
   <category>Personal</category>
   <guid>https://joeystanley.com/blog/stories-behind-the-languages-ive-studied/</guid>
   <pubDate>Sat, 27 May 2023 21:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>My cot-caught distribution</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/my-cot-caught-distribution/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In appendix C of my <a href="../../blog/dissertation">dissertation</a>, I listed 838 words that contain low vowels, classified as /ɑ/ or /ɔ/ according to my idiolect. I think it may be a useful resource for those who have the <em>cot-caught</em> merger, so I thought I’d pull it out and make it more available.</p>
+<p>The words that are included here are all those that came up in the course of the 54 sociolinguistic interviews I did in Washington State as part of my dissertation work. This means that there are some quirky ones included like <em>Sinterklaas</em> and <em>Jawas</em>. By nature of the naturalistic data, certain common words may be missing.</p>
+<p>Please note that, again, this reflects <em>my</em> idiolect, and may not be reflective of others’ speech, other varieties of English, or historical distributions. For more information about the phonetic realization my two vowels and some phonological peculiarities, please see my description of my <a href="../../pages/idiolect">idiolect</a>.</p>
+<p>If you find this page useful, please cite it as Appendix C of my dissertation:</p>
+<blockquote class="blockquote">
+<p>Stanley, Joseph A. (2020). <em>Vowel Dynamics of the Elsewhere Shift: A Sociophonetic Analysis of English in Cowlitz County, Washington</em>. Ph.D.&nbsp;Dissertation, University of Georgia, Athens, GA.</p>
+</blockquote>
+<section id="lot-cot-ɑ-bot-etc." class="level2">
+<h2 class="anchored" data-anchor-id="lot-cot-ɑ-bot-etc."><sc>lot</sc>, <em>cot</em>, /ɑ/, <sc>bot</sc>, etc.</h2>
+<p>The following 550ish words are all those that were classified as part of the <sc>lot</sc> lexical set, which includes many words in the <sc>palm</sc> set (though not <em>palm</em> itself because of that pesky /l/!). Personal names and other identifying words have been removed.</p>
+<p><em>accelerometer</em>, <em>accommodate</em>, <em>accommodation</em>, <em>accomplish</em>, <em>accomplished</em>, <em>adopt</em>, <em>adopted</em>, <em>adopting</em>, <em>agronomous</em>, <em>ah</em>, <em>aloha</em>, <em>Aotearoa</em>, <em>apostrophe</em>, <em>approximately</em>, <em>aquatic</em>, <em>assada</em>, <em>astronomical</em>, <em>atomic</em>, <em>atrocities</em>,</p>
+<p><em>battery-operated</em>, <em>biography</em>, <em>biological</em>, <em>blah</em>, <em>blobs</em>, <em>block</em>, <em>blockage</em>, <em>blocked</em>, <em>blocking</em>, <em>blocks</em>, <em>blossomed</em>, <em>body</em>, <em>bomb</em>, <em>bomber</em>, <em>bombing</em>, <em>bombings</em>, <em>bombs</em>, <em>bombshell</em>, <em>bon</em>, <em>bond</em>, <em>bonfire</em>, <em>bonfires</em>, <em>Bonnie</em>, <em>Bonnie’s</em>, <em>bother</em>, <em>bothered</em>, <em>bothering</em>, <em>bothers</em>, <em>bottle</em>, <em>bottles</em>, <em>bottom</em>, <em>bottoms</em>, <em>box</em>, <em>boxes</em>, <em>boxing</em>,</p>
+<p><em>Chicago</em>, <em>chocks</em>, <em>chop</em>, <em>chopped</em>, <em>chopping</em>, <em>chops</em>, <em>chronically</em>, <em>cilantro</em>, <em>clock</em>, <em>clock’s</em>, <em>clocked</em>, <em>clocks</em>, <em>closet</em>, <em>closeted</em>, <em>cocker</em>, <em>cockney</em>, <em>cocktails</em>, <em>cod</em>, <em>cog</em>, <em>cogs</em>, <em>cognitive</em>, <em>colonoscopy</em>, <em>com</em>, <em>combat</em>, <em>combination</em>, <em>combos</em>, <em>comedies</em>, <em>comedy</em>, <em>comical</em>, <em>comment</em>, <em>comments</em>, <em>commerce</em>, <em>commodity</em>, <em>common</em>, <em>commonly</em>, <em>comp</em>, <em>compact</em>, <em>compensate</em>, <em>compensating</em>, <em>competent</em>, <em>competition</em>, <em>competitions</em>, <em>complement</em>, <em>complex</em>, <em>complicate</em>, <em>complicated</em>, <em>complications</em>, <em>compound</em>, <em>comstock</em>, <em>con</em>, <em>concentrate</em>, <em>concentrating</em>, <em>concept</em>, <em>concepts</em>, <em>concert</em>, <em>concerts</em>, <em>concrete</em>, <em>condo</em>, <em>conduct</em>, <em>conference</em>, <em>conferences</em>, <em>confidence</em>, <em>confident</em>, <em>confirmation</em>, <em>conflict</em>, <em>conglomerate</em>, <em>congregates</em>, <em>congress</em>, <em>Conner</em>, <em>Connie</em>, <em>conquer</em>, <em>cons</em>, <em>conscience</em>, <em>conscious</em>, <em>consequence</em>, <em>consequences</em>, <em>constable</em>, <em>constant</em>, <em>constantly</em>, <em>constitution</em>, <em>contact</em>, <em>contacted</em>, <em>content</em>, <em>contest</em>, <em>contests</em>, <em>continental</em>, <em>contraband</em>, <em>contract</em>, <em>contracted</em>, <em>contractor</em>, <em>contractors</em>, <em>contracts</em>, <em>contrast</em>, <em>controversy</em>, <em>conversation</em>, <em>converse</em>, <em>convert</em>, <em>cooperating</em>, <em>cop</em>, <em>copper</em>, <em>cops</em>, <em>copy</em>, <em>copying</em>, <em>Cossack</em>, <em>costume</em>, <em>cot</em>, <em>cots</em>, <em>counter-clockwise</em>, <em>Cozumel</em>, <em>crop</em>, <em>crops</em>,</p>
+<p><em>deposit</em>, <em>dichotomy</em>, <em>dock</em>, <em>doctor</em>, <em>doctor’s</em>, <em>doctorate</em>, <em>doctors</em>, <em>doctrine</em>, <em>documented</em>, <em>documents</em>, <em>dodge</em>, <em>dodgeball</em>, <em>dodged</em>, <em>Don</em>, <em>Donald</em>, <em>dot</em>, <em>drama</em>, <em>drop</em>, <em>drop-out</em>, <em>dropoff</em>, <em>dropouts</em>, <em>dropped</em>, <em>dropping</em>, <em>drops</em>,</p>
+<p><em>ebonics</em>, <em>economic</em>, <em>economics</em>, <em>economy</em>, <em>electronic</em>, <em>electronics</em>, <em>ensemble</em>, <em>esophagus</em>, <em>Exxon</em>,</p>
+<p><em>father</em>, <em>father-in-law</em>, <em>father-in-law’s</em>, <em>father’s</em>, <em>fiance</em>, <em>fiance’s</em>, <em>Firefox</em>, <em>flock</em>, <em>flocks</em>, <em>flops</em>, <em>fondest</em>, <em>fondue</em>, <em>forgot</em>, <em>forgotten</em>, <em>fox</em>,</p>
+<p><em>galoshes</em>, <em>garage</em>, <em>garages</em>, <em>geography</em>, <em>geometry</em>, <em>god</em>, <em>god’s</em>, <em>goddess</em>, <em>godfather</em>, <em>godparents</em>, <em>gosh</em>, <em>gospel</em>, <em>gossip</em>, <em>got</em>, <em>gotcha</em>, <em>gotta</em>, <em>gotten</em>, <em>grandfather</em>, <em>grandma</em>, <em>grandma’s</em>, <em>grandpa</em>, <em>grandpa’s</em>, <em>great-grandfather’s</em>, <em>Guam</em>,</p>
+<p><em>ha</em>, <em>hobbies</em>, <em>hobby</em>, <em>hockey</em>, <em>homogenized</em>, <em>Honda</em>, <em>honest</em>, <em>honestly</em>, <em>honesty</em>, <em>honor</em>, <em>honorable</em>, <em>hopped</em>, <em>hopper</em>, <em>hops</em>, <em>hospice</em>, <em>hospital</em>, <em>hospitals</em>, <em>hostage</em>, <em>hot</em>, <em>hotter</em>, <em>hottest</em>, <em>hypothesis</em>,</p>
+<p><em>impossible</em>, <em>impoverished</em>, <em>improper</em>, <em>Iran</em>, <em>ironic</em>, <em>ironically</em>,</p>
+<p><em>Java</em>, <em>Jawa</em>, <em>Jawas</em>, <em>job</em>, <em>job-wise</em>, <em>jobs</em>, <em>jock</em>, <em>jockey</em>, <em>jockeying</em>, <em>jockeys</em>, <em>jocks</em>, <em>Joplin</em>,</p>
+<p><em>Kawasaki</em>, <em>knob</em>, <em>knock</em>, <em>knocked</em>, <em>knocking</em>, <em>knocks</em>,</p>
+<p><em>la</em>, <em>Lafayette</em>, <em>lava</em>, <em>Lhasa</em>, <em>llama</em>, <em>llamas</em>, <em>lobby</em>, <em>lobster</em>, <em>lock</em>, <em>locked</em>, <em>locking</em>, <em>locks</em>, <em>lodge</em>, <em>logic</em>, <em>lot</em>, <em>lots</em>, <em>lotta</em>, <em>lotteries</em>,</p>
+<p><em>ma</em>, <em>Mazama</em>, <em>Mazamas</em>, <em>McDonald</em>, <em>McDonald’s</em>, <em>McDonalds</em>, <em>microprocessor</em>, <em>microprocessors</em>, <em>mill-dominated</em>, <em>mock</em>, <em>model</em>, <em>modeling</em>, <em>models</em>, <em>moderate</em>, <em>modern</em>, <em>modest</em>, <em>modify</em>, <em>modular</em>, <em>mom</em>, <em>mom’s</em>, <em>moms</em>, <em>monetary</em>, <em>Monica</em>, <em>monocle</em>, <em>monopoly</em>, <em>monotone</em>, <em>monster’s</em>, <em>Monterrey</em>, <em>Montgomery</em>, <em>Montiville</em>, <em>monument</em>, <em>mop</em>, <em>Morocco</em>, <em>motto</em>,</p>
+<p><em>nah</em>, <em>Nazi</em>, <em>Nazis</em>, <em>neon</em>, <em>nodding</em>, <em>non-athletes</em>, <em>non-profit</em>, <em>non-profits</em>, <em>non-stop</em>, <em>novel</em>, <em>novelist</em>,</p>
+<p><em>o’clock</em>, <em>obligated</em>, <em>obsolete</em>, <em>obstacles</em>, <em>obvious</em>, <em>obviously</em>, <em>occupies</em>, <em>October</em>, <em>odd</em>, <em>odd-shaped</em>, <em>oddly</em>, <em>odds</em>, <em>Ohana</em>, <em>omelette</em>, <em>omelettes</em>, <em>op</em>, <em>opera</em>, <em>operate</em>, <em>operating</em>, <em>operation</em>, <em>operations</em>, <em>operator</em>, <em>operators</em>, <em>opportunities</em>, <em>opportunity</em>, <em>opposite</em>, <em>option</em>, <em>optional</em>, <em>options</em>, <em>orthodontist</em>, <em>ostracized</em>, <em>Ostrander</em>, <em>ostriches</em>, <em>otters</em>, <em>oxy</em>, <em>oxy-fuel</em>, <em>oxygen</em>,</p>
+<p><em>pa</em>, <em>pasta</em>, <em>pecan</em>, <em>pecans</em>, <em>periodontist</em>, <em>phenomenal</em>, <em>philanthropic</em>, <em>philosophies</em>, <em>philosophy</em>, <em>phonologically</em>, <em>phosphorus</em>, <em>photographer</em>, <em>photography</em>, <em>Photoshop</em>, <em>plopped</em>, <em>Pocahontas</em>, <em>pocket</em>, <em>pockets</em>, <em>pod</em>, <em>podcast</em>, <em>pond</em>, <em>ponds</em>, <em>Pontiac</em>, <em>pop</em>, <em>popped</em>, <em>pops</em>, <em>popular</em>, <em>population</em>, <em>posh</em>, <em>positing</em>, <em>positive</em>, <em>possible</em>, <em>possibly</em>, <em>pot</em>, <em>potholes</em>, <em>potluck</em>, <em>potlucks</em>, <em>Potter</em>, <em>potty</em>, <em>pottying</em>, <em>poverty</em>, <em>predominantly</em>, <em>probably</em>, <em>problem</em>, <em>problem-solvers</em>, <em>problems</em>, <em>process</em>, <em>processed</em>, <em>processes</em>, <em>processing</em>, <em>proclamation</em>, <em>product</em>, <em>products</em>, <em>progress</em>, <em>project</em>, <em>projects</em>, <em>prom</em>, <em>prominent</em>, <em>prop</em>, <em>proper</em>, <em>properly</em>, <em>properties</em>, <em>property</em>, <em>props</em>, <em>prosecuted</em>, <em>proselyte</em>, <em>prospects</em>, <em>prostate</em>, <em>psychologically</em>,</p>
+<p><em>quads</em>,</p>
+<p><em>recognizance</em>, <em>reconnaissance</em>, <em>regatta</em>, <em>remodel</em>, <em>remodeled</em>, <em>remodeling</em>, <em>remodels</em>, <em>repository</em>, <em>reprocess</em>, <em>respond</em>, <em>responded</em>, <em>response</em>, <em>responses</em>, <em>responsible</em>, <em>robin</em>, <em>robin’s</em>, <em>rock</em>, <em>rock’s</em>, <em>Rockefeller</em>, <em>rocker</em>, <em>rockers</em>, <em>rocket</em>, <em>rockets</em>, <em>rocking</em>, <em>rocks</em>, <em>rocky</em>, <em>rod</em>, <em>rods</em>, <em>rotted</em>, <em>rotten</em>,</p>
+<p><em>Saigon</em>, <em>Scotland</em>, <em>self-conscious</em>, <em>shock</em>, <em>shocked</em>, <em>shop</em>, <em>shopped</em>, <em>shopping</em>, <em>shops</em>, <em>shot</em>, <em>shotguns</em>, <em>shots</em>, <em>Sinterklaas</em>, <em>ska’s</em>, <em>sloppy</em>, <em>snobbies</em>, <em>snobby</em>, <em>snot</em>, <em>sobbed</em>, <em>soccer</em>, <em>soccer’s</em>, <em>sock</em>, <em>socket</em>, <em>socks</em>, <em>sponsor</em>, <em>sponsoring</em>, <em>spot</em>, <em>spots</em>, <em>spotted</em>, <em>spotter</em>, <em>spotters</em>, <em>squash</em>, <em>squat</em>, <em>squatter</em>, <em>squatters</em>, <em>stock</em>, <em>stocking</em>, <em>stockings</em>, <em>stomping</em>, <em>stop</em>, <em>stopped</em>, <em>stopping</em>, <em>stops</em>,</p>
+<p><em>taco</em>, <em>telethon</em>, <em>teriyaki</em>, <em>throttle</em>, <em>toddler</em>, <em>top</em>, <em>topic</em>, <em>topics</em>, <em>topless</em>, <em>Toppenish</em>, <em>toppled</em>, <em>tops</em>, <em>trigonometry</em>, <em>tropical</em>, <em>trot</em>, <em>Tsugawa’s</em>, <em>tsunami</em>,</p>
+<p><em>Uganda</em>, <em>unblock</em>, <em>uncommon</em>, <em>Vietnam</em>,</p>
+<p><em>whatnot</em>, <em>Wisconsin</em>,</p>
+<p><em>Yamaha</em>,</p>
+<p><em>zombie</em></p>
+</section>
+<section id="thought-caught-ɔ-bought-etc." class="level2">
+<h2 class="anchored" data-anchor-id="thought-caught-ɔ-bought-etc."><sc>thought</sc>, <em>caught</em>, /ɔ/, <sc>bought</sc>, etc.</h2>
+<p>Meanwhile, the following 280ish words are all those that were classified as part of the <sc>thought</sc> lexical set, which includes most (or probably all) words in the <sc>cloth</sc> set. Again, personal names and other identifying words have been removed.</p>
+<p><em>across</em>, <em>along</em>, <em>alongside</em>, <em>applesauce</em>, <em>Auburn</em>, <em>auction</em>, <em>auctions</em>, <em>audio</em>, <em>audio’s</em>, <em>audits</em>, <em>aught</em>, <em>August</em>, <em>Austin</em>, <em>Austria</em>, <em>Austrian</em>, <em>author’s</em>, <em>authorized</em>, <em>autism</em>, <em>auto</em>, <em>auto-related</em>, <em>autobiography</em>, <em>automatic</em>, <em>automatically</em>, <em>automobiles</em>, <em>autopsy</em>, <em>awe</em>, <em>awesome</em>, <em>awful</em>, <em>awkward</em>, <em>awkwardness</em>,</p>
+<p><em>belong</em>, <em>belonged</em>, <em>belongings</em>, <em>beyond</em>, <em>blog</em>, <em>blogger</em>, <em>bloggers</em>, <em>blogging</em>, <em>blogs</em>, <em>blond</em>, <em>bonko</em>, <em>bonkos</em>, <em>boss</em>, <em>bosses</em>, <em>Boston</em>, <em>bought</em>, <em>bra</em>, <em>bras</em>, <em>broad</em>, <em>broadcast</em>, <em>broadcasting</em>, <em>broadway</em>, <em>brothels</em>, <em>brought</em>,</p>
+<p><em>c’mon</em>, <em>calm</em>, <em>caught</em>, <em>cause</em>, <em>caused</em>, <em>causes</em>, <em>causing</em>, <em>cautious</em>, <em>chainsaw</em>, <em>chalked</em>, <em>chocolate</em>, <em>chocolates</em>, <em>clause</em>, <em>clog</em>, <em>clogged</em>, <em>clogging</em>, <em>cloth</em>, <em>coffee</em>, <em>Cong</em>, <em>cost</em>, <em>Costco</em>, <em>costs</em>, <em>cross</em>, <em>cross-wired</em>, <em>crossed</em>, <em>crosses</em>, <em>crossing</em>, <em>crosswise</em>, <em>crossword</em>, <em>cutoff</em>,</p>
+<p><em>daughter</em>, <em>daughter-in-law</em>, <em>daughter-in-laws</em>, <em>daughter’s</em>, <em>daughters</em>, <em>daughters-in-law</em>, <em>dawn</em>, <em>dawned</em>, <em>dishwater</em>, <em>dog</em>, <em>dog’s</em>, <em>doggie</em>, <em>dogging</em>, <em>doggone</em>, <em>dogs</em>, <em>dong</em>, <em>donkeys</em>, <em>draw</em>, <em>drawed</em>, <em>drawing</em>, <em>drawn</em>, <em>draws</em>,</p>
+<p><em>elongated</em>, <em>exhaust</em>,</p>
+<p><em>fog</em>, <em>fought</em>, <em>frogs</em>, <em>froth</em>,</p>
+<p><em>gloss</em>, <em>gone</em>, <em>goner</em>, <em>gong</em>, <em>goth</em>, <em>goths</em>, <em>granddaughter</em>, <em>granddaughters</em>,</p>
+<p><em>haunted</em>, <em>haunts</em>, <em>hawed</em>, <em>hawk</em>, <em>hog</em>, <em>Hogwarts</em>,</p>
+<p><em>jaw</em>, <em>jigsaw</em>, <em>jog</em>, <em>jogged</em>, <em>jogging</em>, <em>Johnston</em>, <em>Johnston’s</em>,</p>
+<p><em>Las Vegas</em>, <em>laundry</em>, <em>law</em>, <em>lawn</em>, <em>lawnmower</em>, <em>lawns</em>, <em>laws</em>, <em>lifelong</em>, <em>log</em>, <em>logged</em>, <em>logger</em>, <em>loggers</em>, <em>logging</em>, <em>logjammed</em>, <em>logs</em>, <em>long</em>, <em>Long-Bell</em>, <em>Long-Bell’s</em>, <em>long-span</em>, <em>long-standing</em>, <em>long-term</em>, <em>longer</em>, <em>longest</em>, <em>longjohns</em>, <em>longshore</em>, <em>longshoreman</em>, <em>longshoreman’s</em>, <em>Longview</em>, <em>Longview-ite</em>, <em>Longview’s</em>, <em>loss</em>, <em>losses</em>, <em>lost</em>,</p>
+<p><em>mama</em>, <em>Montana</em>, <em>moss</em>, <em>mossy</em>, <em>naughty</em>,</p>
+<p><em>off-duty</em>, <em>offer</em>, <em>offered</em>, <em>offerings</em>, <em>offers</em>, <em>offhand</em>, <em>office</em>, <em>officer</em>, <em>officers</em>, <em>offices</em>, <em>often</em>, <em>Ogden</em>, <em>online</em>, <em>on</em>, <em>onset</em>, <em>onto</em>,</p>
+<p><em>palm</em>, <em>pause</em>, <em>paused</em>, <em>pausing</em>, <em>paw</em>, <em>pawn</em>, <em>paws</em>, <em>pong</em>, <em>profit</em>, <em>profitable</em>, <em>prolonging</em>, <em>promise</em>, <em>promised</em>, <em>promising</em>, <em>prompt</em>, <em>prophecy</em>, <em>prophet</em>,</p>
+<p><em>quantities</em>,</p>
+<p><em>raw</em>, <em>restaurant</em>, <em>restaurants</em>,</p>
+<p><em>sauce</em>, <em>saucers</em>, <em>sauces</em>, <em>sausage</em>, <em>Sauvie</em>, <em>saw</em>, <em>sawing</em>, <em>sawmill</em>, <em>saws</em>, <em>Schwann’s</em>, <em>scoff</em>, <em>slaughtering</em>, <em>sloshes</em>, <em>soft</em>, <em>softball</em>, <em>software</em>, <em>somber</em>, <em>sombering</em>, <em>song</em>, <em>songs</em>, <em>sophomore</em>, <em>spawning</em>, <em>squaw</em>, <em>stalker</em>, <em>stalking</em>, <em>straw</em>, <em>strawberries</em>, <em>strawberry</em>, <em>strong</em>, <em>stronger</em>, <em>strongest</em>, <em>swans</em>, <em>swath</em>,</p>
+<p><em>talk</em>, <em>talkative</em>, <em>talked</em>, <em>talker</em>, <em>talkie</em>, <em>talking</em>, <em>talks</em>, <em>taught</em>, <em>thaw</em>, <em>thought</em>, <em>thoughts</em>, <em>tomboy</em>, <em>Tonga</em>, <em>tossed</em>, <em>traumatized</em>,</p>
+<p><em>underwater</em>, <em>upon</em>, <em>Utah</em>,</p>
+<p><em>vaudeville</em>,</p>
+<p><em>waffle</em>, <em>waffles</em>, <em>walk</em>, <em>walked</em>, <em>walking</em>, <em>walks</em>, <em>walkway</em>, <em>wand</em>, <em>wandering</em>, <em>wash</em>, <em>washboardy</em>, <em>Washburn</em>, <em>washed</em>, <em>washer</em>, <em>Washington</em>, <em>watch</em>, <em>watched</em>, <em>watches</em>, <em>watching</em>, <em>water</em>, <em>watering</em>, <em>waters</em>, <em>wrong</em></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Dissertation</category>
+  <category>Lexical Sets</category>
+  <category>Personal</category>
+  <guid>https://joeystanley.com/blog/my-cot-caught-distribution/</guid>
+  <pubDate>Tue, 23 May 2023 20:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
