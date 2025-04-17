@@ -21,7 +21,7 @@ Note, this post was written in small chunks over Christmas break with my in-laws
 
 ## Sample data
 
-For this tutorial, I'll work with a recording of myself reading a couple dozen words with the /u/ vowel that I created for something a few months ago. I did the word-level transcription by hand (including boundaries) and then I sent it off to [DARLA](darla.dartmouth.edu) for forced alignment. Here's what one word looks like:
+For this tutorial, I'll work with a recording of myself reading a couple dozen words with the /u/ vowel that I created for something a few months ago. I did the word-level transcription by hand (including boundaries) and then I sent it off to [DARLA](/blog/darla/) for forced alignment. Here's what one word looks like:
 
 ![](praat_sound_file.png){width=30em}
 
