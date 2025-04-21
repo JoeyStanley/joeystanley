@@ -11,6 +11,10 @@ categories:
   - Skills
 ---
 
+:::callout-warning
+This tutorial is meant to teach you Praat scripting, and uses vowel formant extraction as an example. **I do not recommend that you use the output from this tutorial in serious research** because it blindly extracts acoustic measurements without regard to speaker characteristics and does not validate the output using by-token heuristics. Instead, I strongly recommend using [new-fave](https://forced-alignment-and-vowel-extraction.github.io/new-fave/) for vowel formant extraction.
+:::
+
 :::callout-note
 I gave a workshop that covered the contents of this workshop. You can find the handout [here](/downloads/191002-formant_extraction.html), which is slightly modified from this blog post.
 :::
