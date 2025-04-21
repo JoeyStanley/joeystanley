@@ -73,7 +73,7 @@ Extract vowel formant measurements.
 
 ### New-Fave
 
-Extract vowel formant measurements using the lattest algorithms.
+Extract vowel formant measurements using the latest algorithms.
 
 
 ## Series 3: Data processing
@@ -92,7 +92,7 @@ Learn various ways to detect and handle outliers and extreme measurements.
 
 Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. 
 
-### Order of operaions
+### Order of operations
 
 Learn how the order of these processing steps can affect your data and what the recommended order should be. I'll probably mention [this](/blog/pillai-scores-dont-change-after-normalization/). 
 
@@ -110,7 +110,7 @@ Learn to make your plot look nice and how to consistently apply that look across
 
 ### Other kinds of plots
 
-[Curved text]/blog/geomtextpath/).
+[Curved text](/blog/geomtextpath/).
 
 ### Animations
 
