@@ -1,30 +1,41 @@
 ---
 layout: aside
-title: Praat Workshops
+title: Praat Tutorials
+author: Joey Stanley
+date:   2019-09-11 00:11:00 -0400
+date-modified: last-modified
 aliases: 
  - "/praat"
 ---
 
-Lisa Lipani and I will be hosting a series of four workshops on Praat and Praat scripting during Fall 2019. This page will house the handouts and all materials for those workshops.
-
-Note: All workshops will be held at 3:35pm at the DigiLab (300 Main Library) 
+This page serves as the homepage for any Praat tutorials or content on my website. 
 
 <br/>
 
 ## [*Praat Basics: Introduction to the software*](/downloads/190911-intro_to_Praat.html)
 
-*September 11, 2019*---In this workshop, I'll introduce the software Praat, and will how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data *before* using Praat. (For former students of mine, this workshop will overlap with [this homework assignment](/downloads/190523-Praat_tutorial.pdf).)
+This tutorial introduces the software. It covers how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data *before* using Praat. (For former students of mine, this workshop will overlap with [this homework assignment](/downloads/190523-Praat_tutorial.pdf).)
+
+:::{.callout-note}
+This was originally the handout to a workshop hosted by Lisa Lipani and me on September 11, 2019. 
+:::
 
 <br/>
 
 ## [*Praat Scripting Basics: Loops, I/O, and TextGrids*](/downloads/190918-praat_scripting.html)
 
-*September 18, 2019*---With some basic understanding of the software, Lisa will lead the workshop on the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script.
+This tutorial covers the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script. This tutorial assumes some basic understanding of how Praat works and builds off the previous tutorial.
+
+:::{.callout-note}
+This was originally the handout to a workshop hosted by Lisa Lipani and me on September 18, 2019.
+:::
 
 <br/>
 
 ## [*Automatic Formant Extraction in Praat*](/downloads/191002-formant_extraction.html) (and [supplement](/downloads/191001-formant_extraction_supplement.html))
 
-*October 2, 2019*---In this workshop, you'll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with [this blog post](/blog/a-tutorial-on-extracting-formants-in-praat), only you will get more detail with an in-person guide.
+In this workshop, you'll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with [this blog post](/blog/a-tutorial-on-extracting-formants-in-praat).
 
-<br/>
+:::{.callout-note}
+This was originally the handout to a workshop hosted by Lisa Lipani and me on October 2, 2019.
+:::
