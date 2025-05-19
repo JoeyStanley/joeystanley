@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -228,7 +228,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
-<p>I’m happy to announce that <a href="https://doi.org/10.1515/lingvan-2022-0065">a paper of mine has been published</a> in <em>Linguistics Vanguard</em>. It’s called “Interpreting the order of operations in sociophonetic analysis” and it’s a direct follow-up to a <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/">paper</a> I wrote for the <em>Penn Working Papers in Linguistics</em> a couple months ago. While the <em>PWPL</em> paper showed that Order of Operations (OoO) matters, that we should be talking about it more, and that we should do our best to interpret others’ OoOs, it didn’t give any help as to <em>how</em> to interpret them. The main contribution for this follow-up paper then is to 1) arm researchers with knowledge of how to interpret order of operations and 2) justify the order I recommended in the <em>PWPL</em> paper.</p>
+<p>I’m happy to announce that <a href="https://doi.org/10.1515/lingvan-2022-0065">a paper of mine has been published</a> in <em>Linguistics Vanguard</em>. It’s called “Interpreting the order of operations in a sociophonetic analysis” and it’s a direct follow-up to a <a href="https://repository.upenn.edu/pwpl/vol28/iss2/17/">paper</a> I wrote for the <em>Penn Working Papers in Linguistics</em> a couple months ago. While the <em>PWPL</em> paper showed that Order of Operations (OoO) matters, that we should be talking about it more, and that we should do our best to interpret others’ OoOs, it didn’t give any help as to <em>how</em> to interpret them. The main contribution for this follow-up paper then is to 1) arm researchers with knowledge of how to interpret order of operations and 2) justify the order I recommended in the <em>PWPL</em> paper.</p>
 <section id="summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>To reiterate <a href="../../blog/new-publication-in-pwpl">what I said</a> when the <em>PWPL</em> paper came out, the idea for this paper got started when I was in the throes of data analysis and I noticed that reordering some of the processing steps resulted in different changes. I did a systematic study of OoO, presented it at <a href="../../blog/nwav49">NWAV49 in 2021</a>, and published those results in <em>PWPL</em>. But it occurred to me that even if we all become diligent and report the OoO we used in our papers, we don’t really have the knowledge of how we’re supposed to interpret those orders. As I put it in the paper,</p>
@@ -346,8 +346,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -458,7 +456,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
