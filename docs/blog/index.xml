@@ -25,238 +25,1024 @@
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>I’ve given some explanations of the Kohler Tapes collection <a href="../../blog/kohler-tapes">here</a>, <a href="../../blog/kohler-tapes-update">here</a>, and <a href="../../blog/kohler-tapes-update2">here</a>, so I won’t give a full history of the processing here. But, in January 2018, I met Norm Kohler in Heber, Utah. When he was a middle school teacher there in the 80s and 90s, he asked his students interview their grandparents or some other older person in town as part of a local history unit. He collected 1200 tapes and intended to write a compilation of some of these oral narratives. He unfortunately never did and after his passing, the tapes fell into the custody of the Wasatch Historical Society. They knew I was interested in the tapes, so they got into contact and in 2021, I finally got the tapes.</p>
-<p>Over the next few months, I carefully photographed and cataloged the 751 tapes. BYU’s Office of Digital Humanities digitized them, and I learned I had 631 hours of audio from 806 interviewees from 1986 to 2001. Thanks to a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu">Charles Redd Center for Western Studies</a>, I hired an RA to listen to the first few minutes of each tape to write down any demographic information she could gather. She was then able to find over half the people in in a genealogy database, which we used to fill out the rest of the metadata. With that, I learned that the birth years were from 1892 to 1953 and people were from Wasatch County.</p>
+<p>Over the next few months, I carefully photographed and cataloged the 751 tapes. BYU’s Office of Digital Humanities digitized them, and I learned I had 631 hours of audio from 806 interviewees from 1986 to 2001. Thanks to a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu">Charles Redd Center for Western Studies</a>, I hired an RA to listen to the first few minutes of each tape to write down any demographic information she could gather. She was then able to find over half the people in a genealogy database, which we used to fill out the rest of the metadata. With that, I learned that the birth years were from 1892 to 1953 and most people were from Wasatch County.</p>
 <section id="transcription" class="level3">
 <h3 class="anchored" data-anchor-id="transcription">Transcription</h3>
-<p>With that metadata filled out, I had to start the arduous task of transcribing all of these tapes. The problem is it was simply too much for me to do. It took me <a href="../../blog/transcribing-a-sociolinguistic-corpus/index.html">172 hours</a> to transcribe about 46½ hours for my dissertation. At that rate, it would take me 2,334 hours to do all of these tapes. Even during my dissertation transcription, I couldn’t do more than about two hours of work a day, so it’d end up taking me 1,167 work days, or 233 work weeks or about 5 years. Two hours a day for five years. No way.</p>
-<p>Well, I thought maybe I could hire some students. I know that student transcribers are typically a bit slower, so I figured it’d take a team of about 14 student workers two years to get it all done. Not to mention the roughly $100,000 I’d need to pay them. I don’t foresee myself securing a grant that big or managing a lab that involved for a while. So the tapes sat untranscribed for a while.</p>
-<p>About a year ago, a bright new student expressed interest in the project. So applied for an received an Annaley Naegle Redd Assistantship, also awarded by the Redd Center. That paid for that student to begin transcribing a few key tapes. I’ve already <a href="../../blog/kohler-tapes-update2/">mentioned</a> that I was interested in Wallsburg, so we selected a few tapes from there and from Heber to be the first ones to analyze.</p>
-<p>Well so then Fall 2024 happens and I attended a talk by a PhD student in computer science who has a background in linguistics. The talk was basically, “Here’s all the cool stuff that linguists can do with AI.” I’ve already <a href="../../blog/whisper/index.html">tried using Whisper</a> to transcribe some of these tape with some success. But most of what my RA had been doing for transcription was correcting those AI-generated transcriptions, and most of that time was adding back in the speech errors and filled pauses that Whisper didn’t include. When I spoke to the CS student presenter about this he said, it would certainly be feasible to use AI to transcribe the rest of tapes.</p>
-<p>So, over the next several months, the CS student started working on this. At first, we tried fine-tuning Whisper. He said with about 10 hours of manually transcribed audio from a wide variety of tapes, that’d be enough to get Whisper to perform better on this collection, namely the audio quality, the variety of English, and the speech errors. So, my student transcibed a random 10 minutes from numerous tapes and we used that train Whisper.</p>
-<p>In January 2025, we discovered that it wasn’t doing as well as we had hoped. But, the CS student heard about a model called <a href="https://arxiv.org/pdf/2408.16589">CrisperWhisper</a>. It’s a fine-tuned version of Whisper that claims to transcribe every spoken word exactly as is, including fillers, pauses, stutters, and false starts. Perfect! So, the CS student started playing with it and we found that the results were quite well done! There is some nuance and complexity that is involved in getting this to work, but I’ll save that for another day. The point is, we were now ready to start transcribing all the audio.</p>
-<p>Over the next six weeks or so, the CS student used BYU’s supercomputer to transcribe the tapes. It took a while because 1) it is a complex task, 2) this is a lot of audio to work with, and 3) other tasks sometimes took priority so we were often bumped down the processing queue.</p>
+<p>With that metadata filled out, I had to start the arduous task of transcribing all of these tapes. The problem is it was simply too much for me to do. It took me <a href="../../blog/transcribing-a-sociolinguistic-corpus/index.html">172 hours</a> of work to transcribe about 46½ hours of audio for my dissertation. At that rate, it would take me 2,334 hours to do all of these tapes. Even when I was highly motivated during my dissertation transcription, I couldn’t do more than about two hours of work a day without burning out, so if I plan on just two hours a day, it’d end up taking me 1,167 work days, or 233 work weeks, or about 5 years. Two hours a day for five years. No way.</p>
+<p>Well, I thought maybe I could hire some students to move things along and divide the labor. I’ve found that student transcribers are typically a bit slower, so based on previous work I supervised, I calculated that it’d take a team of about 14 student workers two years to get it all done. Not to mention the roughly $100,000 I’d need to pay them. I don’t foresee myself securing a grant that big or managing a lab that involved for a while. So intimidated by the amount of audio, the tapes sat untranscribed for a couple years.</p>
+<p>Then, about a year ago, a bright new student expressed interest in the project. So applied for an received an Annaley Naegle Redd Assistantship, also awarded by the Redd Center. That paid for that student to begin transcribing a few key tapes. I’ve already <a href="../../blog/kohler-tapes-update2/">mentioned</a> that I was interested in Wallsburg, so we selected a few tapes from there and from Heber to be the first ones to analyze.</p>
+<p>Well so then in Fall 2024 I attended a talk by a PhD student in computer science who has a background in linguistics. The talk was basically, “Here’s all the cool stuff that linguists can do with AI.” I’ve already <a href="../../blog/whisper/index.html">tried using Whisper</a> to transcribe some of these tapes with some success. But most of what my RA had been doing for transcription was correcting those AI-generated transcriptions, and most of that time was adding back in the speech errors and filled pauses that Whisper didn’t include. When I spoke to the CS student presenter about this he said, it would certainly be feasible to use AI to transcribe the rest of tapes.</p>
+<p>So, over the next several months, the CS student started working on this.<sup>1</sup> At first, we tried fine-tuning Whisper. He said with about 10 hours of manually transcribed audio from a wide variety of tapes, that’d be enough to get Whisper to perform better on this collection, namely the audio quality, the variety of English, and the speech errors. So, my RA transcribed a random 10 minutes from numerous tapes and we used that train Whisper.</p>
+<p>In January 2025, we discovered that it wasn’t doing as well as we had hoped. But, the CS student heard about a model called <a href="https://arxiv.org/pdf/2408.16589">CrisperWhisper</a>. It’s a fine-tuned version of Whisper that claims to transcribe every spoken word exactly as is, including fillers, pauses, stutters, and false starts. Perfect! So, the CS student started playing with it and we found that the results were quite good! There is some nuance and complexity that is involved in getting this to work, but I’ll explain more of that another time. The point is, we were now ready to start transcribing all the audio.</p>
+<p>Over the next six weeks or so, the CS student used BYU’s supercomputer to transcribe the tapes. It took a while because 1) it is a complex task, 2) this is a lot of audio to work with, and 3) other tasks sometimes took priority so we were often bumped down the processing queue. But he got it done!</p>
 <p>The next step for the student was to turn those transcriptions into a format that is suitable for me, namely a Praat TextGrid. What underlies this though was extensive checking to make sure it did a good job. This took most of that semester, partly because this is a back-burner project for this student and I had a busy time teaching so I didn’t have much time to help.</p>
 <p>But on May 22, 2025, I finally got my first copy of the TextGrids! There are still some issues to work out, like correcting some things, making sure boundaries don’t overlap, converting numerals to text, and most importantly, speaker diarization. But, I’m super excited to have these transcriptions finally! I can now say there are approximately 4.7 million words of transcribed audio in this collection.</p>
 </section>
 <section id="forced-alignment" class="level3">
 <h3 class="anchored" data-anchor-id="forced-alignment">Forced Alignment</h3>
-<p>While the work is mostly done for the CS student, sociophoneticians know that this is just the beginning of the pipeline of data processing. My next task was to use the Montreal Forced Aligner to take those utterance-level transcriptions and turn them into word- and phoneme-level transcriptions.</p>
-<p>My first step was to rethink how I had been running MFA. Normally, I use a custom Praat script to move the files to the MFA folder and clean them up along the way, like removing things that I know will slow MFA down. Once I run MFA, I then have a post-processing script to move them back and to some other cleaning up. This is a one-file-at-a-time kind of task, and while that’s fine for all my projects so far, it was not going to work for this one. I have about 1,184 files (751 tapes, many of which have content on side A and side B). And since I know the transcriptions I have are just a first pass, I’ll need to run these again at some point (perhaps multiple times). This means that I really needed to find a way to run them all at once.</p>
-<p>Fortunately, MFA can handle many files at the same time. And all the transcriptions were in one folder already. However, I ran into some trouble and I’m not sure what was wrong. Perhaps it’s just my unfamiliarity with MFA. But I could not get it to run on all the files at once. What I eventually did was move all the files to their respective folders and generate the command line prompt to run each one. I then dumped all of those commands into a shell script and had MFA run all of them in succession. (I wrote an R script to automate this entire process.) I’ll probably do a blog post about it at some point because I think it worked quite well. So, after a few days of working on this, I eventually was able to process all the files with the click of a button over the course of about 36 hours.</p>
+<p>While the CS student’s work is mostly done, sociophoneticians know that this is just the beginning of the pipeline of data processing. My next task was to use the Montreal Forced Aligner to take those utterance-level transcriptions and turn them into word- and phoneme-level transcriptions.</p>
+<p>My first step was to rethink how I had been running MFA. Normally, I use a custom Praat script to move the files to the MFA folder and clean them up along the way, like removing things that I know will slow MFA down. Once I run MFA, I then have a post-processing script to move them back and to some other cleaning up. This is a one-file-at-a-time kind of task, and while that’s fine for all my projects so far, it was not going to work for this one. I have about 1,184 files (751 tapes, many of which have content on side B). And since I know the transcriptions I have are just a first pass, I’ll need to run these again at some point (perhaps multiple times). This means that I really needed to find a way to run them all at once.</p>
+<p>Fortunately, MFA can handle many files at the same time. And all the transcriptions were in one folder already. However, I ran into some trouble and I’m not sure what was wrong. Perhaps it’s just my unfamiliarity with MFA, but I could not get it to run on all the files at once.<sup>2</sup> What I eventually did was move all the files to their respective folders and generate the command line prompt to run each one. I then dumped all of those commands into a shell script and had MFA run all of them in succession. (I wrote an R script to automate this entire process.) I’ll probably do a blog post about it at some point because I think it worked quite well. So, after a few days of working on this, I eventually was able to process all the files with the click of a button. And 36 hours later, the forced alignment was done!</p>
 </section>
 <section id="formant-extraction" class="level3">
 <h3 class="anchored" data-anchor-id="formant-extraction">Formant Extraction</h3>
-<p>The next step is to extract formants. I wanted to try <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/">new-fave</a> because 1) it’s new, 2) it looks fantastic, 3) it’s the only automated way I know of to do all the files. Fortunately, getting that script set up was straightforward. I was going to use the same approach that I did with MFA: generate a shell script to process each file one at a time. I couldn’t use FAVE’s built-in function for handling lots of files because the file structure on my computer wasn’t conducive to it, and that’s fine. Again, I’ll probably do a tutorial on this soon because it worked really well.</p>
+<p>The next step is to extract formants. I wanted to try <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/">new-fave</a> because 1) it’s new, 2) it looks fantastic, 3) it’s the only automated way I know of to do all the files. Fortunately, getting that script set up was straightforward. After my success with MFA, I decided to use the same approach and generate a shell script that processes each file one at a time. I couldn’t use FAVE’s built-in function for handling lots of files because the file structure for this project wasn’t conducive to it, and that’s fine. Again, I’ll probably do a tutorial on this soon because it worked really well.</p>
 <p>The tricky part was just the size of the collection. I’ve learned that reading and writing too much on an external harddrive can cause problems. These files were in some cloud storage, which worked for a while, but it caused some memory problems partway through because files weren’t downloading. So I moved the entire collection to my computer’s harddrive and continued from there. It was moving slowly, but it was moving.</p>
-<p>It took about five days of non-stop processing on my computer, but I’m thrilled to see that as of 2:04pm today, all the files were processed. I am writing this at 2:11pm, so I’m still in the euphoria of having the data finished. Come with me as I process the files for the first time.</p>
+<p>It took about five days of non-stop processing on my computer, but I’m thrilled to see that as of 2:04pm today, all the files were processed. I am writing this at 2:11pm, so I’m still in the euphoria of having the data finished. So, come with me as I process the files for the first time.</p>
 </section>
 </section>
 <section id="first-look" class="level2">
 <h2 class="anchored" data-anchor-id="first-look">First look</h2>
 <p>I’ll start by loading <code>tidyverse</code> and my own package that has some data processing functions.</p>
-<p>Just yesterday, Joe Fruehwald <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/usage/outputs/">posted about the output of new-fave</a>. Let’s start with the point data. I’ll use <code>Sys.glob</code> and to fetch the pathnames of all the files I want to read in, and then I’ll use <code>map</code> to actually read them in.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,556,417 × 28
-      F1    F2    F3    B1    B2    B3 max_formant smooth_error   time rel_time
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
- 1  528. 1183. 1886.  3.68  3.86  4.58       4615.     0.000162   4.81    0.027
- 2  826. 1358. 2791.  3.32  4.15  4.53       5154.     0.00654   24.5     0.091
- 3  735. 1116. 2361.  3.25  3.43  4.36       4974.     0.00149   26.3     0.055
- 4  797. 1213. 2274.  3.60  3.75  4.54       4436.     0.00437   27.1     0.047
- 5  707. 1024. 1896.  3.41  3.93  4.16       3897.     0.00279   34.2     0.065
- 6  623. 1270. 2906.  3.24  3.70  3.43       4974.     0.000629  47.2     0.045
- 7  700. 1140. 2274.  3.77  3.68  4.50       4795.     0.00133   58.7     0.045
- 8  690. 1658. 2747.  3.85  4.07  4.42       4615.     0.00288  121.      0.037
- 9  529. 1420. 2444.  2.86  3.90  4.18       4974.     0.000316 129.      0.031
-10  464.  989. 1588.  4.45  3.38  4.48       3538.     0.0665   139.      0.051
-# ℹ 2,556,407 more rows
-# ℹ 18 more variables: prop_time &lt;dbl&gt;, id &lt;chr&gt;, label &lt;chr&gt;, file_name &lt;chr&gt;,
-#   group &lt;chr&gt;, speaker_num &lt;dbl&gt;, point_heuristic &lt;chr&gt;, optimized &lt;dbl&gt;,
-#   word &lt;chr&gt;, stress &lt;dbl&gt;, dur &lt;dbl&gt;, pre_word &lt;chr&gt;, fol_word &lt;chr&gt;,
-#   pre_seg &lt;chr&gt;, fol_seg &lt;chr&gt;, abs_pre_seg &lt;chr&gt;, abs_fol_seg &lt;chr&gt;,
-#   context &lt;chr&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(joeyr)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(geomtextpath)</span></code></pre></div>
 </div>
+<p>Just yesterday, Joe Fruehwald <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/usage/outputs/">posted about the output of new-fave</a>. Let’s start with the point data. I’ll use <code>Sys.glob</code> and to fetch the pathnames of all the files I want to read in, and then I’ll use <code>map</code> to actually read them in. Unfortunately, I won’t be able to show the actual data here because Github had some problems with me reading in and processing this much data on the fly.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">raw_points_data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">path =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Sys.glob</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/Users/joeystan/Desktop/KohlerTapes/audio/*/FAVE/*_points.csv"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(path, read_csv, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_col_types =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>path) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(data)</span></code></pre></div>
 </div>
-<p>Whoo! 2.5 million rows of vowel data. That’s… a lot. 😅</p>
+<p>This combined spreadsheet has a whopping 2.5 million rows of vowel data. That’s… a lot. 😅</p>
 <p>I’m going to go ahead and recode FAVE’s coding scheme into something I’m more familiar with. Just for this first pass.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">fave_code_allophones <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(.df) {</span>
+<span id="cb3-2">  .df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb3-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">phoneme =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_collapse</span>(label, </span>
+<span id="cb3-4">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FLEECE"</span>  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"iy"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"iyF"</span>),</span>
+<span id="cb3-5">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"KIT"</span>     <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"i"</span>,</span>
+<span id="cb3-6">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FACE"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ey"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"eyF"</span>),</span>
+<span id="cb3-7">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"DRESS"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"e"</span>,</span>
+<span id="cb3-8">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"TRAP"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ae"</span>,</span>
+<span id="cb3-9">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LOT"</span>     <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"o"</span>,</span>
+<span id="cb3-10">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"THOUGHT"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"oh"</span>,</span>
+<span id="cb3-11">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GOAT"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ow"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"owF"</span>),</span>
+<span id="cb3-12">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FOOT"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"u"</span>,</span>
+<span id="cb3-13">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"GOOSE"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Tuw"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"uw"</span>),</span>
+<span id="cb3-14">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"STRUT"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ʌ"</span>,</span>
+<span id="cb3-15">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PRICE"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ay"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ay0"</span>),</span>
+<span id="cb3-16">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MOUTH"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"aw"</span>,</span>
+<span id="cb3-17">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CHOICE"</span>  <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"oy"</span>,</span>
+<span id="cb3-18">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NURSE"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*hr"</span>,</span>
+<span id="cb3-19">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NEAR"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"iyr"</span>,</span>
+<span id="cb3-20">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"START"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ahr"</span>,</span>
+<span id="cb3-21">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FORCE"</span>   <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"owr"</span>,</span>
+<span id="cb3-22">                                  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CURE"</span>    <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"uwr"</span>), </span>
+<span id="cb3-23">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.after =</span> label)</span>
+<span id="cb3-24">}</span></code></pre></div>
+</div>
 <p>I’ll then incorporate that into my pipeline of processing to get the data into a format I can work with. For now, I’ll just look at stressed, non-r-colored allophones.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,420,217 × 22
-   file_name pre_word word  fol_word id     time    dur prop_time stress phoneme
-   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;  
- 1 KT002Sid… &lt;NA&gt;     salt… &lt;NA&gt;     0-0-…  4.81 0.0600     0.321      1 LOT    
- 2 KT002Sid… minutes  seco… person   0-0-…  7.11 0.0600     0.321      1 DRESS  
- 3 KT002Sid… &lt;NA&gt;     was   &lt;NA&gt;     0-0-…  8.66 0.0800     0.337      1 THOUGHT
- 4 KT002Sid… &lt;NA&gt;     ruby  &lt;NA&gt;     0-0-…  9.03 0.0600     0.298      1 GOOSE  
- 5 KT002Sid… &lt;NA&gt;     fift… &lt;NA&gt;     0-0-… 11.0  0.100      0.331      1 KIT    
- 6 KT002Sid… &lt;NA&gt;     fift… &lt;NA&gt;     0-0-… 11.3  0.0600     0.321      1 FLEECE 
- 7 KT002Sid… &lt;NA&gt;     ques… &lt;NA&gt;     0-0-… 15.3  0.100      0.331      1 DRESS  
- 8 KT002Sid… &lt;NA&gt;     hann… utah     0-0-… 23.9  0.150      0.328      1 TRAP   
- 9 KT002Sid… hannah   utah  &lt;NA&gt;     0-0-… 24.3  0.0500     0.338      1 GOOSE  
-10 KT002Sid… &lt;NA&gt;     in    a        0-0-… 25.9  0.140      0.335      1 KIT    
-# ℹ 1,420,207 more rows
-# ℹ 12 more variables: allophone &lt;chr&gt;, allophone_environment &lt;chr&gt;,
-#   pre_seg &lt;chr&gt;, fol_seg &lt;chr&gt;, context &lt;chr&gt;, F1 &lt;dbl&gt;, F2 &lt;dbl&gt;, F3 &lt;dbl&gt;,
-#   B1 &lt;dbl&gt;, B2 &lt;dbl&gt;, B3 &lt;dbl&gt;, max_formant &lt;dbl&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">points_processed <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> raw_points_data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb4-2">  </span>
+<span id="cb4-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># recode FAVE's allophones using the function above</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fave_code_allophones</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb4-5">  </span>
+<span id="cb4-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># subset the data</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(stress <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb4-8">         <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>phoneme <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PRICE"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MOUTH"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CHOICE"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NURSE"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NEAR"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"START"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"FORCE"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CURE"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-9">  </span>
+<span id="cb4-10">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use joeyr to further recode allophones</span></span>
+<span id="cb4-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">code_allophones</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.old_col =</span> phoneme, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.pre_seg =</span> pre_seg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.fol_seg =</span> fol_seg) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-12">  </span>
+<span id="cb4-13">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># select the columns I'll need for now.</span></span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(file_name, </span>
+<span id="cb4-15">         pre_word, word, fol_word,</span>
+<span id="cb4-16">         id, time, dur, prop_time, stress, phoneme, allophone, allophone_environment, pre_seg, fol_seg, context,</span>
+<span id="cb4-17">         F1, F2, F3, B1, B2, B3,</span>
+<span id="cb4-18">         max_formant) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(file_name, time)</span></code></pre></div>
 </div>
 <p>That brings it down to 1.4 million vowels. Still a ton of data.</p>
 <section id="query-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="query-the-data">Query the data</h3>
 <p>Let me pause just to do some quick queries. First, how many files do I have?</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1131</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">n_files <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unique</span>(points_processed<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>file_name))</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1131</span></span></code></pre></div>
 </div>
 <p>I think there were about 50 that had some problems. Crazy to think that that’s the amount of data I got for my dissertation and now I can just shrug it off!</p>
 <p>How many stressed monophthongs per file per file?</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1255.718</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(points_processed) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> n_files</span>
+<span id="cb6-2"></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1255.718</span></span></code></pre></div>
 </div>
 <p>How much audio? I could query Praat for this information, but I’ll just take a shortcut and get the end time of the last vowel per file. The number is in seconds, so I’ll get a minutes version as well.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,131 × 3
-   file_name  duration_s duration_m
-   &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;
- 1 KT002SideA      3636.       60.6
- 2 KT003SideA      1659.       27.7
- 3 KT004SideA      1654.       27.6
- 4 KT005SideA      3701.       61.7
- 5 KT006SideA      2484.       41.4
- 6 KT007SideA      1914.       31.9
- 7 KT008SideA      1481.       24.7
- 8 KT009SideA      1629.       27.1
- 9 KT010SideA      1420.       23.7
-10 KT011SideA      1678.       28.0
-# ℹ 1,121 more rows</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">durations <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> points_processed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">duration_s =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(time <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> dur), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> file_name) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">duration_m =</span> duration_s<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
 </div>
 <p>How much audio is here?</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 571.2587</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(durations<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>duration_m)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span></span>
+<span id="cb8-2"></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 571.2587</span></span></code></pre></div>
 </div>
 <p>About 60 hours short of my earlier estimate. But I know some tapes didn’t get processed, so that makes sense.</p>
 <p>So what are some summary stats for the durations?</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  file_name           duration_s        duration_m     
- Length:1131        Min.   :  13.15   Min.   : 0.2191  
- Class :character   1st Qu.:1323.67   1st Qu.:22.0612  
- Mode  :character   Median :1895.92   Median :31.5987  
-                    Mean   :1818.33   Mean   :30.3055  
-                    3rd Qu.:2545.16   3rd Qu.:42.4193  
-                    Max.   :3724.96   Max.   :62.0827  </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(durations)</span>
+<span id="cb9-2"></span>
+<span id="cb9-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># file_name           duration_s        duration_m     </span></span>
+<span id="cb9-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Length:1131        Min.   :  13.15   Min.   : 0.2191  </span></span>
+<span id="cb9-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Class :character   1st Qu.:1323.67   1st Qu.:22.0612  </span></span>
+<span id="cb9-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Mode  :character   Median :1895.92   Median :31.5987  </span></span>
+<span id="cb9-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#                    Mean   :1818.33   Mean   :30.3055  </span></span>
+<span id="cb9-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#                    3rd Qu.:2545.16   3rd Qu.:42.4193  </span></span>
+<span id="cb9-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#                    Max.   :3724.96   Max.   :62.0827  </span></span></code></pre></div>
 </div>
 <p>The average is about 1,818 seconds or 31.59 minutes. Here’s a plot showing the distributions.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(durations, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(duration_m)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distribution of approximate durations for each file"</span>,</span>
+<span id="cb10-5">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"duration (in minutes)"</span>,</span>
+<span id="cb10-6">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"number of (sides) of tapes"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb10-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
 </div>
-</div>
-</div>
-<p>Keep in mind that each filename corresponds to a side of a tape. I was just a little bit too young to really be familiar with tapes, but I guess tapes back then could hold either about 32 or maybe 48 minutes of audio, so it makes sense that most files are around that long.</p>
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/durations.png" class="img-fluid"></p>
+<p>Keep in mind that each filename corresponds to a side of a tape. I am just a little bit too young to really be familiar with cassette tapes, but I guess tapes back then could hold either about 32 or maybe 48 minutes of audio, so it makes sense that most files are around that long.</p>
 </section>
 <section id="vowel-plots" class="level3">
 <h3 class="anchored" data-anchor-id="vowel-plots">Vowel plots</h3>
 <p>Now the moment of truth. Here’s a plot showing the raw F1-F2 measurements for the entire dataset. All 1.4 million points are plotted here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(points_processed, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"All 1.4 million stressed monophthongs from the Kohler Tapes"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb11-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</div>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update3/raw_plot.png" class="img-fluid"></p>
-<p>I think right away, this is a testament to how amazing new-fave is. I’ve worked with legacy data before, and normally there are tons of datapoints in the extreme bottom left of the vowel space. These are the result of formant tracking errors. And this was using the original FAVE! This dataset appears to be <em>remarkably</em> clean, at least when it comes to that.</p>
+<p>I think right away, this is a testament to how amazing new-fave is. I’ve worked with legacy data before, and normally there are tons of datapoints in the extreme bottom left of the vowel space. These are the result of formant tracking errors. And that was using the original FAVE! This dataset appears to be <em>remarkably</em> clean, at least when it comes to that.</p>
 </section>
 <section id="normalizing" class="level3">
 <h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
 <p>Before I look at too much more, I should normalize the data. Fruehwald has <a href="https://jofrhwld.github.io/dct_normalization/#transforming-dct-coefficients">an extremely useful paper</a> on how to use DCT to normalize new-fave output. I’ll read those DCT coefficients after they’ve been log-transformed, which is required when doing the Nearey normalization. I’ll process them in the same way that I did above, except I will keep all vowels.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9,204,255 × 25
-   param        F1       F2       F3   error file_name id    group label phoneme
-   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;fct&gt;  
- 1     0  4.48      4.97e+0  5.39e+0 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
- 2     1 -0.00913   1.86e-2 -3.32e-2 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
- 3     2 -0.0173    3.43e-3  5.82e-4 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
- 4     3 -0.00832   1.92e-3  1.08e-3 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
- 5     4 -0.00669  -4.34e-3 -1.84e-2 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
- 6     0  4.67      5.00e+0  5.47e+0 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
- 7     1  0.000597 -2.40e-2  2.25e-2 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
- 8     2 -0.000120  2.45e-2  5.92e-3 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
- 9     3  0.00386   8.81e-4 -9.96e-3 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
-10     4  0.00304   6.81e-3  9.04e-3 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
-# ℹ 9,204,245 more rows
-# ℹ 15 more variables: allophone &lt;chr&gt;, allophone_environment &lt;chr&gt;,
-#   max_formant &lt;dbl&gt;, speaker_num &lt;dbl&gt;, optimized &lt;dbl&gt;, word &lt;chr&gt;,
-#   stress &lt;dbl&gt;, dur &lt;dbl&gt;, pre_word &lt;chr&gt;, fol_word &lt;chr&gt;, pre_seg &lt;chr&gt;,
-#   fol_seg &lt;chr&gt;, abs_pre_seg &lt;chr&gt;, abs_fol_seg &lt;chr&gt;, context &lt;chr&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">dct_coefs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">path =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Sys.glob</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"/Users/joeystan/Desktop/KohlerTapes/audio/*/FAVE/*_logparam.csv"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(path, read_csv, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">show_col_types =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>path) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(data) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-5">  </span>
+<span id="cb12-6">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># recode FAVE's allophones using the function above</span></span>
+<span id="cb12-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fave_code_allophones</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-8">  </span>
+<span id="cb12-9">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># subset the data</span></span>
+<span id="cb12-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(stress <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb12-11">  </span>
+<span id="cb12-12">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use joeyr to further recode allophones</span></span>
+<span id="cb12-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">code_allophones</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.old_col =</span> phoneme, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.pre_seg =</span> pre_seg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.fol_seg =</span> fol_seg)</span></code></pre></div>
 </div>
-</div>
-<p>Okay, so at first, the millions of rows is intimidating. But we can work with it.</p>
-<p>Doing normalization on the DCT coefficients involves jumping over to Python—a new thing for me—but worth it because of all the reasons Fruehwald has explained in his paper. I’ll follow the code he has <a href="https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/">here</a> because this is still new to me, but I’ll try to explain as best I can.</p>
+<p>This produces a dataframe with millions of rows. Intimidating, but I can work with it.</p>
+<p>Doing normalization on the DCT coefficients involves jumping over to Python, which is new for me but worth it because of all the reasons Fruehwald explains in his paper. I’ll follow the code he has <a href="https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/">here</a> because this is still new to me, but I’ll try to explain as best I can.</p>
 <p>I needed to install the <code>scipy</code> package, so I did that first. I’ll then load it with <code>reticulate::import</code> and then save a particular function within that package into an R object called <code>idct</code>.</p>
-<p>I’ll get the average of the DCT parameters by token. Keep in mind that I’m working with full trajectory data, not just single points. I’ll then apply the python function, <code>idct</code> to those averages. For later analyses, I’ll get average smooths by speaker, but for now, I’ll just collapse all speakers together into average per allophone.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,900 × 7
-   phoneme allophone allophone_environment        F1        F2      F3 prop_time
-   &lt;fct&gt;   &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl[1d]&gt; &lt;dbl[1d]&gt; &lt;dbl[1&gt;     &lt;dbl&gt;
- 1 LOT     GOLF      prelateral                 6.35      7.05    7.69    0     
- 2 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0101
- 3 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0202
- 4 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0303
- 5 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0404
- 6 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0505
- 7 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0606
- 8 LOT     GOLF      prelateral                 6.36      7.04    7.69    0.0707
- 9 LOT     GOLF      prelateral                 6.36      7.04    7.69    0.0808
-10 LOT     GOLF      prelateral                 6.36      7.04    7.69    0.0909
-# ℹ 4,890 more rows</code></pre>
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># reticulate::py_install("scipy") # in case you need to install it</span></span>
+<span id="cb13-2">scipy <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> reticulate<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">import</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scipy"</span>)</span>
+<span id="cb13-3">idct <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> scipy<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>fft<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>idct</span></code></pre></div>
 </div>
+<p>I’ll get the average of the DCT parameters by token. I’ll then apply the python function, <code>idct</code> to those averages. With this dataset, I’m working with full trajectory data, not just single points, so the result will be a trajectory. For later analyses, I’ll get average smooths by speaker, but for now, I’ll just collapse all speakers together into averages per allophone.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">avg_smooths <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dct_coefs <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb14-2">  </span>
+<span id="cb14-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 1: Getting the average of the DCT parameters by allophone.</span></span>
+<span id="cb14-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, mean),</span>
+<span id="cb14-5">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(param, phoneme, allophone, allophone_environment)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-6">  </span>
+<span id="cb14-7">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Step 2: Apply `idct` to the averages</span></span>
+<span id="cb14-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">reframe</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">idct</span>(.x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>L, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">orthogonalize =</span> T, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">norm =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"forward"</span>)),</span>
+<span id="cb14-9">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(phoneme, allophone, allophone_environment)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prop_time =</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">row_number</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>()<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb14-11">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(phoneme, allophone, allophone_environment))</span></code></pre></div>
 </div>
-<p>Sweet. That was <em>quite</em> fast. Now I can show average trajectories in this dataset.</p>
+<p>Sweet. For what it’s worth, processing this data was <em>quite</em> fast. Definitely the way I’ll be normalizing from now on. Now I can show average trajectories in this dataset.</p>
 </section>
 <section id="more-vowel-plots" class="level3">
 <h3 class="anchored" data-anchor-id="more-vowel-plots">More vowel plots</h3>
 <p>I’ll start with elsewhere allophones. I’ll plot it with <code>ggtextpath</code>. <a href="../../blog/geomtextpath/">I wasn’t a fan</a> of this package when it first came out, but it’s growing on me.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="768"></p>
-</figure>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">avg_smooths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(allophone_environment <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"elsewhere"</span>,</span>
+<span id="cb15-3">         phoneme <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"NURSE"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> allophone)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_textpath</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> allophone), </span>
+<span id="cb15-6">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">text_smoothing =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb15-7">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb15-8">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">joey_arrow</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Average trajectories for preobstruent vowels in the Kohler Tapes"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb15-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+</details>
 </div>
-</div>
-</div>
-<p>Looks like a vowel plot. I won’t get into heavy interpretation without further digging into the variation and stuff, but it’s noteworthy how diphthongal that <sc>bait</sc> vowel is and how monopthongal that <sc>boot</sc> vowel is. It’s also interesting how separated <sc>bot</sc> and <sc>bought</sc> are, but again I’ll have to look at the data more closely to say anything. Keep in mind that this plot is just preobstruent data.</p>
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/elsewheres.png" class="img-fluid"></p>
+<p>Looks like a vowel plot! I won’t get into heavy interpretation without further digging into the variation and stuff, but it’s noteworthy how diphthongal and lowered that <sc>bait</sc> vowel is and how monopthongal that <sc>boot</sc> vowel is. It’s also interesting how separated <sc>bot</sc> and <sc>bought</sc> are, but again I’ll have to look at the data more closely to say anything. Keep in mind that this plot is just preobstruent data, so it’s not like that separation is due to prerhotics or prenasals or anything.</p>
 <p>Let’s look at my favorite class of allophones: prelaterals. I’ll use the Wells-inspired labels I came up with <a href="../../blog/extending-wells-lexical-sets-to-prelateral-vowels/index.html">in an earlier blog post</a>.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">avg_smooths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb16-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(allophone_environment <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"prelateral"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb16-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> allophone)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># geom_path(arrow = joey_arrow()) + </span></span>
+<span id="cb16-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_textpath</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> allophone), </span>
+<span id="cb16-6">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">text_smoothing =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb16-7">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb16-8">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">joey_arrow</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Average trajectories for prelateral monophthongs in the Kohler Tapes"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb16-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+</details>
 </div>
-</div>
-</div>
-<p>Lots to unpack here, which will undoubtedly happen in future publications. For now, it’s noteworthy that the front vowel pairs <sc>zeal-guilt</sc> and <sc>flail-shelf</sc> are not merged as they are for some Utahns today. The back vowels are interesting. Looks like there might be a <sc>mulch-golf</sc> (that is, /ʌl/-/ɑl/, or <em>cull-call</em>) merger. And possibly a <sc>jolt-fault</sc> (that is, /ol/-/ɔl/ or <em>hole-hall</em>) merger. Interestingly, <sc>golf</sc> and <sc>fault</sc> are separated, <sc>spool</sc> is not fully backed, and <sc>child</sc> is pretty monophthongal.</p>
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/prelaterals.png" class="img-fluid"></p>
+<p>Lots to unpack here, which will undoubtedly happen in future publications. For now, it’s noteworthy that the front vowel pairs <sc>zeal-guilt</sc> and <sc>flail-shelf</sc> are not merged as they are for some Utahns today. The back vowels are interesting. Looks like there might be a <sc>mulch-golf</sc> (that is, /ʌl/-/ɑl/, or <em>dull-doll</em>) merger. And possibly a <sc>jolt-fault</sc> (that is, /ol/-/ɔl/ or <em>hole-hall</em>) merger. Interestingly, <sc>golf</sc> and <sc>fault</sc> are separated, <sc>spool</sc> is not fully backed, and <sc>child</sc> is pretty monophthongal.</p>
 <p>Now let’s look at prerhotics.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">avg_smooths <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb17-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(allophone_environment <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"prerhotic"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb17-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> allophone)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># geom_path(arrow = joey_arrow()) + </span></span>
+<span id="cb17-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_textpath</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> allophone), </span>
+<span id="cb17-6">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">text_smoothing =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb17-7">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,</span>
+<span id="cb17-8">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">arrow =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">joey_arrow</span>()) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Average trajectories for prerhotic monophthongs in the Kohler Tapes"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb17-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span></code></pre></div>
+</details>
 </div>
-</div>
-</div>
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/prerhotics.png" class="img-fluid"></p>
 <p>I anticipated some weirdness here. <sc>Cure</sc> is just weird for lots of reasons because, <a href="../../pages/idiolect/#my-cure-lexical-set">at least for me</a>, it could have lots of different realizations, and I’m assuming that’s true in this dataset too. <sc>Force</sc> and <sc>start</sc> are seemingly straightforward, but there’s actually a lot going on here because of the <em>cord-card</em> merger. I’ve already been analyzing that merger in this dataset, so stay tuned for updates on that.</p>
 </section>
 </section>
@@ -267,12 +1053,20 @@
 
 </section>
 
- ]]></description>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>I insisted on him teaching me how to do it so I wouldn’t be so reliant on him, but he basically said, “with all due respect, it would take you a long time to learn how to do this, and I can do this while watching Netflix. It would just be easier if I did it.” Fair enough! Hooray for collaborations!↩︎</p></li>
+<li id="fn2"><p>One issue was that it considered all the tapes a single speaker, even though the file names were different. I even tried changing the tier names in each file and that didn’t help. for whatever reason, this means that only a few words in each file were transcribed.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
   <category>Kohler Tapes</category>
   <category>Research</category>
   <category>Utah</category>
   <guid>https://joeystanley.com/blog/kohler-tapes-update3/</guid>
   <pubDate>Tue, 10 Jun 2025 06:00:00 GMT</pubDate>
+  <media:content url="https://joeystanley.com/blog/kohler-tapes-update3/elsewheres.png" medium="image" type="image/png" height="126" width="144"/>
 </item>
 <item>
   <title></title>
