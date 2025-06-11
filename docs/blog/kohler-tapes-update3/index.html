@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joey Stanley">
+<meta name="dcterms.date" content="2025-06-10">
+
+<title>Kohler Tapes (Update #3) – Joey Stanley</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=350348361"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '350348361', { 'anonymize_ip': true});
+</script>
+<link rel="stylesheet" media="screen" href="https://font.download/font/iowanoldst-bt" type="text/css">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About Me <em>who am I?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv/index.html"> 
+<span class="menu-text">CV <em>what have I done?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research <em>what do I research?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching <em>what do I teach?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pages/idiolect"> 
+<span class="menu-text">Idiolect <em>what do I sound like?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:joey_stanley@byu.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-list" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
+        <li>
+    <a class="dropdown-item" href="https://bsky.app/profile/joeystanley.com">
+ <span class="dropdown-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i> Bluesky</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://twitter.com/joey_stan"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="dropdown-text">Twitter</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=61pJV_YAAAAJ&amp;hl=en&amp;oi=sra"><i class="bi bi-mortarboard-fill" role="img">
+</i> 
+ <span class="dropdown-text">Google Scholar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/JoeyStanley/joeystanley_new"><i class="bi bi-github" role="img">
+</i> 
+ <span class="dropdown-text">Github</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../joeystanley.com/feed.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">RSS feed</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Kohler Tapes (Update #3)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Kohler Tapes</div>
+                <div class="quarto-category">Research</div>
+                <div class="quarto-category">Utah</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joey Stanley </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 10, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#transcription" id="toc-transcription" class="nav-link" data-scroll-target="#transcription">Transcription</a></li>
+  <li><a href="#forced-alignment" id="toc-forced-alignment" class="nav-link" data-scroll-target="#forced-alignment">Forced Alignment</a></li>
+  <li><a href="#formant-extraction" id="toc-formant-extraction" class="nav-link" data-scroll-target="#formant-extraction">Formant Extraction</a></li>
+  </ul></li>
+  <li><a href="#first-look" id="toc-first-look" class="nav-link" data-scroll-target="#first-look">First look</a>
+  <ul class="collapse">
+  <li><a href="#query-the-data" id="toc-query-the-data" class="nav-link" data-scroll-target="#query-the-data">Query the data</a></li>
+  <li><a href="#vowel-plots" id="toc-vowel-plots" class="nav-link" data-scroll-target="#vowel-plots">Vowel plots</a></li>
+  <li><a href="#normalizing" id="toc-normalizing" class="nav-link" data-scroll-target="#normalizing">Normalizing</a></li>
+  <li><a href="#more-vowel-plots" id="toc-more-vowel-plots" class="nav-link" data-scroll-target="#more-vowel-plots">More vowel plots</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>I am ecstatic to report that I have now have my Kohler Tapes collection processed! In this post, I’ll give an update on how I was able to process so much data. I’ll also give a really quick demonstration of how to use new-fave and I’ll show some of the very first vowel plots from this dataset, even as I see them!</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>I’ve given some explanations of the Kohler Tapes collection <a href="../../blog/kohler-tapes">here</a>, <a href="../../blog/kohler-tapes-update">here</a>, and <a href="../../blog/kohler-tapes-update2">here</a>, so I won’t give a full history of the processing here. But, in January 2018, I met Norm Kohler in Heber, Utah. When he was a middle school teacher there in the 80s and 90s, he asked his students interview their grandparents or some other older person in town as part of a local history unit. He collected 1200 tapes and intended to write a compilation of some of these oral narratives. He unfortunately never did and after his passing, the tapes fell into the custody of the Wasatch Historical Society. They knew I was interested in the tapes, so they got into contact and in 2021, I finally got the tapes.</p>
+<p>Over the next few months, I carefully photographed and cataloged the 751 tapes. BYU’s Office of Digital Humanities digitized them, and I learned I had 631 hours of audio from 806 interviewees from 1986 to 2001. Thanks to a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu">Charles Redd Center for Western Studies</a>, I hired an RA to listen to the first few minutes of each tape to write down any demographic information she could gather. She was then able to find over half the people in in a genealogy database, which we used to fill out the rest of the metadata. With that, I learned that the birth years were from 1892 to 1953 and people were from Wasatch County.</p>
+<section id="transcription" class="level3">
+<h3 class="anchored" data-anchor-id="transcription">Transcription</h3>
+<p>With that metadata filled out, I had to start the arduous task of transcribing all of these tapes. The problem is it was simply too much for me to do. It took me <a href="../../blog/transcribing-a-sociolinguistic-corpus/index.html">172 hours</a> to transcribe about 46½ hours for my dissertation. At that rate, it would take me 2,334 hours to do all of these tapes. Even during my dissertation transcription, I couldn’t do more than about two hours of work a day, so it’d end up taking me 1,167 work days, or 233 work weeks or about 5 years. Two hours a day for five years. No way.</p>
+<p>Well, I thought maybe I could hire some students. I know that student transcribers are typically a bit slower, so I figured it’d take a team of about 14 student workers two years to get it all done. Not to mention the roughly $100,000 I’d need to pay them. I don’t foresee myself securing a grant that big or managing a lab that involved for a while. So the tapes sat untranscribed for a while.</p>
+<p>About a year ago, a bright new student expressed interest in the project. So applied for an received an Annaley Naegle Redd Assistantship, also awarded by the Redd Center. That paid for that student to begin transcribing a few key tapes. I’ve already <a href="../../blog/kohler-tapes-update2/">mentioned</a> that I was interested in Wallsburg, so we selected a few tapes from there and from Heber to be the first ones to analyze.</p>
+<p>Well so then Fall 2024 happens and I attended a talk by a PhD student in computer science who has a background in linguistics. The talk was basically, “Here’s all the cool stuff that linguists can do with AI.” I’ve already <a href="../../blog/whisper/index.html">tried using Whisper</a> to transcribe some of these tape with some success. But most of what my RA had been doing for transcription was correcting those AI-generated transcriptions, and most of that time was adding back in the speech errors and filled pauses that Whisper didn’t include. When I spoke to the CS student presenter about this he said, it would certainly be feasible to use AI to transcribe the rest of tapes.</p>
+<p>So, over the next several months, the CS student started working on this. At first, we tried fine-tuning Whisper. He said with about 10 hours of manually transcribed audio from a wide variety of tapes, that’d be enough to get Whisper to perform better on this collection, namely the audio quality, the variety of English, and the speech errors. So, my student transcibed a random 10 minutes from numerous tapes and we used that train Whisper.</p>
+<p>In January 2025, we discovered that it wasn’t doing as well as we had hoped. But, the CS student heard about a model called <a href="https://arxiv.org/pdf/2408.16589">CrisperWhisper</a>. It’s a fine-tuned version of Whisper that claims to transcribe every spoken word exactly as is, including fillers, pauses, stutters, and false starts. Perfect! So, the CS student started playing with it and we found that the results were quite well done! There is some nuance and complexity that is involved in getting this to work, but I’ll save that for another day. The point is, we were now ready to start transcribing all the audio.</p>
+<p>Over the next six weeks or so, the CS student used BYU’s supercomputer to transcribe the tapes. It took a while because 1) it is a complex task, 2) this is a lot of audio to work with, and 3) other tasks sometimes took priority so we were often bumped down the processing queue.</p>
+<p>The next step for the student was to turn those transcriptions into a format that is suitable for me, namely a Praat TextGrid. What underlies this though was extensive checking to make sure it did a good job. This took most of that semester, partly because this is a back-burner project for this student and I had a busy time teaching so I didn’t have much time to help.</p>
+<p>But on May 22, 2025, I finally got my first copy of the TextGrids! There are still some issues to work out, like correcting some things, making sure boundaries don’t overlap, converting numerals to text, and most importantly, speaker diarization. But, I’m super excited to have these transcriptions finally! I can now say there are approximately 4.7 million words of transcribed audio in this collection.</p>
+</section>
+<section id="forced-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="forced-alignment">Forced Alignment</h3>
+<p>While the work is mostly done for the CS student, sociophoneticians know that this is just the beginning of the pipeline of data processing. My next task was to use the Montreal Forced Aligner to take those utterance-level transcriptions and turn them into word- and phoneme-level transcriptions.</p>
+<p>My first step was to rethink how I had been running MFA. Normally, I use a custom Praat script to move the files to the MFA folder and clean them up along the way, like removing things that I know will slow MFA down. Once I run MFA, I then have a post-processing script to move them back and to some other cleaning up. This is a one-file-at-a-time kind of task, and while that’s fine for all my projects so far, it was not going to work for this one. I have about 1,184 files (751 tapes, many of which have content on side A and side B). And since I know the transcriptions I have are just a first pass, I’ll need to run these again at some point (perhaps multiple times). This means that I really needed to find a way to run them all at once.</p>
+<p>Fortunately, MFA can handle many files at the same time. And all the transcriptions were in one folder already. However, I ran into some trouble and I’m not sure what was wrong. Perhaps it’s just my unfamiliarity with MFA. But I could not get it to run on all the files at once. What I eventually did was move all the files to their respective folders and generate the command line prompt to run each one. I then dumped all of those commands into a shell script and had MFA run all of them in succession. (I wrote an R script to automate this entire process.) I’ll probably do a blog post about it at some point because I think it worked quite well. So, after a few days of working on this, I eventually was able to process all the files with the click of a button over the course of about 36 hours.</p>
+</section>
+<section id="formant-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="formant-extraction">Formant Extraction</h3>
+<p>The next step is to extract formants. I wanted to try <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/">new-fave</a> because 1) it’s new, 2) it looks fantastic, 3) it’s the only automated way I know of to do all the files. Fortunately, getting that script set up was straightforward. I was going to use the same approach that I did with MFA: generate a shell script to process each file one at a time. I couldn’t use FAVE’s built-in function for handling lots of files because the file structure on my computer wasn’t conducive to it, and that’s fine. Again, I’ll probably do a tutorial on this soon because it worked really well.</p>
+<p>The tricky part was just the size of the collection. I’ve learned that reading and writing too much on an external harddrive can cause problems. These files were in some cloud storage, which worked for a while, but it caused some memory problems partway through because files weren’t downloading. So I moved the entire collection to my computer’s harddrive and continued from there. It was moving slowly, but it was moving.</p>
+<p>It took about five days of non-stop processing on my computer, but I’m thrilled to see that as of 2:04pm today, all the files were processed. I am writing this at 2:11pm, so I’m still in the euphoria of having the data finished. Come with me as I process the files for the first time.</p>
+</section>
+</section>
+<section id="first-look" class="level2">
+<h2 class="anchored" data-anchor-id="first-look">First look</h2>
+<p>I’ll start by loading <code>tidyverse</code> and my own package that has some data processing functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(geomtextpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Just yesterday, Joe Fruehwald <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/usage/outputs/">posted about the output of new-fave</a>. Let’s start with the point data. I’ll use <code>Sys.glob</code> and to fetch the pathnames of all the files I want to read in, and then I’ll use <code>map</code> to actually read them in. Unfortunately, I won’t be able to show the actual data here because Github had some problems with reading in this much data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>raw_points_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">path =</span> <span class="fu">Sys.glob</span>(<span class="st">"/Users/joeystan/Desktop/KohlerTapes/audio/*/FAVE/*_points.csv"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">map</span>(path, read_csv, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>path) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Whoo! 2.5 million rows of vowel data. That’s… a lot. 😅</p>
+<p>I’m going to go ahead and recode FAVE’s coding scheme into something I’m more familiar with. Just for this first pass.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fave_code_allophones <span class="ot">&lt;-</span> <span class="cf">function</span>(.df) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  .df <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">phoneme =</span> <span class="fu">fct_collapse</span>(label, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"FLEECE"</span>  <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"iy"</span>, <span class="st">"iyF"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"KIT"</span>     <span class="ot">=</span> <span class="st">"i"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"FACE"</span>    <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ey"</span>, <span class="st">"eyF"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"DRESS"</span>   <span class="ot">=</span> <span class="st">"e"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"TRAP"</span>    <span class="ot">=</span> <span class="st">"ae"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"LOT"</span>     <span class="ot">=</span> <span class="st">"o"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"THOUGHT"</span> <span class="ot">=</span> <span class="st">"oh"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"GOAT"</span>    <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ow"</span>, <span class="st">"owF"</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"FOOT"</span>    <span class="ot">=</span> <span class="st">"u"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"GOOSE"</span>   <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Tuw"</span>, <span class="st">"uw"</span>),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"STRUT"</span>   <span class="ot">=</span> <span class="st">"ʌ"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"PRICE"</span>   <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ay"</span>, <span class="st">"ay0"</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"MOUTH"</span>   <span class="ot">=</span> <span class="st">"aw"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"CHOICE"</span>  <span class="ot">=</span> <span class="st">"oy"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"NURSE"</span>   <span class="ot">=</span> <span class="st">"*hr"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"NEAR"</span>    <span class="ot">=</span> <span class="st">"iyr"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"START"</span>   <span class="ot">=</span> <span class="st">"ahr"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"FORCE"</span>   <span class="ot">=</span> <span class="st">"owr"</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"CURE"</span>    <span class="ot">=</span> <span class="st">"uwr"</span>), </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> label)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’ll then incorporate that into my pipeline of processing to get the data into a format I can work with. For now, I’ll just look at stressed, non-r-colored allophones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>points_processed <span class="ot">&lt;-</span> raw_points_data <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># recode FAVE's allophones using the function above</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fave_code_allophones</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># subset the data</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span>phoneme <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"PRICE"</span>, <span class="st">"MOUTH"</span>, <span class="st">"CHOICE"</span>, <span class="st">"NURSE"</span>, <span class="st">"NEAR"</span>, <span class="st">"START"</span>, <span class="st">"FORCE"</span>, <span class="st">"CURE"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use joeyr to further recode allophones</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">code_allophones</span>(<span class="at">.old_col =</span> phoneme, <span class="at">.pre_seg =</span> pre_seg, <span class="at">.fol_seg =</span> fol_seg) <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select the columns I'll need for now.</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(file_name, </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>         pre_word, word, fol_word,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>         id, time, dur, prop_time, stress, phoneme, allophone, allophone_environment, pre_seg, fol_seg, context,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>         F1, F2, F3, B1, B2, B3,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>         max_formant) <span class="sc">|&gt;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(file_name, time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>That brings it down to 1.4 million vowels. Still a ton of data.</p>
+<section id="query-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="query-the-data">Query the data</h3>
+<p>Let me pause just to do some quick queries. First, how many files do I have?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(n_files <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(points_processed<span class="sc">$</span>file_name)))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1131</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I think there were about 50 that had some problems. Crazy to think that that’s the amount of data I got for my dissertation and now I can just shrug it off!</p>
+<p>How many stressed monophthongs per file per file?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">nrow</span>(points_processed) <span class="sc">/</span> n_files)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1255.718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>How much audio? I could query Praat for this information, but I’ll just take a shortcut and get the end time of the last vowel per file. The number is in seconds, so I’ll get a minutes version as well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>durations <span class="ot">&lt;-</span> points_processed <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">duration_s =</span> <span class="fu">max</span>(time <span class="sc">+</span> dur), <span class="at">.by =</span> file_name) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">duration_m =</span> duration_s<span class="sc">/</span><span class="dv">60</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>How much audio is here?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(durations<span class="sc">$</span>duration_m)<span class="sc">/</span><span class="dv">60</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 571.2587</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>About 60 hours short of my earlier estimate. But I know some tapes didn’t get processed, so that makes sense.</p>
+<p>So what are some summary stats for the durations?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(durations)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># file_name           duration_s        duration_m     </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Length:1131        Min.   :  13.15   Min.   : 0.2191  </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Class :character   1st Qu.:1323.67   1st Qu.:22.0612  </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Mode  :character   Median :1895.92   Median :31.5987  </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                    Mean   :1818.33   Mean   :30.3055  </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                    3rd Qu.:2545.16   3rd Qu.:42.4193  </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                    Max.   :3724.96   Max.   :62.0827  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The average is about 1,818 seconds or 31.59 minutes. Here’s a plot showing the distributions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(durations, <span class="fu">aes</span>(duration_m)) <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">70</span>, <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of approximate durations for each file"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"duration (in minutes)"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"number of (sides) of tapes"</span>) <span class="sc">+</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="durations.png" class="img-fluid"></p>
+<p>Keep in mind that each filename corresponds to a side of a tape. I was just a little bit too young to really be familiar with tapes, but I guess tapes back then could hold either about 32 or maybe 48 minutes of audio, so it makes sense that most files are around that long.</p>
+</section>
+<section id="vowel-plots" class="level3">
+<h3 class="anchored" data-anchor-id="vowel-plots">Vowel plots</h3>
+<p>Now the moment of truth. Here’s a plot showing the raw F1-F2 measurements for the entire dataset. All 1.4 million points are plotted here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(points_processed, <span class="fu">aes</span>(F2, F1)) <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"All 1.4 million stressed monophthongs from the Kohler Tapes"</span>) <span class="sc">+</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"raw_plot.png"</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">width =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="raw_plot.png" class="img-fluid"></p>
+<p>I think right away, this is a testament to how amazing new-fave is. I’ve worked with legacy data before, and normally there are tons of datapoints in the extreme bottom left of the vowel space. These are the result of formant tracking errors. And this was using the original FAVE! This dataset appears to be <em>remarkably</em> clean, at least when it comes to that.</p>
+</section>
+<section id="normalizing" class="level3">
+<h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
+<p>Before I look at too much more, I should normalize the data. Fruehwald has <a href="https://jofrhwld.github.io/dct_normalization/#transforming-dct-coefficients">an extremely useful paper</a> on how to use DCT to normalize new-fave output. I’ll read those DCT coefficients after they’ve been log-transformed, which is required when doing the Nearey normalization. I’ll process them in the same way that I did above, except I will keep all vowels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dct_coefs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">path =</span> <span class="fu">Sys.glob</span>(<span class="st">"/Users/joeystan/Desktop/KohlerTapes/audio/*/FAVE/*_logparam.csv"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">map</span>(path, read_csv, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>path) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data) <span class="sc">|&gt;</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># recode FAVE's allophones using the function above</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fave_code_allophones</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># subset the data</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use joeyr to further recode allophones</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">code_allophones</span>(<span class="at">.old_col =</span> phoneme, <span class="at">.pre_seg =</span> pre_seg, <span class="at">.fol_seg =</span> fol_seg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Okay, so at first, the millions of rows is intimidating. But we can work with it.</p>
+<p>Doing normalization on the DCT coefficients involves jumping over to Python—a new thing for me—but worth it because of all the reasons Fruehwald has explained in his paper. I’ll follow the code he has <a href="https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/">here</a> because this is still new to me, but I’ll try to explain as best I can.</p>
+<p>I needed to install the <code>scipy</code> package, so I did that first. I’ll then load it with <code>reticulate::import</code> and then save a particular function within that package into an R object called <code>idct</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reticulate::py_install("scipy") # in case you need to install it</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>scipy <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"scipy"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>idct <span class="ot">&lt;-</span> scipy<span class="sc">$</span>fft<span class="sc">$</span>idct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’ll get the average of the DCT parameters by token. Keep in mind that I’m working with full trajectory data, not just single points. I’ll then apply the python function, <code>idct</code> to those averages. For later analyses, I’ll get average smooths by speaker, but for now, I’ll just collapse all speakers together into average per allophone.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>avg_smooths <span class="ot">&lt;-</span> dct_coefs <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 1: Getting the average of the DCT parameters by allophone.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, mean),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> <span class="fu">c</span>(param, phoneme, allophone, allophone_environment)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Step 2: Apply `idct` to the averages</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reframe</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, <span class="sc">~</span><span class="fu">idct</span>(.x, <span class="at">n =</span> <span class="dv">100</span>L, <span class="at">orthogonalize =</span> T, <span class="at">norm =</span> <span class="st">"forward"</span>)),</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">.by =</span> <span class="fu">c</span>(phoneme, allophone, allophone_environment)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_time =</span> (<span class="fu">row_number</span>()<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span>(<span class="fu">n</span>()<span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">.by =</span> <span class="fu">c</span>(phoneme, allophone, allophone_environment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sweet. That was <em>quite</em> fast. Now I can show average trajectories in this dataset.</p>
+</section>
+<section id="more-vowel-plots" class="level3">
+<h3 class="anchored" data-anchor-id="more-vowel-plots">More vowel plots</h3>
+<p>I’ll start with elsewhere allophones. I’ll plot it with <code>ggtextpath</code>. <a href="../../blog/geomtextpath/">I wasn’t a fan</a> of this package when it first came out, but it’s growing on me.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>avg_smooths <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(allophone_environment <span class="sc">==</span> <span class="st">"elsewhere"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>         phoneme <span class="sc">!=</span> <span class="st">"NURSE"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> allophone)) <span class="sc">+</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_path(arrow = joey_arrow()) + </span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_textpath</span>(<span class="fu">aes</span>(<span class="at">label =</span> allophone), </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">text_smoothing =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">linewidth =</span> <span class="dv">2</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">arrow =</span> <span class="fu">joey_arrow</span>()) <span class="sc">+</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average trajectories for preobstruent vowels in the Kohler Tapes"</span>) <span class="sc">+</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="elsewheres.png" class="img-fluid"></p>
+<p>Looks like a vowel plot. I won’t get into heavy interpretation without further digging into the variation and stuff, but it’s noteworthy how diphthongal that <sc>bait</sc> vowel is and how monopthongal that <sc>boot</sc> vowel is. It’s also interesting how separated <sc>bot</sc> and <sc>bought</sc> are, but again I’ll have to look at the data more closely to say anything. Keep in mind that this plot is just preobstruent data.</p>
+<p>Let’s look at my favorite class of allophones: prelaterals. I’ll use the Wells-inspired labels I came up with <a href="../../blog/extending-wells-lexical-sets-to-prelateral-vowels/index.html">in an earlier blog post</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>avg_smooths <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(allophone_environment <span class="sc">==</span> <span class="st">"prelateral"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> allophone)) <span class="sc">+</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_path(arrow = joey_arrow()) + </span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_textpath</span>(<span class="fu">aes</span>(<span class="at">label =</span> allophone), </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">text_smoothing =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">linewidth =</span> <span class="dv">2</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">arrow =</span> <span class="fu">joey_arrow</span>()) <span class="sc">+</span> </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average trajectories for prelateral monophthongs in the Kohler Tapes"</span>) <span class="sc">+</span> </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="prelaterals.png" class="img-fluid"></p>
+<p>Lots to unpack here, which will undoubtedly happen in future publications. For now, it’s noteworthy that the front vowel pairs <sc>zeal-guilt</sc> and <sc>flail-shelf</sc> are not merged as they are for some Utahns today. The back vowels are interesting. Looks like there might be a <sc>mulch-golf</sc> (that is, /ʌl/-/ɑl/, or <em>cull-call</em>) merger. And possibly a <sc>jolt-fault</sc> (that is, /ol/-/ɔl/ or <em>hole-hall</em>) merger. Interestingly, <sc>golf</sc> and <sc>fault</sc> are separated, <sc>spool</sc> is not fully backed, and <sc>child</sc> is pretty monophthongal.</p>
+<p>Now let’s look at prerhotics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>avg_smooths <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(allophone_environment <span class="sc">==</span> <span class="st">"prerhotic"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> allophone)) <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_path(arrow = joey_arrow()) + </span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_textpath</span>(<span class="fu">aes</span>(<span class="at">label =</span> allophone), </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">text_smoothing =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">linewidth =</span> <span class="dv">2</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">arrow =</span> <span class="fu">joey_arrow</span>()) <span class="sc">+</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average trajectories for prerhotic monophthongs in the Kohler Tapes"</span>) <span class="sc">+</span> </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="prerhotics.png" class="img-fluid"></p>
+<p>I anticipated some weirdness here. <sc>Cure</sc> is just weird for lots of reasons because, <a href="../../pages/idiolect/#my-cure-lexical-set">at least for me</a>, it could have lots of different realizations, and I’m assuming that’s true in this dataset too. <sc>Force</sc> and <sc>start</sc> are seemingly straightforward, but there’s actually a lot going on here because of the <em>cord-card</em> merger. I’ve already been analyzing that merger in this dataset, so stay tuned for updates on that.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Anyway, it could take a career to really dive into this data, and I’m happy to finally have something to work with after hearing about it 7½ years ago!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/joeystanley\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

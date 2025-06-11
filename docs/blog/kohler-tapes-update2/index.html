@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -179,6 +179,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <div class="quarto-title column-body">
       <h1 class="title">Kohler Tapes (Update #2)</h1>
                                 <div class="quarto-categories">
+                <div class="quarto-category">Kohler Tapes</div>
                 <div class="quarto-category">Research</div>
                 <div class="quarto-category">Utah</div>
               </div>
@@ -232,7 +233,20 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
-<p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../posts/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../posts/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
+<p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../blog/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../blog/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="../../blog/kohler-tapes-update3">this post</a> from June 3, 2025 after I got all the data processed!</p>
+</div>
+</div>
 <section id="progress-since-2021" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="progress-since-2021">Progress since 2021</h2>
 <p>At the end of my previous update, I mentioned that I had gotten a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a>. That provided just enough funds to hire an RA to help with metadata extraction. As I’ve mentioned already, a great many of the tapes start off with the student interviewer staying their name and the date, and then they ask basic demographic questions about their interviewee. It’s important that I know as much of the metadata about these interviewees as I can so that I can prioritize which tapes I should process first.</p>
@@ -383,8 +397,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -495,7 +507,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

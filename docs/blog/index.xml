@@ -9,8 +9,286 @@
 <link>https://joeystanley.com/blog/</link>
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.5.57</generator>
-<lastBuildDate>Fri, 21 Mar 2025 20:47:00 GMT</lastBuildDate>
+<generator>quarto-1.6.42</generator>
+<lastBuildDate>Tue, 10 Jun 2025 06:00:00 GMT</lastBuildDate>
+<item>
+  <title>Kohler Tapes (Update #3)</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/kohler-tapes-update3/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>I am ecstatic to report that I have now have my Kohler Tapes collection processed! In this post, I’ll give an update on how I was able to process so much data. I’ll also give a really quick demonstration of how to use new-fave and I’ll show some of the very first vowel plots from this dataset, even as I see them!</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>I’ve given some explanations of the Kohler Tapes collection <a href="../../blog/kohler-tapes">here</a>, <a href="../../blog/kohler-tapes-update">here</a>, and <a href="../../blog/kohler-tapes-update2">here</a>, so I won’t give a full history of the processing here. But, in January 2018, I met Norm Kohler in Heber, Utah. When he was a middle school teacher there in the 80s and 90s, he asked his students interview their grandparents or some other older person in town as part of a local history unit. He collected 1200 tapes and intended to write a compilation of some of these oral narratives. He unfortunately never did and after his passing, the tapes fell into the custody of the Wasatch Historical Society. They knew I was interested in the tapes, so they got into contact and in 2021, I finally got the tapes.</p>
+<p>Over the next few months, I carefully photographed and cataloged the 751 tapes. BYU’s Office of Digital Humanities digitized them, and I learned I had 631 hours of audio from 806 interviewees from 1986 to 2001. Thanks to a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu">Charles Redd Center for Western Studies</a>, I hired an RA to listen to the first few minutes of each tape to write down any demographic information she could gather. She was then able to find over half the people in in a genealogy database, which we used to fill out the rest of the metadata. With that, I learned that the birth years were from 1892 to 1953 and people were from Wasatch County.</p>
+<section id="transcription" class="level3">
+<h3 class="anchored" data-anchor-id="transcription">Transcription</h3>
+<p>With that metadata filled out, I had to start the arduous task of transcribing all of these tapes. The problem is it was simply too much for me to do. It took me <a href="../../blog/transcribing-a-sociolinguistic-corpus/index.html">172 hours</a> to transcribe about 46½ hours for my dissertation. At that rate, it would take me 2,334 hours to do all of these tapes. Even during my dissertation transcription, I couldn’t do more than about two hours of work a day, so it’d end up taking me 1,167 work days, or 233 work weeks or about 5 years. Two hours a day for five years. No way.</p>
+<p>Well, I thought maybe I could hire some students. I know that student transcribers are typically a bit slower, so I figured it’d take a team of about 14 student workers two years to get it all done. Not to mention the roughly $100,000 I’d need to pay them. I don’t foresee myself securing a grant that big or managing a lab that involved for a while. So the tapes sat untranscribed for a while.</p>
+<p>About a year ago, a bright new student expressed interest in the project. So applied for an received an Annaley Naegle Redd Assistantship, also awarded by the Redd Center. That paid for that student to begin transcribing a few key tapes. I’ve already <a href="../../blog/kohler-tapes-update2/">mentioned</a> that I was interested in Wallsburg, so we selected a few tapes from there and from Heber to be the first ones to analyze.</p>
+<p>Well so then Fall 2024 happens and I attended a talk by a PhD student in computer science who has a background in linguistics. The talk was basically, “Here’s all the cool stuff that linguists can do with AI.” I’ve already <a href="../../blog/whisper/index.html">tried using Whisper</a> to transcribe some of these tape with some success. But most of what my RA had been doing for transcription was correcting those AI-generated transcriptions, and most of that time was adding back in the speech errors and filled pauses that Whisper didn’t include. When I spoke to the CS student presenter about this he said, it would certainly be feasible to use AI to transcribe the rest of tapes.</p>
+<p>So, over the next several months, the CS student started working on this. At first, we tried fine-tuning Whisper. He said with about 10 hours of manually transcribed audio from a wide variety of tapes, that’d be enough to get Whisper to perform better on this collection, namely the audio quality, the variety of English, and the speech errors. So, my student transcibed a random 10 minutes from numerous tapes and we used that train Whisper.</p>
+<p>In January 2025, we discovered that it wasn’t doing as well as we had hoped. But, the CS student heard about a model called <a href="https://arxiv.org/pdf/2408.16589">CrisperWhisper</a>. It’s a fine-tuned version of Whisper that claims to transcribe every spoken word exactly as is, including fillers, pauses, stutters, and false starts. Perfect! So, the CS student started playing with it and we found that the results were quite well done! There is some nuance and complexity that is involved in getting this to work, but I’ll save that for another day. The point is, we were now ready to start transcribing all the audio.</p>
+<p>Over the next six weeks or so, the CS student used BYU’s supercomputer to transcribe the tapes. It took a while because 1) it is a complex task, 2) this is a lot of audio to work with, and 3) other tasks sometimes took priority so we were often bumped down the processing queue.</p>
+<p>The next step for the student was to turn those transcriptions into a format that is suitable for me, namely a Praat TextGrid. What underlies this though was extensive checking to make sure it did a good job. This took most of that semester, partly because this is a back-burner project for this student and I had a busy time teaching so I didn’t have much time to help.</p>
+<p>But on May 22, 2025, I finally got my first copy of the TextGrids! There are still some issues to work out, like correcting some things, making sure boundaries don’t overlap, converting numerals to text, and most importantly, speaker diarization. But, I’m super excited to have these transcriptions finally! I can now say there are approximately 4.7 million words of transcribed audio in this collection.</p>
+</section>
+<section id="forced-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="forced-alignment">Forced Alignment</h3>
+<p>While the work is mostly done for the CS student, sociophoneticians know that this is just the beginning of the pipeline of data processing. My next task was to use the Montreal Forced Aligner to take those utterance-level transcriptions and turn them into word- and phoneme-level transcriptions.</p>
+<p>My first step was to rethink how I had been running MFA. Normally, I use a custom Praat script to move the files to the MFA folder and clean them up along the way, like removing things that I know will slow MFA down. Once I run MFA, I then have a post-processing script to move them back and to some other cleaning up. This is a one-file-at-a-time kind of task, and while that’s fine for all my projects so far, it was not going to work for this one. I have about 1,184 files (751 tapes, many of which have content on side A and side B). And since I know the transcriptions I have are just a first pass, I’ll need to run these again at some point (perhaps multiple times). This means that I really needed to find a way to run them all at once.</p>
+<p>Fortunately, MFA can handle many files at the same time. And all the transcriptions were in one folder already. However, I ran into some trouble and I’m not sure what was wrong. Perhaps it’s just my unfamiliarity with MFA. But I could not get it to run on all the files at once. What I eventually did was move all the files to their respective folders and generate the command line prompt to run each one. I then dumped all of those commands into a shell script and had MFA run all of them in succession. (I wrote an R script to automate this entire process.) I’ll probably do a blog post about it at some point because I think it worked quite well. So, after a few days of working on this, I eventually was able to process all the files with the click of a button over the course of about 36 hours.</p>
+</section>
+<section id="formant-extraction" class="level3">
+<h3 class="anchored" data-anchor-id="formant-extraction">Formant Extraction</h3>
+<p>The next step is to extract formants. I wanted to try <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/">new-fave</a> because 1) it’s new, 2) it looks fantastic, 3) it’s the only automated way I know of to do all the files. Fortunately, getting that script set up was straightforward. I was going to use the same approach that I did with MFA: generate a shell script to process each file one at a time. I couldn’t use FAVE’s built-in function for handling lots of files because the file structure on my computer wasn’t conducive to it, and that’s fine. Again, I’ll probably do a tutorial on this soon because it worked really well.</p>
+<p>The tricky part was just the size of the collection. I’ve learned that reading and writing too much on an external harddrive can cause problems. These files were in some cloud storage, which worked for a while, but it caused some memory problems partway through because files weren’t downloading. So I moved the entire collection to my computer’s harddrive and continued from there. It was moving slowly, but it was moving.</p>
+<p>It took about five days of non-stop processing on my computer, but I’m thrilled to see that as of 2:04pm today, all the files were processed. I am writing this at 2:11pm, so I’m still in the euphoria of having the data finished. Come with me as I process the files for the first time.</p>
+</section>
+</section>
+<section id="first-look" class="level2">
+<h2 class="anchored" data-anchor-id="first-look">First look</h2>
+<p>I’ll start by loading <code>tidyverse</code> and my own package that has some data processing functions.</p>
+<p>Just yesterday, Joe Fruehwald <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/usage/outputs/">posted about the output of new-fave</a>. Let’s start with the point data. I’ll use <code>Sys.glob</code> and to fetch the pathnames of all the files I want to read in, and then I’ll use <code>map</code> to actually read them in.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,556,417 × 28
+      F1    F2    F3    B1    B2    B3 max_formant smooth_error   time rel_time
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+ 1  528. 1183. 1886.  3.68  3.86  4.58       4615.     0.000162   4.81    0.027
+ 2  826. 1358. 2791.  3.32  4.15  4.53       5154.     0.00654   24.5     0.091
+ 3  735. 1116. 2361.  3.25  3.43  4.36       4974.     0.00149   26.3     0.055
+ 4  797. 1213. 2274.  3.60  3.75  4.54       4436.     0.00437   27.1     0.047
+ 5  707. 1024. 1896.  3.41  3.93  4.16       3897.     0.00279   34.2     0.065
+ 6  623. 1270. 2906.  3.24  3.70  3.43       4974.     0.000629  47.2     0.045
+ 7  700. 1140. 2274.  3.77  3.68  4.50       4795.     0.00133   58.7     0.045
+ 8  690. 1658. 2747.  3.85  4.07  4.42       4615.     0.00288  121.      0.037
+ 9  529. 1420. 2444.  2.86  3.90  4.18       4974.     0.000316 129.      0.031
+10  464.  989. 1588.  4.45  3.38  4.48       3538.     0.0665   139.      0.051
+# ℹ 2,556,407 more rows
+# ℹ 18 more variables: prop_time &lt;dbl&gt;, id &lt;chr&gt;, label &lt;chr&gt;, file_name &lt;chr&gt;,
+#   group &lt;chr&gt;, speaker_num &lt;dbl&gt;, point_heuristic &lt;chr&gt;, optimized &lt;dbl&gt;,
+#   word &lt;chr&gt;, stress &lt;dbl&gt;, dur &lt;dbl&gt;, pre_word &lt;chr&gt;, fol_word &lt;chr&gt;,
+#   pre_seg &lt;chr&gt;, fol_seg &lt;chr&gt;, abs_pre_seg &lt;chr&gt;, abs_fol_seg &lt;chr&gt;,
+#   context &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Whoo! 2.5 million rows of vowel data. That’s… a lot. 😅</p>
+<p>I’m going to go ahead and recode FAVE’s coding scheme into something I’m more familiar with. Just for this first pass.</p>
+<p>I’ll then incorporate that into my pipeline of processing to get the data into a format I can work with. For now, I’ll just look at stressed, non-r-colored allophones.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,420,217 × 22
+   file_name pre_word word  fol_word id     time    dur prop_time stress phoneme
+   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;  
+ 1 KT002Sid… &lt;NA&gt;     salt… &lt;NA&gt;     0-0-…  4.81 0.0600     0.321      1 LOT    
+ 2 KT002Sid… minutes  seco… person   0-0-…  7.11 0.0600     0.321      1 DRESS  
+ 3 KT002Sid… &lt;NA&gt;     was   &lt;NA&gt;     0-0-…  8.66 0.0800     0.337      1 THOUGHT
+ 4 KT002Sid… &lt;NA&gt;     ruby  &lt;NA&gt;     0-0-…  9.03 0.0600     0.298      1 GOOSE  
+ 5 KT002Sid… &lt;NA&gt;     fift… &lt;NA&gt;     0-0-… 11.0  0.100      0.331      1 KIT    
+ 6 KT002Sid… &lt;NA&gt;     fift… &lt;NA&gt;     0-0-… 11.3  0.0600     0.321      1 FLEECE 
+ 7 KT002Sid… &lt;NA&gt;     ques… &lt;NA&gt;     0-0-… 15.3  0.100      0.331      1 DRESS  
+ 8 KT002Sid… &lt;NA&gt;     hann… utah     0-0-… 23.9  0.150      0.328      1 TRAP   
+ 9 KT002Sid… hannah   utah  &lt;NA&gt;     0-0-… 24.3  0.0500     0.338      1 GOOSE  
+10 KT002Sid… &lt;NA&gt;     in    a        0-0-… 25.9  0.140      0.335      1 KIT    
+# ℹ 1,420,207 more rows
+# ℹ 12 more variables: allophone &lt;chr&gt;, allophone_environment &lt;chr&gt;,
+#   pre_seg &lt;chr&gt;, fol_seg &lt;chr&gt;, context &lt;chr&gt;, F1 &lt;dbl&gt;, F2 &lt;dbl&gt;, F3 &lt;dbl&gt;,
+#   B1 &lt;dbl&gt;, B2 &lt;dbl&gt;, B3 &lt;dbl&gt;, max_formant &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>That brings it down to 1.4 million vowels. Still a ton of data.</p>
+<section id="query-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="query-the-data">Query the data</h3>
+<p>Let me pause just to do some quick queries. First, how many files do I have?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1131</code></pre>
+</div>
+</div>
+<p>I think there were about 50 that had some problems. Crazy to think that that’s the amount of data I got for my dissertation and now I can just shrug it off!</p>
+<p>How many stressed monophthongs per file per file?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1255.718</code></pre>
+</div>
+</div>
+<p>How much audio? I could query Praat for this information, but I’ll just take a shortcut and get the end time of the last vowel per file. The number is in seconds, so I’ll get a minutes version as well.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,131 × 3
+   file_name  duration_s duration_m
+   &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;
+ 1 KT002SideA      3636.       60.6
+ 2 KT003SideA      1659.       27.7
+ 3 KT004SideA      1654.       27.6
+ 4 KT005SideA      3701.       61.7
+ 5 KT006SideA      2484.       41.4
+ 6 KT007SideA      1914.       31.9
+ 7 KT008SideA      1481.       24.7
+ 8 KT009SideA      1629.       27.1
+ 9 KT010SideA      1420.       23.7
+10 KT011SideA      1678.       28.0
+# ℹ 1,121 more rows</code></pre>
+</div>
+</div>
+<p>How much audio is here?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 571.2587</code></pre>
+</div>
+</div>
+<p>About 60 hours short of my earlier estimate. But I know some tapes didn’t get processed, so that makes sense.</p>
+<p>So what are some summary stats for the durations?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  file_name           duration_s        duration_m     
+ Length:1131        Min.   :  13.15   Min.   : 0.2191  
+ Class :character   1st Qu.:1323.67   1st Qu.:22.0612  
+ Mode  :character   Median :1895.92   Median :31.5987  
+                    Mean   :1818.33   Mean   :30.3055  
+                    3rd Qu.:2545.16   3rd Qu.:42.4193  
+                    Max.   :3724.96   Max.   :62.0827  </code></pre>
+</div>
+</div>
+<p>The average is about 1,818 seconds or 31.59 minutes. Here’s a plot showing the distributions.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Keep in mind that each filename corresponds to a side of a tape. I was just a little bit too young to really be familiar with tapes, but I guess tapes back then could hold either about 32 or maybe 48 minutes of audio, so it makes sense that most files are around that long.</p>
+</section>
+<section id="vowel-plots" class="level3">
+<h3 class="anchored" data-anchor-id="vowel-plots">Vowel plots</h3>
+<p>Now the moment of truth. Here’s a plot showing the raw F1-F2 measurements for the entire dataset. All 1.4 million points are plotted here.</p>
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/raw_plot.png" class="img-fluid"></p>
+<p>I think right away, this is a testament to how amazing new-fave is. I’ve worked with legacy data before, and normally there are tons of datapoints in the extreme bottom left of the vowel space. These are the result of formant tracking errors. And this was using the original FAVE! This dataset appears to be <em>remarkably</em> clean, at least when it comes to that.</p>
+</section>
+<section id="normalizing" class="level3">
+<h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
+<p>Before I look at too much more, I should normalize the data. Fruehwald has <a href="https://jofrhwld.github.io/dct_normalization/#transforming-dct-coefficients">an extremely useful paper</a> on how to use DCT to normalize new-fave output. I’ll read those DCT coefficients after they’ve been log-transformed, which is required when doing the Nearey normalization. I’ll process them in the same way that I did above, except I will keep all vowels.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9,204,255 × 25
+   param        F1       F2       F3   error file_name id    group label phoneme
+   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;fct&gt;  
+ 1     0  4.48      4.97e+0  5.39e+0 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
+ 2     1 -0.00913   1.86e-2 -3.32e-2 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
+ 3     2 -0.0173    3.43e-3  5.82e-4 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
+ 4     3 -0.00832   1.92e-3  1.08e-3 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
+ 5     4 -0.00669  -4.34e-3 -1.84e-2 1.62e-4 KT002Sid… 0-0-… grou… o     LOT    
+ 6     0  4.67      5.00e+0  5.47e+0 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
+ 7     1  0.000597 -2.40e-2  2.25e-2 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
+ 8     2 -0.000120  2.45e-2  5.92e-3 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
+ 9     3  0.00386   8.81e-4 -9.96e-3 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
+10     4  0.00304   6.81e-3  9.04e-3 1.49e-3 KT002Sid… 0-0-… grou… o     LOT    
+# ℹ 9,204,245 more rows
+# ℹ 15 more variables: allophone &lt;chr&gt;, allophone_environment &lt;chr&gt;,
+#   max_formant &lt;dbl&gt;, speaker_num &lt;dbl&gt;, optimized &lt;dbl&gt;, word &lt;chr&gt;,
+#   stress &lt;dbl&gt;, dur &lt;dbl&gt;, pre_word &lt;chr&gt;, fol_word &lt;chr&gt;, pre_seg &lt;chr&gt;,
+#   fol_seg &lt;chr&gt;, abs_pre_seg &lt;chr&gt;, abs_fol_seg &lt;chr&gt;, context &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Okay, so at first, the millions of rows is intimidating. But we can work with it.</p>
+<p>Doing normalization on the DCT coefficients involves jumping over to Python—a new thing for me—but worth it because of all the reasons Fruehwald has explained in his paper. I’ll follow the code he has <a href="https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/">here</a> because this is still new to me, but I’ll try to explain as best I can.</p>
+<p>I needed to install the <code>scipy</code> package, so I did that first. I’ll then load it with <code>reticulate::import</code> and then save a particular function within that package into an R object called <code>idct</code>.</p>
+<p>I’ll get the average of the DCT parameters by token. Keep in mind that I’m working with full trajectory data, not just single points. I’ll then apply the python function, <code>idct</code> to those averages. For later analyses, I’ll get average smooths by speaker, but for now, I’ll just collapse all speakers together into average per allophone.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,900 × 7
+   phoneme allophone allophone_environment        F1        F2      F3 prop_time
+   &lt;fct&gt;   &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl[1d]&gt; &lt;dbl[1d]&gt; &lt;dbl[1&gt;     &lt;dbl&gt;
+ 1 LOT     GOLF      prelateral                 6.35      7.05    7.69    0     
+ 2 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0101
+ 3 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0202
+ 4 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0303
+ 5 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0404
+ 6 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0505
+ 7 LOT     GOLF      prelateral                 6.35      7.05    7.69    0.0606
+ 8 LOT     GOLF      prelateral                 6.36      7.04    7.69    0.0707
+ 9 LOT     GOLF      prelateral                 6.36      7.04    7.69    0.0808
+10 LOT     GOLF      prelateral                 6.36      7.04    7.69    0.0909
+# ℹ 4,890 more rows</code></pre>
+</div>
+</div>
+<p>Sweet. That was <em>quite</em> fast. Now I can show average trajectories in this dataset.</p>
+</section>
+<section id="more-vowel-plots" class="level3">
+<h3 class="anchored" data-anchor-id="more-vowel-plots">More vowel plots</h3>
+<p>I’ll start with elsewhere allophones. I’ll plot it with <code>ggtextpath</code>. <a href="../../blog/geomtextpath/">I wasn’t a fan</a> of this package when it first came out, but it’s growing on me.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looks like a vowel plot. I won’t get into heavy interpretation without further digging into the variation and stuff, but it’s noteworthy how diphthongal that <sc>bait</sc> vowel is and how monopthongal that <sc>boot</sc> vowel is. It’s also interesting how separated <sc>bot</sc> and <sc>bought</sc> are, but again I’ll have to look at the data more closely to say anything. Keep in mind that this plot is just preobstruent data.</p>
+<p>Let’s look at my favorite class of allophones: prelaterals. I’ll use the Wells-inspired labels I came up with <a href="../../blog/extending-wells-lexical-sets-to-prelateral-vowels/index.html">in an earlier blog post</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lots to unpack here, which will undoubtedly happen in future publications. For now, it’s noteworthy that the front vowel pairs <sc>zeal-guilt</sc> and <sc>flail-shelf</sc> are not merged as they are for some Utahns today. The back vowels are interesting. Looks like there might be a <sc>mulch-golf</sc> (that is, /ʌl/-/ɑl/, or <em>cull-call</em>) merger. And possibly a <sc>jolt-fault</sc> (that is, /ol/-/ɔl/ or <em>hole-hall</em>) merger. Interestingly, <sc>golf</sc> and <sc>fault</sc> are separated, <sc>spool</sc> is not fully backed, and <sc>child</sc> is pretty monophthongal.</p>
+<p>Now let’s look at prerhotics.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/kohler-tapes-update3/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I anticipated some weirdness here. <sc>Cure</sc> is just weird for lots of reasons because, <a href="../../pages/idiolect/#my-cure-lexical-set">at least for me</a>, it could have lots of different realizations, and I’m assuming that’s true in this dataset too. <sc>Force</sc> and <sc>start</sc> are seemingly straightforward, but there’s actually a lot going on here because of the <em>cord-card</em> merger. I’ve already been analyzing that merger in this dataset, so stay tuned for updates on that.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Anyway, it could take a career to really dive into this data, and I’m happy to finally have something to work with after hearing about it 7½ years ago!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Kohler Tapes</category>
+  <category>Research</category>
+  <category>Utah</category>
+  <guid>https://joeystanley.com/blog/kohler-tapes-update3/</guid>
+  <pubDate>Tue, 10 Jun 2025 06:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/new-publication-in-jengl/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>Mormonese</category>
+  <category>Phonetics</category>
+  <category>Publications</category>
+  <category>Research</category>
+  <category>Students</category>
+  <category>Utah</category>
+  <category>West</category>
+  <guid>https://joeystanley.com/blog/new-publication-in-jengl/</guid>
+  <pubDate>Fri, 02 May 2025 14:56:00 GMT</pubDate>
+</item>
 <item>
   <title>Simulating Candyland</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -7609,7 +7887,20 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
 
 
 
-<p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../posts/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../posts/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
+<p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../blog/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../blog/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="../../blog/kohler-tapes-update3">this post</a> from June 3, 2025 after I got all the data processed!</p>
+</div>
+</div>
 <section id="progress-since-2021" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="progress-since-2021">Progress since 2021</h2>
 <p>At the end of my previous update, I mentioned that I had gotten a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a>. That provided just enough funds to hire an RA to help with metadata extraction. As I’ve mentioned already, a great many of the tapes start off with the student interviewer staying their name and the date, and then they ask basic demographic questions about their interviewee. It’s important that I know as much of the metadata about these interviewees as I can so that I can prioritize which tapes I should process first.</p>
@@ -12118,178 +12409,6 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
   <category>Meta</category>
   <guid>https://joeystanley.com/blog/website-version-3/</guid>
   <pubDate>Sun, 03 Dec 2023 04:12:00 GMT</pubDate>
-</item>
-<item>
-  <title>NWAV51</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/nwav51/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This weekend, some students that I advise in different capacities presented their research at NWAV51 in New York! I am co-author on them, but it’s about 95% their work. For reasons I won’t get into here, I was not able to attend the conference myself, so these three students presented by themselves!</p>
-<section id="thursdays-presentation-on-ukrainian-language-ideolgies" class="level2">
-<h2 class="anchored" data-anchor-id="thursdays-presentation-on-ukrainian-language-ideolgies">Thursday’s Presentation on Ukrainian Language Ideolgies</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/231013-NWAV_Ukraine.pdf">here</a>!</p>
-</div>
-</div>
-<p>Kateryna Kravchenko presented her research, “An analysis of Ukrainians’ language attitudes and ideology: A conflict-catalyzed identity shift.” Katya has been tracking Ukrainian language ideologies since the Russian invasion of Ukraine in February 2022 and has noticed that many Ukrainians are vowing to never use Russian again, even though it is their first language. It appears to start with social media and then move to other domains after that. She has conducted interviews with Ukrainians who have had to flee the country since February 2022 and has some really fascinating first-hand insights into what we’re calling a “conflict-catalyzed identity shift.”</p>
-</section>
-<section id="fridays-presentation-on-southern-utah-english" class="level2">
-<h2 class="anchored" data-anchor-id="fridays-presentation-on-southern-utah-english">Friday’s Presentation on “Southern” Utah English</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/231014-NWAV_SouthernUtah.pdf">here</a>!</p>
-</div>
-</div>
-<p>Chad Huckvale has been working on perceptual dialectology research in Utah, and has been focused on this idea that people describe parts of Utah as sounding “Southern,” even though Utah English and Southern American English have little in common. In his presentation, “Perceptions of ‘Southern’ Utah English,” he presents results from two experiments on this topic. First, he did a class draw-a-map task and found that, unsurprisingly, people labeled the urban area along the Wasatch Front as “urban” (and related words) and everywhere else as “rural” (and related words). In his second experiment, people listened to speech samples and were asked where in Utah they thougt they were from. (The twist is that only a few of the speakers were actually from Utah!) People placed speakers with features of Southern American English in the rural parts of the state. There’s a lot more in Chad’s MA thesis, but this was</p>
-</section>
-<section id="fridays-presentation-on-tourism-and-its-effect-on-language" class="level2">
-<h2 class="anchored" data-anchor-id="fridays-presentation-on-tourism-and-its-effect-on-language">Friday’s presentation on tourism and its effect on language</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/231014-NWAV_Tourism.pdf">here</a>!</p>
-</div>
-</div>
-<p>Finally, Zoe Elredge just graduated with her BA, but she’s been working hard on perceptions of Park City English. In her presentation, “Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English,” she presents just some of the results of a very rich data collection she has gathered. The results are messy, but it seems like Parkite English is perceived as less professional and less laidback. That seems contradictory, but it kinda fits the stereotype of being a “Mountain Surfer Dudes” as one participant put it: superficial and posh. With Park City being a ritsy, touristy area, perhaps people are less willing to invest in friendships. Again, the results are messy, and Zoe is still digging to see what it can say and I look forward to see what she finds.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <guid>https://joeystanley.com/blog/nwav51/</guid>
-  <pubDate>Sat, 14 Oct 2023 03:30:00 GMT</pubDate>
-</item>
-<item>
-  <title>The stories behind the languages I’ve studied</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/stories-behind-the-languages-ive-studied/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>There’s a trend on linguistics Twitter right now where people are sharing the ages that they started studying/learning whatever languages they know. As I thought about the ones I know, I realized that there’s a story behind each one, and like many linguists, I have a list of languages and a few-word summary of their fluency at the bottom of my CV. But the stories are much more than I’d like to explain on my CV or in a tweet. So, here are some of those stories behind the languages I’ve studied.</p>
-<section id="english" class="level2">
-<h2 class="anchored" data-anchor-id="english">English</h2>
-<p>My first and, for a long time, only language. Read more about my idiolect <a href="../../pages/idiolect">here</a>.</p>
-</section>
-<section id="modern-greek" class="level2">
-<h2 class="anchored" data-anchor-id="modern-greek">(Modern) Greek</h2>
-<p>In fourth grade, I was in a “gifted” program or whatever and we had a unit on Greek. I remember nothing.</p>
-</section>
-<section id="swahili" class="level2">
-<h2 class="anchored" data-anchor-id="swahili">Swahili</h2>
-<p>In fifth grade, that same gifted program had a Swahili unit. Literally the only thing I remember is the titular line from the song “Head, Shoulders, Knees, and Toes”, which is <em>kichwa, mabega, magoti na migu</em>. Google Translate has <em>toes</em> as <em>vidole</em>, so I don’t know what <em>migu</em> is.</p>
-<p>Unrelated to that, early in grad school, probably around summer 2015 or so, I thought I’d try auditing Swahili. I sat in on one class and decided I probably didn’t have the time to commit.</p>
-</section>
-<section id="portuguese" class="level2">
-<h2 class="anchored" data-anchor-id="portuguese">Portuguese</h2>
-<p>When I was 19, I started my two-year stint as a Mormon missionary in Brazil. I took some private lessons for a couple months summer 2007 from a Brazilian woman from church. When I moved there in October, I was put into an intensive language training course, which was about 9 weeks, after which I was thrust into the streets pretty much and fully immersed in the language.</p>
-<p>It took a while for me to attain fluency, but I made it there eventually. I made a <em>ton</em> of flashcards and learned lots of words. People would joke that if anyone needed to teach a lawyer, they’d have to call me because I’m the only one that has the vocabulary! My pronunciation wasn’t bad either: I could convince people that I was from Brazil—granted, I told them I was from Amapá, a remote, rural state way up in the Amazon. No one knew anyone from there, so they were often like, “Oh, so <em>that’s</em> what the accent sounds like!” As I explain <a href="../../blog/ten-years-of-linguistics">here</a>, I was in a college town for a while and inadvertently bought <a href="https://www.editoracontexto.com.br/produto/fonetica-e-fonologia-do-portugues-roteiro-de-estudos-e-guia-de-exercicios-nova/1496828">a phonetics and phonology textbook</a> and learned some basic linguistics concepts from there. About a month before I was finished, I bought a <a href="https://editoranacional.com.br/livros-buscar-detalhe/?id=472">big ol’ grammar book</a>, one that was intended for Brazilian university students studying Portuguese, and read the whole thing. Perhaps because of that book and my general attitude towards language learning at the time, I still have somewhat prescriptivist attitudes in Portuguese, and I really wish I hadn’t adhered so strongly to the standard language ideology because I know I heard a <em>lot</em> of variation while living there.</p>
-<p>Since being back in the US, I’ve had relatively little opportunity to use my Portuguese. I took a grammar and a literature course as an undergrad. In grad school, I attended a conversation group. I also was briefly part of a Brazil-based research team that analyzed monkey vocalizations and I had one heck of a time trying to explain statistics in Portuguese. Mormon missionaries don’t exactly need that kind of vocabulary, so that was a lot of new words.</p>
-<p>How is my Portuguese now? Pretty rusty. Probably not terrible and I could survive. I’ve forgotten a lot of the nuance on how to say certain things. I listen to podcasts occasionally and I don’t understand everything, which is a little disheartening. But, again, as a missionary there are a <em>lot</em> of semantic domains that you don’t ever need to talk about, so it makes sense. Maybe I just need to start busting out the vocab cards again.</p>
-</section>
-<section id="guarani" class="level2">
-<h2 class="anchored" data-anchor-id="guarani">Guarani</h2>
-<p>After living in Brazil for about nine months (this was June-ish of 2009, right after I turned 20), I was transferred to Campo Grande where I encountered Guarani for the first time. I thought it was interesting and I thought I’d try to learn it. A friend had what was basically a “teach yourself Guarani” book that was written in Spanish—so I had to quickly figure out a bit of basic Spanish to read it. My dad also sent me a copy of the Book of Mormon in Guarani and basically said, “Eh, since you’re learning another language anyway, might as well try this one too.” So over the next few months, here and there, I learned a bit of grammar and vocabulary. This was my first time looking at a non-Indo-European language and it was fascinating to me. By the end of my time in Brazil, I had somehow managed figured out quite a bit of grammar.</p>
-<p>When I got back to BYU, I found some old books on Guarani and used them to learn more of the grammar I hadn’t figured out via translation. In Fall 2011, I also sat in on a grammar course that was intended for missionaries who had served in Paraguay speaking Guarani. I didn’t do well because I really was out of my league and because I had also signed up for Mandarin that same semester. I’ve occasionally pecked at it and even have an <a href="../../blog/interactive-guarani-dictionary">interactive Guarani dictionary</a>. I even submitted an abstract to LSA on templatic morphology, but it was (rightfully) rejected. I saw that they’ve recently added a Duolingo course in Guarani, taught in Spanish, so there’s more opportunity to practice. One day, I’ll get back to studying it.</p>
-</section>
-<section id="kichwa" class="level2">
-<h2 class="anchored" data-anchor-id="kichwa">Kichwa</h2>
-<p>After my intro to linguistics course, I went on a language documentation study abroad to Amazonian Ecuador in June–July 2011. There, I started to learn Ecuadorian (Lowland, Pastaza, etc) Kichwa. I never really got to the point of being fluent, but I had two semesters’ worth of coursework done, so I had, at one point, a bit of vocabulary and a decent grasp of lots of basic grammar. Nowadays, I remember virtually nothing, but when I see my colleague Janis Nuckolls talk about her research, some things come back.</p>
-</section>
-<section id="spanish" class="level2">
-<h2 class="anchored" data-anchor-id="spanish">Spanish</h2>
-<p>At some point while in Brazil, I started to study Spanish on my own. I had to know something because that Guarani book I had was written in Spanish. I’ve never taken formal classes though, so I don’t know much. Knowing Portuguese is helpful and I tell people that my Spanish is basically Portuguese with a Spanish accent. I also have a really hard time understanding spoken Spanish, though when I was in Ecuador, I noticed that Ecuadorian Spanish was much easier. My one success story was the one time I was in Sunday School while in Ecuador and the teacher called on me to answer a question, and not only did I understand the question, but I also produced a coherent answer.</p>
-</section>
-<section id="mandarin" class="level2">
-<h2 class="anchored" data-anchor-id="mandarin">Mandarin</h2>
-<p>While in Ecuador, a fellow study abroader had studied Chinese. I had two roommates who spoke Mandarin at the time too. And I was interested in learning more about tone. So I signed up for Mandarin and ended up taking two semesters of it. I enjoyed it. Except for the writing. I don’t think we advanced very far at all because everything we learned to say we had to be able to read and write too, and learning characters was a slow process. I think by the end, I knew just shy of 500 characters. What little grammar I knew though I felt pretty comfortable with. Literally the only thing I remember today is 我有兩個會說中文的室友, “I have two roommates who can speak Chinese.” Except I had to look up the characters on Google Translate. Knowing Pinyin at least has been helpful for reading Chinese names.</p>
-</section>
-<section id="kiche" class="level2">
-<h2 class="anchored" data-anchor-id="kiche">K’iche’</h2>
-<p>During the Winter 2012 semester of BYU, they offered a introductory K’iche’ course. I audited it and attended for a few weeks, but ultimately couldn’t keep up with it and Mandarin in the same semester. (I wish had had continued, because it would have been helpful for studying Tz’utijil later on!)</p>
-</section>
-<section id="tshiluba" class="level2">
-<h2 class="anchored" data-anchor-id="tshiluba">Tshiluba</h2>
-<p>Fall of 2012, I took a Field Methods course and our informant was a native speaker of <a href="https://en.wikipedia.org/wiki/Luba-Kasai_language">Tshiluba</a> (aka Luba-Kasai), a Bantu language spoken in the DRC. I really enjoyed that course and spent the majority of my time documenting the TAM system.</p>
-</section>
-<section id="bolivian-quechua" class="level2">
-<h2 class="anchored" data-anchor-id="bolivian-quechua">Bolivian Quechua</h2>
-<p>When I started graduate school at the Univeristy of Georgia, they had just gotten, in the words of my advisor Chad Howe, a “crap-ton” of money to help their Quechua program. I was in the second cohort of students to take Quechua there. I took two semesters from Chad Howe. I then continued to third- and fourth-semester courses, which were taught by a native speaker, remotely from Bolivia. (Keep in mind, this was 2015–2016, long before remote learning had become mainstream!) The instructor didn’t speak any English though and, as you may recall, I don’t really speak Spanish that well, so much of the class was facilitated by a TA who was a Romance Languages PhD student and year ahead of me in school. (Hi, Bethany!) I was one of a couple students in Quechua 201 and the only student in Quechua 202. Towards the end, I was starting to achieve some semblance of fluency, and I could speak somewhat off the cuff and express most of what I wanted to, haltingly, and with lots of mistakes. I do have one line on my CV about Quechua morphology, a conference presentation from LCUGA in 2016.</p>
-</section>
-<section id="tzutujil" class="level2">
-<h2 class="anchored" data-anchor-id="tzutujil">Tz’utujil</h2>
-<p>During my first year of grad school, I took field methods again, and our informant spoken Tz’utijil. Like I did with Tshiluba, I focused on verbal morphology, but this time it was more about valency. I had quite a lot of fun with it and wrote a “grammar” of something like 60 pages. Pretty fun.</p>
-</section>
-<section id="dutch" class="level2">
-<h2 class="anchored" data-anchor-id="dutch">Dutch</h2>
-<p>In 2019, I started to study Dutch because I had been accepted to a conference in the Netherlands and I wanted to not be <em>that</em> kind of American that just expects everyone to speak English. I did what I could to study, but in a few months, while dissertating, I couldn’t learn that much. While in Utrecht and Amersfoort, I did learn enough to ask people if they spoke English—which they almost always replied, “Yes, of course.” However, I had really gotten into breadmaking around then and I ended up going to a corner bakery a little bit away from the touristy downtown area and when I asked the baker if she spoke English, she said, somewhat apologetically, “een beetje” (‘a little bit’). That was my one chance to actually use Dutch!</p>
-<p>Since then, I’ve continued studying Dutch. No real reason—I don’t have plans to go back to the Netherlands—but it’s fun to have something to work on. I’m using Duolingo, but I’m also reading grammar books, studying a ton of vocabulary, and listening to podcasts. I follow a few Dutch-speaking folks on Twitter and can often understand most of their tweets now. Right now, I’d say it’s the language I’ve learned the most, other than English and Portuguese.</p>
-</section>
-<section id="korean" class="level2">
-<h2 class="anchored" data-anchor-id="korean">Korean</h2>
-<p>Towards the end of grad school, I needed a 8000-level course, so I took Korean Linguistics, which was under the auspices of a course called “Lesser-Taught Languages.” Most of the students were Korean majors or minors, and the only other grad students were both Korean. I didn’t do that well in the course because I had never studied Korean at all. And my lesser-than-ideal performance shows because I remember virtually nothing from it.</p>
-</section>
-<section id="honorable-mentions" class="level2">
-<h2 class="anchored" data-anchor-id="honorable-mentions">Honorable Mentions</h2>
-<p>Languages I studied for a <em>very</em> brief time.</p>
-<ul>
-<li>Haitian Creole: For a brief week or so in about 2012, my dad thought he was going to be doing business in Haiti, so he asked me to try and learn some Haitian Creole to help him interpret. It didn’t pan out.</li>
-<li>German: In 2019, I applied for a job in Switzerland so I started to try and learn German. I as starting Dutch at the same time, and I soon found out I didn’t get the job, so I didn’t get very far.</li>
-<li>Ukrainian: In 2022, I started to advise a student on the sociolinguistics of Ukrainian. I thought I’d try and learn some Ukrainian to help with that.</li>
-</ul>
-<p><br> Language I’d like to study in the future.</p>
-<ul>
-<li>Aymara: Aymara books are near Guarani books in the library, and I have an uncle-in-law who learned it while serving as a missionary in Bolivia. And since South American languages are cool, this would be next on my bucket list from that part of the world.</li>
-<li>Korean: My wife and I agreed that once we’re both done with our current Duolingo courses (Dutch for me, Russian for her), we’d learn Korean together. We’ve watched a few Korean shows on Netflix and Korean culture is becoming more and more prevalent in the US right now anyway, so it might be handy to know.</li>
-<li>Norwegian: My great-great-grandfather was the end of an at least 40-generation-long line of Norwegians, specifically from the southern tip of the country. I can trace my ancestry to folks born in the 700s AD, and even the ones born in the 1200s were born only about 30 miles from where my great-great-grandfather was born. Anyway, it’d be interesting to learn Norwegian and visit the area.</li>
-</ul>
-</section>
-<section id="end" class="level2">
-<h2 class="anchored" data-anchor-id="end">End</h2>
-<p>Anyway, I’ve heard people say that the more languages you know, the harder it is to define <em>fluent</em>. That’s certainly the case for me.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Personal</category>
-  <guid>https://joeystanley.com/blog/stories-behind-the-languages-ive-studied/</guid>
-  <pubDate>Sat, 27 May 2023 21:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
