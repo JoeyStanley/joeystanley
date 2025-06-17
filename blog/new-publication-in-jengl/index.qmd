@@ -15,6 +15,7 @@ resources:
   - "ID034-Connie_filth.wav"
   - "MT059-Melody_filth.wav"
   - "UT153-Giselle_both.wav"
+image: "ID034-Connie-closure.png"
 ---
 
 I'm thrilled to announce my latest journal article, "LTH Affrication: A sociolinguistic indicator in the American West", co-authored with [Jessica Shepherd](https://jessicashepherd.github.io), has been published in *Journal of English Linguistics*! Jess was an undergraduate at BYU and was an RA for me when we started this project. She is now a PhD student at Michigan State and [is working](https://mi-diaries.org/2023/08/28/9798/) on the [MI Diaries project](https://mi-diaries.org).
@@ -39,7 +40,7 @@ A clear example of no closure.
 
 
 
-![](ID034-Connie-closure.png)
+![](ID034-Connie-closure.png){.preview-image}
 <center style = "font-size: 85%;">
 <audio src="ID034-Connie_filth.wav" controls preload></audio>
 <br/>
