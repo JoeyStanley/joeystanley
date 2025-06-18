@@ -11,7 +11,7 @@ categories:
   - Skills
 ---
 
-Josef Fruehwald has recently released the [tidynorm](https://jofrhwld.github.io/tidynorm/) R package. It "provide[s] convenient and tidy functions to normalize vowel formant data." Since I normalize my data a lot and am entrenched in the [tidyverse](https://www.tidyverse.org), I thought I'd give it a try, especially since I have also written some functions that normalize your data for you and I wanted to compare them. After playing around `tidynorm`, I can confidently say it's a *lot* better than what my versions did. So, the purpose of this post is to 
+Josef Fruehwald has recently released the [tidynorm](https://jofrhwld.github.io/tidynorm/) R package. It "provide[s] convenient and tidy functions to normalize vowel formant data." Since I normalize my data a lot and am entrenched in the [tidyverse](https://www.tidyverse.org), I thought I'd give it a try, especially since I have also written some functions that normalize vowel data and I wanted to compare them. **After playing around `tidynorm`, I can confidently say it's a *lot* better than what my R packages did.** So, the purpose of this post is to 
 
 1. Show a little bit of what `tidynorm` can do.
 
