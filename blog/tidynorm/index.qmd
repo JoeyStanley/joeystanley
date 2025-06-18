@@ -11,21 +11,22 @@ categories:
   - Skills
 ---
 
-Josef Fruehwald has recently released the [tidynorm](https://jofrhwld.github.io/tidynorm/) package. It "provide[s] convenient and tidy functions to normalize vowel formant data." Since I normalize my data a lot and am entrenched in the [tidyverse](https://www.tidyverse.org), I thought I'd give it a try, especially since I have also written some functions that normalize your data for you and I wanted to compare them. After playing around `tidynorm`, I can confidently say it's a *lot* better than what my versions did. So, the purpose of this post is to 
+Josef Fruehwald has recently released the [tidynorm](https://jofrhwld.github.io/tidynorm/) R package. It "provide[s] convenient and tidy functions to normalize vowel formant data." Since I normalize my data a lot and am entrenched in the [tidyverse](https://www.tidyverse.org), I thought I'd give it a try, especially since I have also written some functions that normalize your data for you and I wanted to compare them. After playing around `tidynorm`, I can confidently say it's a *lot* better than what my versions did. So, the purpose of this post is to 
 
-1. Show a little bit what tidynorm can do.
+1. Show a little bit of what `tidynorm` can do.
 
-2. Convince you to switch from the normalization functions in my own packages and to tidynorm.
+2. Convince you to switch from the normalization functions in my own packages (namely, `joeyr`) and to `tidynorm`.
 
-On this page, I walk through the functions in the tidynorm package that normalized point-based (i.e. not trajectory) formant data. I'll follow along [this article](https://jofrhwld.github.io/tidynorm/articles/norm-methods.html#watt-fabricious-wattevaluationtechniqueimproving2002). As I go through each one, I'll show how you can implement each method using my own packages if applicable, and how it's done in `tidynorm`. Hopefully by the end, I will have convinced you to start adopting `tidynorm`. 
+On this page, I walk through the functions in `tidynorm` that normalized point-based (i.e. not trajectory) formant data. I'll follow along [this article](https://jofrhwld.github.io/tidynorm/articles/norm-methods.html). As I go through each one, I'll show how you can implement each method using my own packages if applicable, and how it's done in `tidynorm`. Hopefully by the end, I will have convinced you to start adopting `tidynorm`. 
 
 ## Preliminaries
 
 I'll load the packages I need, including my own [`joeysvowels`](https://joeystanley.github.io/joeysvowels/) package from Github. 
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(tidynorm)
+
 # remotes::install_github("joeystanley/joeysvowels")
 library(joeysvowels)
 ```
@@ -39,7 +40,7 @@ idahoans <- joeysvowels::idahoans |>
 ```
 
 
-I created this dataset for the express purpose of testing out normalization functions.
+I created this dataset for the express purpose of testing out normalization functions. Let's take a peek at it.
 
 ```{r}
 ggplot(idahoans, aes(F2, F1, color = vowel)) + 
@@ -64,7 +65,7 @@ library(barktools)
 
 ## Lobanov normalization
 
-Though Santiago Barreda's work [advises against Lobanov normalization](https://doi.org/10.1017/S0954394521000016), I'll start there because it's most familiar with people. Lobanov normalization is straightforward and can be easily implemented with the `scale` function in base R. Here's a more verbose way of doing things:
+Though Barreda ([2021](https://doi.org/10.1017/S0954394521000016) and [2025](https://doi.org/10.1016/j.wocn.2025.101409)) advises against Lobanov normalization, I'll start there because it's probably the most familiar to the most number of people. Lobanov normalization is straightforward and can be easily implemented with the `scale` function in base R. Here's a more verbose way of doing things:
 
 ```{r, eval = FALSE}
 idahoans |> 
@@ -74,14 +75,14 @@ idahoans |>
          F3_z = scale(F3))
 ```
 
-Here's a more compact way that is functionally equivalent. 
+Here's a more compact way that is functionally equivalent using some tidyverse tricks. 
 
 ```{r, eval = FALSE}
 idahoans |> 
   mutate(across(F1:F3, scale, .names = "{.col}_z"), .by = speaker)
 ```
 
-Here's how you'd do it in tidynorm:
+Here's how you'd do the Lobanov normalization in `tidynorm`:
 
 ```{r}
 idahoans_lob <- idahoans |> 
@@ -89,11 +90,11 @@ idahoans_lob <- idahoans |>
   print()
 ```
 
-So, it does the exact same thing. The benefit of using `scale` is that it's easier to see what mathematically is happening. The benefit of using `norm_lobanov` is that it's easy to see *why* you're scaling your data and that you're doing the Lobanov normalization method.
+So, the output is identical. The benefit of using `scale` is that you pop the hood a little bit and it's easier to see what mathematically is happening. The benefit of using `norm_lobanov` is that it's easy to see that you're doing the Lobanov normalization.
 
 One thing that I think is worth mentioning here---and this will be true of all the `tidynorm` functions I show here---is that there are two changes to the dataframe other than the addition of new normalized vowel formant columns. First, there is a new `.id` column, which just shows the row numbers. That gets added during the normalization procedure and apparently stays. Also, the order of columns has shifted a little bit. The formant columns are now located before the vowel column.
 
-Note that in this post, I'll use `.silent = TRUE` in my `tidynorm` function calls because not doing so was causing some issues in my R console. But, be sure to look at it in your own code because it provides some good feedback to make sure you've normalized the way you meant to. You can always access that information with `check_norm`. 
+Also, please note that `tidynorm` function calls by default return some helpful information that provides some good feedback to make sure you've normalized the way you meant to. For me though, those messages were causing some issues in my R console, so throughout this post I'll use `.silent = TRUE` anytime I run a `tidynorm` function. Be sure to look at the output in your own code though, which you can can always do with `check_norm`. 
 
 ```{r}
 check_norm(idahoans_lob)
@@ -101,9 +102,7 @@ check_norm(idahoans_lob)
 
 ## Logmeans (=Neary) normalization
 
-My go-to normalization procedure now is the Nearey method. You can read about it in various places, including Barreda ([2018](https://doi.org/10.1121/1.5047742})) and on [tidynorm's documentation page](https://jofrhwld.github.io/tidynorm/articles/norm-methods.html#nearey-normalization-neareyphoneticfeaturesystems1978). 
-
-In my joeyr package, I had a function called `norm_logmeans`, which handled everything as best I could. (Although it was crashing for some users, and I'm not sure why.) It was pretty clunky because it required you to log transform the formant measurements first and I always ended up renaming the columns afterwards anyway. Because it was inhereted code, it also was a departure from `tidyverse` under the hood, so the result didn't get returned as a tibble.
+My go-to normalization procedure now is the Nearey method, thanks to Barreda's work. In my `joeyr` package, I had a function called `norm_logmeans`, which handled everything as best I could. (Although it was crashing for some users, and I'm not sure why.) It was pretty clunky because it required you to log transform the formant measurements first and I always ended up renaming the columns afterwards anyway. Because it was inhereted code, it also was a departure from `tidyverse` under the hood, so the result didn't get returned as a tibble.
 
 ```{r}
 idahoans |>
@@ -128,7 +127,7 @@ idahoans |>
 It appears that the original F1--F3 columns have been lost and new log-transformed versions of them take their place. This appears to be a bug in the procedure and will hopefully be fixed soon.
 :::
 
-As I was playing with this, I realized that my own `norm_logmeans` function wasn't returning the same output. I found out it was for two reasons. First, I have been using `log10` instead of `log` as input. I'm now pretty concerned that I might has messed up a lot of people's analyses, including my own! The other reason was I had to make sure that I was using all the same formants (F1--F3 and not just F1 and F2) when doing the two procedures to get them to match. Fortunately, they do, which means my `norm_logmeans` function did indeed have the match all incorporated correctly. Still, I'd recommend switching over to `tidynorm` because it's a whole lot less clunky than my own version. 
+As I was playing with this, I realized that my own `norm_logmeans` function wasn't necessarily returning the same output. I found out it was for two reasons. First, I have been using `log10` instead of `log` as input. I'm now pretty concerned that I might has messed up a lot of people's analyses, including my own! The other reason was I had to make sure that I was using all the same formants (F1--F3 and not just F1 and F2) when doing the two procedures to get them to match. Fortunately, they do, which means my `norm_logmeans` function did indeed have the match all incorporated correctly. Still, I'd recommend switching over to `tidynorm` because it's a whole lot less clunky than my own version. 
 
 ## Delta-F Normalization
 
@@ -147,7 +146,7 @@ idahoans |>
    tidynorm::norm_deltaF(F1:F3, .by = speaker, .silent = TRUE)
 ```
 
-One (of several) major benefits to `tidynorm` is its consistency in syntax. All three of my normalization procedures had wildly different syntax, which reflected wildly different implementations under the hood. It was not good. `tidynorm`'s functions are all consistent because they actually call a more general `norm_generic`. 
+One (of several) major benefits to `tidynorm` is its consistency in syntax. All three of my normalization procedures had different syntax, which reflected wildly different implementations under the hood. It was not good. `tidynorm`'s functions are all consistent because they actually call a more general `norm_generic`. 
 
 ## Bark Difference Metric
 
@@ -160,14 +159,14 @@ idahoans |>
          F2_barkdiff = F2_bark - F3_bark)
 ```
 
-Straightforward and transparent. Here's how you'd do it in tidynorm.
+Straightforward and transparent. Here's how you'd do it in `tidynorm`.
 
 ```{r}
 idahoans |> 
   norm_barkz(F1:F3, .by = speaker, .silent = TRUE)
 ```
 
-Like what we saw with the Lobanov method above, the benefit of using the more raw functions is that you are more closely connected to the math. The downside is that it's prone to error and it's not clear the reason why you do what you do. The benefit of this `norm_barkz` function is that it's all wrapped up into one tidy function and the purpose is clear. In this case the `F1_bz` and `F2_bz` columns correspond to the difference metrics. The `F3_bz` column is not helpful since it's just `Bark(F3) - Bark(F3)`, which is zero, so you can drop it. 
+Like what we saw with the Lobanov method above, the benefit of using the more lower-level functions is that you are more closely connected to the math. The downside is that it's prone to error and it's not clear from the code what it's actually doing. The benefit of this `norm_barkz` function is that it's all wrapped up into one tidy function and the purpose is clear. In this case the `F1_bz` and `F2_bz` columns correspond to the difference metrics. The `F3_bz` column is not helpful since it's just `Bark(F3) - Bark(F3)`, which is zero, so you can drop it. 
 
 ## Watt and Fabricious method
 

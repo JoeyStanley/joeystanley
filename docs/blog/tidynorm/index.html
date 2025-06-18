@@ -274,39 +274,28 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
-<p>Josef Fruehwald has recently released the <a href="https://jofrhwld.github.io/tidynorm/">tidynorm</a> package. It “provide[s] convenient and tidy functions to normalize vowel formant data.” Since I normalize my data a lot and am entrenched in the <a href="https://www.tidyverse.org">tidyverse</a>, I thought I’d give it a try, especially since I have also written some functions that normalize your data for you and I wanted to compare them. After playing around <code>tidynorm</code>, I can confidently say it’s a <em>lot</em> better than what my versions did. So, the purpose of this post is to</p>
+<p>Josef Fruehwald has recently released the <a href="https://jofrhwld.github.io/tidynorm/">tidynorm</a> R package. It “provide[s] convenient and tidy functions to normalize vowel formant data.” Since I normalize my data a lot and am entrenched in the <a href="https://www.tidyverse.org">tidyverse</a>, I thought I’d give it a try, especially since I have also written some functions that normalize your data for you and I wanted to compare them. After playing around <code>tidynorm</code>, I can confidently say it’s a <em>lot</em> better than what my versions did. So, the purpose of this post is to</p>
 <ol type="1">
-<li><p>Show a little bit what tidynorm can do.</p></li>
-<li><p>Convince you to switch from the normalization functions in my own packages and to tidynorm.</p></li>
+<li><p>Show a little bit of what <code>tidynorm</code> can do.</p></li>
+<li><p>Convince you to switch from the normalization functions in my own packages (namely, <code>joeyr</code>) and to <code>tidynorm</code>.</p></li>
 </ol>
-<p>On this page, I walk through the functions in the tidynorm package that normalized point-based (i.e.&nbsp;not trajectory) formant data. I’ll follow along <a href="https://jofrhwld.github.io/tidynorm/articles/norm-methods.html#watt-fabricious-wattevaluationtechniqueimproving2002">this article</a>. As I go through each one, I’ll show how you can implement each method using my own packages if applicable, and how it’s done in <code>tidynorm</code>. Hopefully by the end, I will have convinced you to start adopting <code>tidynorm</code>.</p>
+<p>On this page, I walk through the functions in <code>tidynorm</code> that normalized point-based (i.e.&nbsp;not trajectory) formant data. I’ll follow along <a href="https://jofrhwld.github.io/tidynorm/articles/norm-methods.html">this article</a>. As I go through each one, I’ll show how you can implement each method using my own packages if applicable, and how it’s done in <code>tidynorm</code>. Hopefully by the end, I will have convinced you to start adopting <code>tidynorm</code>.</p>
 <section id="preliminaries" class="level2">
 <h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
 <p>I’ll load the packages I need, including my own <a href="https://joeystanley.github.io/joeysvowels/"><code>joeysvowels</code></a> package from Github.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidynorm)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/joeysvowels")</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeysvowels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidynorm)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/joeysvowels")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeysvowels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I’ll play around with the Idahoans dataset in this post, which sample data from 10 people from Idaho.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="ot">&lt;-</span> joeysvowels<span class="sc">::</span>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowid_to_column</span>(<span class="st">"token_id"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>sex, <span class="sc">-</span>F4) <span class="sc">|&gt;</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="ot">&lt;-</span> joeysvowels<span class="sc">::</span>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowid_to_column</span>(<span class="st">"token_id"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>sex, <span class="sc">-</span>F4) <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 6
    token_id speaker vowel    F1    F2    F3
@@ -324,14 +313,14 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 # ℹ 1,090 more rows</code></pre>
 </div>
 </div>
-<p>I created this dataset for the express purpose of testing out normalization functions.</p>
+<p>I created this dataset for the express purpose of testing out normalization functions. Let’s take a peek at it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(idahoans, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>speaker) <span class="sc">+</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(idahoans, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>speaker) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -342,8 +331,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>I’ll load my packages as well.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/joeyr")</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/joeyr")</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(joeyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'joeyr'</code></pre>
@@ -353,8 +342,8 @@ Attaching package: 'joeyr'</code></pre>
 
     norm_deltaF</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/barktools")</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(barktools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("joeystanley/barktools")</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(barktools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'barktools'</code></pre>
@@ -368,24 +357,24 @@ Attaching package: 'barktools'</code></pre>
 </section>
 <section id="lobanov-normalization" class="level2">
 <h2 class="anchored" data-anchor-id="lobanov-normalization">Lobanov normalization</h2>
-<p>Though Santiago Barreda’s work <a href="https://doi.org/10.1017/S0954394521000016">advises against Lobanov normalization</a>, I’ll start there because it’s most familiar with people. Lobanov normalization is straightforward and can be easily implemented with the <code>scale</code> function in base R. Here’s a more verbose way of doing things:</p>
+<p>Though Barreda (<a href="https://doi.org/10.1017/S0954394521000016">2021</a> and <a href="https://doi.org/10.1016/j.wocn.2025.101409">2025</a>) advises against Lobanov normalization, I’ll start there because it’s probably the most familiar to the most number of people. Lobanov normalization is straightforward and can be easily implemented with the <code>scale</code> function in base R. Here’s a more verbose way of doing things:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(speaker) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> <span class="fu">scale</span>(F1),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> <span class="fu">scale</span>(F2),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">F3_z =</span> <span class="fu">scale</span>(F3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(speaker) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">F1_z =</span> <span class="fu">scale</span>(F1),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_z =</span> <span class="fu">scale</span>(F2),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">F3_z =</span> <span class="fu">scale</span>(F3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here’s a more compact way that is functionally equivalent.</p>
+<p>Here’s a more compact way that is functionally equivalent using some tidyverse tricks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, scale, <span class="at">.names =</span> <span class="st">"{.col}_z"</span>), <span class="at">.by =</span> speaker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, scale, <span class="at">.names =</span> <span class="st">"{.col}_z"</span>), <span class="at">.by =</span> speaker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here’s how you’d do it in tidynorm:</p>
+<p>Here’s how you’d do the Lobanov normalization in <code>tidynorm</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>idahoans_lob <span class="ot">&lt;-</span> idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_lobanov</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>idahoans_lob <span class="ot">&lt;-</span> idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_lobanov</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3  F1_z   F2_z   F3_z vowel
@@ -403,11 +392,11 @@ Attaching package: 'barktools'</code></pre>
 # ℹ 1,090 more rows</code></pre>
 </div>
 </div>
-<p>So, it does the exact same thing. The benefit of using <code>scale</code> is that it’s easier to see what mathematically is happening. The benefit of using <code>norm_lobanov</code> is that it’s easy to see <em>why</em> you’re scaling your data and that you’re doing the Lobanov normalization method.</p>
+<p>So, the output is identical. The benefit of using <code>scale</code> is that you pop the hood a little bit and it’s easier to see what mathematically is happening. The benefit of using <code>norm_lobanov</code> is that it’s easy to see that you’re doing the Lobanov normalization.</p>
 <p>One thing that I think is worth mentioning here—and this will be true of all the <code>tidynorm</code> functions I show here—is that there are two changes to the dataframe other than the addition of new normalized vowel formant columns. First, there is a new <code>.id</code> column, which just shows the row numbers. That gets added during the normalization procedure and apparently stays. Also, the order of columns has shifted a little bit. The formant columns are now located before the vowel column.</p>
-<p>Note that in this post, I’ll use <code>.silent = TRUE</code> in my <code>tidynorm</code> function calls because not doing so was causing some issues in my R console. But, be sure to look at it in your own code because it provides some good feedback to make sure you’ve normalized the way you meant to. You can always access that information with <code>check_norm</code>.</p>
+<p>Also, please note that <code>tidynorm</code> function calls by default return some helpful information that provides some good feedback to make sure you’ve normalized the way you meant to. For me though, those messages were causing some issues in my R console, so throughout this post I’ll use <code>.silent = TRUE</code> anytime I run a <code>tidynorm</code> function. Be sure to look at the output in your own code though, which you can can always do with <code>check_norm</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_norm</span>(idahoans_lob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_norm</span>(idahoans_lob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Normalization Step
 • normalized with `tidynorm::norm_lobanov()`
@@ -421,18 +410,17 @@ Attaching package: 'barktools'</code></pre>
 </section>
 <section id="logmeans-neary-normalization" class="level2">
 <h2 class="anchored" data-anchor-id="logmeans-neary-normalization">Logmeans (=Neary) normalization</h2>
-<p>My go-to normalization procedure now is the Nearey method. You can read about it in various places, including Barreda (<a href="https://doi.org/10.1121/1.5047742%7D">2018</a>) and on <a href="https://jofrhwld.github.io/tidynorm/articles/norm-methods.html#nearey-normalization-neareyphoneticfeaturesystems1978">tidynorm’s documentation page</a>.</p>
-<p>In my joeyr package, I had a function called <code>norm_logmeans</code>, which handled everything as best I could. (Although it was crashing for some users, and I’m not sure why.) It was pretty clunky because it required you to log transform the formant measurements first and I always ended up renaming the columns afterwards anyway. Because it was inhereted code, it also was a departure from <code>tidyverse</code> under the hood, so the result didn’t get returned as a tibble.</p>
+<p>My go-to normalization procedure now is the Nearey method, thanks to Barreda’s work. In my <code>joeyr</code> package, I had a function called <code>norm_logmeans</code>, which handled everything as best I could. (Although it was crashing for some users, and I’m not sure why.) It was pretty clunky because it required you to log transform the formant measurements first and I always ended up renaming the columns afterwards anyway. Because it was inhereted code, it also was a departure from <code>tidyverse</code> under the hood, so the result didn’t get returned as a tibble.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, log, <span class="at">.names =</span> <span class="st">"{.col}_log"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">joeyr_norm_logmeans</span>(<span class="at">.formant_cols =</span> F1_log<span class="sc">:</span>F3_log,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.speaker_col =</span> speaker,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">.vowel_col =</span> vowel) <span class="sc">|&gt;</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">F1_logmeans =</span> F1_log_logmeans,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_logmeans =</span> F2_log_logmeans,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">F3_logmeans =</span> F3_log_logmeans) <span class="sc">|&gt;</span> </span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, log, <span class="at">.names =</span> <span class="st">"{.col}_log"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">joeyr_norm_logmeans</span>(<span class="at">.formant_cols =</span> F1_log<span class="sc">:</span>F3_log,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">.speaker_col =</span> speaker,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">.vowel_col =</span> vowel) <span class="sc">|&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">F1_logmeans =</span> F1_log_logmeans,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_logmeans =</span> F2_log_logmeans,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">F3_logmeans =</span> F3_log_logmeans) <span class="sc">|&gt;</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 12
    token_id speaker vowel    F1    F2    F3 F1_log F2_log F3_log F1_logmeans
@@ -453,8 +441,8 @@ Attaching package: 'barktools'</code></pre>
 </div>
 <p>Fortunately, <code>tidynorm</code> makes this much easier to do now and you can do the whole thing with just one line of code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_nearey</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_nearey</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3  F1_lm    F2_lm F3_lm vowel
@@ -485,15 +473,15 @@ Note
 <p>It appears that the original F1–F3 columns have been lost and new log-transformed versions of them take their place. This appears to be a bug in the procedure and will hopefully be fixed soon.</p>
 </div>
 </div>
-<p>As I was playing with this, I realized that my own <code>norm_logmeans</code> function wasn’t returning the same output. I found out it was for two reasons. First, I have been using <code>log10</code> instead of <code>log</code> as input. I’m now pretty concerned that I might has messed up a lot of people’s analyses, including my own! The other reason was I had to make sure that I was using all the same formants (F1–F3 and not just F1 and F2) when doing the two procedures to get them to match. Fortunately, they do, which means my <code>norm_logmeans</code> function did indeed have the match all incorporated correctly. Still, I’d recommend switching over to <code>tidynorm</code> because it’s a whole lot less clunky than my own version.</p>
+<p>As I was playing with this, I realized that my own <code>norm_logmeans</code> function wasn’t necessarily returning the same output. I found out it was for two reasons. First, I have been using <code>log10</code> instead of <code>log</code> as input. I’m now pretty concerned that I might has messed up a lot of people’s analyses, including my own! The other reason was I had to make sure that I was using all the same formants (F1–F3 and not just F1 and F2) when doing the two procedures to get them to match. Fortunately, they do, which means my <code>norm_logmeans</code> function did indeed have the match all incorporated correctly. Still, I’d recommend switching over to <code>tidynorm</code> because it’s a whole lot less clunky than my own version.</p>
 </section>
 <section id="delta-f-normalization" class="level2">
 <h2 class="anchored" data-anchor-id="delta-f-normalization">Delta-F Normalization</h2>
 <p>In my joeyr package, I have a function called <code>norm_deltaF</code>. I wrote it quickly without much testing and I honestly haven’t used it much. But it does work:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(speaker) <span class="sc">|&gt;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">joeyr_norm_deltaF</span>(F1, F2, F3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(speaker) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">joeyr_norm_deltaF</span>(F1, F2, F3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 9
 # Groups:   speaker [10]
@@ -514,8 +502,8 @@ Note
 </div>
 <p>But, this too was a bit clunky because rather than passing in all the formant columns at once, it actually required F1, F2, and F3 to be separate arguments. As expected, <code>tidynorm::norm_deltaF</code> handles this in a much more straightforward manner.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>   tidynorm<span class="sc">::</span><span class="fu">norm_deltaF</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>   tidynorm<span class="sc">::</span><span class="fu">norm_deltaF</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3 F1_df F2_df F3_df vowel
@@ -533,16 +521,16 @@ Note
 # ℹ 1,090 more rows</code></pre>
 </div>
 </div>
-<p>One (of several) major benefits to <code>tidynorm</code> is its consistency in syntax. All three of my normalization procedures had wildly different syntax, which reflected wildly different implementations under the hood. It was not good. <code>tidynorm</code>’s functions are all consistent because they actually call a more general <code>norm_generic</code>.</p>
+<p>One (of several) major benefits to <code>tidynorm</code> is its consistency in syntax. All three of my normalization procedures had different syntax, which reflected wildly different implementations under the hood. It was not good. <code>tidynorm</code>’s functions are all consistent because they actually call a more general <code>norm_generic</code>.</p>
 </section>
 <section id="bark-difference-metric" class="level2">
 <h2 class="anchored" data-anchor-id="bark-difference-metric">Bark Difference Metric</h2>
 <p>The last one that I’ve written code for that <code>tidynorm</code> handles so much better is the Bark Difference Metric. This was once a part of <code>joeyr</code> but I moved it to <code>barktools</code> instead. Here’s how you’d get the Bark Difference Metric using that package. First, you calculate the barks, and then you manually get the difference metric.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, bark, <span class="at">.names =</span> <span class="st">"{.col}_bark"</span>),</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">F1_barkdiff =</span> F1_bark <span class="sc">-</span> F3_bark,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_barkdiff =</span> F2_bark <span class="sc">-</span> F3_bark)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(F1<span class="sc">:</span>F3, bark, <span class="at">.names =</span> <span class="st">"{.col}_bark"</span>),</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">F1_barkdiff =</span> F1_bark <span class="sc">-</span> F3_bark,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">F2_barkdiff =</span> F2_bark <span class="sc">-</span> F3_bark)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 11
    token_id speaker vowel    F1    F2    F3 F1_bark F2_bark F3_bark F1_barkdiff
@@ -561,10 +549,10 @@ Note
 # ℹ 1 more variable: F2_barkdiff &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<p>Straightforward and transparent. Here’s how you’d do it in tidynorm.</p>
+<p>Straightforward and transparent. Here’s how you’d do it in <code>tidynorm</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_barkz</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_barkz</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3 F1_bz F2_bz F3_bz vowel
@@ -582,14 +570,14 @@ Note
 # ℹ 1,090 more rows</code></pre>
 </div>
 </div>
-<p>Like what we saw with the Lobanov method above, the benefit of using the more raw functions is that you are more closely connected to the math. The downside is that it’s prone to error and it’s not clear the reason why you do what you do. The benefit of this <code>norm_barkz</code> function is that it’s all wrapped up into one tidy function and the purpose is clear. In this case the <code>F1_bz</code> and <code>F2_bz</code> columns correspond to the difference metrics. The <code>F3_bz</code> column is not helpful since it’s just <code>Bark(F3) - Bark(F3)</code>, which is zero, so you can drop it.</p>
+<p>Like what we saw with the Lobanov method above, the benefit of using the more lower-level functions is that you are more closely connected to the math. The downside is that it’s prone to error and it’s not clear from the code what it’s actually doing. The benefit of this <code>norm_barkz</code> function is that it’s all wrapped up into one tidy function and the purpose is clear. In this case the <code>F1_bz</code> and <code>F2_bz</code> columns correspond to the difference metrics. The <code>F3_bz</code> column is not helpful since it’s just <code>Bark(F3) - Bark(F3)</code>, which is zero, so you can drop it.</p>
 </section>
 <section id="watt-and-fabricious-method" class="level2">
 <h2 class="anchored" data-anchor-id="watt-and-fabricious-method">Watt and Fabricious method</h2>
 <p>This is not a method I have ever implemented in any of my packages, so I’ll just show how it’s done in tidynorm. (You can probably guess the syntax by now though!)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_wattfab</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>idahoans <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">norm_wattfab</span>(F1<span class="sc">:</span>F3, <span class="at">.by =</span> speaker, <span class="at">.silent =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3 F1_wf F2_wf F3_wf vowel
