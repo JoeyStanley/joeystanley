@@ -10,7 +10,600 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.42</generator>
-<lastBuildDate>Tue, 17 Jun 2025 14:56:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 18 Jun 2025 15:39:00 GMT</lastBuildDate>
+<item>
+  <title>Testing out the tidynorm package</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/tidynorm/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Josef Fruehwald has recently released the <a href="https://jofrhwld.github.io/tidynorm/">tidynorm</a> package. It “provide[s] convenient and tidy functions to normalize vowel formant data.” Since I normalize my data a lot and am entrenched in the <a href="https://www.tidyverse.org">tidyverse</a>, I thought I’d give it a try, especially since I have also written some functions that normalize your data for you and I wanted to compare them. After playing around <code>tidynorm</code>, I can confidently say it’s a <em>lot</em> better than what my versions did. So, the purpose of this post is to</p>
+<ol type="1">
+<li><p>Show a little bit what tidynorm can do.</p></li>
+<li><p>Convince you to switch from the normalization functions in my own packages and to tidynorm.</p></li>
+</ol>
+<p>On this page, I walk through the functions in the tidynorm package that normalized point-based (i.e.&nbsp;not trajectory) formant data. I’ll follow along <a href="https://jofrhwld.github.io/tidynorm/articles/norm-methods.html#watt-fabricious-wattevaluationtechniqueimproving2002">this article</a>. As I go through each one, I’ll show how you can implement each method using my own packages if applicable, and how it’s done in <code>tidynorm</code>. Hopefully by the end, I will have convinced you to start adopting <code>tidynorm</code>.</p>
+<section id="preliminaries" class="level2">
+<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
+<p>I’ll load the packages I need, including my own <a href="https://joeystanley.github.io/joeysvowels/"><code>joeysvowels</code></a> package from Github.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidynorm)</span>
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remotes::install_github("joeystanley/joeysvowels")</span></span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(joeysvowels)</span></code></pre></div>
+</div>
+<p>I’ll play around with the Idahoans dataset in this post, which sample data from 10 people from Idaho.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">idahoans <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> joeysvowels<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowid_to_column</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"token_id"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>sex, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>F4) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 6
+   token_id speaker vowel    F1    F2    F3
+      &lt;int&gt; &lt;fct&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1        1 01      AA     699. 1655. 2019.
+ 2        2 01      AA     685. 1360. 1914.
+ 3        3 01      AA     713. 1507. 2460.
+ 4        4 01      AA     801. 1143. 1868.
+ 5        5 01      AA     757. 1258. 1772.
+ 6        6 01      AA     804. 1403. 2339.
+ 7        7 01      AA     664. 1279. 1714.
+ 8        8 01      AA     757. 1325. 1929.
+ 9        9 01      AA     730. 1578. 2297.
+10       10 01      AA     700. 1546. 2109.
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+<p>I created this dataset for the express purpose of testing out normalization functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(idahoans, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(F2, F1, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> vowel)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_reverse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>speaker) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/tidynorm/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I’ll load my packages as well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remotes::install_github("joeystanley/joeyr")</span></span>
+<span id="cb7-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(joeyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'joeyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tidynorm':
+
+    norm_deltaF</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remotes::install_github("joeystanley/barktools")</span></span>
+<span id="cb10-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(barktools)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'barktools'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:joeysvowels':
+
+    mouth</code></pre>
+</div>
+</div>
+</section>
+<section id="lobanov-normalization" class="level2">
+<h2 class="anchored" data-anchor-id="lobanov-normalization">Lobanov normalization</h2>
+<p>Though Santiago Barreda’s work <a href="https://doi.org/10.1017/S0954394521000016">advises against Lobanov normalization</a>, I’ll start there because it’s most familiar with people. Lobanov normalization is straightforward and can be easily implemented with the <code>scale</code> function in base R. Here’s a more verbose way of doing things:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(speaker) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F1_z =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale</span>(F1),</span>
+<span id="cb13-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F2_z =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale</span>(F2),</span>
+<span id="cb13-5">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F3_z =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale</span>(F3))</span></code></pre></div>
+</div>
+<p>Here’s a more compact way that is functionally equivalent.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, scale, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.names =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{.col}_z"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> speaker)</span></code></pre></div>
+</div>
+<p>Here’s how you’d do it in tidynorm:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">idahoans_lob <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_lobanov</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 10
+     .id token_id speaker    F1    F2    F3  F1_z   F2_z   F3_z vowel
+   &lt;int&gt;    &lt;int&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;
+ 1     1        1 01       699. 1655. 2019. 1.15  -0.341 -1.31  AA   
+ 2     2        2 01       685. 1360. 1914. 1.04  -0.906 -1.57  AA   
+ 3     3        3 01       713. 1507. 2460. 1.26  -0.624 -0.239 AA   
+ 4     4        4 01       801. 1143. 1868. 1.94  -1.32  -1.68  AA   
+ 5     5        5 01       757. 1258. 1772. 1.59  -1.10  -1.91  AA   
+ 6     6        6 01       804. 1403. 2339. 1.97  -0.824 -0.534 AA   
+ 7     7        7 01       664. 1279. 1714. 0.872 -1.06  -2.06  AA   
+ 8     8        8 01       757. 1325. 1929. 1.60  -0.972 -1.53  AA   
+ 9     9        9 01       730. 1578. 2297. 1.39  -0.488 -0.637 AA   
+10    10       10 01       700. 1546. 2109. 1.15  -0.550 -1.09  AA   
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+<p>So, it does the exact same thing. The benefit of using <code>scale</code> is that it’s easier to see what mathematically is happening. The benefit of using <code>norm_lobanov</code> is that it’s easy to see <em>why</em> you’re scaling your data and that you’re doing the Lobanov normalization method.</p>
+<p>One thing that I think is worth mentioning here—and this will be true of all the <code>tidynorm</code> functions I show here—is that there are two changes to the dataframe other than the addition of new normalized vowel formant columns. First, there is a new <code>.id</code> column, which just shows the row numbers. That gets added during the normalization procedure and apparently stays. Also, the order of columns has shifted a little bit. The formant columns are now located before the vowel column.</p>
+<p>Note that in this post, I’ll use <code>.silent = TRUE</code> in my <code>tidynorm</code> function calls because not doing so was causing some issues in my R console. But, be sure to look at it in your own code because it provides some good feedback to make sure you’ve normalized the way you meant to. You can always access that information with <code>check_norm</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">check_norm</span>(idahoans_lob)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Normalization Step
+• normalized with `tidynorm::norm_lobanov()`
+• normalized `F1`, `F2`, and `F3`
+• normalized values in `F1_z`, `F2_z`, and `F3_z`
+• grouped by `speaker`
+• within formant: TRUE
+• (.formant - mean(.formant, na.rm = T))/(sd(.formant, na.rm = T))</code></pre>
+</div>
+</div>
+</section>
+<section id="logmeans-neary-normalization" class="level2">
+<h2 class="anchored" data-anchor-id="logmeans-neary-normalization">Logmeans (=Neary) normalization</h2>
+<p>My go-to normalization procedure now is the Nearey method. You can read about it in various places, including Barreda (<a href="https://doi.org/10.1121/1.5047742%7D">2018</a>) and on <a href="https://jofrhwld.github.io/tidynorm/articles/norm-methods.html#nearey-normalization-neareyphoneticfeaturesystems1978">tidynorm’s documentation page</a>.</p>
+<p>In my joeyr package, I had a function called <code>norm_logmeans</code>, which handled everything as best I could. (Although it was crashing for some users, and I’m not sure why.) It was pretty clunky because it required you to log transform the formant measurements first and I always ended up renaming the columns afterwards anyway. Because it was inhereted code, it also was a departure from <code>tidyverse</code> under the hood, so the result didn’t get returned as a tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, log, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.names =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{.col}_log"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb19-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">joeyr_norm_logmeans</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.formant_cols =</span> F1_log<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3_log,</span>
+<span id="cb19-4">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.speaker_col =</span> speaker,</span>
+<span id="cb19-5">                <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.vowel_col =</span> vowel) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb19-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F1_logmeans =</span> F1_log_logmeans,</span>
+<span id="cb19-7">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F2_logmeans =</span> F2_log_logmeans,</span>
+<span id="cb19-8">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F3_logmeans =</span> F3_log_logmeans) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb19-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 12
+   token_id speaker vowel    F1    F2    F3 F1_log F2_log F3_log F1_logmeans
+      &lt;int&gt; &lt;fct&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+ 1        1 01      AA     699. 1655. 2019.   6.55   7.41   7.61      -0.645
+ 2        2 01      AA     685. 1360. 1914.   6.53   7.22   7.56      -0.666
+ 3        3 01      AA     713. 1507. 2460.   6.57   7.32   7.81      -0.626
+ 4        4 01      AA     801. 1143. 1868.   6.69   7.04   7.53      -0.509
+ 5        5 01      AA     757. 1258. 1772.   6.63   7.14   7.48      -0.567
+ 6        6 01      AA     804. 1403. 2339.   6.69   7.25   7.76      -0.505
+ 7        7 01      AA     664. 1279. 1714.   6.50   7.15   7.45      -0.697
+ 8        8 01      AA     757. 1325. 1929.   6.63   7.19   7.56      -0.566
+ 9        9 01      AA     730. 1578. 2297.   6.59   7.36   7.74      -0.602
+10       10 01      AA     700. 1546. 2109.   6.55   7.34   7.65      -0.644
+# ℹ 1,090 more rows
+# ℹ 2 more variables: F2_logmeans &lt;dbl&gt;, F3_logmeans &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Fortunately, <code>tidynorm</code> makes this much easier to do now and you can do the whole thing with just one line of code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_nearey</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 10
+     .id token_id speaker    F1    F2    F3  F1_lm    F2_lm F3_lm vowel
+   &lt;int&gt;    &lt;int&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1     1        1 01       6.55  7.41  7.61 -0.645  0.216   0.415 AA   
+ 2     2        2 01       6.53  7.22  7.56 -0.666  0.0197  0.361 AA   
+ 3     3        3 01       6.57  7.32  7.81 -0.626  0.123   0.613 AA   
+ 4     4        4 01       6.69  7.04  7.53 -0.509 -0.154   0.337 AA   
+ 5     5        5 01       6.63  7.14  7.48 -0.567 -0.0583  0.285 AA   
+ 6     6        6 01       6.69  7.25  7.76 -0.505  0.0506  0.562 AA   
+ 7     7        7 01       6.50  7.15  7.45 -0.697 -0.0416  0.251 AA   
+ 8     8        8 01       6.63  7.19  7.56 -0.566 -0.00604 0.369 AA   
+ 9     9        9 01       6.59  7.36  7.74 -0.602  0.169   0.544 AA   
+10    10       10 01       6.55  7.34  7.65 -0.644  0.148   0.459 AA   
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It appears that the original F1–F3 columns have been lost and new log-transformed versions of them take their place. This appears to be a bug in the procedure and will hopefully be fixed soon.</p>
+</div>
+</div>
+<p>As I was playing with this, I realized that my own <code>norm_logmeans</code> function wasn’t returning the same output. I found out it was for two reasons. First, I have been using <code>log10</code> instead of <code>log</code> as input. I’m now pretty concerned that I might has messed up a lot of people’s analyses, including my own! The other reason was I had to make sure that I was using all the same formants (F1–F3 and not just F1 and F2) when doing the two procedures to get them to match. Fortunately, they do, which means my <code>norm_logmeans</code> function did indeed have the match all incorporated correctly. Still, I’d recommend switching over to <code>tidynorm</code> because it’s a whole lot less clunky than my own version.</p>
+</section>
+<section id="delta-f-normalization" class="level2">
+<h2 class="anchored" data-anchor-id="delta-f-normalization">Delta-F Normalization</h2>
+<p>In my joeyr package, I have a function called <code>norm_deltaF</code>. I wrote it quickly without much testing and I honestly haven’t used it much. But it does work:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb23-2">   <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(speaker) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb23-3">   <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">joeyr_norm_deltaF</span>(F1, F2, F3)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 9
+# Groups:   speaker [10]
+   token_id speaker vowel    F1    F2    F3 F1_deltaF F2_deltaF F3_deltaF
+      &lt;int&gt; &lt;fct&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+ 1        1 01      AA     699. 1655. 2019.     0.626      1.48      1.81
+ 2        2 01      AA     685. 1360. 1914.     0.614      1.22      1.71
+ 3        3 01      AA     713. 1507. 2460.     0.639      1.35      2.20
+ 4        4 01      AA     801. 1143. 1868.     0.718      1.02      1.67
+ 5        5 01      AA     757. 1258. 1772.     0.677      1.13      1.59
+ 6        6 01      AA     804. 1403. 2339.     0.720      1.26      2.09
+ 7        7 01      AA     664. 1279. 1714.     0.595      1.15      1.53
+ 8        8 01      AA     757. 1325. 1929.     0.678      1.19      1.73
+ 9        9 01      AA     730. 1578. 2297.     0.654      1.41      2.06
+10       10 01      AA     700. 1546. 2109.     0.627      1.38      1.89
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+<p>But, this too was a bit clunky because rather than passing in all the formant columns at once, it actually required F1, F2, and F3 to be separate arguments. As expected, <code>tidynorm::norm_deltaF</code> handles this in a much more straightforward manner.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb25-2">   tidynorm<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_deltaF</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 10
+     .id token_id speaker    F1    F2    F3 F1_df F2_df F3_df vowel
+   &lt;int&gt;    &lt;int&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1     1        1 01       699. 1655. 2019. 0.626  1.48  1.81 AA   
+ 2     2        2 01       685. 1360. 1914. 0.614  1.22  1.71 AA   
+ 3     3        3 01       713. 1507. 2460. 0.639  1.35  2.20 AA   
+ 4     4        4 01       801. 1143. 1868. 0.718  1.02  1.67 AA   
+ 5     5        5 01       757. 1258. 1772. 0.677  1.13  1.59 AA   
+ 6     6        6 01       804. 1403. 2339. 0.720  1.26  2.09 AA   
+ 7     7        7 01       664. 1279. 1714. 0.595  1.15  1.53 AA   
+ 8     8        8 01       757. 1325. 1929. 0.678  1.19  1.73 AA   
+ 9     9        9 01       730. 1578. 2297. 0.654  1.41  2.06 AA   
+10    10       10 01       700. 1546. 2109. 0.627  1.38  1.89 AA   
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+<p>One (of several) major benefits to <code>tidynorm</code> is its consistency in syntax. All three of my normalization procedures had wildly different syntax, which reflected wildly different implementations under the hood. It was not good. <code>tidynorm</code>’s functions are all consistent because they actually call a more general <code>norm_generic</code>.</p>
+</section>
+<section id="bark-difference-metric" class="level2">
+<h2 class="anchored" data-anchor-id="bark-difference-metric">Bark Difference Metric</h2>
+<p>The last one that I’ve written code for that <code>tidynorm</code> handles so much better is the Bark Difference Metric. This was once a part of <code>joeyr</code> but I moved it to <code>barktools</code> instead. Here’s how you’d get the Bark Difference Metric using that package. First, you calculate the barks, and then you manually get the difference metric.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb27-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">across</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, bark, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.names =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{.col}_bark"</span>),</span>
+<span id="cb27-3">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F1_barkdiff =</span> F1_bark <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> F3_bark,</span>
+<span id="cb27-4">         <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">F2_barkdiff =</span> F2_bark <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> F3_bark)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 11
+   token_id speaker vowel    F1    F2    F3 F1_bark F2_bark F3_bark F1_barkdiff
+      &lt;int&gt; &lt;fct&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;
+ 1        1 01      AA     699. 1655. 2019.    6.52   11.7     13.1       -6.55
+ 2        2 01      AA     685. 1360. 1914.    6.41   10.5     12.7       -6.30
+ 3        3 01      AA     713. 1507. 2460.    6.62   11.1     14.4       -7.77
+ 4        4 01      AA     801. 1143. 1868.    7.25    9.34    12.6       -5.30
+ 5        5 01      AA     757. 1258. 1772.    6.94    9.95    12.2       -5.26
+ 6        6 01      AA     804. 1403. 2339.    7.27   10.7     14.1       -6.79
+ 7        7 01      AA     664. 1279. 1714.    6.25   10.1     12.0       -5.72
+ 8        8 01      AA     757. 1325. 1929.    6.94   10.3     12.8       -5.83
+ 9        9 01      AA     730. 1578. 2297.    6.75   11.4     13.9       -7.19
+10       10 01      AA     700. 1546. 2109.    6.53   11.3     13.4       -6.84
+# ℹ 1,090 more rows
+# ℹ 1 more variable: F2_barkdiff &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Straightforward and transparent. Here’s how you’d do it in tidynorm.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb29-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_barkz</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 10
+     .id token_id speaker    F1    F2    F3 F1_bz F2_bz F3_bz vowel
+   &lt;int&gt;    &lt;int&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1     1        1 01       6.52 11.7   13.1 -6.55 -1.33     0 AA   
+ 2     2        2 01       6.41 10.5   12.7 -6.30 -2.26     0 AA   
+ 3     3        3 01       6.62 11.1   14.4 -7.77 -3.27     0 AA   
+ 4     4        4 01       7.25  9.34  12.6 -5.30 -3.21     0 AA   
+ 5     5        5 01       6.94  9.95  12.2 -5.26 -2.25     0 AA   
+ 6     6        6 01       7.27 10.7   14.1 -6.79 -3.41     0 AA   
+ 7     7        7 01       6.25 10.1   12.0 -5.72 -1.92     0 AA   
+ 8     8        8 01       6.94 10.3   12.8 -5.83 -2.48     0 AA   
+ 9     9        9 01       6.75 11.4   13.9 -7.19 -2.51     0 AA   
+10    10       10 01       6.53 11.3   13.4 -6.84 -2.08     0 AA   
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+<p>Like what we saw with the Lobanov method above, the benefit of using the more raw functions is that you are more closely connected to the math. The downside is that it’s prone to error and it’s not clear the reason why you do what you do. The benefit of this <code>norm_barkz</code> function is that it’s all wrapped up into one tidy function and the purpose is clear. In this case the <code>F1_bz</code> and <code>F2_bz</code> columns correspond to the difference metrics. The <code>F3_bz</code> column is not helpful since it’s just <code>Bark(F3) - Bark(F3)</code>, which is zero, so you can drop it.</p>
+</section>
+<section id="watt-and-fabricious-method" class="level2">
+<h2 class="anchored" data-anchor-id="watt-and-fabricious-method">Watt and Fabricious method</h2>
+<p>This is not a method I have ever implemented in any of my packages, so I’ll just show how it’s done in tidynorm. (You can probably guess the syntax by now though!)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1">idahoans <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb31-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">norm_wattfab</span>(F1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>F3, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,100 × 10
+     .id token_id speaker    F1    F2    F3 F1_wf F2_wf F3_wf vowel
+   &lt;int&gt;    &lt;int&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+ 1     1        1 01       699. 1655. 2019.  1.27 0.903 0.789 AA   
+ 2     2        2 01       685. 1360. 1914.  1.24 0.742 0.748 AA   
+ 3     3        3 01       713. 1507. 2460.  1.29 0.822 0.962 AA   
+ 4     4        4 01       801. 1143. 1868.  1.45 0.623 0.730 AA   
+ 5     5        5 01       757. 1258. 1772.  1.37 0.686 0.693 AA   
+ 6     6        6 01       804. 1403. 2339.  1.46 0.765 0.914 AA   
+ 7     7        7 01       664. 1279. 1714.  1.20 0.698 0.670 AA   
+ 8     8        8 01       757. 1325. 1929.  1.37 0.723 0.754 AA   
+ 9     9        9 01       730. 1578. 2297.  1.32 0.861 0.898 AA   
+10    10       10 01       700. 1546. 2109.  1.27 0.843 0.824 AA   
+# ℹ 1,090 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>As you can see here, <code>tidynorm</code> handles various normalization procedures in a simple way with consistent syntax across functions. While some of my functions kinda worked, this works way better.</p>
+<p>In fact, as of today, <strong>I have depreciated the three normalizations functions within <code>joeyr</code></strong> (<code>norm_logmeans</code>, <code>norm_anae</code>, and <code>norm_deltaF</code>). The functions still do exist, but they do nothing other than give a message saying that you should switch to <code>tidynorm</code>. This means, if you update to <code>joeyr</code> version 0.10, it’ll introduce breaking changes into your code. If you want to keep using my functions, you can by adding <code>joeyr_</code> as a prefix to the function name (e.g.&nbsp;<code>joeyr_norm_logmeans</code>).</p>
+<p>There is more to <code>tidynorm</code> beyond what I’ve shown here, namely that it handles normalizing trajectory data and DCT coefficients, but I’ll have to play around with those later.</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://joeystanley.com/blog/tidynorm/</guid>
+  <pubDate>Wed, 18 Jun 2025 15:39:00 GMT</pubDate>
+</item>
 <item>
   <title>New publication in Journal of English Linguistics</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -40,7 +633,7 @@
 <br> A clear example of no closure. <br> (“Jamie”, White, female, 1982, Latter-day Saint, Idaho Falls)
 </center>
 <p><br></p>
-<img src="https://joeystanley.com/blog/new-publication-in-jengl/ID034-Connie-closure.png" class="img-fluid">
+<img src="https://joeystanley.com/blog/new-publication-in-jengl/ID034-Connie-closure.png" class="preview-image img-fluid">
 <center style="font-size: 85%;">
 <audio src="ID034-Connie_filth.wav" controls="" preload="">
 </audio>
@@ -119,6 +712,7 @@ Tip
   <category>West</category>
   <guid>https://joeystanley.com/blog/new-publication-in-jengl/</guid>
   <pubDate>Tue, 17 Jun 2025 14:56:00 GMT</pubDate>
+  <media:content url="https://joeystanley.com/blog/new-publication-in-jengl/ID034-Connie-closure.png" medium="image" type="image/png" height="76" width="144"/>
 </item>
 <item>
   <title>Kohler Tapes (Update #3)</title>
@@ -13200,103 +13794,6 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
   <category>Side Projects</category>
   <guid>https://joeystanley.com/blog/jbdowse/</guid>
   <pubDate>Sun, 10 Dec 2023 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Website Version 3</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/website-version-3/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>After exactly seven years with my old website, I’ve decided to change it to what you are seeing now. This page serves as a bit of a summary of what I did and why. It’s not particuarlly well-organized since I added to it here and there over four months. But it might be helpful to you if you’re considering such a move.</p>
-<section id="what-was-wrong-with-the-old-one" class="level2">
-<h2 class="anchored" data-anchor-id="what-was-wrong-with-the-old-one">What was wrong with the old one?</h2>
-<p>I built my old website in September 2016. I had a research assistantship at the DigiLab at UGA, and Emily McGinn, the supervisor, suggested I find ways to increase my online presence. I learned some <a href="../../blog/making-a-website-is-fun">web design and CSS skills</a> skills and eventually made Version 1 of my website. That version was essentially the same as what I built in the tutorial I followed, so a few months later I rewrote everything from scratch and made Version 2. (Let’s be honest though, it’s still obviously heavily based on the tutorial.) Other than very minor tweaks to a few things, that’s how my website has been since then.</p>
-<p>However, it got a bit unwieldy. The blog was organized just fine, but I also added pages here and there to go along with workshops and other presentations I gave. It got more confusing when I gave the same workshop a second time and had multiple similar pages floating around. Since I didn’t foresee some of these additions, its growth was reminiscent of unplanned suburban sprawl. For examples, sometimes images were just dumped into a folder, others were better organized. Non-blog pages were hidden and were sometimes a top-level page and other times within a dedicated subdirectory. Each individual addition wasn’t a big deal, but once I stepped back and looked at it all, it was a mess.</p>
-<p>The format of my tutorials wasn’t consistent either. I have lots of handouts on my website, tucked away here and there. If they were associated with a workshop, they were separate R Markdown files that didn’t fit in with the rest of the site. Some of my earliest ones are PDFs of Word files! If they weren’t associated with a workshop, they’re regular blog posts. But because the site wasn’t connected to R, I had to do a <em>lot</em> of copying and pasting R Markdown code and careful insertion of images to get those tutorials to look right. In some cases, the extra work made it possible to do things like syntax highlighting in Praat and highlighting specific lines of code. But that was all done by manually inserting HTML tags and updating my CSS.</p>
-<p>Also, as careful as I was about my CSS, it wasn’t perfect. I think there were some issues if like a list had only one element, and there were things with hyperlinks. Some one-off portions of blogs or tutorials sometimes didn’t look right. I had a disclaimer at the bottom of every page, saying something like, “This website is built from scratch. Pardon the flaws; I am not a web designer.” Which was a humble brag if anything. But as the site grew I didn’t want to change the CSS because it might change some blog post from years ago in unexpected ways.</p>
-<p>Ultimately, I didn’t mind the mess because it’s what made my site unique. But, what made me finally decide to migrate to Quarto was the underlying architecture. It was built using Jekyll, which involves a programming language called Ruby in some way. After seven years I still have no idea what either of those are. I did this because it’s what the tutorial I followed used. When the site worked, it was great. But sometimes, the Ruby dependencies (called “gems”) would update or break or whatever and I had to google around trying to find a fix. I had no idea what I was doing and it led to a lot of frustrated late nights trying to get my website up and running again.</p>
-<p>Then Quarto comes along, which makes it easy to make a blog entirely within R Studio. I have been very familiar with the R world for a while. In 2017, I was an early adopter of <a href="https://www.rstudio.com/products/shiny/">Shiny</a> (at least in linguistics, I think), so I was able to integrate all my html, CSS, and R skills into the <a href="http://lap3.libs.uga.edu/u/jstanley/vowelcharts/">Gazetteer of Southern Vowels</a>. In 2020, I also started dabbling with creating my own R Packages and using the amazing <a href="https://pkgdown.r-lib.org">pkgdown</a> to make dedicated websites for them (see <a href="https://joeystanley.github.io/joeyr/">joeyr</a>, <a href="https://github.com/JoeyStanley/futurevisions">futurevisions</a>, <a href="https://joeystanley.github.io/barktools/">barktools</a>, and <a href="https://joeystanley.github.io/joeysvowels/">joeysvowels</a>). Finally, I have a side project that involves collecting and analyzing data about what hymns are sung in LDS congregations, and in 2023 I decided to build the <a href="hymnstats.joeystanley.com">site</a> entirely in Quarto.</p>
-<p>So, I’ve gradually built up to web development in R over the years and Quarto seems like the logical place to migrate to. Plus, it has some features that I’ve always wanted, like scrolling table of contents and a search feature. After some encouragement from folks on Twitter, I decided it’s time to bite the bullet and go for it.</p>
-</section>
-<section id="what-does-it-take-to-migrate" class="level2">
-<h2 class="anchored" data-anchor-id="what-does-it-take-to-migrate">What does it take to migrate?</h2>
-<p>I’m doing this page by page. Here’s the order I took:</p>
-<ul>
-<li>My homepage and any links on it. I didn’t clean up the linked pages, but at least there weren’t any dead links.</li>
-<li>My blog posts
-<ul>
-<li>I started with some of my earliest ones because they were the simplest.</li>
-<li>Then moved on to any conference or paper announcement. As part of that, I also transferred the associated slides, papers, and other files.</li>
-<li>I then finished any non-tutorial posts.</li>
-<li>I saved the tutorials for last because they would take the most time. Fortunately, it wasn’t too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.</li>
-</ul></li>
-<li>Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I’ve done. Thse in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!</li>
-<li>Finally, I updated my Resources and CV pages. Those were mostly checking to make sure links worked (and removing dead links), and making sure all the files in my downloads folder transfered over.</li>
-</ul>
-<p>This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.</p>
-<p>It was kinda fun to read through some of my old posts. In some cases, I added marginalia that basically pointed out how silly I was several years ago. I don’t think many people visit those early blog posts, so no one’s going to see them anyway.</p>
-</section>
-<section id="appearance" class="level2">
-<h2 class="anchored" data-anchor-id="appearance">Appearance</h2>
-<p>The biggest change is obviously the look of the site. One of the main reasons I didn’t want to switch to Quarto initially is because I didn’t want it to look like all the othe Quarto sites. But, once I started digging into the HTML, I saw how I could modify the CSS to resemble my previous site.</p>
-<p>The navigation bar at the top was the trickiest, but I’m very pleased with the results. I tried for a long time to get my name and title to across the top, but I could not figure it out. It bothered me a lot because it made the buttons not centered over the body of the site. But, my wife recommended I make it a different color. Basically, just lean into the navbar. And it worked. I <em>really</em> like how this turned out.</p>
-<p><img src="https://joeystanley.com/blog/website-version-3/version2.png" class="img-fluid"></p>
-<p><img src="https://joeystanley.com/blog/website-version-3/version3.png" class="img-fluid"></p>
-<p>You may have noticed too that I removed the “Resources” link and replaced it with “Idiolect.” I haven’t been updating my “Resources” page for a few years, so it was getting a little stale, and honestly a bit unwieldy. It <a href="../../resources">still exists</a>, but it’s now joined the several other pages on my site that you kinda have to know about to get to because there are no obvious links to it. (Still trying to find a place for those links.) Plus, I like my idiolect page.</p>
-<p>I’ve also moved all my socials to the top right corner. Since Quarto has a spot for those, I figured I might as well use that, rather than having them under my picture. That way they’re accessible from every webpage within the site.</p>
-<p>I also updated my profile picture since my old one was from 2019.</p>
-<p>Finally, I changed the hyperlink style back to something more standard. I used to have hyperlinks displayed in the same color as regular text, and then have a little red circle after it. I saw it on <a href="https://practicaltypography.com/web-and-email-addresses.html"><em>Butterick’s Practical Typography</em></a> and liked it. I don’t know how I feel about it anymore. It’s a simple change with CSS, and I even <a href="blog/how-i-implemented-the-links-in-this-site">blogged</a> about it when I first did it. But, I guess my preferences have changed.</p>
-<p>What I could not figure out was a link and previous on my homepage to my latest blog post. Not a big deal I suppose.</p>
-</section>
-<section id="changes" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="changes">Changes</h2>
-<p>I’ve tried to keep as much of the original structure of the site the same as I could. However, as I migrated, I realized that I could make things overall a bit more contained by changing the structure of associated files. However, some things did change, but I tried my best to make sure any external links to the site did not break. Here’s a list of the changes I’ve made.</p>
-<div class="page-columns page-full"><p>The main change is that each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div></div>
-<pre><code>├──📁blog
-|  ├──📄blog post 1.md
-|  ├──📄blog post 2.md
-├──📁images
-|  ├──🌅image1.png
-|  ├──🌅image2.png</code></pre>
-<p>It’s now this:</p>
-<pre><code>├──📁blog
-|  ├──📁blog post 1
-|  |  ├──  📄index.qmd
-|  |  ├──  🌅image1.png
-|  ├──📁blog post 2
-|  |  ├──  📄index.qmd
-|  |  ├──  🌅image2.png</code></pre>
-<p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p>
-</section>
-<section id="the-process" class="level2">
-<h2 class="anchored" data-anchor-id="the-process">The Process</h2>
-<p>It took from September 10 to November 27 to transfer all my entire website. I set a reminder to do at least one page every day, and since there are over 100 webpages on this website, it took a while.</p>
-<p>As far as specific things I did to transfer each page over, here’s what I did</p>
-<ul>
-<li>I created the file structure shown above and moved the file over to its new folder. I then renamed it from “2023-12-02-title-of-blog-post.md” to “index.qmd”, making sure to do the file extension too.</li>
-<li>Within each post, I needed to update the header. I change from “tags” to “categories”, from “redirect_from” to “aliases.” I add a date-modified if needed.</li>
-<li>I then had to go through and make sure the whole post looked good. For the most part, there were very few changes I needed. The only things that needed manual work was when I added HTML code directly into the markdown file to get some specific CSS. So like, side notes, or custom “buttons” for downloading files had to be updated.</li>
-<li>I haven’t figured out if I can do redirects, which is a bummer because I used those a lot.</li>
-<li>As I went through, I added sidenotes to clarify, update, or just comment on what I said a few years ago.</li>
-</ul>
-<p>As mentioned above, for some of my code-based blog posts, like tutorials, I ended up rerunning the code. This resulted in small changes here and there, but nothing that should hurt anyone.</p>
-<p>There are a few changes I’d like to do still, like rename blog post folders to something shorter and more consistent, which would mean I’ll have to carefully add aliases to the old names and make sure they all work.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>I really like the new look of the new site. I have a whole laundry list of things I’d like to do still, like cleaning up old files and whatnot. I also want to add retroactive blog posts about every conference I went to and every paper I presented, so I can always have a home for each one. I also have over a dozen ideas for future blog posts.</p>
-
-
-</section>
-
- ]]></description>
-  <category>Meta</category>
-  <guid>https://joeystanley.com/blog/website-version-3/</guid>
-  <pubDate>Sun, 03 Dec 2023 04:12:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
