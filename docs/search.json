@@ -4555,5 +4555,33 @@
     "title": "Testing out the tidynorm package",
     "section": "Conclusions",
     "text": "Conclusions\nAs you can see here, tidynorm handles various normalization procedures in a simple way with consistent syntax across functions. While some of my functions kinda worked, this works way better.\nIn fact, as of today, I have depreciated the three normalizations functions within joeyr (norm_logmeans, norm_anae, and norm_deltaF). The functions still do exist, but they do nothing other than give a message saying that you should switch to tidynorm. This means, if you update to joeyr version 0.10, it’ll introduce breaking changes into your code. If you want to keep using my functions, you can by adding joeyr_ as a prefix to the function name (e.g. joeyr_norm_logmeans).\nThere is more to tidynorm beyond what I’ve shown here, namely that it handles normalizing trajectory data and DCT coefficients, but I’ll have to play around with those later."
+  },
+  {
+    "objectID": "now.html",
+    "href": "now.html",
+    "title": "What am I doing right now?",
+    "section": "",
+    "text": "🛀🏻 Enjoying my two months of no teaching!\n🤔 Ruminating about teaching Linguistics Tools and Varieties of English in the Fall."
+  },
+  {
+    "objectID": "now.html#teaching",
+    "href": "now.html#teaching",
+    "title": "What am I doing right now?",
+    "section": "Teaching",
+    "text": "Teaching\n\n🛀🏻 Enjoying my two months of no teaching!\n🤔 Ruminating about teaching Linguistics Tools and Varieties of English in the Fall."
+  },
+  {
+    "objectID": "now.html#research",
+    "href": "now.html#research",
+    "title": "What am I doing right now?",
+    "section": "Research",
+    "text": "Research\n\n\n📋 Putting together my tenure portfolio.\n📃 Working on what I guess I’d call a “desk R&R” that I got from a journal.\n📃 Working on a “real” R&R that I got from a different journal.\n📃 Awaiting reviewer comments for two other submitted manuscripts.\n📖 Putting together two different book chapters that are due next month.\n📊 Analyzing some data from Pittsburgh using APLS and preparing an ADS abstract with a new co-author.\n📼 Excitedly doing the first analyses of the Kohler Tapes collection."
+  },
+  {
+    "objectID": "now.html#personal",
+    "href": "now.html#personal",
+    "title": "What am I doing right now?",
+    "section": "Personal",
+    "text": "Personal\n\n📘 Reading Brandon Sanderson’s Mistborn: The Hero of Ages and listening to Blake Crouch’s Dark Matter.\n🎶 Thinking about what new organ music to prepare now that I’ve played this piece in church.\n🧶 Knitting two different scarves (one with a basic rib and one with mossy diamonds)\n📺 Rewatching Series 1 of Taskmaster.\n⛪️ Preparing a sermon (or as we call them, “talks”) to give in church in August."
   }
 ]
