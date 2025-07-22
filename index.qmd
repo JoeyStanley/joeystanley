@@ -14,7 +14,7 @@ page-layout: custom
 
 I'm an Assistant Professor in [Department of Linguistics](https://linguistics.byu.edu) at [Brigham Young University](https://www.byu.edu) specializing in sociophonetics and quantitative methods. In May 2020, I received my Ph.D in linguistics from the [Department of Linguistics](https://linguistics.uga.edu) at the [University of Georgia](https://www.uga.edu). 
 
-My primary area of research is on English in the western United States. My [dissertation](/blog/dissertation/index.qmd) focused on English in Cowlitz County, Washington with an emphasis on uncovering variation in vowel formant trajectories. I am involved in several research projects on Utah English (vowels, consonants and intonation), including a long-term project analyzing a [collection of 750 interviews](/blog/kohler-tapes/index.qmd) with residents of Heber, Utah born before WWII.
+My primary area of research is on English in the western United States. My [dissertation](/blog/dissertation/index.qmd) focused on English in Cowlitz County, Washington with an emphasis on uncovering variation in vowel formant trajectories. I am involved in several research projects on Utah English (vowels, consonants, and layperson attitudes), including a long-term project analyzing a [collection of 797 interviews](/blog/kohler-tapes/index.qmd) with residents of Heber born before WWII.
 
 <!--As a graduate student, I was involved with [Bill Kretzschmar](https://linguistics.uga.edu/directory/people/william-kretzschmar) and [Peggy Renwick](https://linguistics.uga.edu/directory/people/margaret-e-l-renwick) and the other student workers at the [Linguistic Atlas Project](https://www.lap.uga.edu). My job was to write and maintain many of the Praat, R, and Perl scripts we used in the lab; one product of this work is the  [*Gazetteer of Southern Vowels*](http://lap3.libs.uga.edu/u/jstanley/vowelcharts/). Together with Peggy Renwick and other collaborators, I am still actively involved in analyzing legacy southern speech, particularly in the state of Georgia.-->
 
@@ -22,9 +22,7 @@ Another strand of my research is focused on sociophonetic data analysis methods.
 
 <!--In the past I have done research on language change in real time, morphology in Quechua and Guarani, forms of address among members of the Church of Jesus Christ of Latter-day Saints, language documentation, and agent-based simulations of language change. Before switching to linguistics, I was a music performance major (on trombone believe it or not!) and you might still catch me playing some Shostakovich or Rachmaninoff on piano.  -->
 
-I publish under the more grown-up-sounding version of my name, Joseph A. Stanley, but anyone who has ever met me knows I go by Joey. <!-- Recent non-linguistics books I've read were on ghost towns, typography, the Strauss–Howe generational theory, and very specific topics under the broad umbrella of "civil engineering."--> I live in Spanish Fork with my wife (Kelly) and kids (Lena, Walter, and Douglas). I enjoy road running, breadmaking, succulent-raising, organ-playing, and [object incorporation](https://en.wikipedia.org/wiki/Incorporation_(linguistics)). I also have [a blog](https://hymnstats.joeystanley.com) on frequency statistics of hymns used in my church. A description of my idiolect can be found [here](/pages/idiolect) and the languages I speak [here](/blog/stories-behind-the-languages-ive-studied). 
-
-
+I publish under the more grown-up-sounding version of my name, Joseph A. Stanley, but anyone who has ever met me knows I go by Joey. <!-- Recent non-linguistics books I've read were on ghost towns, typography, the Strauss–Howe generational theory, and very specific topics under the broad umbrella of "civil engineering."--> I live in Spanish Fork with my wife (Kelly) and kids (Lena, Walter, and Douglas). I enjoy road running, breadmaking, succulent-raising, organ-playing, and [object incorporation](https://en.wikipedia.org/wiki/Incorporation_(linguistics)). I also have [a blog](https://hymnstats.joeystanley.com) on frequency statistics of hymns used in my church. A description of my idiolect can be found [here](/pages/idiolect) and the languages I speak [here](/blog/stories-behind-the-languages-ive-studied). See [here](/now.qmd) for regular updates on what I'm doing right now.
 
 :::
 
@@ -51,7 +49,7 @@ I publish under the more grown-up-sounding version of my name, Joseph A. Stanley
 <p>Other less-visible pages</p>
 <ul id="recents">
   <li>[Resources](/resources.qmd)</li>
-  <li>[Data Downloads](/data)</li>
+  <li>[Data downloads](/data)</li>
 </ul>
   
 
