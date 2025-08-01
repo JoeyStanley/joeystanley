@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -235,9 +235,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 <section id="current-courses" class="level3">
 <h3 class="anchored" data-anchor-id="current-courses">Current courses</h3>
-<ul>
-<li>LING 495R: African American English</li>
-</ul>
+<p>(none)</p>
 </section>
 <section id="past-courses" class="level3">
 <h3 class="anchored" data-anchor-id="past-courses">Past courses</h3>
@@ -252,7 +250,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <ul>
 <li>ELING 468: Varieties of English (×4)</li>
 <li>LING 452: Introduction to Sociolinguistics (×2)</li>
-<li>LING 495R: African American English (×2)</li>
+<li>LING 495R: African American English (×3)</li>
 <li>LING 550: Sociolinguistics (×4)</li>
 <li>LING 580R: Sociolinguistic Fieldwork (with Lisa Johnson)</li>
 </ul>
@@ -304,7 +302,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </section>
 <section id="special-topics-african-american-english" class="level3">
 <h3 class="anchored" data-anchor-id="special-topics-african-american-english"><a href="https://catalog.byu.edu/courses/01990-003">Special Topics: African American English</a></h3>
-<p>I taught this course Spring of 2023 and Spring 2024 under the auspices of the senior capstone course, as well as as a linguistics elective, in the linguistics department. (So, technically it was cross-listed as LING 495R: Senior Capstone, ELING 495R: The Senior Course, LING 421R: Studies in Linguistics, and ELING 421R: Studies in Language or Editing). I’m currently teaching it for the third time.</p>
+<p>I taught this course Spring of 2023, 2024, and 2025 under the auspices of the senior capstone course, as well as as a linguistics elective, in the linguistics department. (So, technically it was cross-listed as LING 495R: Senior Capstone, ELING 495R: The Senior Course, LING 421R: Studies in Linguistics, and ELING 421R: Studies in Language or Editing).</p>
 <p>The capstone courses in my department are designed to be open-ended and end up being special topics courses that cover a wide range of subfields in linguistics. Most of the faculty who had been teaching these capstone courses though had recently retired, so we have been in dire need for new courses to put into the rotation. I had wanted to teaching something about language ideology, discrimination, and/or attitudes but I was asked to do something to do with American English; we settled on African American English, which I think was a nice compromise.</p>
 <p>So, with the help and input from many friends and colleagues, I designed and prepped the course, using Lisa Green’s <em><a href="https://doi.org/10.1017/CBO9780511800306">African American English</a></em> as my main textbook. I went into the course knowing some things here and there about AAE from just being exposed to the literature on it in sociolinguistics, and it turned out to be very challenging but a richly rewarding course for me. <a href="./downloads/240501-L495R_AAE_syllabus.pdf">Here</a> is the syllabus.</p>
 </section>
@@ -456,8 +454,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -568,7 +564,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
