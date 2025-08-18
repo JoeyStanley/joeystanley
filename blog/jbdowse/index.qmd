@@ -35,7 +35,7 @@ library(tidyverse)
 library(santoku)
 
 high_front <- read_csv("./csvs/high_front.csv")
-knitr::kable(high_front)
+knitr::kable(head(high_front))
 ```
 
 This is more information than I need, especially since Dowse tries to say the vowels as monophthongally as he can. But we can take a look at the trajectories in just a sec. 
@@ -270,4 +270,4 @@ Overall, you can see that Dowse does a good job at holding a monophthong. The hi
 
 ## Conclusion
 
-When I found Dowse's vowel chart, I wanted to see what the acoustics were. I think it's pretty enlightening to see how acoustic differences perceptual distances map onto perceptual distances and vice versa. 
+When I found Dowse's vowel chart, I wanted to see what the acoustics were. I think it's pretty enlightening to see how acoustic differences map onto perceptual distances and vice versa. 
