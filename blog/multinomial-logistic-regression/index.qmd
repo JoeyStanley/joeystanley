@@ -1,0 +1,252 @@
+---
+title: "Multinomial Logistic Regression"
+author: "Joey Stanley"
+date: 2025-08-04 10:46:00 -0600
+date-modified: last-modified
+categories:
+  - How-to Guides
+image: elsewheres.png
+reference-location: margin
+citation-location: margin
+draft: TRUE
+---
+
+Recently, I've been finding myself needing to model categorical dependent variables, which means I need to run a multinomial logistic regression model. 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+metadata <- readxl::read_excel("/Users/joeystan/Desktop/Projects/Phonic/data/progress.xlsx", sheet = "metadata", skip = 1) |>
+  
+  # Get just the responses I want
+  filter(is.na(exclude)) |>
+  select(speaker_id, gender, ethnicity, yob, church, urban_or_rural) |>
+  mutate(state = str_sub(speaker_id, 7,8), 
+         .after = speaker_id) |>
+  mutate(yob = as.numeric(yob)) |>
+  print()
+```
+
+```{r}
+mountain <- read_csv("/Users/joeystan/Desktop/mountain/data/final_classifications.csv", show_col_types = FALSE) |> 
+  inner_join(metadata, by = "speaker_id") |> 
+  filter(!is.na(realization),
+         !word %in% c("botany", "mutiny", # same foot but multisyllabic
+                      "bulletin", # not the same foot
+                      "threaten", "whiten", "written")) |>  # polymorphemic
+  
+  mutate(gender3 = fct_collapse(gender, "male" = "male", "female" = "female", other_level = "other"), 
+         .after = gender) |>
+  mutate(realization = factor(realization, levels = c("standard", "utah", "hyperarticulated")),
+         state = factor(state, levels = c("ZZ", "UT", "ID", "MT", "WY"))) |> 
+  
+  print()
+```
+
+
+## mlogit
+
+This is used in Chapter 13 of Levshina. But I can't get the data to be shaped the right way. [this](https://stats.oarc.ucla.edu/r/dae/multinomial-logistic-regression/) recommends {multinom} instead since it does not require a reshape. 
+
+```{r}
+library(mlogit)
+```
+
+
+```{r}
+data("Fishing", package = "mlogit")
+Fishing
+```
+
+
+```{r}
+(Fish <- dfidx(Fishing, varying = 2:9, shape = "wide", choice = "mode"))
+```
+
+
+
+```{r, eval = FALSE}
+temp <- mountain |> 
+  select(realization) %>%
+  mutate(rand = runif(nrow(.))) |> 
+  mutate(realization = factor(realization))
+mountain_mlogit <- dfidx(temp, shape = "long", choice = "realization")
+
+mlogit(realization ~ rand, data = temp)
+```
+
+Never mind. Can't get it to work.
+
+```{r}
+detach(package:mlogit)
+```
+
+
+## nnet::multinom
+
+This is an alternative to mlogit that doesn't require reshaping the data. See [here](https://stats.oarc.ucla.edu/r/dae/multinomial-logistic-regression/). It compares all other levels to the reference level. 
+
+```{r}
+library(nnet)
+```
+
+```{r}
+mountain_mulitnom <- multinom(realization ~ gender3 + state, data = mountain)
+```
+The output from running this model shows information about iterations. The numbers are the negative log-likelihood. This is multipled by two and is shown in the model summary as the Residual Deviance. That is used when comparing nested models. 
+
+```{r}
+summary(mountain_mulitnom)
+```
+There's a blog of coefficients and a block of standard errors. These are in logodds. 
+
+No p-values. But we can calculate that with Wald tests, which I guess are z-tests.
+
+```{r}
+(z <- summary(mountain_mulitnom)$coefficients/summary(mountain_mulitnom)$standard.errors)
+(p <- p <- (1 - pnorm(abs(z), 0, 1)) * 2)
+```
+
+
+* So the baseline is standard variant used by Utah women.
+* The log odds of hearing Utah variant verses standard variant will decrease by 1.0397 if moving from female to male. ***
+* The log odds of hearing Utah variant verses standard variant will decrease by 1.0715 if moving from female to nonbinary. ***
+* The log odds of hearing Utah variant verses standard variant will increase by 0.7742 if moving from GenAm to Utah. ***
+* The log odds of hearing Utah variant verses standard variant will decrease by 0.3580 if moving from GenAm to Idaho. NS
+* The log odds of hearing Utah variant verses standard variant will decrease by 1.5071 if moving from GenAm to Montana. ***
+* The log odds of hearing Utah variant verses standard variant will increase by 0.3150 if moving from GenAm to Wyoming. NS
+* The log odds of hearing the hyperarticulated variant verses standard variant will decrease by 0.3888 if moving from female to male. ***
+* etc.
+
+We can take the exp() of these logodds coeficients to get odds.
+
+```{r}
+exp(coef(mountain_mulitnom))
+```
+
+* So the baseline of hearing Utah verses standard is 0.22?
+* The odds of hearing Utah variant verses standard variant will increase by 0.3535 if moving from female to male. 
+
+I'm not sure I get this. So, let's extract predicted probabilities. 
+
+```{r, fig.height = 3, fig.width = 15}
+preds <- fitted(mountain_mulitnom) |> 
+  as_tibble() |> 
+  bind_cols(mountain) |> 
+  select(state, gender3, standard, utah, hyperarticulated) |> 
+  distinct() |> 
+  print()
+
+preds |> 
+  filter(gender3 != "other") |> 
+  pivot_longer(cols = c(standard, utah, hyperarticulated), names_to = "realization", values_to = "probability") |> 
+  mutate(realization = factor(realization, levels = c("standard", "utah", "hyperarticulated")),
+         state = factor(state, levels = c("UT", "ID", "MT", "WY", "ZZ"))) |> 
+  ggplot(aes(realization, probability, fill = gender3)) + 
+  geom_col(position = position_dodge2()) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2)) + 
+  facet_wrap(~state, nrow = 1) + 
+  theme_bw()
+```
+
+Okay, that worked pretty well. Not sure if I can add random effects, so it might be limiting in that way.
+
+```{r}
+detach(package:nnet)
+```
+
+
+
+## polytomous
+
+This is a "one vs. rest" approach where each pairwise comparison is made. In a three-way model like this, the benefit is now I can compare utah verses hyperarticulated variant, instead of those two to the standard. This package also offers some goodness-of-fit stats.
+
+```{r, eval = FALSE}
+install.packages("polytomous")
+library(polytomous)
+```
+
+Nevermind. It was [removed from CRAN](https://cran.r-project.org/web/packages/polytomous/index.html) in October 2015. 
+
+## VGAM::vglm()
+
+[This page](https://repub.github.io/DLC_statistical_guides/docs/R/multinomial-logistic-regression.html) shows how to use VGAM. 
+
+```{r}
+library(VGAM)
+```
+
+The syntax is straightforward. Be sure to add the `family = multinomial` argument. I'll move the standard argument to the end so it can be the reference value.
+
+```{r}
+mountain_vglm <- vglm(realization ~ gender3 + state,
+                      data = mountain %>% mutate(realization = fct_relevel(realization, "standard", after = Inf)),
+                      family = multinomial)
+```
+
+The summary looks more familiar. It even has p-values. I wish it would use actual text instead of `:1` and `:2`.
+
+```{r}
+summary(mountain_vglm)
+```
+
+The numbers look very similar to the nnet::multinom version. Not identically, but probably functionally the same. 
+
+We can do a likelihood ratio test to compare models.
+
+```{r}
+mountain_vglm_nogender <- vglm(realization ~ state,
+                      data = mountain,
+                      family = multinomial)
+lrtest(mountain_vglm_nogender, mountain_vglm)
+```
+
+Cool. That's helpful. Looks like it can't do interactions though.
+
+No code to show how to get predicted values. But let's see if I can.
+
+
+
+```{r, fig.height = 3, fig.width = 15}
+preds <- fitted(mountain_vglm) |> 
+  as_tibble() |> 
+  bind_cols(mountain) |> 
+  mutate(across(c(standard, utah, hyperarticulated), round, digits = 4)) |> 
+  select(state, gender3, standard, utah, hyperarticulated) |> 
+  distinct() |> 
+  print()
+
+preds |> 
+  filter(gender3 != "other") |> 
+  pivot_longer(cols = c(standard, utah, hyperarticulated), names_to = "realization", values_to = "probability") |> 
+  mutate(realization = factor(realization, levels = c("standard", "utah", "hyperarticulated")),
+         state = factor(state, levels = c("UT", "ID", "MT", "WY", "ZZ"))) |> 
+  ggplot(aes(realization, probability, fill = gender3)) + 
+  geom_col(position = position_dodge2()) +
+  scale_y_continuous(breaks = seq(0, 1, 0.2)) + 
+  facet_wrap(~state, nrow = 1) + 
+  theme_bw()
+```
+
+This looks pretty much the same as the one with `nnet:multinorm`. So that's good. 
+
+Use other methods to get confidence intervals.
+
+```{r}
+coefs    <- coef(mountain_vglm)    |> as.data.frame() |> rownames_to_column()
+confints <- confint(mountain_vglm) |> as.data.frame() |> rownames_to_column()
+
+left_join(coefs, confints, by = "rowname") |> 
+  janitor::clean_names() |>
+  rename(coef = coef_mountain_vglm,
+         ci_2.5 = x2_5_percent,
+         ci_97.5 = x97_5_percent) |>
+  separate(rowname, into = c("predictor", "realization"), sep = ":") |> 
+  print() |> 
+  ggplot(aes(predictor, y = coef, fill = realization)) + 
+  geom_col()
+```
+
+
