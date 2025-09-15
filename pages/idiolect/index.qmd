@@ -7,6 +7,7 @@ date-modified: last-modified
 format:
   html:
     toc: true
+reference-location: margin
 aliases:
   - /idiolect
 ---
@@ -85,6 +86,46 @@ I have lost the ability to intuit what's going on with my back vowels before lat
 In fact, it was this homophone that got me interested in prelaterals in the first place! There is a small town near the University of Georgia named *Hull*, and I had to go there for something. I thought to myself over and over as a I drove there, "Wait, is this pronounced like *Hole*?" I never did really figure out what I did.
 
 However, when it's in an open syllable, like *color*, *gullet*, and *sculley*, it's [ʌ]. The word *adult* fits in this category as being firmly \[ʌ\] rather than \[o\]. Though not all open syllable words are \[ʌ\] because like *gully* and *mulligan* I think I said as \[o\] when I was younger. (Not sure what I do now.) A word like *sullen* could go either way, even now.
+
+### American Raising
+
+[American Raising](https://dukeupress.edu/american-raising) is raising the nucleus of <sc>price</sc> from [aɪ] to something like [əɪ]. A simple version of the phonological rule is that is happens before voiceless sounds, meaning *ride* and *side* have [aɪ] and *write* and *cite* have [əɪ]. My raising is phonological, so if the voiceless sound becomes voiced though a different phonological rule like tapping, raising still happens; in other words, *riding* and *writing* are not homophonous for me. 
+
+I was intrigued by Moreton's ([2021](https://read.dukeupress.edu/pads/article/106/1/13/294220/2-Phonological-Abstractness-In-English-Diphthong))^[Moreton, Elliott. 2021. Phonological Abstractness In English Diphthong Raising. In Stuart Davis & Kelly Berkson (eds.), The Publication of the American Dialect Society, vol. 106, 13–44. Durham, NC: Duke University Press.] very detailed breakdown of environments for this raising, so I thought I'd see areas where interactions with stress, syllable boundaries, and morpheme boundaries breakdown the simple voicing distinction. <!--Here's what I've come up with:
+
+
+|         | Free Stem? Yes | Free Stem? No |
+|---------|:---------------|:--------------|
+| Monomorphemic  |||
+| &nbsp;&nbsp;   | lífe, Chríst, indíct | metábolìte, sátisfìce | 
+|                | crísis, lícense, cépress, píca, Títan, ìconógraphy | hýpocàust, lýsozỳme |
+|                | ícòn, Báikal, Lýsòl, Píscès | (no examples found) |
+|                | Tàipéi, tỳphóon, Sàipán, Ìkéa, Tchàikóvsky, Tìtánic, ìcónic | hỳpótenuse, crìtérion, ìtínerant, Hỳpátia |
+| Tautomorphemic |||
+|                | | Èutýcian, spícous, lýcanthròpe |
+|                | | lípàse, cýtʰàse, mýcoìd |
+|                | | phỳtʰólogy, cỳtʰólogy, lítʰátion, mìcátion, mìtʰósis, lỳcánthropy |
+| Hetermorphemic |||
+|                | | (no examples found) |
+|                | | bífurcàte, trísomy |
+|                | | bícèps, díplèx |
+|                | | bìcúspid, Trìcératops |
+
+-->To put it another way, /aɪ/ becomes [əɪ] before voiceless consonants including 
+
+  - monomorphemic, monosyllabic words (as in *write* and *wife*)
+
+  - monomorphemic, polysyllabic words where the next syllable is unstressed (e.g. *crisis*, *bison*), except in *Eiffel*, *Micah*, *Titus*
+
+  - polymorphemic words where the /aɪC/ is tautomorphemic (e.g. *flight attendant*, *wiper*, *citee*)
+
+but not…
+
+  - in monomorphemic words where the next syllable is not unstressed (e.g. *icon*, *tycoon*), except in *criteria*
+
+  - if the /aɪC/ straddles a morpheme boundary (e.g. *high school*, i*th*, *trichromatic*, and *antisocial*), except *bicycle*
+
+For whatever reason, I also have the raised vowel in a pre-voiced environments in *tiny* and *tired* (which makes any *tired*-*wired* jokes and *tire*-*tired* puns not always land with me).
 
 ## Other things
 

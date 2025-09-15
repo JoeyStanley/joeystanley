@@ -4,6 +4,9 @@ title:  "Getting Started with Zotero"
 date:   2025-09-12 09:00:00 -0600
 date-modified: last-modified
 reference-location: margin
+format:
+  html:
+    toc: true
 categories:
   - How-to Guides
 number-sections: true
@@ -327,3 +330,6 @@ There is so much more to Zotero than what I could cover here. I encourage you to
 Plus, you can read the [official documentation](https://www.zotero.org/support/), [tutorials and guides written by other people](https://www.zotero.org/support/third_party_documentation), and numerous [video tutorials](https://www.zotero.org/support/screencast_tutorials).
 
 I hope you find Zotero useful for you. Again, I couldn't function as an academic without it. I was called a "Zotero Evangelist" by a former student, so hopefully this tutorial has convinced you that you should start using it too!
+
+
+
