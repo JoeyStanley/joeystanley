@@ -10,7 +10,7 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 12 Sep 2025 13:50:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 12 Sep 2025 15:00:00 GMT</lastBuildDate>
 <item>
   <title>Getting Started with Zotero</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -271,17 +271,7 @@
  ]]></description>
   <category>How-to Guides</category>
   <guid>https://joeystanley.com/blog/zotero/</guid>
-  <pubDate>Fri, 12 Sep 2025 13:50:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/multinomial-logistic-regression/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <category>How-to Guides</category>
-  <guid>https://joeystanley.com/blog/multinomial-logistic-regression/</guid>
-  <pubDate>Mon, 04 Aug 2025 16:46:00 GMT</pubDate>
-  <media:content url="https://joeystanley.com/blog/multinomial-logistic-regression/elsewheres.png" medium="image" type="image/png"/>
+  <pubDate>Fri, 12 Sep 2025 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Testing out the tidynorm package</title>
@@ -9838,6 +9828,101 @@ Tip
  ]]></description>
   <guid>https://joeystanley.com/blog/research-pipeline/</guid>
   <pubDate>Sat, 06 Jan 2024 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>LSA and ADS 2024</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/ads-and-lsa-2024/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This week I’m in New York City at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here.</p>
+<section id="lsa-talk-missionary-voice" class="level2">
+<h2 class="anchored" data-anchor-id="lsa-talk-missionary-voice">LSA talk “Missionary Voice”</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="../../downloads/240104-LSA2024_missionary.pptx">Here</a> is the actual powerpoint file. In the notes for each slide you’ll see the actual script I read from. And since the audio is embedded into the file, if you enter presentation mode and mouse over a quote, you’ll hear the actual audio.</li>
+<li><a href="../../downloads/240104-LSA2024_missionary_script.pdf">Here</a> is just a PDF of the slides with the script, but without audio embedded.</li>
+<li>And <a href="../../downloads/240104-LSA2024_missionary.pdf">here</a> is just a regular PDF of the slides.</li>
+</ul>
+</div>
+</div>
+<p>My first talk is “The Missionary Voice: Perceptions of an Emerging Register”. This talk is largely the produce of the first author, Josh Stevenson’s (who couldn’t make it to the conference) undergraduate honor’s thesis; Wendy Baker-Smemoe, who is another co-author, and I served on his thesis committee. Josh studied the way Latter-day Saint missionaries speak and are perceived.</p>
+<p>In the first part of the study, we draw from data I collected where we asked lots of people about what they think about missionaries’ speech. We conclude that most people affiliated with the Church of Jesus Christ of Latter-day Saints have a pretty good idea about what missionary voice is and associate it with a variety of meanings.</p>
+<p>In the second part of the study, Josh gathered audio from missionaries and a control group and played them for people, asking them to say whether they think the speaker was a missionary or not. In the aggregate, people did no better than chance. But, we looked at the voices that wre overwhelmingly thought of as missionaries or not and found that missionaries tended to have more pauses, spread lip articulation, slower speech, features that index younger, Western speech like retracted [æ] and creak, and otherwise sounded professional and formal. Voices that were not thought of as missionaries were ones that had false starts and disfluencies, informality, and potentially features of other varieties of English.</p>
+<p>We conclude by saying that Missionary Voice appears to be an emerging register and may become stronger or more exaggerated in the future.</p>
+</section>
+<section id="lsa-talk-on-park-city-english" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="lsa-talk-on-park-city-english">LSA talk on Park City English</h2>
+<div class="page-columns page-full"><p>Immediately after that talk in the same session, I presented a talk called “Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English.” This is largely the work of the first author, Zoe Eldredge, who conducted this study as part of directed research with me, but who could not make it because of health issues.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Yes, the two talks I gave were in the same session and were similar in many ways, so it felt like giving a plenary a little bit!</span></div></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="../../downloads/240104-LSA2024_ParkCity_script.pdf">Here</a> is a PDF of the slides with the script.</li>
+<li>And <a href="../../downloads/240104-LSA2024_ParkCity.pdf">here</a> is just a regular PDF of the slides.</li>
+</ul>
+</div>
+</div>
+<p>The premise of the talk is that Park City in Utah may have its own variety of English due to its tourism industry. It is different enough from the rest of northern Utah in many ways, and anecdotal there are least are perceptions of a distinct variety.</p>
+<p>In the first study, we see whether listeners can hear a difference between Parkites and other northern Utahns. Turns out they can’t. Or at least we didn’t find good evidence that they could. In the second study, we looked at actual production data from Parkites. They’re what you’d expect from what has been described elsewhere in Utah, and there were no measurable differences from the control group, at least nothing larger than regular inter-speaker variation. So, null results on both studies.</p>
+<p>But, null results are not uninteresting. We wonder now why there are so many perceptions of Parkite speech being different, even though it doens’t appear to be measurable in any way. We suggest that this might be the very beginning of how indexicality develops. This might be interesting to consider how such a bias may affect perception in places where there <em>are</em> measurable linguistic differences.</p>
+</section>
+<section id="ads-panel-on-change-in-american-english-dialects" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="ads-panel-on-change-in-american-english-dialects">ADS panel on change in American English dialects</h2>
+<p>On Friday, I lead a panel with Monica Nesbitt and Peggy Renwick called “Movement, Economy, Orientation: 20th Century Shifts in North American Language.” The premise of the panel is that lots of studies are starting to show that the Boomer–Gen X transition period appears to be a pivotal moment in the history of American English. Specifically, Boomers appear to have the most canonical versions of certain shifts (like the Northern Cities Shift and the Southern Vowel Shift). Alternatively, Boomers are the last generation to retain historic features. This panel is a precursor to a volume we are editing that will be published in December 2024 as part of the <em>Publications of the American Dialect Society</em> series.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="../../downloads/240105-ADS2024_PADS.pdf">Here</a> is a PDF of the slides.</li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://joeystanley.com/blog/ads-and-lsa-2024/ads_panel_group_photo.jpg" class="img-fluid figure-img"></p>
+<figcaption class="margin-caption">Here’s all of us that are a part of the PADS volume! Peggy Renwick, Sabriya Fisher, Jon Forrest, Monica Nesbitt, Katie Carmichael, and me.</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>Conferences</category>
+  <category>Presentations</category>
+  <category>Research</category>
+  <category>Students</category>
+  <category>Utah</category>
+  <guid>https://joeystanley.com/blog/ads-and-lsa-2024/</guid>
+  <pubDate>Thu, 04 Jan 2024 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
