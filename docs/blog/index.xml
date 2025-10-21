@@ -10,268 +10,44 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 12 Sep 2025 15:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 17 Oct 2025 14:46:00 GMT</lastBuildDate>
 <item>
-  <title>Getting Started with Zotero</title>
+  <title>MSU Linguistics Colloquium Series</title>
   <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/zotero/</link>
+  <link>https://joeystanley.com/blog/msu/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p>This page serves as a guide for how to get started with Zotero. It is meant to accompany my lecture on this topic in my Linguistics Tools and Research Methods courses, so it will be focused on what I think my linguistics students will need or want to see the most.</p>
-<section id="getting-started" class="level2 page-columns page-full" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="getting-started"><span class="header-section-number">1</span> Getting started</h2>
-<p>Have you found yourself frustrated at how to keep track of all the academic PDFs on your computer? Have you tried to take notes as you read something, but aren’t sure where to keep those notes and how to link them to the PDF you read? Have you read something but forgot what article it was? Are you frustrated with citation formats and spending time making sure your references section matches your in-text citations? Boy do I have a solution for you!</p>
-<p>Zotero is a citation management software. That means it can basically solve all those problems for you. It’s open-source and free to use for most people’s needs.<sup>1</sup> The way that I’ll introduce it in this post, it is a stand-alone piece of software that you’ll need to download to your computer, so you’ll need something heftier than a Chromebook or a tablet to get it to work. You can read more about Zotero and its history on <a href="https://en.wikipedia.org/wiki/Zotero">Wikipedia</a>. There are <a href="https://en.wikipedia.org/wiki/Comparison_of_reference_management_software">competitors</a> out there, Mendeleyand Endnote are probably the most well-known, but I think Zotero is the best.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;There is a subscription service, but in the decade that I’ve been using it, I’ve never felt like I needed it, nor have I felt that my experience was inferior.</p></div></div><p>To install Zotero, simply go to <a href="https://www.zotero.org">Zotero.org</a> and follow the links to download it to your computer. You can install the Zotero connector and mobile app if you want, but I won’t be covering it in this tutorial. Later on, we’ll talk about the word processor plug-ins, which you can install <a href="https://www.zotero.org/support/word_processor_integration">here</a>. Go ahead and open Zotero to get started. It should look something like when when you open it up (you can ignore the various libraries I have on the side of mine):</p>
-<p><img src="https://joeystanley.com/blog/zotero/blank.png" class="img-fluid"></p>
-<p>An empty library is not very useful. Let’s start adding material to our library.</p>
-</section>
-<section id="adding-things" class="level2 page-columns page-full" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="adding-things"><span class="header-section-number">2</span> Adding things</h2>
-<section id="with-a-doi-or-isbn" class="level3 page-columns page-full" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="with-a-doi-or-isbn"><span class="header-section-number">2.1</span> With a DOI or ISBN</h3>
-<p>There are multiple ways you can add things. The best way is to find the DOI of the thing you want to add and use that. A <a href="https://www.doi.org/the-identifier/what-is-a-doi/">DOI</a> is a digital identifier object: it’s a stable link to the location of that thing online. <a href="https://muse.jhu.edu/article/641206">Here’s</a> the webpage for an article I’d like to add to my Zotero library. Most articles nowadays have a DOI somewhere among the citation information. I’ve highlighted it on this page.</p>
-<p><img src="https://joeystanley.com/blog/zotero/language_webpage.png" class="img-fluid"></p>
-<p>I’ll copy that string of characters, 10.1353/lan.2016.0078, and go over to Zotero. There’s a little icon that’s meant to look like a magic wand. If I click on that, and paste in the DOI, and hit enter, Zotero will automatically fetch the information about that article and add it to your library.</p>
-<p><img src="https://joeystanley.com/blog/zotero/pasting_doi.png" class="img-fluid"></p>
-<p><img src="https://joeystanley.com/blog/zotero/doi_added.png" class="img-fluid"></p>
-<p>You can see that it adds a whole bunch of things automatically<sup>2</sup>. On the right panel, there is lots of important metadata about the article, like the author, journal, and where to find it online. Sometimes Zotero will take a snapshot of the webpage so that you can easily find information if it wasn’t added automatically.<sup>3</sup> Sometimes it’ll even download the PDF for you if it can. If it can’t but you can download it manually, you can just drag the file over the entry (in the center panel of Zotero) and the PDF will be added to the entry.</p>
-<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;This, of course, only works if you have an internet connection.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;I personally never use that, so I’ve changed the setting so that Zotero doesn’t do that.</p></div></div><p><img src="https://joeystanley.com/blog/zotero/doi_with_pdf.png" class="img-fluid"></p>
-<p>The great thing about adding via DOIs is that those links are now included in many reference sections. So if you’re reading an article and you come across a citation that looks interesting, you can just copy the DOI directly from the reference and add it to Zotero without even needing to open a web browser!</p>
-<p><img src="https://joeystanley.com/blog/zotero/dois_in_references.png" class="img-fluid"></p>
-<p>You can add books by their ISBN if they don’t also have a DOI.<sup>4</sup> <a href="https://www.wiley.com/en-us/Principles+of+Linguistic+Change%2C+Volume+1%3A+Internal+Factors-p-9780631179146">Here</a>’s a book I’d like to add.</p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;I have sometimes had trouble adding things by their ISBN. Not sure why. Your mileage may vary.</p></div></div><p><img src="https://joeystanley.com/blog/zotero/isbn_webpage.png" class="img-fluid"></p>
-<p>Just like I did before, I’ll copy it and add it to Zotero by clicking on the magic wand. Now I have two entries in my Zotero library.</p>
-<p><img src="https://joeystanley.com/blog/zotero/isbn_in_zotero.png" class="img-fluid"></p>
-<p>There are other kinds of unique identifiers that you can add in this way (see more <a href="https://www.zotero.org/support/adding_items_to_zotero#add_item_by_identifier">here</a>), but those are the main two that linguistics students will need to know about.</p>
-</section>
-<section id="with-a-pdf" class="level3" data-number="2.2">
-<h3 data-number="2.2" class="anchored" data-anchor-id="with-a-pdf"><span class="header-section-number">2.2</span> With a PDF</h3>
-<p>Sometimes, you already have the PDF that you’ve downloaded from the publisher’s website and you just want to add it to your library. Fortunately, you don’t need to go to the publisher’s website again because you can just drag and drop a PDF directly into your Zotero library. If the PDF contains all the right metadata—and they usually will contain at least some—Zotero will pull that metadata out and create an entry with it. You can even drag and drop multiple PDFs all at once, so if you need to transfer an entire folder to Zotero, you can easily do so.</p>
-<p><img src="https://joeystanley.com/blog/zotero/copy_pdfs.gif" class="img-fluid"></p>
-<p>Please note that this works best for newer PDFs and ones that come directly from a publisher’s website. If you have a scan, a PDF of an older document, something that has been modified in some way, a PDF from a site that doens’t have a lot of metadata (like a working papers), or an unofficial PDF, this method might not work and it’ll just simply add the PDF as its own entry without any metadata. You can see that this is what happened to the Di Paolo (1992) paper here. In such cases, you’ll need to add the entry manually.</p>
-<p>Read more about adding items via PDF <a href="https://www.zotero.org/support/adding_items_to_zotero#adding_pdfs_and_other_files">here</a>.</p>
-</section>
-<section id="manually" class="level3 page-columns page-full" data-number="2.3">
-<h3 data-number="2.3" class="anchored" data-anchor-id="manually"><span class="header-section-number">2.3</span> Manually</h3>
-<p>Adding entries manually is not hard, but you do need to know what kind of information you need to have and what you can leave out. Of course, you can add tons of metadata for every item, but it takes time to fetch and type that information, so it’s good to know what you can leave out. For now, I’ll focus on articles and books, but when we get to the items types below, we’ll go into more depth into the other kinds a student may need to know about.</p>
-<p>Let’s start with the case that we have here, where we dragged a PDF over, but there wasn’t any metadata with it. In this case, it’ll be a journal article—I can tell based on the metadata at the top of the PDF. So, I’ll right click on the PDF in Zotero and click on “Create Parent Item…”. It’ll ask for a DOI or to do it manually, so I’ll do it manually.<sup>5</sup> When you first create item, it won’t assume anything about what kind of item it is, so it’ll format it as a generic “Document.” You’ll need to go and change the “Item Type” at the top of the metadata panel on the right to “Journal Article.”</p>
-<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;In this case, there actually is a DOI if I go back to the publisher’s website. But I’ll pretend there isn’t one so I can practice adding it here.</p></div></div><p><img src="https://joeystanley.com/blog/zotero/create_parent.gif" class="img-fluid"></p>
-<p>The most important pieces of information you’ll need for a journal article are the title, the author(s), publication (meaning the name of the journal), volume, issue, pages, date, and (if available) DOI. Usually you can get most of that information on the front page of the paper itself, so I’ll double click on the PDF to open it so I can see it and the metadata at the same time. In this case, pretty much all the information I need is at the very top, so I’ll go ahead and add that in. Again, you could go and fetch other information if you really wanted to, but those are the most important. Here’s what that looks like now that I’m done:</p>
-<p><img src="https://joeystanley.com/blog/zotero/manual.png" class="img-fluid"></p>
-<p>If you’re creating an entry from scratch, meaning you don’t have a PDF at all but want to add the citation to your Zotero library anyway, the way to do that is to click on the New Item icon to the left of the magic wand. From there, you’re presented with a large list of item types. The most common ones are at the top. Click on “Journal Article” and a new blank entry appears in your Zotero library. You would then add the metadata manually the same as before.</p>
-</section>
-<section id="check-metadata" class="level3" data-number="2.4">
-<h3 data-number="2.4" class="anchored" data-anchor-id="check-metadata"><span class="header-section-number">2.4</span> Check metadata</h3>
-<p>One important thing to keep in mind when adding things automatically is that the metadata may not be correct. It is always a good idea to double-check the metadata to make sure it is accurate. DOIs usually give the most accurate metadata in my experience, with dragging-and-dropping PDFs a little less reliable. Things to watch out for are the Item Type (i.e.&nbsp;if the article comes from a journal, make sure Zotero knows it’s a journal article). Make sure names are spelled correctly and are in the right order. Titles are commonly imported into Zotero in all caps, so you’ll need to manually change those back to lowercase.</p>
-<p>It is worth the time to check if things get imported properly. It’ll always be correct from then on out and you won’t have to think about it again. You can read more about editing items <a href="https://www.zotero.org/support/adding_items_to_zotero#editing_items">here</a>.</p>
-</section>
-</section>
-<section id="item-types" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="item-types"><span class="header-section-number">3</span> Item types</h2>
-<p>Let’s pause a moment and consider the different item types now. As you saw in the dropdown list, there are lots of kinds of items that Zotero can handle. Each one has its own important kind of metadata. For example, if you’ve got a book, you need to note the publisher. If you’ve got a journal article, you need to note the volume and issue. So, as you add content to your library, you should make sure that each entry is the right Item Type. I’ll focus on three main ones in this section: articles, books, and book chapters.</p>
-<section id="articles" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="articles"><span class="header-section-number">3.1</span> Articles</h3>
-<p>We’ve already talked about articles already. But since they’ll likely be the most common Item Type in your library, it’s worth repeating what the most important information is:</p>
-<ul>
-<li><strong>Title</strong>: Make sure it’s not in all caps. If there are special characters, makes sure those are typed correctly. If there are italics or other <a href="https://www.zotero.org/support/kb/rich_text_bibliography">rich text</a> in the title, you can add that formatting with html codes, `<i>like this</i>.</li>
-<li><strong>Author(s)</strong>: Make sure you have the last name first. If there is more than one, a little plus icon appears after you type the first one and you can add additional authors. Make they’re in the order that they appear in the publication.</li>
-<li><strong>Publication</strong> (meaning the name of the journal)</li>
-<li><strong>Volume</strong>: Typically a journal has one volume per year. It’s usually an integer, like “12”.</li>
-<li><strong>Issue</strong>: The number of times the journal publishes articles per year. Usually it’s a number but sometimes it’s a season, like “Fall 2024”.</li>
-<li><strong>Pages</strong>: The pages of that issue that the article appears in. This is getting to be antiquated as things move to digital, but even some online-only journals have page numbers still.</li>
-<li><strong>Date</strong>: The year of publication. You can be more specific and put a month and day if you want, and it won’t hurt anything as long as you have a year.</li>
-<li><strong>DOI</strong>: It may not be available for everything, but most newer things will have this.</li>
-</ul>
-<p>Ensuring that you have all this metadata correct is good for lots of reasons, but it’ll be most apparent when it comes time to export citations and bibliographic entries later on.</p>
-</section>
-<section id="books" class="level3" data-number="3.2">
-<h3 data-number="3.2" class="anchored" data-anchor-id="books"><span class="header-section-number">3.2</span> Books</h3>
-<p>There are five pieces of information you’ll need to properly cite a book. By “book”, I mean a “monograph”, which is a fancy term for a book written by a single author (or set of authors). This is in contrast to an edited volume, which is where each chapter is written by a different author. We’ll get to those in the next section.</p>
-<ul>
-<li><strong>Title</strong>: The title of the book. Again, make sure it’s properly formatted.</li>
-<li><strong>Author(s)</strong>: The author of the book. Usually for a monograph, there’s just one.</li>
-<li><strong>Date</strong>: The year the book was published.</li>
-<li><strong>Publisher</strong>: The company that publishes the book.</li>
-<li><strong>Place</strong>: The location of the publishing company. This is not required in some citation styles anymore. If there is more than one (like “New York / London”), I just put the first.</li>
-</ul>
-<p>Books have additional metadata information that is good to add if it’s relevant.</p>
-<ul>
-<li><strong>Volume</strong> and <strong>Volume Number</strong>: For a multi-volume work, this is where you’d put that. An example of a multi-volume work would be this <a href="https://www.degruyterbrill.com/serial/vare-b/html">Varieties of English</a> four-volume series, which has volumes on the British Isles, The Americas and the Caribbean, the Pacific Islands and Australisia, and Africa, South, &amp; Southeast Asia.</li>
-<li><strong>Series</strong> and <strong>Series Number</strong>: If a book is part of a larger series, you should put the name and number of that series. An example would be the <a href="https://www.degruyterbrill.com/serial/doe-b/html">Dialects of English</a> series or the <a href="https://read.dukeupress.edu/pads">Publications of the American Dialect Society</a>, each of which have many books that are authored by different people but that form a cohesive series about some topic. There may be series editors. You can add the series editor by initially adding them as an author, but then clicking on “Author” and changing their role to “Series Editor.”</li>
-<li><strong>Edition</strong>: If you’re working with a later edition of a book (i.e.&nbsp;2nd edition, 3rd edition, etc), you should put that here. These editions are usually printed on the cover of the book. This is good information to have because page numbers of specific passages change from one edition to the next, as well as some content, so it’s important to make sure you’re citing from the correct edition.</li>
-</ul>
-<p>Other information that you can add if you want would be the <strong># of Pages</strong>, <strong>ISBN</strong>, <strong>URL</strong> (if it’s different from the DOI), and <strong>Call Number</strong>, but that’s not necessary.</p>
-</section>
-<section id="book-chapters" class="level3" data-number="3.3">
-<h3 data-number="3.3" class="anchored" data-anchor-id="book-chapters"><span class="header-section-number">3.3</span> Book Chapters</h3>
-<p>If you are citing one chapter from a monograph, then you cite the entire book using the method in the previous section. However, some books are called “edited volumes.” One or more editors solicit contributions from people and compile those into chapters of a book. The chapters usually go together in some way, hence the theme of the book, and the editors write the introduction and may contribute (to) one or more chapters. The chapters are all independently written by different authors though and serve as stand-alone contributions to the overall theme. You know you’re working with an edited volume when the cover makes it clear that the editor(s) is an editor, usually with “edited by” before or “ed.” after their name. The chapters also list individual authors too rather than the editor’s name or no name at all. If you’re citing a chapter from one of these books, you’ll need to make sure it’s called a “Book Section” in Zotero. Here’s the key information you need.</p>
-<ul>
-<li><strong>Title</strong>: This refers to the title of the <em>chapter</em>.</li>
-<li><strong>Book Title</strong>: This refers to the title of the <em>book</em>.</li>
-<li><strong>Author</strong>: The author of the <em>chapter</em>.</li>
-<li><strong>Editor</strong>: The editor of the book. I wish this were clearer in Zotero, but there isn’t a dedicated spot for this information by default. You’ll have to add the chapter author first, and then press the little plus sign, add the editor, and then change their role to editor. In some cases the chapter author may be the editor, in which case you have their name twice.</li>
-<li><strong>Pages</strong>: The page range that the chapter occupies in the book.</li>
-<li>Plus all the other information for a book, like the date, publisher, place, volume, series, and edition, if relevant.</li>
-</ul>
-</section>
-<section id="other-item-types" class="level3" data-number="3.4">
-<h3 data-number="3.4" class="anchored" data-anchor-id="other-item-types"><span class="header-section-number">3.4</span> Other item types</h3>
-<p>Of course there are tons of other kinds of items in Zotero. The ones you might encounter are conference paper, theses, and software. I encourage you to look through those item types and see what kind of information you’d need.</p>
-</section>
-</section>
-<section id="organization" class="level2 page-columns page-full" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="organization"><span class="header-section-number">4</span> Organization</h2>
-<p>When you only have a few items in your Zotero library, you don’t have to worry much about organization. But once the number of items exceeds your screensize, organization becomes a much bigger issue. I’ve been using Zotero for 11 years and I have something like 10,000 items in it. So, being able to keep track of and find what you have is something you should learn to do. Fortunately, Zotero has a variety of ways to do this.</p>
-<section id="column-headers-and-sorting" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="column-headers-and-sorting"><span class="header-section-number">4.1</span> Column headers and sorting</h3>
-<p>First, your library is organized into a spreadsheet-like format. There is one row for each item and one column for each piece of metadata. Like other spreadsheet interfaces, you can click on the columns and it’ll sort your library by that column.</p>
-<p>You can also specify which columns you’d like to show. If you right-click on a column name, you’ll see a dropdown list of columns you could include. Ones that are currently shown have a checkmark next to them. You can click and drag columns around to suit your preferences. You can click and drag the edges to change their width. My preference is to have the title, creator, year, publication, item type, date added, and attachments.</p>
-<p><img src="https://joeystanley.com/blog/zotero/columns.png" class="img-fluid"></p>
-<p>See more about columns and sorting <a href="https://www.zotero.org/support/sorting">here</a>.</p>
-</section>
-<section id="tags" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="tags"><span class="header-section-number">4.2</span> Tags</h3>
-<p>Once you start to collect many items into your library, it is useful to subset them when searching for something specific or when doing a literature review about a topic. One way that Zotero lets you do this is through tags. You can assign any item a tag by scrolling down on the panel on the right past the metadata until you get to the tags header (you can also just click on the orange tags icon on the right edge of Zotero), clicking the plus sign, and start typing.</p>
-<p>Feel free to assign whatever tags you want. You might assign tags based on the broad subfield of linguistics it’s in (“phonetics”, “discourse analysis”), a subset or specific theory (“distributed morphology”, “3rd wave sociolinguistics”). Maybe you want to tag it based on the language or variety that is analyzed (“Tamil”, “Scottish English”) or the method used (“matched guise text”, “content analysis”). I find it useful to assign tags based on more meta topics like if I own the book, what class I used it for, if I’ve checked it out from the library, or of it’s something I’d like to read. I also like to keep track of things I’ve read by year, so I have a tags like “read in 2025” or “read in 2024”. The great thing about tags is you can assign as many as you want to a single item.</p>
-<p>Sometimes when you download an article from a publisher’s website, it’ll automatically add tags to it.</p>
-<p>Once you have some items with tags, those tags will show up in the Tag Selector window in the bottom left of Zotero. It’ll show all tags in the currently displayed list of items. When you click on a tag, it’ll automatically filter your library to only show items with that tag. The list of tags will also update to only show tags in the remaining items. Tags are a great way to quickly get at a specific subset of your library.</p>
-<p>Personally, I don’t use tags all that much anymore because it got too hard to maintain. Let’s say I’ve got 100 items in my library and I decide I want to add a new tag to my collection. Well now in order for that tag to be useful, I need to go back to every item in my collection and decide if it should get that tag. With only 100 items, it’s not a huge task to do that, but when you have hundreds or thousands of items, it gets to be a pretty tedious task. I still have some tags for the meta categories like when I read it, but I don’t really use the topical or content-related tags anymore.</p>
-<p>See more about tags <a href="https://www.zotero.org/support/collections_and_tags">here</a>, including how to edit them and assign colors to them.</p>
-</section>
-<section id="folders-collections" class="level3 page-columns page-full" data-number="4.3">
-<h3 data-number="4.3" class="anchored" data-anchor-id="folders-collections"><span class="header-section-number">4.3</span> Folders (“Collections”)</h3>
-<p>Rather than tags, I like to organize my library into folders (or, as Zotero calls them, “Collections”). This resembles a typical files structure where you have folders and subfolders and content within them.</p>
-<p>You can create a collection by right clicking on the “My Library” in the left panel and clicking “New Collection…”. You can create a subcollection by doing the same but selecting “New Subcollection…”. You can drag and drop collections however you want.</p>
-<p>To add something to the collection, you just drag and drop an item in your main library view onto the folder icon. The way Zotero does things is that it maintains just one copy of the item, regardless of how many collections it appears in. So, if you drag a single item into five different collections, you’ll still have just one version of it. This is useful because PDF highlights, metadata, and notes are always there, regardless of what collection you view the item in.</p>
-<p>When you click on a collection that has subcollections, there are two ways of organizing it. For some people, it makes sense to have the parent collection also contain all the items in the daughter collections. For other people, it’s more useful to be able to add items into the parent collection without the daughter collections getting in the way. I forget which is the default, but I’ve got my Zotero set up to do the latter. You can toggle between them by going to “View &gt; Show Items from Subcollections”.</p>
-<p><img src="https://joeystanley.com/blog/zotero/show_items.png" class="img-fluid" width="420"></p>
-<p>I use collections pretty extensively. I have four main categories of collections:</p>
-<ul>
-<li>Classes: This contains one subcollection for each course I took when I was a student and for each course I teach now as a professor. It’s a mixed bag of readings I could assign out and ones that have been helpful for me when prepping.</li>
-<li>Dialectology:<sup>6</sup> Because the bulk of my research is on American dialectology, I have a subcollection for most US states and Canadian provinces, organized roughly by dialect region. So whenever I come across a new paper where the data was targeting a particular place, I throw it in the appropriate folder. I’ve been doing this for years, so now I can quickly click through and find everything that I’ve encountered about Kansas or Idaho or whatever. It’s very handy. ▶︎</li>
-<li>Projects: I have a subcollection for each project I’m working on. This is helpful even for potential projects or back-burner ones because, like the dialectology stuff, whenever I encounter something that might be relevant to it, I throw it in the folder and move on. When it comes time to do a lit review, I’ve got a list of materials right there.</li>
-<li>Quantitative stuff: I have subcollections for a variety of quantitative things. Like general data science things, papers that introduce software, quantitative linguistics textbooks and tutorials, packages and software, and statistics textbooks.</li>
-</ul>
-<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;Here’s a peek at my dialectology collection. <img src="https://joeystanley.com/blog/zotero/subcollections.png" class="img-fluid"></p></div></div><p>You can of course organize your libraries however you see fit, but this is what I’ve settled on after years of using Zotero.</p>
-<p>A new feature that I just learned about is that you can see what collection an item is in. On the right edge of the screen when you view an item, there’s a “Libraries and Collections” icon. It looks like a building with pillars and a folder. That’ll jump you to a section of the right panel (under the metadata) that shows which libraries and collections that item is in. So if you primarily use the collections as your main organizational tool, this is a nice way to see all the ways you’ve categorized it. I’ve been wanting a feature like this for a while, so I’m thrilled to see it added.</p>
-<p>See more about collections <a href="https://www.zotero.org/support/collections_and_tags">here</a>. Also, follow that link if you feel compelled to make sure every item is in a collection and not just a stray paper, because Zotero automatically has a folder for you for unfiled items.</p>
-</section>
-<section id="basic-and-advanced-searches" class="level3" data-number="4.4">
-<h3 data-number="4.4" class="anchored" data-anchor-id="basic-and-advanced-searches"><span class="header-section-number">4.4</span> Basic and advanced searches</h3>
-<p>Zotero offers some useful search features. At the top right of the main library window, you can see a search box with a magnifying glass and the words, “Title, Creator, Year”. Type in whatever you want to search here and it’ll search through your Zotero library. I appreciate that if you click on the little downward arrow next to the magnifying glass, there are three levels of searching.</p>
-<ul>
-<li>The <strong>Title, Creator, Year</strong> search searches through the title, creator, year, and publication only. It is helpful if you are looking for a particular study, like “Eckert 2012” anything with “Northern Cities Shift” in the title. From what I’ve seen, students tend to refer to papers by their titles. That is an intuitive thing to do, but, for whatever reason, academics usually don’t refer to papers that way. We usually refer to them to how we’d cite them in a paper, so by author and year. Regardless, this search lets you do both.</li>
-<li>The <strong>All Fields &amp; Tags</strong> search is more comprehensive in its metadata. It’ll search through all fields, tags, and notes. I don’t know if I’ve needed to search through other fields, but I guess if you want to find everything from a publisher like “De Gruyter” you could. I’m not sure if searching tags is that helpful because you can filter by tag anyway. But being able to search your notes is very handy. In fact, you could take advantage if this if you want by putting certain character sequences in your notes so that you can find them quickly.</li>
-<li>The <strong>Everything</strong> search looks through all metadata but also the entire text of the PDFs! This is a really cool feature. If you find yourself remembering vaguely something that a paper said, but forgot where you read it, you can quickly find it here. (A more general find on Google Scholar, for example, might turn up many false positives.) This is also good for students looking for research ideas, because you can search phrases like “beyond the scope” or “future work” and find all instances of those in the papers you’ve read.</li>
-</ul>
-<p>There is an advanced search in Zotero. For that, I encourage you to look through the documentation <a href="https://www.zotero.org/support/searching">here</a> to learn more about that.</p>
-</section>
-<section id="merging" class="level3" data-number="4.5">
-<h3 data-number="4.5" class="anchored" data-anchor-id="merging"><span class="header-section-number">4.5</span> Merging</h3>
-<p>The last organization tool I want to mention is merging. Sometimes, you forget something is in your library and you end up adding it multiple times. This not only leads to messiness in your library, like having PDF highlights on one entry but notes in a different entry, but it can cause issues when you go to cite things. For example, if you add Fridland et al (2016) three times, Zotero thinks those are three entries. If you happened to cite each one, you’d end up with Fridland et al (2016a, 2016b, 2016c), which is not what you want. Fortunately, Zotero makes it easy to fix this.</p>
-<p>Zotero actually automatically and constantly checks for duplicate entries. In your library, there is a top-level folder that’s automatically created called “Duplicate items”. If you click on that, you’ll be presented with potential items. Sometimes it gets things wrong though. I have a three-volume set, where each volume is in my library as its own entry, and Zotero thinks they’re duplicates because they have the same title. I’ve noticed though that items have to be the same type, so some duplicates might not be spotted. So, if I save something as a conference proceedings one time and a journal article another time, Zotero won’t catch it.</p>
-<p>If you find a duplicate, you can click on one and it’ll highlight the other. You’ll then see a window on the right that has the metadata of them both. You can toggle between them and choose one to be the main one that the other one merges into. You can mix and match metadata if you’d like using that window too. But when you click on “Merge 2 items” they’ll merge into one, and any associated files (PDFs, notes, web snapshots) will be combined.</p>
-<p>See more about merging and duplicate files <a href="https://www.zotero.org/support/duplicate_detection">here</a>.</p>
-</section>
-</section>
-<section id="taking-notes" class="level2 page-columns page-full" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="taking-notes"><span class="header-section-number">5</span> Taking notes</h2>
-<p>It’s probably implied already, but it’s good to say explicitly that in addition to keeping track of all your PDFs, you can also read them directly in Zotero without leaving the app. This is how I read academic content. Like many other PDF readers, Zotero gives you options for highlighting things, which will come in handy in just a second. See <a href="https://www.zotero.org/blog/zotero-6/">here</a> for information about the PDF Reader.</p>
-<p>But, while you’re reading, you should also take advantage of Zotero’s incorporated note-taking feature. This is extremely handy for me. I often take careful notes while reading articles and it’s nice to have them saved together with the PDF itself and the item’s metadata.</p>
-<p>There are two ways of adding a note to a Zotero entry. One is to click on the entry in your library and on the top panel, click on the note icon and click “New Item Note”. <sup>7</sup> The other way of adding a note is to open a PDF directly, and on the far right of the screen, click on the notes icon, and then the plus sign next to “Item Notes” and click on “Item Item Note”.</p>
-<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;The only times I use the “New Standalone Note” is if I need to make a comment about a (sub)collection. I’ve done this when explaining what the subcollection is for (sort of a readme file) or if I need to summarize the contents really quickly. The note is associated with that collection so whenever I jump to that folder, it’s there.</p></div></div><p><img src="https://joeystanley.com/blog/zotero/add_item_note.png" class="img-fluid" width="420"> <img src="https://joeystanley.com/blog/zotero/add_item_note2.png" class="img-fluid" width="420"></p>
-<p>Either way, once you do that A new note item appears under that entry, and a note-taking view appears in the right panel. From here, you can treat it like any other basic word processor. You can add headers, change fonts, and other rich text things (like italics, hyperlinks, images<sup>8</sup>).</p>
-<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;One time I got an old Master’s Thesis on Inter Library Loan. They wouldn’t let me take it out of the Special Collections room. So I ended up taking a lot of photos of the most important pages. I was able to incorporate those into a note.</p></div></div><p>There are several reasons why I add notes to my Zotero entries.</p>
-<ul>
-<li>Every time I add something to my library, I try to add a <strong>why did I add this</strong> note. It’s easy to add a lot of things to your library, especially with the online plug-ins. It can quickly get overwhelming when you have many entries that you don’t remember adding. So, after checking the metadata, I add a quick note saying something like, “I saw this cited in Holliday (2024) about intonation and it looked interesting” or “This popped up on my list of recommended books on Amazon” or “we read this in my semantics class”. That’s it. Just a reminder to your future self.
-<ul>
-<li>I also add these notes when I add things to certain subcollections. So, if I’m reading a paper and they use a particular method I’m interested in, I’ll add that to the collection on that method and say, “On page 62 they mention Pillai scores” or whatever.</li>
-</ul></li>
-<li>Relatedly, I sometimes add notes to things as reminder of <strong>who cites this and why</strong>. This is helpful for when you’re doing a deep dive into a topic and you notice the same citation over and over but you haven’t read it yet. Or, sometimes I’ll add something to your library that I don’t have access to (a book from the 1980s or something) but I want to keep track of what people have said about it. After seeing a few citations, I can get a feel for what people know about it.</li>
-<li>The most detailed notes are ones where I take notes during or after reading it. I start mine with information about when and where I read it (“Read August 25–26 while on the bus”). If it’s an important paper for me, I’ll leave extensive notes about what I want to remember. The goal for these notes is to be detailed enough so that in a few years if I need to come back to this paper, I can get the gist from just my summary. In other cases, I’ll leave a few paragraphs of comments after I’ve finished it so I can remember the most important things about the paper.
-<ul>
-<li>It’s also useful to leave subjective commentary about the piece. If I intersperse my comments within the larger summary note, I make it clear with formatting so that Future Me doesn’t think that those ideas were from the author. But usually I leave a paragraph at the top or bottom of my notes with thoughts about how great it was, how much didn’t like the methods, or other subjective evaluations.</li>
-</ul></li>
-</ul>
-<p>Sometimes I’ll have multiple notes associted with a single entry, like if I need to hit more than one of these categories. You use whatever method you like with your Zotero library. In my opinion, it never hurts to take notes. But you do what works best for you.</p>
-<p>The last way you can kinda keep notes is to generate a note from highlights in the PDF. If you use Zotero’s PDF reader and highlight text directly in Zotero itself, you can export those highlighted sentences into a single note. This is a handy way to summarize a paper for Future You to read without having to type everything out. It is also nice because it makes those highlights searchable using the “All Notes and Tags” search mentioned above.</p>
-<p>If you want to go the extra mile in categorizing things, you can add tags to individual notes and you can add comments to individual highlights. I don’t need that kind of detail most of the time, but it’s there in case you need it.</p>
-<p>For more information about <a href="https://www.zotero.org/support/notes">here</a></p>
-</section>
-<section id="integration-with-word-and-googledocs" class="level2 page-columns page-full" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="integration-with-word-and-googledocs"><span class="header-section-number">6</span> Integration with Word and GoogleDocs</h2>
-<p>Zotero as a standalone piece of software does so much already. But the cherry on top is its integration with Microsoft Word and Google Docs. With these tools you never have to worry about formatting or making sure your references section matches your in-text citations.</p>
-<section id="installation" class="level3" data-number="6.1">
-<h3 data-number="6.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">6.1</span> Installation</h3>
-<p>I encourage you to go [here] for specific instructions on how to integrate these two for the tool that you plan on writing in. I’ll show screenshots in Word, but they’re basically the same across all platforms.</p>
-</section>
-<section id="in-text-citations" class="level3" data-number="6.2">
-<h3 data-number="6.2" class="anchored" data-anchor-id="in-text-citations"><span class="header-section-number">6.2</span> In-text citations</h3>
-<p>There are two main functions when using the integration tools. First are the in-text citations. When you’re typing in your document and you’re ready to cite something, you can click on the Zotero tab and then click on “Add/Edit Citation”. (Note: the Zotero application needs to be open on your computer for this to work.)</p>
-<p><img src="https://joeystanley.com/blog/zotero/add_edit_citation.png" class="img-fluid"></p>
-<p>The first time you do this in a document, you’ll see a window asking about document preferences. Here, you’ll select which bibliographic style you want to use. Read more about these styles, including how to download new ones and switch between them, <a href="https://www.zotero.org/support/styles">here</a>. I almost always use the Unified Stylesheet for Linguistics, and if you don’t have that installed already, it is useful to do so.</p>
-<p>Once that’s done, and every time you click on “Add/Edit Citation” from here on out in this document, you’ll then see a wide red and white bar that has a searchbox. Here, you can search for the item(s) that you want to cite. By default, Zotero will have right there the documents you have open or what you have highlighted in your library, so if you were just reading something, it’ll be there for you. If you need to cite something else, you can start typing search terms like the author, year, or title, and they’ll show up.</p>
-<p><img src="https://joeystanley.com/blog/zotero/add_item.png" class="img-fluid"></p>
-<p>Click on the document you want to cite and you’ll see it added to the list. If you need to cite multiple documents, just keep on searching and adding. You can add as many as you want.</p>
-<p><img src="https://joeystanley.com/blog/zotero/multiple_citations.png" class="img-fluid"></p>
-<p>For now, let’s hit enter and see what that does to our document. You can see (below) that it adds them all as in-text citations in the way that in-text citations are formatted. I have my settings in Word such that when the cursor is in them (or any automatically generated text), it’s highlighted in gray. Note that the order of the citations in the document reflects the order in the red bar, so if you want to cite them in a particular order (alphabetical, chronological, etc) then you’ll need to be the one to do that.</p>
-<p><img src="https://joeystanley.com/blog/zotero/multiple_citations_in_word.png" class="img-fluid"></p>
-<p>There are ways to fine-tune how these get incorporated into the document, but let’s hit references sections before moving on.</p>
-</section>
-<section id="references-sections" class="level3" data-number="6.3">
-<h3 data-number="6.3" class="anchored" data-anchor-id="references-sections"><span class="header-section-number">6.3</span> References sections</h3>
-<p>So, let’s say you’ve written your paper and you’re ready to add your references section. As long as you’ve used Zotero to add all your entries, it knows everything that has been cited. With the click of a single button, you can add the entire perfectly formatted references section.</p>
-<p>Back to Word, I’ll click on “Add/Edit Bibliography”. In just a couple seconds (maybe longer if you have a lot of citations), the bibliography is there! You never again have to worry about what goes in italics, where commas should be, alphabetizing your list, or making sure the in-text citations match the references section. It’s done!</p>
-<p><img src="https://joeystanley.com/blog/zotero/bibliography.png" class="img-fluid"></p>
-<p>The magical thing about this is that is regularly updates as you type your document. If you go back to the body of your paper and add a citation or remove one, the bibliography updates at the same time!</p>
-<p>Now, hopefully you see the importance of making sure the metadata in your Zotero entries is correct. Word is just pulling information straight from Zotero, so if you’ve got wrong, missing, or badly formatted metadata in Zotero, it’ll show up here. In this case, I need to go back and fix the capitalization in that Bowie (2008) paper. This is also the reason why it’s important to make sure you have the right File Type in Zotero, because it’ll cite things incorrectly if it’s not stored in the correct way.</p>
-</section>
-<section id="customizing-in-text-citations" class="level3 page-columns page-full" data-number="6.4">
-<h3 data-number="6.4" class="anchored" data-anchor-id="customizing-in-text-citations"><span class="header-section-number">6.4</span> Customizing in-text citations</h3>
-<p>Going back to the in-text citations, there are some things you can do to make it work better for you. First, to edit an in-text citation, put your cursor anywhere in that generated text and click “Add/Edit Citation.” You’ll see the red search bar just as you left it. From here you can add more or, by hitting the backspace key, remove citations. Remember that the bibliography will automatically update when you do so.</p>
-<p>There are some other features to be aware of. I’ll work from the bottom. First, you can <strong>omit the author</strong>. Zotero will just add the year in parentheses for this one. This is useful if you’re using the Author as a noun phrase in your actual writing. For example, you could say “Propredictate <em>do</em> is found in Utah (Di Paolo 1993)”, in which case you’d use the citation like normal. Or, you could say “Di Paolo (1992) finds propredictate <em>do</em> in Utah.” In this case, you’d type the name of the author and then let Zotero add the year. Another use is if you have multiple citations from the same person in a list, like “(Bowie 2003, 2008, 2012)”. In that case, I’d omit the author on all but the first one. Otherwise it’d say “(Bowie 2003, Bowie 2008, Bowie 2012)”.</p>
-<p>The <strong>prefix</strong> and <strong>suffix</strong> options are nice, if you want to add brief additional commentary.<sup>9</sup> So, if you want to say something like “In studies of grammatical variation in Utah (see, e.g., Di Paolo 1992 among others)…”, I would add “see, e.g.,” in the “prefix” slot and “among others” in the “suffix” slot. Note that the prefix and suffix content is always inserted inside the parentheses in your word processor.</p>
-<div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;Read more about these <a href="https://tarlton.law.utexas.edu/bluebook-legal-citation/intro-signals">here</a>.</p></div></div><p><img src="https://joeystanley.com/blog/zotero/see.png" class="img-fluid"> <img src="https://joeystanley.com/blog/zotero/see2.png" class="img-fluid"></p>
-<p>Finally, you can add page numbers. You should always provide a page number when directly quoting somebody. As a rule of thumb, I also add page numbers whenever I cite a book. You can do that by adding the page in the “Page” part of the entry. Those page numbers get added according to the style that you have set for your document. In the case of the Unified Stylesheet for Linguistics, is a colon, space, and the numbers, separated by an en-dash.</p>
-<p><img src="https://joeystanley.com/blog/zotero/page_numbers.png" class="img-fluid"></p>
-<p>If you want to cite something that’s not a page, but a figure, a footnote, or some other thing, you can cite that instead of a page<sup>10</sup>. You can of course mix and match these features however you want.</p>
-<div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;Zotero can handle many more things than what I’ve ever seen in linguistics research, but here’s the complete list <img src="https://joeystanley.com/blog/zotero/list_of_options.png" class="img-fluid"></p></div></div><p><img src="https://joeystanley.com/blog/zotero/crossover.png" class="img-fluid"></p>
-</section>
-<section id="one-off-citations" class="level3" data-number="6.5">
-<h3 data-number="6.5" class="anchored" data-anchor-id="one-off-citations"><span class="header-section-number">6.5</span> One-off citations</h3>
-<p>Finally, it’s worth pointing out that you don’t need to integrate with a word processor to generate bibliographic entries. If you right click an item in your Zotero library and click “Create bibliography from item”, you’ll see a window with some options. You can choose from the citation styles again, whether you want the int-text one or the bibliographic entry (you probably want the latter), and how you want to export it (you probably want to save it to your clipboard).</p>
-<p><img src="https://joeystanley.com/blog/zotero/export_citation.png" class="img-fluid"> From there, you can paste it wherever, like an email or texting with your friends and family ;) The result will look just as it does in a bibliography section of a paper.</p>
-</section>
-</section>
-<section id="and-so-much-more" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="and-so-much-more"><span class="header-section-number">7</span> And so much more!</h2>
-<p>There is so much more to Zotero than what I could cover here. I encourage you to click around and get a feel for the software. You can also explore these topics:</p>
-<ul>
-<li><a href="https://www.zotero.org/support/feeds">Feeds</a></li>
-<li><a href="https://www.zotero.org/support/related">Related items</a></li>
-<li><a href="https://www.zotero.org/support/creating_bibliographies">Creating bibliographies within Zotero itself</a>.</li>
-<li><a href="https://www.zotero.org/support/styles">Working with citaton styles</a></li>
-<li><a href="https://www.zotero.org/support/sync">Syncing across devices</a></li>
-<li><a href="https://www.zotero.org/support/groups">Groups</a></li>
-<li><a href="https://www.zotero.org/support/zotero_data">Backups</a></li>
-<li><a href="https://www.zotero.org/support/mobile">Zotero for mobile</a></li>
-</ul>
-<p>Plus, you can read the <a href="https://www.zotero.org/support/">official documentation</a>, <a href="https://www.zotero.org/support/third_party_documentation">tutorials and guides written by other people</a>, and numerous <a href="https://www.zotero.org/support/screencast_tutorials">video tutorials</a>.</p>
-<p>I hope you find Zotero useful for you. Again, I couldn’t function as an academic without it. I was called a “Zotero Evangelist” by a former student, so hopefully this tutorial has convinced you that you should start using it too!</p>
+<p>Thank you for coming to my presentation today! You can download a copy of the slides <a href="../../downloads/251017-MSU.pdf">here</a>.</p>
 
-
-</section>
 
 
  ]]></description>
+  <category>resentations</category>
+  <guid>https://joeystanley.com/blog/msu/</guid>
+  <pubDate>Fri, 17 Oct 2025 14:46:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/zotero/</link>
+  <description><![CDATA[ undefined ]]></description>
   <category>How-to Guides</category>
   <guid>https://joeystanley.com/blog/zotero/</guid>
   <pubDate>Fri, 12 Sep 2025 15:00:00 GMT</pubDate>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/multinomial-logistic-regression/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>How-to Guides</category>
+  <guid>https://joeystanley.com/blog/multinomial-logistic-regression/</guid>
+  <pubDate>Mon, 04 Aug 2025 16:46:00 GMT</pubDate>
+  <media:content url="https://joeystanley.com/blog/multinomial-logistic-regression/elsewheres.png" medium="image" type="image/png"/>
 </item>
 <item>
   <title>Testing out the tidynorm package</title>
@@ -9733,196 +9509,6 @@ Tip
   <category>Side Projects</category>
   <guid>https://joeystanley.com/blog/swearing/</guid>
   <pubDate>Fri, 08 Mar 2024 14:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Research Pipeline</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/research-pipeline/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>As of this week, I am now halfway through my fourth year of working at Brigham Young University. I successfully passed my third-year review earlier this year, and I’m starting to think about tenure, or what BYU calls tenure, “Continuing Faculty Status” (CFS). I thought I’d take some time and write about the process I use for keeping track of my research and publications to help me stay on track towards tenure.</p>
-<section id="the-need-for-a-system" class="level2">
-<h2 class="anchored" data-anchor-id="the-need-for-a-system">The need for a system</h2>
-<p>In my first semester here, I realized quickly that I needed a system to keep track of my research. I had some leftover projects from grad school that were in various stages of completion and that I wanted to get finished. I was also beginning some new research as well, some solo, some with students, and some with collaborators. It was getting to the point where I couldn’t immediately remember all the projects I was working on. I knew that if I wasn’t diligent about keeping up with them, then some would fall through the cracks.</p>
-</section>
-<section id="the-research-pipeline" class="level2">
-<h2 class="anchored" data-anchor-id="the-research-pipeline">The Research Pipeline</h2>
-<p>It just so happens that I stumbled across what really turned out to be the perfect solution for me just a month into my first year. The paper is “Managing your Research Pipeline,” by Matthew J. Lebo, published in the <em>American Political Science Association</em> in 2016 (DOI: <a href="https://doi.org/10.1017/S1049096516000160">10.1017/S1049096516000160</a>). In it, Lebo describes a system that he uses to keep track of his research pipeline. It is an ideal solution for my brain and organizational style and I have now been using it consistently for three years now.</p>
-<p>The system is based on the premise that publishing a single academic paper can be a daunting task. And if your goal is to publish, say, six papers by the time you go up for tenure, then that task is so much scarier. Oftentimes, when I’m faced with too daunting of a task, I just don’t do it, even if I need to! So, rather than have one very large goal of “publish a paper”, Lebo breaks it down into seven sub-goals:</p>
-<ul>
-<li><em>Stage 7</em> - You have a research idea.</li>
-<li><em>Stage 6</em> - IRB is completed, data is collected, and analysis is finished. You have everything you need to start writing. Depending on the nature of the data collection—like if you’re running a new experiment or need to otherwise collect brand new data—it might take a <em>long</em> time to get from Stage 7 to Stage 6. If you’re using an existing dataset or reprocessing something old, it might take less time.</li>
-<li><em>Stage 5</em> - The paper has been written up as a (500-word) abstract and has been submitted to a conference. In the original article, Lebo suggests that you’ve reached Stage 5 if you have a full draft of the manuscript. In his field, it must be more common to have a paper drafted before going to a conference. Since that’s not how my workflow has ever been, I’ve changed it to having an abstract. To me, an abstract is a good fit here because it means I have an outline, at least a brief lit review, a coherent presentation of the results, and contextualization with other studies.<br>
-</li>
-<li><em>Stage 4</em> - The paper is presented at a conference. This is a large step from Stage 5 because it means I have basically the entire paper but in a powerpoint format. This includes figures, the best examples, argumentation, greater impact, etc.</li>
-<li><em>Stage 3</em> - The paper is submitted to a journal. In my experience so far, the maw between Stage 4 and Stage 3 is huge. I can crank out a conference talk without too much work. But actually sitting down and turning that conference talk into a paper is a huge task. Even if the paper sticks very closely to the original presentation, it’s a lot of work. For me, advancing to Stage 3 is cause for celebration.</li>
-<li><em>Stage 2</em> - You get an R&amp;R from the journal. Or anything other than a reject. This means you’ve got your foot in the door and it potentially publishable. It’s just a matter of (usually) a little more work to get it to publication. If you get a reject, the paper moves back to Stage 4.</li>
-<li><em>Stage 1</em> - You submit the revised version of the paper back to the journal.</li>
-<li><em>Stage 0</em> - The paper is accepted for publication.</li>
-</ul>
-<p>By itself, breaking the task down like this I think is a great idea. It’s nice to see what the next step is.</p>
-</section>
-<section id="the-point-system" class="level2">
-<h2 class="anchored" data-anchor-id="the-point-system">The Point System</h2>
-<p>Okay, but turning a large task into a smaller task is not a novel idea. What Lebo’s paper does though is assign points for each of these steps. Seven points for every paper in Stage 7, three points for Stage 3, etc. As a paper moves closer and closer to completion, the number of points it’s worth gets smaller.</p>
-<p>So, if you’re ultimate goal is to have, say, six papers by the time you go up for tenure, that’s 42 points you need to reduce your score by in six years, assuming you’re starting from scratch. There are 72 months in six years, so you’ll need to reduce your score by one every 1.7 months, or rather, one every one to two months, or rather, 2–3 points every semester. That to me seems like a much more reasonable task. My guess is you’re not coming in from scratch, so you can realistically work at a slower pace than that, perhaps just two points a semester. So, it’s scary to face this monster goal of publishing six papers, but it’s less scary that you just need to reduce your score by a few points every few months.</p>
-<p>It’s clever that you have to reduce your score instead of tallying points up. But it makes sense. Let’s say a project idea is worth one point and a published paper is worth seven. Well, 42 project ideas aren’t going to get you tenure. Neither will 14 abstracts or 11 conference presentations. You actually have to move papers all the way through the full pipeline to achieve the goal of zero/tenure.</p>
-<p>With that in mind, I’ll give you a peek into my rate of productivity. When I first started this system, I took stock of my current projects. I was coming out of grad school and had a few publications already far along the pipeline. So I only needed to reduce my score from 14 to get to my minimum goal of six papers. I knew I’d be able to reduce my score by more than two points a year though, so I set a stretch goal of 14 papers, which put me at 68 points. Right now, I have just three of those 68 points left. (Calm down: some of those papers low-tier, non-peer-reviewed papers or are collaborations that I wasn’t too involved with!) So I’ve averaged a score reduction by about 1.7 points every month. It ebbs and flows though. Conference weekends when I’ve got three presentations are balanced out by months with zero progress.</p>
-</section>
-<section id="monthly-evaluations" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="monthly-evaluations">Monthly Evaluations</h2>
-<p>When I first read the paper, I started off by evaluating all of my ongoing projects. As part of the process, I wanted to create a log for each one. So I went through emails, datetime stamps on files, and whatever other documentation I had to reconstruct a log with key dates. I also set up my “Research Pipeline” files and made plans and stuff. I remember this a couple days.</p>
-<p>To keep myself on track and to regularly remind myself of where I am with my projects, I do monthly evaluations. During the last workday of the month, I take an hour and systematically go through every project that is currently assigned a point value. I add to each project’s log whatever progress was made that month (if any). If I remember, I add to the log throughout the month as well. Here’s a sample from me and Betsy Sneller’s <a href="https://asa.scitation.org/doi/pdf/10.1121/10.0016757">Pillai scores</a> paper:</p>
-<p><img src="https://joeystanley.com/blog/research-pipeline/pillai_log.png" class="img-fluid"></p>
-<p>On a master document, I have a list of my current projects, what their point value is, and the date of the last milestone. I also have an overview of what happend that month (with dates), how I did on my goals from last month, and my goals for the next month, with anticipated changes in point values.</p>
-<p><img src="https://joeystanley.com/blog/research-pipeline/master_log.png" class="img-fluid"></p>
-<p>I then add to two spreadsheets that show my progress over time. This first one shows the history of the points for each project. This one is kinda cool because it shows what projects were in what stages at any month during the past three years. It also shows that some projects take a long time and others are shorter. They’re in order by publication date, so I move them up and down as needed. You can see that I actually have five categories of goals: minimum (6), goal (10), stretch (14), “reach for the stars” (20), and bonus. Also, this spreadsheet is extremely useful for annual interviews with my department chair because I can see at a glance which papers got published or presented at conferences and when. You can also see I’m currently sitting on <em>lots</em> of 4-pointers—papers that have been presented at conferences but not yet written up an submitted. Guess what I’ll be doing in 2024!</p>
-<div class="page-columns page-full"><p> <img src="https://joeystanley.com/blog/research-pipeline/spreadsheet.png" class="img-fluid"></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Why, yes, I do like conditional formatting, why do you ask?</span></div></div>
-<p>Also, this spreadsheet makes it easy to see which projects are stagnating. My rule of thumb is that if a project has been at the same stage for 12 months, then I move it to my graveyard. No sense in worrying about it anymore. Of course, this is done on a case-by-case basis, but it’s a good guideline for me. If I do abandon a project, I move its row in the spreadsheet down past the bottom of what is shown above in case I need to revive it. I also remove it from the master document I showed above and I stop updating it’s individual log.</p>
-<p>The other spreadsheet is focused on my points. Here I can see my pace and whether I’m on track to reach my goal or if I’m falling behind. As I said before, I’m only three points away from hitting my stretch goal. I still have 25 points to go to hit my “reaching for the stars” goal. On the right side of the spreadsheet, I have columns for each point progression (going from 7 to 6, 6 to 5, etc.). Reading the columns from top to bottom makes it easy to see when papers were published.</p>
-<p><img src="https://joeystanley.com/blog/research-pipeline/spreadsheet_points.png" class="img-fluid"></p>
-<p>As if those monthly reminders weren’t enough, I also print out papers for every one of my projects in progress and put them on my wall, with a brightly-colored post-it note showing the point value. Right now, only my first-authored projects get their own paper (because it was taking up too my room on my whiteboard), so I have a separate category for work co-authored with students, and other collaborations that I only play a minor role on. Here’s what my wall looks like.</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2," data-layout-nrow="1">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><img src="https://joeystanley.com/blog/research-pipeline/wall_context.png" class="img-fluid"> <br></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://joeystanley.com/blog/research-pipeline/wall_zoomed.png" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>So, with this system I force myself to think about my research all the time. Even if I’m teaching three courses a semester, I still see the papers on my wall every day, and I still evaluate each project once a month. Especially since I do a fair amount of collaborative work, I’m surprised at what progress can be made during a busy teaching semester.</p>
-</section>
-<section id="small-caveats" class="level2">
-<h2 class="anchored" data-anchor-id="small-caveats">Small Caveats</h2>
-<p>I’ve been using this system for three years and I love it and have no intention of ditching it. But, I have also noticed a few things it doesn’t quite handle as well.</p>
-<ul>
-<li><p>If a paper goes through multiple rounds of review, it’s sort of stuck in Stage 1. It doesn’t make sense to lower it to Stage 2 when a second review comes in because it’s still progress. So, that work isn’t “rewarded” in the point system even though it may be a substantial part of what I do that month.</p></li>
-<li><p>This is just a small one, but getting accepted to a conference is currently not rewarded by this system. Writing (and submitting) an abstract does, and presenting does. But sometimes I get an exciting acceptance email and I wish I could update my points, but there’s no change.</p></li>
-<li><p>Sometimes, a single study is presented at multiple conferences. That’s what happened with me and Betsy’s Pillai scores paper: we presented at ASA and NWAV. It was going to be one paper the whole time, so there was no reason to split it up into two projects in my spreadsheet. But prepping the NWAV abstract and doing the presentation were not really accounted for in this system because the project was already at Stage 4. (Actually we had already gotten an R&amp;R by the time NWAV happened, so it was at Stage 2.)</p></li>
-<li><p>Occasionally, stages get skipped. This can happen in collaborations with students where we decide just a few weeks or days before the deadline to turn their work into a conference abstract. So, that project enters my research pipeline basically at Stage 5, rather than 7 or 6. (My Missionary Voice paper with Josh Stevenson at <a href="../../blog/ads-and-lsa-2024">LSA2024</a> was like that.) Stage 6 is usually short because it’s often the case that we finish the analysis and are ready to go because we need to write an abstract. (My “Idaho English the Epitome of Average English” presentation at <a href="../../blog/ads-and-lsa-2023">ADS2023</a> was like that.) And if a project is not presented at a conference and goes straight to journal publication. (My second <a href="https://asa.scitation.org/doi/pdf/10.1121/10.0016757">Order of Operations paper in <em>Linguistics Vanguard</em></a> was like that.) Not a big deal; it’s okay to skip.</p></li>
-<li><p>Finally, as we mentioned at <a href="../../blog/ads-and-lsa-2024">ADS</a> this year, I’m a co-editor of the 2024 PADS volume (with Peggy Renwick and Monica Nesbitt). The pipeline for editing a volume is a bit different than for a single paper. So even though I’ll get rewarded in my tenue portfolio for that, it doesn’t quite fit into the point system.</p></li>
-</ul>
-<p>These are mostly minor drawbacks. I’ve noticed too that this system encourages certain behavior.</p>
-<ul>
-<li><p>I’m motivated to publish everything I present at conferences. If I don’t, it’ll eventually move to the graveyard. That decrease from 7 to 4 points is wasted and my score will go up when I toss the project. That’s not to say that projects that terminate in conferences presentations are wasted, but I’m less likely to get funding for future conferences if I don’t publish stuff I present at past ones. This also means I really think hard about what I start on and present at conferences because I don’t want to do the work of working it from a 7 to a 4 unless I can eventually get it to a 0.</p></li>
-<li><p>This system also discourages submitting the same paper to multiple conferences. Then again, my funding situation also discourages that too, so I guess it’s good that they align that way.</p></li>
-<li><p>The system does encourage follow-up studies, break-off papers, and continuations of projects though. I can work with the same data and skip the first stage or two and get a jump start on the points instead of starting over from scratch at Stage 7.</p></li>
-</ul>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>So that’s the system I use for keeping track of my research projects. So far, it has worked well and has encouraged me to continue cranking things through the pipeline. It constantly reminds me of what papers I need to write-up next. And given that I have a lot of papers in Stage 4, it discourages me from starting some new shiny thing at the expense of existing projects. I highly recommend reading <a href="https://doi.org/10.1017/S1049096516000160">Lebo’s paper</a> and seeing if the system works for you.</p>
-
-
-</section>
-
- ]]></description>
-  <guid>https://joeystanley.com/blog/research-pipeline/</guid>
-  <pubDate>Sat, 06 Jan 2024 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>LSA and ADS 2024</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/ads-and-lsa-2024/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week I’m in New York City at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here.</p>
-<section id="lsa-talk-missionary-voice" class="level2">
-<h2 class="anchored" data-anchor-id="lsa-talk-missionary-voice">LSA talk “Missionary Voice”</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><a href="../../downloads/240104-LSA2024_missionary.pptx">Here</a> is the actual powerpoint file. In the notes for each slide you’ll see the actual script I read from. And since the audio is embedded into the file, if you enter presentation mode and mouse over a quote, you’ll hear the actual audio.</li>
-<li><a href="../../downloads/240104-LSA2024_missionary_script.pdf">Here</a> is just a PDF of the slides with the script, but without audio embedded.</li>
-<li>And <a href="../../downloads/240104-LSA2024_missionary.pdf">here</a> is just a regular PDF of the slides.</li>
-</ul>
-</div>
-</div>
-<p>My first talk is “The Missionary Voice: Perceptions of an Emerging Register”. This talk is largely the produce of the first author, Josh Stevenson’s (who couldn’t make it to the conference) undergraduate honor’s thesis; Wendy Baker-Smemoe, who is another co-author, and I served on his thesis committee. Josh studied the way Latter-day Saint missionaries speak and are perceived.</p>
-<p>In the first part of the study, we draw from data I collected where we asked lots of people about what they think about missionaries’ speech. We conclude that most people affiliated with the Church of Jesus Christ of Latter-day Saints have a pretty good idea about what missionary voice is and associate it with a variety of meanings.</p>
-<p>In the second part of the study, Josh gathered audio from missionaries and a control group and played them for people, asking them to say whether they think the speaker was a missionary or not. In the aggregate, people did no better than chance. But, we looked at the voices that wre overwhelmingly thought of as missionaries or not and found that missionaries tended to have more pauses, spread lip articulation, slower speech, features that index younger, Western speech like retracted [æ] and creak, and otherwise sounded professional and formal. Voices that were not thought of as missionaries were ones that had false starts and disfluencies, informality, and potentially features of other varieties of English.</p>
-<p>We conclude by saying that Missionary Voice appears to be an emerging register and may become stronger or more exaggerated in the future.</p>
-</section>
-<section id="lsa-talk-on-park-city-english" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="lsa-talk-on-park-city-english">LSA talk on Park City English</h2>
-<div class="page-columns page-full"><p>Immediately after that talk in the same session, I presented a talk called “Exploring the Effects of Cross-Cultural Variation and Tourism in Utah English.” This is largely the work of the first author, Zoe Eldredge, who conducted this study as part of directed research with me, but who could not make it because of health issues.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Yes, the two talks I gave were in the same session and were similar in many ways, so it felt like giving a plenary a little bit!</span></div></div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><a href="../../downloads/240104-LSA2024_ParkCity_script.pdf">Here</a> is a PDF of the slides with the script.</li>
-<li>And <a href="../../downloads/240104-LSA2024_ParkCity.pdf">here</a> is just a regular PDF of the slides.</li>
-</ul>
-</div>
-</div>
-<p>The premise of the talk is that Park City in Utah may have its own variety of English due to its tourism industry. It is different enough from the rest of northern Utah in many ways, and anecdotal there are least are perceptions of a distinct variety.</p>
-<p>In the first study, we see whether listeners can hear a difference between Parkites and other northern Utahns. Turns out they can’t. Or at least we didn’t find good evidence that they could. In the second study, we looked at actual production data from Parkites. They’re what you’d expect from what has been described elsewhere in Utah, and there were no measurable differences from the control group, at least nothing larger than regular inter-speaker variation. So, null results on both studies.</p>
-<p>But, null results are not uninteresting. We wonder now why there are so many perceptions of Parkite speech being different, even though it doens’t appear to be measurable in any way. We suggest that this might be the very beginning of how indexicality develops. This might be interesting to consider how such a bias may affect perception in places where there <em>are</em> measurable linguistic differences.</p>
-</section>
-<section id="ads-panel-on-change-in-american-english-dialects" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="ads-panel-on-change-in-american-english-dialects">ADS panel on change in American English dialects</h2>
-<p>On Friday, I lead a panel with Monica Nesbitt and Peggy Renwick called “Movement, Economy, Orientation: 20th Century Shifts in North American Language.” The premise of the panel is that lots of studies are starting to show that the Boomer–Gen X transition period appears to be a pivotal moment in the history of American English. Specifically, Boomers appear to have the most canonical versions of certain shifts (like the Northern Cities Shift and the Southern Vowel Shift). Alternatively, Boomers are the last generation to retain historic features. This panel is a precursor to a volume we are editing that will be published in December 2024 as part of the <em>Publications of the American Dialect Society</em> series.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><a href="../../downloads/240105-ADS2024_PADS.pdf">Here</a> is a PDF of the slides.</li>
-</ul>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://joeystanley.com/blog/ads-and-lsa-2024/ads_panel_group_photo.jpg" class="img-fluid figure-img"></p>
-<figcaption class="margin-caption">Here’s all of us that are a part of the PADS volume! Peggy Renwick, Sabriya Fisher, Jon Forrest, Monica Nesbitt, Katie Carmichael, and me.</figcaption>
-</figure>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>Students</category>
-  <category>Utah</category>
-  <guid>https://joeystanley.com/blog/ads-and-lsa-2024/</guid>
-  <pubDate>Thu, 04 Jan 2024 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
