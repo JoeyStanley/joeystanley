@@ -231,10 +231,12 @@ Hide them if the screen is too narrow. */
   }
 }
 
+/*
 .navbar-toggler-icon {
   background-color: green;
   content: "TEST";
 }
+*/
 
 
 /* The dropdown menu items */
