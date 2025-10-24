@@ -59,14 +59,23 @@ nav *, h1, h2, h3, footer p {
 	font-family: 'Avenir', 'Muli', 'Helvetica Narrow', Arial, sans-serif;
 }
 body {
-  font-family: 'iowanoldst-bt', 'Courier', 'Palatino', 'Times New Roman', serif;
+  font-family: "Iowan Old Style", "Crimson Pro", "Palatino Linotype", "Palatino", "Book Antiqua", Georgia, serif;
   font-size: 110%;
+  font-size-adjust: 0.5; /* Tweaked for Crimson Pro vs Iowan */
+  font-style: normal;
+  
 }
+/* Apparently this uses a bit stream (i.e. illegal) version
 @font-face {
   font-family: 'iowanoldst-bt';
   src: url("_includes/iowanoldst-bt/bitstream-iowan-old-style-bt-586c36a8d7712.ttf");
 }
+*/
 
+/* Ensures that it uses the designed italic glyphs instead of synthetic italics */
+em, i {
+  font-style: italic;
+}
 
 
 
