@@ -1,0 +1,147 @@
+---
+layout: post
+title: "FORCE, NORTH, CLOTH, and START"
+date: 2025-10-24 06:00:00 -0600
+date-modified: last-modified
+reference-location: margin
+format:
+  html:
+    toc: true
+categories:
+  - Lexical Sets
+number-sections: true
+#resources: 
+#image: 
+---
+
+I am doing some research on the *cord-card* merger in Utah, which means I need to do analyze lexical sets Wells calls <sc>force</sc>, <sc>north</sc>, <sc>cloth</sc>, and <sc>start</sc>. Like [other](/blog/mary-merry-marry) [lexical sets](/blog/my-cot-caught-distribution) I've written about, in the absence of comprehensive list of lexemes belonging to these sets, I have to cobble together what I can from various sources and create the list myself. In this post, I'm primarily basing it off what Wells ([1982](https://www.cambridge.org/us/universitypress/subjects/languages-linguistics/phonetics-and-phonology/accents-english-volume-1?format=PB&isbn=9780521297196)) says in his definitions of the lexial sets. 
+
+## <sc>force</sc>
+
+**Definition**: The <sc>force</sc> set is defined as words that are /ɔː/ in British English but /oɹ/ in American English. Not all /ɔː/ words in British English are <sc>force</sc>. Some may be <sc>thought</sc>, <sc>north</sc>, and maybe <sc>cure</sc> and <sc>cloth</sc>. Since I'm not focused on British English here, I won't bother with those details. 
+
+**Historical Roots**: Most <sc>force</sc> words derive from  Middle English /ɔː/ before /ɹ/, which is the same source as <sc>goat</sc>. I take this to also mean that Americans "think" of <sc>force</sc> words as having the same vowel as <sc>goat</sc>, and I think that would show up if they had to do a phonological categorization task. However, some <sc>force</sc> words some derive from Middle English /oː/ or /uː/, although I'm not sure which ones those are or how to tell.
+
+**Distribution**: Words that are spelled with *-ore*, *-oar*, *-oor*, and *-our* are <sc>force</sc> unless we know they’re <sc>cure</sc>. Only *-or* is ambiguous with <sc>north</sc>. <sc>force</sc> may be word-final (*store*, *boar*, *door*, *four*), before consonants (*fort*, *sword*, *torn*, *portrait*, *hoarse*, *court*), or before vowels (*choral*, *story*, *historian*, *Victorian*, *uproarious*). 
+
+:::{.callout-tip}
+Here are some additional <sc>force</sc> words. I've put them in order that they occur in my [Kohler Tapes](/blog/kohler-tapes-update3/) corpus and their frequency per million words. 
+
+|  |  |  |  |  |  |  |  |
+|:-|-:|:-|-:|:-|-:|:-|-:|
+|more|889.874|floor|177.475|report|43.327|source|14.165|adore|4.583|
+|fore|701.567|wore|121.233|shore|41.244|score|11.665|moral|4.583|
+|store|641.992|force|118.733|support|37.911|divorce|10.832|sword|2.916|
+|four|537.007|chore|92.487|port|37.078|glory|10.415|snore|2.5|
+|story|447.853|sport|79.572|pork|26.246|moore|7.082|explore|2.083|
+|course|374.114|court|75.406|bore|22.497|core|6.666|||
+|door|336.202|tore|62.491|authority|19.997|restore|6.666|||
+|board|207.887|fort|59.158|sore|19.164|orient|6.249|||
+|ford|195.806|pour|45.41|enforce|15.831|roar|5.416|||
+: {.bordered}
+
+:::
+
+## <sc>north</sc>
+
+**Definition**: The <sc>north</sc> set is defined as words that are /ɔː/ in British English but /ɔɹ/ in American English varieties that does not merge <sc>force</sc> and <sc>north</sc>. If the following sound is a vowel (as in *horrible*, *orange*), it belongs to <sc>cloth</sc>. 
+
+**Distribution**: Most <sc>north</sc> words are spelled with *or* and are preconsonantal (*fork*, *cord*, *storm*, *mortal*, *orbit*, *corner*). Some are spelled with *a* but it appears to me that all of them are preceded by /w/ (*quart*, *swarm*, *ward*, *warm*, *wart*). <sc>North</sc> is very rare word-finally, and a potentially exhaustive list is *or*, *for*, *nor*, *Thor*, and *war*. There are also very few in open syllables, but they are all spelled with *au* and are *aura*, *aural*, *Laura*, and *Taurus*. See below on other words with *au*. 
+
+:::{.callout-tip}
+Here are some additional <sc>north</sc> words. I've put them in order that they occur in my [Kohler Tapes](/blog/kohler-tapes-update3/) corpus and their frequency per million words. 
+
+|  |  |  |  |  |  |  |  |
+|:-|-:|:-|-:|:-|-:|:-|-:|
+|horse|954.864|corner|108.318|corn|41.661|reward|10.415|
+|war|870.293|warm|106.235|horn|41.661|warn|9.165|
+|morning|345.368|quarter|105.818|fortune|41.244|warden|6.666|
+|north|322.038|forty|102.069|storm|37.078|cork|3.749|
+|ward|220.802|lord|85.405|norm|29.163|board|2.083|
+|important|197.889|mormon|59.991|record|24.163|||
+|short|191.223|organ|57.075|resort|18.331|||
+|george|166.226|form|46.243|award|12.498|||
+|order|124.149|fork|43.744|cord|12.082|||
+: {.bordered}
+
+:::
+
+
+## <sc>cloth</sc>
+
+**Definition**: The <sc>cloth</sc> set is defined as words that are merged with <sc>lot</sc> in British English but with <sc>thought</sc> in American English. Non-prerhotic <sc>cloth</sc> typically has a following voiceless fricative, like in *coffee*, *soft*, *moss*, or *often*, which is the result of a seventeenth-century lengthening rule. These words are almost always spelled with *o*, but may have an *ou* (like *trough* and *cough*) or *au* in proper nouns like *Austria* and *Austin*. <sc>Cloth</sc> may also appear before velar nasals  like *long* and *song.* Notably, Wells does not list any pre-/ŋ/ words with <sc>lot</sc> or <sc>thought</sc>, so it seems like any low vowel followed by a velar nasal belongs to <sc>cloth</sc>. Pre-/ɡ/ words are not listed in a lexical set; they are discussed in Volume 3 §6.1.3 (which I don’t have).   
+
+Relevant to this study, <sc>cloth</sc> also occurs before intervocalic /ɹ/. These include words like *horrible*, *Florida*, and *orange* which may be variably lowered in some varieties of American English, cheifly in the Northeast, even if those varieties don't otherwise have variation in <sc>north</sc>. This small list of prerhotic <sc>cloth</sc> is this set of words that are listed in the Wikipedia page on [English-language vowel changes before historic /ɹ/](https://en.wikipedia.org/wiki/English-language_vowel_changes_before_historic_/r/#Merger_of_/%C9%92r/_and_/%C9%94r/_before_vowels) as being lowered in "Traditional American" which, in a footnote, is defined as NYC area, Philadelphia are, older Southern, older Northeastern elite, and maybe older people in Eastern New England or coastal southern regions.
+
+**Distribution**: Most of the time, <sc>cloth</sc> is spelled with *o*, but sometimes it is with *a* like in *warrant*, *quarrel* or *warrior*. Presumably the preceding *w* is relevant since all the examples spelled with a have it. In a few cases (for reasons also unclear to me), it can also be with *au* like in *Laurence* and *laurel.*  While Canadians typically pronounce these pre-rhotic <sc>cloth</sc> words with [ɔɹ], it is normal for Americans to lower words like *sorry* and *tomorrow*, even if they don't otherwise have variation in <sc>cloth</sc>.
+
+:::{.callout-tip}
+Here are all the <sc>cloth</sc> words. I've put them in order that they occur in my [Kohler Tapes](/blog/kohler-tapes-update3/) corpus and their frequency per million words. 
+
+|  |  |
+|:-|-:|
+|orange|70.407|
+|forest|45.827|
+|quarantine|20.83|
+|tomorrow|14.165|
+|horror|2.083|
+: {.bordered}
+
+:::
+
+
+
+## <sc>start</sc>
+
+The <sc>start</sc> lexical set is defined as words that are /ɑː/ in British English but /ɑɹ/ in American English. Not all British /ɑː/ are <sc>start</sc>; some are <sc>bath</sc> and <sc>palm</sc>, but I won’t dive into those here. Wells says that in American English <sc>start</sc> patterns with <sc>lot</sc> phonetically, but in my variety of English, I certainly feel like it patterns more with <sc>thought</sc>.^[I will also add that, unlike the others here, my variety of English has a fair amount of [allophony in <sc>start</sc>](https://joeystanley.com/blog/ar-raising/). Read more about that [here](pages/idiolect/#a%C9%B9-raising).]
+
+**Historical Roots**: <sc>Start</sc> derives from Middle English /aɹ/, which was affected by a pre-rhotic lengthening rule. Note that this vowel is the same source as <sc>lot</sc>.
+
+**Distribution**: It is usually spelled with *-ar* but *-ear* and a few others are possible. It can be found word-finally (*star*, *bar*), before consonants (*sharp*, *arch*, *card*, *farm*, *party*, *heart*, *hearth*, *sergeant*, *aardvark*). It is rare in open syllables and all the example listed by Wells are borrowings (*safari*, *aria*, *tiara*). 
+
+:::{.callout-tip}
+Here are some additional <sc>start</sc> words. I've put them in order that they occur in my [Kohler Tapes](/blog/kohler-tapes-update3/) corpus and their frequency per million words. 
+
+|  |  |  |  |  |  |  |  |
+|:-|-:|:-|-:|:-|-:|:-|-:|
+|car|1152.753|charge|87.071|barbara|23.33|chart|9.165|
+|start|1004.024|marble|76.239|marvel|22.913|spark|8.332|
+|farm|720.731|star|71.24|argue|21.247|carton|7.916|
+|hard|613.246|guard|63.741|carnival|20.414|shark|7.916|
+|part|368.281|harbor|63.324|darn|19.581|barge|7.082|
+|far|335.369|mark|60.825|barbecue|19.164|regard|6.666|
+|park|321.204|charles|58.325|martin|19.164|marshmallow|5.416|
+|party|228.718|market|54.576|carpet|17.498|parliament|4.999|
+|charleston|221.635|smart|50.41|bark|17.081|barb|4.583|
+|barn|185.39|article|47.91|partner|16.248|carve|4.583|
+|garden|185.39|department|47.91|sergeant|16.248|charter|4.583|
+|army|163.727|art|44.577|marjorie|15.414|cigar|4.583|
+|yard|156.228|bar|42.911|starve|14.998|sharp|4.166|
+|large|150.812|barber|35.412|scar|14.581|harm|3.749|
+|arm|138.73|apartment|33.745|remark|13.331|garment|2.916|
+|dark|129.982|harvest|30.829|artist|12.915|arlen|2.083|
+|march|108.735|borrow|29.996|arch|12.498|depart|2.083|
+|heart|102.485|cart|26.246|jar|10.832|enlarge|2.083|
+|card|89.571|marshal|24.58|target|9.582|||
+: {.bordered}
+
+:::
+
+## Guidelines
+
+With that said, here are some guidelines I've come up with, based on my reading of Wells.
+
+* If it is spelled with an *a* and has a preceding /w/, it has to be either <sc>north</sc> or <sc>cloth</sc>. From there, it's a matter of whether it's in an open syllable or not (with open-syllables being <sc>cloth</sc>).
+* If it's spelled with *ar* and is not preceded by /l/ or /w/, it’s <sc>start</sc> 
+* If it's spelled with *oo* or *ou*, check if it's <sc>cure</sc>. If Wells doesn't list it or you can't otherwise find evidence that it's <sc>cure</sc>, code it it as <sc>force</sc>. 
+* Other words spelled with *ou*, *ou*, *oa* are <sc>force</sc>.
+
+Words spelled with *au* could be <sc>force</sc> (*aura*, *Laura*), <sc>north</sc> (*Austria*, *Austin*), or <sc>cloth</sc> (*Laurence*, *laurel*). As far as I can tell, there is no pattern.
+
+For words spelled with *or*, here is what I see:
+
+* If it's word-final, it's <sc>force</sc> unless it's one of the rare <sc>north</sc> words that Wells lists.
+* If it's in an open syllable, it's also <sc>force</sc> unless it has already been tagged as one of the known <sc>cloth</sc> words. 
+* Any remaining words (preconsonantal environment and spelled with *or*) are unpredictably <sc>force</sc> or <sc>north</sc> and you'll have to check with a native speaker or consult a pronunciation dictionary that maintains the distinction.
+
+If you are a native speaker of a variety that maintains a distinction between <sc>north</sc> or <sc>cloth</sc>, I'd love for you to reach out so I can double check my guidelines and classifications.
