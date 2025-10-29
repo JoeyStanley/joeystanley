@@ -4,14 +4,18 @@ title: "TEMPLATE"
 date: 2025-09-12 09:00:00 -0600
 date-modified: last-modified
 reference-location: margin
+citation-location: margin
+fig-cap-location: bottom
 format:
   html:
     toc: true
-categories:
-  - How-to Guides
+# categories:
+#   - 
 number-sections: true
-draft: true
-#resources: 
-#image: 
+# draft: true
+# resources: 
+# image: 
+# aliases: 
+#   - 
 ---
 
