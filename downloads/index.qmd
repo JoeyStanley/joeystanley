@@ -1,0 +1,12 @@
+---
+title: "Downloads"
+author: "Joey Stanley"
+listing: 
+  - contents: "*"
+  - type: table
+  - table-striped: true
+  - sort-ui: true
+  - page-size: 100
+---
+
+Here are all the downloadable items on my website, from oldest to newest. These include conference presentations, syllabi, and other things. You may find it easier to view them [on Github](https://github.com/JoeyStanley/joeystanley/tree/main/downloads) instead. It's not the most useful listing because there is no metadata associated with each file, but if you just want to find something it could work. All items have the data (YYMMDD), followed by the venue, followed by a brief summary of what it is. This is not meant to be a well-visited site, especially by anyone besides me, but it's here now if you want it. 
