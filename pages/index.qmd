@@ -1,0 +1,34 @@
+---
+layout: post
+title: "Miscellenous Pages"
+date: 2025-09-12 09:00:00 -0600
+date-modified: last-modified
+reference-location: margin
+number-sections: true
+---
+
+This page is just an index of scattered pages on my website that don't otherwise have a home. This just makes it easier to find them so I don't have to remember the links. This is not meant for users to see other than me, but feel free to peruse if you really want.
+
+
+## Workshops from grad school
+
+* [Bones Workshops](/pages/bones_workshop.qmd), a four-part introduction to R from June 2018.
+* [Data Visualization Workshops](/pages/dataviz.qmd), a five-part series from Fall 2019.
+* [LaTeX](/pages/latex.qmd), a three-part series during February 2020 that got cut short due to Covid. 
+* [Praat Tutorials](/pages/praat-workshops.qmd), a three-part series from September 2019.
+* [R Workshops](/pages/r-workshops.qmd), a nine-part series from between Fall 2017 and Spring 2020.
+* [R Setup Instructions](/pages/setup), a detailed walk-through of how to get R installed. 
+
+## Various resource pages
+
+* [Datasets](/data), a page of datasets available for download that I use in teaching and workshops.
+* [GSV](/pages/gsv.qmd), a redirect to the Gazetteer of Southern Vowels.
+* [My Idiolect](/pages/idiolect/index.qmd), a detailed description of my idiolect.
+* [Resources](/resources), a page that I used to update frequently with tons of resources and cool and useful stuff, but that I no longer update.
+* [Resources for Learning More about Linguistic Discrimination](/pages/linguistic-discrimination.qmd), a product of CALD created initially for the [For the Benefit of the World](blog/for-the-benefit-of-the-world-2025/) conference.
+* [L590R Sociophonetics](/pages/sociophonetics), a hub for a one-on-one sociophonetics course for a student in Spring 2025 with the ultimate goal of learning to make vowel plots. It's mostly a compilation of other tutorials from elsewhere on this site.
+
+## For fun
+ 
+* [Now](/now.html), a page of what I'm up to right now. Updated every two weeks or so.
+* [Zombies](/pages/zombies), just a fun thing I do every time I teach intro to phonetics.
