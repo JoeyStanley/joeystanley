@@ -10,7 +10,42 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 24 Oct 2025 12:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 29 Oct 2025 15:00:00 GMT</lastBuildDate>
+<item>
+  <title>For the Benefit of the World 2025</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/for-the-benefit-of-the-world-2025/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Recently, several of us in the linguistics department at BYU started a group called the <strong>Coalition Against Linguistic Discrimination</strong> (CALD). It has been on my mind for a while now that I want to make a difference in the world when it comes to linguistic discrimination, accentism, and linguistic prejudice. We are now a group of faculty and students trying to find ways to raise awareness across campus and do research on this topic.</p>
+<p>One of our first products is a poster presentation at BYU’s <a href="https://forthebenefitoftheworld.byu.edu">For the Benefit of the World</a> conference. This conference is an “effort to explore the state of BYU research and creative works associated with caring for those in need, including work that addresses existing human needs or their root causes and scholarship related to humanitarian efforts of The Church of Jesus Christ of Latter-day Saints.” From the looks of it, they probably expected abstracts related to medicine, water sanitation, or other clearly humanitarian-based projects. They probably didn’t expect a linguistics-based presentation—which is the very reason we wanted to submit.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the poster <a href="../../downloads/251114-BenefitOfTheWorld.pdf">here</a>.</p>
+</div>
+</div>
+<p>Unfortunately, I was unable to attend because of a conflict in my teaching schedule. But Dr.&nbsp;Lisa Morgan Johnson presented on behalf of the group. She also did the lion’s share of preparing the poster as well. As part of this presentation, we’ve prepared a page of <a href="pages/linguistic-discrimination.html">resources for learning more about linguistic discrimination</a>. Hopefully this is the beginning of full-fledged website, but for now we just wanted <em>something</em> to send conference attendees to for more information.</p>
+
+
+
+ ]]></description>
+  <category>Conference</category>
+  <category>CALD</category>
+  <guid>https://joeystanley.com/blog/for-the-benefit-of-the-world-2025/</guid>
+  <pubDate>Wed, 29 Oct 2025 15:00:00 GMT</pubDate>
+</item>
 <item>
   <title>FORCE, NORTH, CLOTH, and START</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -294,7 +329,7 @@ Tip
 <section id="start" class="level2 page-columns page-full" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="start"><span class="header-section-number">4</span> <sc>start</sc></h2>
 <p>The <sc>start</sc> lexical set is defined as words that are /ɑː/ in British English but /ɑɹ/ in American English. Not all British /ɑː/ are <sc>start</sc>; some are <sc>bath</sc> and <sc>palm</sc>, but I won’t dive into those here. Wells says that in American English <sc>start</sc> patterns with <sc>lot</sc> phonetically, but in my variety of English, I certainly feel like it patterns more with <sc>thought</sc>.<sup>1</sup></p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;I will also add that, unlike the others here, my variety of English has a fair amount of <a href="../../blog/ar-raising/">allophony in <sc>start</sc></a>. Read more about that <a href="../../pages/idiolect/index.Rmd#aɹ-raising">here</a>.</p></div></div><p><strong>Historical Roots</strong>: <sc>Start</sc> derives from Middle English /aɹ/, which was affected by a pre-rhotic lengthening rule. Note that this vowel is the same source as <sc>lot</sc>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;I will also add that, unlike the others here, my variety of English has a fair amount of <a href="../../blog/ar-raising/">allophony in <sc>start</sc></a>. Read more about that <a href="../../pages/idiolect/#aɹ-raising">here</a>.</p></div></div><p><strong>Historical Roots</strong>: <sc>Start</sc> derives from Middle English /aɹ/, which was affected by a pre-rhotic lengthening rule. Note that this vowel is the same source as <sc>lot</sc>.</p>
 <p><strong>Distribution</strong>: It is usually spelled with <em>-ar</em> but <em>-ear</em> and a few others are possible. It can be found word-finally (<em>star</em>, <em>bar</em>), before consonants (<em>sharp</em>, <em>arch</em>, <em>card</em>, <em>farm</em>, <em>party</em>, <em>heart</em>, <em>hearth</em>, <em>sergeant</em>, <em>aardvark</em>). It is rare in open syllables and all the example listed by Wells are borrowings (<em>safari</em>, <em>aria</em>, <em>tiara</em>).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -10272,28 +10307,6 @@ Tip
   <category>Utah</category>
   <guid>https://joeystanley.com/blog/kohler-tapes-update2/</guid>
   <pubDate>Fri, 26 Apr 2024 06:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>BYU Students’ Evaluations of Swear Words</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/swearing/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This year, I’ve been participating in Chris Rogers’ <a href="https://ling.byu.edu/language-science-and-exploration-research-group">Langauge Science and Exploration Group</a>. This month, we talked about slang, taboo, and subversive language. For my mini-project, a few of us conducted an informal survey about swear words and other taboo terms. The survey had a list of about 30 words of varying degrees of severity. I then asked them to indicate the inappropriateness of each word, from “completely” to “not at all”. I tallied up the responses and put them in order from overall most inappropriate to least. We sent it out to people in the BYU community and to other members of the Church of Jesus Christ of Latter-day Saints.</p>
-<p>Here are the results:</p>
-<p><img src="https://joeystanley.com/blog/swearing/swearing.jpeg" class="img-fluid"></p>
-<p>There’s a lot to dissect here, and I won’t overanalyze it too much because it’s so informal and based on a small sample size. But, what I will say is that it’s interesting how high words the words <em>Jesus</em> and <em>god</em> are ranked—this is something that is likely unique to the BYU community and would not be found in too many other places!</p>
-
-
-
- ]]></description>
-  <category>Side Projects</category>
-  <guid>https://joeystanley.com/blog/swearing/</guid>
-  <pubDate>Fri, 08 Mar 2024 14:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
