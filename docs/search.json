@@ -4716,5 +4716,26 @@
     "title": "FORCE, NORTH, CLOTH, and START",
     "section": "5 Guidelines",
     "text": "5 Guidelines\nWith that said, here are some guidelines I’ve come up with, based on my reading of Wells.\n\nIf it is spelled with an a and has a preceding /w/, it has to be either north or cloth. From there, it’s a matter of whether it’s in an open syllable or not (with open-syllables being cloth).\nIf it’s spelled with ar and is not preceded by /l/ or /w/, it’s start\nIf it’s spelled with oo or ou, check if it’s cure. If Wells doesn’t list it or you can’t otherwise find evidence that it’s cure, code it it as force.\nOther words spelled with ou, ou, oa are force.\n\nWords spelled with au could be force (aura, Laura), north (Austria, Austin), or cloth (Laurence, laurel). As far as I can tell, there is no pattern.\nFor words spelled with or, here is what I see:\n\nIf it’s word-final, it’s force unless it’s one of the rare north words that Wells lists.\nIf it’s in an open syllable, it’s also force unless it has already been tagged as one of the known cloth words.\nAny remaining words (preconsonantal environment and spelled with or) are unpredictably force or north and you’ll have to check with a native speaker or consult a pronunciation dictionary that maintains the distinction.\n\nIf you are a native speaker of a variety that maintains a distinction between north or cloth, I’d love for you to reach out so I can double check my guidelines and classifications."
+  },
+  {
+    "objectID": "pages/linguistic-discrimination.html",
+    "href": "pages/linguistic-discrimination.html",
+    "title": "Resources for Learning More about Linguistic Discrimination",
+    "section": "",
+    "text": "This page contains resources to help you learn more about linguistic discrimination. These resources were compiled by the Coalition Against Linguistic Discrimination (CALD) at Brigham Young Universisty. The page is in its infancy, so there are not too many things yet, but we hope to add more resources soon. For more information about CALD, please contact Joey Stanley at joey_stanley@byu.edu."
+  },
+  {
+    "objectID": "pages/linguistic-discrimination.html#universal-declaration-of-linguistic-rights",
+    "href": "pages/linguistic-discrimination.html#universal-declaration-of-linguistic-rights",
+    "title": "Resources for Learning More about Linguistic Discrimination",
+    "section": "Universal Declaration of Linguistic Rights",
+    "text": "Universal Declaration of Linguistic Rights\nThis document was drafted in 1996 and was signed by several non-government organizations to support basic linguistic rights, particularly for endangered languages."
+  },
+  {
+    "objectID": "pages/linguistic-discrimination.html#the-accentism-project",
+    "href": "pages/linguistic-discrimination.html#the-accentism-project",
+    "title": "Resources for Learning More about Linguistic Discrimination",
+    "section": "The Accentism Project",
+    "text": "The Accentism Project\nThis project has the aim of uncovering and challenging such discrimination in everyday life. The site provides the opportunity for people to share their own stories and experiences of language-based bias, prejudice, and discrimination.\nThis site contains first-hand accounts by those who have experienced linguistic discrimination (paprticularly in the United Kingdom), a summary of research that has been done, a list of accentism being featured in the media, and training for businesses."
   }
 ]
