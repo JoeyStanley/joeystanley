@@ -214,12 +214,12 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-was-wrong-with-the-old-one" id="toc-what-was-wrong-with-the-old-one" class="nav-link active" data-scroll-target="#what-was-wrong-with-the-old-one">What was wrong with the old one?</a></li>
-  <li><a href="#what-does-it-take-to-migrate" id="toc-what-does-it-take-to-migrate" class="nav-link" data-scroll-target="#what-does-it-take-to-migrate">What does it take to migrate?</a></li>
-  <li><a href="#appearance" id="toc-appearance" class="nav-link" data-scroll-target="#appearance">Appearance</a></li>
-  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes">Changes</a></li>
-  <li><a href="#the-process" id="toc-the-process" class="nav-link" data-scroll-target="#the-process">The Process</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#what-was-wrong-with-the-old-one" id="toc-what-was-wrong-with-the-old-one" class="nav-link active" data-scroll-target="#what-was-wrong-with-the-old-one"><span class="header-section-number">1</span> What was wrong with the old one?</a></li>
+  <li><a href="#what-does-it-take-to-migrate" id="toc-what-does-it-take-to-migrate" class="nav-link" data-scroll-target="#what-does-it-take-to-migrate"><span class="header-section-number">2</span> What does it take to migrate?</a></li>
+  <li><a href="#appearance" id="toc-appearance" class="nav-link" data-scroll-target="#appearance"><span class="header-section-number">3</span> Appearance</a></li>
+  <li><a href="#changes" id="toc-changes" class="nav-link" data-scroll-target="#changes"><span class="header-section-number">4</span> Changes</a></li>
+  <li><a href="#the-process" id="toc-the-process" class="nav-link" data-scroll-target="#the-process"><span class="header-section-number">5</span> The Process</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -230,9 +230,9 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 
-<p>After exactly seven years with my old website, I’ve decided to change it to what you are seeing now. This page serves as a bit of a summary of what I did and why. It’s not particuarlly well-organized since I added to it here and there over four months. But it might be helpful to you if you’re considering such a move.</p>
-<section id="what-was-wrong-with-the-old-one" class="level2">
-<h2 class="anchored" data-anchor-id="what-was-wrong-with-the-old-one">What was wrong with the old one?</h2>
+<p>After exactly seven years with my old website, I’ve decided to change it to what you are seeing now. This page serves as a bit of a summary of what I did and why. It’s not particularly well-organized since I added to it here and there over four months. But it might be helpful to you if you’re considering such a move.</p>
+<section id="what-was-wrong-with-the-old-one" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="what-was-wrong-with-the-old-one"><span class="header-section-number">1</span> What was wrong with the old one?</h2>
 <p>I built my old website in September 2016. I had a research assistantship at the DigiLab at UGA, and Emily McGinn, the supervisor, suggested I find ways to increase my online presence. I learned some <a href="../../blog/making-a-website-is-fun">web design and CSS skills</a> skills and eventually made Version 1 of my website. That version was essentially the same as what I built in the tutorial I followed, so a few months later I rewrote everything from scratch and made Version 2. (Let’s be honest though, it’s still obviously heavily based on the tutorial.) Other than very minor tweaks to a few things, that’s how my website has been since then.</p>
 <p>However, it got a bit unwieldy. The blog was organized just fine, but I also added pages here and there to go along with workshops and other presentations I gave. It got more confusing when I gave the same workshop a second time and had multiple similar pages floating around. Since I didn’t foresee some of these additions, its growth was reminiscent of unplanned suburban sprawl. For examples, sometimes images were just dumped into a folder, others were better organized. Non-blog pages were hidden and were sometimes a top-level page and other times within a dedicated subdirectory. Each individual addition wasn’t a big deal, but once I stepped back and looked at it all, it was a mess.</p>
 <p>The format of my tutorials wasn’t consistent either. I have lots of handouts on my website, tucked away here and there. If they were associated with a workshop, they were separate R Markdown files that didn’t fit in with the rest of the site. Some of my earliest ones are PDFs of Word files! If they weren’t associated with a workshop, they’re regular blog posts. But because the site wasn’t connected to R, I had to do a <em>lot</em> of copying and pasting R Markdown code and careful insertion of images to get those tutorials to look right. In some cases, the extra work made it possible to do things like syntax highlighting in Praat and highlighting specific lines of code. But that was all done by manually inserting HTML tags and updating my CSS.</p>
@@ -241,8 +241,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>Then Quarto comes along, which makes it easy to make a blog entirely within R Studio. I have been very familiar with the R world for a while. In 2017, I was an early adopter of <a href="https://www.rstudio.com/products/shiny/">Shiny</a> (at least in linguistics, I think), so I was able to integrate all my html, CSS, and R skills into the <a href="http://lap3.libs.uga.edu/u/jstanley/vowelcharts/">Gazetteer of Southern Vowels</a>. In 2020, I also started dabbling with creating my own R Packages and using the amazing <a href="https://pkgdown.r-lib.org">pkgdown</a> to make dedicated websites for them (see <a href="https://joeystanley.github.io/joeyr/">joeyr</a>, <a href="https://github.com/JoeyStanley/futurevisions">futurevisions</a>, <a href="https://joeystanley.github.io/barktools/">barktools</a>, and <a href="https://joeystanley.github.io/joeysvowels/">joeysvowels</a>). Finally, I have a side project that involves collecting and analyzing data about what hymns are sung in LDS congregations, and in 2023 I decided to build the <a href="hymnstats.joeystanley.com">site</a> entirely in Quarto.</p>
 <p>So, I’ve gradually built up to web development in R over the years and Quarto seems like the logical place to migrate to. Plus, it has some features that I’ve always wanted, like scrolling table of contents and a search feature. After some encouragement from folks on Twitter, I decided it’s time to bite the bullet and go for it.</p>
 </section>
-<section id="what-does-it-take-to-migrate" class="level2">
-<h2 class="anchored" data-anchor-id="what-does-it-take-to-migrate">What does it take to migrate?</h2>
+<section id="what-does-it-take-to-migrate" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="what-does-it-take-to-migrate"><span class="header-section-number">2</span> What does it take to migrate?</h2>
 <p>I’m doing this page by page. Here’s the order I took:</p>
 <ul>
 <li>My homepage and any links on it. I didn’t clean up the linked pages, but at least there weren’t any dead links.</li>
@@ -253,26 +253,26 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <li>I then finished any non-tutorial posts.</li>
 <li>I saved the tutorials for last because they would take the most time. Fortunately, it wasn’t too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.</li>
 </ul></li>
-<li>Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I’ve done. Thse in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!</li>
-<li>Finally, I updated my Resources and CV pages. Those were mostly checking to make sure links worked (and removing dead links), and making sure all the files in my downloads folder transfered over.</li>
+<li>Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I’ve done. These in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!</li>
+<li>Finally, I updated my Resources and CV pages. Those were mostly checking to make sure links worked (and removing dead links), and making sure all the files in my downloads folder transferred over.</li>
 </ul>
 <p>This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.</p>
 <p>It was kinda fun to read through some of my old posts. In some cases, I added marginalia that basically pointed out how silly I was several years ago. I don’t think many people visit those early blog posts, so no one’s going to see them anyway.</p>
 </section>
-<section id="appearance" class="level2">
-<h2 class="anchored" data-anchor-id="appearance">Appearance</h2>
-<p>The biggest change is obviously the look of the site. One of the main reasons I didn’t want to switch to Quarto initially is because I didn’t want it to look like all the othe Quarto sites. But, once I started digging into the HTML, I saw how I could modify the CSS to resemble my previous site.</p>
+<section id="appearance" class="level2 page-columns page-full" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="appearance"><span class="header-section-number">3</span> Appearance</h2>
+<p>The biggest change is obviously the look of the site. One of the main reasons I didn’t want to switch to Quarto initially is because I didn’t want it to look like all the the Quarto sites. But, once I started digging into the HTML, I saw how I could modify the CSS to resemble my previous site.</p>
 <p>The navigation bar at the top was the trickiest, but I’m very pleased with the results. I tried for a long time to get my name and title to across the top, but I could not figure it out. It bothered me a lot because it made the buttons not centered over the body of the site. But, my wife recommended I make it a different color. Basically, just lean into the navbar. And it worked. I <em>really</em> like how this turned out.</p>
 <p><img src="version2.png" class="img-fluid"></p>
 <p><img src="version3.png" class="img-fluid"></p>
-<p>You may have noticed too that I removed the “Resources” link and replaced it with “Idiolect.” I haven’t been updating my “Resources” page for a few years, so it was getting a little stale, and honestly a bit unwieldy. It <a href="../../resources">still exists</a>, but it’s now joined the several other pages on my site that you kinda have to know about to get to because there are no obvious links to it. (Still trying to find a place for those links.) Plus, I like my idiolect page.</p>
-<p>I’ve also moved all my socials to the top right corner. Since Quarto has a spot for those, I figured I might as well use that, rather than having them under my picture. That way they’re accessible from every webpage within the site.</p>
+<p>You may have noticed too that I removed the “Resources” link and replaced it with “Idiolect.” I haven’t been updating my “Resources” page for a few years, so it was getting a little stale, and honestly a bit unwieldy. It <a href="../../resources">still exists</a>, but it’s now joined the several other pages on my site that you kinda have to know about to get to because there are no obvious links to it. (Still trying to find a place for those links.)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Plus, I like my idiolect page.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Edit (October 31, 2025): I have a place now! See <a href="../../pages">here</a>.</p></div></div><p>I’ve also moved all my socials to the top right corner. Since Quarto has a spot for those, I figured I might as well use that, rather than having them under my picture. That way they’re accessible from every webpage within the site.</p>
 <p>I also updated my profile picture since my old one was from 2019.</p>
 <p>Finally, I changed the hyperlink style back to something more standard. I used to have hyperlinks displayed in the same color as regular text, and then have a little red circle after it. I saw it on <a href="https://practicaltypography.com/web-and-email-addresses.html"><em>Butterick’s Practical Typography</em></a> and liked it. I don’t know how I feel about it anymore. It’s a simple change with CSS, and I even <a href="blog/how-i-implemented-the-links-in-this-site">blogged</a> about it when I first did it. But, I guess my preferences have changed.</p>
-<p>What I could not figure out was a link and previous on my homepage to my latest blog post. Not a big deal I suppose.</p>
+<p>What I could not figure out was a link and preview on my homepage to my latest blog post. Not a big deal I suppose.</p>
 </section>
-<section id="changes" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="changes">Changes</h2>
+<section id="changes" class="level2 page-columns page-full" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="changes"><span class="header-section-number">4</span> Changes</h2>
 <p>I’ve tried to keep as much of the original structure of the site the same as I could. However, as I migrated, I realized that I could make things overall a bit more contained by changing the structure of associated files. However, some things did change, but I tried my best to make sure any external links to the site did not break. Here’s a list of the changes I’ve made.</p>
 <div class="page-columns page-full"><p>The main change is that each blog is now in its own self-contained folder. The previous structure had all posts in a single folder and all images in another folder. This time, the images associated with a blog post are contained within that folder. So, instead of this:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">By the way, I’m stealing this way of visualizing file structure directly from <a href="https://github.com/tjmahr/quarto-blog/blob/main/posts/migrating-from-jekyll-to-quarto/index.qmd">TJ Mahr’s Migrating-to-Quarto page.</a>.</span></div></div>
 <pre><code>├──📁blog
@@ -289,10 +289,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 |  ├──📁blog post 2
 |  |  ├──  📄index.qmd
 |  |  ├──  🌅image2.png</code></pre>
-<p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p>
+<p>It shouldn’t affect any urls to existing blog posts because the url <code>blog/blog post 1</code> in the old format would go to the <code>blog post 1.md</code> file and in the new one it’ll go to the <code>blog post 1</code> directory, which’ll display <code>index.qmd</code> by default. I was concerned about changing the url because I know some people have cited my tutorials in published work and I didn’t want those urls to break. I think this’ll work <em>and</em> it’ll keep the site better organized.</p>
 </section>
-<section id="the-process" class="level2">
-<h2 class="anchored" data-anchor-id="the-process">The Process</h2>
+<section id="the-process" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="the-process"><span class="header-section-number">5</span> The Process</h2>
 <p>It took from September 10 to November 27 to transfer all my entire website. I set a reminder to do at least one page every day, and since there are over 100 webpages on this website, it took a while.</p>
 <p>As far as specific things I did to transfer each page over, here’s what I did</p>
 <ul>
@@ -305,12 +305,13 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>As mentioned above, for some of my code-based blog posts, like tutorials, I ended up rerunning the code. This resulted in small changes here and there, but nothing that should hurt anyone.</p>
 <p>There are a few changes I’d like to do still, like rename blog post folders to something shorter and more consistent, which would mean I’ll have to carefully add aliases to the old names and make sure they all work.</p>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<section id="conclusion" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6</span> Conclusion</h2>
 <p>I really like the new look of the new site. I have a whole laundry list of things I’d like to do still, like cleaning up old files and whatnot. I also want to add retroactive blog posts about every conference I went to and every paper I presented, so I can always have a home for each one. I also have over a dozen ideas for future blog posts.</p>
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

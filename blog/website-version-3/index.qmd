@@ -3,11 +3,13 @@ layout: post
 title:  "Website Version 3"
 author: "Joey Stanley"
 date:   2023-12-03 00:12:00 -0400
+reference-location: margin
+number-sections: true
 categories:
   - Meta
 ---
 
-After exactly seven years with my old website, I've decided to change it to what you are seeing now. This page serves as a bit of a summary of what I did and why. It's not particuarlly well-organized since I added to it here and there over four months. But it might be helpful to you if you're considering such a move.
+After exactly seven years with my old website, I've decided to change it to what you are seeing now. This page serves as a bit of a summary of what I did and why. It's not particularly well-organized since I added to it here and there over four months. But it might be helpful to you if you're considering such a move.
 
 ## What was wrong with the old one?
 
@@ -35,8 +37,8 @@ I'm doing this page by page. Here's the order I took:
   - Then moved on to any conference or paper announcement. As part of that, I also transferred the associated slides, papers, and other files.
   - I then finished any non-tutorial posts. 
   - I saved the tutorials for last because they would take the most time. Fortunately, it wasn't too bad changing the static code blocks to ones that are run when the page is rendered. However, because dependencies like packages and dataset have been updated, some of the details and specific results have changed. Nothing major though.
-* Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I've done. Thse in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!
-* Finally, I updated my Resources and CV pages. Those were mostly checking to make sure links worked (and removing dead links), and making sure all the files in my downloads folder transfered over.
+* Other pages that are top-level or close to top-level, but not right on my home page. Things like splashscreens to workshops I've done. These in particular were tricky because many of them had links to other parts of the website, including many redirects. I hope they all work!
+* Finally, I updated my Resources and CV pages. Those were mostly checking to make sure links worked (and removing dead links), and making sure all the files in my downloads folder transferred over.
 
 This took several months to make the full transfer. Little did I know that I had over 100 different webpages (mostly blog posts) all contained within my site. This was a surprise to me because I had not idea I had created so much content. I very slowly made progress by creating a reminder on my phone to migrate one webpage a day. Some were pretty straightforward. Others took more time, like tutorials and other code-based ones.
 
@@ -45,7 +47,7 @@ It was kinda fun to read through some of my old posts. In some cases, I added ma
 
 ## Appearance
 
-The biggest change is obviously the look of the site. One of the main reasons I didn't want to switch to Quarto initially is because I didn't want it to look like all the othe Quarto sites. But, once I started digging into the HTML, I saw how I could modify the CSS to resemble my previous site. 
+The biggest change is obviously the look of the site. One of the main reasons I didn't want to switch to Quarto initially is because I didn't want it to look like all the the Quarto sites. But, once I started digging into the HTML, I saw how I could modify the CSS to resemble my previous site. 
 
 The navigation bar at the top was the trickiest, but I'm very pleased with the results. I tried for a long time to get my name and title to across the top, but I could not figure it out. It bothered me a lot because it made the buttons not centered over the body of the site. But, my wife recommended I make it a different color. Basically, just lean into the navbar. And it worked. I *really* like how this turned out. 
 
@@ -53,7 +55,7 @@ The navigation bar at the top was the trickiest, but I'm very pleased with the r
 
 ![](version3.png)
 
-You may have noticed too that I removed the "Resources" link and replaced it with "Idiolect." I haven't been updating my "Resources" page for a few years, so it was getting a little stale, and honestly a bit unwieldy. It [still exists](/resources), but it's now joined the several other pages on my site that you kinda have to know about to get to because there are no obvious links to it. (Still trying to find a place for those links.) Plus, I like my idiolect page. 
+You may have noticed too that I removed the "Resources" link and replaced it with "Idiolect." I haven't been updating my "Resources" page for a few years, so it was getting a little stale, and honestly a bit unwieldy. It [still exists](/resources), but it's now joined the several other pages on my site that you kinda have to know about to get to because there are no obvious links to it. (Still trying to find a place for those links.)^[Edit (October 31, 2025): I have a place now! See [here](/pages).] Plus, I like my idiolect page. 
 
 I've also moved all my socials to the top right corner. Since Quarto has a spot for those, I figured I might as well use that, rather than having them under my picture. That way they're accessible from every webpage within the site. 
 
@@ -61,7 +63,7 @@ I also updated my profile picture since my old one was from 2019.
 
 Finally, I changed the hyperlink style back to something more standard. I used to have hyperlinks displayed in the same color as regular text, and then have a little red circle after it. I saw it on [*Butterick's Practical Typography*](https://practicaltypography.com/web-and-email-addresses.html) and liked it. I don't know how I feel about it anymore. It's a simple change with CSS, and I even [blogged](blog/how-i-implemented-the-links-in-this-site) about it when I first did it. But, I guess my preferences have changed. 
 
-What I could not figure out was a link and previous on my homepage to my latest blog post. Not a big deal I suppose. 
+What I could not figure out was a link and preview on my homepage to my latest blog post. Not a big deal I suppose. 
 
 
 ## Changes
@@ -91,7 +93,7 @@ It's now this:
 |  |  ├──  🌅image2.png
 ```
 
-It shouldn't affect any urls to existing blog posts because the url `blog/blog post 1` in the old format would go to the `blog post 1.md` file and in the new one it'll go to the `blog post 1` directory, which'll display `index.qmd` by default. I was concerned about changing the url because I know some people have cited my turorials in published work and I didn't want those urls to break. I think this'll work *and* it'll keep the site better organized.
+It shouldn't affect any urls to existing blog posts because the url `blog/blog post 1` in the old format would go to the `blog post 1.md` file and in the new one it'll go to the `blog post 1` directory, which'll display `index.qmd` by default. I was concerned about changing the url because I know some people have cited my tutorials in published work and I didn't want those urls to break. I think this'll work *and* it'll keep the site better organized.
 
 ## The Process
 
