@@ -7,6 +7,7 @@ date-modified: last-modified
 format:
   html:
     toc: true
+    number-sections: true
   pdf:
     documentclass: article
     number-sections: true
@@ -647,7 +648,7 @@ Guest on *Lingucast* YouTube channel. "NO ONE Speaks 'Proper' English | Dr. Joey
 <a href=https://www.youtube.com/watch?v=vZKR8Ag1zcY" class="video" target="_blank"></a>
 
 <!--Social Media-->
-Guest on *Faith Promoting Rumors* podcast. "Brother Joseph". April 10, 2017. Based on [Stanley (2016)].(https://repository.upenn.edu/handle/20.500.14332/45099)
+Guest on *Faith Promoting Rumors* podcast. "Brother Joseph". April 10, 2017. Based on [Stanley (2016)](https://repository.upenn.edu/handle/20.500.14332/45099).
 <a href="http://faithpromotingrumors.com/12" class="audio" target="_blank" title="link to FPR podcast"></a>
 
 <br/> <br/>
@@ -670,7 +671,7 @@ Guest on *Faith Promoting Rumors* podcast. "Brother Joseph". April 10, 2017. Bas
 | Sociolinguistics <span class="courses">(LING 550)</span>                       | Winter 2021, Fall 2021, Fall 2022, Fall 2024                    |
 | Sociolinguistic Fieldwork<sup>1</sup> <span class="courses">(LING 580R)</span> | Winter 2023<sup>2</sup>                                         |
 
-<sup>1</sup>Created or co-created. <sup>2</sup>Co-taught with Lisa Johnson. <sup>3</sup>Co-taught with Earl Brown. <sup>4</sup>Co-taught with Dan Dewey. <sup>5</sup>Focus on the British Isles
+<sup>1</sup>Created or co-created. <sup>2</sup>Co-taught with Lisa Johnson. <sup>3</sup>Co-taught with Earl Brown. <sup>4</sup>Co-taught with Dan Dewey. <sup>5</sup>Focus on the British Isles.
 
 
 
