@@ -10,7 +10,7 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 29 Oct 2025 15:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 13 Nov 2025 15:00:00 GMT</lastBuildDate>
 <item>
   <title>For the Benefit of the World 2025</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -36,7 +36,7 @@ Tip
 <p>Download the poster <a href="../../downloads/251114-BenefitOfTheWorld.pdf">here</a>.</p>
 </div>
 </div>
-<p>Unfortunately, I was unable to attend because of a conflict in my teaching schedule. But Dr.&nbsp;Lisa Morgan Johnson presented on behalf of the group. She also did the lion’s share of preparing the poster as well. As part of this presentation, we’ve prepared a page of <a href="pages/linguistic-discrimination.html">resources for learning more about linguistic discrimination</a>. Hopefully this is the beginning of full-fledged website, but for now we just wanted <em>something</em> to send conference attendees to for more information.</p>
+<p>Unfortunately, I was unable to attend because of a conflict in my teaching schedule. But Dr.&nbsp;Lisa Morgan Johnson presented on behalf of the group. She also did the lion’s share of preparing the poster as well. As part of this presentation, we’ve prepared a page of <a href="../../pages/linguistic-discrimination.html">resources for learning more about linguistic discrimination</a>. Hopefully this is the beginning of full-fledged website, but for now we just wanted <em>something</em> to send conference attendees to for more information.</p>
 
 
 
@@ -44,7 +44,94 @@ Tip
   <category>Conference</category>
   <category>CALD</category>
   <guid>https://joeystanley.com/blog/for-the-benefit-of-the-world-2025/</guid>
-  <pubDate>Wed, 29 Oct 2025 15:00:00 GMT</pubDate>
+  <pubDate>Thu, 13 Nov 2025 15:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>NWAV53</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/nwav53/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This week, I’m in Ann Arbor, Michigan at the New Ways of Analyzing Variation 53 conference! On Friday I gave a talk on the <em>cord-card</em> merger in Utah, based on the <a href="../../blog/kohler-tapes-update3">Kohler Tapes</a> data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the slides <a href="../../downloads/251107-NWAV53-cordcard.pdf">here</a></p>
+</div>
+</div>
+<p>This is especially exciting for me because it’s one of the first times I’ve presented concrete results from my <a href="../../blog/kohler-tapes">Kohler Tapes</a>. This is a collection of cassette tapes containing audio of eighth graders interviewing older community members, who were often their grandparents. This took place in Heber, Utah, mostly in the 1990s. Norm Kohler was the middle school social studies teacher behind the project, and after his passing in 2019 and some collaboration with his estate and the Wasatch Historical Society, I now have the tapes in my office. Over the past year, a CS PhD student named <a href="https://www.alexlyman.org">Alex Lyman</a> has been working on transcribing the tapes using an AI model called <a href="https://github.com/nyrahealth/CrisperWhisper">CrisperWhisper</a> which keeps everything like filled pauses. We’ve found it does a remarkably good job on this audio. Alex is working on a paper that explains the nitty-gritty of that process in more depth, but if you’re interested in doing something similar, let me know. I then processed the 1200 or so files with MFA and new-fave, and I now have a huge spreadsheet of formant measurements to work with.</p>
+<p>For this paper, I focused on the <sc>cord-card</sc> merger. While prepping for this, I went into <a href="../../blog/north-force-cloth-start">way too much of a deep dive</a> into <sc>force</sc>, <sc>north</sc>, and <sc>start</sc>. To analyze variation here, I found how what proportion of <sc>north</sc> words are phonetically closer to <sc>start</sc>. Here are two visuals of that, one showing someone with a lower proportion of lowered words and another showing a higher amount.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://joeystanley.com/blog/nwav53/north_as_start_demo2.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://joeystanley.com/blog/nwav53/north_as_start_demo1.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>The gist is that there’s tons of variation, both within and across speakers.</p>
+<p>As for results, at the word-level, I found that some words tended to be more <sc>force</sc>-like and others were regularly more <sc>start</sc>-like. This plot shows the most common <sc>north</sc> words and what proportion of people typically had them closer to <sc>start</sc> than <sc>force</sc>.</p>
+<p><img src="https://joeystanley.com/blog/nwav53/north_as_start_by_word.png" class="img-fluid"> They span much of the full range of the <em>x</em>-axis, and are relavely evenly spread out. However, the fact that there is a wide spread means that some words are more often higher and some words are more often lower. This regularity across speakers makes me think it’s a merger by transfer, though I’m still far from making an ultimate conclusion about that.</p>
+<p>I found that previous /w/, as in <em>war</em> or <em>warm</em> tended to have higher vowels, as opposed to <a href="https://doi.org/10.1215/00031283-2008-002">Bowie (2008)</a><sup>1</sup>, who found more lowering in that environment. This plot shows the result of a linear regression showing that. Values on the right correspond to being more <sc>force</sc>-like.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Bowie, David. 2008. Acoustic characteristics of Utah’s CARD-CORD merger. American Speech 83(1). 35–61.</p></div></div><p><img src="https://joeystanley.com/blog/nwav53/prev_seg_mdl_coefs.png" class="img-fluid"></p>
+<p>For variation across speakers, I didn’t find any effect for gender and, surprisingly, no effect for age. <a href="https://doi.org/10.1215/00031283-78-1-31">Bowie (2003)</a><sup>2</sup> finds increased amounts of <sc>cord-card</sc> merger from the 1860s to the 1890s. My dataset, which is comprised mainly of people born 1910–1935, showed no change in time. Earlier work (Cook 1969<sup>3</sup>, Helquist 1970<sup>4</sup>) suggests decrease during that time. So, again, not sure what makes my results a little different.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Bowie, David. 2003. Early development of the card-cord merger in Utah. American Speech 78(1). 31–51.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;Cook, Stanley Joseph. 1969. Language change and the emergence of an urban dialect in Utah. University of Utah Ph.D.&nbsp;Dissertation.</p></div><div id="fn4"><p><sup>4</sup>&nbsp;Helquist, Val J. 1970. A study of one phonological variable in urban and rural Utah. Salt Lake City: University of Utah Unpublished Master’s Thesis.</p></div></div><p><img src="https://joeystanley.com/blog/nwav53/birth_year2.png" class="img-fluid"></p>
+<p>One cool thing I found was a marked decrease in the amount of merger among people born in Salt Lake City compared to other people.</p>
+<p><img src="https://joeystanley.com/blog/nwav53/birth_place.png" class="img-fluid"> It’s too early for me to say much about this, but it does suggest that Salt Lake led the shift away from the merger and lends support to the idea that the merger is associated with rural places.</p>
+<section id="personal" class="level2 page-columns page-full" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="personal"><span class="header-section-number">1</span> Personal</h2>
+<p>Besides the research part of the conference, I got to play the <a href="https://tour.msu.edu/locations/beaumont">Beumont Tower Carillon</a><sup>5</sup>, which was super fun!</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Thanks again, Jessi!</p></div></div><div class="quarto-layout-panel" data-layout="[[1],[1,1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/nwav53/bell_tower_selfie.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Me next to the biggest bell. It weighs 12 tons! They let anyone go up and experience the bells in all their glory during their daily recitals at noon. Adam Lenhart played a great recital featuring all female arrangers of carillon music.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/nwav53/bell_tower.jpeg" class="img-fluid figure-img"></p>
+<figcaption>The Beaumont Tower Carilon</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><video src="bell_tower_playing.MOV" class="img-fluid" controls=""><a href="bell_tower_playing.MOV">Video</a></video></p>
+<figcaption>I struck up a conversation with Adam and he even let me play it! First I did Jurassic Park (and totally botched the last chord). I then did a a well-known children’s song from my church. I know there was at least fellow Latter-day Saint that heard it, but if there were any others within earshot, they were probably very surprised to hear “Popcorn Popping on the Apricot Tree” being played from their bell tower!</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+
+ ]]></description>
+  <guid>https://joeystanley.com/blog/nwav53/</guid>
+  <pubDate>Wed, 05 Nov 2025 15:00:00 GMT</pubDate>
 </item>
 <item>
   <title>FORCE, NORTH, CLOTH, and START</title>
@@ -10197,104 +10284,6 @@ Figure&nbsp;1: Here are some images I liked that I found of missionaries and use
   <category>Students</category>
   <guid>https://joeystanley.com/blog/missionary-voice/</guid>
   <pubDate>Thu, 16 May 2024 15:12:00 GMT</pubDate>
-</item>
-<item>
-  <title>Kohler Tapes (Update #2)</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/kohler-tapes-update2/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In 2021, I acquired a huge collection of cassette tapes I’ve called the Kohler tapes. In my <a href="../../blog/kohler-tapes">first blog</a> post about it, I geeked out about how much data I had collected. A few months later, I gave an <a href="../../blog/kohler-tapes-update">update</a> since at that point they were all digitized and cataloged, and I had listened to a couple dozen. I’m excited to give a second update with the news that I’ve just gotten a grant to cover the costs of processing all these tapes!</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>See <a href="../../blog/kohler-tapes-update3">this post</a> from June 3, 2025 after I got all the data processed!</p>
-</div>
-</div>
-<section id="progress-since-2021" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="progress-since-2021">Progress since 2021</h2>
-<p>At the end of my previous update, I mentioned that I had gotten a John Topham and Susan Redd Butler BYU Faculty Research Award from the <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a>. That provided just enough funds to hire an RA to help with metadata extraction. As I’ve mentioned already, a great many of the tapes start off with the student interviewer staying their name and the date, and then they ask basic demographic questions about their interviewee. It’s important that I know as much of the metadata about these interviewees as I can so that I can prioritize which tapes I should process first.</p>
-<p>So, my RA listened to the first five or so minutes of each tape and wrote down as much metadata as they could. They then looked up that person on <a href="https://www.familysearch.org/en/united-states/">FamilySearch</a>, a genealogical database. If they could find the person, they could then flesh out the rest of their basic metadata as well as get tons of other information like places they’ve lived and their family ancestry. Not all interviews had good metadata and not all tapes had much information written on the outside, but between those two sources, my RA was able to get full metadata for 505 of 751 people (67%), which is pretty good if you ask me. I can now give updated version of figures I had in my last update that summarized a little bit more about these people.</p>
-<section id="gender-split-56-44" class="level3">
-<h3 class="anchored" data-anchor-id="gender-split-56-44">Gender split: 56%-44%</h3>
-<p>Only male and female genders are reported. There are 448 women (56%) and 346 men (44%).</p>
-</section>
-<section id="birth-years-18921953" class="level3">
-<h3 class="anchored" data-anchor-id="birth-years-18921953">Birth Years: 1892–1953</h3>
-<p>I have birth years for 527 people. They range from 1892 to 1953, with both the median and average birth year being 1919. Previously, I only went back to 1905, so this extends that range a little bit. Here’s an updated plot showing the distribution of birth years.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="624"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This is a pretty satisfying bell curve if you ask me. It makes sense that we’d see a distribution like that: these people were grandparents (or around that age) of the eighth grade interviewees between 1986 and 2001. I predicted early on before seeing this metadata that most people would be born between 1900 and 1940. That turned out to be pretty spot on. In fact, a full 69% of people are in the GI generation, which is 1908–1928, and there are only five Baby Boomers. So, this is pretty cool because these people are primarily the current oldest generation’s parents. Unfortunately, it means I won’t be able to look at much change over time using just this collection, but it’ll provide a nice point of comparison for other data.</p>
-</section>
-<section id="place-of-birth-still-primarily-wasatch-county" class="level3">
-<h3 class="anchored" data-anchor-id="place-of-birth-still-primarily-wasatch-county">Place of Birth: Still primarily Wasatch County</h3>
-<p>In my previous post, which was based on just 28 people, I found that people were mostly from Wasatch County. That makes sense since the interviews took place in Heber, the seat of Wasatch County. But, with more complete metadata, I see that there are many, many more places represented.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="624"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>47% of the people are from Wasatch County, and 22% of the total are from Heber. Interestingly, the second-most common category was people born outside of Utah. Salt Lake County is next (most of those are from Salt Lake City proper), which makes sense since it’s the most populus county and is pretty nearby. Utah County (most of those are from Provo) is next, and is just down Provo Canyon and is on the other side of Mount Timpanogos. Summit County (primarily folks from Park City), is just north of Wasatch County and is next.</p>
-<p>I mentioned last time that I suspect a significant proportion of Heber is represented in this collection. The 1940 Census had 2,748 people. I have data from 128 of them. That’s only 4.6% of them. BUT, that’s not any 128 people, that’s 128 <em>young</em> people. If I had more census-data-hacking skills, I’d give more specific details about the proportion of Heber by age group, but it’s probably a decent proportion.</p>
-<p>Combing through the specific birth places, there were three people born in ghost towns!</p>
-<ul>
-<li>One person was born in <a href="https://en.wikipedia.org/wiki/Bingham_Canyon,_Utah">Bingham Canyon</a>, which is a town that once existed in southwest Salt Lake County. It not only no longer exists, but the land it was built on is literally gone. It has been completely devoured by <a href="https://en.wikipedia.org/wiki/Bingham_Canyon_Mine">Bingham Canyon Mine</a>.</li>
-<li>One person was born in <a href="https://en.wikipedia.org/wiki/Victor,_Utah">Victor, Emory County</a>. This town only existed from 1910 and 1920. According to Wikipedia, it was founded when a nearby dam broke and residents of the nearby town of Desert Lake relocated to more fertile area. Turns out it wasn’t a great place, so they abandoned it.</li>
-<li>One person was born in <a href="https://en.wikipedia.org/wiki/Rockport,_Utah">Rockport, Summit County</a>, a town that was inhabited for nearly a century before the Rockpoint Reservoir was created and now covers almost the whole site.</li>
-<li>I guess the opposite case is the person born in <a href="https://en.wikipedia.org/wiki/Vineyard,_Utah">Vineyard</a>. As of the 2010 Census, there were just 139 people who lived in this town close to Provo. Since 2012 though, the town has exploded into since then to over 100 times that size. The area has been called Vineyard since 1899 and one person was born there in 1914.</li>
-</ul>
-<p>I don’t know what to do dialectologically for people born in ghost towns, especially that person from a town that only existed for 10 years. But it’s kinda fun to think about what the variety there was like or what it could have been like.</p>
-</section>
-<section id="what-to-do-with-this-information" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="what-to-do-with-this-information">What to do with this information?</h3>
-<p>Okay, so that’s where things have been for about two years, thanks to the hard work of an RA. With this information, I have a better idea of the nature of this collection.</p>
-<p>One of the main reasons I wanted this complete picture of the demographics is so that I could start to narrow down which tapes I should transcribe first. There are 751 tapes and limited resources, so I don’t want to just start transcribing them randomly. Since the collection is so large, I have the luxury of picking out a nice sample to start with. For example, I could select a relatively homogeneous group and go with people from Heber born within a five year range. Or, I could choose two people from each county and get a wide sample of Utah.</p>
-<p>I think my priority for now will be to compare Heber to Wallsburg. Heber is the seat of Wasatch County and while it has grown a lot since the 2002 Olympics, it historically has been a small town. But, Wallsburg is a smaller nearby, tucked away two mountains outside of Heber Valley.</p>
-<p><img src="https://joeystanley.com/blog/kohler-tapes-update2/heber_to_wallsburg.png" class="img-fluid" width="400"></p>
-<div class="page-columns page-full"><p>Why Wallsburg? Well, when I did fieldwork in Heber in 2018, I heard that Wallsburgers were made fun of in school for being the country bumpkins or whatever. And when I introduced myself as a linguist studying Wasatch County, it seems like everyone in Heber I talked to said I needed to go down to Wallsburg (“That’s where the <em>real</em> Utah accent is!”) So I went down there, knocked a few doors asking to interview people, and eventually found a nice older woman who had lived there most of her life. Sure enough, pretty much every feature of Utah English I was studying she had to the max. So, if she’s representative of her town, there may really be linguistic differences between Heber and Wallsburg!</p><div class="no-row-height column-margin column-container"><span class="margin-aside">You can hear some of her speech <a href="https://joeystanley.com/blog/idaho-montana-wyoming-and-utah-english-survey-results/index.html#thr">here</a>!</span></div></div>
-<p>Anyway, I’ve already got a list of the first dozen or so tapes I’d like to get transcribed. It’s 12 women born between 1908 and 1927 with six from Wallsburg and six from Heber. It should be a nice comparison and a good first look at what this collection has to offer. (Stay tuned ADS 2025!)</p>
-</section>
-</section>
-<section id="next-steps" class="level2">
-<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
-<p>Okay, so that’s where I’ve been sitting on for about a year or so. But, staring down the barrel of hundreds of hours of audio is daunting, and I never really made much progress on this project since then. However, recently, I met a student who has connections to Heber and was interested in working on the collection. So, I applied for a the Annaley Naegle Redd Assistantship from <a href="https://reddcenter.byu.edu/">Redd Center for Western Studies</a> (the same folks that funded my earlier RA) to fund them for a few semesters. And I found out today that I will be awarded the grant! Hooray!</p>
-<p>As I mentioned in my last post, to transcribe all of these tapes manually, I estimated it would take about $100,000 and 14 student workers two years of time. My grant is certainly not that much! BUT, I don’t think I’ll need that much anymore!</p>
-<p>The main bottleneck in sociolinguistic data processing is transcription. Once something is transcribed, we can then send it through forced alignment and formant extraction without much problem. But automatic transcribers haven’t been good enough for sociolinguists’ needs. But, just in the past year, some interesting possibilities have opened up thanks to AI. In particular, OpenAI’s Whisper program is accessible via an R package. I’ve played around with it on some of these tapes and the result is pretty good.</p>
-<p>So, this semester I’ve been working on a fully automated pipeline that takes raw audio, transcribes it at the utterance-level with Whsiper, converts the output to a Praat TextGrid, sends that to the Montreal Forced Aligner, sends that output to FastTrack, and then spits out a spreadsheet of formant measurements. It takes a few scripts between each step to massage the output into a format that the next step likes, but I got a proof-of-concept working. From raw audio to vowel plot, it takes about 10 minutes.</p>
-<p>Assuming I can get it all working well, I won’t need $100,000 to have manual transcriptions. Instead, I can have students send the files down this pipeline and check the automatic transcription instead. This means they can work through tapes faster and process more data in far less time. So, with this grant, if everything goes well, I’ll be able to process a significant chunk of the Kohler Tapes!</p>
-<p>So that’s it for now. Stay tuned for more updates and soon enough you’ll see some actual linguistic results at conferences and in publications!</p>
-
-
-</section>
-
- ]]></description>
-  <category>Kohler Tapes</category>
-  <category>Research</category>
-  <category>Utah</category>
-  <guid>https://joeystanley.com/blog/kohler-tapes-update2/</guid>
-  <pubDate>Fri, 26 Apr 2024 06:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
