@@ -11,7 +11,7 @@ format:
     toc: true
 # categories:
 #   - 
-number-sections: true
+number-sections: false
 # draft: true
 # resources: 
 # image: 
@@ -23,4 +23,50 @@ This week, I'm in Ann Arbor, Michigan at the New Ways of Analyzing Variation 53 
 
 :::{.callout-tip}
 Download the slides [here](/downloads/251107-NWAV53-cordcard.pdf)
+:::
+
+This is especially exciting for me because it's one of the first times I've presented concrete results from my [Kohler Tapes](/blog/kohler-tapes). This is a collection of cassette tapes containing audio of eighth graders interviewing older community members, who were often their grandparents. This took place in Heber, Utah, mostly in the 1990s. Norm Kohler was the middle school social studies teacher behind the project, and after his passing in 2019 and some collaboration with his estate and the Wasatch Historical Society, I now have the tapes in my office. Over the past year, a CS PhD student named [Alex Lyman](https://www.alexlyman.org) has been working on transcribing the tapes using an AI model called [CrisperWhisper](https://github.com/nyrahealth/CrisperWhisper) which keeps everything like filled pauses. We've found it does a remarkably good job on this audio. Alex is working on a paper that explains the nitty-gritty of that process in more depth, but if you're interested in doing something similar, let me know. I then processed the 1200 or so files with MFA and new-fave, and I now have a huge spreadsheet of formant measurements to work with. 
+
+For this paper, I focused on the <sc>cord-card</sc> merger. While prepping for this, I went into [way too much of a deep dive](/blog/north-force-cloth-start) into <sc>force</sc>, <sc>north</sc>, and <sc>start</sc>. To analyze variation here, I found how what proportion of <sc>north</sc> words are phonetically closer to <sc>start</sc>. Here are two visuals of that, one showing someone with a lower proportion of lowered words and another showing a higher amount.
+
+
+::: {layout-ncol=2}
+![](north_as_start_demo2.png)
+
+![](north_as_start_demo1.png)
+:::
+
+The gist is that there's tons of variation, both within and across speakers. 
+
+As for results, at the word-level, I found that some words tended to be more <sc>force</sc>-like and others were regularly more <sc>start</sc>-like. This plot shows the most common <sc>north</sc> words and what proportion of people typically had them closer to <sc>start</sc> than <sc>force</sc>. 
+
+![](north_as_start_by_word.png)
+They span much of the full range of the *x*-axis, and are relavely evenly spread out. However, the fact that there is a wide spread means that some words are more often higher and some words are more often lower. This regularity across speakers makes me think it's a merger by transfer, though I'm still far from making an ultimate conclusion about that. 
+
+I found that previous /w/, as in *war* or *warm* tended to have higher vowels, as opposed to [Bowie (2008)](https://doi.org/10.1215/00031283-2008-002)^[Bowie, David. 2008. Acoustic characteristics of Utah’s CARD-CORD merger. American Speech 83(1). 35–61.], who found more lowering in that environment. This plot shows the result of a linear regression showing that. Values on the right correspond to being more <sc>force</sc>-like. 
+
+![](prev_seg_mdl_coefs.png)
+
+For variation across speakers, I didn't find any effect for gender and, surprisingly, no effect for age. [Bowie (2003)](https://doi.org/10.1215/00031283-78-1-31)^[Bowie, David. 2003. Early development of the card-cord merger in Utah. American Speech 78(1). 31–51.] finds increased amounts of <sc>cord-card</sc> merger from the 1860s to the 1890s. My dataset, which is comprised mainly of people born 1910--1935, showed no change in time. Earlier work (Cook 1969^[Cook, Stanley Joseph. 1969. Language change and the emergence of an urban dialect in Utah. University of Utah Ph.D. Dissertation.], Helquist 1970^[Helquist, Val J. 1970. A study of one phonological variable in urban and rural Utah. Salt Lake City: University of Utah Unpublished Master’s Thesis.]) suggests decrease during that time. So, again, not sure what makes my results a little different. 
+
+![](birth_year2.png)
+
+One cool thing I found was a marked decrease in the amount of merger among people born in Salt Lake City compared to other people.
+
+![](birth_place.png)
+It's too early for me to say much about this, but it does suggest that Salt Lake led the shift away from the merger and lends support to the idea that the merger is associated with rural places. 
+
+## I played the carillon!
+
+Besides the research part of the conference, I got to play the [Beumont Tower Carillon](https://tour.msu.edu/locations/beaumont)^[Thanks again, Jessi!], which was super fun!
+
+::: {layout="[[1],[1,1]]"}
+
+
+![Me next to the biggest bell. It weighs 12 tons! They let anyone go up and experience the bells in all their glory during their daily recitals at noon. (And they're kind enough to provide hearing protection so people like me can preserve their phonetician ears!) Carilloner Adam Lenhart played a great recital featuring all female arrangers of carillon music.](bell_tower_selfie.jpeg)
+
+![The Beaumont Tower Carilon](bell_tower.jpeg)
+
+![Adam let me play the carillon! First I did Jurassic Park (and totally botched the last chord). I then did a a well-known children's song from my church. I know there was at least one fellow Latter-day Saint that heard it, but if there were any others within earshot, they were probably very surprised to hear "Popcorn Popping on the Apricot Tree" being played from their bell tower!](bell_tower_playing_720.MOV)
+
 :::
