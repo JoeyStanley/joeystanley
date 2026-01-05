@@ -21,6 +21,8 @@ website:
         file: /pages/idiolect
       - text: "Blog <em>what's going on?</em>"
         file: blog/index.qmd
+      - text: "AI <em>how do I feel about it?</em>"
+        file: ai.qmd
 #      - text: "Misc <em>what else is on here?</em>"
 #        menu: 
 #          - text: "Resources <em>what stuff do I use?</em>"

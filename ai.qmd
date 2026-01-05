@@ -1,0 +1,54 @@
+---
+title: "My thoughts on AI"
+date: January 5, 2026
+date-modified: last-modified
+reference-location: margin
+---
+
+
+:::{.callout-note}
+Following [Andrew Heiss](https://www.andrewheiss.com/ai/) and [many others](https://slashai.page), this is my [AI Manifesto](https://www.bydamo.la/p/ai-manifesto). This is what I put in my course syllabi as of January 2026. Because I work at BYU, I have mostly integrated statements made at BYU and there is some religious connection.
+:::
+
+## What has BYU said about AI?
+
+There is no official policy at the university-level regarding AI. However, here’s what the department policies are regarding the use of AI:
+
+> The Department of Linguistics supports the [university-level statement](https://teaching.byu.edu/0000018b-1b18-dbed-a59b-df3979900000/academic-use-of-artificial-intelligence-at-byu-pdf) on the use of generative artificial intelligence (AI) for academic and professional purposes. The department also expects students, faculty, and staff to follow the [Academic Honesty Policy](https://policy.byu.edu/view/academic-honesty-policy). In addition, the department expects graduate students to follow the [Graduate Studies Statement on Use of AI](https://gradstudies.byu.edu/about/statement-on-use-of-ai). 
+
+> The department encourages its instructors to clearly delimit what their expectations are with respect to the use or non-use of generative AI in their classes, and their students are encouraged to follow those expectations. Use of generative AI that is not consistent with the expectations of a given instructor is considered a violation of the Academic Honesty Policy.
+
+Please also see the [Teaching With Artificial Intelligence](https://genai.byu.edu/0000018d-7b3a-d6d8-afff-ffbb52870001/college-of-humanities-genai-teaching-policy) document put together by the College of Humanities Task Force. It is more intended for faculty, but it is still worth a read for students.
+
+
+
+## What is responsible use of AI?
+
+AI can be an extremely helpful tool and when used responsibly, can enhance your education rather than replace it. Proper use of AI means treating it primarily as a tool to *augment* your own work rather than to *replace* it. 
+
+A few years, ago I was in a position to create a new course. When deciding which topics to include in the course, I consulted potential textbooks to give me ideas and surveyed students who might be interested in the course before coming up with my own tentative list. Only then did I turn to AI to come up with a list of topics. As it turns out, it provided me a very similar list to what I had already which served as a confirmation to me that my list was good.^[I don’t want to compare AI to the Spirit, but [D&C 9:8](https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/9?lang=eng&id=p8#p8) comes to mind here.] I knew enough about the topic before turning to AI so that I could spot its bad recommendations. If it had provided me with a new idea, I would not have accepted it at face value but I would have done some additional research to decide whether I should include it. In no way would I have accepted the output at face value.
+
+
+There are times when AI could be used to help with coursework.^[I thank Dan Dewey for the following example.] Let’s say you struggle with writing in an academic register, either because English is not your first language or because you’re just not comfortable with this style of writing. An inappropriate use of AI is to let it complete your assignment for you. An appropriate use of AI would be to give it a prompt like this: 
+
+> “Here is a paragraph I am writing for a college term paper. [Provide the paragraph]. I am struggling with two things: English prepositions and English tense [or appropriate writing style, or whatever]. Please correct any errors you can find in either of these. Mark the corrections for me. Then give 3–4 tips for prepositions and tense based on the corrections.” 
+
+With this method, you are using AI to help you learn and get better—augmenting what you can already do—rather than having it do your work for you. 
+
+There are times when it is not appropriate to use AI. Unfortunately, students and faculty disagree on what is considered appropriate use of AI. [Here](https://forms.cloud.microsoft/Pages/AnalysisPage.aspx?AnalyzerToken=fQ1NOxyrxRRW0uMltZt2NuCxjdD310iP&id=m278xvtRqEi3eZ7lZLQEE9o9u53L7h5Ntved3yPH3H9UQTcxWDNaV0Q2RFVRTk85MFhYQUVUNENXTS4u) are the results of a survey of BYU linguistics graduate students in Fall 2025. The survey showed that most students used AI at least once a week for academic work, that they expect professors to teach how to use AI, and that AI is appropriate in a variety of situations. While AI use varies among faculty, most of us are on the more conservative side of AI use in academic work and believe that students should not use it for any academic work. 
+
+Regarding using Large Language Models (LLMs) specifically to generate text in order to replace the work of writing, please do not do that. Andrew Heiss, a public policy and political science professor at Georgia State, has a nice explanation about why not [here](https://compaf24.classes.andrewheiss.com/syllabus.html#ai-large-language-models-and-bullshit).^[He’s a member of my church too and has a sidenote explaining the colorful language!)] It basically comes down to this: writing is an essential part of learning and if you skip it, you’re not learning. Plus, I would 100% rather see sincere thoughts conveyed in your own voice (even if it has imperfect spelling, grammar, organization, and punctuation) than artificial thoughts in pristine writing. If you’re not going to spend the time to write, why should I or the TA spend the time reading and grading it?
+
+<!--Somewhere add Heiss's observation and its write-up in Rolling Stone https://www.rollingstone.com/culture/culture-features/ai-chatbot-journal-research-fake-citations-1235485484/-->
+
+
+At this point, I assume that you regularly use AI in your daily life. I do, like for recipes and recommended runs to improve my pace. But one issue that I am now seeing with student work though is that even if they did not use AI for academic writing (or at least claim to), their writing style is starting to mimic it. Think about it: how much AI-generated content have you read about topics related to linguistics? Now think about how much actual linguistic writing you’ve read. If AI-generated writing makes up a disproportionately large amount of what you read about linguistics… well that’s not good for a lot of reasons. But one is that when it comes time for you to write academically, what you’re most familiar with is AI-generated writing and so that’s what you’ll mimic. I therefore again strongly urge you to not use AI for course content, even if it’s unrelated to homework, and to read as much academic writing written by actual humans as you can.
+
+## So what is the policy in this course?
+
+Here is a paragraph from BYU’s [Generative Artificial Intelligence](https://genai.byu.edu/academic-integrity-for-students) folks that I think best describes how you should use AI:
+
+> Before using GenAI on an assignment, you must ask your professor for permission if they have not already explicitly stated that it is permitted. If the professor has not said anything about GenAI use for either the assignment or in the syllabus, assume that using GenAI is not permitted. For each class, the professor is the arbiter of academic integrity. Use [your professor] as your first recourse when determining what is acceptable or unacceptable for an assignment.
+
+So, in line with department policy of clearly delimiting what my expectations are with AI, here is my policy: unless I explicitly say when and how to use AI for a particular assignment, **I expect zero AI use whatsoever for anything you turn in to me**. If you do use AI in those very few situations, I expect a note somewhere in your assignment that explicitly states that you did so. Any other use may be considered a violation of the Academic Honesty Policy.
+
