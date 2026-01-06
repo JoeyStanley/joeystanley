@@ -186,7 +186,8 @@ em, i {
 
 .me-auto {
   margin: auto;
-  width: 1080px;
+  /* Widened from 800px January 5, 2026 to accomodate AI manifesto */
+  width: 1080px; 
   
   display: flex;
   flex-direction: row;
