@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joey Stanley">
-<meta name="dcterms.date" content="2026-01-09">
+<meta name="dcterms.date" content="2026-01-11">
 
 <title>Curriculum Vitae – Joey Stanley</title>
 <style>
@@ -34,14 +34,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -93,6 +94,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
@@ -282,14 +285,14 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 9, 2026</p>
+      <p class="date">January 11, 2026</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 9, 2026</p>
+      <p class="date-modified">January 11, 2026</p>
     </div>
   </div>
     
@@ -459,7 +462,7 @@ Note
 <p>Student collaborators highlighted in <span class="student">green</span>.</p>
 </div>
 </div>
-<p><span class="me">Joseph A. Stanley</span>, Brett Hashimoto, &amp; Jack Grieve. “What can a corpus of YouTube videos tell us about grammatical variation in North American English?”. American Dialect Society Annual Meeting. New Orleans, LA. January 11, 2026.</p>
+<p><span class="me">Joseph A. Stanley</span>, Brett Hashimoto, &amp; Jack Grieve. “What can a corpus of YouTube videos tell us about grammatical variation in North American English?”. American Dialect Society Annual Meeting. New Orleans, LA. January 11, 2026. <a href="../downloads/260111-ADS2026_youtube.pdf" class="slides" title="download the powerpoint slides for this presentation"></a></p>
 <p><span class="me">Joseph A. Stanley</span>. “Towards a taxonomy of meta-linguistic commentary: The case of Utah English.” Linguistic Society of America Annual Meeting. New Orleans, LA. January 9, 2026. <a href="../downloads/260108-LSA2026_metalinguistic.pdf" class="slides" title="download the powerpoint slides for this presentation"></a></p>
 <p><span class="me">Joseph A. Stanley</span>. “Variation in Early Utah English’s <em>cord-card</em> merger.” New Ways of Analyzing Variation 53. Ann Arbor, MI. November 2025. <a href="../downloads/251107-NWAV53-cordcard.pdf" class="slides" title="download the powerpoint slides for this presentation"></a></p>
 <p>Brett Hashimoto, <span class="me">Joseph A. Stanley</span>, &amp; Jack Grieve. “Mapping grammatical variation in North American English using a YouTube corpus.” Corpus Linguistics 2025. Birmingham, UK. July 2, 2025.</p>
@@ -1235,13 +1238,14 @@ Dani Harper. Fall 2024.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
