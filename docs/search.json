@@ -2741,7 +2741,7 @@
     "href": "blog/ads-and-lsa-2026/index.html#sunday-mornings-ads-talk-regional-grammatical-variation",
     "title": "LSA and ADS 2026",
     "section": "Sunday morning’s ADS talk regional grammatical variation",
-    "text": "Sunday morning’s ADS talk regional grammatical variation\n\n\n\n\n\n\nTip\n\n\n\nDownload the poster here!\n\n\nAt ADS, I presented some research I’ve been working on with Brett Hashimoto, who is my colleague at BYU, and Jack Grieve who is at the University of Birmingham. Brett has access to a monster corpus of transcriptions from YouTube videos of town hall meetings and other local meetings. Following the methods in Grieve (2016), we created maps for each variant of something like 135 lexico-grammatical variables. We found lots of interesting distribution patterns. At this point, we’re just showing maps but we hope to do some cluster analysis soon and see how these variables co-occur."
+    "text": "Sunday morning’s ADS talk regional grammatical variation\n\n\n\n\n\n\nTip\n\n\n\nDownload the slides here!\n\n\nAt ADS, I presented some research I’ve been working on with Brett Hashimoto, who is my colleague at BYU, and Jack Grieve who is at the University of Birmingham. Brett has access to a monster corpus of transcriptions from YouTube videos of town hall meetings and other local meetings. Following the methods in Grieve (2016), we created maps for each variant of something like 135 lexico-grammatical variables. We found lots of interesting distribution patterns. At this point, we’re just showing maps but we hope to do some cluster analysis soon and see how these variables co-occur."
   },
   {
     "objectID": "blog/synthesis_days/index.html",
@@ -4464,5 +4464,12 @@
     "title": "Data Visualization Workshops",
     "section": "Older versions",
     "text": "Older versions\nYou may also be interested in the 2018 versions of some of these workshops that I gave (Part 1 Rmarkdown and PDF and Part 2 RMarkdown and PDF). An older version from 2017 that combines elements of Parts 1 and 2 can be found here as a PDF or RMarkdown file."
+  },
+  {
+    "objectID": "blog/ads-and-lsa-2026/index.html#friday-mornings-ads-poster-on-pittsburghese",
+    "href": "blog/ads-and-lsa-2026/index.html#friday-mornings-ads-poster-on-pittsburghese",
+    "title": "LSA and ADS 2026",
+    "section": "Friday morning’s ADS poster on Pittsburghese",
+    "text": "Friday morning’s ADS poster on Pittsburghese\n\n\n\n\n\n\nTip\n\n\n\nDownload the poster here!\n\n\nAt the ADS poster session, Scott Kiesling had a poster called “Measuring Pittsburgh Neighborhoods with the Archive of Pittsburgh Language and Speech (APLS)”. Scott was involved in data collection in Pittsburgh in the early 2000s and recently, Dan Villarreal created APLS to make it easy to search and work with that data. We test whether a dozen or so phonological variables are conditioned by neighborhood. We do find some evidence and we can see how these variables co-occur. This is my first time venturing into this dialect area, so it’s pretty exciting to me to work with this new (to me) dataset!"
   }
 ]
