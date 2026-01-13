@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -128,6 +129,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
@@ -161,6 +164,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI <em>how do I feel about it?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -310,7 +317,7 @@ Note
 <h1>Data processing</h1>
 <p>So, to start, let’s load the packages required for this tutorial:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The <a href="https://www.tidyverse.org"><code>tidyverse</code></a> library is actually a whole suite of packages that work harmoniously together. It includes ones like <code>ggplot2</code>, <code>dplyr</code>, and <code>tidyr</code>, which you might have used before. Instead of loading each package individually like I did in the previous tutorial, I’ll load them together at once using <code>library(tidyverse)</code>. The bonus is that it comes with a couple other packages that you might not be aware of, like <code>stringr</code> and <code>readr</code>.</p>
 <p><del>Note though that <code>tidyverse</code> requires a relatively recent version of R. If you haven’t updated R since before about November 2017, you may have trouble installing and loading it. You can update R and it’ll work fine, or you might have better luck loading <code>tidyr</code>, <code>dplyr</code>, <code>ggplot</code>, and <code>readr</code> individually. <a href="https://www.r-bloggers.com/updating-r/">This</a> is a quick tutorial (not mine) on how to update R.</del></p>
@@ -318,18 +325,18 @@ Note
 <h2 class="anchored" data-anchor-id="read-in-the-data">Read in the data</h2>
 <p>We’ll work with the same dataset that I used last time: a recording of me reading about 300 sentences while sitting at my kitchen table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_vowels_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://joeystanley.com/data/joey.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_vowels_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://joeystanley.com/data/joey.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="page-columns page-full"><p>I’ve already removed most of the really bad outliers, but there are a few things I still need to do to get this data ready. First, I’ll keep just the vowels with primary stress and remove /ɹ/ with the <code>filter</code> function. Then, I’ll make all the words lowercase with <code>mutate</code>. I’ll also create a new column that just numbers the rows sequentially which will give each vowel it’s own unique identifier. For simplicity, I’m also going to remove some columns that we don’t need for today—or rather, keep just the columns I need—using <code>select</code>. All I want for now are the ID I just created, the vowel, the word, and all the <code>F1@20%</code>, <code>F2@20%</code>, <code>F1@35%</code>, etc. columns. This last group are formant measurements at 20%, 35%, 50%, 65%, and 80% into the vowels’ durations. Since R doesn’t like those non-alphanumeric characters in the column names though, you’ll have to use ticks (`: that thing that shares a key with the tilde on my keyboard) around it: select(vowel, word, t, <code>F1@20%</code>:<code>F2@80%</code>). These five points give us the trajectory data we need. (I’ll toss out the plain <code>F1</code>, <code>F2</code>, and <code>F3</code> columns because the time that those measurements come from varies from vowel to vowel.)</p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you read your data in using read.csv() instead of readr::read_csv(), it converts the original column names (<code>F1@20%</code>, etc.) to something like <code>F1.20.</code>, with periods instead of the non-alphanumeric characters.</span></div></div>
 <div class="page-columns page-full"><p>.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Also, you can also use the time (the t column) as the unique id instead of creating new ones, but I like creating sequential numbers better.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="ot">&lt;-</span> my_vowels_raw <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="ot">&lt;-</span> my_vowels_raw <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         vowel <span class="sc">!=</span> <span class="st">"ER"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">tolower</span>(word)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowid_to_column</span>(<span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, vowel, word, <span class="st">`</span><span class="at">F1@20%</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">F2@80%</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 544 × 13
       id vowel word       `F1@20%` `F2@20%` `F1@35%` `F2@35%` `F1@50%` `F2@50%`
@@ -351,12 +358,12 @@ Note
 </div>
 <p>As a review, here’s what this looks like with a scatterplot of the formants at the midpoints.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowels, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowels, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -375,9 +382,9 @@ Note
 <h2 class="anchored" data-anchor-id="data-processing-1">Data processing</h2>
 <p>For now, let’s just focus on one vowel, my /aɪ/ vowel, since there is some trajectory there.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ay <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ay <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vowel <span class="sc">==</span> <span class="st">"AY"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 13
       id vowel word     `F1@20%` `F2@20%` `F1@35%` `F2@35%` `F1@50%` `F2@50%`
@@ -399,10 +406,10 @@ Note
 </div>
 <p>And we’ll plot it for good measure.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>)) <span class="sc">+</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -414,22 +421,22 @@ Note
 <p>But, midpoints for diphthongs don’t say as much as their entire trajectories do. We have the trajectory data, but it’s spread out across all those columns (<code>F1@20%</code>, etc.). The <code>ggplot</code> function can only plot two columns at a time (the <em>x</em>- and <em>y</em>-axes), but our trajectory data is spread out over ten columns. We need to somehow reshape our data so that <em>all</em> the F1 data is in one column and <em>all</em> the F2 data is in another column.</p>
 <p>What we need to do is essentially squish our data to cram 10 columns’ worth of information into just two. Our data currently is in what’s called a “wide” format because we have lots of columns. What we need to do is convert into a “tall” format, which has fewer columns, but more rows. For example, here’s a simplified version of what our data looks like now:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel F1%20% F1@80% F2@20% F2@80%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel F1%20% F1@80% F2@20% F2@80%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 vowel1    500    550   1000   1150</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 vowel2    600    650   1500   1550</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 vowel3    700    750   2000   2050</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 vowel3    700    750   2000   2050</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And this is what we want it to end up like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel percent    F1    F2</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel percent    F1    F2</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">## *  &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 vowel1      20   500  1000</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 vowel1      80   550  1150</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 vowel2      20   600  1500</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 vowel2      80   650  1550</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 vowel3      20   700  2000</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 vowel3      80   750  2050</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 vowel3      80   750  2050</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So how do we do that? Unfortunately, because we have F1 <em>and</em> F2 measurements, it takes a bit more finagling than one simple function can provide, but I’ll walk you through it.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -453,8 +460,8 @@ Note
 </ol>
 <p>So the code ends up looking like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 520 × 5
       id vowel word   formant_percent    hz
@@ -474,9 +481,9 @@ Note
 </div>
 <p>Okay, so even though there are just 52 tokens of /aɪ/, now we have 520 rows in our dataframe. That’s because each vowel is now spread across ten rows, one for each of the ten formant measurements. It might not be clear right now that that’s what it did, but we can sort the data by ID and you can get a better picture:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 520 × 5
       id vowel word   formant_percent    hz
@@ -501,9 +508,9 @@ Note
 </div>
 <p>So one way to do this is to split up the <code>formant_percent</code> column into two: <code>formant</code> and <code>percent</code>. It’s strange to have two pieces of information (what formant and the timepoint) in one column. We can use the <code>separate_wider_delim</code> function for this. As its first argument, we’ll tell it what column we want to separate (here, it’s <code>formant_percent</code>). Then, we’ll tell is where to split it, which is at the “@” symbol. Then, we’ll add the <code>names</code> argument, which is just a list of new, arbitrary column names that the split data will now be in, which for us is <code>"formant"</code> and “<code>percent"</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 520 × 6
       id vowel word   formant percent    hz
@@ -523,10 +530,10 @@ Note
 </div>
 <p>That worked pretty well! However, we’ll need to trim off the extra “%” symbol at the end of the new <code>percent</code> column, which we can do using <code>str_remove</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 520 × 6
       id vowel word   formant percent    hz
@@ -546,11 +553,11 @@ Note
 </div>
 <p>Okay, so now we have one column saying what formant the measurement is for, and another column saying the timepoint. We need to reverse the squish a little bit, and put the formants into two columns. So the opposite of <code>pivot_longer</code> is <code>pivot_wider</code>, and as arguments, you first tell it what column contains the text that will serve as the column names, and then what column contains the numbers you want to be in the cells of those new columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ay <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 260 × 6
       id vowel word     percent    F1    F2
@@ -571,11 +578,11 @@ Note
 <p><em>Violà!</em> Our data is ready. Now each row represents a single time point, and there is one column for F1 and one column for F2.</p>
 <p>Do you remember why we bothered to do all that in the first place? Well, because <code>ggplot</code> needs two columns (F1 and F2) for the <em>x</em>- and <em>y</em>-axes. But our measurements were spread out over 10 columns. So we collapsed them down to two. This is the dataset we want to stick with, so we’ll save it into a new dataframe called <code>ay_tall</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ay_tall <span class="ot">&lt;-</span> ay <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ay_tall <span class="ot">&lt;-</span> ay <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So now comes the fun part. Our data is set, now we just need to work in <code>ggplot2</code>.</p>
 </section>
@@ -583,10 +590,10 @@ Note
 <h2 class="anchored" data-anchor-id="drawing-lines-in-the-f1-f2-space">Drawing lines in the F1-F2 space</h2>
 <p>The function that we need is <code>geom_path</code>. We’ll use this instead of <code>geom_point</code>, which is what we used for scatterplots. To save you from scrolling, here’s the code for the scatterplot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>)) <span class="sc">+</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -597,10 +604,10 @@ Note
 </div>
 <p>The last two lines transfer over just fine, so we can leave them. But we need to make a few changes to the beginning portion. First, we change the dataset from <code>ay</code> to <code>ay_tall</code>. We’ll then have to change <code>F2@50%</code> and <code>F1@50%</code>—since we no longer have those columns—into just <code>F2</code> and <code>F1</code> which are the corresponding columns in <code>ay_tall</code>. We can change <code>geom_point</code> to <code>geom_path</code> and bada-boom!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1)) <span class="sc">+</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -611,10 +618,10 @@ Note
 </div>
 <p>Oops. That looks awful. So what happened? As it turns out, <code>geom_path</code> literally just connected the dots in the order that they appear in the dataset. It drew one continuous line because we didn’t tell it to do otherwise. What we need is an additional argument, the <code>group</code> argument, that says to draw one line for every group. So what should the groups be? Well, we want one line per token, so we want a column that has a unique vowel per token. Aha! This is why we created that <code>id</code> column at the beginning! So in the <code>aes</code> function, add <code>group = id</code> and then let’er rip.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id)) <span class="sc">+</span> </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -625,12 +632,12 @@ Note
 </div>
 <p>Okay, so still not great. It’s just because we have a lot of data. I’ll filter the data down to just the tokens of me saying the word “time”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>like_tokens <span class="ot">&lt;-</span> ay_tall <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>like_tokens <span class="ot">&lt;-</span> ay_tall <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(word <span class="sc">==</span> <span class="st">"like"</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(like_tokens, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id)) <span class="sc">+</span> </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -641,12 +648,12 @@ Note
 </div>
 <p>Okay, so less messy. But still not great. For one, we can’t even tell which direction the lines are going. We can add some arrows with the <code>arrow</code> argument in <code>geom_path</code>. I’ll let you look up the help for arrows (hint: <code>?grid::arrow</code>), but here is some code that has worked for me. It says to put an arrow at the end of the line (as opposed to the beginning), make it a filled triangle, and make it a tenth of an inch in size.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(like_tokens, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(like_tokens, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id)) <span class="sc">+</span> </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, </span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">"closed"</span>,</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -657,10 +664,10 @@ Note
 </div>
 <p>So we’re getting there. Let’s see if we can add some color. Maybe I can make the arrows go from one color to another as they progress along the vowel’s trajectory. We can add another aesthetic, <code>color</code>, which will vary with the values in the <code>percent</code> column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(like_tokens, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id, <span class="at">color =</span> percent)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(like_tokens, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id, <span class="at">color =</span> percent)) <span class="sc">+</span> </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, <span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -674,13 +681,13 @@ Note
 The problem now is that you’ve got arrowheads at the end of each segment. Four lines per vowel means four arrowheads. I haven’t quite figured out how to get just one arrowhead when you use color like this.
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>like_tokens <span class="ot">&lt;-</span> like_tokens <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>like_tokens <span class="ot">&lt;-</span> like_tokens <span class="sc">%&gt;%</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">as.numeric</span>(percent))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(like_tokens, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> id, <span class="at">color =</span> percent)) <span class="sc">+</span> </span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, <span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_distiller</span>(<span class="at">palette =</span> <span class="st">"YlOrBr"</span>) <span class="sc">+</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -698,8 +705,8 @@ The problem now is that you’ve got arrowheads at the end of each segment. Four
 <h3 class="anchored" data-anchor-id="data-wrangling">Data wrangling</h3>
 <p>So let’s think about what kind of dataset we want. Starting with <code>my_vowel</code>, which is essentially the raw FAVE output, we have ten columns for each vowel. We want to reduce this down to just 14 rows (one for each vowel), with the average formants at each time point. To accomplish this, we can use <code>summarize</code>. This is a handy function that will help you, well, summarize your data. For example, let’s say we want to get the average F1 at the 20% point for the entire dataset. We can create a new column called <code>mean_F1@20%</code> and set it equal to the mean of the values in the <code>F1.20.</code> column:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="st">`</span><span class="at">mean_F1@20%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F1@20%</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="st">`</span><span class="at">mean_F1@20%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F1@20%</span><span class="st">`</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   `mean_F1@20%`
@@ -709,7 +716,7 @@ The problem now is that you’ve got arrowheads at the end of each segment. Four
 </div>
 <p>Similarly, we can do this for all the columns:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="st">`</span><span class="at">mean_F1@20%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F1@20%</span><span class="st">`</span>),</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F2@20%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F2@20%</span><span class="st">`</span>),</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F1@35%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F1@35%</span><span class="st">`</span>),</span>
@@ -719,7 +726,7 @@ The problem now is that you’ve got arrowheads at the end of each segment. Four
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F1@65%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F1@65%</span><span class="st">`</span>),</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F2@65%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F2@65%</span><span class="st">`</span>),</span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F1@80%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F1@80%</span><span class="st">`</span>),</span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F2@80%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F2@80%</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">mean_F2@80%</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">F2@80%</span><span class="st">`</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 10
   `mean_F1@20%` `mean_F2@20%` `mean_F1@35%` `mean_F2@35%` `mean_F1@50%`
@@ -731,8 +738,8 @@ The problem now is that you’ve got arrowheads at the end of each segment. Four
 </div>
 <p>Ugh, that’s a lot of typing though, and it’s so repetitive. Isn’t there a shortcut? Yes! There’s a function called <code>across</code>, which will perform a function on all the columns you specify. First, you select the columns you want to summarize, which I’ll do with the shortcut <code>starts_with("F")</code>. The next argument in <code>across</code> is the name of the function you want to perform on all of these. We want the average, so we’ll just type <code>mean</code>. You can add additional arguments to <code>across</code>, which get passed to the function we’re calling (<code>mean</code>), so for good measure I like to add <code>na.rm = TRUE</code> just to make the code a little more robust at handling <code>NA</code>s in our data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There was 1 warning in `summarize()`.
 ℹ In argument: `across(starts_with("F"), mean, na.rm = TRUE)`.
@@ -757,8 +764,8 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <p>So in just one line of code we can do what took us ten before. Thanks, <code>across</code>!</p>
 <p>But wait. We don’t really want to know the average formant values for the entire dataset. What we really want is the average per vowel. How can we do the same thing per vowel? Well, luckily we can just add the <code>.by</code> argument (yes, with the dot at the beginning) to specify a column and it’ll essentially divide the dataset into chunks and the <code>summarize</code> function will apply to each chunk.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> vowel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> vowel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 14 × 11
    vowel `F1@20%` `F2@20%` `F1@35%` `F2@35%` `F1@50%` `F2@50%` `F1@65%` `F2@65%`
@@ -783,17 +790,17 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">You can actually add as many columns as you want to <code>.by</code>. This is good for getting averages per vowel split up by following segment, for example. For example, try doing <code>by = c(vowel, fol_seg)</code>.</span></div></div>
 <p>Note that now we have a column we didn’t have before, <code>vowel</code>, which shows the group variable. Now we have the dataset we want: the average formant measurements at each time point for all 14 vowels. Let’s save this as a new dataframe.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_vowel_means <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> vowel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_vowel_means <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> vowel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Okay, so we have this dataset. It’s essentially the parallel to <code>my_vowels</code>, only instead of individual tokens it has the averages. But, remember that we need to turn the data into a tall format for it to plot the way we want? So, we have to take this <code>my_vowel_means</code> data and turn it tall. Fortunately, you can copy and paste the code we used before:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>my_vowel_means_tall <span class="ot">&lt;-</span> my_vowel_means <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>my_vowel_means_tall <span class="ot">&lt;-</span> my_vowel_means <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz) <span class="sc">%&gt;%</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 70 × 4
    vowel percent    F1    F2
@@ -817,11 +824,11 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <h3 class="anchored" data-anchor-id="plotting">Plotting</h3>
 <p>Because we’ve been consistent with our code and variable names and stuff, the plotting code is also going to be very similar to what we saw before. All we need to do is change two things. First, we’ll change the data from <code>like_tokens</code> that we had earlier to to our new <code>my_vowel_means_tall</code>. Then, our group variable is now <code>vowel</code> instead of <code>id</code> because we want it to draw a separate line for each vowel.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_means_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> vowel)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_means_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> vowel)) <span class="sc">+</span> </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, <span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> </span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -832,10 +839,10 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <p>Because we have so many vowels, maybe we can add a little bit of color. Let’s have the color of the lines vary by the vowel as well:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_means_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> vowel, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_means_tall, <span class="fu">aes</span>(<span class="at">x =</span> F2, <span class="at">y =</span> F1, <span class="at">group =</span> vowel, <span class="at">color =</span> vowel)) <span class="sc">+</span> </span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, <span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -848,7 +855,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <p>As it turns out, the problem was when we took the average. Because there are a few outliers in this data still, and because vowel formant outliers tend to be towards the low front portion of the vowel space, it’s pulling a lot of the measurements in that direction. The mean is quite sensitive to outliers. What we can try instead is to take the median, which is less sensitive.</p>
 <p>So, the only change that we need to do is in <code>across</code> where we change the <code>mean</code> to <code>median</code>. In fact, we don’t even need to create a new object if you don’t want: we can pipe everything all at once, straight into <code>ggplot</code>! So in this code, I take the beginning dataset, create a summary of it, and then pipe it into <code>ggplot</code>. Note that when we pipe something into <code>ggplot</code>, you don’t need to specify the data anymore (the first argument), so I leave that blank.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summarize by vowel</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -862,7 +869,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">group =</span> vowel)) <span class="sc">+</span></span>
 <span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, <span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -874,7 +881,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <p>The result is a much cleaner picture: /i/ and /e/ sort of hook to the left while /u/ and /o/ start centralized and move to the back. My diphthongs follow their expected trajectories by starting centralized and sort of scooping down and up again. While <em>cot</em> and <em>caught</em> are somewhat close at their onsets, they have very different trajectories, clearly differentiating the phonemes. Finally, /ɪ/ is quite monophthongal, showing very little change in trajectory at all.</p>
 <p>Right now, things are a little hard to read because there are 14 colors and a lot of them are very similar to one another. Also, the legend has the vowels in alphabetical order, which isn’t too helpful. In the previous tutorial, we went over how to change that, so I won’t comment on it much here. The only difference is I’ll set the factor levels using <code>mutate</code> in the <code>dplyr</code> package rather than using base R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Relevel the vowels (random order to spread out similar colors)</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vowel =</span> <span class="fu">factor</span>(vowel, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"EH"</span>, <span class="st">"AO"</span>, <span class="st">"UW"</span>, </span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"AW"</span>, <span class="st">"IH"</span>, <span class="st">"AE"</span>, <span class="st">"OW"</span>, </span>
@@ -897,7 +904,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"IH"</span>, <span class="st">"EY"</span>, <span class="st">"EH"</span>, <span class="st">"AE"</span>, <span class="st">"AA"</span>, </span>
 <span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AO"</span>, <span class="st">"OW"</span>, <span class="st">"UH"</span>, <span class="st">"UW"</span>, </span>
 <span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AH"</span>, <span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>)) <span class="sc">+</span> </span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -908,7 +915,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <p>This is still suboptimal. It would be best to just have the name of the vowel on the plot itself. Fortunately, we saw how to do that in the previous tutorial. We’ll have to create a different dataset and use it in <code>geom_label</code>. Instead of one mega string of piped functions, I’ll save the main dataset into a new dataframe called <code>my_vowel_medians_tall</code>. I’ll then use that but just select the onset (the 20% mark) to create <code>labels_at_onset</code>, a dataframe specifically for plotting the labels.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>my_vowel_medians_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>my_vowel_medians_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Relevel the vowels</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vowel =</span> <span class="fu">factor</span>(vowel, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"EH"</span>, <span class="st">"AO"</span>, <span class="st">"UW"</span>, </span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                                          <span class="st">"AW"</span>, <span class="st">"IH"</span>, <span class="st">"AE"</span>, <span class="st">"OW"</span>, </span>
@@ -924,16 +931,16 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span>
 <span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>labels_at_onset <span class="ot">&lt;-</span> my_vowel_medians_tall <span class="sc">%&gt;%</span></span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percent <span class="sc">==</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percent <span class="sc">==</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, when we go to plot it, we add the <code>geom_label</code> function and use the <code>labels_at_onset</code> as the dataframe. The <code>F1</code>, <code>F2</code>, and color columns still work, so all we need to add is an aesthetic for the label. I also took out <code>scale_color_discrete</code> since we’re removing the legend, which is done with <code>theme(legend.position = "none")</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_medians_tall, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">group =</span> vowel)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_medians_tall, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">group =</span> vowel)) <span class="sc">+</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">ends =</span> <span class="st">"last"</span>, <span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"inches"</span>))) <span class="sc">+</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> labels_at_onset, <span class="fu">aes</span>(<span class="at">label =</span> vowel)) <span class="sc">+</span> </span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -955,13 +962,13 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <p>So last time, we took <code>my_vowels</code> and compressed the 10 columns into 1, but that was too far so we used <code>pivot_wider</code> to spread them out into F1 and F2 columns. Well, as it turns out, to make this Praat-like plot, we want that super tall, compressed version.</p>
 <p>All of this code you’ve seen before, so it should be relatively clear what is happening. We’ll start with the first dataset, <code>my_vowel</code>, only keep the tokens of “AY”, then we’ll smush all ten columns into one, separate out the formant and percent, and then sort it by the ID. We’ll save this as a new dataframe, <code>ay_very_tall</code>, because it’s a “very tall” version of the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>ay_very_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>ay_very_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vowel <span class="sc">==</span> <span class="st">"AY"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id) <span class="sc">%&gt;%</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 520 × 6
       id vowel word   formant percent    hz
@@ -981,9 +988,9 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <p>Once we’ve got this, plotting is pretty straightforward. For the <em>x</em>-axis, we want normalized time, which is in the <code>percent</code> column. For the <em>y</em>-axis, we want frequency in Hz, so we’ll use the <code>hz</code> column. We want to use <code>geom_path</code> again, and for maximal clarity, we’ll make the two formants different colors.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">group =</span> id, <span class="at">color =</span> formant)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">group =</span> id, <span class="at">color =</span> formant)) <span class="sc">+</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -995,14 +1002,14 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <p>Ah, crud. What happened? As it turns out, we’re plotting one line for each token because the <code>group</code> variable is based on the <code>id</code> column, which has a unique value per token. That’s not actually what we want though, is it? When we did the F1-F2 plot, we wanted a single line per token, sure, but in this plot, we actually want <em>two</em> lines per token, the F1 and the F2. In order for <code>ggplot</code> to draw separate lines, you’re going to need a column that has a unique value for every line you want to draw. So we want a different line for each formant for each token. In other words, we need to create what I like to think of as a “formant id” column. (And yes, that means just a little bit more data wrangling.)</p>
 <p>The way I like to do this is to use the <code>unite</code> function, which simply concatenates the values in multiple columns for each row. Since each token has its own id already, the <code>id</code> column, we can combine this with the formant in the <code>formant</code> column. To use <code>unite</code>, you first type the name of the new column you want to create (I did <code>formant_id</code>), then whatever columns you want to combine. By default, they will concatenate without any intervening material, but I like underscores, so I add <code>sep = "_"</code> to put an underscore between them. Also, by default, it’ll remove the contributing columns. We don’t really need the token id column anymore, but I like to keep the formant column so I can color the lines by formant, so we’ll add <code>remove = FALSE</code> to <code>unite</code>. Tag all this on to the end of the list of functions and you get the following block of code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ay_very_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ay_very_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vowel <span class="sc">==</span> <span class="st">"AY"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"F"</span>), <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(formant_percent, <span class="at">delim =</span> <span class="st">"@"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">str_remove</span>(percent, <span class="st">"%"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id) <span class="sc">%&gt;%</span></span>
 <span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(formant_id, formant, id, <span class="at">sep =</span> <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 520 × 7
    formant_id    id vowel word   formant percent    hz
@@ -1022,9 +1029,9 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <p>Now we can use the same <code>ggplot2</code> code, but use the <code>formant_id</code> instead of <code>id</code>, and we get what we want:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">group =</span> formant_id, <span class="at">color =</span> formant)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ay_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">group =</span> formant_id, <span class="at">color =</span> formant)) <span class="sc">+</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1040,7 +1047,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <h2 class="anchored" data-anchor-id="plotting-summarized-data">Plotting summarized data</h2>
 <p>Just like last time, we’ll have to do some data wrangling to get what we want, but fortunately there’s nothing new in this section: it’s just applying code that we’ve seen before.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>my_vowel_medians_very_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>my_vowel_medians_very_tall <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Take the median of each vowel at each timepoint</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">"F"</span>), median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.by =</span> vowel) <span class="sc">%&gt;%</span></span>
@@ -1052,7 +1059,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create the formant id column</span></span>
 <span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(formant_id, formant, vowel, <span class="at">sep =</span> <span class="st">"_"</span>, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 140 × 5
    formant_id vowel formant percent    hz
@@ -1072,12 +1079,12 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <p>And now we plot it. I’ll go ahead and manually change the order of the vowels too, like I did before, with <code>scale_color_discrete</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_medians_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">color =</span> vowel, <span class="at">group =</span> formant_id)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_medians_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">color =</span> vowel, <span class="at">group =</span> formant_id)) <span class="sc">+</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"IH"</span>, <span class="st">"EY"</span>, <span class="st">"EH"</span>, <span class="st">"AE"</span>, <span class="st">"AA"</span>, </span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"AO"</span>, <span class="st">"OW"</span>, <span class="st">"UH"</span>, <span class="st">"UW"</span>, </span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"AH"</span>, <span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>)) <span class="sc">+</span> </span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1088,13 +1095,13 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 </div>
 <p>This looks a lot cleaner than the previous plot. But we’re still left with the same problem of just too many darn vowels. For this one what I like to do is to <em>facet</em> the plot. Essentially, have each vowel as its own tile, forming a bit of a mosaic. To do that, we use the <code>facet_wrap</code> function, and then after a tilde, the name of the column you want to facet the plot by.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_medians_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">color =</span> vowel, <span class="at">group =</span> formant_id)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(my_vowel_medians_very_tall, <span class="fu">aes</span>(<span class="at">x =</span> percent, <span class="at">y =</span> hz, <span class="at">color =</span> vowel, <span class="at">group =</span> formant_id)) <span class="sc">+</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>vowel) <span class="sc">+</span> </span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"IH"</span>, <span class="st">"EY"</span>, <span class="st">"EH"</span>, <span class="st">"AE"</span>, <span class="st">"AA"</span>, </span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"AO"</span>, <span class="st">"OW"</span>, <span class="st">"UH"</span>, <span class="st">"UW"</span>, </span>
 <span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"AH"</span>, <span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>)) <span class="sc">+</span> </span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1106,7 +1113,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <p>Here, color and legend are superfluous and you can remove them if you want, but the color at least makes it look pretty I guess. This is a handy way to quickly compare the formants for all the vowels at once.</p>
 <p>In fact, if you want to create a new column specifically meant for faceting, it’s relatively easy to and might make a more meaningful plot. Here, I create a new column called <code>class</code>, which tells whether the vowel is tense, lax, or a diphthong. I do this using the <code>case_when</code> function, which is essentially a way to create a stack of if-else-if statements. So I say, okay, if the vowel is one of these five, in the new <code>class</code> column, put the value as “tense”. If it’s one of these six vowels, call it “lax”, and if it’s one of those three call it a “diphthong.” The only change in the plot code is in the <code>facet_wrap</code>, where I take out <code>vowel</code> and put in this new <code>class</code> column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>my_vowel_medians_very_tall <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>my_vowel_medians_very_tall <span class="sc">%&gt;%</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">class =</span> <span class="fu">case_when</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"EY"</span>, <span class="st">"AE"</span>, <span class="st">"OW"</span>, <span class="st">"UW"</span>) <span class="sc">~</span> <span class="st">"tense"</span>,</span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                           vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"IH"</span>, <span class="st">"EH"</span>, <span class="st">"AA"</span>, <span class="st">"AO"</span>, <span class="st">"UH"</span>, <span class="st">"AH"</span>) <span class="sc">~</span> <span class="st">"lax"</span>,</span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>                           vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>) <span class="sc">~</span> <span class="st">"diphthong"</span>)) <span class="sc">%&gt;%</span></span>
@@ -1116,7 +1123,7 @@ Supply arguments directly to `.fns` through an anonymous function instead.
 <span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"IY"</span>, <span class="st">"IH"</span>, <span class="st">"EY"</span>, <span class="st">"EH"</span>, <span class="st">"AE"</span>, <span class="st">"AA"</span>, </span>
 <span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"AO"</span>, <span class="st">"OW"</span>, <span class="st">"UH"</span>, <span class="st">"UW"</span>, </span>
 <span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"AH"</span>, <span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>)) <span class="sc">+</span> </span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1190,13 +1197,14 @@ Supply arguments directly to `.fns` through an anonymous function instead.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

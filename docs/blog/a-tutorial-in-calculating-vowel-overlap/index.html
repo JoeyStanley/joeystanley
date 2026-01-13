@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -128,6 +129,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
@@ -161,6 +164,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI <em>how do I feel about it?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -320,12 +327,12 @@ Note
 <h2 class="anchored" data-anchor-id="data-prep">Data prep</h2>
 <p>As always, I’ll be using <code>tidyverse</code> code to read in, process, and plot the data. Remember that this is a bit of an umbrella package that includes <code>dplyr</code>, <code>tidyr</code>, and <code>ggplot2</code>, which you might be more familiar with.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And I’ll use the same dataset that I’ve used in other tutorials. It’s a bunch of formant measurements of me reading about 300 sentences while sitting at my kitchen counter. The audio was automatically transcribed and processed with <a href="http://darla.dartmouth.edu">DARLA</a>. As part of the process, it was processed with FAVE-extract, so the output file is just like what yours might look like if you also used FAVE. Hopefully this makes this tutorial the most translatable to your own data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_vowels_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/joey.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_vowels_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../data/joey.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,504 × 43
    name       sex   vowel stress pre_word word    fol_word    F1    F2 F3    
@@ -357,12 +364,12 @@ Note
 <li><p>Finally, there’s only one speaker here (me), but I want to show how to do this across all speakers in your sample, so I’ll go ahead and add a <code>fake_speaker</code> column that randomly assigns rows the speaker name “Joey” or “Stanley”. Fortunately I have a first name for a last name so this isn’t too weird of a result.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="ot">&lt;-</span> my_vowels_raw <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="ot">&lt;-</span> my_vowels_raw <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vowel, word, dur, <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, fol_seg, plt_manner, plt_place, plt_voice) <span class="sc">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">F1 =</span> <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="at">F2 =</span> <span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fake_speaker =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Joey"</span>, <span class="st">"Stanley"</span>), <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_vowels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_vowels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
   vowel word       dur    F1    F2 fol_seg plt_manner plt_place plt_voice
@@ -378,11 +385,11 @@ Note
 </div>
 <p>For this tutorial, I’ll focus on <a href="../../pages/my-cot-caught-distribution">my low back merger</a> (a.k.a. the <em>cot-caught</em> merger or the <sc>lot</sc>-<sc>thought</sc> merger). Now, my intuition tells me that <sc>lot</sc> (= “AA”) and <sc>thought</sc> (= “AO”) are quite distinct, though I have noticed myself using a backed vowel for some <sc>lot</sc> words in conversation. I’m definitely merged before tautosyllabic /l/, so that <em>doll</em> and <em>hall</em> rhyme, but definitely not before intervocalic /l/ (so <em>collar</em> and <em>caller</em> are quite distinct). So I’ll exclude tokens before /l/ for clarity. I’ll also exclude tokens before /ɹ/ because words in the <span class="smallcaps">north</span> and <span class="smallcaps">force</span> lexical sets are transcribed with AO in this data and I’m not particularly concerned about that environment. Finally, I’ll exclude the word <em>on</em> because it was only real stopword included in this sample.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"AO"</span>), </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"L"</span>, <span class="st">"R"</span>),</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           word <span class="sc">!=</span> <span class="st">"ON"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(low_back)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(low_back)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 10
   vowel word     dur    F1    F2 fol_seg plt_manner plt_place plt_voice
@@ -398,9 +405,9 @@ Note
 </div>
 <p>Here’s what my data looks like. There’s quite a bit of overlap here at the midpoint, but my vowels are distinguished by other means like their trajectories (analyzing <em>those</em> will have to wait until another day).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(low_back, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(low_back, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -423,7 +430,7 @@ Note
 <p>Okay, so how do we actually calculate the Pillai score? As stated in <a href="http://asa.scitation.org/doi/abs/10.1121/1.4894063">Nycz &amp; Hall-Lew (2013)</a>, the Pillai score is an output of a MANOVA test. Basically, what the MANOVA test does is it takes at least two continuous dependent variables and whether they come from the same distribution in that multivariate space. A linear regression with <code>lm</code> (or even a mixed-effects linear regreesion with <code>lmer</code>) takes only one dependent variable and can tell you which of the independent variables are significant predictors. The MANOVA test does the same thing just with more than one dependent variable at the same time.</p>
 <p>The test itself is done using the <code>manova</code> function. Like <code>lm</code> and <code>lmer</code>, the main argument is a formula, such as <code>y ~ x</code>, where the dependent variable is before the tilde and the independent variable is after. But, because <code>manova</code> can take multiple dependent variables, you have to wrap them all together in this <code>cbind</code> function: <code>cbind(y1, y2) ~ x</code>. In my data, the two dependent variables are <code>F1</code> and <code>F2</code>, so I’ll wrap those up in <code>cbind</code>. Then I’ll add the dependent variable, which is the <code>vowel</code> column. Finally, I’ll add the <code>data = low_back</code> argument so that the function knows where the data is coming from. When you run all this wrapped up in <code>manova</code>, you get something like this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
    manova(cbind(F1, F2) ~ vowel, data = low_back)
@@ -440,8 +447,8 @@ Estimated effects may be unbalanced</code></pre>
 </div>
 <p>So this output is not particularly useful by itself right now because it doesn’t show the Pillai score. So, like other regression models, if you save the model into an object (<code>my_manova</code> in this case), you can then get all these summary statistics with the <code>summary</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df  Pillai approx F num Df den Df    Pr(&gt;F)    
 vowel      1 0.22138   8.2456      2     58 0.0007053 ***
@@ -462,7 +469,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Update (Novmeber 23, 2021)
+<span class="screen-reader-only">Note</span>Update (Novmeber 23, 2021)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -477,8 +484,8 @@ Update (Novmeber 23, 2021)
 <p>So far, we’ve only done the most basic MANOVA test. It includes F1 and F2 as continuous variables and vowel as the dependent variable. The MANOVA test can actually handle more information for that. For one, you can add not just F1 and F2, but also F3 or duration or any number of <em>continuous</em> variables as response variables.</p>
 <p>So, for example, if I wanted to add duration, that’ll look at the overlap between the two vowels in a three-dimensional space. The two vowels may be completely overlapped in F1 and F2 and differentiated only by duration. If that’s the case, the Pillai score would be higher if duration is added.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df  Pillai approx F num Df den Df   Pr(&gt;F)   
 vowel      1 0.22494   5.5143      3     57 0.002143 **
@@ -490,8 +497,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>In my case, the Pillai score is hardly any different, so maybe duration doesn’t really play a role in differentiating these vowels for me.</p>
 <p>We can also add additional predictor variables. So if we wanted to control for various phonetic environments, we could just add them add to the formula. Here I’ll control for place, manner, and voicing of the following segment.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> vowel <span class="sc">+</span> plt_place <span class="sc">+</span> plt_manner <span class="sc">+</span> plt_voice, <span class="at">data =</span> low_back)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> vowel <span class="sc">+</span> plt_place <span class="sc">+</span> plt_manner <span class="sc">+</span> plt_voice, <span class="at">data =</span> low_back)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Df   Pillai approx F num Df den Df   Pr(&gt;F)   
 vowel       1 0.244006   5.5945      3     52 0.002111 **
@@ -506,9 +513,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="page-columns page-full"><p> Now the problem here is that we get a Pillai score for each one. How do we interpret this? To be honest, I’ve never encountered this before in my research. But, I <em>think</em> the way this is interpreted is that the Pillai score for the vowel is a measure of overlap between the two vowels after all the other variables have been controlled for. In my case, it’s a little higher—0.14 instead of 0.12—when environmental effects are considered, which I guess makes sense.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">What’s weird here is that the <em>p</em>-values don’t really correlate with the Pillai score, so the variable that’s that has the most separation is the one without statistical significance. This is another problem when interpreting <em>p</em>-values in conjunction with Pillai scores. [Update (November 23, 2021): this is likely the result of sample size differences. See my note in section 2.1.1 and link to more recent research on this topic.]</span></div></div>
 <p>For the other variables, they each have their own Pillai scores. So like the <code>plt_manner</code> Pillai score would be a measure of overlap between the various manners of articulation, after the vowel class has been accounted for. To me, that seems a little high considering what the data looks like when it’s colored by voicing of the following segment using the information returned from FAVE.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(low_back, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> plt_voice, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(low_back, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> plt_voice, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -525,7 +532,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>So this is good. We’ve been able to get the Pillai score and that’s great. But what if you wanted R to just give you just that one number instead of that whole summary table? Right now it’s embedded in a small table full of lots of other numbers and it might be distracting to see all of them. Or sometimes, you want to save the Pillai score and use it for something else. Either way, it’s useful to know how to extract just that one number from that summary table.</p>
 <p>As a reminder here’s that summary table again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Df   Pillai approx F num Df den Df   Pr(&gt;F)   
 vowel       1 0.244006   5.5945      3     52 0.002111 **
@@ -539,7 +546,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Let’s pop the hood on this summary and figure out what’s going on. As it turns out, you can access this summary table by appending <code>$stats</code> at the end of the summary:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           Df     Pillai  approx F num Df den Df      Pr(&gt;F)
 vowel       1 0.24400611 5.5945415      3     52 0.002110544
@@ -552,7 +559,7 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>When you view it this way, you can see that it’s just a dataframe and things like the significance stars aren’t there. R. So that <code>stats</code> object within the summary of the MANOVA test is just a table, which means we can extract specific rows and columns with the same kind of R syntax that you’ve seen in other tables. Specifically, if you put <code>[x,y]</code> at the end of the code, where <code>x</code> is the row number and <code>y</code> is the column name/number, you can get individual cells.</p>
 <p>So, let’s see if we can extract just the <code>Pillai</code> column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[,<span class="st">"Pillai"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[,<span class="st">"Pillai"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     vowel  plt_place plt_manner  plt_voice  Residuals 
 0.24400611 0.14317786 0.07490799 0.19543023         NA </code></pre>
@@ -560,7 +567,7 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 </div>
 <p>Okay, great. If you look closely, that 0.1404699 is the Pillai score for the vowel. The reason why the word “vowel” is above it is because that’s what <em>row</em> the value is in. Likewise, we can extract just the “vowel” row of the summary table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[<span class="st">"vowel"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[<span class="st">"vowel"</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df       Pillai     approx F       num Df       den Df       Pr(&gt;F) 
  1.000000000  0.244006107  5.594541473  3.000000000 52.000000000  0.002110544 </code></pre>
@@ -568,7 +575,7 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 </div>
 <p>There are all those numbers again. So, if we intersect the two, extract the “vowel” row of the “Pillai” column, we should be left with just the Pillai score for vowel.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2440061</code></pre>
 </div>
@@ -576,15 +583,15 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>There we go. We now have code to extract nothing but our Pillai score.</p>
 <p>Now, from here, we have two options. One is that we can combine the MANOVA test and Pillai score extraction all onto one line. Currently, our workflow looks like this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>my_manova <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_manova)<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2213842</code></pre>
 </div>
 </div>
 <p>But, if you want, you can simplify it even more by embedding the <code>manova</code> function call right in there:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back))<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back))<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2213842</code></pre>
 </div>
@@ -596,10 +603,10 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>At this point, what I like to do is to create a function in R. I don’t like all that typing in the previous line of code because it’s somewhat cumbersome, prone to error, and—most importantly—it’s not immediately transparent what it does. There’s really no indication that that big ol’ line is getting the Pillai score and when you come back to look at your code in a few weeks or months, you might not remember what all that mumbo-jumbo is about. For this reason, I like to create custom functions that do all the heavy lifting for me.</p>
 <p>The gist of a function is that you take some input parameters (called “arguments”), do something to them, and return some value. So, a function that takes a number and multiplies it by two, might look something like this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>times_two <span class="ot">&lt;-</span> <span class="cf">function</span>(hi_my_name_is_joey) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>times_two <span class="ot">&lt;-</span> <span class="cf">function</span>(hi_my_name_is_joey) {</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    hi_my_name_is_joey <span class="sc">*</span> <span class="dv">2</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">times_two</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">times_two</span>(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
@@ -608,10 +615,10 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>Now, I’m not going to get into the details of how to write functions. There are lot of people that have done so, and their explanations are far better than anything I could do. To point you to one source, I learned how to write them primarily through <a href="https://r4ds.had.co.nz/functions.html">Chapter 19</a> of <a href="https://r4ds.had.co.nz"><em>R for Data Science</em></a>, so you’re welcome to take a look there.</p>
 <p>For the sake of your time, I’ll cut to the chase regarding functions. The cool thing about arguments in R functions is that if all we’re going to do is pass them down into another function (like <code>manova</code>) we don’t even need to bother with naming arguments. You can actually just type <code>...</code> as the argument, both in the function definition and in the <code>manova</code> function, and it’ll magically take care of everything.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">manova</span>(...))<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> low_back)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2213842</code></pre>
 </div>
@@ -623,22 +630,22 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>Okay, so this seems to work fine on my own data. But I’m just one speaker. You probably have more than one speaker that you’re analyzing and you want to compare all their Pillai scores. So how do you go about calculating the Pillai score for each one?</p>
 <p>For starters, you could create subsets of the data and calculate them separately.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>joey <span class="ot">&lt;-</span> low_back <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>joey <span class="ot">&lt;-</span> low_back <span class="sc">%&gt;%</span> </span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(fake_speaker <span class="sc">==</span> <span class="st">"Joey"</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>stanley <span class="ot">&lt;-</span> low_back <span class="sc">%&gt;%</span> </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(fake_speaker <span class="sc">==</span> <span class="st">"Stanley"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(fake_speaker <span class="sc">==</span> <span class="st">"Stanley"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then, you can use our new handy-dandy function to get the Pillai scores for each one.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>joey_pillai <span class="ot">&lt;-</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> joey)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>joey_pillai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>joey_pillai <span class="ot">&lt;-</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> joey)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>joey_pillai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2352627</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>stanley_pillai <span class="ot">&lt;-</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> stanley)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>stanley_pillai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>stanley_pillai <span class="ot">&lt;-</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> stanley)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>stanley_pillai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2208865</code></pre>
 </div>
@@ -647,8 +654,8 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>Instead, let’s see if we can get a little help with the <code>summarize</code> function. So <code>summarize</code> is part of the <code>dplyr</code> package and according to it’s help file, it “reduces multiple values down to a single value.” We can use <code>summarize</code> for a whole bunch of things, like calculating the average F1 measurement in my low back vowels.</p>
 <p><span class="sidenote">You’re going to see this “tibble” thing in my output a lot more now. That’s just a byproduct of using certain tidyverse func­tions. Read more about tibbles <a href="https://tibble.tidyverse.org">here</a>.</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_F1 =</span> <span class="fu">mean</span>(F1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_F1 =</span> <span class="fu">mean</span>(F1))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   mean_F1
@@ -659,8 +666,8 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>So in our case, we have multiple F1 and F2 measurements and we want to reduce those down to a single Pillai score. We can run <code>summarize</code> on our data by creating a new column name (let’s call it <code>low_back_pillai</code>) and then calling the <code>pillai</code> function:</p>
 <p><span class="sidenote">You’ll notice you don’t need to add the <code>data = low_back</code> argument anymore. Within tidyverse functions, when you pipe things in using <code>%&gt;%</code>, the data arguments are implied alreday.</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   low_back_pillai
@@ -671,9 +678,9 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>Okay, so that’s kind of cool. That’s the same number we saw from above. But that pools the entire dataset (both “Joey” and “Stanley”) together. How do we group the data by the speaker name? Fortunately, there’s another super handy function called <code>group_by</code>, also in the <code>dplyr</code> package, that will group the data by the values in some column. So, when we run <code>group_by(fake_speaker)</code> first, it’ll essentially split the data up into subsets, one for each speaker, and then calculate the Pillai score for each group.</p>
 <p><span class="sidenote">[Update (November 23, 2021): Here’s some evidence for me and Betsy Sneller’s recent finding that sample size matters. My Pillai score for all data is 0.119, but when I subset it into two smaller groups, the Pillai scores go up to 0.131 and 0.169. See my note in section 2.1.1 and link to more recent research on this topic.]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(fake_speaker) <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   fake_speaker low_back_pillai
@@ -700,13 +707,13 @@ Residuals  54         NA        NA     NA     NA          NA</code></pre>
 <p>To get Bhattacharyya’s Affinity you’ll need to install and download an additional R package, <code>adehabitatHR</code> (plus its dependencies), to get this measurement. If you haven’t installed the package already, you’ll need to with <code>install.packages</code>.</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you run into problems with the <code>select</code> function in your scripts after loading <code>adehabitatHR</code>, see <a href="../../blog/vowel-overlap-in-r-advanced-topics">Part 2</a> for an explanation and solution.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("adehabitatHR")</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("adehabitatHR")</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So the way this works is that there are three steps to getting Bhattacharyya’s Affinity. Step one is that you’ll need to prep the <code>low_back</code> dataframe. Remember how we created <code>low_back</code>? We took the <code>my_vowels</code> dataframe, which contained data about all the vowels, and got a subset of it. In R, there’s a lot of hidden metadata about dataframes, and sometimes this can bite you down the road. This is one of those times.</p>
 <p>Let’s pop the hood and look at our <code>low_back</code> dataframe. When your data is a <em>factor</em>, meaning R treats it as a categorical variable, it keeps track of what all the possible values are. So, in our <code>vowel</code> column of <code>low_back</code>, we can use <code>table</code> to see all the values attested in our dataframe.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(low_back<span class="sc">$</span>vowel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(low_back<span class="sc">$</span>vowel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 AA AO 
@@ -717,8 +724,8 @@ AA AO
 <p>The next step is to convert the data into a spatial points dataframe. This is a special kind of dataset that is meant to be processed as spatial data. Using the <code>SpatialPointsDataFrame</code> function, we provide two arguments: the coordinates and the data. If you think of the F1-F2 vowel space as <em>x</em>-<em>y</em> coordinates, then it makes sense why we need to have those as the coordinate data. And for the data, well, the only thing we need to do is supply the vowel data.</p>
 <p>Unfortunately, <code>SpatialPointsDataFrame</code> requires the data to be prepared just right in order for it to work. So, when we send the F1 and F2 data, we have to basically prepare a dataframe that contains just those two columns. We can do this by subsetting the <code>low_back</code> data and only selecting the <code>F1</code> and <code>F2</code> columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>just_formants_df <span class="ot">&lt;-</span> low_back[,<span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>)]</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(just_formants_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>just_formants_df <span class="ot">&lt;-</span> low_back[,<span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>)]</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(just_formants_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
      F1    F2
@@ -733,8 +740,8 @@ AA AO
 </div>
 <p>Then, for the data, we need to do the same thing, but only selecting the <code>vowel</code> column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>just_vowels_df <span class="ot">&lt;-</span> low_back[<span class="st">"vowel"</span>]</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(just_vowels_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>just_vowels_df <span class="ot">&lt;-</span> low_back[<span class="st">"vowel"</span>]</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(just_vowels_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 1
   vowel
@@ -749,12 +756,12 @@ AA AO
 </div>
 <p>So, if we put those two as the arguments to the <code>SpatialPointsDataFrame</code> function, we’re golden. Let’s save that as a new object called <code>low_back_sp</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>low_back_sp <span class="ot">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span>(just_formants_df, just_vowels_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>low_back_sp <span class="ot">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span>(just_formants_df, just_vowels_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It’s not particularly important what this new object looks like because it’s just an intermediate step to the next function, which is the <code>kerneloverlap</code> in the <code>adehabitatHR</code> library. This is the function that actually calculates the Bhattacharyya’s Affinity. If we apply this function to our new <code>low_back_sp</code> object, all we need to to is to tell it which method to apply, which is <code>"BA"</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ba_table <span class="ot">&lt;-</span> <span class="fu">kerneloverlap</span>(low_back_sp, <span class="at">method =</span> <span class="st">"BA"</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>ba_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ba_table <span class="ot">&lt;-</span> <span class="fu">kerneloverlap</span>(low_back_sp, <span class="at">method =</span> <span class="st">"BA"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>ba_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          AA        AO
 AA 0.9998734 0.8067602
@@ -764,35 +771,35 @@ AO 0.8067602 0.9998692</code></pre>
 <div class="page-columns page-full"><p>So now we have a matrix of Bhattacharyya’s Affinities! So the way you read this is to choose a row and a column and find the cell where the two intersect. That cell contains the Bhattacharyya’s Affinity for those two vowels. So for “AA” and “AA”—identical vowels—it’s 0.9998, which is basically 1. That’s what we’d expect, right? But we’re not interested in those cells, we’re interested in the cells for “AA” and “AO”. Here, you can see that they’re about 0.80.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">If you look closely, the top left and the bottom right cells are slightly different. I’m not sure why, but that difference is so small it shouldn’t matter.</span></div></div>
 <p>We can extract just this number by pulling just the first row of the second column like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8067602</code></pre>
 </div>
 </div>
 <p>Alternatively, you could use the names of the vowels, just like we did with the Pillai score above:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="st">"AA"</span>, <span class="st">"AO"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="st">"AA"</span>, <span class="st">"AO"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8067602</code></pre>
 </div>
 </div>
 <p>So that’s it! After all that, we finally were able to extract the Bhattacharyya’s Affinity for my low back vowels. Let’s put it all together just so you can see the necessary steps.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(low_back)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(low_back)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>just_formants_df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(low_back<span class="sc">$</span>F1, low_back<span class="sc">$</span>F2)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>just_vowels_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(low_back<span class="sc">$</span>vowel)</span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>low_back_sp <span class="ot">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span>(just_formants_df, just_vowels_df)</span>
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>ba_table <span class="ot">&lt;-</span> <span class="fu">kerneloverlap</span>(low_back_sp, <span class="at">method =</span> <span class="st">"BA"</span>)</span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>ba_table[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8067602</code></pre>
 </div>
 </div>
 <p>Now of course we can consolidate this somewhat by embedding functions within other functions, if you’d like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(low_back)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(low_back)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>low_back_sp <span class="ot">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span>(<span class="fu">cbind</span>(low_back<span class="sc">$</span>F1, low_back<span class="sc">$</span>F2), <span class="fu">data.frame</span>(low_back<span class="sc">$</span>vowel))</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kerneloverlap</span>(low_back_sp, <span class="at">method =</span> <span class="st">"BA"</span>)[<span class="dv">1</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kerneloverlap</span>(low_back_sp, <span class="at">method =</span> <span class="st">"BA"</span>)[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8067602</code></pre>
 </div>
@@ -805,9 +812,9 @@ AO 0.8067602 0.9998692</code></pre>
 <p>So the goal for this function is to be as similar to the Pillai one as possible. It’s not going to have identical syntax because of the functions you need to run them (<code>manova</code> verses <code>kerneloverlap</code>), but we can at least come close.</p>
 <div class="page-columns page-full"><p> I’ll go ahead and name the function <code>bhatt</code>. The key ingredients we need for calculating it are the <code>F1</code>, <code>F2</code>, and <code>vowel</code> columns. So as arguments, we’ll have those.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">These argument names are arbitrary so instead of <code>F1</code>, <code>F2</code>, and <code>vowel</code>, you could do <code>dog</code>, <code>fish</code>, and <code>emu</code> and it’ll work fine. However, it’s useful to keep the argument names informative. But keep in mind that they don’t have to match the column names in your dataframe.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is just the template</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Within the function I’ll now include the three steps I had before.</p>
 <ol type="1">
@@ -816,17 +823,17 @@ AO 0.8067602 0.9998692</code></pre>
 <li><p>Finally, I’ll use <code>kerneloverlap</code> to get the matrix of Bhattacharyya’s Affinity measures and then extract just the first row of the second column.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    vowel_data <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">data.frame</span>(vowel))</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    sp_df <span class="ot">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span>(<span class="fu">cbind</span>(F1, F2), vowel_data)</span>
 <span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kerneloverlap</span>(sp_df, <span class="at">method=</span><span class="st">'BA'</span>)[<span class="dv">1</span>,<span class="dv">2</span>]</span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can then then run that on whatever dataset you want by piping it into the <code>summarize</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   low_back_bhatt
@@ -836,9 +843,9 @@ AO 0.8067602 0.9998692</code></pre>
 </div>
 <p>Okay! Now we’ve done it! We can now do this with all the speakers too, as long as your data is prepared the right way.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(fake_speaker) <span class="sc">%&gt;%</span></span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   fake_speaker low_back_bhatt
@@ -850,10 +857,10 @@ AO 0.8067602 0.9998692</code></pre>
 <p>Hooray! So, again, this will probably work fine for most people. But, if you find that the function is crashing, go on to the next blog post to see how you can make it more robust to errors.</p>
 <p>In fact, the way the <code>bhatt</code> and <code>pillai</code> functions are set up now, you can actually extract both the Pillai score and the Bhattacharyya’s Affinity all at once. You just put each on its own line within the <code>summarize</code> function and it’ll take care of it all.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(fake_speaker) <span class="sc">%&gt;%</span></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel),</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">low_back_bhatt  =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">low_back_bhatt  =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   fake_speaker low_back_pillai low_back_bhatt
@@ -925,13 +932,14 @@ AO 0.8067602 0.9998692</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

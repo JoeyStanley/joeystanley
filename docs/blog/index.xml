@@ -10,7 +10,7 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.25</generator>
-<lastBuildDate>Fri, 09 Jan 2026 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 09 Jan 2026 07:00:00 GMT</lastBuildDate>
 <item>
   <title>LSA and ADS 2026</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -72,18 +72,19 @@ Tip
 <p>Download the poster <a href="../../downloads/260111-ADS2026_youtube.pdf">here</a>!</p>
 </div>
 </div>
-<p>At ADS, I presented some research I’ve been working on with Brett Hashimoto, who is my colleage at BYU, and Jack Grieve who is at the University of Birmingham. Brett has access to a monster corpus of transcriptions from YouTube videos of town hall meetings and other local meetings. Following the methods in Grieve (2016), we created maps for each variant of something like 135 lexico-grammatical variables. We found lots of interesting distribution patterns. At this point, we’re just showing maps but we hope to do some cluster analysis soon and see how these variables co-occur.</p>
+<p>At ADS, I presented some research I’ve been working on with Brett Hashimoto, who is my colleague at BYU, and Jack Grieve who is at the University of Birmingham. Brett has access to a monster corpus of transcriptions from YouTube videos of town hall meetings and other local meetings. Following the methods in Grieve (2016), we created maps for each variant of something like 135 lexico-grammatical variables. We found lots of interesting distribution patterns. At this point, we’re just showing maps but we hope to do some cluster analysis soon and see how these variables co-occur.</p>
 
 
 </section>
 
  ]]></description>
   <category>Conferences</category>
+  <category>GIS</category>
   <category>Presentations</category>
   <category>Research</category>
   <category>Utah</category>
   <guid>https://joeystanley.com/blog/ads-and-lsa-2026/</guid>
-  <pubDate>Fri, 09 Jan 2026 06:00:00 GMT</pubDate>
+  <pubDate>Fri, 09 Jan 2026 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>For the Benefit of the World 2025</title>
@@ -110,7 +111,13 @@ Tip
 <p>Download the poster <a href="../../downloads/251114-BenefitOfTheWorld.pdf">here</a>.</p>
 </div>
 </div>
-<p>Unfortunately, I was unable to attend because of a conflict in my teaching schedule. But Dr.&nbsp;Lisa Morgan Johnson presented on behalf of the group. She also did the lion’s share of preparing the poster as well. As part of this presentation, we’ve prepared a page of <a href="../../pages/linguistic-discrimination.html">resources for learning more about linguistic discrimination</a>. Hopefully this is the beginning of full-fledged website, but for now we just wanted <em>something</em> to send conference attendees to for more information.</p>
+<p>Unfortunately, I was unable to attend the main poster presentation part because of a conflict in my teaching schedule. But Dr.&nbsp;Lisa Morgan Johnson, Dr.&nbsp;Vashti Wai Yu Lee, Dr.&nbsp;Eve Koller on behalf of the group. Lisa also did the lion’s share of preparing the poster as well. As part of this presentation, we’ve prepared a page of <a href="../../pages/linguistic-discrimination.html">resources for learning more about linguistic discrimination</a>. Hopefully this is the beginning of full-fledged website, but for now we just wanted <em>something</em> to send conference attendees to for more information.</p>
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://joeystanley.com/blog/for-the-benefit-of-the-world-2025/photo.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="margin-caption">Me, Lisa Johnson, Vashi Lee, and Eve Koller in front of our poster</figcaption>
+</figure>
+</div>
 
 
 
@@ -1050,7 +1057,7 @@ Tip
 <h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
 <p>I’ll load the packages I need, including my own <a href="https://joeystanley.github.io/joeysvowels/"><code>joeysvowels</code></a> package from Github.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -1062,11 +1069,11 @@ background-color: null;
 font-style: inherit;"># remotes::install_github("joeystanley/joeysvowels")</span></span>
 <span id="cb1-5"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(joeysvowels)</span></code></pre></div>
+font-style: inherit;">library</span>(joeysvowels)</span></code></pre></div></div>
 </div>
 <p>I’ll play around with the Idahoans dataset in this post, which sample data from 10 people from Idaho.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">idahoans <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">idahoans <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> joeysvowels<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1091,7 +1098,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb2-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 6
    token_id speaker vowel    F1    F2    F3
@@ -1111,7 +1118,7 @@ font-style: inherit;">print</span>()</span></code></pre></div>
 </div>
 <p>I created this dataset for the express purpose of testing out normalization functions. Let’s take a peek at it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(idahoans, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1144,7 +1151,7 @@ background-color: null;
 font-style: inherit;">+</span></span>
 <span id="cb4-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">theme_bw</span>()</span></code></pre></div>
+font-style: inherit;">theme_bw</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1155,12 +1162,12 @@ font-style: inherit;">theme_bw</span>()</span></code></pre></div>
 </div>
 <p>I’ll load my packages as well.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># remotes::install_github("joeystanley/joeyr")</span></span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(joeyr)</span></code></pre></div>
+font-style: inherit;">library</span>(joeyr)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'joeyr'</code></pre>
@@ -1170,12 +1177,12 @@ Attaching package: 'joeyr'</code></pre>
 
     norm_deltaF</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># remotes::install_github("joeystanley/barktools")</span></span>
 <span id="cb8-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(barktools)</span></code></pre></div>
+font-style: inherit;">library</span>(barktools)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'barktools'</code></pre>
@@ -1191,7 +1198,7 @@ Attaching package: 'barktools'</code></pre>
 <h2 class="anchored" data-anchor-id="lobanov-normalization">Lobanov normalization</h2>
 <p>Though Barreda (<a href="https://doi.org/10.1017/S0954394521000016">2021</a> and <a href="https://doi.org/10.1016/j.wocn.2025.101409">2025</a>) advises against Lobanov normalization, I’ll start there because it’s probably the most familiar to the most number of people. Lobanov normalization is straightforward and can be easily implemented with the <code>scale</code> function in base R. Here’s a more verbose way of doing things:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb11-2">  <span class="fu" style="color: #4758AB;
@@ -1215,11 +1222,11 @@ font-style: inherit;">scale</span>(F2),</span>
 background-color: null;
 font-style: inherit;">F3_z =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">scale</span>(F3))</span></code></pre></div>
+font-style: inherit;">scale</span>(F3))</span></code></pre></div></div>
 </div>
 <p>Here’s a more compact way that is functionally equivalent using some tidyverse tricks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb12-2">  <span class="fu" style="color: #4758AB;
@@ -1234,11 +1241,11 @@ font-style: inherit;">.names =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"{.col}_z"</span>), <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">.by =</span> speaker)</span></code></pre></div>
+font-style: inherit;">.by =</span> speaker)</span></code></pre></div></div>
 </div>
 <p>Here’s how you’d do the Lobanov normalization in <code>tidynorm</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">idahoans_lob <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">idahoans_lob <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1258,7 +1265,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb13-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3  F1_z   F2_z   F3_z vowel
@@ -1280,9 +1287,9 @@ font-style: inherit;">print</span>()</span></code></pre></div>
 <p>One thing that I think is worth mentioning here—and this will be true of all the <code>tidynorm</code> functions I show here—is that there are two changes to the dataframe other than the addition of new normalized vowel formant columns. First, there is a new <code>.id</code> column, which just shows the row numbers. That gets added during the normalization procedure and apparently stays. Also, the order of columns has shifted a little bit. The formant columns are now located before the vowel column.</p>
 <p>Also, please note that <code>tidynorm</code> function calls by default return some helpful information that provides some good feedback to make sure you’ve normalized the way you meant to. For me though, those messages were causing some issues in my R console, so throughout this post I’ll use <code>.silent = TRUE</code> anytime I run a <code>tidynorm</code> function. Be sure to look at the output in your own code though, which you can can always do with <code>check_norm</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">check_norm</span>(idahoans_lob)</span></code></pre></div>
+font-style: inherit;">check_norm</span>(idahoans_lob)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Normalization Step
 • normalized with `tidynorm::norm_lobanov()`
@@ -1298,7 +1305,7 @@ font-style: inherit;">check_norm</span>(idahoans_lob)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="logmeans-neary-normalization">Logmeans (=Neary) normalization</h2>
 <p>My go-to normalization procedure now is the Nearey method, thanks to Barreda’s work. In my <code>joeyr</code> package, I had a function called <code>norm_logmeans</code>, which handled everything as best I could. (Although it was crashing for some users, and I’m not sure why.) It was pretty clunky because it required you to log transform the formant measurements first and I always ended up renaming the columns afterwards anyway. Because it was inhereted code, it also was a departure from <code>tidyverse</code> under the hood, so the result didn’t get returned as a tibble.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb17-2">  <span class="fu" style="color: #4758AB;
@@ -1344,7 +1351,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb17-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">tibble</span>()</span></code></pre></div>
+font-style: inherit;">tibble</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 12
    token_id speaker vowel    F1    F2    F3 F1_log F2_log F3_log F1_logmeans
@@ -1365,7 +1372,7 @@ font-style: inherit;">tibble</span>()</span></code></pre></div>
 </div>
 <p>Fortunately, <code>tidynorm</code> makes this much easier to do now and you can do the whole thing with just one line of code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb19-2">  <span class="fu" style="color: #4758AB;
@@ -1378,7 +1385,7 @@ font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3  F1_lm    F2_lm F3_lm vowel
@@ -1415,7 +1422,7 @@ Note
 <h2 class="anchored" data-anchor-id="delta-f-normalization">Delta-F Normalization</h2>
 <p>In my joeyr package, I have a function called <code>norm_deltaF</code>. I wrote it quickly without much testing and I honestly haven’t used it much. But it does work:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb21-2">   <span class="fu" style="color: #4758AB;
@@ -1425,7 +1432,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb21-3">   <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">joeyr_norm_deltaF</span>(F1, F2, F3)</span></code></pre></div>
+font-style: inherit;">joeyr_norm_deltaF</span>(F1, F2, F3)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 9
 # Groups:   speaker [10]
@@ -1446,7 +1453,7 @@ font-style: inherit;">joeyr_norm_deltaF</span>(F1, F2, F3)</span></code></pre></
 </div>
 <p>But, this too was a bit clunky because rather than passing in all the formant columns at once, it actually required F1, F2, and F3 to be separate arguments. As expected, <code>tidynorm::norm_deltaF</code> handles this in a much more straightforward manner.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb23-2">   tidynorm<span class="sc" style="color: #5E5E5E;
@@ -1461,7 +1468,7 @@ font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3 F1_df F2_df F3_df vowel
@@ -1485,7 +1492,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="bark-difference-metric">Bark Difference Metric</h2>
 <p>The last one that I’ve written code for that <code>tidynorm</code> handles so much better is the Bark Difference Metric. This was once a part of <code>joeyr</code> but I moved it to <code>barktools</code> instead. Here’s how you’d get the Bark Difference Metric using that package. First, you calculate the barks, and then you manually get the difference metric.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb25-2">  <span class="fu" style="color: #4758AB;
@@ -1508,7 +1515,7 @@ font-style: inherit;">-</span> F3_bark,</span>
 background-color: null;
 font-style: inherit;">F2_barkdiff =</span> F2_bark <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">-</span> F3_bark)</span></code></pre></div>
+font-style: inherit;">-</span> F3_bark)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 11
    token_id speaker vowel    F1    F2    F3 F1_bark F2_bark F3_bark F1_barkdiff
@@ -1529,7 +1536,7 @@ font-style: inherit;">-</span> F3_bark)</span></code></pre></div>
 </div>
 <p>Straightforward and transparent. Here’s how you’d do it in <code>tidynorm</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb27-2">  <span class="fu" style="color: #4758AB;
@@ -1542,7 +1549,7 @@ font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3 F1_bz F2_bz F3_bz vowel
@@ -1566,7 +1573,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="watt-and-fabricious-method">Watt and Fabricious method</h2>
 <p>This is not a method I have ever implemented in any of my packages, so I’ll just show how it’s done in tidynorm. (You can probably guess the syntax by now though!)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">idahoans <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">idahoans <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb29-2">  <span class="fu" style="color: #4758AB;
@@ -1579,7 +1586,7 @@ font-style: inherit;">.by =</span> speaker, <span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">.silent =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,100 × 10
      .id token_id speaker    F1    F2    F3 F1_wf F2_wf F3_wf vowel
@@ -1770,7 +1777,7 @@ Tip
 <h2 class="anchored" data-anchor-id="first-look">First look</h2>
 <p>I’ll start by loading <code>tidyverse</code> and my own package that has some data processing functions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -1778,11 +1785,11 @@ background-color: null;
 font-style: inherit;">library</span>(joeyr)</span>
 <span id="cb1-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(geomtextpath)</span></code></pre></div>
+font-style: inherit;">library</span>(geomtextpath)</span></code></pre></div></div>
 </div>
 <p>Just yesterday, Joe Fruehwald <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/usage/outputs/">posted about the output of new-fave</a>. Let’s start with the point data. I’ll use <code>Sys.glob</code> and to fetch the pathnames of all the files I want to read in, and then I’ll use <code>map</code> to actually read them in. Unfortunately, I won’t be able to show the actual data here because Github had some problems with me reading in and processing this much data on the fly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">raw_points_data <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">raw_points_data <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1817,12 +1824,12 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb2-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">unnest</span>(data)</span></code></pre></div>
+font-style: inherit;">unnest</span>(data)</span></code></pre></div></div>
 </div>
 <p>This combined spreadsheet has a whopping 2.5 million rows of vowel data. That’s… a lot. 😅</p>
 <p>I’m going to go ahead and recode FAVE’s coding scheme into something I’m more familiar with. Just for this first pass.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">fave_code_allophones <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">fave_code_allophones <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -1994,11 +2001,11 @@ font-style: inherit;">"uwr"</span>), </span>
 <span id="cb3-23">           <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.after =</span> label)</span>
-<span id="cb3-24">}</span></code></pre></div>
+<span id="cb3-24">}</span></code></pre></div></div>
 </div>
 <p>I’ll then incorporate that into my pipeline of processing to get the data into a format I can work with. For now, I’ll just look at stressed, non-r-colored allophones.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">points_processed <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">points_processed <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> raw_points_data <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2078,14 +2085,14 @@ background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb4-19">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">arrange</span>(file_name, time)</span></code></pre></div>
+font-style: inherit;">arrange</span>(file_name, time)</span></code></pre></div></div>
 </div>
 <p>That brings it down to 1.4 million vowels. Still a ton of data.</p>
 <section id="query-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="query-the-data">Query the data</h3>
 <p>Let me pause just to do some quick queries. First, how many files do I have?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">n_files <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">n_files <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2097,12 +2104,12 @@ font-style: inherit;">$</span>file_name))</span>
 <span id="cb5-2"></span>
 <span id="cb5-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 1131</span></span></code></pre></div>
+font-style: inherit;"># 1131</span></span></code></pre></div></div>
 </div>
 <p>I think there were about 50 that had some problems. Crazy to think that that’s the amount of data I got for my dissertation and now I can just shrug it off!</p>
 <p>How many stressed monophthongs per file per file?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">nrow</span>(points_processed) <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2110,11 +2117,11 @@ font-style: inherit;">/</span> n_files</span>
 <span id="cb6-2"></span>
 <span id="cb6-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 1255.718</span></span></code></pre></div>
+font-style: inherit;"># 1255.718</span></span></code></pre></div></div>
 </div>
 <p>How much audio? I could query Praat for this information, but I’ll just take a shortcut and get the end time of the last vowel per file. The number is in seconds, so I’ll get a minutes version as well.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">durations <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">durations <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> points_processed <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2145,11 +2152,11 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb7-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 </div>
 <p>How much audio is here?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sum</span>(durations<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2161,12 +2168,12 @@ font-style: inherit;">60</span></span>
 <span id="cb8-2"></span>
 <span id="cb8-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 571.2587</span></span></code></pre></div>
+font-style: inherit;"># 571.2587</span></span></code></pre></div></div>
 </div>
 <p>About 60 hours short of my earlier estimate. But I know some tapes didn’t get processed, so that makes sense.</p>
 <p>So what are some summary stats for the durations?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(durations)</span>
 <span id="cb9-2"></span>
@@ -2190,13 +2197,13 @@ background-color: null;
 font-style: inherit;">#                    3rd Qu.:2545.16   3rd Qu.:42.4193  </span></span>
 <span id="cb9-9"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#                    Max.   :3724.96   Max.   :62.0827  </span></span></code></pre></div>
+font-style: inherit;">#                    Max.   :3724.96   Max.   :62.0827  </span></span></code></pre></div></div>
 </div>
 <p>The average is about 1,818 seconds or 31.59 minutes. Here’s a plot showing the distributions.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(durations, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2248,7 +2255,7 @@ background-color: null;
 font-style: inherit;">+</span> </span>
 <span id="cb10-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 </details>
 </div>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update3/durations.png" class="img-fluid"></p>
@@ -2258,7 +2265,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="vowel-plots">Vowel plots</h3>
 <p>Now the moment of truth. Here’s a plot showing the raw F1-F2 measurements for the entire dataset. All 1.4 million points are plotted here.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(points_processed, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2291,7 +2298,7 @@ background-color: null;
 font-style: inherit;">+</span> </span>
 <span id="cb11-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 </div>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update3/raw_plot.png" class="img-fluid"></p>
 <p>I think right away, this is a testament to how amazing new-fave is. I’ve worked with legacy data before, and normally there are tons of datapoints in the extreme bottom left of the vowel space. These are the result of formant tracking errors. And that was using the original FAVE! This dataset appears to be <em>remarkably</em> clean, at least when it comes to that.</p>
@@ -2300,7 +2307,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
 <p>Before I look at too much more, I should normalize the data. Fruehwald has <a href="https://jofrhwld.github.io/dct_normalization/#transforming-dct-coefficients">an extremely useful paper</a> on how to use DCT to normalize new-fave output. I’ll read those DCT coefficients after they’ve been log-transformed, which is required when doing the Nearey normalization. I’ll process them in the same way that I did above, except I will keep all vowels.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">dct_coefs <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">dct_coefs <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2372,13 +2379,13 @@ font-style: inherit;">.old_col =</span> phoneme, <span class="at" style="color: 
 background-color: null;
 font-style: inherit;">.pre_seg =</span> pre_seg, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">.fol_seg =</span> fol_seg)</span></code></pre></div>
+font-style: inherit;">.fol_seg =</span> fol_seg)</span></code></pre></div></div>
 </div>
 <p>This produces a dataframe with millions of rows. Intimidating, but I can work with it.</p>
 <p>Doing normalization on the DCT coefficients involves jumping over to Python, which is new for me but worth it because of all the reasons Fruehwald explains in his paper. I’ll follow the code he has <a href="https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/">here</a> because this is still new to me, but I’ll try to explain as best I can.</p>
 <p>I needed to install the <code>scipy</code> package, so I did that first. I’ll then load it with <code>reticulate::import</code> and then save a particular function within that package into an R object called <code>idct</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># reticulate::py_install("scipy") # in case you need to install it</span></span>
 <span id="cb13-2">scipy <span class="ot" style="color: #003B4F;
@@ -2396,11 +2403,11 @@ font-style: inherit;">&lt;-</span> scipy<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>fft<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>idct</span></code></pre></div>
+font-style: inherit;">$</span>idct</span></code></pre></div></div>
 </div>
 <p>I’ll get the average of the DCT parameters by token. I’ll then apply the python function, <code>idct</code> to those averages. With this dataset, I’m working with full trajectory data, not just single points, so the result will be a trajectory. For later analyses, I’ll get average smooths by speaker, but for now, I’ll just collapse all speakers together into averages per allophone.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">avg_smooths <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">avg_smooths <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> dct_coefs <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -2478,7 +2485,7 @@ font-style: inherit;">1</span>),</span>
 background-color: null;
 font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">c</span>(phoneme, allophone, allophone_environment))</span></code></pre></div>
+font-style: inherit;">c</span>(phoneme, allophone, allophone_environment))</span></code></pre></div></div>
 </div>
 <p>Sweet. For what it’s worth, processing this data was <em>quite</em> fast. Definitely the way I’ll be normalizing from now on. Now I can show average trajectories in this dataset.</p>
 </section>
@@ -2488,7 +2495,7 @@ font-style: inherit;">c</span>(phoneme, allophone, allophone_environment))</span
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">avg_smooths <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">avg_smooths <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb15-2">  <span class="fu" style="color: #4758AB;
@@ -2572,7 +2579,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"none"</span>)</span></code></pre></div>
+font-style: inherit;">"none"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update3/elsewheres.png" class="img-fluid"></p>
@@ -2581,7 +2588,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">avg_smooths <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">avg_smooths <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb16-2">  <span class="fu" style="color: #4758AB;
@@ -2663,7 +2670,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"none"</span>)</span></code></pre></div>
+font-style: inherit;">"none"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update3/prelaterals.png" class="img-fluid"></p>
@@ -2672,7 +2679,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">avg_smooths <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">avg_smooths <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb17-2">  <span class="fu" style="color: #4758AB;
@@ -2754,7 +2761,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"none"</span>)</span></code></pre></div>
+font-style: inherit;">"none"</span>)</span></code></pre></div></div>
 </details>
 </div>
 <p><img src="https://joeystanley.com/blog/kohler-tapes-update3/prerhotics.png" class="img-fluid"></p>
@@ -2774,7 +2781,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
   <category>Research</category>
   <category>Utah</category>
   <guid>https://joeystanley.com/blog/kohler-tapes-update3/</guid>
-  <pubDate>Tue, 10 Jun 2025 05:00:00 GMT</pubDate>
+  <pubDate>Tue, 10 Jun 2025 06:00:00 GMT</pubDate>
   <media:content url="https://joeystanley.com/blog/kohler-tapes-update3/elsewheres.png" medium="image" type="image/png" height="126" width="144"/>
 </item>
 <item>
@@ -2809,7 +2816,7 @@ Tip
 <h3 data-number="1.1" class="anchored" data-anchor-id="setting-up-the-game"><span class="header-section-number">1.1</span> Setting up the game</h3>
 <p>The first step in simulating Candyland is to set up the board. There’s no real easy way to do that, so I just went through and hard-coded the tiles and colors. I’ve got a simple dataframe with a column for the tile number, the color of the tile, and if there’s anything special about it. In my original spreadsheet, if there was nothing special about the tile, I left it blank, but because of issues with <code>NA</code>s down the road, I’ve replaced those blank cells with <code>"none"</code>. Here’s what that looks like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2">board <span class="ot" style="color: #003B4F;
@@ -2838,7 +2845,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb1-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 132 × 3
     tile color  special              
@@ -2858,7 +2865,7 @@ font-style: inherit;">print</span>()</span></code></pre></div>
 </div>
 <p>Now that we’ve got the board, we need to get the cards. This one is actually straightforward enough that I can create it on the fly. First, I’ll create the seven candy cards. I’m not sure if these are the official names, but that’s what we call them in my house.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">candy_cards <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">candy_cards <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2878,11 +2885,11 @@ background-color: null;
 font-style: inherit;">"popsicle"</span>, </span>
 <span id="cb3-3">                 <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"chocolate truffle"</span>)</span></code></pre></div>
+font-style: inherit;">"chocolate truffle"</span>)</span></code></pre></div></div>
 </div>
 <p>There are six “single-color” cards four “double-color” cards for each color. So, I’ve first created a function that takes in a color name and creates those ten cards as a vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">create_one_color_card <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">create_one_color_card <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -2913,7 +2920,7 @@ font-style: inherit;">6</span>))</span>
 background-color: null;
 font-style: inherit;">create_one_color_card</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"red"</span>)</span></code></pre></div>
+font-style: inherit;">"red"</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "double red" "double red" "double red" "double red" "single red"
  [6] "single red" "single red" "single red" "single red" "single red"</code></pre>
@@ -2921,7 +2928,7 @@ font-style: inherit;">"red"</span>)</span></code></pre></div>
 </div>
 <p>So now, I can use that those to generate the full deck of 67 cards.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">cards <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">cards <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2958,7 +2965,7 @@ font-style: inherit;">"green"</span>),</span>
 <span id="cb6-7">           candy_cards)</span>
 <span id="cb6-8"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">sample</span>(cards)</span></code></pre></div>
+font-style: inherit;">sample</span>(cards)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "single red"        "popsicle"          "single purple"    
  [4] "single purple"     "single green"      "single yellow"    
@@ -2997,7 +3004,7 @@ font-style: inherit;">sample</span>(cards)</span></code></pre></div>
 <p>I’ll then simulate shuffling the cards by randomly sorting the cards with <code>sample(cards, replace = FALSE)</code>. And I’ll string—not shuffle—two decks together in case we have a really long game. I’ll do that by just doing that <code>sample(...)</code> two times and strung together with <code>c()</code>.</p>
 <p>As additional columns in this tibble, I’ll create empty columns for the start time number, the end tile number, whether that tile was a shortcut or not. Those will be populated as the game happens.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">n_cards <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">n_cards <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3049,11 +3056,11 @@ font-style: inherit;">NA</span>,</span>
 background-color: null;
 font-style: inherit;">end      =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">NA</span>)</span></code></pre></div>
+font-style: inherit;">NA</span>)</span></code></pre></div></div>
 </div>
 <p>Since I’ll need to do this a lot in the explanation of the simulation, I’ll save it as a function so it takes up less room.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">setup_turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">setup_turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3115,14 +3122,14 @@ font-style: inherit;">NA</span>)</span>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">setup_turns</span>()</span></code></pre></div>
+font-style: inherit;">setup_turns</span>()</span></code></pre></div></div>
 </div>
 </section>
 <section id="setting-up-the-loop" class="level3 page-columns page-full" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="setting-up-the-loop"><span class="header-section-number">2.2</span> Setting up the loop</h3>
 <p>Now that we’ve got the cards shuffled and ready to go for this game, let’s start the turns. Since I don’t know how many iterations I’ll need, I’ll set up a <code>while</code> loop that goes until I tell it to stop.<sup>1</sup> Here’s what the barebones loop looks like:</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;There might be a more elegant way using <code>for</code> loop. Maybe my R looping skills aren’t where they need to be, but I just couldn’t figure out how to get it to exit the loop the way I wanted to and return the dataframe. I’ve hacked a bit of a solution by incrementing <code>i</code> each iteration. I miss Perl’s <code>last</code> function which made it so that it would exit the loop at the end of the current iteration, not necessarily right at that moment like R’s <code>break</code> function does. The <code>keep_playing</code> variable simulates that.</p></div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3152,11 +3159,11 @@ font-style: inherit;"># put the game here</span></span>
 background-color: null;
 font-style: inherit;"># don't run this code though; it'll go on forever</span></span>
 <span id="cb10-9">  </span>
-<span id="cb10-10">}</span></code></pre></div>
+<span id="cb10-10">}</span></code></pre></div></div>
 </div>
 <p>Of course, this is going to run forever because we haven’t put in any for it to stop. So I’ll increment <code>i</code> each iteration and end the loop after <code>n_cards*2</code> iterations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3208,7 +3215,7 @@ background-color: null;
 font-style: inherit;">1</span></span>
 <span id="cb11-12">  }</span>
 <span id="cb11-13">  </span>
-<span id="cb11-14">}</span></code></pre></div>
+<span id="cb11-14">}</span></code></pre></div></div>
 </div>
 <p>Okay, so we’re now looping through code enough times to go through the game. Now let’s start to add some content to that game.</p>
 </section>
@@ -3216,7 +3223,7 @@ font-style: inherit;">1</span></span>
 <h3 data-number="2.3" class="anchored" data-anchor-id="start-at-tile-zero"><span class="header-section-number">2.3</span> Start at tile zero</h3>
 <p>First, I need to get the start tile. On the first turn, the start tile is zero. Let’s add that. Here’s what that code looks like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="cf" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (i <span class="sc" style="color: #5E5E5E;
@@ -3231,11 +3238,11 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span></span>
-<span id="cb12-3">}</span></code></pre></div>
+<span id="cb12-3">}</span></code></pre></div></div>
 </div>
 <p>Here, I’ve added a conditional that checks what iteration number we’re on. If we’re on the first one, then go ahead and declare the start tile for this iteration to be zero. Here’s that code in context:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3308,7 +3315,7 @@ font-style: inherit;">1</span></span>
 <span id="cb13-17">  }</span>
 <span id="cb13-18">  </span>
 <span id="cb13-19">}</span>
-<span id="cb13-20">turns</span></code></pre></div>
+<span id="cb13-20">turns</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
    turn_num start card          shortcut end  
@@ -3333,7 +3340,7 @@ font-style: inherit;">1</span></span>
 <p>What we do need to do though is “draw a card” and figure out how many tiles we need to advance. Keep in mind that the cards are already there for us, so we don’t need to randomly sample from the deck or anything. We just need to take the info that’s already there and use it to figure out where to end up.</p>
 <p>First, let’s account for the candy cards. These are easy: regardless of what your start tile is, your end tile will always be the same. The code that I’ll add looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="cf" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (turns<span class="sc" style="color: #5E5E5E;
@@ -3354,11 +3361,11 @@ background-color: null;
 font-style: inherit;">$</span>card[[i]],]<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>tile</span>
-<span id="cb15-3">}</span></code></pre></div>
+<span id="cb15-3">}</span></code></pre></div></div>
 </div>
 <p>So here, I’m checking to see if the name of the card that has been assigned for this turn matches the one of the candy cards I have saved in the <code>candy_cards</code> vector I declared earlier. If there’s a match, then I’ll basically look up the tile of that candy card in my <code>board</code> dataframe—that’s the one I manually created in a separate file. It searches for the name of the candy, and fetches the tile number for it. That number is then assigned to this turn’s end tile. Here’s that code in context:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3456,7 +3463,7 @@ font-style: inherit;">1</span></span>
 <span id="cb16-21">  }</span>
 <span id="cb16-22">  </span>
 <span id="cb16-23">}</span>
-<span id="cb16-24">turns</span></code></pre></div>
+<span id="cb16-24">turns</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
    turn_num start card           shortcut   end
@@ -3477,7 +3484,7 @@ font-style: inherit;">1</span></span>
 <p>So far, the game does nothing unless you run into a candy card. If you do, it’ll note where the end position should be.</p>
 <p>At this point, I might as well add some code in that makes it so that the start tile of the next turn is the previous tile of the last turn.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3590,7 +3597,7 @@ font-style: inherit;">1</span></span>
 <span id="cb18-23">  }</span>
 <span id="cb18-24">  </span>
 <span id="cb18-25">}</span>
-<span id="cb18-26">turns</span></code></pre></div>
+<span id="cb18-26">turns</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
    turn_num start card              shortcut   end
@@ -3615,7 +3622,7 @@ font-style: inherit;">1</span></span>
 <p>Adding the colored cards is slightly less straightforward than the candy cards, but still isn’t too bad. There are two kinds of cards for each color: single cards, which means you advance to the next tile of that color, and double cards, which means you advance to to the second next tile of that color. Keep in mind that the cards have already been shuffled and assigned turns, so all I need to do is take the card and figure out how far I need to get.</p>
 <p>So, right now, the cards take the form of a character vector with values like <code>"single red"</code> or <code>"double blue"</code>. To extract the color, I’ll use <code>str_extract</code> and pull out the last word. And to get whether it’s a single or double, I’ll do the same thing and pull out the first word.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">card_color  <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">card_color  <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3648,11 +3655,11 @@ font-style: inherit;">A</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">\\</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">w+"</span>)</span></code></pre></div>
+font-style: inherit;">w+"</span>)</span></code></pre></div></div>
 </div>
 <p>Now, I need to figure out where to go then. I’m less concerned about figuring out the exact number of tiles I need to advance. I think it’ll be easier to select all upcoming tiles of that color and find the tile number of the first or second one. So, first, I’ll create <code>eligible_spots</code>, which takes the board, filters it so that only tiles greater than the tile I’m on and whose color matches the card I drew, and pull out just the tile numbers. So if my starting position were 0 and I drew a single red, here are the eligible spots.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">start_position <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">start_position <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -3680,7 +3687,7 @@ font-style: inherit;">|&gt;</span></span>
 <span id="cb21-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">pull</span>(tile)</span>
-<span id="cb21-7">eligible_spots</span></code></pre></div>
+<span id="cb21-7">eligible_spots</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]   1   7  14  21  27  33  39  46  52  58  64  71  77  83  89  96 103 109 115
 [20] 121 127</code></pre>
@@ -3688,7 +3695,7 @@ font-style: inherit;">pull</span>(tile)</span>
 </div>
 <p>Now I need to just take the first one if it’s a single card and then take the second one if it’s a double.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="cf" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">if</span> (card_amount <span class="sc" style="color: #5E5E5E;
@@ -3717,11 +3724,11 @@ font-style: inherit;">2</span>]]</span>
 <span id="cb23-5">}</span>
 <span id="cb23-6">turns<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>end[[i]]</span></code></pre></div>
+font-style: inherit;">$</span>end[[i]]</span></code></pre></div></div>
 </div>
 <p>Great! Now if we just incorporate that bit of code into the main loop, we <em>should</em> be well on our way to a functioning game.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3929,7 +3936,7 @@ font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
 <span id="cb24-41">  }</span>
-<span id="cb24-42">}</span></code></pre></div>
+<span id="cb24-42">}</span></code></pre></div></div>
 </div>
 <p>Except, if you’re like me, then the loop breaks. After digging around, I found out that the game works perfectly until the end. So let’s add some better code to account for the end.</p>
 </section>
@@ -3937,7 +3944,7 @@ font-style: inherit;">1</span></span>
 <h3 data-number="2.6" class="anchored" data-anchor-id="ending-the-game"><span class="header-section-number">2.6</span> Ending the game</h3>
 <p>Candyland ends when someone reaches the end of the board. The problem with how our loop works now is that if you’re close to the end and there are no more eligible tiles left, it crashes because it doesn’t know where to go. So, what we need to do is add a conditional that says if there are no more eligible tiles, to move it to “tile 133”, which is just one space after the last tile. We also need to account for the possibility of getting a double when there’s just one eligible tile left, which causes the person to win. So let’s program that in. That updated block of code looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># find the number of eligible spots</span></span>
 <span id="cb25-2">n_eligible_spots <span class="ot" style="color: #003B4F;
@@ -4011,12 +4018,12 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">133</span></span>
-<span id="cb25-13">}</span></code></pre></div>
+<span id="cb25-13">}</span></code></pre></div></div>
 </div>
 <p>Once we hit the end of the board, we should end the game. As is, the loop will continue drawing cards until we’ve gone through the deck twice. This may seem like innocent extra iterations of the loop, but the problem is that when we draw another candy card we get pulled back into the game.</p>
 <p>So, let’s add some code at the end that says to end the game we’re on tile 133. That means we’ll extend that <code>if-else</code> statement at the bottom of the loop:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># run out of cards</span></span>
 <span id="cb26-2"><span class="cf" style="color: #003B4F;
@@ -4073,11 +4080,11 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb26-10">}</span></code></pre></div>
+<span id="cb26-10">}</span></code></pre></div></div>
 </div>
 <p>Now, the game ends when we run out of cards (programmed as going through the deck twice) or we hit the end of the board. We tell the program that the game is over by setting <code>keep_going</code> to <code>FALSE</code>. That’ll stop the <code>while</code> loop from doing any more iterations. Here’s the game so far:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4360,7 +4367,7 @@ font-style: inherit;">1</span></span>
 <span id="cb27-52">  }</span>
 <span id="cb27-53">  </span>
 <span id="cb27-54">}</span>
-<span id="cb27-55">turns</span></code></pre></div>
+<span id="cb27-55">turns</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
    turn_num start card          shortcut   end
@@ -4384,7 +4391,7 @@ font-style: inherit;">1</span></span>
 <h3 data-number="2.7" class="anchored" data-anchor-id="adding-shortcuts"><span class="header-section-number">2.7</span> Adding shortcuts</h3>
 <p>The shortcuts are pretty easy to program. In fact, they’re the same as what I did for Chutes and Ladders. We add a conditional that says if the end tile is a certain number, change it to another number. Since there are only two, I’ll just hard-code it in. Here’s what that bit of code looks like.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Do the shortcuts.</span></span>
 <span id="cb29-2"><span class="cf" style="color: #003B4F;
@@ -4438,12 +4445,12 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"gummy pass"</span></span>
-<span id="cb29-8">}</span></code></pre></div>
+<span id="cb29-8">}</span></code></pre></div></div>
 </div>
 <p>In order to keep track of which shortcuts were encountered, I added a small bit of code that saves the name of the shortcut to the <code>shortcut</code> column. That’ll come in handy later when we do lots of games and query the simulations.</p>
 <p>Now our code is complete:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1">turns <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1">turns <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4727,7 +4734,7 @@ font-style: inherit;">1</span></span>
 <span id="cb30-53">  }</span>
 <span id="cb30-54">  </span>
 <span id="cb30-55">}</span>
-<span id="cb30-56">turns</span></code></pre></div>
+<span id="cb30-56">turns</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 5
    turn_num start card          shortcut   end
@@ -4752,7 +4759,7 @@ font-style: inherit;">1</span></span>
 <h3 data-number="2.8" class="anchored" data-anchor-id="wrap-it-up-into-a-function"><span class="header-section-number">2.8</span> Wrap it up into a function</h3>
 <p>Turning this into a function is actually pretty straightforward from here. All we need to do is put this entire chunk of code into a function and then make sure we’re exporting the final dataset. Here’s where I’ll filter out the <code>NA</code> turns at the end of the game. I’ve also added the argument <code>game_num = 0</code> to the function call, mostly to help with the <code>map</code> function later on, since I can’t figure out how to <code>map</code> through a list without sending an argument.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1">simulate_game <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1">simulate_game <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -4783,11 +4790,11 @@ font-style: inherit;">return</span>()</span>
 <span id="cb32-8">}</span>
 <span id="cb32-9"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">simulate_game</span>()</span></code></pre></div>
+font-style: inherit;">simulate_game</span>()</span></code></pre></div></div>
 </div>
 <p>So, to see that in context, here is the entire function from start to finish.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1">simulate_game <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1">simulate_game <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -5166,7 +5173,7 @@ font-style: inherit;">return</span>()</span>
 <span id="cb33-74">}</span>
 <span id="cb33-75"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">simulate_game</span>()</span></code></pre></div>
+font-style: inherit;">simulate_game</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 42 × 5
    turn_num start card          shortcut   end
@@ -5189,7 +5196,7 @@ font-style: inherit;">simulate_game</span>()</span></code></pre></div>
 <h3 data-number="2.9" class="anchored" data-anchor-id="simulate-lots-of-games"><span class="header-section-number">2.9</span> Simulate lots of games!</h3>
 <p>We can now call <code>simulate_game()</code> as many times as we want, and it’ll do a new simulation each time. Let’s set up a dataframe so that we can save the output of each game. Here, I’ll create a dataframe that has one column called <code>game_num</code> that is just the numbers 1 to 10,000. I’ll then use <code>purrr::map</code> to run the simulation once for each row. This takes about 1.8 minutes on my computer, so be patient if it’s a little slow for you. (Or just decrease the number of games.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1">games <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1">games <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -5219,11 +5226,11 @@ font-style: inherit;">unnest</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">cols =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">c</span>(game))</span></code></pre></div>
+font-style: inherit;">c</span>(game))</span></code></pre></div></div>
 </div>
 <p>For what it’s worth, when I have code blocks that I know will take a long time to run, I wrap them up in some code to track the time, so I can remember that next time I run. I also add <code>beepr::beep()</code> to the bottom so that my computer makes a satisfying sound once the block is completed. I’ll also set the seed to today’s date to make all this replicable. You can do this if you want, but you obviously don’t need to.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Takes 1.7ish minutes for 10K simulations.</span></span>
 <span id="cb36-2">start_time <span class="ot" style="color: #003B4F;
@@ -5276,14 +5283,14 @@ font-style: inherit;">beep</span>()</span>
 background-color: null;
 font-style: inherit;">Sys.time</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">-</span> start_time</span></code></pre></div>
+font-style: inherit;">-</span> start_time</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time difference of 1.639684 mins</code></pre>
 </div>
 </div>
 <p>Hooray! We now have a function that simulates an entire game of Candyland, and with just a few additional lines of code and a little bit of patience, we were able to run that simulation thousands of times. Let’s take a look at the output, just to see what we’re working with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1">games</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1">games</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 224,150 × 6
    game_num turn_num start card          shortcut   end
@@ -5308,7 +5315,7 @@ font-style: inherit;">-</span> start_time</span></code></pre></div>
 <h2 data-number="3" class="anchored" data-anchor-id="sec-results"><span class="header-section-number">3</span> Results</h2>
 <p>So, now that we have the simulation done, let’s take a look at the results! First, I’ll take the giant <code>games</code> object and summarize it. I don’t necessarily need to keep information about every single turn, but I can start to count some things that we can think about analyzing later. For now, Ill count the number of turns, candies, singles, doubles, and shortcuts, and I’ll do so by game.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1">games_summary <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1">games_summary <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> games <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -5361,7 +5368,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb40-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10,000 × 6
    game_num turns n_candies n_singles n_doubles n_shortcuts
@@ -5386,7 +5393,7 @@ font-style: inherit;">print</span>()</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(games_summary, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -5458,7 +5465,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -5479,7 +5486,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1">games_summary <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1">games_summary <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb43-2">  <span class="fu" style="color: #4758AB;
@@ -5596,7 +5603,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -5615,7 +5622,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1">games_summary <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1">games_summary <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb44-2">  <span class="fu" style="color: #4758AB;
@@ -5732,7 +5739,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -5750,7 +5757,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1">games_summary <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1">games_summary <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb45-2">  <span class="fu" style="color: #4758AB;
@@ -5837,7 +5844,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -5859,7 +5866,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1">games_summary <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1">games_summary <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb46-2">  <span class="fu" style="color: #4758AB;
@@ -5992,7 +5999,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -6021,7 +6028,7 @@ Note
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1">candycard_distributions <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1">candycard_distributions <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> games <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -6167,7 +6174,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -6182,7 +6189,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -6355,7 +6362,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -6369,7 +6376,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -6546,7 +6553,7 @@ font-style: inherit;">element_text</span>(<span class="at" style="color: #657422
 background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">12</span>))</span></code></pre></div>
+font-style: inherit;">12</span>))</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -6557,7 +6564,7 @@ font-style: inherit;">12</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1">tenthousand_draws <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1">tenthousand_draws <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb50-2">  <span class="fu" style="color: #4758AB;
@@ -6611,7 +6618,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb50-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">arrange</span>(mean_diff)</span></code></pre></div>
+font-style: inherit;">arrange</span>(mean_diff)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 7
     num  mean      sd mean_mean mean_sd   mean_diff    sd_diff
@@ -6629,7 +6636,7 @@ font-style: inherit;">arrange</span>(mean_diff)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1">tenthousand_draws <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1">tenthousand_draws <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb52-2">  <span class="fu" style="color: #4758AB;
@@ -6777,7 +6784,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -6796,7 +6803,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Fortunately, my five-year-old doesn’t care either way and is just excited to get a candy card!</p></div></div><div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">diffs <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">diffs <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> games <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -6908,7 +6915,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -6928,7 +6935,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1">games <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1">games <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb54-2">  <span class="fu" style="color: #4758AB;
@@ -7031,7 +7038,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -7045,12 +7052,12 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <p>You’ll also notice two tiles that were never landed on. Those are the beginning of the shortcuts. So, technically you do land on them, but you don’t <em>end your turn</em> on them.</p>
 <p>The other two tiles that are landed on the most are two yellow tiles right at the end of the game. Why would those be landed on more than other tiles? As it turns out, I think it’s an error in how the game is laid out. Normally, when a candy tile is placed, it interrupts the sequence of colors across the board. However, in the case of the Chocolate Truffle, it actually takes the place of a yellow tile. Normally, if you’re within six tiles of a yellow tile (or any color), and draw a single color, you’ll land on that. But because that yellow was skipped, now if you’re within 12 tiles of that penultimate yellow, you’ll land there. And if you’re further back and get a double yellow, you’ll land there. So, the odds are just twice as greater because a yellow tile was skipped. That very last spike towards the end is the subsequent yellow, which you’d get if you drew a double yellow within five tiles of the Chocolate Truffle (on either side).</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="See the board again if you'd like">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-See the board again if you’d like
+<span class="screen-reader-only">Tip</span>See the board again if you’d like
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -7074,12 +7081,12 @@ See the board again if you’d like
 <h3 data-number="4.1" class="anchored" data-anchor-id="triple-cards"><span class="header-section-number">4.1</span> Triple cards</h3>
 <p>I think it would be fun to add one triple-color card for each color in the deck. It’d be a rare but really cool thing to encounter. Let’s add those six cards to the deck and see what happens to the stats.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click here to see the details and code">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Click here to see the details and code
+<span class="screen-reader-only">Note</span>Click here to see the details and code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -7087,7 +7094,7 @@ Click here to see the details and code
 <div class="callout-body-container callout-body">
 <p>First, I’ll need to modify my <code>create_one_color_card</code> function to create a triple.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1">create_one_color_card <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1">create_one_color_card <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -7157,12 +7164,12 @@ background-color: null;
 font-style: inherit;">create_one_color_card</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"green"</span>),</span>
-<span id="cb55-12">           candy_cards)</span></code></pre></div>
+<span id="cb55-12">           candy_cards)</span></code></pre></div></div>
 </div>
 <p>This will increase the overall size of the deck, which might have some consequences by itself, but I don’t think it’ll matter too much.</p>
 <p>I now have to modify the code I use for the simulation to account for triple cards</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1">simulate_game_with_triples <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1">simulate_game_with_triples <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -7613,11 +7620,11 @@ font-style: inherit;">%&gt;%</span></span>
 <span id="cb56-82">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">return</span>()</span>
-<span id="cb56-83">}</span></code></pre></div>
+<span id="cb56-83">}</span></code></pre></div></div>
 </div>
 <p>Now, let’s actually run the 10,000 simulated games.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -7715,7 +7722,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb57-13">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10,000 × 7
    game_num turns n_candies n_singles n_doubles n_triples n_shortcuts
@@ -7741,7 +7748,7 @@ font-style: inherit;">print</span>()</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1">games_triple_summary <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1">games_triple_summary <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb59-2">  <span class="fu" style="color: #4758AB;
@@ -7828,7 +7835,7 @@ font-style: inherit;">14</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base_family =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
+font-style: inherit;">"Avenir"</span>) </span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -7842,7 +7849,7 @@ font-style: inherit;">"Avenir"</span>) </span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bind_rows</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -7982,7 +7989,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"bottom"</span>)</span></code></pre></div>
+font-style: inherit;">"bottom"</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -7999,12 +8006,12 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <h3 data-number="4.2" class="anchored" data-anchor-id="sec-removing_candies"><span class="header-section-number">4.2</span> Removing Candies</h3>
 <p>We’ve established in Section&nbsp;3.6 that the candy cards ultimately don’t benefit the player if the only objective is to finish the game. They are, of course, the most fun part of the game. (My family’s Chocolate Truffle card is starting to fall apart because my kids like to hold it so much!) But, what would happen if we took those cards out entirely? How would that affect the length of the game?</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Click here to see the details and code">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Click here to see the details and code
+<span class="screen-reader-only">Note</span>Click here to see the details and code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -8012,7 +8019,7 @@ Click here to see the details and code
 <div class="callout-body-container callout-body">
 <p>First, I’ll need to modify my deck of cards to not have those candy cards.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1">create_one_color_card <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1">create_one_color_card <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -8072,11 +8079,11 @@ font-style: inherit;">"orange"</span>),</span>
 background-color: null;
 font-style: inherit;">create_one_color_card</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"green"</span>))</span></code></pre></div>
+font-style: inherit;">"green"</span>))</span></code></pre></div></div>
 </div>
 <p>This will decrease the overall size of the deck, so I’ll allocate room for going through the deck a third time. I’ll now modify the simulation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1">simulate_game_without_candies <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1">simulate_game_without_candies <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -8475,11 +8482,11 @@ font-style: inherit;">%&gt;%</span></span>
 <span id="cb62-74">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">return</span>()</span>
-<span id="cb62-75">}</span></code></pre></div>
+<span id="cb62-75">}</span></code></pre></div></div>
 </div>
 <p>Now, let’s actually run the 10,000 simulated games.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -8561,7 +8568,7 @@ background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb63-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">print</span>()</span></code></pre></div>
+font-style: inherit;">print</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10,000 × 5
    game_num turns n_singles n_doubles n_shortcuts
@@ -8587,7 +8594,7 @@ font-style: inherit;">print</span>()</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb65" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">bind_rows</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -8731,7 +8738,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"bottom"</span>)</span></code></pre></div>
+font-style: inherit;">"bottom"</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -8750,7 +8757,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;I ran a chi-squared on this data and it supports the idea of a relationship between these two categories (<img src="https://latex.codecogs.com/png.latex?%5Cchi%5E2"> = 159,941.1, df = 1, <em>p</em> &lt; 0.0001). I’m not really sure if chi-squared tests work with such large numbers, but the results are so clear in just the summary that stats aren’t needed to show the pattern.</p></div></div><div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1">games_without_candies <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1">games_without_candies <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb66-2">  <span class="fu" style="color: #4758AB;
@@ -8929,7 +8936,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"bottom"</span>)</span></code></pre></div>
+font-style: inherit;">"bottom"</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -8943,7 +8950,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>See code</summary>
-<div class="sourceCode cell-code" id="cb67" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1">games <span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1">games <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb67-2">  <span class="fu" style="color: #4758AB;
@@ -9122,7 +9129,7 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"bottom"</span>)</span></code></pre></div>
+font-style: inherit;">"bottom"</span>)</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -9185,7 +9192,7 @@ Note
 <h2 data-number="1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">1</span> Preliminaries</h2>
 <p>The first step is to install <a href="https://github.com/bnosac/audio.whisper"><code>audio.whisper</code></a>. Since it’s not available through R’s official repository for R packages, we won’t be able to just use <code>install.packages</code> like normal. Instead, we’ll use the <code>install_github</code> function, which is available in a package called <code>devtools</code>. <sup>1</sup> You’ll need to specify the path <code>"bnosac/audio.whisper"</code>, which let’s R know <a href="https://github.com/bnosac/audio.whisper">where on GitHub</a> the package is located. We add <code>ref = "0.3.3"</code> as an argument to the installation function to ensure that we’re getting the latest <em>stable</em> version of the package. Without it, you’ll get the latest <em>development</em> version which may be buggy and not work for you.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;If you don’t have <code>devtools</code> already, you can install it the normal way: <code>install.packages("devtools")</code>.</p></div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">devtools<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">devtools<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9195,12 +9202,12 @@ font-style: inherit;">"bnosac/audio.whisper"</span>, <span class="at" style="col
 background-color: null;
 font-style: inherit;">ref =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"0.3.3"</span>)</span></code></pre></div>
+font-style: inherit;">"0.3.3"</span>)</span></code></pre></div></div>
 </div>
 <p>Now that you’ve got the R package installed, you’ll need to actually download the Whisper model to your computer, so that Whisper can function completely offline. There are different sizes of the model, ranging from tiny to <code>large-v3</code>. The smaller ones will get transcription done quicker and take up less room on your computer, but they may not be as accurate. The larger models will take longer to do and will take up more room on your computer, but they will be more accurate. On my computer (a 2023 MacBook Pro), I’ve only been able to get the “small” model to work. Anything larger fails on my computer, possibly because of a lack of processing power. I have transcribed lab quality speech with pretty good results using the small model. A student of mine compared the output to the medium model and found it to be raelly not that much improved over the small model, even though it took more than twice as long. So, for my purposes (and possibly yours too), the small model may be all you need.</p>
 <p>Here are the options and the code for each one. We’ll load it using the function <code>whisper</code> and save the output to an object called <code>model</code>. We’ll call that object later on.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(audio.whisper)</span>
 <span id="cb2-2">model <span class="ot" style="color: #003B4F;
@@ -9251,7 +9258,7 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">whisper</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"large-v3"</span>)</span></code></pre></div>
+font-style: inherit;">"large-v3"</span>)</span></code></pre></div></div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -9280,20 +9287,20 @@ whisper_model_load: model size    =  464.44 MB</code></pre>
 <p>I’ll pick the small model for this tutorial. When you load one, it’ll download the file to your computer in the same folder as where your script is located. You should see a file called <code>ggml-small.bin</code> or something.<sup>2</sup></p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;If you have whisper installed already somwhere for another project, there’s no need to install it a second time for this specific project. Feel free to provide a pathname to that file instead of <code>"small"</code> and it’ll load it from there.</p></div></div><p>We’re also going to need to install the <code>av</code> package. This is just for working with audio files and converting them into a format that <code>audio.whisper</code> likes. You can install it the normal way.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">install.packages</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"av"</span>)</span></code></pre></div>
+font-style: inherit;">"av"</span>)</span></code></pre></div></div>
 </div>
 <p>We’ll then load it, as well as <code>tidyverse</code>, and we’ll be ready to go.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(av)</span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
 </div>
 </section>
 <section id="using-whisper" class="level2 page-columns page-full" data-number="2">
@@ -9308,7 +9315,7 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 </ul>
 <p>I have a file named <code>02-Carol.wav</code> that I’m going to use for this tutorial.<sup>3</sup> It’s a 1-minute snippet from a sociolinguistic interview I did as part of my dissertation in Washington where she talks about what it was like living near Mount St.&nbsp;Helens when it erupted in 1980. The file is already in the right format, but I’ll run the code anyway just to be sure.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;You can get this and other sample audio [here](/data.</p></div></div><div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">av_audio_convert</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -9344,7 +9351,7 @@ background-color: null;
 font-style: inherit;"># Adding audio frame 1305 at timestamp 55.57sec - audio stream completed!</span></span>
 <span id="cb6-9"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># [1] "/Users/joeystan/GitHub/joeystanley/blog/whisper/02-Carol.wav_16bit.wav"</span></span></code></pre></div>
+font-style: inherit;"># [1] "/Users/joeystan/GitHub/joeystanley/blog/whisper/02-Carol.wav_16bit.wav"</span></span></code></pre></div></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -9369,7 +9376,7 @@ Note
 </ul>
 <p>We’ll run that function and save that transcription to an object called <code>trans</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">trans <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">trans <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9386,7 +9393,7 @@ font-style: inherit;">"en"</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">n_threads =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">12</span>)</span></code></pre></div>
+font-style: inherit;">12</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Processing 02-Carol.wav_16bit.wav (889065 samples, 55.5666 sec), lang = en, translate = 0, timestamps = 0
 
@@ -9413,9 +9420,9 @@ font-style: inherit;">12</span>)</span></code></pre></div>
 </div>
 <p>Technically, you’re done using Whisper! Hooray! Here’s the transcription:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">trans<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">trans<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>data</span></code></pre></div>
+font-style: inherit;">$</span>data</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   segment         from           to
 1        1 00:00:00.000 00:00:03.500
@@ -9471,7 +9478,7 @@ font-style: inherit;">$</span>data</span></code></pre></div>
 <li><code>delim = "\t"</code>, which tells R to put tabs between columns.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">write_delim</span>(trans<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -9485,7 +9492,7 @@ font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">\t</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"</span>)</span></code></pre></div>
+font-style: inherit;">"</span>)</span></code></pre></div></div>
 </div>
 <p>The result is a new file that looks something like this:</p>
 <p><img src="https://joeystanley.com/blog/whisper/trans_screenshot.png" class="img-fluid"></p>
@@ -9593,7 +9600,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-To summarize…
+<span class="screen-reader-only">Tip</span>To summarize…
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -9626,7 +9633,7 @@ To summarize…
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-My Recommendation
+<span class="screen-reader-only">Tip</span>My Recommendation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -9638,12 +9645,12 @@ My Recommendation
 <h3 data-number="2.2" class="anchored" data-anchor-id="sec-bedword"><span class="header-section-number">2.2</span> Bed Word</h3>
 <p>The other option for completely automated transcription in DARLA is to <a href="http://darla.dartmouth.edu/bedword">use a third-party software called Bed Word</a>. This is a relatively new option (around 2023) and works on more than just English.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Some backstory; feel free to skip">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Some backstory; feel free to skip
+<span class="screen-reader-only">Note</span>Some backstory; feel free to skip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -9665,7 +9672,7 @@ Some backstory; feel free to skip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-My Recommendation
+<span class="screen-reader-only">Tip</span>My Recommendation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -9695,7 +9702,7 @@ My Recommendation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-My Recommendation
+<span class="screen-reader-only">Tip</span>My Recommendation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -9720,7 +9727,7 @@ My Recommendation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-My Recommendation
+<span class="screen-reader-only">Tip</span>My Recommendation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -9755,7 +9762,7 @@ My Recommendation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-My Recommendation
+<span class="screen-reader-only">Tip</span>My Recommendation
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -9777,7 +9784,7 @@ My Recommendation
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tips for submitting multiple files in a row
+<span class="screen-reader-only">Tip</span>Tips for submitting multiple files in a row
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -10017,7 +10024,7 @@ Tip
   <category>Students</category>
   <category>Utah</category>
   <guid>https://joeystanley.com/blog/ads-and-lsa-2025/</guid>
-  <pubDate>Thu, 09 Jan 2025 06:00:00 GMT</pubDate>
+  <pubDate>Thu, 09 Jan 2025 07:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Synthesis Days</title>

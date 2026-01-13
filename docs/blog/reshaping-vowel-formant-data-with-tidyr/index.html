@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -128,6 +129,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
@@ -161,6 +164,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI <em>how do I feel about it?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -295,18 +302,18 @@ In any given project, I think I spend more time trying to figure out how to resh
 <h2 class="anchored" data-anchor-id="prep-the-data">Prep the data</h2>
 <p>First, we’ll need to make sure we’ve got the latest version of <code>tidyr</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="st">"tidyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">update.packages</span>(<span class="st">"tidyr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>I’ll now load it, together with the rest of the tidyverse:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s start with a regular dataset. This is one that I’ve used in lots of my other blog posts. I sat at my kitchen table and read about 300 sentences. The audio was processed using DARLA’s fully automated option: it was automatically transcribed, then force-aligned with ProsodyLab (DARLA used ProsodyLab instead of the MFA back then), and then formants were automatically extracted using FAVE. Not the cleanest method, but it’s good enough for this post. My guess is that if you’ve used FAVE before, the output will look very similar to your own data.</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Note that I’m using the <code>read_csv</code> function instead of <code>read.csv</code>. The one with the underscore will preserve the original column names, like <code>F1@20%</code>, even if it’s hard to work with them down the road. Meanwhile <code>read.csv</code> will replace troublesome characters with periods, so that <code>F1@20%</code> becomes <code>F1.20.</code>. I’ll use the underscore version in this post, which has ramifications for code later on. If things crash for you, check to see that you read your data in with <code>read_csv</code>.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>joey_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://joeystanley.com/data/joey.csv"</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>joey_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://joeystanley.com/data/joey.csv"</span>, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,504 × 43
    name       sex   vowel stress pre_word word    fol_word    F1    F2 F3    
@@ -338,7 +345,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 </ul>
 <p>The final result is a dataframe with 275 rows and 13 columns. Much more manageable than the 3504 rows and 43 columns I had before.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>joey <span class="ot">&lt;-</span> joey_raw <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>joey <span class="ot">&lt;-</span> joey_raw <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AY"</span>, <span class="st">"AW"</span>, <span class="st">"OY"</span>, <span class="st">"ER"</span>), </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"L"</span>, <span class="st">"M"</span>, <span class="st">"N"</span>, <span class="st">"NG"</span>, <span class="st">"Y"</span>, <span class="st">"W"</span>)) <span class="sc">%&gt;%</span></span>
@@ -346,7 +353,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">top_n</span>(<span class="dv">25</span>, t) <span class="sc">%&gt;%</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 275 × 13
    vowel word           t `F1@20%` `F2@20%` `F1@35%` `F2@35%` `F1@50%` `F2@50%`
@@ -374,11 +381,11 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>Here’s a simple plot with this data. I’ll only plot the midpoints. There are some outliers—probably bad measurements—but that’s the nature of automatically processed data. In a later blog post, I’ll show some ways to filter those out.</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">Notice that I’ve got the little tick marks (`) around <code>F2@50%</code> and <code>F1@50%</code>. Since the <code>@</code> and <code>%</code> symbols are hard to work with in R, you have to use the ticks when referring to a column name that includes them.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joey, <span class="fu">aes</span>(<span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="at">color =</span> vowel)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joey, <span class="fu">aes</span>(<span class="st">`</span><span class="at">F2@50%</span><span class="st">`</span>, <span class="st">`</span><span class="at">F1@50%</span><span class="st">`</span>, <span class="at">color =</span> vowel)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.67</span>) <span class="sc">+</span> </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -393,7 +400,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <h2 class="anchored" data-anchor-id="one-row-per-measurement-spectrogram-like-plots">One row per measurement: Spectrogram-like plots</h2>
 <p>As it turns out, you can store the exact same data using very different structures. The previous section looked at plots when the data was in a one-token-per-row format. It had 275 rows and 13 columns. We can reshape this data so that each individual formant measurement gets is own row. Basically, we’re collapsing all those <code>F1@20%</code>, <code>F2@20%</code> columns down into one. Here’s what that looks like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,750 x 5</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2,750 x 5</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel word         t formant_percent    hz</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 AO    CROSSING  623. F1@20%           379.</span></span>
@@ -406,14 +413,14 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 AO    CROSSING  623. F2@65%          1018.</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 AO    CROSSING  623. F1@80%           534.</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 AO    CROSSING  623. F2@80%          1037.</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,740 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 2,740 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Notice that a new column, <code>formant_percent</code> contains the column names <code>F1@20%</code>, <code>F2@20%</code>, etc. In corresponding rows, we have the actual formant measurement in the <code>hz</code> column. This is the exact same data, only now we have 2,750 rows of just 5 columns.</p>
 <p>So how do we do this transformation—and can we clean it up a little bit better?</p>
 <p>In a <a href="../../blog/making-vowel-plots-in-r-part-2">previous tutorial</a>, I show how to accomplish this task using <code>tidyr::gather</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(formant_percent, hz, <span class="fu">contains</span>(<span class="st">"@"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(formant_percent, hz, <span class="fu">contains</span>(<span class="st">"@"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,750 × 5
    vowel word           t formant_percent    hz
@@ -434,10 +441,10 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>This method is not obsolete <em>per se</em>, but the <code>gather</code> function is considered “retired” because a new and improved function, <code>pivot_longer</code>, can get the job done better. It is recommended that new code use <code>pivot_longer</code> instead of <code>gather</code> now. If you’d like to learn more about <code>pivot_longer</code>, check out the <a href="https://tidyr.tidyverse.org/articles/pivot.html">vignette on pivoting</a>. I’ll just go over some of the most relevant details here.</p>
 <p>So, if you’re like me and are very used to <code>gather</code>, you can mimic its syntax pretty well with <code>pivot_longer</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,750 × 5
    vowel word         t formant_percent    hz
@@ -458,13 +465,13 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>But it turns out that <code>pivot_longer</code> has some pretty awesome additional functionality that <code>gather</code> didn’t have!</p>
 <div class="page-columns page-full"><p> First off, we shouldn’t be satisfied with the <code>formant_percent</code> column. It’s a single column containing two pieces of information: what formant the measurement is, and how far into the vowel’s duration it came from. If you want, you can easily split the two up using <code>separate</code>.</p><div class="no-row-height column-margin column-container"><span class="margin-aside"><code>separate</code> has actually now been replaced by <code>separate_wider_position</code> and <code>separate_wider_delim</code>.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="st">"formant_percent"</span>, </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)<span class="sc">%&gt;%</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(formant_percent, </span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>             <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">extra =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">extra =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,750 × 6
    vowel word         t formant percent    hz
@@ -484,11 +491,11 @@ In any given project, I think I spend more time trying to figure out how to resh
 </div>
 <p>However, you can now incorporate that separation into the <code>pivot_longer</code> itself! One potential way to do it is by using the <code>names_sep</code> argument. You provide the string that separates the eventual column names and it’ll take care of splitting it up.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_sep =</span> <span class="st">"@"</span>, </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,750 × 6
    vowel word         t formant percent    hz
@@ -509,11 +516,11 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>But this is a little problematic because the values in <code>percent</code> column still have the “%” symbol attached. With <code>separate</code> we could just toss it with <code>extra = "drop"</code> but it doesn’t look so easy with <code>pivot_longer</code>.</p>
 <p>Fortunately, <code>pivot_longer</code> has a more sophisticated way to separate columns. Instead of <code>names_sep</code>, we can use <code>names_pattern</code>. Here, we use what’s called a <em>regular expression</em> to capture the necessary groups within the old column names. So, if we think about all our column names <code>F1@20%</code>, <code>F2@20%</code>, <code>F1@35%</code>, etc. we can see that the “template” is “F#@##%”—that is, an <em>F</em> followed by a number, then the @ symbol, two numbers, and then the % symbol. So, knowing that <code>\\d</code> is the regular expression for a digit, we can use the search pattern <code>"(F\\d)@(\\d\\d)%"</code> to represent our column names. The crucial part here is that we have the information we want to keep, <code>F\\d</code> and <code>\\d\\d</code>, in parentheses. <code>pivot_longer</code> will then use those captured groups as new column names.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,750 × 6
    vowel word         t formant percent    hz
@@ -535,13 +542,13 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>There’s one more thing that can be done, if you’d like. By default, <code>pivot_longer</code> will make these new columns into character vectors. In our case, we may want to turn them into factors and numeric vectors.</p>
 <p>We can specify this with the <code>names_ptypes</code> argument. As its value, we provide a list of the column names and then how they should be encoded. For <code>formant</code>, I’m turning it into a factor, making sure to specify that the order of the levels goes “F1” first and then “F2”. For the <code>percent</code> column, R doens’t like going directly from a character type to a numeric, so you’ll have to do this more directly using <code>names_transform</code> rather than <code>names_ptypes</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,750 × 6
    vowel word         t formant percent    hz
@@ -562,7 +569,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>When these are all incorporated into <code>pivot_longer</code>, we get a single function call that takes care of everything. Before, I had to do <code>gather</code>, then <code>separate</code>, and then <code>mutate</code> to change the column types. So this is a lot handier.</p>
 <p>The reason you might want to do all this is because this format is ideal if you want to to a spectrogram-like plot. Here’s what would happen if you tried one right now:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
@@ -571,7 +578,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, hz, <span class="at">color =</span> formant, <span class="at">group =</span> t)) <span class="sc">+</span> </span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -583,7 +590,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>Unfortunately, we need to do a <em>little</em> more data processing. The key is what <code>ggplot</code> uses as the <code>group</code> variable. We some column that will contain a unique value per line. Right now, we’re close: we have a unique value (<code>t</code>) for each vowel token. But there are 10 rows per vowel token, corresponding to the five measurements for F1 and F2. We need to create a new column that will uniquely identify each formant for each vowel token.</p>
 <p>The simplest way I know is to just use the <code>unite</code> function. It simply combines two columns into one by concatenating the values together. We have the two columns we need, <code>t</code> and <code>formant</code>, so I’ll combine them to create <code>traj_id</code>. I’ll also add <code>remove = FALSE</code> because I want to keep the original ones (so that I can color the lines by formant). When I set this <code>traj_id</code> as the group variable, it works just as expected.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
@@ -593,7 +600,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unite</span>(traj_id, t, formant, <span class="at">remove =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, hz, <span class="at">color =</span> formant, <span class="at">group =</span> traj_id)) <span class="sc">+</span> </span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -605,7 +612,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>Two comments on this. First, if you have more than one recording, you’ll want to use a different variable than <code>t</code> to uniquely identify tokens. After all, it’s possible that two tokens from two different recordings will have the exact same time measurement. One solution is to combine three variables (speaker, time, and formant), which will work just fine. I like to just create a new column to give each token a unique id. I’ll do that with <code>rowid_to_column</code> and call the new column <code>id</code>, which I’ll do before <code>pivot_longer</code> since the data is still in the one-token-per-row format. I’ll then create <code>traj_id</code> with <code>id</code> and <code>formant</code>.</p>
 <p>Also, I’ll go ahead and facet the plot by vowel so you can see the individual vowel curves.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rowid_to_column</span>(<span class="st">"id"</span>) <span class="sc">%&gt;%</span> <span class="co"># &lt;- this is the new line</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
@@ -617,7 +624,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(percent, hz, <span class="at">color =</span> formant, <span class="at">group =</span> traj_id)) <span class="sc">+</span> </span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
 <span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>vowel) <span class="sc">+</span> </span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -632,7 +639,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <h2 class="anchored" data-anchor-id="one-row-per-timepoint-trajectories-in-the-vowel-space">One row per timepoint: Trajectories in the vowel space</h2>
 <p>The last main way that you may need to reshape your data is similar to the one-row-per-measurement, except we want F1 and F2 pairs to be on the same row. I’m calling this one the one-row-per-timepoint. Here’s what this format looks like. It’s very similar except F1 ad F2 are spread out into two different columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,375 x 6</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,375 x 6</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    vowel word           t percent    F1    F2</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 AO    CROSSING    623.      20  379.  942.</span></span>
@@ -645,14 +652,14 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 AO    WASHINGTON  703.      50  630.  996.</span></span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 AO    WASHINGTON  703.      65  627. 1074.</span></span>
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 AO    WASHINGTON  703.      80  612. 1080.</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,365 more rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,365 more rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In a <a href="../../blog/making-vowel-plots-in-r-part-2">previous tutorial</a>, I show how to accomplish this task using <code>gather</code>, then <code>separate</code>, and then <code>spread</code> all in a row. It was a whole ordeal.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="st">"formant_percent"</span>, <span class="st">"hz"</span>, <span class="fu">starts_with</span>(<span class="st">"F"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(formant_percent, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), <span class="at">extra =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(formant, hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(formant, hz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,375 × 6
    vowel word        t percent    F1    F2
@@ -673,14 +680,14 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>It worked, but three functions was cumbersome and complicated. I even put a note in that tutorial saying it took me forever to figure out how to do that. I had to do it so often that I even wrote a custom function to accomplish it and just had it at the top of all my scripts.</p>
 <p>Using the new <code>pivot_longer</code> function, here’s one way that closely approximates my old code. I use the same <code>pivot_longer</code> to make it in the one-measurement-per-row format we had before and then I use the inverse function, <code>pivot_wider</code>, to spread it back out a little bit.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"formant"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>, </span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_ptypes =</span> <span class="fu">list</span>(<span class="at">formant =</span> <span class="fu">factor</span>(<span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"F1"</span>, <span class="st">"F2"</span>))),</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric),</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">values_to =</span> <span class="st">"hz"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> formant, <span class="at">values_from =</span> hz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,375 × 6
    vowel word           t percent    F1    F2
@@ -701,11 +708,11 @@ In any given project, I think I spend more time trying to figure out how to resh
 <p>Believe it or not though, <code>pivot_longer</code> can accomplish this in just one function call now. It’s incredible. If you look at the code in the pivot vignette, specifically in the section called <a href="https://tidyr.tidyverse.org/articles/pivot.html#multiple-observations-per-row">“Multiple observations per row”</a>, you’ll see an example using a dataset called <code>anscombe</code>. This is structurally very similar to our original data frame.</p>
 <p>The way you pull this off I swear is black magic. In the <code>names_to</code> argument, instead of <code>"formant"</code>, if you just type the keyword <code>".value"</code> (with the period), it will somehow know to spread F1 and F2 into separate columns. Try it!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_transform =</span> <span class="fu">list</span>(<span class="at">percent =</span> as.numeric))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,375 × 6
    vowel word           t percent    F1    F2
@@ -726,7 +733,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <div class="page-columns page-full"><p> I’m still trying to wrap my head around it, but it works beautifully. Of course now that there’s no intermediate step of the <code>hz</code> column, I don’t need the <code>values_to = "hz"</code> argument, and I don’t need to include the <code>names_ptype</code> list anymore either.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Try swapping “percent” for “.value” instead and see what it does.</span></div></div>
 <p>I guess the question then is why we would want to do this in the first place. The main reason is because you may want to create trajectory plots in the F1-F2 space. This data is now perfectly suited for that kind of plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"percent"</span>), </span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_pattern =</span> <span class="st">"(F</span><span class="sc">\\</span><span class="st">d)@(</span><span class="sc">\\</span><span class="st">d</span><span class="sc">\\</span><span class="st">d)%"</span>,</span>
@@ -735,7 +742,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_path</span>() <span class="sc">+</span> </span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>() <span class="sc">+</span> </span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>vowel) <span class="sc">+</span> </span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -746,7 +753,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 </div>
 <p>I never said it’d be pretty, but that is the plot. You can of course incorporate whatever you want into the pipeline after you’ve reshaped. Here I get mean trajectories per vowel and pick some vowels to be colored a certain way. In the <code>ggplot</code>, the <code>t</code> column no longer exists, but since we just have one trajectory per vowel, we can use <code>vowel</code> as the <code>group</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>joey <span class="sc">%&gt;%</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reshape</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">contains</span>(<span class="st">"@"</span>), </span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"percent"</span>), </span>
@@ -765,7 +772,7 @@ In any given project, I think I spend more time trying to figure out how to resh
 <span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">TRUE</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"maroon"</span>, <span class="st">`</span><span class="at">FALSE</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"gray75"</span>)) <span class="sc">+</span> </span>
 <span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"TRAP in the context of my vowel space"</span>) <span class="sc">+</span> </span>
 <span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -835,13 +842,14 @@ In any given project, I think I spend more time trying to figure out how to resh
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

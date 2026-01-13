@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -128,6 +129,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
@@ -161,6 +164,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI <em>how do I feel about it?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -280,7 +287,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is a continuation of my <a href="../../blog/a-tutorial-in-calculating-vowel-overlap">previous tutorial</a> on how to calculate Pillai scores and Bhattacharyya’s Affinity in R for the purposes of measuring vowel overlap. It occurred to me as I was putting the previous one together though that I had a <em>lot</em> of things to say and the tutorial got really long and complicated. So I moved all the more advanced topics to this one to keep the main one a little lighter and more approachable.</p>
 <p>In this post, I’ll cover some topics like what to do if you have multiple vowel pairs you want to measure in each speaker, errors you may encounter with the <code>select</code> function when you’re calculating Bhattacharyya’s Affinity, ways at making the functions less error-prone, and some visualizations you can do with your data after you’ve collected it.</p>
@@ -301,24 +308,24 @@ Note
 <h2 class="anchored" data-anchor-id="data-prep">Data prep</h2>
 <p>The data prep for this post is covered in Part 1 already, so I’ll put the code here without further comment.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../data/joey.csv"</span>) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_vowels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../data/joey.csv"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(stress <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vowel, word, dur, F1.<span class="fl">50.</span>, F2.<span class="fl">50.</span>, fol_seg, plt_manner, plt_place, plt_voice) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">F1 =</span> F1.<span class="fl">50.</span>, <span class="at">F2 =</span> F2.<span class="fl">50.</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fake_speaker =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Joey"</span>, <span class="st">"Stanley"</span>), <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fake_speaker =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Joey"</span>, <span class="st">"Stanley"</span>), <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"AO"</span>), </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"L"</span>, <span class="st">"R"</span>),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           word <span class="sc">!=</span> <span class="st">"ON"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           word <span class="sc">!=</span> <span class="st">"ON"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So where I left off at the last tutorial was a function that can calculate the Pillai score and another for the Bhattacharyya’s Affinity, each with the help of <code>summarize</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">manova</span>(...))<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
@@ -329,7 +336,7 @@ Note
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">low_back_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel),</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">low_back_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">low_back_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  low_back_pillai low_back_bhatt
 1       0.2250877      0.8296413</code></pre>
@@ -344,11 +351,11 @@ Note
 <p>The easiest solution I can think of is to define separate datasets like we’ve done with <code>low_back</code> and run the same code on them. That way, you have all the flexibility of defining specific allophones for each question. And, you probably won’t be getting the Pillai score on <em>too</em> many pairs of vowels, right?</p>
 <p>Let’s make two more subsets. First, I’ll look at the <em>pin-pen</em> merger which I don’t really have, but is common in the South where I live right now. (I’ll also remove some stop words from the dataset.) I’ll also look at the <em>fail-fell</em> merger, which I also don’t really have, but can be found in places like Utah and parts of Texas. I’ll create these subsets and plot them so you can see what they look like in my own speech. Maybe you can roughly estimate the Pillai score.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pin_pen <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pin_pen <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"IH"</span>, <span class="st">"EH"</span>), </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"M"</span>, <span class="st">"N"</span>), </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"IN"</span>, <span class="st">"INTO"</span>))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pin_pen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pin_pen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vowel        word  dur    F1     F2 fol_seg plt_manner plt_place plt_voice
 1    EH       MEANT 0.06 448.8 1631.9       N      nasal    apical    voiced
@@ -367,9 +374,9 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pin_pen, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pin_pen, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -379,9 +386,9 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fail_fell <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fail_fell <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EY"</span>, <span class="st">"EH"</span>), fol_seg <span class="sc">==</span><span class="st">"L"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fail_fell)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fail_fell)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vowel         word  dur    F1     F2 fol_seg plt_manner plt_place plt_voice
 1    EY     AILMENTS 0.06 387.3 2149.5       L    lateral    apical    voiced
@@ -400,9 +407,9 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fail_fell, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fail_fell, <span class="fu">aes</span>(F2, F1, <span class="at">color =</span> vowel, <span class="at">label =</span> word)) <span class="sc">+</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_reverse</span>() <span class="sc">+</span> <span class="fu">scale_y_reverse</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -413,16 +420,16 @@ Note
 </div>
 <p>Okay, so now we’re ready to calculate Pillai scores to those new pairs. Because we’ve created the <code>pillai</code> function, we can relatively easily apply it to each of these datasets.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pin_pen <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pin_pen_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pin_pen <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pin_pen_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pin_pen_pillai
 1      0.6964555</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fail_fell <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">fail_fell_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fail_fell <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">fail_fell_pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  fail_fell_pillai
 1        0.8189749</code></pre>
@@ -432,11 +439,11 @@ Note
 <p>So we’ve run the same thing three times on three different datasets. But can we do this even more elegantly? Sure!</p>
 <p>Okay, so first, I’ll combine all three datasets (<code>low_back</code>, <code>pin_pen</code> and <code>fail_fell</code>) into one combined dataframe using <code>bind_rows</code>. But in order to “keep track” of which dataframe a particular row came from, I’ll create a new column called <code>vowel_pair</code> using the <code>.id = "vowel_pair"</code> argument. To get this to work then, I’ll “name” each of the dataframes as I combine it. So for example, the <code>low_back</code> dataframe is called <code>"low back"</code> and I show that by putting the new name between ticks (that little thing next to the number 1 key on my keyboard that looks like this: `). If you combine the dataframes in this way, you’ll have a new column saying which one it came from.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span> <span class="ot">=</span> low_back,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span> <span class="ot">=</span> low_back,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                       <span class="st">`</span><span class="at">pin pen</span><span class="st">`</span>  <span class="ot">=</span> pin_pen,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">`</span><span class="at">fail fell</span><span class="st">`</span> <span class="ot">=</span> fail_fell, </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.id =</span> <span class="st">"vowel_pair"</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_pairs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_pairs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vowel_pair vowel   word  dur    F1     F2 fol_seg plt_manner   plt_place
 1   low back    AA   TODD 0.17 614.6 1065.2       D       stop      apical
@@ -453,7 +460,7 @@ Note
 5    voiced      Stanley
 6 voiceless         Joey</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(all_pairs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(all_pairs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    vowel_pair vowel     word  dur    F1     F2 fol_seg plt_manner plt_place
 172  fail fell    EY     GAIL 0.12 431.1 1908.6       L    lateral    apical
@@ -473,9 +480,9 @@ Note
 </div>
 <p>Now that may seem like more work than it’s worth, but the payoff is that when you actually go to do the Pillai scores, it’s hardly any more complicated than before. In the <code>group_by</code> function, just put that you want to group the data by the vowel pair <em>and</em> by the speaker and it’ll magically do the rest for you.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   vowel_pair [3]
@@ -498,7 +505,7 @@ Note
 <p>You can actually see this in a warning when you load <code>adehabitatHR</code> if <code>dplyr</code> (via <code>tidyverse</code>) is already installed:</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">To replicate the messages and output in this section you’ll have to restart R and load the packages again from scratch in this order. To do that, go to Session→Restart R.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ...output truncated...</span></span>
@@ -511,22 +518,22 @@ Note
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">##     select</span></span>
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ...output truncated...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ...output truncated...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And when you go to use <code>select</code>, R thinks it should run <code>MASS::select</code> instead of <code>dplyr::select</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vowel)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in select(., vowel) : unused argument (vowel)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in select(., vowel) : unused argument (vowel)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So, there are two solutions to this. First, you can simply take advantage of the fact that the most recently loaded package takes priority, and load <code>adehabitatHR</code> <em>before</em> you load <code>tidyverse</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adehabitatHR)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(vowel)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="do">##     vowel</span></span>
@@ -535,7 +542,7 @@ Note
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      AA</span></span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      AA</span></span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      AO</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      AA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 6      AA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>That’ll ensure that <code>dplyr::select</code> takes precedence. However, I’ve never really liked this for a couple reasons. One, I’m stubborn, and I like to load my packages in a specific order (basically the order that I use them) and at the top of my code it seems weird to load a package <em>before</em> <code>tidyverse</code>. Also, it means that it I’m already going along in an R session, with <code>tidyverse</code> loaded already, if I want to then do some Bhattacharyya’s Affinity, I’ll need to either unload the library or restart R, which is never really all that convenient.</p>
 <p>The other option is to not actually load the <code>adehabitatHR</code> package at all. You can still use functions when a package is not loaded (as long as you already have them installed to your computer) by prefacing the function name with the name of the package and a pair of colons. So when it comes time to use the one function I need from <code>adehabitatHR</code>, the <code>kerneloverlap</code> function, I’ll just type <code>adehabitatHR::kerneloverlap</code>. In my opinion, this is a better route just because I don’t like loading an entire package (and reworking lots of others things in my code) just to make sure of one function.</p>
@@ -549,10 +556,10 @@ Note
 <h3 class="anchored" data-anchor-id="making-bhatt-more-robust">Making <code>bhatt</code> more robust</h3>
 <div class="page-columns page-full"><p>I’ve noticed when running Bhattacharyya’s affinity on my data that it tends to crash if certain conditions aren’t met. For example, the calculation requires at least five observations from each vowel class to work. So, let’s say I wanted to look at the <em>pull-pole</em> merger (that is, the merger of <sc>foot</sc> and <sc>goat</sc> before laterals). We can create the dataset the same way as before</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I <em>think</em> I have this merger, but I’m really not sure. I thought studying it in my data would help my own intuitions, but now I’m always hyperaware of the relatively small group of relevant words. But I digress…</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pull_pole <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pull_pole <span class="ot">&lt;-</span> my_vowels <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"UH"</span>, <span class="st">"OW"</span>), fol_seg <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"L"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">droplevels</span>()</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pull_pole)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pull_pole)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  vowel       word  dur    F1    F2 fol_seg plt_manner plt_place plt_voice
 1    OW       GOAL 0.22 366.7 827.0       L    lateral    apical    voiced
@@ -572,15 +579,15 @@ Note
 </div>
 <p>But when we run it…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pull_pole <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pull_pole <span class="sc">%&gt;%</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pull_pole_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in kernelUD(xy, same4all = TRUE, ...): At least 5 relocations </span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  are required to fit an home range</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  are required to fit an home range</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It crashes. You can see in the error message that it says you need at least five “relocations” per “home range”. You can tell this package was intended for animal location data instead of vowel data! But we can see that there aren’t five words in the <sc>pull</sc> (= “UH”) class:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pull_pole<span class="sc">$</span>vowel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pull_pole<span class="sc">$</span>vowel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 OW UH 
@@ -590,7 +597,7 @@ OW UH
 <p>There’s just one token! This is problematic because if I’m going to apply this function to like 30 speakers, even if one speaker has insufficient data I want it to work on everyone else without crashing.</p>
 <p>So, how can I make the <code>bhatt</code> function a little more robust? Expert R users might know of fancier ways to do what I’m about to do, but I just put a little <code>if</code> statement in there: if the lowest value in that table is less than five, then <code>return</code>—meaning abort the function—with the value <code>NA</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    vowel_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">droplevels</span>()</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -599,7 +606,7 @@ OW UH
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    adehabitatHR<span class="sc">::</span><span class="fu">kerneloverlap</span>(sp<span class="sc">::</span><span class="fu">SpatialPointsDataFrame</span>(<span class="fu">cbind</span>(F1, F2), vowel_data), <span class="at">method=</span><span class="st">'BA'</span>)[<span class="dv">2</span>,<span class="dv">1</span>]</span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>pull_pole <span class="sc">%&gt;%</span></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pull_pole_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pull_pole_bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pull_pole_bhatt
 1              NA</code></pre>
@@ -607,14 +614,14 @@ OW UH
 </div>
 <p>Now, when I run it, it won’t crash anymore. It won’t return a number and instead it’ll just return <code>NA</code>, but at least it doesn’t crash. You can appreciate now how handy this might be when we combine all the data together and then then the function on all vowel pairs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span> <span class="ot">=</span> low_back,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span> <span class="ot">=</span> low_back,</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                       <span class="st">`</span><span class="at">pin pen</span><span class="st">`</span>  <span class="ot">=</span> pin_pen,</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">`</span><span class="at">fail fell</span><span class="st">`</span> <span class="ot">=</span> fail_fell, </span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">`</span><span class="at">pull pole</span><span class="st">`</span> <span class="ot">=</span> pull_pole,</span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">.id =</span> <span class="st">"vowel_pair"</span>)</span>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair) <span class="sc">%&gt;%</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   vowel_pair  bhatt
@@ -630,7 +637,7 @@ OW UH
 <p>Finally, I found out that sometimes there will be a speaker or a vowel pair that happens to have no data. Zero tokens of either vowel. In theory, the other two checks should handle it, but it turns out the checks <em>themselves</em> crash if there’s zero data. So, I added that first line, <code>if (nrow(vowel_data) &lt; 1) return(NA)</code>, before the other checks are done, to ensure that there’s at least <em>something</em> there.</p>
 <p>So, the complete function looks like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span> (F1, F2, vowel) {</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    vowel_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">droplevels</span>()</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -640,13 +647,13 @@ OW UH
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">min</span>(<span class="fu">table</span>(vowel_data)) <span class="sc">&lt;</span> <span class="dv">5</span>) <span class="fu">return</span>(<span class="cn">NA</span>) <span class="co"># there are at least 5 of each vowel</span></span>
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    adehabitatHR<span class="sc">::</span><span class="fu">kerneloverlap</span>(sp<span class="sc">::</span><span class="fu">SpatialPointsDataFrame</span>(<span class="fu">cbind</span>(F1, F2), vowel_data), <span class="at">method=</span><span class="st">'BA'</span>)[<span class="dv">2</span>,<span class="dv">1</span>]</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This version of the function is the one that I use in my data. It’s a little more robust than the simpler version and it can safely iterate over whatever groups you want.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>low_back <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(fake_speaker) <span class="sc">%&gt;%</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   fake_speaker bhatt
@@ -656,9 +663,9 @@ OW UH
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">bhatt =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
 # Groups:   vowel_pair [4]
@@ -682,25 +689,25 @@ OW UH
 <p>Instead, I offer a less-than-ideal solution: two different functions, each with their strengths and weaknesses.</p>
 <p>The first is <code>pillai</code>, which is exactly how we have it already (repeated here for clarity):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">manova</span>(...))<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The good part about this function is that whatever formula you want to use, works perfectly fine. So if you want to add duration or F3 to the dependent variable matrix, or pack on all sorts of social or phonological factors, go for it and it’ll work as long as <code>manova</code> can handle it.</p>
 <p>The bad part about this is that we can’t add any additional data validation procedures to account for potentially missing data. So like if I try to run it on the <code>pull_pole</code> dataset like I did with <code>bhatt</code>, it’ll crash.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai_score =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in `contrasts&lt;-`(`*tmp*`, value = contr.funs[1 + isOF[nn]]): </span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="do">## contrasts can be applied only to factors with 2 or more levels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="do">## contrasts can be applied only to factors with 2 or more levels</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, apparently <code>manova</code> can handle less data than <code>kerneloverlap</code> can, because the only reason that crashed is because one of my fake speakers had zero tokens of <sc>pull</sc>. I’ll try it again but pooling all my data together. If there’s even just one token, it’ll actually run and return a value for you.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair) <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai_score =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai_score =</span> <span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   vowel_pair pillai_score
@@ -713,7 +720,7 @@ OW UH
 </div>
 <p>I’ll admit, I’m a little skeptical of a Pillai score where one of the vowels only has one token in it. And sure enough, if we look at the model output, the <em>p</em>-value is high, probably because there’s just not a lot of data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> pull_pole))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel, <span class="at">data =</span> pull_pole))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df   Pillai approx F num Df den Df Pr(&gt;F)
 vowel      1 0.068656   1.7692      2     48 0.1814
@@ -723,7 +730,7 @@ Residuals 49                                       </code></pre>
 <p>So, if I could, I would still implement the data validation checks like I did with <code>bhatt</code> to ensure there’s enough data before running so that I can feel more confident about the values I’m getting, rather than getting values without any sort of warning message informing me of the potentially bad result.</p>
 <p>Well, one solution is to create a separate function that <em>can</em> do the checks for sufficient data. I’ll create one called <code>pillai2</code> that actually mimics the syntax used in <code>bhatt</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pillai2 <span class="ot">&lt;-</span> <span class="cf">function</span>(F1, F2, vowel) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>pillai2 <span class="ot">&lt;-</span> <span class="cf">function</span>(F1, F2, vowel) {</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    vowel_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">droplevels</span>()</span>
@@ -733,13 +740,13 @@ Residuals 49                                       </code></pre>
 <span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">min</span>(<span class="fu">table</span>(vowel_data)) <span class="sc">&lt;</span> <span class="dv">5</span>) <span class="fu">return</span>(<span class="cn">NA</span>) <span class="co"># there are at least 5 of each vowel</span></span>
 <span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">manova</span>(<span class="fu">cbind</span>(F1, F2) <span class="sc">~</span> vowel))<span class="sc">$</span>stats[<span class="st">"vowel"</span>,<span class="st">"Pillai"</span>]</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, when I call <code>pillai2</code>, I don’t need to use <code>cbind</code> or the formula syntax. Instead, I just give it the name of the columns corresponding to my F1, F2, and vowel columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 3
 # Groups:   vowel_pair [4]
@@ -759,29 +766,29 @@ Residuals 49                                       </code></pre>
 <p>My recommendation is that if you want to add additional variables, use the original <code>pillai</code> function (not this <code>pillai2</code> that we just made) but do the data validation separately.</p>
 <p>Switching gears one more time, there’s one more thing we can do to the <code>pillai</code> function to make it more robust. Right now, it assumes that the variable in your dataframe is called “vowel”. Sometimes, that might not be the case. I sometimes use “vowel_class” if I’m working with specific subsets of the data. If I run the <code>pillai</code> function as it is on a dataframe like that, it’ll crash.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">vowel_class =</span> vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, vowel))</span>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in data.frame(vowel): object 'vowel' not found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in data.frame(vowel): object 'vowel' not found</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So, we’ll have to add a little more robustness to the function. You could use the number <code>1</code> instead of <code>"vowel"</code> because the vowel argument is first in our formula.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">manova</span>(...))<span class="sc">$</span>stats[<span class="dv">1</span>,<span class="st">"Pillai"</span>]</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> vowel <span class="sc">+</span> plt_place <span class="sc">+</span> plt_manner <span class="sc">+</span> plt_voice, <span class="at">data =</span> low_back)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> vowel <span class="sc">+</span> plt_place <span class="sc">+</span> plt_manner <span class="sc">+</span> plt_voice, <span class="at">data =</span> low_back)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2767855</code></pre>
 </div>
 </div>
 <p>But that assumes the vowel argument is first, which it might not always be. Here, I’ll put the <code>plt_place</code> variable first after the tilde, and you’ll notice that the result changes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>pillai <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(<span class="fu">manova</span>(...))<span class="sc">$</span>stats[<span class="dv">1</span>,<span class="st">"Pillai"</span>]</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> plt_place <span class="sc">+</span> plt_manner <span class="sc">+</span> plt_voice <span class="sc">+</span> vowel, <span class="at">data =</span> low_back)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pillai</span>(<span class="fu">cbind</span>(F1, F2, dur) <span class="sc">~</span> plt_place <span class="sc">+</span> plt_manner <span class="sc">+</span> plt_voice <span class="sc">+</span> vowel, <span class="at">data =</span> low_back)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3752574</code></pre>
 </div>
@@ -789,10 +796,10 @@ Residuals 49                                       </code></pre>
 <p>The solution here is to either make sure the <code>vowel</code> column is first in your function or to rename whatever it is that your column is called to “vowel.” I don’t like either of those solutions personally but, yet again, I don’t really have a good solution. Using the number <code>1</code> might be slightly better than changing the column name because it doesn’t force you to change the underlying structure of your dataframe.</p>
 <p>However, if you like the <code>pillai2</code> function more—the one that has some robustness already built into it but is limited to just one independent variable—you’re in luck because it actually can handle different column names already. Regardless of what my vowel column is called, when it gets passed to the function, it is temporarily renamed <code>"vowel"</code>. So, this will still work:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">this_is_a_random_long_name =</span> vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair) <span class="sc">%&gt;%</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, this_is_a_random_long_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, this_is_a_random_long_name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   vowel_pair pillai
@@ -814,7 +821,7 @@ Residuals 49                                       </code></pre>
 <div class="page-columns page-full"><p> Sometimes, it’s a little bit silly to have both the <code>pillai2</code> function and the <code>bhatt</code> function when they’re mostly similar. So, we can actually combine them into one function, if that makes sense to you. We’ll create a new function called <code>overlap</code>. The first part is the same as both of the other functions.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">This section only works if you want to use <code>pillai2</code>. If you want to be flexible in the MANOVA formula, you’re stuck with <code>pillai</code> and you can’t really combine them like this.</span></div></div>
 <p>The difference is I create a new argument called <code>method</code> and by default it’s <code>"pillai"</code>. I then do an <code>if</code> statement that basically does different things depending on what is in that <code>method</code> argument. If it’s <code>"pillai"</code>, then it’ll return the Pillai score. If it’s <code>"BA"</code> it’ll do the Bhattacharyya’s Affinity. If it’s something else, it’ll give a little warning message saying that it was an improper method and will return <code>NA</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>overlap <span class="ot">&lt;-</span> <span class="cf">function</span>(F1, F2, vowel, <span class="at">method =</span> <span class="st">"pillai"</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>overlap <span class="ot">&lt;-</span> <span class="cf">function</span>(F1, F2, vowel, <span class="at">method =</span> <span class="st">"pillai"</span>) {</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    vowel_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(vowel) <span class="sc">%&gt;%</span></span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">droplevels</span>()</span>
@@ -831,14 +838,14 @@ Residuals 49                                       </code></pre>
 <span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">warning</span>(<span class="st">"Improper method"</span>)</span>
 <span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(<span class="cn">NA</span>)</span>
 <span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The result is that we just have one function, <code>overlap</code>, that takes care of both measurements.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">overlap</span>(F1, F2, vowel),</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">bhatt  =</span> <span class="fu">overlap</span>(F1, F2, vowel, <span class="at">method =</span> <span class="st">"BA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">bhatt  =</span> <span class="fu">overlap</span>(F1, F2, vowel, <span class="at">method =</span> <span class="st">"BA"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 4
 # Groups:   vowel_pair [4]
@@ -857,7 +864,7 @@ Residuals 49                                       </code></pre>
 <p>This is kinda cool I guess. If you like that better, go for it. But if you like the <code>bhatt</code> and <code>pillai2</code> functions better, use those instead.</p>
 <p>Now, if you wanted to get <em>really</em> fancy, you could have the best of both worlds. You could retain the <code>pillai2</code> and <code>bhatt</code> functions for the user, but under the hood they actually do the same thing.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pillai2 <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pillai2 <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">overlap</span>(..., <span class="at">method =</span> <span class="st">"pillai"</span>)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>bhatt <span class="ot">&lt;-</span> <span class="cf">function</span>(...) {</span>
@@ -866,7 +873,7 @@ Residuals 49                                       </code></pre>
 <span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>all_pairs <span class="sc">%&gt;%</span></span>
 <span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(vowel_pair, fake_speaker) <span class="sc">%&gt;%</span></span>
 <span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, vowel),</span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">bhatt  =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">bhatt  =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 4
 # Groups:   vowel_pair [4]
@@ -889,10 +896,10 @@ Residuals 49                                       </code></pre>
 <h2 class="anchored" data-anchor-id="reshape-and-visualize">Reshape and visualize</h2>
 <p>The last thing I’ll do in this lengthy tutorial is to look at how make a couple visualizations for pillai scores and how to transform your data along the way. But, this is best illustrated with more speakers, so I’m going to do take my data and duplicate it a bunch of times to simulate the effect of a larger sample. I’ll then randomly divide that data up into eight fake speakers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fake_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_pairs, all_pairs, all_pairs, all_pairs, all_pairs, all_pairs, all_pairs, all_pairs) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fake_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(all_pairs, all_pairs, all_pairs, all_pairs, all_pairs, all_pairs, all_pairs, all_pairs) <span class="sc">%&gt;%</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(vowel_pair <span class="sc">!=</span> <span class="st">"pull pole"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fake_speaker =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Andy"</span>, <span class="st">"Betty"</span>, <span class="st">"Chuck"</span>, <span class="st">"Dolly"</span>, <span class="st">"Earl"</span>, <span class="st">"Flo"</span>, <span class="st">"Gary"</span>, <span class="st">"Helga"</span>), <span class="fu">nrow</span>(.), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(fake_data, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_n</span>(fake_data, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vowel_pair vowel        word  dur    F1     F2 fol_seg plt_manner
 1    low back    AA   DOCUMENTS 0.10 623.6 1200.6       K       stop
@@ -920,10 +927,10 @@ Residuals 49                                       </code></pre>
 </div>
 <p>When you run the <code>pillai</code> and <code>bhatt</code> functions, the results is a table such that each combination of speaker and vowel pair are on their own unique row.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>pillai_table <span class="ot">&lt;-</span> fake_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>pillai_table <span class="ot">&lt;-</span> fake_data <span class="sc">%&gt;%</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(fake_speaker, vowel_pair) <span class="sc">%&gt;%</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, vowel))</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>pillai_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>pillai_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24 × 3
 # Groups:   fake_speaker [8]
@@ -944,9 +951,9 @@ Residuals 49                                       </code></pre>
 </div>
 <p>This structure may be handy for some types of visualizations. For example, you can make a plot like this which shows the spread of Pillai scores across each vowel pair. I’ve underlaid a violin plot so you can see the distribution a little better.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pillai_table, <span class="fu">aes</span>(vowel_pair, pillai)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pillai_table, <span class="fu">aes</span>(vowel_pair, pillai)) <span class="sc">+</span> </span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>(<span class="at">color =</span> <span class="st">"gray75"</span>) <span class="sc">+</span> </span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -962,9 +969,9 @@ Residuals 49                                       </code></pre>
 </ol>
 <p>So, if we put it together, this is what we get.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>pillai_table_wide <span class="ot">&lt;-</span> pillai_table <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>pillai_table_wide <span class="ot">&lt;-</span> pillai_table <span class="sc">%&gt;%</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(vowel_pair, pillai)</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>pillai_table_wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>pillai_table_wide</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 4
 # Groups:   fake_speaker [8]
@@ -983,8 +990,8 @@ Residuals 49                                       </code></pre>
 <p>Now, with our data reshaped in this way, we could do a scatterplot to see the correlation between two mergers:</p>
 <div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside">There are ticks around <code>low back</code> and <code>pin pen</code> because those are the column names themselves and when you refer to column names that have spaces in them you have to surround them with ticks. These show up in the plot itself, but you can fix that with <a href="https://ggplot2.tidyverse.org/reference/labs.html"><code>labs</code></a>.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pillai_table_wide, <span class="fu">aes</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span>, <span class="st">`</span><span class="at">pin pen</span><span class="st">`</span>)) <span class="sc">+</span> </span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pillai_table_wide, <span class="fu">aes</span>(<span class="st">`</span><span class="at">low back</span><span class="st">`</span>, <span class="st">`</span><span class="at">pin pen</span><span class="st">`</span>)) <span class="sc">+</span> </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -996,11 +1003,11 @@ Residuals 49                                       </code></pre>
 <p>Because I’ve randomly split by data up, there’s really no pattern, but if you suspect a correlation between mergers in your dataset, this plot might be more informative for you.</p>
 <p>Another plot you may want to see is the correlation between the Pillai score and the Bhattacharyya’s Affinity. We’ll calculate both of them at once and create an <code>overlap_table</code> object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>overlap_table <span class="ot">&lt;-</span> fake_data <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>overlap_table <span class="ot">&lt;-</span> fake_data <span class="sc">%&gt;%</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(fake_speaker, vowel_pair) <span class="sc">%&gt;%</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">pillai =</span> <span class="fu">pillai2</span>(F1, F2, vowel),</span>
 <span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">bhatt  =</span> <span class="fu">bhatt</span>(F1, F2, vowel))</span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>overlap_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>overlap_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 24 × 4
 # Groups:   fake_speaker [8]
@@ -1021,9 +1028,9 @@ Residuals 49                                       </code></pre>
 </div>
 <p>Now, with this table, we can do another scatterplot, but pitting the two measurements against each other. We’d expect a negative correlation since overlap in Pillai means a 0 and in Bhattacharyya’s Affinity it means 1. But can we find anything that stands out? Here, I’ll plot all the data, but color the names by vowel pair.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(overlap_table, <span class="fu">aes</span>(pillai, bhatt, <span class="at">color =</span> vowel_pair)) <span class="sc">+</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(overlap_table, <span class="fu">aes</span>(pillai, bhatt, <span class="at">color =</span> vowel_pair)) <span class="sc">+</span> </span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"gray50"</span>) <span class="sc">+</span> </span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> fake_speaker))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1093,13 +1100,14 @@ Residuals 49                                       </code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

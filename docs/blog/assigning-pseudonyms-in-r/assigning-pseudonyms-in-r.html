@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -128,6 +129,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title"><span id="name">Joey Stanley</span><br><span id="tagline">assistant professor, linguistics</span></span>
     </a>
@@ -161,6 +164,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog <em>what’s going on?</em></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../ai.html"> 
+<span class="menu-text">AI <em>how do I feel about it?</em></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -275,11 +282,11 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Recently, on <a href="https://rweekly.org/#UpdatedPackages89">RWeekly.org</a>, I saw that Hadley Wickham’s <a href="http://hadley.github.io/babynames/">babynames</a> package had been updated. I had never heard of it, but when I saw that it contained Social Security data for births in the US from 1880 to 2017, I immediately thought that it would make coming up with pseudonyms a lot quicker in the future. So here’s a tutorial on how I’ve done that.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="pseudonyms" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="pseudonyms">Pseudonyms</h2>
@@ -292,12 +299,12 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="the-babynames-package">The <code>babynames</code> package</h2>
 <div class="page-columns page-full"><p>Some R packages contain lots of new functions that perform some task. Others, like the <code>babynames</code> package, just contain data. Specifically, it contains all the baby names registered by Social Security from 1880 to 2017 There are four datasets here, but the one that I’ll focus on is simply called <code>babynames</code>. Let’s load the data and see what it looks like:</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Okay, <em>almost</em> all of them: names that were used less than five times in a year are not released by Social Security for privacy concerns. This makes up 2%–9% of people each year.</span></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("babynames")</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(babynames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("babynames")</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To access the data, I’ll type <code>babynames::babynames</code>. The first <code>babynames</code> refers to the package, and the second refers to the dataset called <code>babynames</code> within that package. Slightly confusing, but no biggie.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(babynames<span class="sc">::</span>babynames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(babynames<span class="sc">::</span>babynames)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
    year sex   name          n   prop
@@ -317,10 +324,10 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="assigning-a-single-pseudonym">Assigning a single pseudonym</h2>
 <p>So, with this dataset, we can easily filter out names from a specific year and sex and then sort them by frequency to get a quick list of what the most common names were that year:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1989</span>, sex <span class="sc">==</span> <span class="st">"M"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="sc">-</span>prop) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">11</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 5
     year sex   name            n   prop
@@ -341,13 +348,13 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>Oh, hey, me, there in 11th place. Other than showing my name there, this code actually illustrates the gist of what I want to show. If I had interviewed a man who was born the same year as me, this is a list of 11 possible pseudonyms I could choose from.</p>
 <p>We could take this a little further and actually turn it into a function. Doing so can really simplify the script quite a bit when I search for lots of names. I’ll also add an argument specifying how many names to show, with 10 as the default.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(year <span class="sc">==</span> yob, sex <span class="sc">==</span> sx) <span class="sc">%&gt;%</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">arrange</span>(<span class="sc">-</span>prop) <span class="sc">%&gt;%</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">head</span>(<span class="at">n =</span> n)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
     year sex   name            n   prop
@@ -363,7 +370,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
  9  1989 M     James       32698 0.0156
 10  1989 M     Robert      30064 0.0143</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1995</span>, <span class="st">"F"</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1995</span>, <span class="st">"F"</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 5
    year sex   name         n   prop
@@ -383,8 +390,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <div class="page-columns page-full"><p>What we need to do is display the most names that were common for that year—except for the ones that we’ve already used. It’s probably not a good idea to use the same pseudonym within a project. I don’t even like repeating names across projects. So if <em>Michael</em> was used for a speaker in my very first project, I’ll never use that name again. Because I’ve recorded a lot of nineties babies, my latest batch of interviewees are getting some unusual names, so I’ve resorted to using alternative forms, like <em>Mike</em>, which I resisted initially, but have come to accept.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">They were from Utah anyway, so it <a href="https://bycommonconsent.com/2016/03/28/mormons-name-their-kids-the-darnedest-things-born-in-2015-edition/">fits</a>.</span></div></div>
 <p>Anyway, all this is to say that you’ll need a way to keep track of what names you’ve used. Probably the most straightforward way to do this is to use whatever metadata spreadsheet you have for your project. Once you’ve chosen a name for one person, save it to your spreadsheet. When you want to choose a name for someone else, reread the spreadsheet again, pull out the pseudonym column, and exclude names that are in that list. Here’s a sample metadata spreadsheet I’ve created:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 3
    name     sex     yob
@@ -404,14 +411,14 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>So, what we’ll need to do is update our <code>show_nyms</code> function to exclude these 100 names:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(year <span class="sc">==</span> yob, sex <span class="sc">==</span> sx, </span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>               <span class="sc">!</span>name <span class="sc">%in%</span> used_names<span class="sc">$</span>name) <span class="sc">%&gt;%</span> <span class="co"># &lt;- exclude these names</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">arrange</span>(<span class="sc">-</span>prop) <span class="sc">%&gt;%</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">head</span>(<span class="at">n =</span> n)</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
     year sex   name        n    prop
@@ -430,7 +437,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>Now I can see new names that I’ve never used before. For funsies, I like to see what rank those candidate names are for that year. I can do that by adding <code>rowid_to_column</code>, but I’ll have to do this before filtering out the used names and after filtering for year and sex, so I’ll have to split the <code>filter</code> up a little bit:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(year <span class="sc">==</span> yob, sex <span class="sc">==</span> sx) <span class="sc">%&gt;%</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">arrange</span>(<span class="sc">-</span>prop) <span class="sc">%&gt;%</span></span>
@@ -438,7 +445,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span>name <span class="sc">%in%</span> used_names<span class="sc">$</span>name) <span class="sc">%&gt;%</span></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">head</span>(<span class="at">n =</span> n)</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 6
     rank  year sex   name        n    prop
@@ -458,13 +465,13 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>Okay so it looks like the first 36 most common boy names in 1989 are already used. These are definitely still common names, but like my high school class probably only had about one of each.</p>
 <p>So let’s say I’ve chosen <em>Jeffrey</em> as the new name for my 101st participant. I’ll go ahead and add that to my <code>sample_metadata.csv</code> spreadsheet, save it, and rerun this entire script. Actually, rather than reading it in fresh every time, we could just read it in as a part of the function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"Jeffrey"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sex, <span class="at">yob =</span> year) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read in the used names</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -476,7 +483,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span>name <span class="sc">%in%</span> used_names<span class="sc">$</span>name) <span class="sc">%&gt;%</span></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">head</span>(<span class="at">n =</span> n)</span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1989</span>, <span class="st">"M"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 6
     rank  year sex   name        n    prop
@@ -499,7 +506,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>At some point, you may run into a name that you just don’t want to use. There were some names I just didn’t like for whatever reason. More likely though was that there were alternative spellings of names that I’ve already used. Like <em>Corey</em> instead of <em>Cory</em> or maybe <em>Kathy</em> instead of <em>Cathy</em>. For these homophonous names, I just don’t want to use them to avoid potential confusion. In other cases, I chose a name but decided to go for the shortened version, like <em>Pat</em> instead of <em>Patrick</em>, so I’d need a way to ignore <em>Patrick</em> even though <em>Pat</em> is in my metadata spreadsheet. What I’ll need to do is come up with a separate list of names that I have not used but I want my function to ignore. You have two options: create a separate spreadsheet like your metadata spreadsheet, or just create and maintain the list in the R script itself. It’s up to you which one you do but I’ll create the list in R.</p>
 <p>What names should I ignore? For this walk-through, I’ll take a look at girls’ names born in 1995.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1995</span>, <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1995</span>, <span class="st">"F"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 6
     rank  year sex   name          n    prop
@@ -518,11 +525,11 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>So here, I’d want to ignore <em>Erin</em> (not to confuse with <em>Aaron</em>) and <em>Katelyn</em> (I’ve already got <em>Kaitlyn</em>), so I’ll create a list called <code>ignored_names</code> with those two as starters.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ignored_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Erin"</span>, <span class="st">"Katelyn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ignored_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Erin"</span>, <span class="st">"Katelyn"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>I can now update my <code>show_nyms</code> function one last time to ignore these too:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read in the used names</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -535,7 +542,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>               <span class="sc">!</span>name <span class="sc">%in%</span> ignored_names) <span class="sc">%&gt;%</span> <span class="co"># &lt;- ignore these names</span></span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">head</span>(<span class="at">n =</span> n)</span>
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1995</span>, <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="fu">show_nyms</span>(<span class="dv">1995</span>, <span class="st">"F"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 6
     rank  year sex   name          n    prop
@@ -554,7 +561,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>Now those two are ignored from my list. So it’s as easy as just creating a list of names you want to ignore. If you’d like you can incorporate that list into the function itself, which will ensure that the function takes into account the most up-to-date list:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>show_nyms <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">n =</span> <span class="dv">10</span>) {</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read in the used names</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -569,7 +576,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="sc">!</span>name <span class="sc">%in%</span> used_names<span class="sc">$</span>name,</span>
 <span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>               <span class="sc">!</span>name <span class="sc">%in%</span> ignored_names) <span class="sc">%&gt;%</span></span>
 <span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">head</span>(<span class="at">n =</span> n)</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>So now with this <code>show_nyms</code> function, all I need to do is call it once and it’ll show me the best names to choose from. When I choose a name, I’ll add it to my metadata spreadsheet and save. If there’s a name I see and want to ignore, I’ll add it to my <code>ignored_names</code> list. I’d then go through one at a time and choose pseudonyms for all my participants.</p>
 </section>
@@ -580,7 +587,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>Okay, so the first thing I’ll do is create a new function. The old one was <code>show_nyms</code>. This one is slightly different so I’ll call it <code>assign_nyms</code> because it’ll return the top one. Because I don’t need to specify how many to print, I’ll remove the <code>n</code> argument. I’ll also take out the <code>head(n = n)</code> line, and replace it with <code>pull(name)</code> and then <code>first()</code> so that it gets just the first name itself and not any other information associated with it.</p>
 <p>In order to pull off not assigning the same name twice, I’ll need to add a new argument, <code>ignore</code>. This will be the running list of names I’ve already assigned. I’ll give it a default list that is 1 element long (<code>"Joey"</code>) so the code doesn’t break. In the <code>filter</code> function, I’ll add yet another filter saying to only return names that are <em>not</em> in this list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>assign_nym <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">ignore =</span> <span class="fu">c</span>(<span class="st">"Joey"</span>)) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>assign_nym <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">ignore =</span> <span class="fu">c</span>(<span class="st">"Joey"</span>)) {</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read in the used names</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -597,14 +604,14 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>               <span class="sc">!</span>name <span class="sc">%in%</span> ignore) <span class="sc">%&gt;%</span>  <span class="co"># &lt;- ignore names I just assigned </span></span>
 <span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pull</span>(name) <span class="sc">%&gt;%</span></span>
 <span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">first</span>()</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Okay, so to use this new function, I’ll create a dummy list of randomly generated birth years between 1990 and 2000, with alternating sexes. I’ll also create an empty list for the name because the code depends on there being <em>something</em> there the first time though.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>to_be_named <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">yob =</span> <span class="fu">sample</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2000</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>to_be_named <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">yob =</span> <span class="fu">sample</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2000</span>, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sex =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"F"</span>, <span class="st">"M"</span>), <span class="dv">50</span>),</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">name =</span> <span class="fu">rep</span>(<span class="st">""</span>, <span class="dv">100</span>))</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(to_be_named)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(to_be_named)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
     yob sex   name 
@@ -620,15 +627,15 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <div class="page-columns page-full"><p>Now, I’m a fan of using functions to iterate through things in R and I’ve done it many times. In general, <code>for</code> loops are ignored (and even frowned upon) in R code because they’re supposedly slow. But, Hadley Wickham has said that they are <em>not</em> slow, and since I’ve already allocated memory space for the names to go (the new <code>name</code> column in my <code>to_be_named</code> data frame), it shouldn’t be too bad. Furthermore, he said that loops are the only solution when one iteration depends on the values in some other row, which is the case here.</p><div class="no-row-height column-margin column-container"><span class="margin-aside">I tried using <code>purrr::map</code> for this, but just couldn’t get it figured out and it wasn’t worth the effort for this post.</span></div></div>
 <p>So, I’ll write a <code>for</code> loop that assigns a new name for every row of my 100-row dataframe of generated data. The first two arguments of <code>assign_nym</code> are the same as we’ve seen before (I’ve added the argument names just to be clear what I’m doing). But the third one is where I make sure it doesn’t assign two names twice. I’ve included the argument <code>ignore = to_be_named$name[1:i]</code> because that’s the list of names that have already been assigned in this loop. When that gets sent to <code>assign_nym</code>, it becomes the <code>ignore</code> argument (replacing the default <code>"Joey"</code>), and then when the function is filtering out names, it’ll make sure not to let those go through.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(to_be_named)) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(to_be_named)) {</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    to_be_named<span class="sc">$</span>name[[i]] <span class="ot">&lt;-</span> <span class="fu">assign_nym</span>(<span class="at">yob    =</span> to_be_named<span class="sc">$</span>yob[[i]], </span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">sx     =</span> to_be_named<span class="sc">$</span>sex[[i]], </span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">ignore =</span> to_be_named<span class="sc">$</span>name[<span class="dv">1</span><span class="sc">:</span>i])</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The result is that <code>to_be_named</code> now has the <code>name</code> column populated with new, unique pseudonyms that are appropriate for their age and sex.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>to_be_named</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>to_be_named</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 3
      yob sex   name  
@@ -648,7 +655,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>Fortunately, because this list is deterministic and it’ll be the same every time you run the code, if you scan through and see names you don’t like, you can update your <code>ignored_names</code> list and rerun it. So, I found that <em>Corey</em>, <em>Briana</em>, and <em>Shawn</em> were in there and I don’t want to confuse them with the homophonous names <em>Cory</em>, <em>Breanna</em>, and <em>Sean</em>. When I remove those, every thing up until them will be the same, but from then on there will be some differences.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>assign_nym <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">ignore =</span> <span class="fu">c</span>(<span class="st">"Joey"</span>)) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>assign_nym <span class="ot">&lt;-</span> <span class="cf">function</span>(yob, sx, <span class="at">ignore =</span> <span class="fu">c</span>(<span class="st">"Joey"</span>)) {</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read in the used names</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    used_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"sample_metadata.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -671,7 +678,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>                                        to_be_named<span class="sc">$</span>sex[[i]], </span>
 <span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>                                        to_be_named<span class="sc">$</span>name[<span class="dv">1</span><span class="sc">:</span>i])</span>
 <span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>to_be_named</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>to_be_named</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 3
      yob sex   name   
@@ -691,7 +698,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>So that was quick. This could theoretically be expanded to include a thousand names and it would work just fine. You might end up with some unusual names, but this will in principle work so long as you haven’t exhausted all the names. And it would take a ton of people do to do. Here’s what the last 10 names are in my sample of 1000 people.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>to_be_named <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">yob =</span> <span class="fu">sample</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2000</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>to_be_named <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">yob =</span> <span class="fu">sample</span>(<span class="dv">1990</span><span class="sc">:</span><span class="dv">2000</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sex =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"F"</span>, <span class="st">"M"</span>), <span class="dv">500</span>),</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">name =</span> <span class="fu">rep</span>(<span class="st">""</span>, <span class="dv">1000</span>))</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(to_be_named)) {</span>
@@ -699,7 +706,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                                        to_be_named<span class="sc">$</span>sex[[i]], </span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                                        to_be_named<span class="sc">$</span>name[<span class="dv">1</span><span class="sc">:</span>i])</span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(to_be_named, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(to_be_named, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 3
      yob sex   name   
@@ -727,12 +734,12 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="bonus">Bonus</h2>
 <p>Here are just some fun plots I made when playing around with the data. This first one shows the trends for the name <em>Parker</em>, which my wife and I considered for our daughter. This plot shows that there would have been many more boys her age with that name than girls.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"Parker"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, <span class="at">y =</span> prop, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"pink"</span>, <span class="st">"lightblue"</span>)) <span class="sc">+</span> </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ Please use `linewidth` instead.</code></pre>
@@ -747,12 +754,12 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>My given name, Joseph, has historically been among the most common male names. Through about the 1920s, at least 1 in 50 baby boys were called Joseph. There was a drop in frequency between the World Wars and in the 1980s it started becoming less common. Ever since then there have been fewer and fewer Josephs born. If this trend continues, Joseph will become old-fashioned as I age, which is kinda fun to think about.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"Joseph"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, <span class="at">y =</span> prop, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"pink"</span>, <span class="st">"lightblue"</span>)) <span class="sc">+</span> </span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -763,13 +770,13 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </div>
 <p>Finally, the plot below was just an interesting one that shows the diversity in names. I add up the total proportion of people per year are represented in this dataset. Remember that this dataset does not include names if fewer than five people in a year had that name. So if all the data adds up to only 0.96, then 4% of people that year had somewhat unusual names. The higher number is, the fewer uncommon names there were. This chart shows that compared to the 1960s, there are more unusual names, particularly among the women. I’ll let the folks in onomastics interpret this, but I thought it was kind of a fun graph.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>babynames<span class="sc">::</span>babynames <span class="sc">%&gt;%</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(year, sex) <span class="sc">%&gt;%</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">total =</span> <span class="fu">sum</span>(prop)) <span class="sc">%&gt;%</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, total, <span class="at">color =</span> sex)) <span class="sc">+</span> </span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -836,13 +843,14 @@ gtag('config', '350348361', { 'anonymize_ip': true});
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
