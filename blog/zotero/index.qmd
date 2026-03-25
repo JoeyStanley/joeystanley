@@ -98,9 +98,9 @@ Let's pause a moment and consider the different item types now. As you saw in th
 
 We've already talked about articles already. But since they'll likely be the most common Item Type in your library, it's worth repeating what the most important information is:
 
-* **Title**: Make sure it's not in all caps. If there are special characters, makes sure those are typed correctly. If there are italics or other [rich text](https://www.zotero.org/support/kb/rich_text_bibliography) in the title, you can add that formatting with html codes, `<i>like this</i>.
+* **Title**: Make sure it's not in all caps. If there are special characters, makes sure those are typed correctly. If there are italics or other [rich text](https://www.zotero.org/support/kb/rich_text_bibliography) in the title, you can add that formatting with html codes, `<i>like this</i>`.
 * **Author(s)**: Make sure you have the last name first. If there is more than one, a little plus icon appears after you type the first one and you can add additional authors. Make they're in the order that they appear in the publication.
-* **Publication** (meaning the name of the journal)
+* **Publication**: the name of the journal.
 * **Volume**: Typically a journal has one volume per year. It's usually an integer, like "12".
 * **Issue**: The number of times the journal publishes articles per year. Usually it's a number but sometimes it's a season, like "Fall 2024".
 * **Pages**: The pages of that issue that the article appears in. This is getting to be antiquated as things move to digital, but even some online-only journals have page numbers still.
@@ -138,9 +138,22 @@ If you are citing one chapter from a monograph, then you cite the entire book us
 * **Pages**: The page range that the chapter occupies in the book.
 * Plus all the other information for a book, like the date, publisher, place, volume, series, and edition, if relevant.
 
+### Theses
+
+Any kind of student-produced work would likely fall under this category, whether it be an undergraduate honor's thesis, a Master's thesis, and PhD dissertation, etc. There are six pieces of information you should note in your Zotero entry:
+
+* **Title**: This is is the full title. If there is a subtitle, include that too, separated by a colon.
+* **Author**: The student who produced the work.
+* **Type**: This is where you specify what kind of thesis it is. I put things like "MA Thesis" or "PhD Dissertation" or whatever is most appropriate.
+* **University**: The university or institution where the work was conducted.
+* **Place**: The city where the university is located. For US-based institutions, I put the city and the state. For others, I put the city and the country. 
+* **Date**: The year the thesis was produced. 
+
+All of this information is usually displayed on the front page of the work, so it's not too bad to manually type it all in. 
+
 ### Other item types
 
-Of course there are tons of other kinds of items in Zotero. The ones you might encounter are conference paper, theses, and software. I encourage you to look through those item types and see what kind of information you'd need. 
+Of course there are tons of other kinds of items in Zotero. Other common ones that I have include conference papers and software. I encourage you to look through those item types and see what kind of information you'd need. 
 
 ## Organization
 
