@@ -142,20 +142,10 @@ em, i {
 
 /* Navbar Stuff */
 
-/* testing narrow screen stuff
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
-}
-*/
-
 
 #quarto-header {
   border-bottom: 2px solid var(--joeyblue)
 }
-
-
 
 .navbar, .navbar * {
   background: var(--joeyblue);
@@ -179,21 +169,21 @@ em, i {
 
 	font-variant: small-caps;
 	letter-spacing: 0.02em;
+	
+	color: red;
 }
 
 
 /* Container holding the nav bar items*/
 
+/* Changed Apr 20 with ChatGPT to fit my name better */
 .me-auto {
-  margin: auto;
-  /* Widened from 800px January 5, 2026 to accomodate AI manifesto */
-  width: 1080px; 
-  
   display: flex;
-  flex-direction: row;
-  justify-content: left;
+  /*flex-wrap: wrap;        /* allows wrapping if needed */
+  justify-content: flex-start;
   align-items: center;
-
+  /*width: auto;            /* remove fixed width */
+  /* margin: 0;*/
 }
 
 
@@ -207,14 +197,18 @@ em, i {
 	
 	font-size: 1.2em;
 	font-weight: 500;
-	margin: 0 0.25em 0 0.25em;
+	margin: 0 0.15em 0 0.15em; /* Tightened up to make more horizontal room */
 	
 	display:inline-block; /* Make it only as wide as it needs to be */
 	
 	font-family: var(--sansfont);
 	text-align: center;
 	
-	flex-grow: 1;
+	/* This added Apr 20, 2026 with ChatGPT to help nav bar */
+  flex-grow: 0;           /* don’t stretch */
+  padding: 6px 10px;      /* control size manually */
+
+}
 }
 .me-auto .nav-item:first-child {
   margin-left: 0;
@@ -228,25 +222,78 @@ em, i {
 	color: var(--joeyblue);
 }
 
-/* The little taglines at the end of the top-level navbar buttons. 
-Hide them if the screen is too narrow. */
+
 .menu-text em {
   background-color: whitesmoke;
   font-size: 0.5em;
   display: block;
 }
-@media (max-width: 800px) {
+
+
+
+
+/* The little taglines at the end of the top-level navbar buttons. 
+Hide them if the screen is too narrow. */
+
+/* 1480 is the narrowest it can be and include taglines. 
+So, remove the taglines when it's narrower than that.*/
+@media (max-width: 1480px) {
   .menu-text em {
       display: none;
   }
+  .me-auto .nav-item a {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .me-auto .nav-item a {
+    font-size: 1.05em;
+  }
 }
 
-/*
-.navbar-toggler-icon {
-  background-color: green;
-  content: "TEST";
+
+/* 1201 is the narrowest it can be and include all menu items and my name.
+So, move to hamburger below that */
+/* Make navbar items visible in hamburger menu on mobile. Added Apr 20, 2026 with ChatGPT. */
+@media (max-width: 1130px) {
+  /* Stack items nicely in hamburger menu */
+  .navbar-collapse .nav-item {
+    width: 100%;
+  }
+  .navbar-collapse .nav-item a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 4px 0;
+  }
+  /* Make dropdown menu readable */
+  .navbar-collapse .dropdown-menu {
+    width: 100%;
+  }
 }
-*/
+
+
+
+
+/* Take a little time for the dropdown to show up. */
+.navbar-collapse {
+  transition: all 0.2s ease;
+}
+
+
+
+
+
+/* Make the hamburger icon visible. Added Apr 20, 2026 with ChatGPT */
+.navbar-toggler {
+  border: 1px solid whitesmoke;
+  background-color: transparent;
+
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
 
 
 /* The dropdown menu items */
@@ -268,6 +315,8 @@ Hide them if the screen is too narrow. */
   font-size: 0.7em;
   display: block;
 }
+
+
 
 /* Container holding social media icons (but not the magnifying glass and not the icons in the dropdown) */
 .nav-link, .nav-link > .bi, .nav-link::after {
