@@ -7,7 +7,7 @@ website:
   site-url: https://joeystanley.com
   google-analytics: "350348361"
   navbar:
-    title: '<span id="name">Joey Stanley</span><br/><span id="tagline">assistant professor, linguistics</span>'
+    title: '<span id="name">Joey Stanley</span><br/><span id="tagline">associate professor, linguistics</span>'
     left:
 #      - text: "About Me <em>who am I?</em>"
 #        file: index.qmd
