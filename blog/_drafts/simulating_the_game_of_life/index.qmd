@@ -1,0 +1,109 @@
+---
+layout: post
+title:  "Simulating Chutes and Ladders"
+date:   2019-04-24 15:41:00 -0400
+date-modified: 2023-10-06
+categories:
+  - Animations
+  - Github
+  - Side Projects
+  - Simulations
+draft: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+
+
+```
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+board <- read_excel("board.xlsx") |> 
+  print()
+```
+
+```{r}
+spin <- function() { sample(x = 1:10, size = 1) }
+```
+
+
+
+```{r}
+initiate_game <- function(.n_players = 1) {
+  game <- crossing(player = as.factor(1:.n_players),
+                    turn = 1:200) |> 
+    rowwise() |> 
+    mutate(spin = spin(),
+           start_tile = NaN,
+           end_tile = NaN,
+           start_cash = NaN,
+           end_cash = NaN,
+           cash_diff = NaN) |> 
+    ungroup()
+  
+  # First turn
+  # game[game$turn == 1,]$start_tile <- 27
+  # game[game$turn == 1,]$start_cash <- 10000
+  
+  return(game)
+}
+game <- initiate_game() |> 
+  print()
+```
+
+Simulate one turn by one player.
+
+```{r}
+take_turn <- function(.game, .player, .turn) {
+  
+  # Get temporary shortcut object to modify during this turn
+  game_row_num <- which(.game$turn == .turn & .game$player == .player)
+  this_turn <- slice(.game, game_row_num)
+  
+  # Use prev turn to get start tile and cash.
+  if (.turn == 1) {
+    this_turn$start_tile <- 27
+    this_turn$start_cash <- 10000
+  } else {
+    prev_turn <- slice(.game, which(.game$turn == .turn-1 & .game$player == .player))
+    this_turn$start_tile <- prev_turn$end_tile
+    this_turn$start_cash <- prev_turn$end_cash
+  }
+  
+  # Now advance by the spin amount.
+  this_turn$end_tile <- this_turn$start_tile + this_turn$spin
+  
+  
+  
+  
+  # Now overwrite the row in the original df with this temporary object.
+  .game[.game$player == .player & .game$turn == .turn,] <- this_turn
+  
+  return(.game)
+}
+
+take_turn(game, "1", 1)
+```
+
+Now do a whole game.
+
+```{r}
+simulate_game <- function() {
+  this_game <- initiate_game()
+  
+  for (i in 1:nrow(this_game)) {
+    this_game <- take_turn(this_game, this_game$player[[i]], this_game$turn[[i]])
+  }
+  
+  return(this_game)
+}
+simulate_game()
+```
+
+
