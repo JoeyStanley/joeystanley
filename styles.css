@@ -548,6 +548,16 @@ a.github:after {
   background: whitesmoke;
 }
 
+/* Fix tabset tab label color */
+.panel-tabset .nav-link {
+  color: var(--joeyblue);
+}
+
+/* Keep active/hovered tabs readable too */
+.panel-tabset .nav-link.active,
+.panel-tabset .nav-link:hover {
+  color: var(--darkblue);
+}
 
 
 
@@ -585,4 +595,16 @@ table .lc {
 
 .center {
 	text-align: center;
+}
+
+
+/* ########################################## */
+/*                   Code                     */
+/* ########################################## */
+
+/* Style plain fenced code blocks (e.g. Praat) to match R code blocks */
+pre:not(.sourceCode) {
+  background: #e8e8e8;
+  border-radius: 5px;
+  padding: 0.5em;
 }
