@@ -18,3 +18,6 @@ _images_old
 styles_updated.css
 **/*.quarto_ipynb
 .positai
+
+/blog/semi-automated_listening_in_praat_part1/audio/*/*.wav
+/blog/semi-automated_listening_in_praat_part2/audio/*/*.wav
