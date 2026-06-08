@@ -1,0 +1,487 @@
+---
+layout: post
+title:  "Simulating Flip 7"
+date:   2026-06-05 16:47:00 -0400
+date-modified: last-modified
+reference-location: margin
+number-sections: true
+categories:
+  - Side Projects
+  - Simulations
+draft: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE, fig.height = 4, fig.width = 9)
+```
+
+```{r}
+library(tidyverse)
+```
+
+## Game functions
+
+### Initialization functions
+
+```{r}
+new_deck <- function() {
+  as.character(sample(c(0, rep(1:12, 1:12))))
+}
+new_turn <- function() {
+  list(hand = c(),
+       score = 0,
+       prob_of_busting = 0)
+}
+new_player <- function(.player_num) {
+  list(player_num = .player_num,
+       turns = NULL,
+       score = 0,
+       
+       busted = FALSE,
+       busting_card = NA,
+       stayed = FALSE,
+       staying_reason = NULL,
+       
+       # strategies
+       prob_tol = 0.25,
+       min_score = 25,
+       max_cards = 4
+  )
+}
+```
+
+### Getters
+
+```{r}
+whose_turn_is_it <- function(.round, .turn) {
+  
+  # Modulo turn num by n_players
+  mod <- .turn %% .round$n_players
+  
+  # The mod is the player number, except when it divides evenly (4 %% 4 = 0, so turn that into player 4)
+  player <- if_else(mod == 0, .round$n_players, mod)
+  
+  return(player)
+}
+```
+
+```{r}
+get_this_turn_num <- function(.round, .player_num) {
+  length(.round$players[[.player_num]]$turns)
+}
+get_this_turn <- function(.round, .player_num) {
+  this_turn_num <- get_this_turn_num(.round, .player_num)
+  .round$players[[.player_num]]$turns[[this_turn_num]]
+}
+```
+
+
+```{r}
+is_busted <- function(.round, .player_num) {
+  .round$players[[.player_num]]$busted
+}
+is_stayed <- function(.round, .player_num) {
+  .round$players[[.player_num]]$stayed
+}
+```
+
+Get the number of players left. Used to see if the round is over.
+
+```{r}
+n_players_left <- function(.round) {
+  busted_stats <- c()
+  for (i_player in 1:.round$n_players) {
+    busted_stats[i_player] <- .round$players[[i_player]]$busted
+  }
+  return(sum(busted_stats))
+}
+```
+
+
+
+### Gameplay functions
+
+Deal one card. It takes the top card off the deck, removes it from the deck, and now places it in the "dealt card" status. It's not actually given to a player yet.
+
+```{r}
+deal_one_card <- function(.round, .player_num) {
+  
+  # Get the card
+  dealt_card <- .round$deck[1]
+
+  # Remove it from the deck
+  .round$deck <- .round$deck[-1]
+  
+  # That is now the dealt card
+  .round$dealt_card <- dealt_card
+
+  # Return the modified round object
+  return(.round)
+}
+```
+
+Set up scaffolding for a turn for a player. This adds to the `$turns` part of their object.
+
+```{r}
+set_up_turn <- function(.round, .player_num) {
+  
+  # Get the number of turns the player has already had.
+  n_turns <- length(.round$players[[.player_num]]$turns)
+  turn_num <- n_turns + 1
+  
+  .round$players[[.player_num]]$turns[[turn_num]] <- new_turn()
+  
+  return(.round)
+}
+```
+
+
+```{r}
+busted <- function(.round, .player_num) {
+  
+  this_turn_num <- get_this_turn_num(.round, .player_num)
+  
+  # This is only relevant after the first turn
+  if (this_turn_num > 1) {
+    
+    # Check to see if the dealt card is in the previous turn's hand.
+    # The current turn's hand is empty still because we haven't called `add_to_hand` yet.
+    is_duplicate <- .round$dealt_card %in% .round$players[[.player_num]]$turns[[this_turn_num-1]]$hand
+    
+    # If it's a duplicate, toss their hand and mark them as busted.
+    if (is_duplicate) {
+      .round$players[[.player_num]]$busted <- TRUE
+      .round$players[[.player_num]]$busting_card <- .round$dealt_card
+    }
+  }
+  
+  return(.round)
+}
+```
+
+Player adds the dealt card to their hand. We've already determined if they're busted, so if they are, it's not added. Then remove the card from the "dealt card" status.
+
+```{r}
+add_to_hand <- function(.round, .player_num) {
+  
+  this_turn_num <- get_this_turn_num(.round, .player_num)
+  
+  # Add it to their hand (if they're not busted)
+  if (!is_busted(.round, .player_num)) {
+    
+    # If it's the first turn, the dealth card becomes the hand.
+    if (this_turn_num == 1) {
+      .round$players[[.player_num]]$turns[[this_turn_num]]$hand <- .round$dealt_card
+      
+    # If it's not, then add the dealt card to the previous turn's hand
+    } else {
+      .round$players[[.player_num]]$turns[[this_turn_num]]$hand <- 
+        c(.round$players[[.player_num]]$turns[[this_turn_num-1]]$hand, .round$dealt_card)
+    }
+  }
+
+  # It's no longer the dealt card
+  .round$dealt_card <- NA
+  
+  return(.round)
+}
+
+```
+
+
+### End-of-turn functions
+
+This will need to be changed a lot, but converting to numbers is fine for now.
+
+```{r}
+calculate_scores <- function(.round) {
+  for (i_player in 1:.round$n_players) {
+    this_turn_num <- get_this_turn_num(.round, i_player)
+    
+    # Don't do this if a player hasn't had a turn yet.
+    if (!is.null(.round$players[[i_player]]$turns[[this_turn_num]])) {
+      .round$players[[i_player]]$turns[[this_turn_num]]$score <-
+        .round$players[[i_player]]$turns[[this_turn_num]]$hand |> as.numeric() |> sum()
+    }
+  }
+  return(.round)
+}
+```
+
+```{r}
+calculate_probs <- function(.round) {
+  
+  cards_in_deck <- length(.round$deck)
+  
+  for (i_player in 1:.round$n_players) {
+    this_turn_num <- get_this_turn_num(.round, i_player)
+    
+    # Don't bother if a player hasn't had a turn yet.
+    if (this_turn_num > 0) {
+      n_potential_duplicates <- sum(.round$deck %in% .round$players[[i_player]]$turns[[this_turn_num]]$hand)
+      .round$players[[i_player]]$turns[[this_turn_num]]$prob_of_busting <- n_potential_duplicates/cards_in_deck
+    }
+  }
+  
+  return(.round)
+}
+```
+
+
+
+
+
+### Strategy
+
+I have three strategies built in:
+
+* probability tolerance (`prob_tol`): The maximum probability of busting someone is willing to move forward. A default of 1 means they'll always go until busted. A score of 0.25 means they'll stay if the probability of busting exceeds 0.25. 
+* minimum score (`min_score`): The lowest score someone is willing to stay with. The maximum (around 67) means they'll go until they bust. A minimum score of 25 means they'll stay as soon as they get 25 points.
+* maximum number of cards (`max_cards`): The most number of cards someone is willing to stay with. The maxmimum (of 7) means they'll go until busted. A score of 4 means they stay with just four cards.
+
+```{r}
+decide_to_stay <- function(.round, .player_num) {
+  this_prob_tol  <- .round$players[[.player_num]]$prob_tol
+  this_min_score <- .round$players[[.player_num]]$min_score
+  this_max_cards <- .round$players[[.player_num]]$max_cards
+  
+  this_turn_num <- get_this_turn_num(.round, .player_num)
+  
+  current_prob    <- .round$players[[.player_num]]$turns[[this_turn_num]]$prob_of_busting
+  current_score   <- .round$players[[.player_num]]$turns[[this_turn_num]]$score
+  current_n_cards <- length(.round$players[[.player_num]]$turns[[this_turn_num]]$hand)
+  
+  if (current_prob >= this_prob_tol) {
+    .round$players[[.player_num]]$stayed <- TRUE
+    msg <- paste0("Current probability (", current_prob, ") exceeds my max tolerable probability (", this_prob_tol, ").")
+    .round$players[[.player_num]]$staying_reason <- c(.round$players[[.player_num]]$staying_reason, msg)
+  }
+  
+  if (current_score >= this_min_score) {
+    .round$players[[.player_num]]$stayed <- TRUE
+    msg <- paste0("Current score (", current_score, ") exceeds the max score I want (", this_min_score, ").")
+    .round$players[[.player_num]]$staying_reason <- c(.round$players[[.player_num]]$staying_reason, msg)
+  }
+  
+  if (current_n_cards >= this_max_cards) {
+    .round$players[[.player_num]]$stayed <- TRUE
+    msg <- paste0("Current number of cards (", current_n_cards, ") exceeds the max number of cards I want (", this_max_cards, ").")
+    .round$players[[.player_num]]$staying_reason <- c(.round$players[[.player_num]]$staying_reason, msg)
+  }
+  
+  return(.round)
+}
+decide_to_stay(round, 3)
+```
+
+
+
+### The round
+
+```{r}
+run_round <- function(.n_players = 4) {
+  
+  round <- list(
+    n_players = .n_players,
+    deck = new_deck(),
+    players = map(1:.n_players, new_player),
+    dealt_card = NA,
+    winner = NA
+  )
+  
+  for (i_turn in 1:(.n_players * 7)) {
+    whose_turn <- whose_turn_is_it(round, i_turn)
+
+    # Skip this player if they're busted or stayed
+    if (is_busted(round, whose_turn)) { next }
+    if (is_stayed(round, whose_turn)) { next }
+
+    # Set up scaffolding for this player's turn.
+    round <- set_up_turn(round, whose_turn)
+
+    # Deal one card
+    round <- deal_one_card(round, whose_turn)
+
+    # Busted if it's a duplicate
+    round <- busted(round, whose_turn)
+
+    # Give it to the player
+    round <- add_to_hand(round, whose_turn)
+
+    # End of round functions
+    round <- calculate_scores(round)
+    round <- calculate_probs(round)
+    
+    # Add the final score for each round to their total score when people stay
+    
+    # Decide to stay
+    round <- decide_to_stay(round, whose_turn)
+    
+    # If every player has gone but there's only one left.
+    if (i_turn > round$n_players && n_players_left(round) == (round$n_players - 1)) {
+      break
+    }
+  }
+  
+  return(round)
+}
+round <- run_round()
+round
+```
+
+### Full game
+
+Now run a full game to 200 points.
+
+```{r}
+add_scores_to_total <- function(.round) {
+  scores <- c()
+  for (i_player in 1:.round$n_players) {
+    scores[[i_player]] <- .round$players[[i_player]]$score
+  }
+  return(scores)
+}
+add_scores_to_total(round)
+
+new_game <- function(.n_players = 4) {
+  game <- list(rounds = c(),
+               scores = tibble(players = 1:.n_players,
+                               score = 0),
+               winner = NA)
+  
+  round_num <- 0
+  while (is.na(game$winner)) {
+    round_num <- round_num + 1
+    
+    game$rounds[[round_num]] <- run_round(.n_players)
+    
+    
+    
+    if (round_num >= 50) { game$winner = "yes" }
+  }
+  
+  return(game)
+  
+  # be sure to cycle through who starts
+}
+game <- new_game()
+```
+
+
+
+
+
+## Many simulations
+
+```{r}
+sims <- tibble(sim = 1:10000) |> 
+  rowwise() |> 
+  mutate(round = list(run_round())) |> 
+  print()
+```
+
+
+
+```{r}
+get_probs <- function(.round) {
+  
+  probs <- crossing(player = 1:.round$n_players,
+                    turn = 1:7,
+                    stats = NA)
+  
+  for (i_player in 1:.round$n_players) {
+    n_turns <- get_this_turn_num(.round, i_player)
+    for (i_turn in 1:n_turns) {
+      probs[probs$player == i_player & probs$turn == i_turn,]$stats <-
+        list(.round$players[[i_player]]$turns[[i_turn]])
+    }
+  }
+  probs_tbl <- probs |> 
+    unnest_wider(stats) |> 
+    rowwise() |> 
+    # mutate(hand = str_c(sort(as.numeric(hand)), collapse = ",")) |> 
+    
+    unnest(hand) |> 
+    mutate(hand = factor(hand, levels = as.character(0:12)),
+           held = TRUE,
+           .after = hand) |>
+    pivot_wider(names_from  = hand,
+                names_prefix = "has_",
+                values_from  = held,
+                values_fill  = FALSE) |> 
+    
+    filter(!is.na(score))
+  
+  return(list(stats = probs_tbl))
+}
+
+get_probs(sims$round[[1]])
+
+probs <- sims |>
+  mutate(stats = get_probs(round)) |>
+  select(-round) |> 
+  unnest(stats) |> 
+  mutate(across(matches("has_"), ~replace_na(., FALSE))) |> 
+  select(sim, player, turn, score, prob_of_busting, 
+         has_0, has_1, has_2, has_3, has_4, has_5, has_6,
+         has_7, has_8, has_9, has_10, has_11, has_12) |> 
+  print()
+```
+
+
+```{r}
+probs |> 
+  ggplot(aes(turn, prob_of_busting, group = turn)) + 
+  geom_boxplot() + 
+  scale_x_continuous(breaks = 1:7) + 
+  scale_y_continuous(breaks = seq(0, 1, 0.2), label = scales::label_percent()) + 
+  labs(title = "Probability of busting by hand size",
+       x = "number of cards in hand",
+       y = "probability of busting")
+```
+
+```{r}
+probs_lm <- lm(prob_of_busting ~ 
+                 turn *  
+                 (has_0 + has_1 + has_2 + has_3 + has_4 + 
+                    has_5 + has_6 + has_7 + has_8 + has_9 + 
+                    has_10 + has_11 + has_12), 
+               data = probs)
+summary(probs_lm)
+```
+```{r}
+process_potential_hand <- function(.cards) {
+  
+  tibble(turn = length(.cards),
+         has_0  = 0  %in% .cards,
+         has_1  = 1  %in% .cards,
+         has_2  = 2  %in% .cards,
+         has_3  = 3  %in% .cards,
+         has_4  = 4  %in% .cards,
+         has_5  = 5  %in% .cards,
+         has_6  = 6  %in% .cards,
+         has_7  = 7  %in% .cards,
+         has_8  = 8  %in% .cards,
+         has_9  = 9  %in% .cards,
+         has_10 = 10 %in% .cards,
+         has_11 = 11 %in% .cards,
+         has_12 = 12 %in% .cards,)
+}
+process_potential_hand(c(12))
+
+get_odds <- function(.t) {
+  predict(probs_lm, newdata = process_potential_hand(.t))
+}
+```
+
+
+```{r}
+get_odds(c(12, 9))
+```
+
+
+
+TODO: Add player tendencies
+  - always quit after three cards.
+  - always quit if odds > 0.5
+  - never quit.
