@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Automatic Transcription in Praat"
+date:   2026-05-19 09:00:00 -0600
+date-modified: last-modified
+reference-location: margin
+format:
+  html:
+    toc: true
+    toc-depth: 4
+categories:
+  - How-to Guides
+  - Praat
+number-sections: true
+execute:
+  eval: false
+draft: true
+---
+
+I was on the Praat homepage and I noticed that [Anastasia Shchupak](https://www.linkedin.com/in/anastasiashch/) was added as an author to Praat. After a bit of digging, I saw on the [Acknowledgements](https://www.fon.hum.uva.nl/praat/manual/Acknowledgments.html) page that she is responsiblle for automatic speech recognition with word-level timestamps, automatic speaker diarization, and adaptation of whisper.cpp, Silero VAD and pyannote.audio. Whoa. I hadn't heard that Praat can now do automatic transcription. So, I thought I'd put together a quick tutorial to see how to do that and to see how it works. 
+
+
+
+Looks like you need to install Whisper. See documentation on how to do that here.
+
+https://www.fon.hum.uva.nl/praat/manual/TextGrid___Sound__Transcribe_interval___.html
+
+
+
+
+
+Find preferences folder [here](https://praat.org/manual/preferences_folder.html). I had to manually create it.
