@@ -194,7 +194,9 @@ As you can see, there are a *lot* of options for Sound files. After all, Praat i
 
 For now, let's see how Praat visualizes the sound. After highlighting the Sound file, click `View & Edit` to open the SoundEditor window. @fig-sound_editor_window shows the main components of this new window. Taking up the majority of the space are two visualizations: the waveform and the spectrogram. For both of these, the *x*-axis, represents time. So the beginning of the audio is at the far left and the end is at the far right.
 
+:::{.column-screen}
 ![The Sound Editor Window](images/sound_editor_window.png){#fig-sound_editor_window}
+:::
 
 The waveform represents the actual sound wave. When the black portion of the wave form is taller, it's louder, while smaller ones are quieter. In fact, if you zoom far enough in, you can see that the black shapes become just a single line moving up and down, which represents the sound wave. On the left of the wave form, the numbers at the top and bottom of the *y*-axis of the wave form ($0.5255$ and $-0.5567$) represent the signal-to-noise (SNR) ratio, which ranges from 0 to 1. The blue number is the SNR measurement at the point where the cursor is. Higher numbers usually indicate cleaner audio, unless it's a 1 in which case almost certainly means the audio was clipped.
 
@@ -242,7 +244,9 @@ Unless you're *really* good at reading a spectrogram, you'll likely want a trans
 
 Transcriptions in Praat are accomplished using TextGrid files. Before explaining the underlying mechanics of how these work, it might make more sense just to see one. Take a look at @fig-sound_with_textgrid.
 
+:::{.column-screen}
 ![A Sound File with a TextGrid](images/sound_with_textgrid.png){#fig-sound_with_textgrid}
+:::
 
 When we view both the Sound file with its TextGrid, we can see how they line up. The waveform and the spectrogram are displayed like before, only underneath those now we have various **tiers** of text. In this example above, I have three tiers: "phoneme," "word," and "utterance", the last being a catch-all for "sentence" or "breath group". Each tier can have any number of **boundaries**, which are represented by the blue vertical lines. These boundaries delimit the **intervals** in the tier. It is in these intervals that you can type transcription, annotations, or whatever other text you want. 
 
@@ -266,9 +270,7 @@ So, let's make a TextGrid. To create a new `TextGrid` that accompanies a Sound f
 Annotate > To TextGrid...
 ```
 
-In the "Sound: To TextGrid" window, there are two boxes for input. In "All tier names:" delete the default text ("Mary John bell") and type "phoneme word sentence". This will create three tiers, one called "phoneme," one called "word," and one called "sentence." Where it says "Which of these are point tiers?", make sure that's blank. (That's used for in-depth analysis of intonation, which we won't cover in this workshop.) Hit "OK" and you should see your new TextGrid object in your Praat Objects windows. Highlight both of them and then click "View & Edit" to open the TextGrid editor like we saw above. Here is a video showing this process.
-
-{{< video videos/create_textgrid.mov >}}
+In the "Sound: To TextGrid" window, there are two boxes for input. In "All tier names:" delete the default text ("Mary John bell") and type "phoneme word sentence". This will create three tiers, one called "phoneme," one called "word," and one called "sentence." Where it says "Which of these are point tiers?", make sure that's blank. (That's used for in-depth analysis of intonation, which we won't cover in this workshop.) Hit "OK" and you should see your new TextGrid object in your Praat Objects windows. Highlight both of them and then click "View & Edit" to open the TextGrid editor like we saw above.
 
 ### Working with TextGrids
 
@@ -300,36 +302,8 @@ Save > Save as text file...
 
 If Praat doesn't add it for you, ensure that you add `.TextGrid` to the filename to ensure that it gets saved properly and so that Praat knows how to open it afterwards. 
 
-Here's a video of me showing some of this basic transcription. 
 
-{{< video videos/working_with_textgrids.mov >}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Different ways of making TextGrids
-
-Modifying an automated TextGrid (TextGrid silences)
-
-Adding tiers (word, sentence, phoneme, notes, etc), renaming, 
-
-Adding/moving intervals across tiers.
-
-
-
-
-
+<!--TODO: Different ways of making TextGrids Modifying an automated TextGrid (TextGrid silences). -->
 
 
 ## Use cases
@@ -341,12 +315,214 @@ In each section, I'll present some of the basic Praat functionality including ho
 
 ### Pitch
 
+First, we'll examine the pitch of speaker's voice. This is useful if you want to look at intonation or tone (depending on the language). Unfortunately, intonation is notoriously difficult to study and pin down, so I really won't be able to show much more than simple visualizations and measurements.
+
+#### Visualizing pitch
+
+Praat can approximate pitch by estimating how often the speaker's vocal folds are vibrating at any point during your recording. To view these estimates, open a Sound file, either by itself or together with a TextGrid. I'll use this recording of myself:
+
+<audio controls>
+  <source src="audio/joey.wav">
+</audio>
+
+
+Once you've got that loaded into Praat, turn on the pitch visualizer by going to
+
+```
+Pitch > Show pitch
+```
+
+This will overlay a blue line on the spectrogram showing the pitch at that time point. It'll also add a secondary legend to the right side of the spectrogram showing an approximate range of pitch values in the visible portion of the audio. See @fig-pitch_overlay.
+
+:::{.column-screen}
+![A spectrogram with pitch overlaid](images/pitch_overlay.png){#fig-pitch_overlay}
+:::
+
+
+In this sample of my voice, the pitch is somewhere between 80 and 140 Hz. It's a little hard to see the contour though because the pitch range is relatively narrow compared to the full range of 50--800Hz that it can show. Let's adjust the Pitch settings a little bit by zooming in a little bit on that range. Go to
+
+```
+Pitch > Pitch settings (filtered autocorrelation)…
+```
+
+A new window will pop up with a whole bunch of options. We don't need to worry about all of them. The one we want to adjust are the first two: the Pitch floor and top. You should see `50.0` and `800.0`. Since we know the pitch range in the recording is only between about 80 and 140 Hz, let's zoom in to closer to that range. I'll try from 70 to 160Hz. Here's what that should look like now (@fig-pitch_settings).
+
+![Pitch settings](images/pitch_settings.png){#fig-pitch_settings width="65%"}
+
+That's the only change we need to make to this window. If you can see this window and your spectrogram at the same time, try clicking on `Apply` as you watch the blue line. (In Praat, `Apply` changes the settings and keeps the window open while `OK` changes the settings and closes the window.) You should notice the blue line is now more spread out vertically since we've zoomed into that range (@fig-pitch_overlay_adjusted).
+
+:::{.column-screen}
+![Adjusted pitch overlay](images/pitch_overlay_adjusted.png){#fig-pitch_overlay_adjusted}
+:::
+
+:::{.callout-tip title="Pitch Exercise 1"}
+
+If that's a little too zoomed in, you can try zooming out a little, perhaps add another 100Hz or so to the top end. Play with it until you get something that looks good. 
+
+:::
+
+
+:::{.callout-note}
+
+There are several algorithms that Praat can use to estimate pitch. In 2023, it switched to the method that we're using now, the filtered autocorrelation method. The specifics of these methods are not important to beginning users, but you can read about them [here](https://www.fon.hum.uva.nl/praat/manual/how_to_choose_a_pitch_analysis_method.html). 
+
+Since adopting this newer technique, Praat's pitch tracker has been much better. Previously, Praat's pitch tracker sometimes it goofs up a little bit. In @fig-pitch_old_method, I've switched it to the older method, the raw cross-correlation algorithm.
+
+![Pitch overlay using raw cross-correlation](images/pitch_old_method.png){#fig-pitch_old_method}
+
+You can see right near the middle of the sentence, there is a pitch measurement that is super high, right at the top center of the spectrogram. (This happened during the /s/ of the word *was*.) There, Praat thinks the pitch is somewhere close to 500Hz, which would be a high falsetto for me. It's clearly not a good measurement because /s/ is a voiceless sound and shouldn't even have any pitch measurements. The newer method avoids these erroneous measurements. Unless you have a reason to continue with an older method for comparison purposes, I'd recommend sticking to the default, which is the filtered autocorrelation method.
+
+:::
+
+#### Measuring pitch
+
+If you want to find the exact pitch at any point, you can. At the point where my cursor is located in @fig-pitch_overlay (about 6.666 seconds into the recording) is the point where the pitch is at its maximum. An easy way to tell what the pitch is at that point is to look at the right hand side---139.7 Hz. Another way to get this exact pitch is to click on the point along the blue pitch contour that you want to measure and go to
+
+```
+Pitch > Get pitch
+```
+
+A new window will pop up, the **Praat Info** window, and will give you a *very* specific pitch estimate (@fig-pitch_measurement).
+
+![Pitch measuremet](images/pitch_measurement.png){#fig-pitch_measurement width="65%"}
+I don't know why Praat's measurements have so many decimal places, but I guess it's better than not having enough!
+
+
+:::{.callout-tip title="Pitch Exercise 2"}
+
+Take a few minutes and see if you can work with pitch by yourself. Here is a problem to solve. Try to figure it out before you click on the solution.
+
+:::{.panel-tabset}
+
+#### The problem {.unnumbered}
+
+I know that the point that was selected in @fig-pitch_overlay is indeed the location of the maximum pitch. How can you find the precise moment of the highest pitch in your recording? Explore the options in the `Pitch` menu and see if you can figure out how.
+
+#### The solution {.unnumbered}
+
+The key to finding the point where the maximum pitch is located is this function:
+
+```
+Pitch > Move cursor to maximum pitch
+```
+
+In order for this to work though, you'll need to highlight a range of audio instead of just a single point. For this particular recording, if I highlight the whole thing, it'll tell me that the point with the highest pitch is 2.328s into the audio, right where that bad measurement in /s/ is. That's the error, so I want to ignore that. So to get around it, I highlighted the first half up to the fricative, found the maximum pitch (139.9Hz) and compared it to the maximum pitch in the second half after the fricative. 
+
+:::
+
+:::
+
+
+
+<!--TODO
+
 #### Spectrogram settings
 
 15000 Hz instead of 5000Hz. Window length to 0.025 for pitch movemements.
 
-#### Measuring pitch
+-->
 
+
+
+
+#### Visualizing the pitch overlay
+
+It may be helpful to produce a high quality image with that blue overlay. In this section, we'll look at how to create visualizations in Praat. Much of what we'll learn in this section is transferable to other sections when we learn about visualizations. So, bear with me at first as we do it for the first time. If you follow along the entire tutorial, you'll revisit this a handful of times. 
+
+Since the spectrogram isn't important here, we can hide it. Go to
+
+```
+Spectogram > Show spectrogram
+```
+
+and uncheck the box. You should now have an unencumbered look at the pitch contour. However, it's a little *too* devoid of context, so I'll load in the TextGrid so we can see how the contours line up with the words. @fig-pitch_without_spectrogram shows what that looks like. 
+
+:::{.column-screen}
+![Pitch contour with no spectrogram](images/pitch_without_spectrogram){#fig-pitch_without_spectrogram width="90%"}
+:::
+
+At this point, a lot of people just take a screenshot of Praat and call it good. But we can do better. 
+
+Remember that window we closed when we opened Praat? The one with the pink rectangle? It's time to use that. (Don't worry, we'll make it pop up again automatically.) Go to 
+
+```
+Pitch > Draw visible pitch contour…
+```
+
+which is close to the bottom of the `Pitch` menu.
+
+![Draw visible pitch contour window](images/pitch_draw_window.png){#fig-pitch_draw_window}
+
+Fow now, we can accept the default settings. Go ahead and click `Apply` and you should see a window that looks like this:
+
+![Basic pitch visualization](images/pitch_picture_basic.png){#fig-pitch_picture_basic}
+
+Here we see the **Praat Picture Window** for the first time in action. Hopefully you can now see what that pink rectangle does. The area inside of it defines the area that the thing you want to draw---in this case, the pitch contour. If you'd like it to be bigger, go back to the **Praat Picture Window** and click and drag and you should see the pink rectangle change size. For me, I'd like it a little bit wider. Once you're satisfied with a size, you back to the **Draw visible pitch contour window** (or, if you closed out of it, go to `Pitch > Draw visible pitch contour…`), make sure the `Erase first` box is checked, and then hit `Apply` again, and you should see your image update. 
+
+:::{.callout-tip title="Pitch Exercise 3"}
+Spend a minute or so and play around with the other settings in the **Draw visible pitch contour window**. What do each of the following do?
+
+* Erase first
+* Speckle
+* Write name at top: no, far, and near
+* Draw selection times
+* Draw selection hairs
+* Garnish
+
+Figure out the combination of settings that you're satisfied with.
+
+:::
+
+You can export this image in a high-quality image format. In the **Praat Picture Window**, go to one of these two options
+
+```
+File > Save as PDF file…
+File > Save as 300-dpi PNG file…
+```
+
+(You can of course explore the others if you'd like, but these are probably the most common). Save the file to your computer and check it out to make sure it looks the way you want. 
+
+#### Adding a TextGrid to the pitch visual
+
+A visualization of a pitch contour by itself is not super helpful since there is no context. Fortunately, Praat has a built-in function that lets you visualize the pitch contour *and* the TextGrid at the same time. Go back to your TextGrid window and go to:
+
+```
+TextGrid > Draw visible pitch contour and TextGrid
+```
+
+That'll take you to a new window that has many of the same options. Erase what you have so far but otherwise the default settings and seeing what it looks like. 
+
+![A cluttered visual of a pitch contour and a TextGrid](images/pitch_textgrid_messy.png){#fig-pitch_textgrid_messy}
+
+If you have too much audio selected, you may find (like in @fig-pitch_textgrid_messy) that it's a bit messy. The words are all on top of each other. There's just too much that it's trying to squeeze into a single window. Let's zoom into a smaller range of the audio, perhaps just a few seconds, or rather, a single intonational contour, and visualize that. Notice that Praat's command is called Draw *visible* pitch contour and TextGrid. So we need to actually zoom in in the TextGrid window and then visualize that. 
+
+:::{.panel-tabset}
+
+#### The zoomed in TextGrid {.unnumbered}
+
+Here's the portion of the TextGrid that I zoomed into.
+
+:::{.column-screen}
+![](images/pitch_textgrid_window.png){width="90%"}
+:::
+
+#### The Praat drawing {.unnumbered}
+
+Here's the drawing itself in the **Praat Picture** window. Notice that I checked the `Garnish` box to get some of that additional detail. 
+
+:::{.column-screen}
+![](images/pitch_textgrid_clean.png){width="90%"}
+:::
+
+#### The resulting figure {.unnumbered}
+
+Here's what the image file looks like when I export it. 
+
+:::{.column-screen}
+![](images/pitch_textgrid_export.png){width="90%"}
+:::
+
+So that's it for pitch for now! In this section, we've covered how to extract some basic pitch measurements and how to visualize pitch, both by itself and with an accompanying TextGrid. In the next section we'll shift our attention to voice quality. Now that we're done with pitch, go to the TextGrid window, then go to `Pitch`, and uncheck the `Show Pitch` box. 
 
 ### Pulses
 

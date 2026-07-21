@@ -45,8 +45,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-158031087360bce0ff56dc785ce39e06.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -236,7 +234,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">July 16, 2026</p>
+        <p class="date-modified">July 21, 2026</p>
       </div>
     </div>
       
@@ -273,22 +271,6 @@ window.Quarto = {
   <li><a href="#use-cases" id="toc-use-cases" class="nav-link" data-scroll-target="#use-cases">Use cases</a>
   <ul class="collapse">
   <li><a href="#pitch" id="toc-pitch" class="nav-link" data-scroll-target="#pitch">Pitch</a></li>
-  <li><a href="#pulses" id="toc-pulses" class="nav-link" data-scroll-target="#pulses">Pulses</a></li>
-  <li><a href="#formants" id="toc-formants" class="nav-link" data-scroll-target="#formants">Formants</a></li>
-  <li><a href="#examining-voice-onset-time" id="toc-examining-voice-onset-time" class="nav-link" data-scroll-target="#examining-voice-onset-time">Examining Voice Onset Time</a></li>
-  <li><a href="#center-of-gravity" id="toc-center-of-gravity" class="nav-link" data-scroll-target="#center-of-gravity">Center of Gravity</a></li>
-  </ul></li>
-  <li><a href="#editing-sound" id="toc-editing-sound" class="nav-link" data-scroll-target="#editing-sound">Editing sound</a>
-  <ul class="collapse">
-  <li><a href="#tricks" id="toc-tricks" class="nav-link" data-scroll-target="#tricks">Tricks</a></li>
-  <li><a href="#cosmetic-improvements" id="toc-cosmetic-improvements" class="nav-link" data-scroll-target="#cosmetic-improvements">Cosmetic improvements</a></li>
-  <li><a href="#modify---scale-peak" id="toc-modify---scale-peak" class="nav-link" data-scroll-target="#modify---scale-peak">Modify -&gt; Scale peak</a></li>
-  </ul></li>
-  <li><a href="#perceptual-sociophonetics-light" id="toc-perceptual-sociophonetics-light" class="nav-link" data-scroll-target="#perceptual-sociophonetics-light">Perceptual sociophonetics (light)</a></li>
-  <li><a href="#sec-additional-resources" id="toc-sec-additional-resources" class="nav-link" data-scroll-target="#sec-additional-resources">Additional resources</a>
-  <ul class="collapse">
-  <li><a href="#voxhumana" id="toc-voxhumana" class="nav-link" data-scroll-target="#voxhumana">VoxHumana</a></li>
-  <li><a href="#pipeline" id="toc-pipeline" class="nav-link" data-scroll-target="#pipeline">Pipeline</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -468,15 +450,17 @@ Figure&nbsp;3: Options for a Sound object
 <section id="the-soundeditor-window" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="the-soundeditor-window">The SoundEditor window</h3>
 <p>For now, let’s see how Praat visualizes the sound. After highlighting the Sound file, click <code>View &amp; Edit</code> to open the SoundEditor window. <a href="#fig-sound_editor_window" class="quarto-xref">Figure&nbsp;4</a> shows the main components of this new window. Taking up the majority of the space are two visualizations: the waveform and the spectrogram. For both of these, the <em>x</em>-axis, represents time. So the beginning of the audio is at the far left and the end is at the far right.</p>
+<div class="page-columns page-full">
 <div id="fig-sound_editor_window" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-sound_editor_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/sound_editor_window.png" class="img-fluid figure-img">
+<div aria-describedby="fig-sound_editor_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="images/sound_editor_window.png" class="img-fluid figure-img column-screen">
 </div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-sound_editor_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig" id="fig-sound_editor_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: The Sound Editor Window
 </figcaption>
 </figure>
+</div>
 </div>
 <p>The waveform represents the actual sound wave. When the black portion of the wave form is taller, it’s louder, while smaller ones are quieter. In fact, if you zoom far enough in, you can see that the black shapes become just a single line moving up and down, which represents the sound wave. On the left of the wave form, the numbers at the top and bottom of the <em>y</em>-axis of the wave form (<span class="math inline">\(0.5255\)</span> and <span class="math inline">\(-0.5567\)</span>) represent the signal-to-noise (SNR) ratio, which ranges from 0 to 1. The blue number is the SNR measurement at the point where the cursor is. Higher numbers usually indicate cleaner audio, unless it’s a 1 in which case almost certainly means the audio was clipped.</p>
 <p>Parallel to and below the waveform is the spectrogram, which is a different way of viewing sound. The spectrogram breaks down the speech signal into its component frequencies using what’s called a Fourier transformation. All you need to know for now is that the top represents higher frequencies while the bottom is lower frequencies. A trained phonetician can actually “read” a spectrogram and know what is being said. If you click on the spectrogram, a red number appears to the left showing the frequency in Hertz (Hz) at that point.</p>
@@ -506,15 +490,17 @@ Figure&nbsp;4: The Sound Editor Window
 <section id="textgrid-objects" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="textgrid-objects">TextGrid Objects</h2>
 <p>Transcriptions in Praat are accomplished using TextGrid files. Before explaining the underlying mechanics of how these work, it might make more sense just to see one. Take a look at <a href="#fig-sound_with_textgrid" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<div class="page-columns page-full">
 <div id="fig-sound_with_textgrid" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-sound_with_textgrid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/sound_with_textgrid.png" class="img-fluid figure-img">
+<div aria-describedby="fig-sound_with_textgrid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="images/sound_with_textgrid.png" class="img-fluid figure-img column-screen">
 </div>
-<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-sound_with_textgrid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig" id="fig-sound_with_textgrid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: A Sound File with a TextGrid
 </figcaption>
 </figure>
+</div>
 </div>
 <p>When we view both the Sound file with its TextGrid, we can see how they line up. The waveform and the spectrogram are displayed like before, only underneath those now we have various <strong>tiers</strong> of text. In this example above, I have three tiers: “phoneme,” “word,” and “utterance”, the last being a catch-all for “sentence” or “breath group”. Each tier can have any number of <strong>boundaries</strong>, which are represented by the blue vertical lines. These boundaries delimit the <strong>intervals</strong> in the tier. It is in these intervals that you can type transcription, annotations, or whatever other text you want.</p>
 <p>When you click on an interval, it turns yellow with red background. The accompanying portion of the audio is also highlighted. Finally, the text is displayed in the text editor above the wave form but below the menu items. It is here that you can edit the text. Note that since this is a speech analysis software, it is perfectly capable of working with foreign and unusual characters, as you can see with the IPA characters in the first tier.</p>
@@ -529,8 +515,7 @@ Figure&nbsp;5: A Sound File with a TextGrid
 <h3 class="anchored" data-anchor-id="creating-a-textgrid">Creating a TextGrid</h3>
 <p>So, let’s make a TextGrid. To create a new <code>TextGrid</code> that accompanies a Sound file, highlight the <code>Sound</code> file in the Praat Objects window (you may need to close the View &amp; Edit window to see the Praat Objects window) and follow these commands:</p>
 <pre><code>Annotate &gt; To TextGrid...</code></pre>
-<p>In the “Sound: To TextGrid” window, there are two boxes for input. In “All tier names:” delete the default text (“Mary John bell”) and type “phoneme word sentence”. This will create three tiers, one called “phoneme,” one called “word,” and one called “sentence.” Where it says “Which of these are point tiers?”, make sure that’s blank. (That’s used for in-depth analysis of intonation, which we won’t cover in this workshop.) Hit “OK” and you should see your new TextGrid object in your Praat Objects windows. Highlight both of them and then click “View &amp; Edit” to open the TextGrid editor like we saw above. Here is a video showing this process.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/create_textgrid.mov"></video></div>
+<p>In the “Sound: To TextGrid” window, there are two boxes for input. In “All tier names:” delete the default text (“Mary John bell”) and type “phoneme word sentence”. This will create three tiers, one called “phoneme,” one called “word,” and one called “sentence.” Where it says “Which of these are point tiers?”, make sure that’s blank. (That’s used for in-depth analysis of intonation, which we won’t cover in this workshop.) Hit “OK” and you should see your new TextGrid object in your Praat Objects windows. Highlight both of them and then click “View &amp; Edit” to open the TextGrid editor like we saw above.</p>
 </section>
 <section id="working-with-textgrids" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-textgrids">Working with TextGrids</h3>
@@ -545,28 +530,250 @@ Figure&nbsp;5: A Sound File with a TextGrid
 <p><em>Saving TextGrids</em>: Be sure to save often! All the work you do in Praat is not saved automatically. Even when you’re done, you must explicitly save your TextGrid or else your work will be lost. To save a TextGrid, close the Sound Editor window, highlight the TextGrid in the Praat Objects window, and follow this command:</p>
 <pre><code>Save &gt; Save as text file... </code></pre>
 <p>If Praat doesn’t add it for you, ensure that you add <code>.TextGrid</code> to the filename to ensure that it gets saved properly and so that Praat knows how to open it afterwards.</p>
-<p>Here’s a video of me showing some of this basic transcription.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/working_with_textgrids.mov"></video></div>
-<p>Different ways of making TextGrids</p>
-<p>Modifying an automated TextGrid (TextGrid silences)</p>
-<p>Adding tiers (word, sentence, phoneme, notes, etc), renaming,</p>
-<p>Adding/moving intervals across tiers.</p>
+<!--TODO: Different ways of making TextGrids Modifying an automated TextGrid (TextGrid silences). -->
 </section>
 </section>
-<section id="use-cases" class="level2">
+<section id="use-cases" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="use-cases">Use cases</h2>
 <p>In this section, I’ll demonstrate some of the specific things you can do with Praat. As I do so, I’ll keep certain questions in mind that you may have about your audio. I’ll start by seeing how you can work with pitch, in case you have questions about or want to visualize intonation. I’ll then move on to glottal pulses, which is good if you want to analyze creaky voice or other voice qualities. I’ll then talk about formants, which can be helpful when looking at vowels. We’ll then look at plosive consonants by examining voice onset time (VOT). We’ll end with looking at sibilant consonants by examining center of gravity.</p>
 <p>In each section, I’ll present some of the basic Praat functionality including how to extract certain acoustic measurements. We’ll briefly see how to visualize each one. I’ll also discuss a little bit about the phonetics of each phenomena that might aid your interpretatio of what you’re seeting.</p>
-<section id="pitch" class="level3">
-<h3 class="anchored" data-anchor-id="pitch">Pitch</h3>
-<section id="spectrogram-settings" class="level4">
-<h4 class="anchored" data-anchor-id="spectrogram-settings">Spectrogram settings</h4>
-<p>15000 Hz instead of 5000Hz. Window length to 0.025 for pitch movemements.</p>
+<section id="pitch" class="level3 page-columns page-full">
+<h3 class="anchored">Pitch</h3>
+<p>First, we’ll examine the pitch of speaker’s voice. This is useful if you want to look at intonation or tone (depending on the language). Unfortunately, intonation is notoriously difficult to study and pin down, so I really won’t be able to show much more than simple visualizations and measurements.</p>
+<section id="visualizing-pitch" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="visualizing-pitch">Visualizing pitch</h4>
+<p>Praat can approximate pitch by estimating how often the speaker’s vocal folds are vibrating at any point during your recording. To view these estimates, open a Sound file, either by itself or together with a TextGrid. I’ll use this recording of myself:</p>
+<audio controls="">
+<source src="audio/joey.wav">
+</audio>
+<p>Once you’ve got that loaded into Praat, turn on the pitch visualizer by going to</p>
+<pre><code>Pitch &gt; Show pitch</code></pre>
+<p>This will overlay a blue line on the spectrogram showing the pitch at that time point. It’ll also add a secondary legend to the right side of the spectrogram showing an approximate range of pitch values in the visible portion of the audio. See <a href="#fig-pitch_overlay" class="quarto-xref">Figure&nbsp;6</a>.</p>
+<div class="page-columns page-full">
+<div id="fig-pitch_overlay" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_overlay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="images/pitch_overlay.png" class="img-fluid figure-img column-screen">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig" id="fig-pitch_overlay-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: A spectrogram with pitch overlaid
+</figcaption>
+</figure>
+</div>
+</div>
+<p>In this sample of my voice, the pitch is somewhere between 80 and 140 Hz. It’s a little hard to see the contour though because the pitch range is relatively narrow compared to the full range of 50–800Hz that it can show. Let’s adjust the Pitch settings a little bit by zooming in a little bit on that range. Go to</p>
+<pre><code>Pitch &gt; Pitch settings (filtered autocorrelation)…</code></pre>
+<p>A new window will pop up with a whole bunch of options. We don’t need to worry about all of them. The one we want to adjust are the first two: the Pitch floor and top. You should see <code>50.0</code> and <code>800.0</code>. Since we know the pitch range in the recording is only between about 80 and 140 Hz, let’s zoom in to closer to that range. I’ll try from 70 to 160Hz. Here’s what that should look like now (<a href="#fig-pitch_settings" class="quarto-xref">Figure&nbsp;7</a>).</p>
+<div id="fig-pitch_settings" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pitch_settings.png" class="img-fluid figure-img" style="width:65.0%">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-pitch_settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Pitch settings
+</figcaption>
+</figure>
+</div>
+<p>That’s the only change we need to make to this window. If you can see this window and your spectrogram at the same time, try clicking on <code>Apply</code> as you watch the blue line. (In Praat, <code>Apply</code> changes the settings and keeps the window open while <code>OK</code> changes the settings and closes the window.) You should notice the blue line is now more spread out vertically since we’ve zoomed into that range (<a href="#fig-pitch_overlay_adjusted" class="quarto-xref">Figure&nbsp;8</a>).</p>
+<div class="page-columns page-full">
+<div id="fig-pitch_overlay_adjusted" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_overlay_adjusted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="images/pitch_overlay_adjusted.png" class="img-fluid figure-img column-screen">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig" id="fig-pitch_overlay_adjusted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Adjusted pitch overlay
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Pitch Exercise 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pitch Exercise 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If that’s a little too zoomed in, you can try zooming out a little, perhaps add another 100Hz or so to the top end. Play with it until you get something that looks good.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled page-columns page-full">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body page-columns page-full">
+<p>There are several algorithms that Praat can use to estimate pitch. In 2023, it switched to the method that we’re using now, the filtered autocorrelation method. The specifics of these methods are not important to beginning users, but you can read about them <a href="https://www.fon.hum.uva.nl/praat/manual/how_to_choose_a_pitch_analysis_method.html">here</a>.</p>
+<p>Since adopting this newer technique, Praat’s pitch tracker has been much better. Previously, Praat’s pitch tracker sometimes it goofs up a little bit. In <a href="#fig-pitch_old_method" class="quarto-xref">Figure&nbsp;9</a>, I’ve switched it to the older method, the raw cross-correlation algorithm.</p>
+<div id="fig-pitch_old_method" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_old_method-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pitch_old_method.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-pitch_old_method-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Pitch overlay using raw cross-correlation
+</figcaption>
+</figure>
+</div>
+<p>You can see right near the middle of the sentence, there is a pitch measurement that is super high, right at the top center of the spectrogram. (This happened during the /s/ of the word <em>was</em>.) There, Praat thinks the pitch is somewhere close to 500Hz, which would be a high falsetto for me. It’s clearly not a good measurement because /s/ is a voiceless sound and shouldn’t even have any pitch measurements. The newer method avoids these erroneous measurements. Unless you have a reason to continue with an older method for comparison purposes, I’d recommend sticking to the default, which is the filtered autocorrelation method.</p>
+</div>
+</div>
 </section>
 <section id="measuring-pitch" class="level4">
 <h4 class="anchored" data-anchor-id="measuring-pitch">Measuring pitch</h4>
+<p>If you want to find the exact pitch at any point, you can. At the point where my cursor is located in <a href="#fig-pitch_overlay" class="quarto-xref">Figure&nbsp;6</a> (about 6.666 seconds into the recording) is the point where the pitch is at its maximum. An easy way to tell what the pitch is at that point is to look at the right hand side—139.7 Hz. Another way to get this exact pitch is to click on the point along the blue pitch contour that you want to measure and go to</p>
+<pre><code>Pitch &gt; Get pitch</code></pre>
+<p>A new window will pop up, the <strong>Praat Info</strong> window, and will give you a <em>very</em> specific pitch estimate (<strong>?@fig-pitch_measurement</strong>).</p>
+<p><img src="images/pitch_measurement.png" id="fig-pitch_measurement" class="img-fluid" style="width:65.0%" alt="Pitch measuremet"> I don’t know why Praat’s measurements have so many decimal places, but I guess it’s better than not having enough!</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Pitch Exercise 2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pitch Exercise 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Take a few minutes and see if you can work with pitch by yourself. Here is a problem to solve. Try to figure it out before you click on the solution.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">The problem</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">The solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>I know that the point that was selected in <a href="#fig-pitch_overlay" class="quarto-xref">Figure&nbsp;6</a> is indeed the location of the maximum pitch. How can you find the precise moment of the highest pitch in your recording? Explore the options in the <code>Pitch</code> menu and see if you can figure out how.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>The key to finding the point where the maximum pitch is located is this function:</p>
+<pre><code>Pitch &gt; Move cursor to maximum pitch</code></pre>
+<p>In order for this to work though, you’ll need to highlight a range of audio instead of just a single point. For this particular recording, if I highlight the whole thing, it’ll tell me that the point with the highest pitch is 2.328s into the audio, right where that bad measurement in /s/ is. That’s the error, so I want to ignore that. So to get around it, I highlighted the first half up to the fricative, found the maximum pitch (139.9Hz) and compared it to the maximum pitch in the second half after the fricative.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--TODO
+
+#### Spectrogram settings
+
+15000 Hz instead of 5000Hz. Window length to 0.025 for pitch movemements.
+
+-->
 </section>
+<section id="visualizing-the-pitch-overlay" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="visualizing-the-pitch-overlay">Visualizing the pitch overlay</h4>
+<p>It may be helpful to produce a high quality image with that blue overlay. In this section, we’ll look at how to create visualizations in Praat. Much of what we’ll learn in this section is transferable to other sections when we learn about visualizations. So, bear with me at first as we do it for the first time. If you follow along the entire tutorial, you’ll revisit this a handful of times.</p>
+<p>Since the spectrogram isn’t important here, we can hide it. Go to</p>
+<pre><code>Spectogram &gt; Show spectrogram</code></pre>
+<p>and uncheck the box. You should now have an unencumbered look at the pitch contour. However, it’s a little <em>too</em> devoid of context, so I’ll load in the TextGrid so we can see how the contours line up with the words. <a href="#fig-pitch_without_spectrogram" class="quarto-xref">Figure&nbsp;10</a> shows what that looks like.</p>
+<div class="page-columns page-full">
+<div id="fig-pitch_without_spectrogram" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_without_spectrogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="images/pitch_without_spectrogram.png" class="img-fluid figure-img column-screen" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig" id="fig-pitch_without_spectrogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Pitch contour with no spectrogram
+</figcaption>
+</figure>
+</div>
+</div>
+<p>At this point, a lot of people just take a screenshot of Praat and call it good. But we can do better.</p>
+<p>Remember that window we closed when we opened Praat? The one with the pink rectangle? It’s time to use that. (Don’t worry, we’ll make it pop up again automatically.) Go to</p>
+<pre><code>Pitch &gt; Draw visible pitch contour…</code></pre>
+<p>which is close to the bottom of the <code>Pitch</code> menu.</p>
+<div id="fig-pitch_draw_window" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_draw_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pitch_draw_window.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-pitch_draw_window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Draw visible pitch contour window
+</figcaption>
+</figure>
+</div>
+<p>Fow now, we can accept the default settings. Go ahead and click <code>Apply</code> and you should see a window that looks like this:</p>
+<div id="fig-pitch_picture_basic" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_picture_basic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pitch_picture_basic.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-pitch_picture_basic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Basic pitch visualization
+</figcaption>
+</figure>
+</div>
+<p>Here we see the <strong>Praat Picture Window</strong> for the first time in action. Hopefully you can now see what that pink rectangle does. The area inside of it defines the area that the thing you want to draw—in this case, the pitch contour. If you’d like it to be bigger, go back to the <strong>Praat Picture Window</strong> and click and drag and you should see the pink rectangle change size. For me, I’d like it a little bit wider. Once you’re satisfied with a size, you back to the <strong>Draw visible pitch contour window</strong> (or, if you closed out of it, go to <code>Pitch &gt; Draw visible pitch contour…</code>), make sure the <code>Erase first</code> box is checked, and then hit <code>Apply</code> again, and you should see your image update.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Pitch Exercise 3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pitch Exercise 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Spend a minute or so and play around with the other settings in the <strong>Draw visible pitch contour window</strong>. What do each of the following do?</p>
+<ul>
+<li>Erase first</li>
+<li>Speckle</li>
+<li>Write name at top: no, far, and near</li>
+<li>Draw selection times</li>
+<li>Draw selection hairs</li>
+<li>Garnish</li>
+</ul>
+<p>Figure out the combination of settings that you’re satisfied with.</p>
+</div>
+</div>
+<p>You can export this image in a high-quality image format. In the <strong>Praat Picture Window</strong>, go to one of these two options</p>
+<pre><code>File &gt; Save as PDF file…
+File &gt; Save as 300-dpi PNG file…</code></pre>
+<p>(You can of course explore the others if you’d like, but these are probably the most common). Save the file to your computer and check it out to make sure it looks the way you want.</p>
 </section>
+<section id="adding-a-textgrid-to-the-pitch-visual" class="level4 page-columns page-full">
+<h4 class="anchored">Adding a TextGrid to the pitch visual</h4>
+<p>A visualization of a pitch contour by itself is not super helpful since there is no context. Fortunately, Praat has a built-in function that lets you visualize the pitch contour <em>and</em> the TextGrid at the same time. Go back to your TextGrid window and go to:</p>
+<pre><code>TextGrid &gt; Draw visible pitch contour and TextGrid</code></pre>
+<p>That’ll take you to a new window that has many of the same options. Erase what you have so far but otherwise the default settings and seeing what it looks like.</p>
+<div id="fig-pitch_textgrid_messy" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-pitch_textgrid_messy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pitch_textgrid_messy.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-pitch_textgrid_messy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: A cluttered visual of a pitch contour and a TextGrid
+</figcaption>
+</figure>
+</div>
+<p>If you have too much audio selected, you may find (like in <a href="#fig-pitch_textgrid_messy" class="quarto-xref">Figure&nbsp;13</a>) that it’s a bit messy. The words are all on top of each other. There’s just too much that it’s trying to squeeze into a single window. Let’s zoom into a smaller range of the audio, perhaps just a few seconds, or rather, a single intonational contour, and visualize that. Notice that Praat’s command is called Draw <em>visible</em> pitch contour and TextGrid. So we need to actually zoom in in the TextGrid window and then visualize that.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">The zoomed in TextGrid</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">The Praat drawing</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href="">The resulting figure</a></li></ul>
+<div class="tab-content page-columns page-full">
+<div id="tabset-2-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Here’s the portion of the TextGrid that I zoomed into.</p>
+<div class="column-screen">
+<p><img src="images/pitch_textgrid_window.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Here’s the drawing itself in the <strong>Praat Picture</strong> window. Notice that I checked the <code>Garnish</code> box to get some of that additional detail.</p>
+<div class="column-screen">
+<p><img src="images/pitch_textgrid_clean.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane page-columns page-full" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>Here’s what the image file looks like when I export it.</p>
+<div class="column-screen">
+<p><img src="images/pitch_textgrid_export.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+<p>So that’s it for pitch for now! In this section, we’ve covered how to extract some basic pitch measurements and how to visualize pitch, both by itself and with an accompanying TextGrid. In the next section we’ll shift our attention to voice quality. Now that we’re done with pitch, go to the TextGrid window, then go to <code>Pitch</code>, and uncheck the <code>Show Pitch</code> box.</p>
 <section id="pulses" class="level3">
 <h3 class="anchored" data-anchor-id="pulses">Pulses</h3>
 <p>Voice report</p>
@@ -582,7 +789,6 @@ Figure&nbsp;5: A Sound File with a TextGrid
 </section>
 <section id="center-of-gravity" class="level3">
 <h3 class="anchored" data-anchor-id="center-of-gravity">Center of Gravity</h3>
-</section>
 </section>
 <section id="editing-sound" class="level2">
 <h2 class="anchored" data-anchor-id="editing-sound">Editing sound</h2>
@@ -618,6 +824,12 @@ Figure&nbsp;5: A Sound File with a TextGrid
 <h3 class="anchored" data-anchor-id="pipeline">Pipeline</h3>
 
 
+</section>
+</section>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -1023,8 +1235,6 @@ Figure&nbsp;5: A Sound File with a TextGrid
   });
   </script>
 </div> <!-- /content -->
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 
