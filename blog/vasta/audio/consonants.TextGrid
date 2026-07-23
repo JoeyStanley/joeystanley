@@ -1,0 +1,168 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 24.99142857142857 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "phoneme" 
+        xmin = 0 
+        xmax = 24.99142857142857 
+        intervals: size = 10 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.0040801735537763 
+            text = "" 
+        intervals [2]:
+            xmin = 1.0040801735537763 
+            xmax = 1.0872099502761117 
+            text = "tʰ" 
+        intervals [3]:
+            xmin = 1.0872099502761117 
+            xmax = 1.187080883720436 
+            text = "æ" 
+        intervals [4]:
+            xmin = 1.187080883720436 
+            xmax = 1.495543638453603 
+            text = "kʰ" 
+        intervals [5]:
+            xmin = 1.495543638453603 
+            xmax = 1.7696117777852147 
+            text = "" 
+        intervals [6]:
+            xmin = 1.7696117777852147 
+            xmax = 1.966690419782015 
+            text = "s" 
+        intervals [7]:
+            xmin = 1.966690419782015 
+            xmax = 2.1105045639418423 
+            text = "u" 
+        intervals [8]:
+            xmin = 2.1105045639418423 
+            xmax = 2.2689664450068374 
+            text = "pʰ" 
+        intervals [9]:
+            xmin = 2.2689664450068374 
+            xmax = 3.4027052747952005 
+            text = "" 
+        intervals [10]:
+            xmin = 3.4027052747952005 
+            xmax = 24.99142857142857 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 24.99142857142857 
+        intervals: size = 27 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.0040801735537763 
+            text = "" 
+        intervals [2]:
+            xmin = 1.0040801735537763 
+            xmax = 1.495543638453603 
+            text = "tack" 
+        intervals [3]:
+            xmin = 1.495543638453603 
+            xmax = 1.7696117777852147 
+            text = "" 
+        intervals [4]:
+            xmin = 1.7696117777852147 
+            xmax = 2.2689664450068374 
+            text = "soup" 
+        intervals [5]:
+            xmin = 2.2689664450068374 
+            xmax = 3.4027052747952005 
+            text = "days" 
+        intervals [6]:
+            xmin = 3.4027052747952005 
+            xmax = 4.321359941438531 
+            text = "shoot" 
+        intervals [7]:
+            xmin = 4.321359941438531 
+            xmax = 5.257043847377577 
+            text = "pad" 
+        intervals [8]:
+            xmin = 5.257043847377577 
+            xmax = 6.168618128755525 
+            text = "dill" 
+        intervals [9]:
+            xmin = 6.168618128755525 
+            xmax = 6.947733412983654 
+            text = "steep" 
+        intervals [10]:
+            xmin = 6.947733412983654 
+            xmax = 8.082032041895042 
+            text = "sit" 
+        intervals [11]:
+            xmin = 8.082032041895042 
+            xmax = 8.93197598832573 
+            text = "code" 
+        intervals [12]:
+            xmin = 8.93197598832573 
+            xmax = 9.957127678099585 
+            text = "tab" 
+        intervals [13]:
+            xmin = 9.957127678099585 
+            xmax = 11.04748998164239 
+            text = "bees" 
+        intervals [14]:
+            xmin = 11.04748998164239 
+            xmax = 12.050274725457543 
+            text = "scope" 
+        intervals [15]:
+            xmin = 12.050274725457543 
+            xmax = 12.784656117768268 
+            text = "kill" 
+        intervals [16]:
+            xmin = 12.784656117768268 
+            xmax = 13.958773235095377 
+            text = "dice" 
+        intervals [17]:
+            xmin = 13.958773235095377 
+            xmax = 14.85610378150753 
+            text = "bash" 
+        intervals [18]:
+            xmin = 14.85610378150753 
+            xmax = 15.847705052343331 
+            text = "goes" 
+        intervals [19]:
+            xmin = 15.847705052343331 
+            xmax = 16.840216352640788 
+            text = "bus" 
+        intervals [20]:
+            xmin = 16.840216352640788 
+            xmax = 17.794539380212086 
+            text = "seep" 
+        intervals [21]:
+            xmin = 17.794539380212086 
+            xmax = 18.723955216673478 
+            text = "cab" 
+        intervals [22]:
+            xmin = 18.723955216673478 
+            xmax = 19.764018203753135 
+            text = "spit" 
+        intervals [23]:
+            xmin = 19.764018203753135 
+            xmax = 20.76426270241707 
+            text = "gas" 
+        intervals [24]:
+            xmin = 20.76426270241707 
+            xmax = 21.688763135376767 
+            text = "peg" 
+        intervals [25]:
+            xmin = 21.688763135376767 
+            xmax = 22.64700310218398 
+            text = "shop" 
+        intervals [26]:
+            xmin = 22.64700310218398 
+            xmax = 23.851090359627456 
+            text = "skill" 
+        intervals [27]:
+            xmin = 23.851090359627456 
+            xmax = 24.99142857142857 
+            text = "" 

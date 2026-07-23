@@ -394,11 +394,11 @@ Take a few minutes and see if you can work with pitch by yourself. Here is a pro
 
 :::{.panel-tabset}
 
-#### The problem {.unnumbered}
+##### The problem {.unnumbered}
 
 I know that the point that was selected in @fig-pitch_overlay is indeed the location of the maximum pitch. How can you find the precise moment of the highest pitch in your recording? Explore the options in the `Pitch` menu and see if you can figure out how.
 
-#### The solution {.unnumbered}
+##### The solution {.unnumbered}
 
 The key to finding the point where the maximum pitch is located is this function:
 
@@ -498,7 +498,7 @@ If you have too much audio selected, you may find (like in @fig-pitch_textgrid_m
 
 :::{.panel-tabset}
 
-#### The zoomed in TextGrid {.unnumbered}
+##### The zoomed in TextGrid {.unnumbered}
 
 Here's the portion of the TextGrid that I zoomed into.
 
@@ -506,7 +506,7 @@ Here's the portion of the TextGrid that I zoomed into.
 ![](images/pitch_textgrid_window.png){width="90%"}
 :::
 
-#### The Praat drawing {.unnumbered}
+##### The Praat drawing {.unnumbered}
 
 Here's the drawing itself in the **Praat Picture** window. Notice that I checked the `Garnish` box to get some of that additional detail. 
 
@@ -514,7 +514,7 @@ Here's the drawing itself in the **Praat Picture** window. Notice that I checked
 ![](images/pitch_textgrid_clean.png){width="90%"}
 :::
 
-#### The resulting figure {.unnumbered}
+##### The resulting figure {.unnumbered}
 
 Here's what the image file looks like when I export it. 
 
@@ -522,9 +522,19 @@ Here's what the image file looks like when I export it.
 ![](images/pitch_textgrid_export.png){width="90%"}
 :::
 
+:::
+
 So that's it for pitch for now! In this section, we've covered how to extract some basic pitch measurements and how to visualize pitch, both by itself and with an accompanying TextGrid. In the next section we'll shift our attention to voice quality. Now that we're done with pitch, go to the TextGrid window, then go to `Pitch`, and uncheck the `Show Pitch` box. 
 
+
+
+<!-- TODO
+
 ### Pulses
+
+Voice quality includes things like breathy voice, creaky voice (i.e. vocal fry), harsh voice, and a whole bunch of other kinds of laryngeal settings. Each of these is complex and multifaceted and we definitely don't have the time to examine even one of them in the depth it deserves. Instead, I'll focus on a few acoustic measurements and visualizations that we can get from Praat, primarily using the options within the `Pulses` menu item. 
+
+
 
 Voice report
 
@@ -534,13 +544,197 @@ Jitter = variance in pitch, shimmer = variance in amplitude.
 
 Other voice quality? (Harmonics?)
 
+
+
+-->
+
+
+
+
+
+
 ### Formants
 
+The next acoustic measure that we'll extract manually is formant estimates. You may know that formants are frequencies that resonate particularly strongly in the mouth as a result of the tongue's position in the mouth creating resonating chambers. Vowels and other vowel-like sounds (like /ɹ/ and /l/) have formant frequencies. Experimental work has shown that the first three formants are particularly important for identifying vowel sounds. In fact, the vowel trapezoid that you might be familiar with from an IPA chart are based directly on the first two formant frequencies. @fig-my_vowel_space is a plot of my formant measurements plotted as a scatterplot. 
 
+![My vowel space](images/my_vowel_space.png){#fig-my_vowel_space}
+
+One important thing to keep in mind is that the numbers we extract here are just *estimates*. As we dive into the settings of formants, you'll see how tweaking the parameters will cause the measurements change. As always, estimation can be prone to error, but the better the sound quality, the more confident you can be about your data. For this reason, it's good to get the best quality audio you can while minimizing background noise.
+
+To view formant estimations, you can turn them on like you did with pitch and intensity:
+
+```
+Formant > Show formants
+```
+
+![](images/formants.png)
+
+This will display formant contours, drawn as red and pink speckles. Odd numbered formant measurements (F1, F3, F5) are in red and even numbered ones (F2, F4) are in pink. The estimated measurement in Hz at the point where the cursor is is on the left, since it's on the same Hz scale as the spectrogram itself. Right off the bat, we can extract some of these formant estimations in a similar way that we did the pitch and intensity. You can just put your cursor wherever you want, and it'll show the value on the left (in the example above, it's at approximately 617 Hz). 
+
+An important thing to note is that the value you see on the left is not necessarily the estimated formant measurement: it's simply how high within the spectrogram I clicked. You can see this by clicking around arbitrarily in the spectrogram and you'll see the red number change. This is an important feature because it allows you to take *manual* measurements of formants, regardless of what Praat has estimated. The issue with this method is that it's slow and essentially impossible to replicate because of its subjectivity. However, it's a good feature to be aware of.
+
+Instead, what you may want to do is to rely on Praat's estimated values rather than clicking close to it. To extract just the lowest formant, F1, which corresponds to the height of the vowel, click where in the recording you want the measurement (i.e. where horizontally, which corresponds to time), and then go to
+
+```
+Formant > Get first formant
+```
+
+![](images/formant_first.png){width="65%"}
+
+As always, it's worth the time to learn the keyboard shortcuts. In this case, you can do the same thing by hitting F1. A window will pop up that shows you what the formant estimation is. You could do the same thing individually for F2, F3, and F4, but it might be easier to just click
+
+```
+Formant > Formant listing
+```
+
+instead, which will give you all of them at once. It's in a probably-poorly formatted table, but this can be easily copied over into Excel if you want.
+
+
+![](images/formant_listing.png){width="65%"}
+
+Now, I mentioned before that you can change Praat's parameters for formant extraction. Not only *can* you, but you actually *should*. People's vocal tracts are different lengths, and you can get better estimates if you adjust the settings appropriately. To adjust the formant parameters, go to:
+
+```
+Formant > Formant settings...
+```
+
+You'll be presented with a window that looks like this:
+
+![](images/formant_settings.png){width="65%"}
+
+The main two parameters that you might want to change are these:
+
+* *Formant ceiling (Hz)*: By default, Praat will look for formants that are less than 5500Hz, which is the default for a female voice. For male voices, it's recommended to switch this to 5000 Hz. For very deep voices, I've had success switching to 4500Hz and for very high voices, I've done 6000Hz. Generally, I've seen people increment this parameter by 500Hz, but you're welcome to use whatever number you want (5250Hz, 5100Hz, 5837Hz, whatever).
+
+* *Number of formants*: Within the range that you specify, Praat looks for five formants by default, F1 through F5. You can change this too, but you may want to adjust the max Hz accordingly. For male voices, I've had success using 4 formants at 4000Hz, but that was a judgement call on my part.
+
+If you can see both the `Formant settings` window and the `TextGrid` window at the same time, click on `Apply` and watch the red speckles adjust according to the parameters. The goal is to get the red speckles to align with the dark horizontal bands on the spectrogram as closely as possible. Consider this trio of images
+
+:::{.panel-tabset}
+
+##### No formant estimates
+
+This image shows a spectrogram of me saying the word *bed*. This version doesn't have the red speckles because I want you to notice the roughly four horizontal bands going across the vowel. That's what we want our red speckles to align with. In this case, the formants are relatively level, meaning they don't move up or down across the duration of the vowel, which makes it easier to get the red speckles to align. 
+
+![](images/formants_none.png)
+
+
+##### Good formant estimates
+
+In this version of the plot, I've used appropriate settings, a formant ceiling of 4500Hz and four formants. Notice that in the vowel portion of the recording, the red speckles align nicely with the horizontal bands. This produces pretty good estimates of the /ɛ/ vowel. Extending into the consonants, the formant estimates look a little messy, but we don't care about those, so it's no big deal.
+
+![](images/formants_good.png)
+
+
+##### Bad formant estimates
+
+In this version of the plot, I've told Praat to look for five formants under 4000 Hz. Some of the red speckles look alright, but crucially, in the  middle of the vowel we have a sort of phantom formant that Praat thinks it found. There is a short stretch of pink speckles between the lowest two formants. Since Praat was forced to look for five in a relatively narrow window (0--4000Hz), an extra one was thrown in there. 
+
+![](images/formants_bad.png)
+
+:::
+
+
+
+:::{.callout-tip title="Formant Exercise 1"}
+
+:::{.panel-tabset}
+
+##### The task {.unnumbered}
+
+Adjust the formant parameters and look at the effect that it has on the red dots. Zoom in on <sc>fleece</sc>, <sc>thought</sc>, and <sc>goose</sc> vowels and see how well the various parameters do. Take actual measurements and see how they differ, even if the dots don't move that much.
+
+##### A solution {.unnumbered}
+
+In my recording, I found a <sc>fleece</sc> vowel in the word *she* and put the cursor near the midpoint. At 5000Hz and 5 formants, F1 was at 285Hz and F2 was 2001Hz. When I switched to 4 formants and 4000Hz, F1 was hardly any different (286Hz) but F2 was a bit lower (1986Hz). This may not seem like a big difference, but after many tokens, a 15Hz difference can adjust the overall results a little bit. Since /i/ has such a high F2 and F3, it's good to experiment a little bit to make sure the formant tracker gets those two correct.
+
+I then went to the word *talking* for the /ɔ/ token. With the default settings, F1 was 635Hz and F2 was 1056Hz. When I switched to 4000Hz and 4 formants, F1 was 633Hz and F2 was the same. In this case, it didn't change much. However, when I switched to the default for women's voices (5500Hz and 5 formants), F1 was quite a bit higher at 683Hz and F2 was 1048Hz. As you can see, making these methodological choices is important because they can have outcomes on your results!
+
+For /u/, this sentence happened to not have any /u/, /ʊ/, or /o/ strangely enough. However, keep in mind that /u/ has a high F1 and a low F2, so Praat often interprets the two as a single formant. That will take some additional adjusting to make sure Praat gets both of them.
+
+:::
+
+:::
+
+
+
+
+
+:::{.callout-tip title="Formant Exercise 2"}
+
+If you are interested in plotting your own vowels, it can be a fun exercise to manually extract formant measurements and creating a scatterplot. To do this, you'll want to make a recording of yourself saying all the English vowels. 
+
+Since some consonants (like /j/, /w/, /l/, /ɹ/, and nasals) can influence formants, it's best to pick words that have the vowel at the end of the word, or before voiced stops (/b/, /d/, /ɡ/), fricatives (/v/, /ð/, /z/, /ʒ/), or affricates (/dʒ/). You can try a set of words like *bead*, *bid*, *bade*, *bed*, *bad*, *pod*, *pawed*, *bud*, *bode*, *hood*, *booed* or something like that. If you have the time, you can get multiple instances of the same vowel (*bee*-*heed*-*ease*, *bid*-*dig*-*iz*, *stay*-*age*-*daze*, etc.) so that you can see a cluster.
+
+For each word, find the temporal middle of the vowel. By that, I mean try to click right in the midpoint between the end of the previous consonant (if any) and the start of the next consonant (if any). Here is an example of me saying *bed* with my cursor right in the middle of the vowel. (You don't need a TextGrid to do this task, but I have one here for demonstration purposes.)
+
+Alternatively, you can pick a portion of the vowel that is relatively steady. In the image of the word *bed* above, the formants were relatively stable. Diphthongs like <sc>price</sc>, <sc>mouth</sc>, and <sc>choice</sc> will likely involve some formant movement. Even monophthongs like <sc>face</sc> and <sc>goat</sc> will as well. Other vowels may involve some formant movement as well depending on the vowel, dialect, and surrounding consonants. In vowels that involve formant movement, you may need to extract formants near the beginning and near the end and then in your vowel plot draw an arrow to connect the two. 
+
+Find the F1 and F2 of each vowel and save that information into a spreadsheet. Using Excel or other software, you can then make a scatterplot. You'll want to put F2 on the *x*-axis and F1 on the *y*-axis. You'll also need to flip the direction of both axes so that the origin is on the top right corner rather that the top left. You could also plot it out by hand on graph paper. You could also use [this online tool](https://adamb924.github.io/formant-plot/). Unfortunately, it's outside the scope of this workshop to show you how to make this plot. 
+
+:::
+
+
+There are some things to consider when looking at formant measurements. 
+
+1. Everyone's vocal tracts are different, so there is no "correct" formant measurement for any vowel for any dialect. Taller people often have longer vocal tracts, so they tend to have lower formants since longer things create lower sounds (think of bass guitars, saxophones, or pipe organs). The opposite is true for shorter people. And there are of course other factors that go into a person's formant measurements. So, if you get someone's formant measurement and it's very different from your own, that's fine. When it comes to formants, it's all about their position relative to others rather than the exact measurements.
+
+1. Extracting formants is error-prone. For one, try clicking in the same place twice and notice the red number above the spectrogram change, even by a small amount. It's basically impossible! Then try extracting formant measurements from very close places and you'll notice that they too are a little different each time. And that's assuming the parameters are good. As we saw above, small adjustments to the parameters can produce poor results. So, if you end up with really wonky measurements, such as a <sc>goose</sc> vowel that is way lower or fronter than even <sc>trap</sc>, don't think it's because of some unique dialect feature you have. It's more likely that you got bad measurements. That's why I recommend getting at least three words for each vowel so that you don't rely on a single measurement. 
+
+1. There are ways of automating formant extraction. Unfortunately, they involve writing a script in Praat's unique scripting language. It's far beyond the scope of this tutorial, but if you are interested in how that works, you can check out my tutorial on that [here](https://joeystanley.com/blog/a-tutorial-on-extracting-formants-in-praat/). There is also software that you can download that does that too [here](https://forced-alignment-and-vowel-extraction.github.io/new-fave/) but it takes a bit of computer know-how to get it to work. I was hoping to have an online tool ready to demonstrate for this workshop, but I just didn't quite get it ready on time. Please stay tuned for software called VoxHumana that I'll be announcing soon!
+
+For now, that's all we'll do when it comes to formant measurements. I encourage you to get familiar with the measurements in your own speech, to take measurements in Praat, and to learn to "read" vowel plots in published academic work. I've seen so many vowel plots that I can instantly point out interesting things about a person's speech and can often identify what variety of English they have just by their vowel plot alone. 
+
+
+:::{.callout-tip title="Bonus Formant Exercise"}
+
+:::{.panel-tabset}
+
+##### The task {.unnumbered}
+
+Look at my vowel plot and see if you can identify some things about my speech. Can you tell where in the US I'm from from that plot alone? Here it is repeated for convenience. 
+
+![My vowel space](images/my_vowel_space.png)
+
+##### The solution {.unnumbered}
+
+I have a detailed analysis of my own idiolect [here](/pages/idiolect/), but here are some highlights:
+
+* I don't merge <sc>lot</sc> and <sc>thought</sc>. Phonetically, they're quite close, but they're firmly distinct in my speech. This rules out a lot of places like the West and parts of Pennsylvania and New England.
+* My <sc>trap</sc> vowel is not especially lowered/centralized, which means I don't have the increasingly common (in the US) so-called California Vowel Shift. That means I'm not from the West and/or I'm not young and urban.
+* My <sc>goose</sc> is somewhat fronted but not too much. That means I'm not from the West or South. It is fronted a little bit, so I'm not from the Great Lakes area. 
+
+It's not super obvious from the plot, but I grew up in a suburb of St. Louis, Missouri!
+
+
+:::
+
+:::
 
 
 
 ### Examining Voice Onset Time
+
+We'll now move onto a closer examination of certain consonant sounds. We'll look at voiceless stops/plosives: /p/, /t/, and /k/. Across the English-speaking world, these sounds are often *aspirated*, which means there's a small puff of air that comes out as part of the consonant before the vowel sound. You can feel this for yourself if you hold a hand in front of your mouth as you say words like *pop*, *top*, and *cop*. In IPA, we transcribe this aspiration with a little superscript *h*, as in [pʰ], [tʰ], [kʰ]. 
+
+Not all languages have aspiration in these sounds. If you've ever learned a language like Spanish, you probably had to learn to produce non-aspirated versions of these in words like *para*, *tomar*, and *cama*. Some English dialects have less aspiration than others. Notably, South African English tends to have less aspiration than other varieties. Other varieties that have more direct influence from other languages, like Nigerian English, also tend to have less aspiration.
+
+We can measure this aspiration with an acoustic measure called *voice onset time* (VOT). Make a recording of yourself saying these words:
+
+> tack, soup, days, shoot, pad, dill, steep, sit, code, tab, bees, scope, kill, dice, bash, goes, bus, seep, cab, spit, peg, gas, shop, skill
+
+Remember to save the file to your computer so you can come back to it later! If you're following along asynchronously, it might be worth it to also make a word-level transcription of the file.
+
+
+
+
+
+
+
+
+
+
+
 
 ### Center of Gravity
 
