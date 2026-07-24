@@ -747,7 +747,7 @@ Take half a minute or so and see if you can identify the three parts of a stop i
 :::
 
 
-### Measuring VOT
+#### Measuring VOT
 
 Fortunately, unlike formant measurements, measuring VOT is pretty straightforward. It's just a simple duration measurement. It starts at the end of the burst and ends when the vocal folds start vibrating. In Praat, we can measure duration by clicking and dragging in the spectrogram or waveform. A pink box appears with a number above it. That's the duration in milliseconds. The tricky part of measuring the VOT is making sure you get the precise start and precise end. 
 
@@ -891,7 +891,7 @@ For our last use case, we'll look at some other consonants in the same wordlist.
 
 To get some intuition of what center of gravity is, let's focus on two sounds: /s/ and /ʃ/. Try saying *see* and *she* and focus on the consonants. You can try going back and forth between them smoothly: *ssss*-*shhhh*-*ssss*-*shhhh*. Auditorily, you may notice that the /s/ sound is higher-pitched and the /ʃ/ sound is lower-pitched. It's not really clear what that pitch is (you can't hum that "note"), but whatever that sound is is clearly different beween these two consonants. 
 
-What you're hearing is center of gravity (CoG). Articulatorily, what's going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch. 
+What you're hearing is center of gravity (CoG). Articulatorily, what's going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch. You may be interested to know that sociolinguists have found that a higher /s/ sound is percieved by listeners to be more feminine.
 
 :::{.callout-tip title="CoG proprioception exercise"}
 
@@ -903,12 +903,105 @@ Try saying *she* while smiling the whole time, paying attention to the CoG of th
 
 :::
 
-So, how 
 
 
+So, how can we quantify this pitch difference? First, I'll show you a sort of round-about way of doing things, which involves getting our hands dirty with Praat. Then I'll show you the easy way of measuring CoG.
+
+#### Changing the spectrogram settings
+
+Let's look at a spectrogram of an /s/ sound. If you have the wordlist from the previous section, find a good /s/ sound, perhaps in *sit*, and focus on that one word. I've got mine highlighted in @fig-cog_sit.
+
+![](images/cog_sit.png){#fig-cog_sit}
+
+Let's take a step back and think again about what the spectrogram shows. Along the *x*-axis from left to right, we have time into the recording. In @fig-cog_sit mine goes from 6.94 to 8.08 seconds into the recording. Along the *y*-axis we have frequency in Hz, going from 0Hz to 5000Hz. By default, Praat shows up to 5000Hz because most of the information in speech that we use to perceive things is below that. However, /s/ is an exception. 
+
+Notice in @fig-cog_sit that the /s/ (highlighted) has a fuzzy black portion near the top. That means that's where the most concentration of energy is. (Never mind the persistent black band near the bottom of the spectrogram: I was not in a good recording location.) We can see if there is additional energy higher than that by changing the spectrogram settings. 
+
+First, go to: 
+
+```
+Spectogram > Spectrogram settings…
+```
+
+You'll see a window that looks like @fig-cog_spectrogram_settings. 
+
+![](images/cog_spectrogram_settings){#fig-cog_spectrogram_settings}
+
+You should change one setting. Instead of the view range going from 0 to 5000, change it to going from 0 to 15000. Now look at my spectogram of *sit* in @fig-cog_sit_15K
+
+![](images/cog_sit_15K)(#fig-cog_sit_15K)
+
+The *y*-axis has expanded to a much wider range. And look, there's a lot of concentration of energy in the 5,000--10,000Hz range! 
+
+Now scroll over to a /ʃ/ sound as in *bash*. Here's mine in @fig-cog_bash_15K. 
+
+![](images/cog_bash_15K)(#fig-cog_bash_15K)
+
+Notice that the darkest part is lower than 5000Hz. This is visual evidence for the lower center of gravity. 
+
+
+
+#### Viewing a Spectral Slice
+
+So a spectrogram has lots of information across time. But what if you just wanted to view a slice of time? Praat offers a way to basically take a cross-section of a spectrogram so we can analyze it. This is called a "Spectral Slice." 
+
+To get a spectral slice, find a fricative that you want to measure. Go to the middle of the fricative and highlight around 10ms. Here's mine in *sit*:
+
+![](images/cog_sit_slice)
+
+With that little sliver highlighted, go to
+
+```
+Spectrogram > View Spectral Slice…
+```
+
+At first it may look like nothing happened. But, what Praat actually did was create a brand new object. Go back to your **Praat Objects** window and you should see a new "Spectrum" object there. Here's what mine looks like
+
+![](images/cog_spectrum_object.png)
+
+With that new object selected, click on `View & Edit`. You should see something that looks like this:
+
+![](images/cog_spectral_slice_sit.png){@fig-cog_spectral_slice_sit}
+
+As the name suggests, this is a slice of the spectrogram. In this visualization, the *x*-axis goes from 0Hz to 22,050 Hz. Along the *y*-axis now is decibels, a measure of how loud something is. In @cog_spectral_slice_sit, you can see that there's more energy---meaning more volume---in the 4,000--12,000 range, pretty close to what we saw in the regular spectrogram. (Again, there is also a lot of energy in the 0--500Hz range but that was because I wasn't in a sound studio.)
+
+What the CoG is is basically a weighted average measurement for this spectral slice. Frequencies with higher energy will factor into the calculation more prominently and frequences with less energy will influence it less. We can pretty safely guess that the Cog measurement will fall somewhere in that main central zone. 
+
+:::{.callout-tip title="CoG Exercise 1"}
+
+Go back to an instance of /ʃ/, perhaps in the word *bash*, and view the spectral slice. You should see that much of the energy is shifted towards the left, indicating a lower CoG. This is another visual indicator of what we're hearing.
+
+:::
+
+
+
+
+
+
+#### Measuring CoG
+
+So, now that we have visual support for what we hear, let's now finally get numeric support. For some reason, you can't extract the CoG measurement from the TextGrid window or even from the Spectral Slice window. You actually have to go back to the Praat Objects window to get it. 
+
+Now, go back to your **Praat Objects** window. Select only your Spectrum object and go to 
+
+```
+Query > Get centre of gravity…
+```
+
+That'll pull up a small window with a power setting. Just use the default 2.0. Then that'll give you number in a separate window. In the case of this recording, the CoG for /s/ in *sit* was 4,281Hz and for /ʃ/ in *bash* it's 934Hz. I can tell you now that those are far too low and the bad recording quality is most likely interfering with the measurements. A typical CoG for /s/ is in the vicinity of 6000Hz and for /ʃ/ it might be around 4000Hz. 
+
+
+
+### Summary of use cases
+
+In this lengthy section, we looked at four aspects of speech in Praat: intonation, vowels, voice onset time, and center of gravity. In doing so, we looked at Praat's Pitch functions and visualization, formant estimation and how to adjust settings, duration measurements and contextual variation in consonants, and center of gravity and spectral slices. That's a wide range of functions in Praat. There are of course many more things you could look at but hopefully those four give you an idea of the kinds of things Praat can do.
+
+In this final section, I'll show a few ways that you can edit the sound in Praat. You might already know how to do many of these things using other software, but it may be helpful still to see what Praat can do and how it can be done. 
 
 
 ## Editing sound
+
+
 
 After all, it *is* called the SoundEditor window. 
 

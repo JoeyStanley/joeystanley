@@ -273,8 +273,8 @@ window.Quarto = {
   <li><a href="#pitch" id="toc-pitch" class="nav-link" data-scroll-target="#pitch">Pitch</a></li>
   <li><a href="#formants" id="toc-formants" class="nav-link" data-scroll-target="#formants">Formants</a></li>
   <li><a href="#examining-voice-onset-time" id="toc-examining-voice-onset-time" class="nav-link" data-scroll-target="#examining-voice-onset-time">Examining Voice Onset Time</a></li>
-  <li><a href="#measuring-vot" id="toc-measuring-vot" class="nav-link" data-scroll-target="#measuring-vot">Measuring VOT</a></li>
   <li><a href="#center-of-gravity" id="toc-center-of-gravity" class="nav-link" data-scroll-target="#center-of-gravity">Center of Gravity</a></li>
+  <li><a href="#summary-of-use-cases" id="toc-summary-of-use-cases" class="nav-link" data-scroll-target="#summary-of-use-cases">Summary of use cases</a></li>
   </ul></li>
   <li><a href="#editing-sound" id="toc-editing-sound" class="nav-link" data-scroll-target="#editing-sound">Editing sound</a>
   <ul class="collapse">
@@ -992,9 +992,8 @@ Figure&nbsp;15: A diagram of the three parts to a stop, illustrated in the word 
 </div>
 </div>
 </section>
-</section>
-<section id="measuring-vot" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="measuring-vot">Measuring VOT</h3>
+<section id="measuring-vot" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="measuring-vot">Measuring VOT</h4>
 <p>Fortunately, unlike formant measurements, measuring VOT is pretty straightforward. It’s just a simple duration measurement. It starts at the end of the burst and ends when the vocal folds start vibrating. In Praat, we can measure duration by clicking and dragging in the spectrogram or waveform. A pink box appears with a number above it. That’s the duration in milliseconds. The tricky part of measuring the VOT is making sure you get the precise start and precise end.</p>
 <p>The start of the VOT is a little easier. Zoom in so that you’re mostly only seeing the aspiration. Find where the burst ends by looking at where the vertical bar from the burst ends. That should align with a change in the waveform. In <strong>?@fig-vot-zoomed</strong>, the pink starts right where I think the VOT starts. The waveform before it is taller and after it matches the rest of the aspiration.</p>
 <div class="page-columns page-full">
@@ -1244,11 +1243,12 @@ Figure&nbsp;16: Precise measurements of VOT
 </div>
 </div>
 </section>
-<section id="center-of-gravity" class="level3">
+</section>
+<section id="center-of-gravity" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="center-of-gravity">Center of Gravity</h3>
 <p>For our last use case, we’ll look at some other consonants in the same wordlist. Our focus is on sibilant consonants: /s/, /ʃ/, /z/, and /ʒ/.</p>
 <p>To get some intuition of what center of gravity is, let’s focus on two sounds: /s/ and /ʃ/. Try saying <em>see</em> and <em>she</em> and focus on the consonants. You can try going back and forth between them smoothly: <em>ssss</em>-<em>shhhh</em>-<em>ssss</em>-<em>shhhh</em>. Auditorily, you may notice that the /s/ sound is higher-pitched and the /ʃ/ sound is lower-pitched. It’s not really clear what that pitch is (you can’t hum that “note”), but whatever that sound is is clearly different beween these two consonants.</p>
-<p>What you’re hearing is center of gravity (CoG). Articulatorily, what’s going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch.</p>
+<p>What you’re hearing is center of gravity (CoG). Articulatorily, what’s going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch. You may be interested to know that sociolinguists have found that a higher /s/ sound is percieved by listeners to be more feminine.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="CoG proprioception exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1264,7 +1264,81 @@ Figure&nbsp;16: Precise measurements of VOT
 <p>Try saying <em>she</em> while smiling the whole time, paying attention to the CoG of the fricative. You might notice it’s a bit higher than if your lips are sticking out a little bit. Similarly, try putting your lips in position to say <em>she</em> but on the inside of your mouth say <em>see</em>. You might hear that that /s/ is now lower in pitch. If you’re really good, you can try all four: [s, sʷ, ʃ, ʃʷ].</p>
 </div>
 </div>
-<p>So, how</p>
+<p>So, how can we quantify this pitch difference? First, I’ll show you a sort of round-about way of doing things, which involves getting our hands dirty with Praat. Then I’ll show you the easy way of measuring CoG.</p>
+<section id="changing-the-spectrogram-settings" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="changing-the-spectrogram-settings">Changing the spectrogram settings</h4>
+<p>Let’s look at a spectrogram of an /s/ sound. If you have the wordlist from the previous section, find a good /s/ sound, perhaps in <em>sit</em>, and focus on that one word. I’ve got mine highlighted in <a href="#fig-cog_sit" class="quarto-xref">Figure&nbsp;17</a>.</p>
+<div id="fig-cog_sit" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-cog_sit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cog_sit.png" id="fig-cog_sit" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-cog_sit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17
+</figcaption>
+</figure>
+</div>
+<p>Let’s take a step back and think again about what the spectrogram shows. Along the <em>x</em>-axis from left to right, we have time into the recording. In <a href="#fig-cog_sit" class="quarto-xref">Figure&nbsp;17</a> mine goes from 6.94 to 8.08 seconds into the recording. Along the <em>y</em>-axis we have frequency in Hz, going from 0Hz to 5000Hz. By default, Praat shows up to 5000Hz because most of the information in speech that we use to perceive things is below that. However, /s/ is an exception.</p>
+<p>Notice in <a href="#fig-cog_sit" class="quarto-xref">Figure&nbsp;17</a> that the /s/ (highlighted) has a fuzzy black portion near the top. That means that’s where the most concentration of energy is. (Never mind the persistent black band near the bottom of the spectrogram: I was not in a good recording location.) We can see if there is additional energy higher than that by changing the spectrogram settings.</p>
+<p>First, go to:</p>
+<pre><code>Spectogram &gt; Spectrogram settings…</code></pre>
+<p>You’ll see a window that looks like <a href="#fig-cog_spectrogram_settings" class="quarto-xref">Figure&nbsp;18</a>.</p>
+<div id="fig-cog_spectrogram_settings" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-cog_spectrogram_settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cog_spectrogram_settings.png" id="fig-cog_spectrogram_settings" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig quarto-uncaptioned margin-caption" id="fig-cog_spectrogram_settings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18
+</figcaption>
+</figure>
+</div>
+<p>You should change one setting. Instead of the view range going from 0 to 5000, change it to going from 0 to 15000. Now look at my spectogram of <em>sit</em> in <strong>?@fig-cog_sit_15K</strong></p>
+<p><img src="images/cog_sit_15K.png" class="img-fluid">(#fig-cog_sit_15K)</p>
+<p>The <em>y</em>-axis has expanded to a much wider range. And look, there’s a lot of concentration of energy in the 5,000–10,000Hz range!</p>
+<p>Now scroll over to a /ʃ/ sound as in <em>bash</em>. Here’s mine in <strong>?@fig-cog_bash_15K</strong>.</p>
+<p><img src="images/cog_bash_15K.png" class="img-fluid">(#fig-cog_bash_15K)</p>
+<p>Notice that the darkest part is lower than 5000Hz. This is visual evidence for the lower center of gravity.</p>
+</section>
+<section id="viewing-a-spectral-slice" class="level4">
+<h4 class="anchored" data-anchor-id="viewing-a-spectral-slice">Viewing a Spectral Slice</h4>
+<p>So a spectrogram has lots of information across time. But what if you just wanted to view a slice of time? Praat offers a way to basically take a cross-section of a spectrogram so we can analyze it. This is called a “Spectral Slice.”</p>
+<p>To get a spectral slice, find a fricative that you want to measure. Go to the middle of the fricative and highlight around 10ms. Here’s mine in <em>sit</em>:</p>
+<p><img src="images/cog_sit_slice.png" class="img-fluid"></p>
+<p>With that little sliver highlighted, go to</p>
+<pre><code>Spectrogram &gt; View Spectral Slice…</code></pre>
+<p>At first it may look like nothing happened. But, what Praat actually did was create a brand new object. Go back to your <strong>Praat Objects</strong> window and you should see a new “Spectrum” object there. Here’s what mine looks like</p>
+<p><img src="images/cog_spectrum_object.png" class="img-fluid"></p>
+<p>With that new object selected, click on <code>View &amp; Edit</code>. You should see something that looks like this:</p>
+<p><img src="images/cog_spectral_slice_sit.png" class="img-fluid">{<strong>?@fig-cog_spectral_slice_sit</strong>}</p>
+<p>As the name suggests, this is a slice of the spectrogram. In this visualization, the <em>x</em>-axis goes from 0Hz to 22,050 Hz. Along the <em>y</em>-axis now is decibels, a measure of how loud something is. In <span class="citation" data-cites="cog_spectral_slice_sit">@cog_spectral_slice_sit</span>, you can see that there’s more energy—meaning more volume—in the 4,000–12,000 range, pretty close to what we saw in the regular spectrogram. (Again, there is also a lot of energy in the 0–500Hz range but that was because I wasn’t in a sound studio.)</p>
+<p>What the CoG is is basically a weighted average measurement for this spectral slice. Frequencies with higher energy will factor into the calculation more prominently and frequences with less energy will influence it less. We can pretty safely guess that the Cog measurement will fall somewhere in that main central zone.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="CoG Exercise 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>CoG Exercise 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go back to an instance of /ʃ/, perhaps in the word <em>bash</em>, and view the spectral slice. You should see that much of the energy is shifted towards the left, indicating a lower CoG. This is another visual indicator of what we’re hearing.</p>
+</div>
+</div>
+</section>
+<section id="measuring-cog" class="level4">
+<h4 class="anchored" data-anchor-id="measuring-cog">Measuring CoG</h4>
+<p>So, now that we have visual support for what we hear, let’s now finally get numeric support. For some reason, you can’t extract the CoG measurement from the TextGrid window or even from the Spectral Slice window. You actually have to go back to the Praat Objects window to get it.</p>
+<p>Now, go back to your <strong>Praat Objects</strong> window. Select only your Spectrum object and go to</p>
+<pre><code>Query &gt; Get centre of gravity…</code></pre>
+<p>That’ll pull up a small window with a power setting. Just use the default 2.0. Then that’ll give you number in a separate window. In the case of this recording, the CoG for /s/ in <em>sit</em> was 4,281Hz and for /ʃ/ in <em>bash</em> it’s 934Hz. I can tell you now that those are far too low and the bad recording quality is most likely interfering with the measurements. A typical CoG for /s/ is in the vicinity of 6000Hz and for /ʃ/ it might be around 4000Hz.</p>
+</section>
+</section>
+<section id="summary-of-use-cases" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-use-cases">Summary of use cases</h3>
+<p>In this lengthy section, we looked at four aspects of speech in Praat: intonation, vowels, voice onset time, and center of gravity. In doing so, we looked at Praat’s Pitch functions and visualization, formant estimation and how to adjust settings, duration measurements and contextual variation in consonants, and center of gravity and spectral slices. That’s a wide range of functions in Praat. There are of course many more things you could look at but hopefully those four give you an idea of the kinds of things Praat can do.</p>
+<p>In this final section, I’ll show a few ways that you can edit the sound in Praat. You might already know how to do many of these things using other software, but it may be helpful still to see what Praat can do and how it can be done.</p>
 </section>
 </section>
 <section id="editing-sound" class="level2">
