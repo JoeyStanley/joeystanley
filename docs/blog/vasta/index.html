@@ -234,7 +234,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">July 23, 2026</p>
+        <p class="date-modified">July 24, 2026</p>
       </div>
     </div>
       
@@ -273,6 +273,7 @@ window.Quarto = {
   <li><a href="#pitch" id="toc-pitch" class="nav-link" data-scroll-target="#pitch">Pitch</a></li>
   <li><a href="#formants" id="toc-formants" class="nav-link" data-scroll-target="#formants">Formants</a></li>
   <li><a href="#examining-voice-onset-time" id="toc-examining-voice-onset-time" class="nav-link" data-scroll-target="#examining-voice-onset-time">Examining Voice Onset Time</a></li>
+  <li><a href="#measuring-vot" id="toc-measuring-vot" class="nav-link" data-scroll-target="#measuring-vot">Measuring VOT</a></li>
   <li><a href="#center-of-gravity" id="toc-center-of-gravity" class="nav-link" data-scroll-target="#center-of-gravity">Center of Gravity</a></li>
   </ul></li>
   <li><a href="#editing-sound" id="toc-editing-sound" class="nav-link" data-scroll-target="#editing-sound">Editing sound</a>
@@ -951,18 +952,319 @@ Figure&nbsp;14: My vowel space
 </div>
 </div>
 </section>
-<section id="examining-voice-onset-time" class="level3">
+<section id="examining-voice-onset-time" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="examining-voice-onset-time">Examining Voice Onset Time</h3>
 <p>We’ll now move onto a closer examination of certain consonant sounds. We’ll look at voiceless stops/plosives: /p/, /t/, and /k/. Across the English-speaking world, these sounds are often <em>aspirated</em>, which means there’s a small puff of air that comes out as part of the consonant before the vowel sound. You can feel this for yourself if you hold a hand in front of your mouth as you say words like <em>pop</em>, <em>top</em>, and <em>cop</em>. In IPA, we transcribe this aspiration with a little superscript <em>h</em>, as in [pʰ], [tʰ], [kʰ].</p>
 <p>Not all languages have aspiration in these sounds. If you’ve ever learned a language like Spanish, you probably had to learn to produce non-aspirated versions of these in words like <em>para</em>, <em>tomar</em>, and <em>cama</em>. Some English dialects have less aspiration than others. Notably, South African English tends to have less aspiration than other varieties. Other varieties that have more direct influence from other languages, like Nigerian English, also tend to have less aspiration.</p>
-<p>We can measure this aspiration with an acoustic measure called <em>voice onset time</em> (VOT). Make a recording of yourself saying these words:</p>
+<p>We can measure this aspiration with an acoustic measure called <em>voice onset time</em> (VOT). To examine VOT, we’ll need a recording of some consonats. Make a recording of yourself saying these words:</p>
 <blockquote class="blockquote">
 <p>tack, soup, days, shoot, pad, dill, steep, sit, code, tab, bees, scope, kill, dice, bash, goes, bus, seep, cab, spit, peg, gas, shop, skill</p>
 </blockquote>
 <p>Remember to save the file to your computer so you can come back to it later! If you’re following along asynchronously, it might be worth it to also make a word-level transcription of the file.</p>
+<section id="a-brief-explanation-of-stops" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="a-brief-explanation-of-stops">A brief explanation of stops</h4>
+<p>A stop consonant has three main parts. <a href="#fig-vot_diagram" class="quarto-xref">Figure&nbsp;15</a> shows these three parts.</p>
+<div id="fig-vot_diagram" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-vot_diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/VOT_diagram.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-vot_diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: A diagram of the three parts to a stop, illustrated in the word <em>appointment</em>.
+</figcaption>
+</figure>
+</div>
+<p>First is the <strong>closure</strong>. This is when the articulators are closed and there’s no air coming out of your mouth. In a bilabial sound like /p/, the two lips are closed. In a alveolar sound like /t/, the tongue is pressed against the alveolar ridge (the gums surrounding the teeth). And in a velar sound like /k/, the back of the tongue (i.e.&nbsp;the <em>dorsum</em>) is pressed against the soft palate (i.e.&nbsp;the <em>velum</em>). Since for a brief period there is no movement in the vocal tract, there is not a lot of sound going on. The closure period is visible in the spectrogram usually as white rectangle. There might be some bleed-over from the left side to the right, partly depending on the echo in the room you’re in. In the wave form, the closure period is pretty flat. In <a href="#fig-vot_diagram" class="quarto-xref">Figure&nbsp;15</a>, the closure period is 114ms long.</p>
+<p>Next is the <strong>burst</strong>. This is when the articulators separate and the pressurized air that built up during the closure finally releases. This is a very short, but abrupt portion of the stop. In <a href="#fig-vot_diagram" class="quarto-xref">Figure&nbsp;15</a>, the burst is something like half a millisecond long. It is visible in the spectrogram as a thin, vertical bar of black immediately after (and in stark contrast to) the closure. It’s also visible in the wave form as a sudden spike. In some cases (most commonly with /k/) there may be two bursts. /t/ usually has the loudest burst.</p>
+<p>Finally is the <strong>aspiration</strong> or the VOT. This is the period of time between when the articulators separate and when the vowel starts. During this time, air is coming out of the mouth in an /h/-like sound. It’s visible in the spectrogram as a gray rectangle with some indications of formants as the tongue moves into position to start the vowel. In <a href="#fig-vot_diagram" class="quarto-xref">Figure&nbsp;15</a>, F3 is especially prominent during the aspiration. It’s visible in the waveform as an irregular, relatively short series of movements in contrast to the spike in the burst and the regularity of the following vowel. In <a href="#fig-vot_diagram" class="quarto-xref">Figure&nbsp;15</a>, the aspiration is about 89ms long. Some people have rather prominent aspirations, and it can vary depending on the sound and the emphasis given to the word.</p>
+<p>Not all parts of a stop will be visible all the time. If a sentence or utterance starts with a stop, it’ll be impossible to see when the closure starts. If a stop is followed by another consonant or is at the end of the word, the aspiration and maybe even the burst may be missing entirely.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="VOT Exercise 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>VOT Exercise 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Take half a minute or so and see if you can identify the three parts of a stop in some of the words in the wordlist you just read. The words have been carefully selected so that the three parts are prominent in some of them and less prominent in others.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="measuring-vot" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="measuring-vot">Measuring VOT</h3>
+<p>Fortunately, unlike formant measurements, measuring VOT is pretty straightforward. It’s just a simple duration measurement. It starts at the end of the burst and ends when the vocal folds start vibrating. In Praat, we can measure duration by clicking and dragging in the spectrogram or waveform. A pink box appears with a number above it. That’s the duration in milliseconds. The tricky part of measuring the VOT is making sure you get the precise start and precise end.</p>
+<p>The start of the VOT is a little easier. Zoom in so that you’re mostly only seeing the aspiration. Find where the burst ends by looking at where the vertical bar from the burst ends. That should align with a change in the waveform. In <strong>?@fig-vot-zoomed</strong>, the pink starts right where I think the VOT starts. The waveform before it is taller and after it matches the rest of the aspiration.</p>
+<div class="page-columns page-full">
+<div id="fig-vot_zoomed" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-vot_zoomed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="images/VOT_zoomed.png" class="img-fluid figure-img column-screen">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig" id="fig-vot_zoomed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Precise measurements of VOT
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Finding where the vowel starts is a bit trickier. The key is the idea of <em>periodic movement</em>. Vocal folds vibrate with regularity and that is visible in both the spectrogram and the waveform. In the spectrogram, vowels have vertical striations that correspond to portions of the wave form that are high. These both correspond to when the vocal folds are open. If you look at the wave form of a vowel, you can see that there’s often a pattern that repeats. In <strong>?@fig-vot-zoomed</strong>, you can see it repeating about three times. VOT ends when that period movement begins. You can use the spectrogram as a guide as well. Whenever you start to see multiple horizontal bands of black, that’s a good signal that the vowel has started.</p>
+<p>Unless you’re doing really intense phonetics, it’s probably not necessary to spend a lot of time getting a <em>super</em> precise measurement, but it’s good to know what it takes to do it well.</p>
+<p>As it turns out, VOT is not always there. In the following exercises, you’ll explore VOT and its variation in your own speech.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="VOT Exercise 2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>VOT Exercise 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">The task</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">The solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>One of the most canonical place that we get aspiration in English is in words where the first letter is a voiceless stop and the first syllable is stressed. Take a look at your aspiration in the following words:</p>
+<blockquote class="blockquote">
+<p>tack, pad, code, tab, kill, cab, peg</p>
+</blockquote>
+<p>See if you notice a difference in the length of the VOT between /p/, /t/, and /k/.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p>Here are the VOT measurements in my recording:</p>
+<table class="table">
+<caption>Joey’s VOT in word-initial voiceless stops</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">word</th>
+<th style="text-align: center;">sound</th>
+<th style="text-align: right;">VOT (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">pad</td>
+<td style="text-align: center;">/p/</td>
+<td style="text-align: right;">71</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">peg</td>
+<td style="text-align: center;">/p/</td>
+<td style="text-align: right;">83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">tack</td>
+<td style="text-align: center;">/t/</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">tab</td>
+<td style="text-align: center;">/t/</td>
+<td style="text-align: right;">101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">code</td>
+<td style="text-align: center;">/k/</td>
+<td style="text-align: right;">117</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">kill</td>
+<td style="text-align: center;">/k/</td>
+<td style="text-align: right;">108</td>
+</tr>
+</tbody>
+</table>
+<p>So, at least in my speech, the /p/s tend to have a shorter VOT than the /k/s. But, /t/ was variable. I’d have to collect some more data to see if this generalizes across my speech.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="VOT Exercise 3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>VOT Exercise 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">The task</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">The solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>During this discussion of VOT, we’ve only talked about voiceless stops. What about voiced stops /b, d, ɡ/? We’ll, let’s explore those a little bit. Calculate the VOTs in the first sounds of each of the following words:</p>
+<blockquote class="blockquote">
+<p>days, dill, bees, dice, bash, goes, bus, gas</p>
+</blockquote>
+<p>As a spoiler, the VOTs here may be very short or nonexistant. You may need to zoom <em>waaay</em> in to get the duration to appear. Try your best at taking these measurements.</p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>Here are my measurements for these words. As expected, the VOTs are short or nonexistant.</p>
+<table class="table">
+<caption>Joey’s VOT in word-initial voiced stops</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">word</th>
+<th style="text-align: center;">sound</th>
+<th style="text-align: right;">VOT (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">bees</td>
+<td style="text-align: center;">/b/</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">bash</td>
+<td style="text-align: center;">/b/</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">bus</td>
+<td style="text-align: center;">/b/</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">days</td>
+<td style="text-align: center;">/d/</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">dill</td>
+<td style="text-align: center;">/d/</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">dice</td>
+<td style="text-align: center;">/d/</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">goes</td>
+<td style="text-align: center;">/g/</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">gas</td>
+<td style="text-align: center;">/g/</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+<p>It might be the case that /b/ has the least amount of aspiration.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>So what we’ve learned so far is that word-initial voiceless stops tend to have quite a lot of aspiration and word-initial voiced stops tend to have very little. This shows that the difference between “voiced” and “voiceless” stops is not just about voicing—it’s also about aspiration.</p>
+<p>Let’s look at voiceless stops in a specific context though and see if we can mess with our perception.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="VOT Exercise 4">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>VOT Exercise 4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">The task</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">The solution</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>In this task, we’ll measure aspiration in voiceless stops that appear after /s/ near the beginning of the word. Gather VOT measurements in the voiceless stops in the following words:</p>
+<blockquote class="blockquote">
+<p>steep, scope, spit, skill</p>
+</blockquote>
+<p>Before you do so, what do you expect based on what we’ve seen with voiceless stops?</p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>Here are my measurements.</p>
+<table class="table">
+<caption>Joey’s VOT in post-/s/ voiceless stops</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">word</th>
+<th style="text-align: center;">sound</th>
+<th style="text-align: right;">VOT (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">spit</td>
+<td style="text-align: center;">/p/</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">steep</td>
+<td style="text-align: center;">/t/</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">scope</td>
+<td style="text-align: center;">/k/</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">skill</td>
+<td style="text-align: center;">/k/</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+<p>Are these results surprising? Why are those VOTs so short?? The simple answer is: that’s just how English is! For whatever reason, English doesn’t have aspiration in voiceless stops after /s/. This is just part of the contextual variation that we learn as children. Adult learners of English have to consciously learn this pattern, and if you’ve worked with people whose first language isn’t English they you might hear them say words like <em>sk</em>[ʰ]<em>ill</em> or, in the case of my name, <em>St</em>[ʰ]<em>anley</em>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The fun part about this is you can actually mess with with your perception. Take a word like <em>spit</em>. Highlight the entire word except for the <em>s</em> and play it. You might expect to hear <em>pit</em>, but what do you hear? Do you hear <em>bit</em>? Why is that??</p>
+<p>It’s because we actually use aspiration as a cue for identifying the difference between voiced and voiceless stops more than actual voicing. In fact many of the so-called voiced stops are actually voiceless! (You can check some of the ones in the wordlist for yourself.)</p>
+<p>Anyway, all this boils down to the unconscious patterns in VOT and its contextual variation in English.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Bonus VOT Exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus VOT Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want some additional practice measuring VOT, try looking at the word-final voiceless stops in the following words:</p>
+<blockquote class="blockquote">
+<p>tack, soup, shoot, steep, sit, scope, seep, spit, shop</p>
+</blockquote>
+</div>
+</div>
 </section>
 <section id="center-of-gravity" class="level3">
 <h3 class="anchored" data-anchor-id="center-of-gravity">Center of Gravity</h3>
+<p>For our last use case, we’ll look at some other consonants in the same wordlist. Our focus is on sibilant consonants: /s/, /ʃ/, /z/, and /ʒ/.</p>
+<p>To get some intuition of what center of gravity is, let’s focus on two sounds: /s/ and /ʃ/. Try saying <em>see</em> and <em>she</em> and focus on the consonants. You can try going back and forth between them smoothly: <em>ssss</em>-<em>shhhh</em>-<em>ssss</em>-<em>shhhh</em>. Auditorily, you may notice that the /s/ sound is higher-pitched and the /ʃ/ sound is lower-pitched. It’s not really clear what that pitch is (you can’t hum that “note”), but whatever that sound is is clearly different beween these two consonants.</p>
+<p>What you’re hearing is center of gravity (CoG). Articulatorily, what’s going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="CoG proprioception exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>CoG proprioception exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here’s an activity you can try to help you get a feel for what your mouth is doing when you say these sounds.</p>
+<p>The high and low pitch difference between /s/ and /ʃ/ is important to how English speakers differentiate those sounds. In fact, the difference comes not just from the tongue but also the lips: most English speakers actually purse their lips a little bit when saying /ʃ/. In IPA, we represent this with a [ʷ] symbol: [ʃʷ]. What that does is actually increase the resonance chamber and brings the pitch down even further to help exaggerate the difference between the two.</p>
+<p>Try saying <em>she</em> while smiling the whole time, paying attention to the CoG of the fricative. You might notice it’s a bit higher than if your lips are sticking out a little bit. Similarly, try putting your lips in position to say <em>she</em> but on the inside of your mouth say <em>see</em>. You might hear that that /s/ is now lower in pitch. If you’re really good, you can try all four: [s, sʷ, ʃ, ʃʷ].</p>
+</div>
+</div>
+<p>So, how</p>
 </section>
 </section>
 <section id="editing-sound" class="level2">

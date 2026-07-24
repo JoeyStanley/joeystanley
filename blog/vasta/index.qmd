@@ -719,24 +719,192 @@ We'll now move onto a closer examination of certain consonant sounds. We'll look
 
 Not all languages have aspiration in these sounds. If you've ever learned a language like Spanish, you probably had to learn to produce non-aspirated versions of these in words like *para*, *tomar*, and *cama*. Some English dialects have less aspiration than others. Notably, South African English tends to have less aspiration than other varieties. Other varieties that have more direct influence from other languages, like Nigerian English, also tend to have less aspiration.
 
-We can measure this aspiration with an acoustic measure called *voice onset time* (VOT). Make a recording of yourself saying these words:
+We can measure this aspiration with an acoustic measure called *voice onset time* (VOT). To examine VOT, we'll need a recording of some consonats. Make a recording of yourself saying these words:
 
 > tack, soup, days, shoot, pad, dill, steep, sit, code, tab, bees, scope, kill, dice, bash, goes, bus, seep, cab, spit, peg, gas, shop, skill
 
-Remember to save the file to your computer so you can come back to it later! If you're following along asynchronously, it might be worth it to also make a word-level transcription of the file.
+Remember to save the file to your computer so you can come back to it later! If you're following along asynchronously, it might be worth it to also make a word-level transcription of the file. 
+
+#### A brief explanation of stops
+
+A stop consonant has three main parts. @fig-vot_diagram shows these three parts.
+
+![A diagram of the three parts to a stop, illustrated in the word *appointment*.](images/VOT_diagram.png){#fig-vot_diagram}
+
+First is the **closure**. This is when the articulators are closed and there's no air coming out of your mouth. In a bilabial sound like /p/, the two lips are closed. In a alveolar sound like /t/, the tongue is pressed against the alveolar ridge (the gums surrounding the teeth). And in a velar sound like /k/, the back of the tongue (i.e. the *dorsum*) is pressed against the soft palate (i.e. the *velum*). Since for a brief period there is no movement in the vocal tract, there is not a lot of sound going on. The closure period is visible in the spectrogram usually as white rectangle. There might be some bleed-over from the left side to the right, partly depending on the echo in the room you're in. In the wave form, the closure period is pretty flat. In @fig-vot_diagram, the closure period is 114ms long. 
+
+Next is the **burst**. This is when the articulators separate and the pressurized air that built up during the closure finally releases. This is a very short, but abrupt portion of the stop. In @fig-vot_diagram, the burst is something like half a millisecond long. It is visible in the spectrogram as a thin, vertical bar of black immediately after (and in stark contrast to) the closure. It's also visible in the wave form as a sudden spike. In some cases (most commonly with /k/) there may be two bursts. /t/ usually has the loudest burst. 
+
+Finally is the **aspiration** or the VOT. This is the period of time between when the articulators separate and when the vowel starts. During this time, air is coming out of the mouth in an /h/-like sound. It's visible in the spectrogram as a gray rectangle with some indications of formants as the tongue moves into position to start the vowel. In @fig-vot_diagram, F3 is especially prominent during the aspiration. It's visible in the waveform as an irregular, relatively short series of movements in contrast to the spike in the burst and the regularity of the following vowel. In @fig-vot_diagram, the aspiration is about 89ms long. Some people have rather prominent aspirations, and it can vary depending on the sound and the emphasis given to the word. 
+
+Not all parts of a stop will be visible all the time. If a sentence or utterance starts with a stop, it'll be impossible to see when the closure starts. If a stop is followed by another consonant or is at the end of the word, the aspiration and maybe even the burst may be missing entirely. 
+
+
+:::{.callout-tip title="VOT Exercise 1"}
+
+Take half a minute or so and see if you can identify the three parts of a stop in some of the words in the wordlist you just read. The words have been carefully selected so that the three parts are prominent in some of them and less prominent in others. 
+
+:::
+
+
+### Measuring VOT
+
+Fortunately, unlike formant measurements, measuring VOT is pretty straightforward. It's just a simple duration measurement. It starts at the end of the burst and ends when the vocal folds start vibrating. In Praat, we can measure duration by clicking and dragging in the spectrogram or waveform. A pink box appears with a number above it. That's the duration in milliseconds. The tricky part of measuring the VOT is making sure you get the precise start and precise end. 
+
+The start of the VOT is a little easier. Zoom in so that you're mostly only seeing the aspiration. Find where the burst ends by looking at where the vertical bar from the burst ends. That should align with a change in the waveform. In @fig-vot-zoomed, the pink starts right where I think the VOT starts. The waveform before it is taller and after it matches the rest of the aspiration.
+
+:::{.column-screen}
+![Precise measurements of VOT](images/VOT_zoomed.png){#fig-vot_zoomed}
+:::
+
+Finding where the vowel starts is a bit trickier. The key is the idea of *periodic movement*. Vocal folds vibrate with regularity and that is visible in both the spectrogram and the waveform. In the spectrogram, vowels have vertical striations that correspond to portions of the wave form that are high. These both correspond to when the vocal folds are open. If you look at the wave form of a vowel, you can see that there's often a pattern that repeats. In  @fig-vot-zoomed, you can see it repeating about three times. VOT ends when that period movement begins. You can use the spectrogram as a guide as well. Whenever you start to see multiple horizontal bands of black, that's a good signal that the vowel has started. 
+
+Unless you're doing really intense phonetics, it's probably not necessary to spend a lot of time getting a *super* precise measurement, but it's good to know what it takes to do it well.
+
+As it turns out, VOT is not always there. In the following exercises, you'll explore VOT and its variation in your own speech.
+
+
+:::{.callout-tip title="VOT Exercise 2"}
+
+:::{.panel-tabset}
+
+##### The task {.unnumbered}
+
+One of the most canonical place that we get aspiration in English is in words where the first letter is a voiceless stop and the first syllable is stressed. Take a look at your aspiration in the following words:
+
+> tack, pad, code, tab, kill, cab, peg
+
+See if you notice a difference in the length of the VOT between /p/, /t/, and /k/.
+
+##### The solution {.unnumbered}
+
+Here are the VOT measurements in my recording:
+
+| word | sound | VOT (ms) |
+|:----:|:-----:|---------:|
+| pad  | /p/ | 71
+| peg  | /p/ | 83
+| tack | /t/ | 56
+| tab  | /t/ | 101
+| code | /k/ | 117
+| kill | /k/ | 108
+: Joey's VOT in word-initial voiceless stops
+
+So, at least in my speech, the /p/s tend to have a shorter VOT than the /k/s. But, /t/ was variable. I'd have to collect some more data to see if this generalizes across my speech.
+
+:::
+
+:::
 
 
 
+:::{.callout-tip title="VOT Exercise 3"}
+
+:::{.panel-tabset}
+
+##### The task {.unnumbered}
+
+During this discussion of VOT, we've only talked about voiceless stops. What about voiced stops /b, d, ɡ/? We'll, let's explore those a little bit. Calculate the VOTs in the first sounds of each of the following words:
+
+> days, dill, bees, dice, bash, goes, bus, gas
+
+As a spoiler, the VOTs here may be very short or nonexistant. You may need to zoom *waaay* in to get the duration  to appear. Try your best at taking these measurements. 
+
+##### The solution {.unnumbered}
+
+Here are my measurements for these words. As expected, the VOTs are short or nonexistant. 
+
+| word | sound | VOT (ms) |
+|:----:|:-----:|---------:|
+| bees  | /b/ | 0
+| bash  | /b/ | 7
+| bus   | /b/ | 5
+| days  | /d/ | 6
+| dill  | /d/ | 12
+| dice  | /d/ | 9
+| goes  | /g/ | 12
+| gas   | /g/ | 9
+: Joey's VOT in word-initial voiced stops
+
+It might be the case that /b/ has the least amount of aspiration.
+
+:::
+
+:::
+
+So what we've learned so far is that word-initial voiceless stops tend to have quite a lot of aspiration and word-initial voiced stops tend to have very little. This shows that the difference between "voiced" and "voiceless" stops is not just about voicing---it's also about aspiration. 
+
+Let's look at voiceless stops in a specific context though and see if we can mess with our perception.
+
+:::{.callout-tip title="VOT Exercise 4"}
+
+:::{.panel-tabset}
+
+##### The task {.unnumbered}
+
+In this task, we'll measure aspiration in voiceless stops that appear after /s/ near the beginning of the word. Gather VOT measurements in the voiceless stops in the following words:
+
+> steep, scope, spit, skill
+
+Before you do so, what do you expect based on what we've seen with voiceless stops? 
+
+##### The solution {.unnumbered}
+
+Here are my measurements.
+
+| word | sound | VOT (ms) |
+|:----:|:-----:|---------:|
+| spit  | /p/ |  4
+| steep  | /t/ | 18
+| scope  | /k/ | 17
+| skill  | /k/ | 7
+: Joey's VOT in post-/s/ voiceless stops
+
+Are these results surprising? Why are those VOTs so short?? The simple answer is: that's just how English is! For whatever reason, English doesn't have aspiration in voiceless stops after /s/. This is just part of the contextual variation that we learn as children. Adult learners of English have to consciously learn this pattern, and if you've worked with people whose first language isn't English they you might hear them say words like *sk*[ʰ]*ill* or, in the case of my name, *St*[ʰ]*anley*. 
+
+:::
+
+:::
+
+The fun part about this is you can actually mess with with your perception. Take a word like *spit*. Highlight the entire word except for the *s* and play it. You might expect to hear *pit*, but what do you hear? Do you hear *bit*? Why is that??
+
+It's because we actually use aspiration as a cue for identifying the difference between voiced and voiceless stops more than actual voicing. In fact many of the so-called voiced stops are actually voiceless! (You can check some of the ones in the wordlist for yourself.) 
+
+Anyway, all this boils down to the unconscious patterns in VOT and its contextual variation in English. 
 
 
+:::{.callout-tip title="Bonus VOT Exercise"}
+
+If you want some additional practice measuring VOT, try looking at the word-final voiceless stops in the following words: 
+
+> tack, soup, shoot, steep, sit, scope, seep, spit, shop
 
 
-
+:::
 
 
 
 
 ### Center of Gravity
+
+For our last use case, we'll look at some other consonants in the same wordlist. Our focus is on sibilant consonants: /s/, /ʃ/, /z/, and /ʒ/. 
+
+To get some intuition of what center of gravity is, let's focus on two sounds: /s/ and /ʃ/. Try saying *see* and *she* and focus on the consonants. You can try going back and forth between them smoothly: *ssss*-*shhhh*-*ssss*-*shhhh*. Auditorily, you may notice that the /s/ sound is higher-pitched and the /ʃ/ sound is lower-pitched. It's not really clear what that pitch is (you can't hum that "note"), but whatever that sound is is clearly different beween these two consonants. 
+
+What you're hearing is center of gravity (CoG). Articulatorily, what's going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch. 
+
+:::{.callout-tip title="CoG proprioception exercise"}
+
+Here's an activity you can try to help you get a feel for what your mouth is doing when you say these sounds. 
+
+The high and low pitch difference between /s/ and /ʃ/ is important to how English speakers differentiate those sounds. In fact, the difference comes not just from the tongue but also the lips: most English speakers actually purse their lips a little bit when saying /ʃ/. In IPA, we represent this with a [ʷ] symbol: [ʃʷ]. What that does is actually increase the resonance chamber and brings the pitch down even further to help exaggerate the difference between the two. 
+
+Try saying *she* while smiling the whole time, paying attention to the CoG of the fricative. You might notice it's a bit higher than if your lips are sticking out a little bit. Similarly, try putting your lips in position to say *she* but on the inside of your mouth say *see*. You might hear that that /s/ is now lower in pitch. If you're really good, you can try all four: [s, sʷ, ʃ, ʃʷ]. 
+
+:::
+
+So, how 
+
 
 
 
