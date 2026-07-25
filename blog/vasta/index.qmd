@@ -2,24 +2,17 @@
 layout: aside
 title: "Seeing what you hear: A practical introduction to Praat"
 author: Joey Stanley
-date:   2026-07-14
+date:   2026-07-24
 date-modified: last-modified
 tags:
   - For the public
   - How-to Guides
   - Praat
-output:
-  html_document:
-    toc: yes
-    toc_depth: 3
-    toc_float:
-        collapsed: false
-    number-sections: true
-    number-depth: 3
-    css: ../r-series.css
+number-sections: true
+number-depth: 3
 ---
 
-This handout is meant to accompany the Praat workshop that I gave to the Voice and Speech Teachers Association (VASTA) on July 25, 2026. The goal for this workshop is to introduce the fundamentals of Praat for voice and speech professionals who have little or no prior experience with the software. In this handout, I'll cover how the acoustic correlates of elements of speech like pitch, vowel quality, and voice quality are represented visually. I hope that you'll be able to walk away with some practical skills for exploring and understanding speech.
+This rather lengthy handout (>11,000 words) is meant to accompany the Praat workshop I am giving to the Voice and Speech Teachers Association (VASTA) on July 25, 2026. The goal for this workshop is to introduce the fundamentals of Praat for voice and speech professionals who have little or no prior experience with the software. In this handout, I'll cover how the acoustic correlates of elements of speech like pitch, vowel quality, and voice quality are represented visually. I hope that you'll be able to walk away with some practical skills for exploring and understanding speech.
 
 ## The basics
 
@@ -63,7 +56,7 @@ Make sure you have Praat installed before moving ahead!
 
 <!--Lightly edited and updated from the 2019 workshop. -->
 
-When you first open Praat, there will be two windows that appear. One will have a pink rectangle and is where visualizations will occur. For now, we don't need to worry about it, and you can just close it. 
+When you first open Praat, there will be two windows that appear. One will have a pink rectangle and is where visualizations will occur. We'll us that later, but for now, we don't need to worry about it, and you can just close it. 
 
 The other window is your home base for Praat (@fig-objects_window). It's called the **object window** and is where your Praat **objects** will appear. Praat objects can be of many different types, such as Sound, TextGrid, or Formant (we'll get to these later). Strictly speaking these are contained in your computer's memory and are not automatically saved. This means that if Praat crashes, everything in your object window is lost. So save often! 
 
