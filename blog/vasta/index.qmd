@@ -4,6 +4,8 @@ title: "Seeing what you hear: A practical introduction to Praat"
 author: Joey Stanley
 date:   2026-07-24
 date-modified: last-modified
+aliases:
+  - /vasta
 tags:
   - For the public
   - How-to Guides
@@ -58,7 +60,7 @@ Make sure you have Praat installed before moving ahead!
 
 When you first open Praat, there will be two windows that appear. One will have a pink rectangle and is where visualizations will occur. We'll us that later, but for now, we don't need to worry about it, and you can just close it. 
 
-The other window is your home base for Praat (@fig-objects_window). It's called the **object window** and is where your Praat **objects** will appear. Praat objects can be of many different types, such as Sound, TextGrid, or Formant (we'll get to these later). Strictly speaking these are contained in your computer's memory and are not automatically saved. This means that if Praat crashes, everything in your object window is lost. So save often! 
+The other window is your home base for Praat (@fig-objects_window). It's called the **object window** and is where your Praat **objects** will appear. Praat objects can be of many different types, such as Sound, TextGrid, or Spectrum (we'll get to these later). Strictly speaking these are contained in your computer's memory and are not automatically saved. This means that if Praat crashes, everything in your object window is lost. So save often! 
 
 ![The Objects Window](images/objects_window.png){#fig-objects_window}
 
@@ -94,55 +96,34 @@ Here you'll see the basic window for recording sound directly into Praat (@fig-s
 
 ![The Sound Recorder Window](images/sound_recorder_window.png){#fig-sound_recorder_window}
 
-When you hit the `record` button, it'll display a visual cue of how loud it is in the main center box. You want to stay within the green: if it's too soft you can always amplify the sound later. Anything in the red means the sound has been clipped which can't be fixed. When you are done, hit `stop`. At this point, be careful because it's easy to lose the recording. For example, if you hit `record` again, you'll lose it all and you can't get it back. Right now, it's a good idea to save the file (see below).
+When you hit the `Record` button, it'll display a visual cue of how loud it is in the main center box. You want to stay within the green: if it's too soft you can always amplify the sound later. Anything in the red means the sound has been clipped which can't be fixed. When you are done, hit `Stop`. At this point, be careful because it's easy to lose the recording. For example, if you hit `Record` again, you'll lose it all and you can't get it back. Right now, it's a good idea to save the file (see below).
 
 Go ahead and record yourself saying something. Here is a sentence you can try if you can't come up with anything short.
 
 > "She tried to make herself sound younger than she was, the way adults did when talking to little babies."
 
-A couple things to know about recording in Praat. First, Praat has a recording buffer. By default, it's 20 megabytes, meaning it'll cut you off once the recording takes up that much memory. Audio recorded in stereo or with larger sampling frequencies will eat up more of this memory quicker. You can change this cap by going to this menu
-
-```
-Praat > Preferences > Sound recording preferences...
-```
-
-and setting it to a larger buffer. I don't do very much recording in Praat (I mostly use another free software called *Audacity* if I need to record from my computer directly), but it's nice to know how to in case you need it for smaller things. Also, for those who want to know, Praat records with a 16-bit audio depth, which is about the quality of an audio CD.
+A couple things to know about recording in Praat. First, Praat has a recording buffer. By default, it's 20 megabytes, meaning it'll cut you off once the recording takes up that much memory. Audio recorded in stereo or with larger sampling frequencies will eat up more of this memory quicker. You can change this cap by going to 
+`Praat > Preferences > Sound recording preferences...` and setting it to a larger buffer. I don't do very much recording in Praat (I mostly use another free software called *Audacity* if I need to record from my computer directly), but it's nice to know how to in case you need it for smaller things. Also, for those who want to know, Praat records with a 16-bit audio depth, which is about the quality of an audio CD.
 
 When you're ready, go ahead and give your recording a name, and save it to the objects window (`Save to list`) and close the SoundRecorder window. Or, you can do this all in one step with `Save to list & Close`. 
 
 ### Saving a recording
 
-Any audio file you have in Praat can be saved. In fact, as mentioned above, you should save often since Praat doesn't have any sort of auto-save feature. To save an audio file, go to:
-
-```
-File > Save as WAV file…
-```
-
-From there, you can navigate to a place on your computer where you want to save the file. Praat sometimes doesn't automatically add file extensions (the `.wav` at the end of the filename), so you'll want to make sure it's there and type it in yourself if it's now. 
+Any audio file you have in Praat can be saved. In fact, as mentioned above, you should save often since Praat doesn't have any sort of auto-save feature. To save an audio file, go to `File > Save as WAV file…`. From there, you can navigate to a place on your computer where you want to save the file. Praat sometimes doesn't automatically add file extensions (in this case, the `.wav` at the end of the filename), so you'll want to make sure it's there and type it in yourself if it's now. 
 
 :::{.callout-note}
-You may know this already, but WAV files are among the best kind to work with when dealing with audio. Some filetypes like mp3s compress the audio by removing information that it things humans won't notice. When working with Praat, we want the full uncompressed audio type. Making sure you deal only with WAV files if you can is the way to go.
+You may know this already, but WAV files are among the best kind to work with when dealing with audio. Some filetypes like mp3s compress the audio by removing information that it things humans won't notice. When working with Praat, we want the full uncompressed audio. Making sure you deal only with WAV files if you can is the way to go.
 :::
 
 ### Opening an existing file
 
-If you would like to open an audio file that already exists in your computer, you can do so by following this command:
+If you would like to open an audio file that already exists in your computer, you can do so by going to `Open > Read from file…` in the objects window. Notice that Praat has another option, `Open > Open Long Sound file…`. 
 
-```
-Open > Read from file… 
-```
-
-in the objects window. Notice that Praat has another option, 
-
-```
-Open > Open Long Sound file…
-```
-
-This is useful for when you want to load in, as you might guess, a long sound file. I don't know if there's a clear definition of what a "long" sound file is, and it probably depends on your computer. But generally for me, if I'm working with something that's more than a few minutes long, I'll open it as a Long Sound file. The difference between them is what Praat stores into your computer's short term memory. For a regular Sound file (opened using `Read from file`), Praat will store the entire thing into your computer's memory. That can eat up a lot of processing power if it's a big file. Opening a Long Sound means Praat will only load in what it needs at a time, rather than the whole thing. If you load a Sound file and you notice Praat being a big laggy, try `Remove`ing the file and reloading it as a Long Sound file. 
+As mentioned above, this is useful for when you want to load in, as you might guess, a long sound file. I don't know if there's a clear definition of what a "long" sound file is, and it probably depends on your computer. But generally for me, if I'm working with something that's more than a few minutes long, I'll open it as a Long Sound file. The difference between them is what Praat stores into your computer's short term memory. For a regular Sound file (opened using `Read from file`), Praat will store the entire thing into your computer's memory. That can eat up a lot of processing power if it's a big file. Opening a Long Sound means Praat will only load in what it needs at a time, rather than the whole thing. If you load a Sound file and you notice Praat being a big laggy, try `Remove`ing the file and reloading it as a Long Sound file. 
 
 
 :::{.callout-tip}
-You'll get the most out of this workshop if you have an audio file to work with. Pause here and make sure you have sound. If you do not have access to a microphone right now but would like to follow along still, you may download some sample recordings from some interviews I've done at [joeystanley.com/data/sample_audio.zip](http://joeystanley.com/data/sample_audio.zip). 
+You'll get the most out of this workshop if you have an audio file to work with. Pause here and make sure you have sound. If you do not have access to a microphone right now but would like to follow along still, you may download some sample recordings from some interviews I've done [here](http://joeystanley.com/data/sample_audio.zip).
 :::
 
 ### Sound objects
@@ -181,21 +162,21 @@ Let's look at the different options in the dynamic menu.
 
 1. `Combine`: If you have multiple recordings you want to either overlay on top of each other or concatenate them, you do that here.
 
-As you can see, there are a *lot* of options for Sound files. After all, Praat is primarily a tool for analyzing audio. In this workshop, we will use some of these tools, but the majority serve very specific purposes that we don't have time to get into today. There are some tutorials on some of these online, though they are often geared towards advanced linguistics students.
+As you can see, there are a *lot* of options for Sound files. After all, Praat is primarily a tool for analyzing audio. In this workshop, we will use some of these tools, but the majority serve very specific purposes that we don't have time to get into today. There are some tutorials on some of these online, though they are often geared towards advanced linguistics students. See @sec-additional-resources.
 
-### The SoundEditor window
+### The **SoundEditor** window
 
-For now, let's see how Praat visualizes the sound. After highlighting the Sound file, click `View & Edit` to open the SoundEditor window. @fig-sound_editor_window shows the main components of this new window. Taking up the majority of the space are two visualizations: the waveform and the spectrogram. For both of these, the *x*-axis, represents time. So the beginning of the audio is at the far left and the end is at the far right.
+For now, let's see how Praat visualizes the sound. After highlighting the Sound file, click `View & Edit` to open the **SoundEditor** window. @fig-sound_editor_window shows the main components of this new window. Taking up the majority of the space are two visualizations: the waveform and the spectrogram. For both of these, the *x*-axis, represents time. So the beginning of the audio is at the far left and the end is at the far right.
 
 :::{.column-screen}
-![The Sound Editor Window](images/sound_editor_window.png){#fig-sound_editor_window}
+![The Sound Editor Window](images/sound_editor_window.png){#fig-sound_editor_window width="80%"}
 :::
 
-The waveform represents the actual sound wave. When the black portion of the wave form is taller, it's louder, while smaller ones are quieter. In fact, if you zoom far enough in, you can see that the black shapes become just a single line moving up and down, which represents the sound wave. On the left of the wave form, the numbers at the top and bottom of the *y*-axis of the wave form ($0.5255$ and $-0.5567$) represent the signal-to-noise (SNR) ratio, which ranges from 0 to 1. The blue number is the SNR measurement at the point where the cursor is. Higher numbers usually indicate cleaner audio, unless it's a 1 in which case almost certainly means the audio was clipped.
+The waveform is a visual representation of the actual sound wave. When the black portion of the waveform is taller, it's louder, while smaller ones are quieter. In fact, if you zoom far enough in, you can see that the black shapes become just a single line moving up and down, which represents the sound wave. On the left of the wave form, the numbers at the top and bottom of the *y*-axis of the wave form (0.5255 and -0.5567) represent the signal-to-noise ratio (SNR), which ranges from 0 to 1. The blueish number is the SNR measurement at the point where the cursor is. Higher numbers usually indicate cleaner audio, unless it's a 1 in which case almost certainly means the audio was clipped.
 
 Parallel to and below the waveform is the spectrogram, which is a different way of viewing sound. The spectrogram breaks down the speech signal into its component frequencies using what's called a Fourier transformation. All you need to know for now is that the top represents higher frequencies while the bottom is lower frequencies. A trained phonetician can actually "read" a spectrogram and know what is being said. If you click on the spectrogram, a red number appears to the left showing the frequency in Hertz (Hz) at that point.
 
-To play portions of the audio, use the rectangles below the spectrogram. In addition to providing information about the duration of each one, if you click on them they'll play that portion. To start playing somewhere in the middle, just click on the wave form or the spectrogram where you want to start and the rectangles will update. To select a smaller portion of the audio to play, just click and drag and highlight a section.
+To play portions of the audio, use the rectangles below the spectrogram. In addition to providing information about the duration of each one, if you click on them they'll play that portion. To start playing somewhere in the middle, just click on the wave form or the spectrogram where you want to start and the rectangles will update. To select a smaller portion of the audio to play, just click and drag and highlight a section. You can always press tab to start or stop playing the currently selected region as well.
 
 To change the view, you can zoom in and out with the zoom buttons at the bottom left. You can zoom out to see the whole file (`all`), or just zoom in (`in`) or out (`out`). If you highlight a section of audio, you can zoom to just that selection (`sel`). You can also go back to your previous view (`bak`). If you have lateral scrolling on your computer, after you zoom in you can move side to side with that.
 
@@ -223,7 +204,7 @@ Across the top of the SoundEditor window, there are even more menu options, some
 
 1. `Pulses`: If you want to study creaky voice, this menu has options for displaying and extracting information about pulses in the vocal folds. 
 
-We'll spend most of the rest of the time in this workshop in this SoundEditor window, once we add a transcription to it.
+We'll spend most of the rest of the time in this workshop in this **SoundEditor** window, once we add a transcription to it.
 
 
 
@@ -233,12 +214,12 @@ We'll spend most of the rest of the time in this workshop in this SoundEditor wi
 Unless you're *really* good at reading a spectrogram, you'll likely want a transcription to accompany your Sound file. In the short term, this makes it a lot easier to figure out where you are in the file, especially for long files. But down the road you might find it helpful for other reasons too. Let's see how Praat works with transcriptions. 
 
 
-## TextGrid Objects
+### TextGrid Objects
 
-Transcriptions in Praat are accomplished using TextGrid files. Before explaining the underlying mechanics of how these work, it might make more sense just to see one. Take a look at @fig-sound_with_textgrid.
+Transcriptions in Praat are accomplished using TextGrids. Before explaining the underlying mechanics of how these work, it might make more sense just to see one. Take a look at @fig-sound_with_textgrid.
 
 :::{.column-screen}
-![A Sound File with a TextGrid](images/sound_with_textgrid.png){#fig-sound_with_textgrid}
+![A Sound File with a TextGrid](images/sound_with_textgrid.png){#fig-sound_with_textgrid width="90%"}
 :::
 
 When we view both the Sound file with its TextGrid, we can see how they line up. The waveform and the spectrogram are displayed like before, only underneath those now we have various **tiers** of text. In this example above, I have three tiers: "phoneme," "word," and "utterance", the last being a catch-all for "sentence" or "breath group". Each tier can have any number of **boundaries**, which are represented by the blue vertical lines. These boundaries delimit the **intervals** in the tier. It is in these intervals that you can type transcription, annotations, or whatever other text you want. 
@@ -253,64 +234,39 @@ Many of the commands that were seen for sound files can also be found here as yo
 
 1. `Tier`: This lets you add, duplicate, rename, or remove tiers from the `TextGrid`. 
 
-It is usually easier to view `TextGrid`s and `Sound` files at the same time. 
+It is usually easier to view TextGrids and Sound files at the same time. 
 
 ### Creating a TextGrid
 
-So, let's make a TextGrid. To create a new `TextGrid` that accompanies a Sound file, highlight the `Sound` file in the Praat Objects window (you may need to close the View & Edit window to see the Praat Objects window) and follow these commands:
+So, let's make a TextGrid. To create a new TextGrid that accompanies a Sound file, highlight the Sound file in the Praat Objects window (you may need to close the **View & Edit** window to see the **Praat Objects** window) and click on `Annotate > To TextGrid…`. 
 
-```
-Annotate > To TextGrid...
-```
-
-In the "Sound: To TextGrid" window, there are two boxes for input. In "All tier names:" delete the default text ("Mary John bell") and type "phoneme word sentence". This will create three tiers, one called "phoneme," one called "word," and one called "sentence." Where it says "Which of these are point tiers?", make sure that's blank. (That's used for in-depth analysis of intonation, which we won't cover in this workshop.) Hit "OK" and you should see your new TextGrid object in your Praat Objects windows. Highlight both of them and then click "View & Edit" to open the TextGrid editor like we saw above.
+In the **Sound: To TextGrid** window, there are two boxes for input. In `All tier names:` delete the default text ("Mary John bell") and type "phoneme word sentence". This will create three tiers, one called "phoneme," one called "word," and one called "sentence." Where it says `Which of these are point tiers?`, make sure that's blank. (That's used for in-depth analysis of intonation, which we won't cover in this workshop.) Hit `OK` and you should see your new TextGrid object in your **Praat Objects** window. Highlight both the Sound and the TextGrid objects and then click `View & Edit` to open the TextGrid editor like we saw above.
 
 ### Working with TextGrids
 
-*Adding intervals and boundaries*: When you open a brand new TextGrid, there will not be anything in any of the tiers. To add boundaries, click somewhere in the audio and follow this command:
+*Adding intervals and boundaries*: When you open a brand new TextGrid, there will not be anything in any of the tiers. To add boundaries, click somewhere in the audio and go to `Interval > Add interval on tier 1`. I'd recommend learning the keyboard shortcut: Ctrl/Command + 1. You'll now see a blue vertical bar on the top tier aligned with the point in the audio you clicked. Go ahead and add an interval on tier 2 and tier 3 as well.
 
-```
-Interval > Add interval on tier 1
-```
-
-I'd recommend using the keyboard shortcut: Ctrl/Command + 1. You'll now see a blue vertical bar on the top tier aligned with the point in the audio you clicked. Go ahead and add an interval on tier 2 and tier 3 as well.
-
-*Deleting boundaries*: To delete a boundary, click on it---it will appear as red and yellow if it is selected---and follow this command:
-
-```
-Boundary > Remove
-```
-
-Or you can follow the keyboard shortcut: Alt + Backspace.
+*Deleting boundaries*: To delete a boundary, click on it---it will appear as red and yellow if it is selected---and go to `Boundary > Remove`. Or you can follow the keyboard shortcut: Alt + Backspace.
 
 *Moving boundaries*: To move a boundary, simply click on it and drag from left to right. If you have boundaries on multiple tiers that are aligned, you can move them together by holding Shift while dragging.  
 
 *Playing intervals*: Once you have several boundaries, the space between them (the intervals) will contain portions of audio. You can play just that portion of audio by clicking the interval and hitting the Tab key. Alternatively, you can click the rectangle below the corresponding portion of the audio and play it as well.
 
-*Saving TextGrids*: Be sure to save often! All the work you do in Praat is not saved automatically. Even when you're done, you must explicitly save your TextGrid or else your work will be lost. To save a TextGrid, close the Sound Editor window, highlight the TextGrid in the Praat Objects window, and follow this command:
-
-```
-Save > Save as text file... 
-```
-
-If Praat doesn't add it for you, ensure that you add `.TextGrid` to the filename to ensure that it gets saved properly and so that Praat knows how to open it afterwards. 
+*Saving TextGrids*: Be sure to save often! All the work you do in Praat is not saved automatically. Even when you're done, you must explicitly save your TextGrid or else your work will be lost. To save a TextGrid, close the Sound Editor window, highlight the TextGrid in the Praat Objects window, and go to `Save > Save as text file…`. Add `.TextGrid` to the filename if Praat doesn't do that for you to ensure that it gets saved properly and so that Praat knows how to open it afterwards. 
 
 
 <!--TODO: Different ways of making TextGrids Modifying an automated TextGrid (TextGrid silences). -->
 
 
-## Use cases
-
-In this section, I'll demonstrate some of the specific things you can do with Praat. As I do so, I'll keep certain questions in mind that you may have about your audio. I'll start by seeing how you can work with pitch, in case you have questions about or want to visualize intonation. I'll then move on to glottal pulses, which is good if you want to analyze creaky voice or other voice qualities. I'll then talk about formants, which can be helpful when looking at vowels. We'll then look at plosive consonants by examining voice onset time (VOT). We'll end with looking at sibilant consonants by examining center of gravity. 
-
-In each section, I'll present some of the basic Praat functionality including how to extract certain acoustic measurements. We'll briefly see how to visualize each one. I'll also discuss a little bit about the phonetics of each phenomena that might aid your interpretatio of what you're seeting. 
+In the following four sections, I'll demonstrate some of the specific things you can do with Praat. As I do so, I'll keep certain questions in mind that you may have about your audio. I'll start by seeing how you can work with pitch, in case you have questions about or want to visualize intonation. I'll then move on to glottal pulses, which is good if you want to analyze creaky voice or other voice qualities. I'll then talk about formants, which can be helpful when looking at vowels. We'll then look at plosive consonants by examining voice onset time (VOT). We'll end with looking at sibilant consonants by examining center of gravity. In each section, I'll present some of the basic Praat functionality including how to extract certain acoustic measurements. We'll briefly see how to visualize each one. I'll also discuss a little bit about the phonetics of each phenomena that might aid your interpretation of what you're seeing. 
 
 
-### Pitch
+
+## Pitch
 
 First, we'll examine the pitch of speaker's voice. This is useful if you want to look at intonation or tone (depending on the language). Unfortunately, intonation is notoriously difficult to study and pin down, so I really won't be able to show much more than simple visualizations and measurements.
 
-#### Visualizing pitch
+### Visualizing pitch
 
 Praat can approximate pitch by estimating how often the speaker's vocal folds are vibrating at any point during your recording. To view these estimates, open a Sound file, either by itself or together with a TextGrid. I'll use this recording of myself:
 
@@ -319,38 +275,26 @@ Praat can approximate pitch by estimating how often the speaker's vocal folds ar
 </audio>
 
 
-Once you've got that loaded into Praat, turn on the pitch visualizer by going to
-
-```
-Pitch > Show pitch
-```
-
-This will overlay a blue line on the spectrogram showing the pitch at that time point. It'll also add a secondary legend to the right side of the spectrogram showing an approximate range of pitch values in the visible portion of the audio. See @fig-pitch_overlay.
+Once you've got that loaded into Praat, turn on the pitch visualizer by going to `Pitch > Show pitch`. This will overlay a blue line on the spectrogram showing the pitch at that time point. It'll also add a secondary legend to the right side of the spectrogram showing an approximate range of pitch values in the visible portion of the audio. See @fig-pitch_overlay.
 
 :::{.column-screen}
-![A spectrogram with pitch overlaid](images/pitch_overlay.png){#fig-pitch_overlay}
+![A spectrogram with pitch overlayed](images/pitch_overlay.png){#fig-pitch_overlay width="80%"}
 :::
 
 
-In this sample of my voice, the pitch is somewhere between 80 and 140 Hz. It's a little hard to see the contour though because the pitch range is relatively narrow compared to the full range of 50--800Hz that it can show. Let's adjust the Pitch settings a little bit by zooming in a little bit on that range. Go to
+In this sample of my voice, the pitch is somewhere between 80 and 140 Hz. It's a little hard to see the contour though because the pitch range is relatively narrow compared to the full visible range of 50--800Hz that it can show. Let's adjust the Pitch settings a little bit by zooming in a little bit on that range. Go to `Pitch > Pitch settings (filtered autocorrelation)…`. A new window will pop up with a whole bunch of options. We don't need to worry about all of them. The one we want to adjust are the first two: the Pitch floor and top. You should see `50.0` and `800.0`. Since we know the pitch range in the recording is only between about 80 and 140 Hz, let's zoom in to closer to that range. I'll try from 70 to 160Hz. Here's what that should look like now (@fig-pitch_settings).
 
-```
-Pitch > Pitch settings (filtered autocorrelation)…
-```
-
-A new window will pop up with a whole bunch of options. We don't need to worry about all of them. The one we want to adjust are the first two: the Pitch floor and top. You should see `50.0` and `800.0`. Since we know the pitch range in the recording is only between about 80 and 140 Hz, let's zoom in to closer to that range. I'll try from 70 to 160Hz. Here's what that should look like now (@fig-pitch_settings).
-
-![Pitch settings](images/pitch_settings.png){#fig-pitch_settings width="65%"}
+![Pitch settings](images/pitch_settings.png){#fig-pitch_settings width="75%"}
 
 That's the only change we need to make to this window. If you can see this window and your spectrogram at the same time, try clicking on `Apply` as you watch the blue line. (In Praat, `Apply` changes the settings and keeps the window open while `OK` changes the settings and closes the window.) You should notice the blue line is now more spread out vertically since we've zoomed into that range (@fig-pitch_overlay_adjusted).
 
 :::{.column-screen}
-![Adjusted pitch overlay](images/pitch_overlay_adjusted.png){#fig-pitch_overlay_adjusted}
+![Adjusted pitch overlay](images/pitch_overlay_adjusted.png){#fig-pitch_overlay_adjusted width="80%"}
 :::
 
 :::{.callout-tip title="Pitch Exercise 1"}
 
-If that's a little too zoomed in, you can try zooming out a little, perhaps add another 100Hz or so to the top end. Play with it until you get something that looks good. 
+If that seems to jagged now, you can try zooming out a little, perhaps add another 100Hz or so to the top end. Play with it until you get something that looks good. 
 
 :::
 
@@ -359,25 +303,20 @@ If that's a little too zoomed in, you can try zooming out a little, perhaps add 
 
 There are several algorithms that Praat can use to estimate pitch. In 2023, it switched to the method that we're using now, the filtered autocorrelation method. The specifics of these methods are not important to beginning users, but you can read about them [here](https://www.fon.hum.uva.nl/praat/manual/how_to_choose_a_pitch_analysis_method.html). 
 
-Since adopting this newer technique, Praat's pitch tracker has been much better. Previously, Praat's pitch tracker sometimes it goofs up a little bit. In @fig-pitch_old_method, I've switched it to the older method, the raw cross-correlation algorithm.
+Since adopting this newer technique, Praat's pitch tracker has been much better. Previously, Praat's pitch tracker sometimes it goofs up a little bit. In the figure below, I've switched it to the older method, the raw cross-correlation algorithm.
 
-![Pitch overlay using raw cross-correlation](images/pitch_old_method.png){#fig-pitch_old_method}
+![](images/pitch_old_method.png)
 
-You can see right near the middle of the sentence, there is a pitch measurement that is super high, right at the top center of the spectrogram. (This happened during the /s/ of the word *was*.) There, Praat thinks the pitch is somewhere close to 500Hz, which would be a high falsetto for me. It's clearly not a good measurement because /s/ is a voiceless sound and shouldn't even have any pitch measurements. The newer method avoids these erroneous measurements. Unless you have a reason to continue with an older method for comparison purposes, I'd recommend sticking to the default, which is the filtered autocorrelation method.
+You can see right near the middle of the sentence, there is a pitch measurement that is super high, right at the top center of the spectrogram. (This happened during the last consonant of the word *was*.) There, Praat thinks the pitch is somewhere close to 500Hz, which would be a high falsetto for me. It's clearly not a good measurement. The newer method avoids these erroneous measurements. Unless you have a reason to continue with an older method for comparison purposes, I'd recommend sticking to the default, which is the filtered autocorrelation method.
 
 :::
 
-#### Measuring pitch
+### Measuring pitch
 
-If you want to find the exact pitch at any point, you can. At the point where my cursor is located in @fig-pitch_overlay (about 6.666 seconds into the recording) is the point where the pitch is at its maximum. An easy way to tell what the pitch is at that point is to look at the right hand side---139.7 Hz. Another way to get this exact pitch is to click on the point along the blue pitch contour that you want to measure and go to
-
-```
-Pitch > Get pitch
-```
-
-A new window will pop up, the **Praat Info** window, and will give you a *very* specific pitch estimate (@fig-pitch_measurement).
+If you want to find the exact pitch at any point, you can. At the point where my cursor is located in @fig-pitch_overlay (about 6.666 seconds into the recording) is the point where the pitch is at its maximum. An easy way to tell what the pitch is at that point is to look at the right hand side---139.7 Hz. Another way to get this exact pitch is to click on the point along the blue pitch contour that you want to measure and go to `Pitch > Get pitch`. A new window will pop up, the **Praat Info** window, and will give you a *very* specific pitch estimate (@fig-pitch_measurement).
 
 ![Pitch measuremet](images/pitch_measurement.png){#fig-pitch_measurement width="65%"}
+
 I don't know why Praat's measurements have so many decimal places, but I guess it's better than not having enough!
 
 
@@ -387,19 +326,13 @@ Take a few minutes and see if you can work with pitch by yourself. Here is a pro
 
 :::{.panel-tabset}
 
-##### The problem {.unnumbered}
+#### The problem {.unnumbered}
 
 I know that the point that was selected in @fig-pitch_overlay is indeed the location of the maximum pitch. How can you find the precise moment of the highest pitch in your recording? Explore the options in the `Pitch` menu and see if you can figure out how.
 
-##### The solution {.unnumbered}
+#### The solution {.unnumbered}
 
-The key to finding the point where the maximum pitch is located is this function:
-
-```
-Pitch > Move cursor to maximum pitch
-```
-
-In order for this to work though, you'll need to highlight a range of audio instead of just a single point. For this particular recording, if I highlight the whole thing, it'll tell me that the point with the highest pitch is 2.328s into the audio, right where that bad measurement in /s/ is. That's the error, so I want to ignore that. So to get around it, I highlighted the first half up to the fricative, found the maximum pitch (139.9Hz) and compared it to the maximum pitch in the second half after the fricative. 
+The key to finding the point where the maximum pitch is located is this function: `Pitch > Move cursor to maximum pitch`. In order for this to work though, you'll need to highlight a range of audio instead of just a single point. Unless you have wonky measurements, this should work just fine.
 
 :::
 
@@ -411,42 +344,28 @@ In order for this to work though, you'll need to highlight a range of audio inst
 
 #### Spectrogram settings
 
-15000 Hz instead of 5000Hz. Window length to 0.025 for pitch movemements.
+Window length to 0.025 for pitch movemements.
 
 -->
 
 
 
 
-#### Visualizing the pitch overlay
+### Visualizing the pitch overlay
 
-It may be helpful to produce a high quality image with that blue overlay. In this section, we'll look at how to create visualizations in Praat. Much of what we'll learn in this section is transferable to other sections when we learn about visualizations. So, bear with me at first as we do it for the first time. If you follow along the entire tutorial, you'll revisit this a handful of times. 
+It may be helpful to produce a high quality image with that blue overlay. In this section, we'll look at how to create visualizations in Praat. Much of what we'll learn in this section is transferable to other visualizations. We won't explicitly talk about them as much though because the process is very similar to what we do here. 
 
-Since the spectrogram isn't important here, we can hide it. Go to
-
-```
-Spectogram > Show spectrogram
-```
-
-and uncheck the box. You should now have an unencumbered look at the pitch contour. However, it's a little *too* devoid of context, so I'll load in the TextGrid so we can see how the contours line up with the words. @fig-pitch_without_spectrogram shows what that looks like. 
+Since the spectrogram isn't important here, we can hide it. Go to `Spectogram > Show spectrogram` and uncheck the box. You should now have an unencumbered look at the pitch contour. However, it's a little *too* devoid of context, so I'll load in the TextGrid so we can see how the contours line up with the words. @fig-pitch_without_spectrogram shows what that looks like. 
 
 :::{.column-screen}
-![Pitch contour with no spectrogram](images/pitch_without_spectrogram){#fig-pitch_without_spectrogram width="90%"}
+![Pitch contour with no spectrogram](images/pitch_without_spectrogram){#fig-pitch_without_spectrogram width="80%"}
 :::
 
-At this point, a lot of people just take a screenshot of Praat and call it good. But we can do better. 
+At this point, a lot of people just take a screenshot of Praat and call it good. But we can do better.Remember that window we closed when we opened Praat? The one with the pink rectangle? It's time to use that. (Don't worry, we'll make it pop up again automatically.) Go to `Pitch > Draw visible pitch contour…` which is close to the bottom of the `Pitch` menu (@fig-pitch_draw_window).
 
-Remember that window we closed when we opened Praat? The one with the pink rectangle? It's time to use that. (Don't worry, we'll make it pop up again automatically.) Go to 
+![Draw visible pitch contour window](images/pitch_draw_window.png){#fig-pitch_draw_window width="80%"}
 
-```
-Pitch > Draw visible pitch contour…
-```
-
-which is close to the bottom of the `Pitch` menu.
-
-![Draw visible pitch contour window](images/pitch_draw_window.png){#fig-pitch_draw_window}
-
-Fow now, we can accept the default settings. Go ahead and click `Apply` and you should see a window that looks like this:
+Fow now, we can accept the default settings. Go ahead and click `Apply` and you should see a window that looks like @fig-pitch_picture_basic.
 
 ![Basic pitch visualization](images/pitch_picture_basic.png){#fig-pitch_picture_basic}
 
@@ -466,24 +385,11 @@ Figure out the combination of settings that you're satisfied with.
 
 :::
 
-You can export this image in a high-quality image format. In the **Praat Picture Window**, go to one of these two options
+You can export this image in a high-quality image format. In the **Praat Picture Window**, go to either `File > Save as PDF file…` or `File > Save as 300-dpi PNG file…`. (You can of course explore the others if you'd like, but these are probably the most common). Save the file to your computer and check it out to make sure it looks the way you want. 
 
-```
-File > Save as PDF file…
-File > Save as 300-dpi PNG file…
-```
+### Adding a TextGrid to the pitch visual
 
-(You can of course explore the others if you'd like, but these are probably the most common). Save the file to your computer and check it out to make sure it looks the way you want. 
-
-#### Adding a TextGrid to the pitch visual
-
-A visualization of a pitch contour by itself is not super helpful since there is no context. Fortunately, Praat has a built-in function that lets you visualize the pitch contour *and* the TextGrid at the same time. Go back to your TextGrid window and go to:
-
-```
-TextGrid > Draw visible pitch contour and TextGrid
-```
-
-That'll take you to a new window that has many of the same options. Erase what you have so far but otherwise the default settings and seeing what it looks like. 
+A visualization of a pitch contour by itself is not super helpful since there is no context. Fortunately, Praat has a built-in function that lets you visualize the pitch contour *and* the TextGrid at the same time. Go back to your TextGrid window and go to `TextGrid > Draw visible pitch contour and TextGrid`. That'll take you to a new window that has many of the same options. Erase what you have so far but otherwise the default settings and seeing what it looks like. 
 
 ![A cluttered visual of a pitch contour and a TextGrid](images/pitch_textgrid_messy.png){#fig-pitch_textgrid_messy}
 
@@ -491,28 +397,28 @@ If you have too much audio selected, you may find (like in @fig-pitch_textgrid_m
 
 :::{.panel-tabset}
 
-##### The zoomed in TextGrid {.unnumbered}
+#### The zoomed in TextGrid {.unnumbered}
 
 Here's the portion of the TextGrid that I zoomed into.
 
 :::{.column-screen}
-![](images/pitch_textgrid_window.png){width="90%"}
+![](images/pitch_textgrid_window.png){width="80%"}
 :::
 
-##### The Praat drawing {.unnumbered}
+#### The Praat drawing {.unnumbered}
 
 Here's the drawing itself in the **Praat Picture** window. Notice that I checked the `Garnish` box to get some of that additional detail. 
 
 :::{.column-screen}
-![](images/pitch_textgrid_clean.png){width="90%"}
+![](images/pitch_textgrid_clean.png){width="80%"}
 :::
 
-##### The resulting figure {.unnumbered}
+#### The resulting figure {.unnumbered}
 
 Here's what the image file looks like when I export it. 
 
 :::{.column-screen}
-![](images/pitch_textgrid_export.png){width="90%"}
+![](images/pitch_textgrid_export.png){width="80%"}
 :::
 
 :::
@@ -546,7 +452,7 @@ Other voice quality? (Harmonics?)
 
 
 
-### Formants
+## Formants
 
 The next acoustic measure that we'll extract manually is formant estimates. You may know that formants are frequencies that resonate particularly strongly in the mouth as a result of the tongue's position in the mouth creating resonating chambers. Vowels and other vowel-like sounds (like /ɹ/ and /l/) have formant frequencies. Experimental work has shown that the first three formants are particularly important for identifying vowel sounds. In fact, the vowel trapezoid that you might be familiar with from an IPA chart are based directly on the first two formant frequencies. @fig-my_vowel_space is a plot of my formant measurements plotted as a scatterplot. 
 
@@ -554,46 +460,27 @@ The next acoustic measure that we'll extract manually is formant estimates. You 
 
 One important thing to keep in mind is that the numbers we extract here are just *estimates*. As we dive into the settings of formants, you'll see how tweaking the parameters will cause the measurements change. As always, estimation can be prone to error, but the better the sound quality, the more confident you can be about your data. For this reason, it's good to get the best quality audio you can while minimizing background noise.
 
-To view formant estimations, you can turn them on like you did with pitch and intensity:
+To view formant estimations, you can turn them on like you did with pitch: `Formant > Show formants`. 
 
-```
-Formant > Show formants
-```
+![Audio with formant measurements](images/formants.png){#fig-audio_with_formants}
 
-![](images/formants.png)
-
-This will display formant contours, drawn as red and pink speckles. Odd numbered formant measurements (F1, F3, F5) are in red and even numbered ones (F2, F4) are in pink. The estimated measurement in Hz at the point where the cursor is is on the left, since it's on the same Hz scale as the spectrogram itself. Right off the bat, we can extract some of these formant estimations in a similar way that we did the pitch and intensity. You can just put your cursor wherever you want, and it'll show the value on the left (in the example above, it's at approximately 617 Hz). 
+This will display formant contours, drawn as red and pink speckles, as in @fig-audio_with_formants. Odd numbered formant measurements (F1, F3, F5) are in red and even numbered ones (F2, F4) are in pink. The estimated measurement in Hz at the point where the cursor is is on the left, since it's on the same Hz scale as the spectrogram itself. Right off the bat, we can extract some of these formant estimations in a similar way that we did the pitch. You can just put your cursor wherever you want, and it'll show the value on the left.
 
 An important thing to note is that the value you see on the left is not necessarily the estimated formant measurement: it's simply how high within the spectrogram I clicked. You can see this by clicking around arbitrarily in the spectrogram and you'll see the red number change. This is an important feature because it allows you to take *manual* measurements of formants, regardless of what Praat has estimated. The issue with this method is that it's slow and essentially impossible to replicate because of its subjectivity. However, it's a good feature to be aware of.
 
-Instead, what you may want to do is to rely on Praat's estimated values rather than clicking close to it. To extract just the lowest formant, F1, which corresponds to the height of the vowel, click where in the recording you want the measurement (i.e. where horizontally, which corresponds to time), and then go to
+Instead, what you may want to do is to rely on Praat's estimated values rather than clicking close to it. To extract just the lowest formant, F1, which corresponds to the height of the vowel, click where in the recording you want the measurement (i.e. where horizontally, which corresponds to time), and then go to `Formant > Get first formant` (@fig-F1).
 
-```
-Formant > Get first formant
-```
+![First formant frequency](images/formant_first.png){width="65%" #fig-F1}
 
-![](images/formant_first.png){width="65%"}
+As always, it's worth the time to learn the keyboard shortcuts. In this case, you can do the same thing by hitting `F1`. A window will pop up that shows you what the formant estimation is. You could do the same thing individually for F2, F3, and F4, but it might be easier to just click `Formant > Formant listing` instead, which will give you all of them at once. It's in a probably-poorly formatted table (@fig-formant_listing), but this can be easily copied over into Excel if you want.
 
-As always, it's worth the time to learn the keyboard shortcuts. In this case, you can do the same thing by hitting F1. A window will pop up that shows you what the formant estimation is. You could do the same thing individually for F2, F3, and F4, but it might be easier to just click
+![Formant listing](images/formant_listing.png){#fig-formant_listing width="65%"}
 
-```
-Formant > Formant listing
-```
+Now, I mentioned before that you can change Praat's parameters for formant extraction. Not only *can* you, but you actually *should*. People's vocal tracts are different lengths, and you can get better estimates if you adjust the settings appropriately. To adjust the formant parameters, go to `Formant > Formant settings…`.
 
-instead, which will give you all of them at once. It's in a probably-poorly formatted table, but this can be easily copied over into Excel if you want.
+You'll be presented with a window that looks like @fig-formant_settings.
 
-
-![](images/formant_listing.png){width="65%"}
-
-Now, I mentioned before that you can change Praat's parameters for formant extraction. Not only *can* you, but you actually *should*. People's vocal tracts are different lengths, and you can get better estimates if you adjust the settings appropriately. To adjust the formant parameters, go to:
-
-```
-Formant > Formant settings...
-```
-
-You'll be presented with a window that looks like this:
-
-![](images/formant_settings.png){width="65%"}
+![](images/formant_settings.png){#fig-formant_settings width="75%"}
 
 The main two parameters that you might want to change are these:
 
@@ -605,21 +492,21 @@ If you can see both the `Formant settings` window and the `TextGrid` window at t
 
 :::{.panel-tabset}
 
-##### No formant estimates
+#### No formant estimates
 
 This image shows a spectrogram of me saying the word *bed*. This version doesn't have the red speckles because I want you to notice the roughly four horizontal bands going across the vowel. That's what we want our red speckles to align with. In this case, the formants are relatively level, meaning they don't move up or down across the duration of the vowel, which makes it easier to get the red speckles to align. 
 
 ![](images/formants_none.png)
 
 
-##### Good formant estimates
+#### Good formant estimates
 
 In this version of the plot, I've used appropriate settings, a formant ceiling of 4500Hz and four formants. Notice that in the vowel portion of the recording, the red speckles align nicely with the horizontal bands. This produces pretty good estimates of the /ɛ/ vowel. Extending into the consonants, the formant estimates look a little messy, but we don't care about those, so it's no big deal.
 
 ![](images/formants_good.png)
 
 
-##### Bad formant estimates
+#### Bad formant estimates
 
 In this version of the plot, I've told Praat to look for five formants under 4000 Hz. Some of the red speckles look alright, but crucially, in the  middle of the vowel we have a sort of phantom formant that Praat thinks it found. There is a short stretch of pink speckles between the lowest two formants. Since Praat was forced to look for five in a relatively narrow window (0--4000Hz), an extra one was thrown in there. 
 
@@ -633,11 +520,11 @@ In this version of the plot, I've told Praat to look for five formants under 400
 
 :::{.panel-tabset}
 
-##### The task {.unnumbered}
+#### The task {.unnumbered}
 
 Adjust the formant parameters and look at the effect that it has on the red dots. Zoom in on <sc>fleece</sc>, <sc>thought</sc>, and <sc>goose</sc> vowels and see how well the various parameters do. Take actual measurements and see how they differ, even if the dots don't move that much.
 
-##### A solution {.unnumbered}
+#### A solution {.unnumbered}
 
 In my recording, I found a <sc>fleece</sc> vowel in the word *she* and put the cursor near the midpoint. At 5000Hz and 5 formants, F1 was at 285Hz and F2 was 2001Hz. When I switched to 4 formants and 4000Hz, F1 was hardly any different (286Hz) but F2 was a bit lower (1986Hz). This may not seem like a big difference, but after many tokens, a 15Hz difference can adjust the overall results a little bit. Since /i/ has such a high F2 and F3, it's good to experiment a little bit to make sure the formant tracker gets those two correct.
 
@@ -683,13 +570,13 @@ For now, that's all we'll do when it comes to formant measurements. I encourage 
 
 :::{.panel-tabset}
 
-##### The task {.unnumbered}
+#### The task {.unnumbered}
 
 Look at my vowel plot and see if you can identify some things about my speech. Can you tell where in the US I'm from from that plot alone? Here it is repeated for convenience. 
 
-![My vowel space](images/my_vowel_space.png)
+![](images/my_vowel_space.png)
 
-##### The solution {.unnumbered}
+#### The solution {.unnumbered}
 
 I have a detailed analysis of my own idiolect [here](/pages/idiolect/), but here are some highlights:
 
@@ -706,7 +593,7 @@ It's not super obvious from the plot, but I grew up in a suburb of St. Louis, Mi
 
 
 
-### Examining Voice Onset Time
+## Examining Voice Onset Time
 
 We'll now move onto a closer examination of certain consonant sounds. We'll look at voiceless stops/plosives: /p/, /t/, and /k/. Across the English-speaking world, these sounds are often *aspirated*, which means there's a small puff of air that comes out as part of the consonant before the vowel sound. You can feel this for yourself if you hold a hand in front of your mouth as you say words like *pop*, *top*, and *cop*. In IPA, we transcribe this aspiration with a little superscript *h*, as in [pʰ], [tʰ], [kʰ]. 
 
@@ -718,7 +605,7 @@ We can measure this aspiration with an acoustic measure called *voice onset time
 
 Remember to save the file to your computer so you can come back to it later! If you're following along asynchronously, it might be worth it to also make a word-level transcription of the file. 
 
-#### A brief explanation of stops
+### A brief explanation of stops
 
 A stop consonant has three main parts. @fig-vot_diagram shows these three parts.
 
@@ -740,17 +627,17 @@ Take half a minute or so and see if you can identify the three parts of a stop i
 :::
 
 
-#### Measuring VOT
+### Measuring VOT
 
 Fortunately, unlike formant measurements, measuring VOT is pretty straightforward. It's just a simple duration measurement. It starts at the end of the burst and ends when the vocal folds start vibrating. In Praat, we can measure duration by clicking and dragging in the spectrogram or waveform. A pink box appears with a number above it. That's the duration in milliseconds. The tricky part of measuring the VOT is making sure you get the precise start and precise end. 
 
-The start of the VOT is a little easier. Zoom in so that you're mostly only seeing the aspiration. Find where the burst ends by looking at where the vertical bar from the burst ends. That should align with a change in the waveform. In @fig-vot-zoomed, the pink starts right where I think the VOT starts. The waveform before it is taller and after it matches the rest of the aspiration.
+The start of the VOT is a little easier. Zoom in so that you're mostly only seeing the aspiration. Find where the burst ends by looking at where the vertical bar from the burst ends. That should align with a change in the waveform. In @fig-vot_zoomed, the pink starts right where I think the VOT starts. The waveform before it is taller and after it matches the rest of the aspiration.
 
 :::{.column-screen}
-![Precise measurements of VOT](images/VOT_zoomed.png){#fig-vot_zoomed}
+![Precise measurements of VOT](images/VOT_zoomed.png){#fig-vot_zoomed width="80%"}
 :::
 
-Finding where the vowel starts is a bit trickier. The key is the idea of *periodic movement*. Vocal folds vibrate with regularity and that is visible in both the spectrogram and the waveform. In the spectrogram, vowels have vertical striations that correspond to portions of the wave form that are high. These both correspond to when the vocal folds are open. If you look at the wave form of a vowel, you can see that there's often a pattern that repeats. In  @fig-vot-zoomed, you can see it repeating about three times. VOT ends when that period movement begins. You can use the spectrogram as a guide as well. Whenever you start to see multiple horizontal bands of black, that's a good signal that the vowel has started. 
+Finding where the vowel starts is a bit trickier. The key is the idea of *periodic movement*. Vocal folds vibrate with regularity and that is visible in both the spectrogram and the waveform. In the spectrogram, vowels have vertical striations that correspond to portions of the wave form that are high. These both correspond to when the vocal folds are open. If you look at the wave form of a vowel, you can see that there's often a pattern that repeats. In  @fig-vot_zoomed, you can see it repeating about three times. VOT ends when that period movement begins. You can use the spectrogram as a guide as well. Whenever you start to see multiple horizontal bands of black, that's a good signal that the vowel has started. 
 
 Unless you're doing really intense phonetics, it's probably not necessary to spend a lot of time getting a *super* precise measurement, but it's good to know what it takes to do it well.
 
@@ -761,7 +648,7 @@ As it turns out, VOT is not always there. In the following exercises, you'll exp
 
 :::{.panel-tabset}
 
-##### The task {.unnumbered}
+#### The task {.unnumbered}
 
 One of the most canonical place that we get aspiration in English is in words where the first letter is a voiceless stop and the first syllable is stressed. Take a look at your aspiration in the following words:
 
@@ -769,7 +656,7 @@ One of the most canonical place that we get aspiration in English is in words wh
 
 See if you notice a difference in the length of the VOT between /p/, /t/, and /k/.
 
-##### The solution {.unnumbered}
+#### The solution {.unnumbered}
 
 Here are the VOT measurements in my recording:
 
@@ -795,7 +682,7 @@ So, at least in my speech, the /p/s tend to have a shorter VOT than the /k/s. Bu
 
 :::{.panel-tabset}
 
-##### The task {.unnumbered}
+#### The task {.unnumbered}
 
 During this discussion of VOT, we've only talked about voiceless stops. What about voiced stops /b, d, ɡ/? We'll, let's explore those a little bit. Calculate the VOTs in the first sounds of each of the following words:
 
@@ -803,7 +690,7 @@ During this discussion of VOT, we've only talked about voiceless stops. What abo
 
 As a spoiler, the VOTs here may be very short or nonexistant. You may need to zoom *waaay* in to get the duration  to appear. Try your best at taking these measurements. 
 
-##### The solution {.unnumbered}
+#### The solution {.unnumbered}
 
 Here are my measurements for these words. As expected, the VOTs are short or nonexistant. 
 
@@ -833,7 +720,7 @@ Let's look at voiceless stops in a specific context though and see if we can mes
 
 :::{.panel-tabset}
 
-##### The task {.unnumbered}
+#### The task {.unnumbered}
 
 In this task, we'll measure aspiration in voiceless stops that appear after /s/ near the beginning of the word. Gather VOT measurements in the voiceless stops in the following words:
 
@@ -841,7 +728,7 @@ In this task, we'll measure aspiration in voiceless stops that appear after /s/ 
 
 Before you do so, what do you expect based on what we've seen with voiceless stops? 
 
-##### The solution {.unnumbered}
+#### The solution {.unnumbered}
 
 Here are my measurements.
 
@@ -872,19 +759,20 @@ If you want some additional practice measuring VOT, try looking at the word-fina
 
 > tack, soup, shoot, steep, sit, scope, seep, spit, shop
 
+What do you expect to find? How are the results different than stops at the beginning of the word?
 
 :::
 
 
 
 
-### Center of Gravity
+## Center of Gravity
 
 For our last use case, we'll look at some other consonants in the same wordlist. Our focus is on sibilant consonants: /s/, /ʃ/, /z/, and /ʒ/. 
 
 To get some intuition of what center of gravity is, let's focus on two sounds: /s/ and /ʃ/. Try saying *see* and *she* and focus on the consonants. You can try going back and forth between them smoothly: *ssss*-*shhhh*-*ssss*-*shhhh*. Auditorily, you may notice that the /s/ sound is higher-pitched and the /ʃ/ sound is lower-pitched. It's not really clear what that pitch is (you can't hum that "note"), but whatever that sound is is clearly different beween these two consonants. 
 
-What you're hearing is center of gravity (CoG). Articulatorily, what's going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch. You may be interested to know that sociolinguists have found that a higher /s/ sound is percieved by listeners to be more feminine.
+What you're hearing is operationalized as center of gravity (CoG). Articulatorily, what's going on is that the area in the mouth that this sound is coming from is between the front of your tongue and the back of your front teeth. In /s/, the tongue and teeth are really close together, creating a really small space. Like we said already, small things create high-pitched sounds. In /ʃ/, the tongue is a little bit further back, which creates a larger area in the mouth, which creates a lower pitch. Sociolinguists have found that a higher /s/ sound is percieved by listeners to be more feminine.
 
 :::{.callout-tip title="CoG proprioception exercise"}
 
@@ -900,65 +788,59 @@ Try saying *she* while smiling the whole time, paying attention to the CoG of th
 
 So, how can we quantify this pitch difference? First, I'll show you a sort of round-about way of doing things, which involves getting our hands dirty with Praat. Then I'll show you the easy way of measuring CoG.
 
-#### Changing the spectrogram settings
+### Changing the spectrogram settings
 
 Let's look at a spectrogram of an /s/ sound. If you have the wordlist from the previous section, find a good /s/ sound, perhaps in *sit*, and focus on that one word. I've got mine highlighted in @fig-cog_sit.
 
-![](images/cog_sit.png){#fig-cog_sit}
+:::{.column-screen}
+![*Sit* with the default spectrogram settings](images/cog_sit.png){#fig-cog_sit width="80%"}
+:::
 
 Let's take a step back and think again about what the spectrogram shows. Along the *x*-axis from left to right, we have time into the recording. In @fig-cog_sit mine goes from 6.94 to 8.08 seconds into the recording. Along the *y*-axis we have frequency in Hz, going from 0Hz to 5000Hz. By default, Praat shows up to 5000Hz because most of the information in speech that we use to perceive things is below that. However, /s/ is an exception. 
 
 Notice in @fig-cog_sit that the /s/ (highlighted) has a fuzzy black portion near the top. That means that's where the most concentration of energy is. (Never mind the persistent black band near the bottom of the spectrogram: I was not in a good recording location.) We can see if there is additional energy higher than that by changing the spectrogram settings. 
 
-First, go to: 
+First, go to `Spectogram > Spectrogram settings…`. You'll see a window that looks like @fig-cog_spectrogram_settings. 
 
-```
-Spectogram > Spectrogram settings…
-```
+![Spectrogram settings](images/cog_spectrogram_settings){#fig-cog_spectrogram_settings width="80%"}
 
-You'll see a window that looks like @fig-cog_spectrogram_settings. 
+You should change one setting. Instead of the view range going from 0 to 5000, change it to going from 0 to 15000. Now look at my spectogram of *sit* in @fig-cog_sit_15K.
 
-![](images/cog_spectrogram_settings){#fig-cog_spectrogram_settings}
-
-You should change one setting. Instead of the view range going from 0 to 5000, change it to going from 0 to 15000. Now look at my spectogram of *sit* in @fig-cog_sit_15K
-
-![](images/cog_sit_15K)(#fig-cog_sit_15K)
+:::{.column-screen}
+![*Sit* with the the spectrogram setting set to 15,000Hz](images/cog_sit_15K){#fig-cog_sit_15K width="80%"}
+:::
 
 The *y*-axis has expanded to a much wider range. And look, there's a lot of concentration of energy in the 5,000--10,000Hz range! 
 
 Now scroll over to a /ʃ/ sound as in *bash*. Here's mine in @fig-cog_bash_15K. 
 
-![](images/cog_bash_15K)(#fig-cog_bash_15K)
+:::{.column-screen}
+![Spectrogram of /ʃ/](images/cog_bash_15K){#fig-cog_bash_15K width="80%"}
+:::
 
 Notice that the darkest part is lower than 5000Hz. This is visual evidence for the lower center of gravity. 
 
 
 
-#### Viewing a Spectral Slice
+### Viewing a Spectral Slice
 
-So a spectrogram has lots of information across time. But what if you just wanted to view a slice of time? Praat offers a way to basically take a cross-section of a spectrogram so we can analyze it. This is called a "Spectral Slice." 
+So a spectrogram has lots of information across time. But what if you just wanted to view a slice of time? Praat offers a way to basically take a cross-section of a spectrogram so we can analyze it. This is called a **Spectral Slice**. 
 
 To get a spectral slice, find a fricative that you want to measure. Go to the middle of the fricative and highlight around 10ms. Here's mine in *sit*:
 
-![](images/cog_sit_slice)
+![A slice of a spectrogram highlighted](images/cog_sit_slice)
 
-With that little sliver highlighted, go to
+With that little sliver highlighted, go to `Spectrogram > View Spectral Slice…`. At first it may look like nothing happened. But, what Praat actually did was create a brand new object. Go back to your **Praat Objects** window and you should see a new "Spectrum" object there. Here's what mine looks like
 
-```
-Spectrogram > View Spectral Slice…
-```
+![The **Praat Objects** window with a Spectrum object highlighted](images/cog_spectrum_object.png)
 
-At first it may look like nothing happened. But, what Praat actually did was create a brand new object. Go back to your **Praat Objects** window and you should see a new "Spectrum" object there. Here's what mine looks like
+With that new object selected, click on `View & Edit`. You should see something that looks like @fig-cog_spectral_slice_sit.
 
-![](images/cog_spectrum_object.png)
+![A spectral slice](images/cog_spectral_slice_sit.png){#fig-cog_spectral_slice_sit}
 
-With that new object selected, click on `View & Edit`. You should see something that looks like this:
+As the name suggests, this is a slice of the spectrogram. In this visualization, the *x*-axis goes from 0Hz to 22,050 Hz. Along the *y*-axis now is decibels, a measure of how loud something is. In @fig-cog_spectral_slice_sit, you can see that there's more energy---meaning more volume---in the 4,000--12,000Hz range, pretty close to what we saw in the regular spectrogram. (Again, there is also a lot of energy in the 0--500Hz range but that was because I wasn't in a sound studio.)
 
-![](images/cog_spectral_slice_sit.png){@fig-cog_spectral_slice_sit}
-
-As the name suggests, this is a slice of the spectrogram. In this visualization, the *x*-axis goes from 0Hz to 22,050 Hz. Along the *y*-axis now is decibels, a measure of how loud something is. In @cog_spectral_slice_sit, you can see that there's more energy---meaning more volume---in the 4,000--12,000 range, pretty close to what we saw in the regular spectrogram. (Again, there is also a lot of energy in the 0--500Hz range but that was because I wasn't in a sound studio.)
-
-What the CoG is is basically a weighted average measurement for this spectral slice. Frequencies with higher energy will factor into the calculation more prominently and frequences with less energy will influence it less. We can pretty safely guess that the Cog measurement will fall somewhere in that main central zone. 
+What the CoG is is basically a weighted average measurement for this spectral slice. Frequencies with higher energy will factor into the calculation more prominently and frequencies with less energy will influence it less. We can pretty safely guess that the CoG measurement will fall somewhere in that main central zone. 
 
 :::{.callout-tip title="CoG Exercise 1"}
 
@@ -971,23 +853,17 @@ Go back to an instance of /ʃ/, perhaps in the word *bash*, and view the spectra
 
 
 
-#### Measuring CoG
+### Measuring CoG
 
 So, now that we have visual support for what we hear, let's now finally get numeric support. For some reason, you can't extract the CoG measurement from the TextGrid window or even from the Spectral Slice window. You actually have to go back to the Praat Objects window to get it. 
 
-Now, go back to your **Praat Objects** window. Select only your Spectrum object and go to 
-
-```
-Query > Get centre of gravity…
-```
-
-That'll pull up a small window with a power setting. Just use the default 2.0. Then that'll give you number in a separate window. In the case of this recording, the CoG for /s/ in *sit* was 4,281Hz and for /ʃ/ in *bash* it's 934Hz. I can tell you now that those are far too low and the bad recording quality is most likely interfering with the measurements. A typical CoG for /s/ is in the vicinity of 6000Hz and for /ʃ/ it might be around 4000Hz. 
+Now, go back to your **Praat Objects** window. Select only your Spectrum object and go to `Query > Get centre of gravity…`. That'll pull up a small window with a power setting. Just use the default 2.0. Then that'll give you number in a separate window. In the case of this recording, the CoG for /s/ in *sit* was 4,281Hz and for /ʃ/ in *bash* it's 934Hz. I can tell you now that those are far too low and the bad recording quality is most likely interfering with the measurements. A typical CoG for /s/ is in the vicinity of 6000Hz and for /ʃ/ it might be around 4000Hz. 
 
 
 
-### Summary of use cases
+### Summary of use cases {.unnumbered}
 
-In this lengthy section, we looked at four aspects of speech in Praat: intonation, vowels, voice onset time, and center of gravity. In doing so, we looked at Praat's Pitch functions and visualization, formant estimation and how to adjust settings, duration measurements and contextual variation in consonants, and center of gravity and spectral slices. That's a wide range of functions in Praat. There are of course many more things you could look at but hopefully those four give you an idea of the kinds of things Praat can do.
+In the previous four sections, we looked at four aspects of speech in Praat: intonation, vowels, voice onset time, and center of gravity. In doing so, we looked at Praat's Pitch functions and visualization, formant estimation and how to adjust settings, duration measurements and contextual variation in consonants, and center of gravity and spectral slices. That's a wide range of functions in Praat. There are of course many more things you could look at but hopefully those four give you an idea of the kinds of things Praat can do.
 
 In this final section, I'll show a few ways that you can edit the sound in Praat. You might already know how to do many of these things using other software, but it may be helpful still to see what Praat can do and how it can be done. 
 
@@ -998,13 +874,7 @@ You can indeed edit sound in Praat, but to do so, we can't also have the TextGri
 
 ### Extracting sound
 
-First, something to know is that you can highlight any bit of sound and extract it, either as a new Praat object or as a new file to your computer. To do so, just highlight a portion of the recording you want to save, and go to 
-
-```
-Sound > Extract selected sound (time from 0)…
-```
-
-If you jump back over to your **Praat Objects** window, you should see a new Sound file. If you play it, it's just the portion that you highlighted. You can then save it and use it for other things if you want. (You can also save a selected portion of sound directly by going to `File > Save selected sound as WAV file…`.)
+First, something to know is that you can highlight any bit of sound and extract it, either as a new Praat object or as a new file to your computer. To do so, just highlight a portion of the recording you want to save, and go to `Sound > Extract selected sound (time from 0)…`. If you jump back over to your **Praat Objects** window, you should see a new Sound file. If you play it, it's just the portion that you highlighted. You can then save it and use it for other things if you want. (You can also save a selected portion of sound directly by going to `File > Save selected sound as WAV file…`.)
 
 With that selected sound, you can also cut, copy, and paste it. You can find the commands in the `Edit` menu item, but you can just use the typical keyboard shortcuts of command/control + X/C/V. While I don't anticipate too many people needing to copy and paste sounds around, you may find this is quick way to cut unwanted sound, like the beginnings and ends of recordings, noise in the middle of a recording, loud breaths, speech errors, or just general trimming. 
 
@@ -1014,14 +884,7 @@ However, anytime you any kind of sound manipulation (including extracting sound)
 
 You may think that you can just trim those out with additional cuts, but you might find that they keep reappearing. The reason is a bit complex, but essentially, you're forcing the sound wave to instantaneously jump from one point to another. If you zoom *waaaay* in on the spectrogram you might get a feel for what I mean. Sound can't do that. So it fills in the gaps with a transition, and that little blip is the result of that transition. How can we ensure that the sound wave is at the exact same point when we bring two portions of sound together? 
 
-The solution is to make sure that the boundaries of your sound clips are always at the zero crossing. This is easy to do since all sound, regardless of pitch, will cross through that many times per second. Praat can do this for you. Highlight the portion of the recording you want to be the start of your selection. Then go to
-
-```
-Sound > Move start of selection to nearest zero crossing
-Sound > Move end of selection to nearest zero crossing
-```
-
-You might not notice what these two functions do, but what it did is adjust the boundaries of your selection by a fraction of a second so that they are exactly where the waveform crosses zero. In theory now, if you extract this sound, or cut it out, you'll avoid those little blips. If you want to paste the sound in somewhere else, just be sure your cursor is at a zero crossing (`Move cursor to nearest zero crossing`) before doing so.
+The solution is to make sure that the boundaries of your sound clips are always at the zero crossing. This is easy to do since all sound, regardless of pitch, will cross through that many times per second. Praat can do this for you. Highlight the portion of the recording you want to be the start of your selection. Then go to `Sound > Move start of selection to nearest zero crossing` and `Sound > Move end of selection to nearest zero crossing`. You might not notice what these two functions do, but what it did is adjust the boundaries of your selection by a fraction of a second so that they are exactly where the waveform crosses zero. In theory now, if you extract this sound, or cut it out, you'll avoid those little blips. If you want to paste the sound in somewhere else, just be sure your cursor is at a zero crossing (`Move cursor to nearest zero crossing`) before doing so.
 
 
 <!--
@@ -1055,11 +918,14 @@ Modify -> Scale peak
 
 -->
 
+There are of course many other ways that Praat can digitally modify sound. I encourage you to explore Praat on your own and see what you can find out. 
+
 
 ## Additional resources {#sec-additional-resources}
 
-If you are interested in learning more about Praat, there are lots of tutorials out there. 
+If you are interested in learning more about Praat, there are lots of places to learn more. Praat has a user manual both built-in to the software and available online. It is pretty comprehensive though some of the details may not be accessible to all users. If you'd like to read guides written by other people, there are lots of tutorials out there. 
 
 * Praat's website lists [several](https://praat.org/manualsByOthers.html) that may be useful. Some are written in languages other than English. Some might be a bit dated, and while Praat has gained new features, there's very little that these old tutorials show that is not still fully functional today. 
 * I have written other Praat tutorials. These are hosted [here](https://joeystanley.com/pages/praat-workshops.html). Some of them overlap a little bit with this workshop. * I have compiled my own [list](https://joeystanley.com/resources.html#praat-resources) of useful Praat resources. However, this list is older and may be out of date. 
 
+I hope this workshop has been helpful. We've learned a lot about Praat and have approached acoustic analysis of speech from a variety of angles. I've found that the best way to learn is to have an end goal in mind and then learn what it takes to get there. That seems to be easier than just exploring Praat's many abilities. So, what would you like Praat to be able to do? What should you do next to get yourself to acheive those goals? 
