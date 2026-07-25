@@ -278,16 +278,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#editing-sound" id="toc-editing-sound" class="nav-link" data-scroll-target="#editing-sound">Editing sound</a>
   <ul class="collapse">
-  <li><a href="#tricks" id="toc-tricks" class="nav-link" data-scroll-target="#tricks">Tricks</a></li>
-  <li><a href="#cosmetic-improvements" id="toc-cosmetic-improvements" class="nav-link" data-scroll-target="#cosmetic-improvements">Cosmetic improvements</a></li>
-  <li><a href="#modify---scale-peak" id="toc-modify---scale-peak" class="nav-link" data-scroll-target="#modify---scale-peak">Modify -&gt; Scale peak</a></li>
+  <li><a href="#extracting-sound" id="toc-extracting-sound" class="nav-link" data-scroll-target="#extracting-sound">Extracting sound</a></li>
   </ul></li>
-  <li><a href="#perceptual-sociophonetics-light" id="toc-perceptual-sociophonetics-light" class="nav-link" data-scroll-target="#perceptual-sociophonetics-light">Perceptual sociophonetics (light)</a></li>
-  <li><a href="#sec-additional-resources" id="toc-sec-additional-resources" class="nav-link" data-scroll-target="#sec-additional-resources">Additional resources</a>
-  <ul class="collapse">
-  <li><a href="#voxhumana" id="toc-voxhumana" class="nav-link" data-scroll-target="#voxhumana">VoxHumana</a></li>
-  <li><a href="#pipeline" id="toc-pipeline" class="nav-link" data-scroll-target="#pipeline">Pipeline</a></li>
-  </ul></li>
+  <li><a href="#sec-additional-resources" id="toc-sec-additional-resources" class="nav-link" data-scroll-target="#sec-additional-resources">Additional resources</a></li>
   </ul>
 </nav>
     </div>
@@ -298,7 +291,7 @@ window.Quarto = {
 
 
 
-<p>This handout is meant to accompany the Praat workshop that I gave to the Voice and Speech Teachers Association (VASTA) on July 25, 2026. The goal for this workshop is to introduce the fundamentals of Praat for voice and speech professionals who have little or no prior experience with the software. In this handout, I’ll cover how the acoustic correlates of elements of speech like pitch, vowel quality, and voice quality are represented visually. I hope that you’ll be able to walk away with some practical skills for exploring and understanding speech. At the end, I’ll show some tools that I’ve recently developed that may be helpful for you that relate to this.</p>
+<p>This handout is meant to accompany the Praat workshop that I gave to the Voice and Speech Teachers Association (VASTA) on July 25, 2026. The goal for this workshop is to introduce the fundamentals of Praat for voice and speech professionals who have little or no prior experience with the software. In this handout, I’ll cover how the acoustic correlates of elements of speech like pitch, vowel quality, and voice quality are represented visually. I hope that you’ll be able to walk away with some practical skills for exploring and understanding speech.</p>
 <section id="the-basics" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-basics">The basics</h2>
 <!--Lightly edited and updated from the 2019 workshop. -->
@@ -314,7 +307,7 @@ window.Quarto = {
 <ol type="1">
 <li><p>It’s the standard. Nearly every linguist has used Praat at some point. People in allied fields who study speech likely hav as well.</p></li>
 <li><p>While the software itself may not be pretty, the visualizations it can produce are professional quality.</p></li>
-<li><p>It actually has its own scripting language, to help automate any function it can do. This is especially useful if you have a task that you need to do over and over. Unfortunately, I can’t show how to script here, but there are tutorials online, including my own. See <a href="#sec-additional-resources" class="quarto-xref">Section&nbsp;8</a> for links to those.</p></li>
+<li><p>It actually has its own scripting language, to help automate any function it can do. This is especially useful if you have a task that you need to do over and over. Unfortunately, I can’t show how to script here, but there are tutorials online, including my own. See <a href="#sec-additional-resources" class="quarto-xref">Section&nbsp;7</a> for links to those.</p></li>
 <li><p>It’s free.</p></li>
 </ol>
 <p>The pros outweigh the cons for sure.</p>
@@ -1343,39 +1336,59 @@ Figure&nbsp;18
 </section>
 <section id="editing-sound" class="level2">
 <h2 class="anchored" data-anchor-id="editing-sound">Editing sound</h2>
-<p>After all, it <em>is</em> called the SoundEditor window.</p>
-<p>Basic sound manipulation? Move cursor to zero. Cut and paste. Removing breaths.</p>
-<p>Saving sound (and portions)</p>
-<p>Concatenating (by filter?)</p>
-<section id="tricks" class="level3">
-<h3 class="anchored" data-anchor-id="tricks">Tricks</h3>
-<p>Filter to sound like a telephone.</p>
-<p>Change gender</p>
-<p>Reverse</p>
+<p>You can indeed edit sound in Praat, but to do so, we can’t also have the TextGrid open at the same time. You might have noticed Praat showing the words “~non-modifiable copy of sound” in your TextGrid window. So, you’ll need to close out of the TextGrid window, highlight only the Sound object in the <strong>Praat Objects</strong> window, and then click on <code>View &amp; Edit</code>. You should now see the words “~modifiable sound” in the window. Let’s indeed start to modify this sound.</p>
+<section id="extracting-sound" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-sound">Extracting sound</h3>
+<p>First, something to know is that you can highlight any bit of sound and extract it, either as a new Praat object or as a new file to your computer. To do so, just highlight a portion of the recording you want to save, and go to</p>
+<pre><code>Sound &gt; Extract selected sound (time from 0)…</code></pre>
+<p>If you jump back over to your <strong>Praat Objects</strong> window, you should see a new Sound file. If you play it, it’s just the portion that you highlighted. You can then save it and use it for other things if you want. (You can also save a selected portion of sound directly by going to <code>File &gt; Save selected sound as WAV file…</code>.)</p>
+<p>With that selected sound, you can also cut, copy, and paste it. You can find the commands in the <code>Edit</code> menu item, but you can just use the typical keyboard shortcuts of command/control + X/C/V. While I don’t anticipate too many people needing to copy and paste sounds around, you may find this is quick way to cut unwanted sound, like the beginnings and ends of recordings, noise in the middle of a recording, loud breaths, speech errors, or just general trimming.</p>
+<p>However, anytime you any kind of sound manipulation (including extracting sound), you want to be careful with the boundaries. Because of ✨acoustics✨, if you extract a sound and the boundary in the waveform isn’t crossing the zero point (the middle horizontal line) exactly, it’ll create an auditory artifact at the beginning and end of the audio file. You may even hear this as a little click sound and you might see it in the spectrogram as a very brief black vertical bar. Here’s an example of that from careless copy and pasting.</p>
+<p><img src="images/auditory_blips.png" class="img-fluid"></p>
+<p>You may think that you can just trim those out with additional cuts, but you might find that they keep reappearing. The reason is a bit complex, but essentially, you’re forcing the sound wave to instantaneously jump from one point to another. If you zoom <em>waaaay</em> in on the spectrogram you might get a feel for what I mean. Sound can’t do that. So it fills in the gaps with a transition, and that little blip is the result of that transition. How can we ensure that the sound wave is at the exact same point when we bring two portions of sound together?</p>
+<p>The solution is to make sure that the boundaries of your sound clips are always at the zero crossing. This is easy to do since all sound, regardless of pitch, will cross through that many times per second. Praat can do this for you. Highlight the portion of the recording you want to be the start of your selection. Then go to</p>
+<pre><code>Sound &gt; Move start of selection to nearest zero crossing
+Sound &gt; Move end of selection to nearest zero crossing</code></pre>
+<p>You might not notice what these two functions do, but what it did is adjust the boundaries of your selection by a fraction of a second so that they are exactly where the waveform crosses zero. In theory now, if you extract this sound, or cut it out, you’ll avoid those little blips. If you want to paste the sound in somewhere else, just be sure your cursor is at a zero crossing (<code>Move cursor to nearest zero crossing</code>) before doing so.</p>
+<!--
+
+Concatenating (by filter?)
+
+
+
+
+### Tricks
+
+Filter to sound like a telephone.
+
+Change gender
+
+Reverse
+
+-->
+<!--
+### Cosmetic improvements
+
+There are a few other small things that might be good to know how to do in Praat. First, is noise 
+
+Noise removal.
+
+
+
+Modify -> Scale peak
+
+-->
 </section>
-<section id="cosmetic-improvements" class="level3">
-<h3 class="anchored" data-anchor-id="cosmetic-improvements">Cosmetic improvements</h3>
-<p>Noise removal.</p>
-<p>Cropping (ends, speech errors)</p>
-</section>
-<section id="modify---scale-peak" class="level3">
-<h3 class="anchored" data-anchor-id="modify---scale-peak">Modify -&gt; Scale peak</h3>
-</section>
-</section>
-<section id="perceptual-sociophonetics-light" class="level2">
-<h2 class="anchored" data-anchor-id="perceptual-sociophonetics-light">Perceptual sociophonetics (light)</h2>
 </section>
 <section id="sec-additional-resources" class="level2">
 <h2 class="anchored" data-anchor-id="sec-additional-resources">Additional resources</h2>
-<p>List of other Praat tutorials</p>
-<section id="voxhumana" class="level3">
-<h3 class="anchored" data-anchor-id="voxhumana">VoxHumana</h3>
-</section>
-<section id="pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="pipeline">Pipeline</h3>
+<p>If you are interested in learning more about Praat, there are lots of tutorials out there.</p>
+<ul>
+<li>Praat’s website lists <a href="https://praat.org/manualsByOthers.html">several</a> that may be useful. Some are written in languages other than English. Some might be a bit dated, and while Praat has gained new features, there’s very little that these old tutorials show that is not still fully functional today.</li>
+<li>I have written other Praat tutorials. These are hosted <a href="https://joeystanley.com/pages/praat-workshops.html">here</a>. Some of them overlap a little bit with this workshop. * I have compiled my own <a href="https://joeystanley.com/resources.html#praat-resources">list</a> of useful Praat resources. However, this list is older and may be out of date.</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
