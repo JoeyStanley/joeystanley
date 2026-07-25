@@ -12,7 +12,9 @@ This page serves as the homepage for any Praat tutorials or content on my websit
 
 <br/>
 
-## [*Praat Basics: Introduction to the software*](/downloads/190911-intro_to_Praat.html)
+## Tutorials without Praat scripting
+
+### [*Praat Basics: Introduction to the software*](/downloads/190911-intro_to_Praat.html)
 
 This tutorial introduces the software. It covers how how to install the software, record audio, save audio, extract some acoustic measurements by hand, and do a manual transcription. It will also briefly discuss the important steps you need to take to prep your data *before* using Praat. (For former students of mine, this workshop will overlap with [this homework assignment](/downloads/190523-Praat_tutorial.pdf).)
 
@@ -22,7 +24,21 @@ This was originally the handout to a workshop hosted by Lisa Lipani and me on Se
 
 <br/>
 
-## [*Praat Scripting Basics: Loops, I/O, and TextGrids*](/downloads/190918-praat_scripting.html)
+### [*Seeing what you hear: A practical introduction to Praat*](/blog/vasta)
+
+This tutorial introduces Praat for people who have some experience working with speech audio. It covers installation and basic navigation. It then goes into four use cases: pitch, vowel formants, voice onset time, and center of gravity. The goal is to quickly demonstrate a wide range of the things Praat can do. It overlaps a little bit with the above workshop, but it also goes into detail on some topics that aren't covered in any of my other workshops.
+
+:::{.callout-note}
+This was the handout to a workshop I gave to the Voice and Speech Teachers Association (VASTA) on July 25, 2026.
+:::
+
+<br/>
+
+
+
+## Tutorials with Praat scripting
+
+### [*Praat Scripting Basics: Loops, I/O, and TextGrids*](/downloads/190918-praat_scripting.html)
 
 This tutorial covers the fundamentals of Praat scripting: object management, looping through a TextGrid, and how to get your data in and out of a Praat script. This tutorial assumes some basic understanding of how Praat works and builds off the previous tutorial.
 
@@ -32,7 +48,7 @@ This was originally the handout to a workshop hosted by Lisa Lipani and me on Se
 
 <br/>
 
-## [*Automatic Formant Extraction in Praat*](/downloads/191002-formant_extraction.html) (and [supplement](/downloads/191001-formant_extraction_supplement.html))
+### [*Automatic Formant Extraction in Praat*](/downloads/191002-formant_extraction.html) (and [supplement](/downloads/191001-formant_extraction_supplement.html))
 
 In this workshop, you'll learn, from start to finish, how to write a Praat script that will automatically extract formant measurements and a other acoustic measurements from your audio and transcription. There will be quite a bit of overlap with [this blog post](/blog/a-tutorial-on-extracting-formants-in-praat).
 

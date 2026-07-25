@@ -378,113 +378,61 @@ William A. Kretzschmar, Jr., Margaret E. L. Renwick, [Joseph A. Stanley]{.me}, K
 
 ## Workshops
 
-*2020 LaTeX Workshop Series with Caleb Crumley and Jonathan Crum. University of Georgia DigiLab. Athens, GA*
+Seeing what you hear: A practical introduction to Praat. Invited workshop given to the Voice and Speech Teachers Association (VASTA) on July 25, 2026. 
+<a href="/blog/vasta" class="link" target ="_blank"  title="view the handout online"></a>
 
-<ul style="margin-left: 2em">
+2020 LaTeX Workshop Series with Caleb Crumley and Jonathan Crum. University of Georgia DigiLab. Athens, GA.
 
-<li>Introduction to LaTeX. January 31 & February 21. <a href="https://github.com/JoeyStanley/LaTeX_workshops" class="github" target ="_blank"  title="link to github"></a></li>
+* Introduction to LaTeX. January 31 & February 21. <a href="https://github.com/JoeyStanley/LaTeX_workshops" class="github" target ="_blank"  title="link to github"></a>
+* The UGA LaTeX Template. February 7 & 28. <a href="https://github.com/DigiUGA/UGA-Dissertation-LaTeX-Template" class="github" target="_blank" title="link to github"></a>
+* Advanced Topics in LaTeX February 14. <a href="https://github.com/krummja/2020_LaTeX_Workshops" class="github" target="_blank" title="link to github"></a>
 
-<li>The UGA LaTeX Template. February 7 & 28. <a href="https://github.com/DigiUGA/UGA-Dissertation-LaTeX-Template" class="github" target="_blank" title="link to github"></a></li>
+2019 Praat Scripting Workshop Series with Lisa Lipani. University of Georgia DigiLab. Athens, GA.
 
-<li>Advanced Topics in LaTeX February 14. <a href="https://github.com/krummja/2020_LaTeX_Workshops" class="github" target="_blank" title="link to github"></a></li>
+* Praat Basics: Introduction to the software. September 11. <a href="/downloads/190911-intro_to_Praat.html" class="link" target ="_blank"  title="view the handout online"></a>
+* Praat Scripting Basics: Loops, I/O, and TextGrids. September 18. <a href="/downloads/190918-praat_scripting.html" class="link" target ="_blank"  title="view the handout online"></a>
+* Automatic Formant Extraction (and other acoustic measures) in Praat. October 2. <a href="/downloads/191002-formant_extraction.html" class="link" target ="_blank"  title="view the handout online"></a>
 
-</ul>
+2019 Data Visualization Workshop Series. University of Georgia DigiLab. Athens, GA.
 
-*2019 Praat Scripting Workshop Series with Lisa Lipani. University of Georgia DigiLab. Athens, GA.*
+* An intro to data visualization in R using ggplot2. August 21. <a href="/downloads/190821-intro_to_ggplot2.html" class="link" target ="_blank"  title="view the handout online"></a>
+* Customizing your plots to make that perfect visual. August 28. <a href="/downloads/190828-ggplot2_intermediate.html" class="link" target ="_blank"  title="view the handout online"></a>
+* Generalize your aesthetics using custom themes in ggplot2. September 4. <a href="/downloads/190904-ggplot2_custom_themes.html" class="link" target ="_blank"  title="view the handout online"></a>
+* Fidelity, integrity, and sophistication: Edward Tufte’s principles of data visualization. October 16. <a href="/downloads/191016-Tufte.pdf" class="slides" target ="_blank"  title="view the slides"></a>
+* Send the right message: The dos and don’ts of color in data visualization. October 23. (with Meagen Duever) <a href="/downloads/191023-color.pdf" class="slides" target ="_blank"  title="view the handout online"></a>
 
-<ul style="margin-left: 2em">
+2018 R Workshop Series. University of Georgia DigiLab. Athens, GA.
 
-<li>Praat Basics: Introduction to the software. September 11. <a href="/downloads/190911-intro_to_Praat.html" class="link" target ="_blank"  title="view the handout online"></a></li>
+* Intro to R (Part 1). January 19. <a href="/downloads/180119-intro-to-r-part1.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180119-intro-to-r-part1.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a>
+* Intro to R (Part 2). January 26. <a href="/downloads/180126-intro-to-r-part2.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180126-intro-to-r-part2.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
+* Building Interactive Webpages in R: Introduction to Shiny (Part 1). February 2. <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a>
+* Building Interactive Webpages in R: Introduction to Shiny (Part 2). February 9. <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a>
+* Visualizations I: Introduction to ggplot2. February 16. <a href="/downloads/180216-ggplot2-part1.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180216-ggplot2-part1.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
+* Visualizations II: Customizing plots in ggplot2. February 23. <a href="/downloads/180223-ggplot2-part2.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180223-ggplot2-part2.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
+* Clean and tidy data: Tidyverse Part 1. March 2. <a href="/downloads/180302-tidyverse_part1.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180302-tidyverse_part1.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
+* Transform, reshape, and modify your data: Tidyverse Part 2. March 23. <a href="/downloads/180323-tidyverse_II.html" class="link" target ="_blank" title="view the handout online"></a> <a href="/downloads/180323-tidyverse_II.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
+* Communicate to your audience with R Markdown. March 9. <a href="/downloads/180309-rmarkdown.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180309-rmarkdown.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
 
-<li>Praat Scripting Basics: Loops, I/O, and TextGrids. September 18. <a href="/downloads/190918-praat_scripting.html" class="link" target ="_blank"  title="view the handout online"></a></li>
+2017 R Workshop Series. University of Georgia DigiLab. Athens, GA.
 
-<li>Automatic Formant Extraction (and other acoustic measures) in Praat. October 2. <a href="/downloads/191002-formant_extraction.html" class="link" target ="_blank"  title="view the handout online"></a></li>
+* An Introduction to R: Learn the Basics. September 13. <a href="/downloads/170912-intro-to-r-handout.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a> <a href="/downloads/170913-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a>
+* An Introduction to ggplot2. October 12. <a href="/downloads/171012-ggplot2_handout.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a> <a href="/downloads/170913-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a>
+* An Introduction to the Tidyverse. November 10. <a href="/downloads/171110-tidyverse.html" class="paper" target ="_blank" title="download the handout for this presentation"></a> <a href="/downloads/171110-tidyverse_handout.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a>
 
-</ul>
+Professionalization Workshops
 
-*2019 Data Visualization Workshop Series. University of Georgia DigiLab. Athens, GA.*
-
-<ul style="margin-left: 2em">
-
-<li>An intro to data visualization in R using ggplot2. August 21. <a href="/downloads/190821-intro_to_ggplot2.html" class="link" target ="_blank"  title="view the handout online"></a></li>
-
-<li>Customizing your plots to make that perfect visual. August 28. <a href="/downloads/190828-ggplot2_intermediate.html" class="link" target ="_blank"  title="view the handout online"></a></li>
-
-<li>Generalize your aesthetics using custom themes in ggplot2. September 4. <a href="/downloads/190904-ggplot2_custom_themes.html" class="link" target ="_blank"  title="view the handout online"></a></li>
-
-<li>Fidelity, integrity, and sophistication: Edward Tufte’s principles of data visualization. October 16. <a href="/downloads/191016-Tufte.pdf" class="slides" target ="_blank"  title="view the slides"></a></li>
-
-<li>Send the right message: The dos and don’ts of color in data visualization. October 23. (with Meagen Duever) <a href="/downloads/191023-color.pdf" class="slides" target ="_blank"  title="view the handout online"></a></li>
-
-</ul>
-
-*2018 R Workshop Series. University of Georgia DigiLab. Athens, GA.*
-
-<ul style="margin-left: 2em">
-
-<li>Intro to R (Part 1). January 19. <a href="/downloads/180119-intro-to-r-part1.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180119-intro-to-r-part1.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Intro to R (Part 2). January 26. <a href="/downloads/180126-intro-to-r-part2.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180126-intro-to-r-part2.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Building Interactive Webpages in R: Introduction to Shiny (Part 1). February 2. <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a></li>
-
-<li>Building Interactive Webpages in R: Introduction to Shiny (Part 2). February 9. <a href="https://joeystanley.shinyapps.io/intro_to_shiny/" class="link" target ="_blank" title="view the handout online"></a></li>
-
-<li>Visualizations I: Introduction to ggplot2. February 16. <a href="/downloads/180216-ggplot2-part1.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180216-ggplot2-part1.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Visualizations II: Customizing plots in ggplot2. February 23. <a href="/downloads/180223-ggplot2-part2.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180223-ggplot2-part2.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Clean and tidy data: Tidyverse Part 1. March 2. <a href="/downloads/180302-tidyverse_part1.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180302-tidyverse_part1.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Transform, reshape, and modify your data: Tidyverse Part 2. March 23. <a href="/downloads/180323-tidyverse_II.html" class="link" target ="_blank" title="view the handout online"></a> <a href="/downloads/180323-tidyverse_II.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Communicate to your audience with R Markdown. March 9. <a href="/downloads/180309-rmarkdown.html" class="link" target ="_blank"  title="view the handout online"></a> <a href="/downloads/180309-rmarkdown.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-</ul>
-
-*2017 R Workshop Series. University of Georgia DigiLab. Athens, GA.*
-
-<ul style="margin-left: 2em">
-
-<li>An Introduction to R: Learn the Basics. September 13. <a href="/downloads/170912-intro-to-r-handout.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a> <a href="/downloads/170913-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a></li>
-
-<li>An Introduction to ggplot2. October 12. <a href="/downloads/171012-ggplot2_handout.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a> <a href="/downloads/170913-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a></li>
-
-<li>An Introduction to the Tidyverse. November 10. <a href="/downloads/171110-tidyverse.html" class="paper" target ="_blank" title="download the handout for this presentation"></a> <a href="/downloads/171110-tidyverse_handout.pdf" class="paper" target ="_blank" title="download the handout for this presentation"></a></li>
-
-</ul>
-
-*Professionalization Workshops*
-
-<ul style="margin-left: 2em">
-
-<li>How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the BYU Linguistics Department. Provo, UT. March 10, 2022.</li>
-
-<li>How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the BYU Linguistics Department. Provo, UT. October 20, 2021. <a href="/downloads/190911-poster_workshop.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>A workshop on preparing conference abstracts. Given by invitation by the Linguistics Club at the University of Georgia. Athens, GA. March 5, 2020. <a href="/downloads/200303-ling_club_talk.pdf" class="slides" target ="_blank" title="download the slides for this presentation"></a></li>
-
-<li>Brand Yourself: Boosting Your Online Presence (for linguistics grad students). Workshop given by invitation by the University of Georgia Department of Linguistics. Athens, GA. March 3, 2020. <a href="/downloads/200303-brand-yourself_linguistics.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Brand Yourself: Boosting Your Online Presence. Workshop given at the University of Georgia as a part of the Graduate Research Workshop Series sponsored by UGA Libraries. Athens, GA. September 20 and 26, 2019. <a href="/downloads/190920-brand-yourself.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the Linguistics Society at UGA and the Linguistics Club. Athens, GA. September 11, 2019. <a href="/downloads/190911-poster_workshop.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a></li>
-
-<li>Brand Yourself: Creating a Digital, Professional Presence. Invited workshop at the DigiLab, Main Library, University of Georgia, Athens, GA. September 27, 2018. <a href="/downloads/180928-brand-yourself_flyer.pdf" class="flyer" title="download the flyer for this presentation"></a> <a href="/downloads/180928-brand-yourself.pdf" class="slides" title="download the slides for this presentation"></a></li>
-
-<li>Brand Yourself: A professionalization workshop for grad students. Workshop given at the University of Georgia DigiLab. Athens, GA. November 11, 2016. (with <a href="http://emilymcginn.com">Emily McGinn</a>) <a href="https://digi.uga.edu/news/brandyourself/" class="link" target="_blank" title="link to digi.uga.edu"></a> <a href="/blog/brand-yourself" class="link" target="_blank" title="link to digi.uga.edu"></a> <a href="/downloads/161111-DigiLab-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a> <a href="/downloads/161111-DigiLab-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a></li>
-
-</ul>
+* How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the BYU Linguistics Department. Provo, UT. March 10, 2022.
+* How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the BYU Linguistics Department. Provo, UT. October 20, 2021. <a href="/downloads/190911-poster_workshop.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a>
+* A workshop on preparing conference abstracts. Given by invitation by the Linguistics Club at the University of Georgia. Athens, GA. March 5, 2020. <a href="/downloads/200303-ling_club_talk.pdf" class="slides" target ="_blank" title="download the slides for this presentation"></a>
+* Brand Yourself: Boosting Your Online Presence (for linguistics grad students). Workshop given by invitation by the University of Georgia Department of Linguistics. Athens, GA. March 3, 2020. <a href="/downloads/200303-brand-yourself_linguistics.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a>
+* Brand Yourself: Boosting Your Online Presence. Workshop given at the University of Georgia as a part of the Graduate Research Workshop Series sponsored by UGA Libraries. Athens, GA. September 20 and 26, 2019. <a href="/downloads/190920-brand-yourself.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a>
+* How to make an Academic Poster: An Opinionated Tutorial. Workshop given to members of the Linguistics Society at UGA and the Linguistics Club. Athens, GA. September 11, 2019. <a href="/downloads/190911-poster_workshop.pdf" class="slides" target ="_blank" title="download the handout for this presentation"></a>
+* Brand Yourself: Creating a Digital, Professional Presence. Invited workshop at the DigiLab, Main Library, University of Georgia, Athens, GA. September 27, 2018. <a href="/downloads/180928-brand-yourself_flyer.pdf" class="flyer" title="download the flyer for this presentation"></a> <a href="/downloads/180928-brand-yourself.pdf" class="slides" title="download the slides for this presentation"></a>
+* Brand Yourself: A professionalization workshop for grad students. Workshop given at the University of Georgia DigiLab. Athens, GA. November 11, 2016. (with <a href="http://emilymcginn.com">Emily McGinn</a>) <a href="https://digi.uga.edu/news/brandyourself/" class="link" target="_blank" title="link to digi.uga.edu"></a> <a href="/blog/brand-yourself" class="link" target="_blank" title="link to digi.uga.edu"></a> <a href="/downloads/161111-DigiLab-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a> <a href="/downloads/161111-DigiLab-slides.pptx" class="slides" title="download the powerpoint slides for this presentation"></a>
 
 <br/>
 
-*Excel Workshops*
-
-<ul style="margin-left: 2em">
-
-<li>Be a Data Magician: An Excel Workshop for Humanists. Workshop given at the University of Georgia DigiLab. Athens, GA. January 27, 2017. <a href="/downloads/170127-ExcelWorkshop.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a> <a href="https://digi.uga.edu/news/be-a-data-magician/" class="link" target="_blank" title="link to digi.uga.edu"></a> <a href="/downloads/170127-ExcelWorkshop-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a></li>
-
-</ul>
+Be a Data Magician: An Excel Workshop for Humanists. Workshop given at the University of Georgia DigiLab. Athens, GA. January 27, 2017. <a href="/downloads/170127-ExcelWorkshop.pdf" class="paper" target="_blank" title="open a pdf of the handout to this presentation a new window"></a> <a href="https://digi.uga.edu/news/be-a-data-magician/" class="link" target="_blank" title="link to digi.uga.edu"></a> <a href="/downloads/170127-ExcelWorkshop-flyer.pdf" class="flyer" target="_blank" title="open a pdf of the flyer for this presentation in a new window"></a>
 
 <br/>
 
