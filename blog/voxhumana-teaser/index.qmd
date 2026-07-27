@@ -84,7 +84,12 @@ Currently, there is no email system in place. With DARLA, you could submit your 
 
 ## AI Disclosure
 
-VxH uses a local installation of Whisper for automatic transcription. My understanding is that when it is done locally like this, it does not send submitted audio to OpenAI. Whisper does indeed work this way, even when not connected to the internet. From what I can tell in the documntation, this is how it works.
+VxH uses a local installation of Whisper for automatic transcription. My understanding is that when it is done locally like this, it does not send submitted audio to OpenAI. Whisper does indeed work this way, even when not connected to the internet. From what I can tell in the documentation, this is how it works.
 
-I also freely disclose that the code for VxH was written using Claude. I have never learned to code in Python and Python was the most appropriate language for this tool. My justification is that with the sunsetting of DARLA, the field needed a tool like VxH quickly, more quickly than I'd be able to do myself. And I don't have the means to hire someone to do this either.
+I also freely disclose that the code for VxH was written using Claude. I have never learned to code in Python and Python was the most appropriate language for this tool. My justification is that with the sunsetting of DARLA, the field needed a tool like VxH quickly, more quickly than I'd be able to do myself. And I don't have the means to hire someone to do this either. 
 
+I wanted to disclose these early and clearly so that you can make the best choice for you, your morals, and your data. 
+
+## Conclusion (for now)
+
+The field owes Jim Stanford a monster debt of gratitude for maintaining DARLA for over a decade. It has been an extremely valuable tool for those of us who work with English data. It has been especially helpful for students and young scholars who just want to see their vowel spaces. It's time to pass the baton and I'm happy to take it. Please stay tuned for updates, especially once it goes live. 
