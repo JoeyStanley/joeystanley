@@ -7,9 +7,11 @@ format:
     toc: true
 ---
 
-### Current courses
+### Upcoming courses
 
-* LING 495R: African American English
+* LING 240:  Linguistic Tools 1
+* LING 452:  Introduction to Sociolinguistics
+* ELING 327: Applied Phonetics
 
 ### Past courses
 
@@ -25,7 +27,7 @@ format:
 * ELING 468: Introduction to Varieties of English (×5)
 * ELING 568: Varieties of English (cross-listed with ELING 468)
 * LING 452:  Introduction to Sociolinguistics (×3)
-* LING 495R: African American English (×3)
+* LING 495R: African American English (×4)
 * LING 550:  Sociolinguistics (×2, plus ×3 cross-listed with LING 452)
 * LING 580R: Sociolinguistic Fieldwork (with Lisa Johnson)
 
@@ -37,11 +39,11 @@ format:
 
 ### Future courses
 
-*Fall 2026*
+*Winter 2026*
 
-* LING 240:  Linguistic Tools 1
-* LING 452:  Introduction to Sociolinguistics
-* ELING 327: Applied Phonetics
+* LING 240: Linguistics Tools 1
+
+
 
 
 
@@ -79,9 +81,9 @@ I've technically taught this graduate-level version of the Introduction to Socio
 
 ### [Special Topics: African American English](https://catalog.byu.edu/courses/01990-003)
 
-I taught this course Spring of 2023, 2024, and 2025 and am currently teaching it Spring 2026. It's taught as the senior capstone course and as a linguistics elective in the linguistics department. (So, technically it was cross-listed as LING 495R: Senior Capstone, ELING 495R: The Senior Course, LING 421R: Studies in Linguistics, and ELING 421R: Studies in Language or Editing). 
+I taught this course Spring of 2023, 2024, 2025, and 2026. It's taught as the senior capstone course and as a linguistics elective in the linguistics department. (So, technically it was cross-listed as LING 495R: Senior Capstone, ELING 495R: The Senior Course, LING 421R: Studies in Linguistics, and ELING 421R: Studies in Language or Editing). 
 
-The capstone courses in my department are designed to be open-ended and end up being special topics courses that cover a wide range of subfields in linguistics. Most of the faculty who had been teaching these capstone courses though had recently retired, so we have been in dire need for new courses to put into the rotation. I had wanted to teaching something about language ideology, discrimination, and/or attitudes but I was asked to do something to do with American English; we settled on African American English, which I think was a nice compromise. 
+The capstone courses in my department are designed to be open-ended and end up being special topics courses that cover a wide range of subfields in linguistics. By 2023, most of the faculty who had been teaching these capstone courses though had recently retired, so we needed new courses to put into the rotation. I had been wanting to teaching something about language ideology, discrimination, and/or attitudes but I was asked to do something to do with American English; we settled on African American English, which I think was a nice compromise. 
 
 So, with the help and input from many friends and colleagues, I designed and prepped the course, using Lisa Green's *[African American English](https://doi.org/10.1017/CBO9780511800306)* as my main textbook. I went into the course knowing some things here and there about AAE from just being exposed to the literature on it in sociolinguistics, and it turned out to be very challenging but a richly rewarding course for me. [Here](/downloads/260514-L495R_AAE_syllabus.pdf) is the syllabus.
 
@@ -136,7 +138,7 @@ I taught this course Fall 2017 and Spring 2019 at UGA. I teach a very similar co
 
 Caleb Crumley, Jonathan Crum, and I led a series of three workshops on LaTeX as a way to introduce the new UGA Dissertation LaTeX template. I discussed basic LaTeX skills, Caleb showed how to use the template, and Jonathan illustrated more advanced topics. This series got the stamp of approval from the UGA Graduate School and had over 100 registered attendees.
 
-### [Praat Scripting Workshops](/pages/praat-workshops.qmd)
+### [Praat (Scripting) Workshops](/pages/praat-workshops.qmd)
 
 Lisa Lipani and I led three workshops on Praat and Praat scripting. We discussed the basics of the Praat interface, how to code basic things, and then did one devoted to automatic extraction of formant measurements. 
 
