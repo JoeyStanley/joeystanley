@@ -90,7 +90,7 @@ Learn various ways to detect and handle outliers and extreme measurements.
 
 ### Normalizing
 
-Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. 
+Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. Another tutorial is [this one](https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/) by Stefano Coretta. 
 
 ### Order of operations
 
@@ -98,7 +98,7 @@ Learn how the order of these processing steps can affect your data and what the 
 
 ## Series 4: Data visualization
 
-In this series, we'll just focus on making good plots. We'll look at aesthetics and what makes for a good plot. We'll also explore additional ways of visualizing data. 
+In this series, we'll just focus on making good plots. We'll look at aesthetics and what makes for a good plot. We'll also explore additional ways of visualizing data. A good general resource is Andrew Heiss's open [course](https://datavizf23.classes.andrewheiss.com) on Data Visualization.
 
 ### Color
 
@@ -124,4 +124,13 @@ My tutorial on Pillai scores and Bhattacharyya's Affinity [Part 1](/blog/a-tutor
 
 ### Statistical analysis
 
-I defer to Michael Gardner's suite of statistics tutorials on the Ling Methods Hub, starting with [this one](https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html). 
+There are lots of recent resources that can be helpful. Here are some I'd like to go through:
+
+* Michael Gardner's suite of statistics tutorials on the Ling Methods Hub, starting with [this one](https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html).
+* See Stefano Coretta's post on [mixed effects](https://stefanocoretta.github.io/posts/2021-03-15-on-random-effects/). 
+* Stafano Coretta's [Quantitative Data Analysis for Linguists in R](https://stefanocoretta.github.io/qdal/)
+
+For Bayesian analysis, here are some tutorials I'd like to go through:
+
+* [Bayesian Multivariate Linear Mixed Effects models in brms](https://osf.io/preprints/psyarxiv/7xjmh_v1)
+* [Beta Regression with brms](https://www.sciencedirect.com/science/article/pii/S009544702500066X)
