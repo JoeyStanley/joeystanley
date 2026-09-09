@@ -21,7 +21,7 @@ In this series, we'll go from zero coding experience to creating a basic vowel p
 
 This tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won't need to do any coding. 
 
-As a supplement, you can look at [this tutorial](https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html) by Michael Hunt Gardner. It overlaps with mine a bit, but it's nice to get a slid foundation. 
+As a supplement, you can look at [this tutorial](https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html) by Michael Hunt Gardner. It overlaps with mine a bit, but it's nice to get a solid foundation. 
 
 ### [R Basics](/pages/sociophonetics/r_basics)
 
@@ -33,7 +33,7 @@ Learn about an entire ecosystem of additional R packages that makes analysis and
 
 ### ggplot2
 
-Learn the basics of plotting using ggplot2. This will be based on [Part 1](/downloads/190821-intro_to_ggplot2.html) and [Part 2](/downloads/190828-ggplot2_intermediate.html) (and [supplement](/downloads/190828-ggplot2_supplement.html)) of a previous workshop. 
+Learn the basics of plotting using ggplot2. This will be based on [Part 1](/downloads/190821-intro_to_ggplot2.html) and [Part 2](/downloads/190828-ggplot2_intermediate.html) (and [supplement](/downloads/190828-ggplot2_supplement.html)) of a previous workshop. There is a ton more that can be done with ggplot2, which will be covered in Series 4 below.
 
 ### F1-F2 plots
 
@@ -41,19 +41,19 @@ Learn how to make a basic scatter plot of vowel formants. [This tutorial](https:
 
 ### Plotting vowel trajectories
 
-Learn how to work with vowel trajectories and the two main ways you can plot those. I have my own tutorial and [this](https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/) is another good one. 
+Learn how to work with vowel trajectories and the two main ways you can plot those. I have my own tutorial [here](/blog/making-vowel-plots-in-r-part-2/) and to some extent [here](https://joeystanley.com/blog/geomtextpath/). [This](https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/) is another good one by Joshua Wilson Black.
 
 ## Series 2: Collecting Phonetic Data
 
 In this series, we'll go back to the beginning stages of the data collection process. We'll see transcription, forced-alignment, and formant extraction---basically all the skills you need to go from raw audio to a spreadsheet of usable formants.
 
-### [DARLA](/blog/darla)
+### ~~[DARLA](/blog/darla)~~
 
-This tutorial shows you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. Unlike most tutorials here, this is done entirely through an online interface, so you won't need to know R or any other programming. 
+This tutorial shows you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. Unlike most tutorials here, this is done entirely through an online interface, so you won't need to know R or any other programming. [Edit: As of June 2026, DARLA is no longer working, so this won't be helpful anymore.]
 
-### [Whisper](/blog/whisper)
+### ~~[Whisper](/blog/whisper)~~
 
-This tutorial shows you how to use Whisper to automatically transcribe your audio using AI right within R. For now, the tutorial is basic and is not suited for processing lots of files at once, but if you need to work with just a few files, this might be of use to you.
+This tutorial shows you how to use Whisper to automatically transcribe your audio using AI right within R. For now, the tutorial is basic and is not suited for processing lots of files at once, but if you need to work with just a few files, this might be of use to you. [Edit: This R package is not longer functional, so this is not helpful anymore.]
 
 ### MFA
 
@@ -67,13 +67,17 @@ Learn the basics of Praat and Praat scripting. Based on [this workshop](/downloa
 
 Learn how to extract vowel formants using a Praat script. Based on [this tutorial](/191002-formant_extraction.html) and [supplement](/downloads/191001-formant_extraction_supplement.html).
 
-### FastTrack
+### ~~FastTrack~~
 
-Extract vowel formant measurements.
+Extract vowel formant measurements with [Fast Track](https://github.com/santiagobarreda/FastTrack). This is probably not necessary anymore because it's been folded into new-fave. 
 
 ### New-Fave
 
-Extract vowel formant measurements using the latest algorithms.
+Extract vowel formant measurements using [new-fave](https://forced-alignment-and-vowel-extraction.github.io/new-fave/).
+
+### VoxHumana
+
+My own online program, [VoxHumana](https://stanley.byu.edu/VoxHumana/) handles transcription with Whisper, forced-alignment with MFA, and extracting formant measurements with new-fave. We'll work with this and see what it can do.
 
 
 ## Series 3: Data processing
@@ -90,11 +94,20 @@ Learn various ways to detect and handle outliers and extreme measurements.
 
 ### Normalizing
 
-Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. Another tutorial is [this one](https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/) by Stefano Coretta. 
+Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. Another tutorial is [this one](https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/) by Stefano Coretta. When we cover DCTs later on, we'll come back to this topic.
 
 ### Order of operations
 
 Learn how the order of these processing steps can affect your data and what the recommended order should be. I'll probably mention [this](/blog/pillai-scores-dont-change-after-normalization/). 
+
+### DCT Coefficients
+
+Learn to use DCT Coefficients when working with vowel formant trajectories with Joe Fruehwald's tutorials [here](https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/) and [here](https://jofrhwld.github.io/blog/posts/2025/06/2025-06-17_dct-in-tidynorm/). This includes [regression](https://jofrhwld.github.io/blog/posts/2025/11/2025-11-13_how-and-when-to-do-a-functional-regression/)
+
+### Pipeline
+
+[Pipeline](https://stanley.byu.edu/pipeline) is another online tool that I have created that automatically codes allophones, detects outliers, normalizes, and processes things with a recommended order of operations. We'll work with this, see what it can do, and find ways to improve it. 
+
 
 ## Series 4: Data visualization
 

@@ -127,7 +127,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <span class="menu-text">Blog <em>what’s going on?</em></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../ai.qmd"> 
+    <a class="nav-link" href="../../ai/index.html"> 
 <span class="menu-text">AI <em>how do I feel about it?</em></span></a>
   </li>  
 </ul>
@@ -197,13 +197,14 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#series-2-collecting-phonetic-data" id="toc-series-2-collecting-phonetic-data" class="nav-link" data-scroll-target="#series-2-collecting-phonetic-data">Series 2: Collecting Phonetic Data</a>
   <ul class="collapse">
-  <li><a href="#darla" id="toc-darla" class="nav-link" data-scroll-target="#darla">DARLA</a></li>
-  <li><a href="#whisper" id="toc-whisper" class="nav-link" data-scroll-target="#whisper">Whisper</a></li>
+  <li><a href="#darla" id="toc-darla" class="nav-link" data-scroll-target="#darla"><del>DARLA</del></a></li>
+  <li><a href="#whisper" id="toc-whisper" class="nav-link" data-scroll-target="#whisper"><del>Whisper</del></a></li>
   <li><a href="#mfa" id="toc-mfa" class="nav-link" data-scroll-target="#mfa">MFA</a></li>
   <li><a href="#basic-praat" id="toc-basic-praat" class="nav-link" data-scroll-target="#basic-praat">Basic Praat</a></li>
   <li><a href="#extracting-vowel-formants-with-praat" id="toc-extracting-vowel-formants-with-praat" class="nav-link" data-scroll-target="#extracting-vowel-formants-with-praat">Extracting vowel formants with Praat</a></li>
-  <li><a href="#fasttrack" id="toc-fasttrack" class="nav-link" data-scroll-target="#fasttrack">FastTrack</a></li>
+  <li><a href="#fasttrack" id="toc-fasttrack" class="nav-link" data-scroll-target="#fasttrack"><del>FastTrack</del></a></li>
   <li><a href="#new-fave" id="toc-new-fave" class="nav-link" data-scroll-target="#new-fave">New-Fave</a></li>
+  <li><a href="#voxhumana" id="toc-voxhumana" class="nav-link" data-scroll-target="#voxhumana">VoxHumana</a></li>
   </ul></li>
   <li><a href="#series-3-data-processing" id="toc-series-3-data-processing" class="nav-link" data-scroll-target="#series-3-data-processing">Series 3: Data processing</a>
   <ul class="collapse">
@@ -211,6 +212,8 @@ gtag('config', '350348361', { 'anonymize_ip': true});
   <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers">Outliers</a></li>
   <li><a href="#normalizing" id="toc-normalizing" class="nav-link" data-scroll-target="#normalizing">Normalizing</a></li>
   <li><a href="#order-of-operations" id="toc-order-of-operations" class="nav-link" data-scroll-target="#order-of-operations">Order of operations</a></li>
+  <li><a href="#dct-coefficients" id="toc-dct-coefficients" class="nav-link" data-scroll-target="#dct-coefficients">DCT Coefficients</a></li>
+  <li><a href="#pipeline" id="toc-pipeline" class="nav-link" data-scroll-target="#pipeline">Pipeline</a></li>
   </ul></li>
   <li><a href="#series-4-data-visualization" id="toc-series-4-data-visualization" class="nav-link" data-scroll-target="#series-4-data-visualization">Series 4: Data visualization</a>
   <ul class="collapse">
@@ -256,7 +259,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 18, 2026</p>
+      <p class="date-modified">September 9, 2026</p>
     </div>
   </div>
     
@@ -275,7 +278,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <section id="getting-started-with-r-and-rstudio" class="level3">
 <h3 class="anchored" data-anchor-id="getting-started-with-r-and-rstudio"><a href="../../pages/sociophonetics/getting_started">Getting started with R and RStudio</a></h3>
 <p>This tutorial will give a little background on R and RStudio and will walk you through the (simple) installation process. It should take just a few minutes. You won’t need to do any coding.</p>
-<p>As a supplement, you can look at <a href="https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html">this tutorial</a> by Michael Hunt Gardner. It overlaps with mine a bit, but it’s nice to get a slid foundation.</p>
+<p>As a supplement, you can look at <a href="https://lingmethodshub.github.io/content/R/lvc_r/010_lvcr.html">this tutorial</a> by Michael Hunt Gardner. It overlaps with mine a bit, but it’s nice to get a solid foundation.</p>
 </section>
 <section id="r-basics" class="level3">
 <h3 class="anchored" data-anchor-id="r-basics"><a href="../../pages/sociophonetics/r_basics">R Basics</a></h3>
@@ -287,7 +290,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </section>
 <section id="ggplot2" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot2">ggplot2</h3>
-<p>Learn the basics of plotting using ggplot2. This will be based on <a href="../../downloads/190821-intro_to_ggplot2.html">Part 1</a> and <a href="../../downloads/190828-ggplot2_intermediate.html">Part 2</a> (and <a href="../../downloads/190828-ggplot2_supplement.html">supplement</a>) of a previous workshop.</p>
+<p>Learn the basics of plotting using ggplot2. This will be based on <a href="../../downloads/190821-intro_to_ggplot2.html">Part 1</a> and <a href="../../downloads/190828-ggplot2_intermediate.html">Part 2</a> (and <a href="../../downloads/190828-ggplot2_supplement.html">supplement</a>) of a previous workshop. There is a ton more that can be done with ggplot2, which will be covered in Series 4 below.</p>
 </section>
 <section id="f1-f2-plots" class="level3">
 <h3 class="anchored" data-anchor-id="f1-f2-plots">F1-F2 plots</h3>
@@ -295,19 +298,19 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </section>
 <section id="plotting-vowel-trajectories" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-vowel-trajectories">Plotting vowel trajectories</h3>
-<p>Learn how to work with vowel trajectories and the two main ways you can plot those. I have my own tutorial and <a href="https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/">this</a> is another good one.</p>
+<p>Learn how to work with vowel trajectories and the two main ways you can plot those. I have my own tutorial <a href="../../blog/making-vowel-plots-in-r-part-2/">here</a> and to some extent <a href="https://joeystanley.com/blog/geomtextpath/">here</a>. <a href="https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial/">This</a> is another good one by Joshua Wilson Black.</p>
 </section>
 </section>
 <section id="series-2-collecting-phonetic-data" class="level2">
 <h2 class="anchored" data-anchor-id="series-2-collecting-phonetic-data">Series 2: Collecting Phonetic Data</h2>
 <p>In this series, we’ll go back to the beginning stages of the data collection process. We’ll see transcription, forced-alignment, and formant extraction—basically all the skills you need to go from raw audio to a spreadsheet of usable formants.</p>
 <section id="darla" class="level3">
-<h3 class="anchored" data-anchor-id="darla"><a href="../../blog/darla">DARLA</a></h3>
-<p>This tutorial shows you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. Unlike most tutorials here, this is done entirely through an online interface, so you won’t need to know R or any other programming.</p>
+<h3 class="anchored" data-anchor-id="darla"><del><a href="../../blog/darla">DARLA</a></del></h3>
+<p>This tutorial shows you how to use DARLA to do transcription, forced-alignment, and formant extraction all at once. Unlike most tutorials here, this is done entirely through an online interface, so you won’t need to know R or any other programming. [Edit: As of June 2026, DARLA is no longer working, so this won’t be helpful anymore.]</p>
 </section>
 <section id="whisper" class="level3">
-<h3 class="anchored" data-anchor-id="whisper"><a href="../../blog/whisper">Whisper</a></h3>
-<p>This tutorial shows you how to use Whisper to automatically transcribe your audio using AI right within R. For now, the tutorial is basic and is not suited for processing lots of files at once, but if you need to work with just a few files, this might be of use to you.</p>
+<h3 class="anchored" data-anchor-id="whisper"><del><a href="../../blog/whisper">Whisper</a></del></h3>
+<p>This tutorial shows you how to use Whisper to automatically transcribe your audio using AI right within R. For now, the tutorial is basic and is not suited for processing lots of files at once, but if you need to work with just a few files, this might be of use to you. [Edit: This R package is not longer functional, so this is not helpful anymore.]</p>
 </section>
 <section id="mfa" class="level3">
 <h3 class="anchored" data-anchor-id="mfa">MFA</h3>
@@ -322,12 +325,16 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 <p>Learn how to extract vowel formants using a Praat script. Based on <a href="../../191002-formant_extraction.html">this tutorial</a> and <a href="../../downloads/191001-formant_extraction_supplement.html">supplement</a>.</p>
 </section>
 <section id="fasttrack" class="level3">
-<h3 class="anchored" data-anchor-id="fasttrack">FastTrack</h3>
-<p>Extract vowel formant measurements.</p>
+<h3 class="anchored" data-anchor-id="fasttrack"><del>FastTrack</del></h3>
+<p>Extract vowel formant measurements with <a href="https://github.com/santiagobarreda/FastTrack">Fast Track</a>. This is probably not necessary anymore because it’s been folded into new-fave.</p>
 </section>
 <section id="new-fave" class="level3">
 <h3 class="anchored" data-anchor-id="new-fave">New-Fave</h3>
-<p>Extract vowel formant measurements using the latest algorithms.</p>
+<p>Extract vowel formant measurements using <a href="https://forced-alignment-and-vowel-extraction.github.io/new-fave/">new-fave</a>.</p>
+</section>
+<section id="voxhumana" class="level3">
+<h3 class="anchored" data-anchor-id="voxhumana">VoxHumana</h3>
+<p>My own online program, <a href="https://stanley.byu.edu/VoxHumana/">VoxHumana</a> handles transcription with Whisper, forced-alignment with MFA, and extracting formant measurements with new-fave. We’ll work with this and see what it can do.</p>
 </section>
 </section>
 <section id="series-3-data-processing" class="level2">
@@ -343,11 +350,19 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </section>
 <section id="normalizing" class="level3">
 <h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
-<p>Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I’ll probably just have you read <a href="https://lingmethodshub.github.io/content/R/tidy-norm/">Joe Fruehwald’s tutorial</a>. If we need to talk about Barks, I can bring up my <a href="../../blog/barktools/">barktools</a> package. Another tutorial is <a href="https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/">this one</a> by Stefano Coretta.</p>
+<p>Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I’ll probably just have you read <a href="https://lingmethodshub.github.io/content/R/tidy-norm/">Joe Fruehwald’s tutorial</a>. If we need to talk about Barks, I can bring up my <a href="../../blog/barktools/">barktools</a> package. Another tutorial is <a href="https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/">this one</a> by Stefano Coretta. When we cover DCTs later on, we’ll come back to this topic.</p>
 </section>
 <section id="order-of-operations" class="level3">
 <h3 class="anchored" data-anchor-id="order-of-operations">Order of operations</h3>
 <p>Learn how the order of these processing steps can affect your data and what the recommended order should be. I’ll probably mention <a href="../../blog/pillai-scores-dont-change-after-normalization/">this</a>.</p>
+</section>
+<section id="dct-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="dct-coefficients">DCT Coefficients</h3>
+<p>Learn to use DCT Coefficients when working with vowel formant trajectories with Joe Fruehwald’s tutorials <a href="https://jofrhwld.github.io/blog/posts/2024/07/2024-07-19_dct-r/">here</a> and <a href="https://jofrhwld.github.io/blog/posts/2025/06/2025-06-17_dct-in-tidynorm/">here</a>. This includes <a href="https://jofrhwld.github.io/blog/posts/2025/11/2025-11-13_how-and-when-to-do-a-functional-regression/">regression</a></p>
+</section>
+<section id="pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="pipeline">Pipeline</h3>
+<p><a href="https://stanley.byu.edu/pipeline">Pipeline</a> is another online tool that I have created that automatically codes allophones, detects outliers, normalizes, and processes things with a recommended order of operations. We’ll work with this, see what it can do, and find ways to improve it.</p>
 </section>
 </section>
 <section id="series-4-data-visualization" class="level2">
