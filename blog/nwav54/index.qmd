@@ -1,0 +1,42 @@
+---
+layout: post
+title: "NWAV54"
+date: 2026-10-25 09:00:00 -0600
+date-modified: last-modified
+reference-location: margin
+citation-location: margin
+fig-cap-location: bottom
+format:
+  html:
+    toc: true
+# categories:
+#   - 
+number-sections: false
+# draft: true
+# resources: 
+# image: 
+aliases: 
+  - /nwav54
+---
+
+This week, I was in Montreal at the New Ways of Analyzing Variation 54 conference!
+
+## Friday's talk on VoxHumana
+
+On Friday, I gave a talk called "Recent Developments in Automatic Sociophonetic Processing". This was in the special session called "Best Practices in Sociolinguistics." I wasn't originally scheduled during that session, but when one of the presentors had to back out last minute, and the organizers were looking for a talk on recent advances, Jim Stanford reached out to me. So my talk was a little last-minute, but since I had talked about VoxHumana at a previous presentation at BYU and since most of it was just a hands-on demonstration anyway, I think it went over really well. 
+
+Anyway, I was pleased to introduce VoxHumana to the field. It's essentially a replacement for DARLA: it takes raw audio and transcribes it, force aligns it, and does formant extraction on it. I've been working on it for a while. I won't rehash it here, but you can read more about VoxHumana [here](/blog/VoxHumana-teaser), you can view the slides [here](/downloads/261023-NWAV54-VoxHumana.pdf) and you can access the VoxHumana itself [here](https://stanley.byu.edu). 
+
+## Saturday's talk on Pipeline
+
+Saturday was my actual scheduled presentation. I've been working on *another* program called Pipeline. The talk was scheduled in a session that didn't make sense, so I'm glad people were willing to change rooms to came see it. 
+
+Pipeline is the next stage after VoxHumana. Given a spreadsheet of acoustic measurements, VoxHumana processes it by sending it through a whole assembly line of sociophonetic processing. It then displays the data in an interactive vowel plot that users can adjust and customize. You can read more about Pipeline [here](/blog/pipeline), you can view the slides [here](/downloads/261024-NWAV54-Pipeline.pdf) and you can access Pipeline itself [here](https://stanley.byu.edu).
+
+![Here I am illustraing the barrier to entry a student faces when trying to get vowel results. Photo credit: Monica Nesbitt](picture.jpg)
+
+## Using VoxHumana and Pipeline
+
+VoxHumana and Pipeline work really well together. You can record yourself, send it through VoxHumana, upload the results to Pipeline and look at vowel plots, all in a pretty short amount of time. I think this will be especially useful for introductory students. I'm very concerned about the amount of work and skills it takes for a student to just view their own vowel space. These two pieces of software reduce that to basically nothing. I'm not saying students don't need to learn this stuff, but they can at least skip to the "fun" part and come back to the technical stuff later. 
+
+I hope students and experienced researchers find these tools helpful!
