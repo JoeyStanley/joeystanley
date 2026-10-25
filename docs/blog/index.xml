@@ -10,7 +10,46 @@
 <atom:link href="https://joeystanley.com/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Tue, 20 Oct 2026 14:12:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 15:00:00 GMT</lastBuildDate>
+<item>
+  <title>NWAV54</title>
+  <dc:creator>Joey Stanley</dc:creator>
+  <link>https://joeystanley.com/blog/nwav54/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This week, I was in Montreal at the New Ways of Analyzing Variation 54 conference!</p>
+<section id="fridays-talk-on-voxhumana" class="level2">
+<h2 class="anchored" data-anchor-id="fridays-talk-on-voxhumana">Friday’s talk on VoxHumana</h2>
+<p>On Friday, I gave a talk called “Recent Developments in Automatic Sociophonetic Processing”. This was in the special session called “Best Practices in Sociolinguistics.” I wasn’t originally scheduled during that session, but when one of the presentors had to back out last minute, and the organizers were looking for a talk on recent advances, Jim Stanford reached out to me. So my talk was a little last-minute, but since I had talked about VoxHumana at a previous presentation at BYU and since most of it was just a hands-on demonstration anyway, I think it went over really well.</p>
+<p>Anyway, I was pleased to introduce VoxHumana to the field. It’s essentially a replacement for DARLA: it takes raw audio and transcribes it, force aligns it, and does formant extraction on it. I’ve been working on it for a while. I won’t rehash it here, but you can read more about VoxHumana <a href="../../blog/VoxHumana-teaser">here</a>, you can view the slides <a href="../../downloads/261023-NWAV54-VoxHumana.pdf">here</a> and you can access the VoxHumana itself <a href="https://stanley.byu.edu">here</a>.</p>
+</section>
+<section id="saturdays-talk-on-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="saturdays-talk-on-pipeline">Saturday’s talk on Pipeline</h2>
+<p>Saturday was my actual scheduled presentation. I’ve been working on <em>another</em> program called Pipeline. The talk was scheduled in a session that didn’t make sense, so I’m glad people were willing to change rooms to came see it.</p>
+<p>Pipeline is the next stage after VoxHumana. Given a spreadsheet of acoustic measurements, VoxHumana processes it by sending it through a whole assembly line of sociophonetic processing. It then displays the data in an interactive vowel plot that users can adjust and customize. You can read more about Pipeline <a href="../../blog/pipeline">here</a>, you can view the slides <a href="../../downloads/261024-NWAV54-Pipeline.pdf">here</a> and you can access Pipeline itself <a href="https://stanley.byu.edu">here</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://joeystanley.com/blog/nwav54/picture.jpg" class="img-fluid figure-img"></p>
+<figcaption>Here I am illustraing the barrier to entry a student faces when trying to get vowel results. Photo credit: Monica Nesbitt</figcaption>
+</figure>
+</div>
+</section>
+<section id="using-voxhumana-and-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="using-voxhumana-and-pipeline">Using VoxHumana and Pipeline</h2>
+<p>VoxHumana and Pipeline work really well together. You can record yourself, send it through VoxHumana, upload the results to Pipeline and look at vowel plots, all in a pretty short amount of time. I think this will be especially useful for introductory students. I’m very concerned about the amount of work and skills it takes for a student to just view their own vowel space. These two pieces of software reduce that to basically nothing. I’m not saying students don’t need to learn this stuff, but they can at least skip to the “fun” part and come back to the technical stuff later.</p>
+<p>I hope students and experienced researchers find these tools helpful!</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://joeystanley.com/blog/nwav54/</guid>
+  <pubDate>Sun, 25 Oct 2026 15:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Pipeline</title>
   <dc:creator>Joey Stanley</dc:creator>
@@ -21,7 +60,7 @@
 
 
 
-<p>I’m at <a href="https://nwav54.org">NWAV 54</a> in Montreal and I’m excited to announce a new tool I’ve been working on this year called <a href="https://stanley.byu.edu/pipeline/">Pipeline</a>! This is a tool that takes vowel formant data and creates an interactive vowel plot. The goal for the software is to lower the barrier to entry into sociophonetic data analysis so that curious students can jump straight to the “fun” part and see vowel data without having to learn to code first.</p>
+<p>I’m excited to announce a new tool I’ve been working on this year called <a href="https://stanley.byu.edu/pipeline/">Pipeline</a>! This is a tool that takes vowel formant data and creates an interactive vowel plot. The goal for the software is to lower the barrier to entry into sociophonetic data analysis so that curious students can jump straight to the “fun” part and see vowel data without having to learn to code first.</p>
 <section id="data-processing" class="level2">
 <h2 class="anchored" data-anchor-id="data-processing">Data Processing</h2>
 <p>There is a whole pipeline of sociophonetic data processing steps to go from raw audio to a spreadsheet of formant measurements to then a spreadsheet of cleaned data ready for visualization and analysis. This figure from my presentation shows that:</p>
@@ -69,8 +108,6 @@
 <h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
 <p>Pipeline can also do some analysis on a few mergers. Here are my <sc>lot</sc> and <sc>thought</sc> vowels showing that they’re phonetically close but not identical.</p>
 <p><img src="https://joeystanley.com/blog/pipeline/overlap1.png" class="img-fluid"></p>
-<p>Here’s the same thing for my /ʊl/ and /ol/ classes, which are very close.</p>
-<p><img src="https://joeystanley.com/blog/pipeline/overlap2.png" class="img-fluid"></p>
 </section>
 <section id="other-notes" class="level2">
 <h2 class="anchored" data-anchor-id="other-notes">Other Notes</h2>
@@ -92,7 +129,7 @@
   <category>Methods</category>
   <category>Phonetics</category>
   <guid>https://joeystanley.com/blog/pipeline/</guid>
-  <pubDate>Tue, 20 Oct 2026 14:12:00 GMT</pubDate>
+  <pubDate>Sat, 24 Oct 2026 14:12:00 GMT</pubDate>
 </item>
 <item>
   <title>A teaser for VoxHumana</title>
@@ -14544,91 +14581,6 @@ Note
   <category>Publications</category>
   <guid>https://joeystanley.com/blog/source_separation/</guid>
   <pubDate>Wed, 29 Jan 2025 15:12:00 GMT</pubDate>
-</item>
-<item>
-  <title>LSA and ADS 2025</title>
-  <dc:creator>Joey Stanley</dc:creator>
-  <link>https://joeystanley.com/blog/ads-and-lsa-2025/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week I’m in Philadelphia at annual meetings of the Linguistic Society of America and the American Dialect Society. I gave three talks, which you can download here, I officially started two new service positions, and I got an award! It was a busy conference for me!</p>
-<section id="saturday-mornings-ads-talk-on-georgia-prelaterals" class="level2">
-<h2 class="anchored" data-anchor-id="saturday-mornings-ads-talk-on-georgia-prelaterals">Saturday morning’s ADS talk on Georgia Prelaterals</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/250111-ADS2025_GAPrelats.pdf">here</a>!</p>
-</div>
-</div>
-<p>On Saturday morning at the ADS session, Peggy Renwick presented research on behalf of our research term on prelateral front vowels and how they’ve changed over time in Georgia. The talk is called “Complementary pre-lateral mergers across ethnicities and generations in Georgia.” Overall, we find that the various prelateral mergers peaked and reversed at different times for Black and White speakers, and for the two <em>feel-fill</em> and <em>fail-fell</em> pairs.</p>
-</section>
-<section id="saturday-afternons-ads-poster-on-utah-english" class="level2">
-<h2 class="anchored" data-anchor-id="saturday-afternons-ads-poster-on-utah-english">Saturday afternon’s ADS poster on Utah English</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the poster <a href="../../downloads/250111-ADS2025_Kohler.pdf">here</a>!</p>
-</div>
-</div>
-<p>On Saturday afternoon, I presented with my student, Hallie Davidson, a poster called “Variation in Early 20th Century Utah English.” This is the first time I’ve presented results from a collection of oral narratives I acquired called the “Kohler Tapes.” I’ve written blog posts about <a href="../../blog/kohler-tapes">how I acquired the tapes</a>, <a href="../../blog/kohler-tapes-update">the process of digitizing them</a>, and <a href="../../blog/kohler-tapes-update2">a summary of the metadata</a>, so I won’t repeat that here. But, because Hallie has been working on transcribing these tapes, we finally have some really preliminary linguistic results to present. They’re just impressionistic right now, nothing really conclusive, but we show that there’s a lot of variation in this collection. We’re excitedly working on some developments that involve training an AI model on this data so we can get the rest transcribed and we look forward to doing acoustic analysis soon!</p>
-</section>
-<section id="sunday-mornings-lsa-talk-source-separation" class="level2">
-<h2 class="anchored" data-anchor-id="sunday-mornings-lsa-talk-source-separation">Sunday morning’s LSA talk source separation</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Download the slides <a href="../../downloads/250112-LSA2025_SourceSeparation.pdf">here</a>!</p>
-</div>
-</div>
-<p>On Sunday morning, my final presentation was with Lisa Morgan Johnson (who presented with me) and Earl Kjar Brown. We were interested in source separation, which is where you separate overlapping audio into different tracks, one per speaker. We wanted to see if current algorithms produced reliable enough data for sociophonetic analysis. We took two recordings and processed them using typical methods and called that output the ground truth. We than synthetically overlapped the audio to create a cacophonous overlapping recording. We then tried three source separate models and processed the resulting audio files and compared them to the baseline.</p>
-<p>We’re cautiously optemisitic about the results. There were some differences here and there, but on the whole the output formant measurements were pretty similar. However, we did notice that while the <em>mean</em> formants per vowel per speaker were similar, at the indidual token level, there were larger differences.</p>
-<p>Anyway, we hope this will spark some interest in source separation and maybe help people recover audio that was previously unanalyzable!</p>
-</section>
-<section id="other-things" class="level2">
-<h2 class="anchored" data-anchor-id="other-things">Other Things</h2>
-<p>At the ADS Business Meeting, I was voted a member of the American Dialect Society Executive Committee! I replace Alicia Wassink, who was just voted President-Elect of the Linguistic Society of America.</p>
-<p>At that same meeting, I was also voted a Kurath Fund Trustee, which is a position within the Linguistic Atlas Project. I’ll serve with Jennifer Cramer and Dennis Preston.</p>
-<p>Finally, at the ADS Breakfast on Saturday morning, I received the 9th Audrey Duckert Memorial Travel Award to attend these ADS meetings.</p>
-<p>I’m so humbled to be considered for these positions and award! Thank you to all those who were involved!</p>
-
-
-</section>
-
- ]]></description>
-  <category>Conferences</category>
-  <category>Kohler Tapes</category>
-  <category>Methods</category>
-  <category>Presentations</category>
-  <category>Research</category>
-  <category>Students</category>
-  <category>Utah</category>
-  <guid>https://joeystanley.com/blog/ads-and-lsa-2025/</guid>
-  <pubDate>Thu, 09 Jan 2025 05:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
