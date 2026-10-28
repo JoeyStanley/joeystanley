@@ -94,7 +94,19 @@ Learn various ways to detect and handle outliers and extreme measurements.
 
 ### Normalizing
 
-Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I'll probably just have you read [Joe Fruehwald's tutorial](https://lingmethodshub.github.io/content/R/tidy-norm/). If we need to talk about Barks, I can bring up my [barktools](/blog/barktools/) package. Another tutorial is [this one](https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/) by Stefano Coretta. When we cover DCTs later on, we'll come back to this topic.
+Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. Phoneticians' understanding of normalization continues to evolve and this is an actively changing field. Here are some resources that'll be helpful.
+
+First, you should get an understanding of normalization and ways it's done. Here are four articles that'll help. This might be a bit technical and that's fine. Just skip the parts that are over your head and hopefully get a feel for the rest. 
+
+* What even *is* normalization? Read more from the NORM suite [here](https://lingtools.uoregon.edu/norm/about_normalization1.php) and from Joe Fruehwald [here](https://jofrhwld.github.io/tidynorm/articles/normalization-overview.html).
+* What are the common ways to normalize your data? Read [this](https://lingtools.uoregon.edu/norm/norm1_methods.php) article by the NORM suite and [this](https://jofrhwld.github.io/tidynorm/articles/norm-methods.html) one by Joe Fruehwald. 
+
+Once you've got that, you're ready to implement them in R. 
+
+* [This](https://lingmethodshub.github.io/content/R/tidy-norm/) tutorial by Joe Fruehwald shows how to normalize your data "manually." It's good to work through this one because it'll give you a better understanding of the mechanics of these methods. 
+* [Here](https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/) is another tutorial by Stefano Coretta. 
+
+Once you've got a grasp, you can then look at the [tidynorm](https://jofrhwld.github.io/tidynorm/index.html) R package by Joe Fruehwald. He has made it very easy to implement all these normalization procedures in R. It basically does what you did "by hand" in previous tutorials. But it's good for you to have seen what it does before jumping to the shortcuts. 
 
 ### Order of operations
 

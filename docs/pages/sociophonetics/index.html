@@ -259,7 +259,7 @@ gtag('config', '350348361', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 9, 2026</p>
+      <p class="date-modified">October 28, 2026</p>
     </div>
   </div>
     
@@ -350,7 +350,18 @@ gtag('config', '350348361', { 'anonymize_ip': true});
 </section>
 <section id="normalizing" class="level3">
 <h3 class="anchored" data-anchor-id="normalizing">Normalizing</h3>
-<p>Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. I’ll probably just have you read <a href="https://lingmethodshub.github.io/content/R/tidy-norm/">Joe Fruehwald’s tutorial</a>. If we need to talk about Barks, I can bring up my <a href="../../blog/barktools/">barktools</a> package. Another tutorial is <a href="https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/">this one</a> by Stefano Coretta. When we cover DCTs later on, we’ll come back to this topic.</p>
+<p>Every vocal tract is different, so their formant measurements will be different. Learn how to transform your data so you can compare speakers apples-to-apples. Phoneticians’ understanding of normalization continues to evolve and this is an actively changing field. Here are some resources that’ll be helpful.</p>
+<p>First, you should get an understanding of normalization and ways it’s done. Here are four articles that’ll help. This might be a bit technical and that’s fine. Just skip the parts that are over your head and hopefully get a feel for the rest.</p>
+<ul>
+<li>What even <em>is</em> normalization? Read more from the NORM suite <a href="https://lingtools.uoregon.edu/norm/about_normalization1.php">here</a> and from Joe Fruehwald <a href="https://jofrhwld.github.io/tidynorm/articles/normalization-overview.html">here</a>.</li>
+<li>What are the common ways to normalize your data? Read <a href="https://lingtools.uoregon.edu/norm/norm1_methods.php">this</a> article by the NORM suite and <a href="https://jofrhwld.github.io/tidynorm/articles/norm-methods.html">this</a> one by Joe Fruehwald.</li>
+</ul>
+<p>Once you’ve got that, you’re ready to implement them in R.</p>
+<ul>
+<li><a href="https://lingmethodshub.github.io/content/R/tidy-norm/">This</a> tutorial by Joe Fruehwald shows how to normalize your data “manually.” It’s good to work through this one because it’ll give you a better understanding of the mechanics of these methods.</li>
+<li><a href="https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/">Here</a> is another tutorial by Stefano Coretta.</li>
+</ul>
+<p>Once you’ve got a grasp, you can then look at the <a href="https://jofrhwld.github.io/tidynorm/index.html">tidynorm</a> R package by Joe Fruehwald. He has made it very easy to implement all these normalization procedures in R. It basically does what you did “by hand” in previous tutorials. But it’s good for you to have seen what it does before jumping to the shortcuts.</p>
 </section>
 <section id="order-of-operations" class="level3">
 <h3 class="anchored" data-anchor-id="order-of-operations">Order of operations</h3>
