@@ -106,7 +106,7 @@ Once you've got that, you're ready to implement them in R.
 * [This](https://lingmethodshub.github.io/content/R/tidy-norm/) tutorial by Joe Fruehwald shows how to normalize your data "manually." It's good to work through this one because it'll give you a better understanding of the mechanics of these methods. 
 * [Here](https://stefanocoretta.github.io/posts/2025-12-03-vowel-formants/) is another tutorial by Stefano Coretta. 
 
-Once you've got a grasp, you can then look at the [tidynorm](https://jofrhwld.github.io/tidynorm/index.html) R package by Joe Fruehwald. He has made it very easy to implement all these normalization procedures in R. It basically does what you did "by hand" in previous tutorials. But it's good for you to have seen what it does before jumping to the shortcuts. 
+Once you've got a grasp, you can then look at the [tidynorm](https://jofrhwld.github.io/tidynorm/index.html) R package by Joe Fruehwald. He has made it very easy to implement all these normalization procedures in R. If you want a walkthrough of how to use it, [here](https://joeystanley.com/blog/tidynorm/) is my tutorial on tidynorm. It basically does what you did "by hand" in previous tutorials. But it's good for you to have seen what it does before jumping to the shortcuts. 
 
 ### Order of operations
 
