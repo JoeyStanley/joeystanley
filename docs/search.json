@@ -291,7 +291,7 @@
     "href": "pages/index.html#various-resource-pages",
     "title": "Miscellenous Pages",
     "section": "2 Various resource pages",
-    "text": "2 Various resource pages\n\nDatasets, a page of datasets available for download that I use in teaching and workshops.\nGSV, a redirect to the Gazetteer of Southern Vowels.\nMy Idiolect, a detailed description of my idiolect.\nResources, a page that I used to update frequently with tons of resources and cool and useful stuff, but that I no longer update.\nResources for Learning More about Linguistic Discrimination, a product of CALD created initially for the For the Benefit of the World conference.\nL590R Sociophonetics, a hub for a one-on-one sociophonetics course for a student in Spring 2025 with the ultimate goal of learning to make vowel plots. It’s mostly a compilation of other tutorials from elsewhere on this site."
+    "text": "2 Various resource pages\n\nDatasets, a page of datasets available for download that I use in teaching and workshops.\nGSV, a redirect to the Gazetteer of Southern Vowels.\nMy Idiolect, a detailed description of my idiolect.\nMy Name, details about my name and how to refer to me.\nResources, a page that I used to update frequently with tons of resources and cool and useful stuff, but that I no longer update.\nResources for Learning More about Linguistic Discrimination, a product of CALD created initially for the For the Benefit of the World conference.\nL590R Sociophonetics, a hub for a one-on-one sociophonetics course for a student in Spring 2025 with the ultimate goal of learning to make vowel plots. It’s mostly a compilation of other tutorials from elsewhere on this site."
   },
   {
     "objectID": "pages/index.html#website-internals",
@@ -5192,5 +5192,152 @@
     "title": "NWAV54",
     "section": "Using VoxHumana and Pipeline",
     "text": "Using VoxHumana and Pipeline\nVoxHumana and Pipeline work really well together. You can record yourself, send it through VoxHumana, upload the results to Pipeline and look at vowel plots, all in a pretty short amount of time. I think this will be especially useful for introductory students. I’m very concerned about the amount of work and skills it takes for a student to just view their own vowel space. These two pieces of software reduce that to basically nothing. I’m not saying students don’t need to learn this stuff, but they can at least skip to the “fun” part and come back to the technical stuff later.\nI hope students and experienced researchers find these tools helpful!"
+  },
+  {
+    "objectID": "pages/name.html",
+    "href": "pages/name.html",
+    "title": "My Name",
+    "section": "",
+    "text": "I rarely encounter issues with people who get my name wrong. But I regularly find myself unsure about how to refer to other people (and am grateful for this list of linguists and IPA transcriptions of their names). So, following Gretchen McCulloch and a broader effort to encourage people to clarify how their name is used, here is details on my name."
+  },
+  {
+    "objectID": "pages/name.html#pronunciation",
+    "href": "pages/name.html#pronunciation",
+    "title": "My Name",
+    "section": "Pronunciation",
+    "text": "Pronunciation\nI pronounce my name, in broad IPA, as /ˈd͡ʒoʊ.i ˈstæn.li/. There are no surprises here. This is what what I hear from most American English speakers.\nI’m hesitant to give a narrow IPA transcription for two reasons. First, I’m not sure whether it should be [d͡ʒoʊi], [d͡ʒoʊwi], [d͡ʒoʊʷi], [d͡ʒowi], or something else. Perhaps I’m overthinking it. Second, because I raise, front, diphthongize, and nasalize /æ/ before nasals (i.e. ban-raising or the prenasal split), I’m not sure how to transcribe the /æ/ in Stanley. In my dissertation I transcribed this sequence as something like [ɛ̃ɛ̝̟̯̃].1\n1 My first homework assignment in my intro to linguistics class was to transcribe my name in IPA. When I asked my professor what that vowel in Stanley was, they said [æn] and I knew for sure it wasn’t that!Feel free to pronounce my name in the best way that it matches on to your phonology. If you don’t have prenasal-/æ/-raising, feel free to use a true [æn] rather than mapping it on to another vowel (like perhaps /ɛ/). If you speak a language that doesn’t have [d͡ʒ] and typically pronounce the letter j as [ʒ], that’s fine. However, I might not recognize it if you use a [j]—regardless of where in the post-alveolar or palatal place of articulation you use, I expect some sort of (af)frication."
+  },
+  {
+    "objectID": "pages/name.html#usage",
+    "href": "pages/name.html#usage",
+    "title": "My Name",
+    "section": "Usage",
+    "text": "Usage\nUntil May 2026, I published under the name Joseph A. Stanley3. This goes back to the decision I made when submitting an abstract to my first conference presentation in 2012. I thought Joseph A. Stanley sounded more professional so I went with it. But I have regretted it ever since. So, as a celebration for getting tenure, in May 2026 I decided to publish as Joey Stanley going forward.\n3 My middle name is Abraham. Supposedly, I was going to be Abraham Joseph Stanley (and probably would have gone by A.J.–such was the ’90s) but when my grandmothers heard about it around the time I was born, they were not impressed, so my parents switched it to Joseph Abraham.I realize that this has some consequences: Zotero, for example, treats “Joseph A. Stanley” as a different person than “Joey Stanley”. In references sections, the two are treated differently and are therefore sorted out of order: “Stanley, Joey (2026)” will now appear before “Stanley, Joseph A. (2025)” even though many citation styles prefer the oldest paper on top. In the in-text citations, Zotero might automatically disambiguate it as it would with other authors who share a last name by doing something like “(Stanley, J. A. 2025)”. I’d prefer to have it all be treated the same, so that “Joey Stanley” and “Joseph A. Stanley” are treated as “allo-names” of the same “name-eme”(?), but I know styleguides might prohibit that.\nFor what it’s worth, different versions of my name have already been floating around. For example, my dissertation has my full name, Joseph Abraham Stanley.4 I also have blog posts that have been cited rightfully as “Joey Stanley” since that’s the name on my website. So, I’ve got three published names already. Might as well start making it all consistent by going by Joey everywhere.\n4 I think using full names is common in dissertations and theses. I at least dutifully transfer that full name to my citations because I don’t want to make presumptions about what authors prefer."
+  },
+  {
+    "objectID": "pages/name.html#joey",
+    "href": "pages/name.html#joey",
+    "title": "My Name",
+    "section": "Joey",
+    "text": "Joey\nMy legal name is Joseph, from the book of Genesis in the Old Testament. I pronounce it [d͡ʒoʊsɨf], with a voiceless fricative and a higher-than-schwa unstressed vowel. But I’m not too concerned about how you say it because 1) I know there’s lot of variation in how the name is said across languages and 2) I prefer you not call me Joseph.\nI’ve always gone by Joey. I have many brothers and almost all of us used the diminutive versions of our names when we were little. They all eventually switched to the monosyllabic versions. I never felt like I grew out of Joey. So yes, it’s Joey, not Joe and not Joseph. In fact, when I see mail that is addressed to Joseph, it’s either a legal document or junkmail because everyone I’ve ever met knows that I go by Joey."
+  },
+  {
+    "objectID": "pages/name.html#stanley",
+    "href": "pages/name.html#stanley",
+    "title": "My Name",
+    "section": "Stanley",
+    "text": "Stanley\nThough Stanley is an English name, coming from “stan” (“stone”) and “leah” (“woodland clearing” or “meadow”), I don’t have English ancestry. In my family, the name comes from my Polish my great-grandparents who had the name Stanilka. The story goes that when their children were enlisting in the war (I forget which one), if they were to be captured, they would be tortured less if they had an English name rather than a Polish name. So they all changed their names from Stanilka to Stanley.2 Since I know there is some variation, I do spell my name with an ey at the end.\n2 My dad has an uncle I think who was already born Stanley Stanilka, so he became Stanley Stanley!FWIW, no I don’t have a Stanley mug, no I’ve never seen Flat Stanley, no Stanley isn’t my favorite character from “The Office,” and no I’m not going to name my kid Yelnats.\nI live in Utah and I know there were Stanleys that settled in various parts of Utah (Heber and Nephi, among others). I’m not related to them because my ancestry does not trace back to early Mormon pioneers and early migrants to Utah."
+  },
+  {
+    "objectID": "pages/name.html#profile-pictures",
+    "href": "pages/name.html#profile-pictures",
+    "title": "My Name",
+    "section": "Profile pictures",
+    "text": "Profile pictures"
+  },
+  {
+    "objectID": "pages/name.html#history",
+    "href": "pages/name.html#history",
+    "title": "My Name",
+    "section": "History",
+    "text": "History\nStanley is an English name, coming from “stan” (“stone”) and “leah” (“woodland clearing” or “meadow”). However, I don’t have English ancestry. In my family, the name comes from my Polish my great-grandparents who had the name Stanilka. The story goes that when their children were enlisting in the war (I forget which one), if they were to be captured, they would be tortured less if they had an English name rather than a Polish name. So they all changed their names.23 Since I know there is some variation, I do spell my name with an ey at the end.\n2 My dad has a cousin who was already born Stanley Stanilka, so he became Stanley Stanley!3 They also did not pass on a lick of Polish to my grandfather. We also suspect they were Jewish in Europe but became Catholic when they moved to New York. I hear that such total abandonment of previous culture values was common among Eastern European immigrants to the US around that time.FWIW, no I don’t have a Stanley mug, no I’ve never seen Flat Stanley, no Stanley isn’t my favorite character from “The Office,” and no I’m not going to name my kid Yelnats.\nMy legal name is Joseph, but I’ve always gone by Joey. I have many brothers and almost all of us used the diminutive versions of our names when we were little. They all eventually switched to the monosyllabic versions. I never felt like I grew out of Joey. So yes, it’s Joey, not Joe and not Joseph."
+  },
+  {
+    "objectID": "pages/name.html#other-usage",
+    "href": "pages/name.html#other-usage",
+    "title": "My Name",
+    "section": "Other Usage",
+    "text": "Other Usage\nI use he/him pronouns."
+  },
+  {
+    "objectID": "pages/name.html#what-i-publish-as",
+    "href": "pages/name.html#what-i-publish-as",
+    "title": "My Name",
+    "section": "What I publish as",
+    "text": "What I publish as\nUntil May 2026, I published under the name Joseph A. Stanley3. This goes back to the decision I made when submitting an abstract to my first conference presentation in 2012. I thought Joseph A. Stanley sounded more professional so I went with it. But I have regretted it ever since. So, as a celebration for getting tenure, in May 2026 I decided to publish as Joey Stanley going forward.\n3 My middle name is Abraham. Supposedly, I was going to be Abraham Joseph Stanley (and probably would have gone by A.J.–such was the ’90s) but when my grandmothers heard about it around the time I was born, they were not impressed, so my parents switched it to Joseph Abraham.I realize that this has some consequences: Zotero, for example, treats “Joseph A. Stanley” as a different person than “Joey Stanley”. In references sections, the two are treated differently and are therefore sorted out of order: “Stanley, Joey (2026)” will now appear before “Stanley, Joseph A. (2025)” even though many citation styles prefer the oldest paper on top. In the in-text citations, Zotero might automatically disambiguate it as it would with other authors who share a last name by doing something like “(Stanley, J. A. 2025)”. I’d prefer to have it all be treated the same, so that “Joey Stanley” and “Joseph A. Stanley” are treated as “allo-names” of the same “name-eme”(?), but I know styleguides might prohibit that.\nFor what it’s worth, different versions of my name have already been floating around. For example, my dissertation has my full name, Joseph Abraham Stanley.4 I also have blog posts that have been cited rightfully as “Joey Stanley” since that’s the name on my website. So, I’ve got three published names already. Might as well start making it all consistent by going by Joey everywhere.\n4 I think using full names is common in dissertations and theses. I at least dutifully transfer that full name to my citations because I don’t want to make presumptions about what authors prefer."
+  },
+  {
+    "objectID": "pages/name.html#forms-of-address",
+    "href": "pages/name.html#forms-of-address",
+    "title": "My Name",
+    "section": "Forms of address",
+    "text": "Forms of address\nI’ve been concerned with forms of address since my first solo-authored conference presentation. I grew up in a religious culture where children and adolescents never called adults by first name. That continued into college and it took me until my PhD was in-hand to finally call any faculty member by first name.5 However, I recognize that language changes and first names are becoming more common, so I usually don’t really care whether people use first name or title. But here are my preferences.\n5 I’ve got stories about that.My preferences are ultimately guided by the professor-student relationship that may exist between us. The more prototypical, the more I prefer titles. In this table, TLN = “title + last name” and FN = “first name”. I have slight preference for Dr. over Professor.\n\n\n\n\n\n\n\nWho are you?\nWhat to call me?\n\n\n\n\nTraditionally-aged students in my courses\nTLN unless we’ve have some significant outside-classroom interaction (RAship, TAship, mentored research, directed readings, thesis committee etc.), numerous extended office hours interactions, or multiple (usually three) courses together\n\n\nOther BYU linguistics students\nTLN\n\n\nLinguistics undergraduates at other institutions\nTLN\n\n\nHigh schoolers\nTLN\n\n\nBYU grad students\nTLN at first, but one conversation is enough to switch to first name\n\n\nNon-traditional students\nFN\n\n\nMy students who have graduated\nFN\n\n\nNon-linguistics students at BYU\nFN\n\n\nNon-BYU grad students (of any discipline)\nFN\n\n\nAny academic\nFN\n\n\nThe public\nTLN is nice the first time, but then FN after that\n\n\n\nIn general, my email signature is the clue: if I sign Prof. Stanley then I kinda expect the title still but if I sign Joey, then first name is fair game.\nHowever, I sign my emails as Prof. Stanley because it feels like the softest way to maintain the title."
+  },
+  {
+    "objectID": "pages/name.html#address-forms",
+    "href": "pages/name.html#address-forms",
+    "title": "My Name",
+    "section": "Address forms",
+    "text": "Address forms\nI’ve been concerned with forms of address since my first solo-authored conference presentation. I grew up in a religious culture where children and adolescents never called adults by first name. That continued into college and it took me until my PhD was in-hand to finally call any faculty member by first name.5 However, I recognize that language changes and first names are becoming more common, so I usually don’t really care whether people use first name or title.\n5 I’ve got stories about that.6 I can’t help but wonder if that low vowel in Doctor also plays a role (cf. Boberg 1999).My preferences listed below are ultimately based by the professor-student relationship that may exist between us. The more prototypical, the more I prefer titles. In this table, TLN = “title + last name” and FN = “first name”. I have slight preference for Dr. (which reflects my education) over Professor (which reflects my employment).6\n\n\n\n\n\n\n\nGroup\nPreferred address form\n\n\n\n\nTraditionally-aged students in my courses\nTLN unless we’ve have some significant outside-classroom interaction like an RAship, TAship, mentored research, directed readings, thesis committee, numerous extended office hours interactions, or multiple (usually three) courses together\n\n\nOther BYU linguistics students\nTLN\n\n\nLinguistics undergraduates at other institutions\nTLN\n\n\nHigh schoolers\nTLN\n\n\nBYU grad students\nTLN at first, but one conversation is enough to switch to first name\n\n\nNon-traditional students\nFN\n\n\nMy students who have graduated\nFN\n\n\nNon-linguistics students\nFN\n\n\nNon-BYU linguistics grad students\nFN\n\n\nAny academic\nFN\n\n\nThe public\nTLN is nice the first time, but then FN after that\n\n\n\nIn general, my email signature is the clue: if I sign Prof. Stanley7 then I kinda expect the title still but if I sign Joey, then first name is fair game.\n\n\n\n7 I sign my emails as Prof. Stanley because it feels like the softest way to maintain the title, but I kinda prefer Dr. in response."
+  },
+  {
+    "objectID": "pages/name/name.html",
+    "href": "pages/name/name.html",
+    "title": "My Name",
+    "section": "",
+    "text": "I rarely encounter issues with people who get my name wrong. But I regularly find myself unsure about how to refer to other people (and am grateful for this list of linguists and IPA transcriptions of their names). So, following Gretchen McCulloch and a broader effort to encourage people to clarify how their name is used, here is details on my name, what to call me, and related topics."
+  },
+  {
+    "objectID": "pages/name/name.html#pronunciation",
+    "href": "pages/name/name.html#pronunciation",
+    "title": "My Name",
+    "section": "Pronunciation",
+    "text": "Pronunciation\nI pronounce my name, in broad IPA, as /ˈd͡ʒoʊ.i ˈstæn.li/. There should be no surpriseo here. This is what what I hear from most American English speakers.\nI’m hesitant to give a narrow IPA transcription for two reasons. First, I’m not sure whether it should be [d͡ʒoʊi], [d͡ʒoʊwi], [d͡ʒoʊʷi], [d͡ʒowi], or something else. Perhaps I’m overthinking it. Second, because I raise, front, diphthongize, and nasalize /æ/ before nasals (i.e. ban-raising or the prenasal split), I’m not sure how to transcribe the /æ/ in Stanley. In my dissertation I transcribed this sequence as something like [ɛ̃ɛ̝̟̯̃].1\n1 My first homework assignment in my intro to linguistics class was to transcribe my name in IPA. When I asked my professor what that vowel in Stanley was, they said [æn] and I knew for sure it wasn’t that!Feel free to pronounce my name in the best way that it matches on to your phonology. If you don’t have prenasal-/æ/-raising, feel free to use a true [æn] rather than mapping it on to another vowel (like perhaps /ɛ/). If you speak a language that doesn’t have [d͡ʒ] and typically pronounce the letter j as [ʒ], that’s fine. However, I might not recognize it if you use a [j]—regardless of where in the post-alveolar or palatal place of articulation you use, I expect some sort of (af)frication."
+  },
+  {
+    "objectID": "pages/name/name.html#stanley",
+    "href": "pages/name/name.html#stanley",
+    "title": "My Name",
+    "section": "Stanley",
+    "text": "Stanley\nThough Stanley is an English name, coming from “stan” (“stone”) and “leah” (“woodland clearing” or “meadow”), I don’t have English ancestry. In my family, the name comes from my Polish my great-grandparents who had the name Stanilka. The story goes that when their children were enlisting in the war (I forget which one), if they were to be captured, they would be tortured less if they had an English name rather than a Polish name. So they all changed their names from Stanilka to Stanley.2 Since I know there is some variation, I do spell my name with an ey at the end.\n2 My dad has an uncle I think who was already born Stanley Stanilka, so he became Stanley Stanley!FWIW, no I don’t have a Stanley mug, no I’ve never seen Flat Stanley, no Stanley isn’t my favorite character from “The Office,” and no I’m not going to name my kid Yelnats.\nI live in Utah and I know there were Stanleys that settled in various parts of Utah (Heber and Nephi, among others). I’m not related to them because my ancestry does not trace back to early Mormon pioneers and early migrants to Utah."
+  },
+  {
+    "objectID": "pages/name/name.html#joey",
+    "href": "pages/name/name.html#joey",
+    "title": "My Name",
+    "section": "Joey",
+    "text": "Joey\nMy legal name is Joseph, from the book of Genesis in the Old Testament. I pronounce it [d͡ʒoʊsɨf], with a voiceless fricative and a higher-than-schwa unstressed vowel. But I’m not too concerned about how you say it because 1) I know there’s lot of variation in how the name is said across languages and 2) I prefer you not call me Joseph.\nI’ve always gone by Joey. I have many brothers and almost all of us used the diminutive versions of our names when we were little. They all eventually switched to the monosyllabic versions. I never felt like I grew out of Joey. So yes, it’s Joey, not Joe and not Joseph. In fact, when I see mail that is addressed to Joseph, it’s either a legal document or junkmail because everyone I’ve ever met knows that I go by Joey."
+  },
+  {
+    "objectID": "pages/name/name.html#what-i-publish-as",
+    "href": "pages/name/name.html#what-i-publish-as",
+    "title": "My Name",
+    "section": "What I publish as",
+    "text": "What I publish as\nUntil May 2026, I published under the name Joseph A. Stanley3. This goes back to the decision I made when submitting an abstract to my first conference presentation in 2012. I thought Joseph A. Stanley sounded more professional so I went with it. But I have regretted it ever since. So, as a celebration for getting tenure, in May 2026 I decided to publish as Joey Stanley going forward.\n3 The A. has a period since it is an abbreviation of my middle name, Abraham. Supposedly, I was going to be Abraham Joseph Stanley (and probably would have gone by A.J.–such was the ’90s) but when my grandmothers heard about it around the time I was born, they were not impressed, so my parents switched it to Joseph Abraham.I realize that this has some consequences: Zotero, for example, treats “Joseph A. Stanley” as a different person than “Joey Stanley”. In references sections, the two are treated differently and are therefore sorted out of order: “Stanley, Joey (2026)” will now appear before “Stanley, Joseph A. (2025)” even though many citation styles prefer the oldest paper on top. In the in-text citations, Zotero might automatically disambiguate it as it would with other authors who share a last name by doing something like “(Stanley, J. A. 2025)”. I’d prefer to have it all be treated the same, so that “Joey Stanley” and “Joseph A. Stanley” are treated as “allo-names” of the same “name-eme”(?), but I know styleguides might prohibit that.\nFor what it’s worth, different versions of my name have already been floating around. For example, my dissertation has my full name, Joseph Abraham Stanley.4 I also have blog posts that have been cited rightfully as “Joey Stanley” since that’s the name on my website. So, I’ve got three published names already. Might as well start making it all consistent by going by Joey everywhere.\n4 I think using full names is common in dissertations and theses. I at least dutifully transfer that full name to my citations because I don’t want to make presumptions about what authors prefer."
+  },
+  {
+    "objectID": "pages/name/name.html#address-forms",
+    "href": "pages/name/name.html#address-forms",
+    "title": "My Name",
+    "section": "Address forms",
+    "text": "Address forms\nI’ve been concerned with forms of address since my first solo-authored conference presentation. I grew up in a religious culture where children and adolescents never called adults by first name. That continued into college and it took me until my PhD was in-hand to finally call any faculty member by first name.5 However, I recognize that language changes and first names are becoming more common, so I usually don’t really care whether people use first name or title.\n5 I’ve got stories about that.My preferences listed below are ultimately based by the professor-student relationship that may exist between us. The more prototypical, the more I prefer titles. In this table, TLN = “title + last name” and FN = “first name”.\n\n\n\n\n\n\n\nGroup\nPreferred address form\n\n\n\n\nTraditionally-aged students in my courses\nTLN unless we’ve have some significant outside-classroom interaction like an RAship, TAship, mentored research, directed readings, thesis committee, numerous extended office hours interactions, or multiple (usually three) courses together\n\n\nOther BYU linguistics students\nTLN\n\n\nLinguistics undergraduates at other institutions\nTLN\n\n\nHigh schoolers\nTLN\n\n\nBYU grad students\nTLN at first, but one conversation is enough to switch to first name\n\n\nNon-traditional students\nFN\n\n\nMy students who have graduated\nFN\n\n\nNon-linguistics students\nFN\n\n\nNon-BYU linguistics grad students\nFN\n\n\nAny academic\nFN\n\n\nThe public\nTLN is nice the first time, but then FN after that\n\n\n\nIn general, my email signature is the clue. Whatever I sign is what I expect in return.\nI have a slight preference for Doctor6 (which reflects my education) over Professor (which reflects my employment). I very much prefer either of those over Mister. In Latter-day Saint religious settings, Brother is fine and Doctor, Professor, and Mister are not. (In the past I have gone by President and Elder, depending on religious service assignments at the time.) Even though BYU is owned and operated by the Church of Jesus Christ of Latter-day Saints, I find it inappropriate to refer to me as Brother Stanley while I’m at work.\n6 I can’t help but wonder if that low vowel in Doctor also plays a role (cf. Boberg 1999)."
+  },
+  {
+    "objectID": "pages/name/name.html#profile-pictures",
+    "href": "pages/name/name.html#profile-pictures",
+    "title": "My Name",
+    "section": "Profile pictures",
+    "text": "Profile pictures\n\n\n\n\n\n\nFall 2016 – Summer 2019\n\n\n\n\n\n\n\nSummer 2019 – Fall 2023\n\n\n\n\n\n\n\nFall 2023 – present"
+  },
+  {
+    "objectID": "pages/name/name.html#pronouns",
+    "href": "pages/name/name.html#pronouns",
+    "title": "My Name",
+    "section": "Pronouns",
+    "text": "Pronouns\nIn English, I use he/him pronouns. In other languages, I use masculine pronouns if they exist.\nWhen discussing my religion, I generally follow this style guide. I prefer the term Latter-day Saint, both as a noun and an adjective. The first instance of the name of my church should be “The Church of Jesus Christ of Latter-day Saints.” I am more okay with LDS and Mormon than what is written in the linked style guide, though I try to use the term Latter-day Saint."
+  },
+  {
+    "objectID": "pages/name/name.html#profile-pictures-over-time",
+    "href": "pages/name/name.html#profile-pictures-over-time",
+    "title": "My Name",
+    "section": "Profile pictures (over time)",
+    "text": "Profile pictures (over time)\n\n\n\n\n\n\nFall 2016 – Summer 2019\n\n\n\n\n\n\n\nSummer 2019 – Fall 2023\n\n\n\n\n\n\n\nFall 2023 – present"
+  },
+  {
+    "objectID": "pages/name/name.html#other",
+    "href": "pages/name/name.html#other",
+    "title": "My Name",
+    "section": "Other",
+    "text": "Other\nIn English, I use he/him pronouns. In other languages, I use masculine pronouns if they exist.\nWhen discussing my religion, I generally follow this style guide. In particular, the first instance of the name of my church should be “The Church of Jesus Christ of Latter-day Saints”. I use term Latter-day Saint, both as a noun and an adjective, when discussing myself and other members of my faith. I am also generally okay with LDS and Mormon (in that order)."
   }
 ]
