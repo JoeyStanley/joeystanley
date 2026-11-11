@@ -146,7 +146,9 @@ My tutorial on Pillai scores and Bhattacharyya's Affinity [Part 1](/blog/a-tutor
 
 ### Statistical analysis
 
-There are lots of recent resources that can be helpful. Here are some I'd like to go through:
+The most comprehensive workshops I've put together on statistical analysis can be found [here](/bones). In particular, you'll want Part 3, which covers statistical tests like chi-squared, t-tests, and principal components analysis. In the fourth one about regression, I go over basic linear regression. 
+
+There are lots of recent resources by other people that can be helpful too. Here are some I'd like to go through:
 
 * Michael Gardner's suite of statistics tutorials on the Ling Methods Hub, starting with [this one](https://lingmethodshub.github.io/content/R/lvc_r/060_lvcr.html).
 * See Stefano Coretta's post on [mixed effects](https://stefanocoretta.github.io/posts/2021-03-15-on-random-effects/). 
